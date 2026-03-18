@@ -57,8 +57,8 @@
             "image": "shopify://shop_images/parking-benidorm-1200x731.jpg",
             "title": "Parking",
             "text": "<p>Encuentra opciones de parking para dejar tu vehiculo con comodidad y confianza.<\/p>",
-            "link_label": "",
-            "link": ""
+            "link_label": "Explorar servicio",
+            "link": "shopify://collections/parking"
           }
         },
         "column_b7DFjy": {
@@ -67,8 +67,8 @@
             "image": "shopify://shop_images/Gemini_Generated_Image_r65atgr65atgr65a.png",
             "title": "Lavado",
             "text": "<p>Limpieza exterior e interior profesional con productos de alta gama.<\/p>",
-            "link_label": "",
-            "link": ""
+            "link_label": "Explorar servicio",
+            "link": "shopify://collections/lavado"
           }
         },
         "column_TGXxiA": {
@@ -77,8 +77,8 @@
             "image": "shopify://shop_images/Gemini_Generated_Image_xexmmbxexmmbxexm.png",
             "title": "Detailing",
             "text": "<p>Mejora el aspecto de tu coche con tratamientos de cuidado estetico mas completos.<\/p>",
-            "link_label": "",
-            "link": ""
+            "link_label": "Explorar servicio",
+            "link": "shopify://collections/detailing"
           }
         },
         "column_q7XxVG": {
@@ -87,8 +87,8 @@
             "image": "shopify://shop_images/Gemini_Generated_Image_v23m88v23m88v23m.png",
             "title": "PPF / Wrap / Tintado Lunas",
             "text": "<p>Proteccion, personalizacion y mejora visual para tu vehiculo en un solo lugar.<\/p>",
-            "link_label": "",
-            "link": ""
+            "link_label": "Explorar servicio",
+            "link": "shopify://collections/ppf-wrap-tintado-lunas"
           }
         },
         "column_4FQw4P": {
@@ -97,8 +97,8 @@
             "image": "shopify://shop_images/Gemini_Generated_Image_eoqb8xeoqb8xeoqb.png",
             "title": "Mantenimiento Ligero",
             "text": "<p>Servicios rapidos para mantener tu coche al dia sin complicarte.<\/p>",
-            "link_label": "",
-            "link": ""
+            "link_label": "Explorar servicio",
+            "link": "shopify://collections/mantenimiento-ligero"
           }
         },
         "column_ExphRE": {
@@ -107,8 +107,8 @@
             "image": "shopify://shop_images/Gemini_Generated_Image_mu6yc9mu6yc9mu6y.png",
             "title": "Chapa y Pintura",
             "text": "<p>Reparaciones y acabados para devolverle a tu coche su mejor imagen.<\/p>",
-            "link_label": "",
-            "link": ""
+            "link_label": "Explorar servicio",
+            "link": "shopify://collections/chapa-y-pintura"
           }
         },
         "column_Q4aCUg": {
@@ -117,8 +117,8 @@
             "image": "shopify://shop_images/Gemini_Generated_Image_x0vc4ax0vc4ax0vc.png",
             "title": "Productos y Accesorios",
             "text": "<p>Seleccion de productos para el cuidado automotriz y complementos utiles.<\/p>",
-            "link_label": "",
-            "link": ""
+            "link_label": "Ver categoria",
+            "link": "shopify://collections/productos-y-accesorios-para-el-cuidado-automotriz"
           }
         },
         "column_YkR8jy": {
@@ -127,8 +127,8 @@
             "image": "shopify://shop_images/Gemini_Generated_Image_w62hvw62hvw62hvw.png",
             "title": "Grua y Auxilio Mecanico",
             "text": "<p>Asistencia para situaciones urgentes y necesidades mecanicas puntuales.<\/p>",
-            "link_label": "",
-            "link": ""
+            "link_label": "Explorar servicio",
+            "link": "shopify://collections/grua-y-auxlio-mecanico"
           }
         },
         "column_RCiXUB": {
@@ -137,8 +137,8 @@
             "image": "shopify://shop_images/itv-cita-previa-barcelona.jpg",
             "title": "Inspecciones ITV",
             "text": "<p>Prepara tu coche y encuentra ayuda para pasar inspecciones con menos friccion.<\/p>",
-            "link_label": "",
-            "link": ""
+            "link_label": "Explorar servicio",
+            "link": "shopify://collections/inspecciones-itv"
           }
         }
       },
@@ -159,8 +159,8 @@
         "heading_size": "h1",
         "image_width": "full",
         "image_ratio": "adapt",
-        "button_label": "Contacto por Whatsapp",
-        "button_link": "https://w.app/lacocheraplace",
+        "button_label": "Ver todos los servicios",
+        "button_link": "shopify://pages/servicios",
         "columns_desktop": 3,
         "column_alignment": "left",
         "background_style": "primary",
@@ -210,6 +210,40 @@
         "color_scheme": "scheme-1",
         "full_width": false,
         "padding_top": 44,
+        "padding_bottom": 36
+      }
+    },
+    "collection_list_providers_home": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_provider_1": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "lavado-barcelona-laundry"
+          }
+        },
+        "featured_collection_provider_2": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "lavado-la-cochera-place"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_provider_1",
+        "featured_collection_provider_2"
+      ],
+      "name": "t:sections.collection-list.presets.name",
+      "settings": {
+        "title": "Talleres destacados",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 2,
+        "color_scheme": "",
+        "show_view_all": false,
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 12,
         "padding_bottom": 52
       }
     }
@@ -217,6 +251,7 @@
   "order": [
     "image_banner",
     "multicolumn_aHED4U",
-    "rich_text_marketplace_intro"
+    "rich_text_marketplace_intro",
+    "collection_list_providers_home"
   ]
 }
