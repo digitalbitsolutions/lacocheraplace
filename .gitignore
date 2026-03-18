@@ -1,0 +1,10 @@
+# Workspace assets not meant for version control
+assets/
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+
+# Local archives and temp artifacts
+*.zip
+*.log
