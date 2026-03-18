@@ -1,4 +1,4 @@
-# MCP
+# Shopify Dev MCP
 
 ## Estado actual
 - Shopify Dev MCP detectado localmente

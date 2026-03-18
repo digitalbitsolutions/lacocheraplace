@@ -1,0 +1,7 @@
+interface:
+  display_name: "Shopify Marketplace Theme"
+  short_description: "Audit and reshape Shopify into marketplace UX"
+  default_prompt: "Use $shopify-marketplace-theme to audit and evolve this Shopify theme into a service marketplace."
+
+policy:
+  allow_implicit_invocation: true
