@@ -33,3 +33,18 @@ Tener una forma simple de avanzar, revisar y volver atras si algo sale mal o no 
 - Solo desde una version local ya revisada
 - Preferiblemente a theme borrador
 - Nunca directamente al theme activo sin aprobacion
+
+## Estado actual del versionado
+- Repositorio Git inicializado y conectado a remoto
+- Rama base estable: `main`
+- Rama de trabajo actual: `feature/homepage-round-1`
+- Baseline remoto publicado en `origin/main`
+
+## Hitos guardados
+- `335f889` baseline original del proyecto
+- `8ffc73b` primera ronda controlada de homepage
+- `1762372` organizacion documental + skill Shopify marketplace
+- `828f848` segunda ronda de homepage con navegacion y proveedores
+
+## Siguiente regla operativa
+- No abrir una nueva linea de trabajo sin decidir primero si la siguiente iteracion sera UX de homepage, talleres/proveedores o ficha de servicio

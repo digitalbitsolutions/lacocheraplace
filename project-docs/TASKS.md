@@ -5,6 +5,7 @@
 - Theme base de trabajo: `theme-dawn-export`
 - Rama activa: `feature/homepage-round-1`
 - Modo actual: trabajo local primero, despliegue solo tras aprobacion
+- Ultimo hito confirmado: `homepage round 2 navigation and providers`
 
 ## Reglas de ejecucion
 - No tocar theme publicado sin aprobacion explicita
@@ -46,6 +47,17 @@
 - [x] Anadido bloque inicial de talleres destacados
 - [ ] Revisar el resultado visual en preview Shopify
 - [ ] Decidir si la siguiente iteracion sera "como funciona" o "talleres destacados"
+
+## Punto de reentrada recomendado
+- Revisar visualmente la homepage en Shopify preview o theme borrador
+- Si la navegacion ya convence, siguiente foco: reforzar `Talleres destacados`
+- Si la narrativa aun es debil, siguiente foco: mejorar `Como funciona`
+
+## Commits de referencia
+- `335f889` baseline local del proyecto
+- `8ffc73b` homepage round 1 marketplace positioning
+- `1762372` organize docs and add shopify marketplace skill
+- `828f848` homepage round 2 navigation and providers
 
 ## Registro de decisiones
 - El proyecto se tratara como plataforma en construccion, no como tienda Shopify clasica
