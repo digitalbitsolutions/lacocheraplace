@@ -37,7 +37,7 @@
 - [x] Crear primer lote de cambios aprobables para homepage
 - [x] Crear segundo lote visible de homepage con categorias navegables
 - [ ] Mantener inventario de cambios por archivo
-- [ ] Crear bloque de talleres/proveedores mas robusto para homepage
+- [~] Crear bloque de talleres/proveedores mas robusto para homepage
 - [ ] Validar mecanismo de preview con tienda
 
 ## Estado actual de homepage
@@ -45,13 +45,14 @@
 - [x] Mejorado el copy de categorias
 - [x] Enlazadas categorias a colecciones reales
 - [x] Anadido bloque inicial de talleres destacados
+- [~] Anadido bloque introductorio para reforzar talleres destacados
 - [ ] Revisar el resultado visual en preview Shopify
-- [ ] Decidir si la siguiente iteracion sera "como funciona" o "talleres destacados"
+- [x] Decidir el siguiente foco de iteracion: `talleres destacados`
 
 ## Punto de reentrada recomendado
 - Revisar visualmente la homepage en Shopify preview o theme borrador
-- Si la navegacion ya convence, siguiente foco: reforzar `Talleres destacados`
-- Si la narrativa aun es debil, siguiente foco: mejorar `Como funciona`
+- Si el bloque de talleres ya convence, siguiente foco: ficha de servicio
+- Si aun falta claridad, siguiente foco: mejorar la presentacion de `Talleres destacados`
 
 ## Commits de referencia
 - `335f889` baseline local del proyecto

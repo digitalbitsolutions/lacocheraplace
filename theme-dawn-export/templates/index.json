@@ -210,7 +210,58 @@
         "color_scheme": "scheme-1",
         "full_width": false,
         "padding_top": 44,
-        "padding_bottom": 36
+        "padding_bottom": 20
+      }
+    },
+    "rich_text_providers_intro": {
+      "type": "rich-text",
+      "blocks": {
+        "caption": {
+          "type": "caption",
+          "settings": {
+            "caption": "Talleres y proveedores",
+            "text_style": "caption-with-letter-spacing",
+            "text_size": "medium"
+          }
+        },
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Empieza con talleres que ya destacan en la plataforma",
+            "heading_size": "h1"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Este bloque no busca mostrar todos los proveedores, sino darte una primera seleccion de talleres visibles dentro del marketplace para que puedas comparar y avanzar mas rapido.<\/p>"
+          }
+        },
+        "button": {
+          "type": "button",
+          "settings": {
+            "button_label": "Explorar servicios",
+            "button_link": "shopify://pages/servicios",
+            "button_style_secondary": false,
+            "button_label_2": "Hablar por WhatsApp",
+            "button_link_2": "https://w.app/lacocheraplace",
+            "button_style_secondary_2": true
+          }
+        }
+      },
+      "block_order": [
+        "caption",
+        "heading",
+        "text",
+        "button"
+      ],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-2",
+        "full_width": false,
+        "padding_top": 24,
+        "padding_bottom": 20
       }
     },
     "collection_list_providers_home": {
@@ -235,15 +286,15 @@
       ],
       "name": "t:sections.collection-list.presets.name",
       "settings": {
-        "title": "Talleres destacados",
+        "title": "Talleres destacados para empezar",
         "heading_size": "h1",
-        "image_ratio": "square",
+        "image_ratio": "adapt",
         "columns_desktop": 2,
         "color_scheme": "",
         "show_view_all": false,
         "columns_mobile": "1",
         "swipe_on_mobile": false,
-        "padding_top": 12,
+        "padding_top": 8,
         "padding_bottom": 52
       }
     }
@@ -252,6 +303,7 @@
     "image_banner",
     "multicolumn_aHED4U",
     "rich_text_marketplace_intro",
+    "rich_text_providers_intro",
     "collection_list_providers_home"
   ]
 }
