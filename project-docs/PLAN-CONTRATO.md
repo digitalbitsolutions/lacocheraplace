@@ -115,12 +115,14 @@ Hasta ese momento, el trabajo principal sigue siendo local.
 - Skills y contexto documental creados
 - Homepage round 1 completada
 - Homepage round 2 completada
-- Pendiente: validacion visual y definicion del siguiente foco
+- Homepage round 3 completada
+- Preview de tema borrador creada en Shopify
+- Pendiente: validacion visual y definicion de si seguimos con homepage o ficha de servicio
 
 ## Siguiente paso recomendado
-Antes de abrir una nueva linea de trabajo, decidir una de estas dos rutas:
-- reforzar `Talleres destacados`
-- reforzar `Como funciona`
+Antes de abrir una nueva linea de trabajo, revisar la preview del tema borrador y decidir una de estas dos rutas:
+- continuar puliendo homepage
+- pasar a ficha de servicio
 
 ## Aceptacion operativa
 Mientras no se indique lo contrario, este proyecto se ejecuta bajo este acuerdo:

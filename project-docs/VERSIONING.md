@@ -45,6 +45,14 @@ Tener una forma simple de avanzar, revisar y volver atras si algo sale mal o no 
 - `8ffc73b` primera ronda controlada de homepage
 - `1762372` organizacion documental + skill Shopify marketplace
 - `828f848` segunda ronda de homepage con navegacion y proveedores
+- `c280404` tercera ronda de homepage con refuerzo de proveedores
+
+## Estado de validacion visual
+- Theme borrador creado en Shopify para validacion
+- Nombre: `Codex Preview Homepage Round 3`
+- ID: `196749918545`
+- Store: `cs3msy-n8.myshopify.com`
+- La siguiente decision funcional debe salir de esa revision visual
 
 ## Siguiente regla operativa
 - No abrir una nueva linea de trabajo sin decidir primero si la siguiente iteracion sera UX de homepage, talleres/proveedores o ficha de servicio
