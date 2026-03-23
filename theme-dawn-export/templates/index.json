@@ -1,1 +1,354 @@
-{"sections":{"image_banner":{"type":"image-banner","blocks":{"heading":{"type":"heading","settings":{"heading":"Dale a tu coche el cuidado que merece","heading_size":"h0"}},"text_X6hdJ4":{"type":"text","settings":{"text":"Reserva en menos de 2 minutos. Los mejores talleres de estética y mantenimiento automotriz, ahora a un clic.","text_style":"body"}},"button":{"type":"buttons","settings":{"button_label_1":"Buscar servicio ahora","button_link_1":"shopify:\/\/pages\/servicios","button_style_secondary_1":true,"button_label_2":"¿Cómo funciona?","button_link_2":"shopify:\/\/pages\/como-funciona","button_style_secondary_2":false}}},"block_order":["heading","text_X6hdJ4","button"],"settings":{"image":"shopify:\/\/shop_images\/coche.jpg","image_overlay_opacity":40,"image_height":"large","image_behavior":"none","desktop_content_position":"top-center","desktop_content_alignment":"center","show_text_box":false,"color_scheme":"scheme-3","stack_images_on_mobile":false,"mobile_content_alignment":"center","show_text_below":false}},"multicolumn_aHED4U":{"type":"multicolumn","blocks":{"column_yD9BtG":{"type":"column","settings":{"image":"shopify:\/\/shop_images\/parking-benidorm-1200x731.jpg","title":"Parking","text":"<p>Vincula un texto con una imagen para atraer la atención hacia tu producto, colección o artículo de blog seleccionados. Agrega detalles sobre disponibilidad y estilo, o incluso ofrece una reseña.<\/p>","link_label":"","link":""}},"column_b7DFjy":{"type":"column","settings":{"image":"shopify:\/\/shop_images\/Gemini_Generated_Image_r65atgr65atgr65a.png","title":"Lavado","text":"<p>Limpieza exterior e interior profesional con productos de alta gama<\/p>","link_label":"","link":""}},"column_TGXxiA":{"type":"column","settings":{"image":"shopify:\/\/shop_images\/Gemini_Generated_Image_xexmmbxexmmbxexm.png","title":"Detailing","text":"<p>Vincula un texto con una imagen para atraer la atención hacia tu producto, colección o artículo de blog seleccionados. Agrega detalles sobre disponibilidad y estilo, o incluso ofrece una reseña.<\/p>","link_label":"","link":""}},"column_q7XxVG":{"type":"column","settings":{"image":"shopify:\/\/shop_images\/Gemini_Generated_Image_v23m88v23m88v23m.png","title":"PPF\/Wrap\/Tintado Lunas","text":"<p>Vincula un texto con una imagen para atraer la atención hacia tu producto, colección o artículo de blog seleccionados. Agrega detalles sobre disponibilidad y estilo, o incluso ofrece una reseña.<\/p>","link_label":"","link":""}},"column_4FQw4P":{"type":"column","settings":{"image":"shopify:\/\/shop_images\/Gemini_Generated_Image_eoqb8xeoqb8xeoqb.png","title":"Mantenimiento Ligero","text":"<p>Vincula un texto con una imagen para atraer la atención hacia tu producto, colección o artículo de blog seleccionados. Agrega detalles sobre disponibilidad y estilo, o incluso ofrece una reseña.<\/p>","link_label":"","link":""}},"column_ExphRE":{"type":"column","settings":{"image":"shopify:\/\/shop_images\/Gemini_Generated_Image_mu6yc9mu6yc9mu6y.png","title":"Chapa y Pintura","text":"<p>Vincula un texto con una imagen para atraer la atención hacia tu producto, colección o artículo de blog seleccionados. Agrega detalles sobre disponibilidad y estilo, o incluso ofrece una reseña.<\/p>","link_label":"","link":""}},"column_Q4aCUg":{"type":"column","settings":{"image":"shopify:\/\/shop_images\/Gemini_Generated_Image_x0vc4ax0vc4ax0vc.png","title":"Productos y Accesorios para el Cuidado Automotriz","text":"<p>Vincula un texto con una imagen para atraer la atención hacia tu producto, colección o artículo de blog seleccionados. Agrega detalles sobre disponibilidad y estilo, o incluso ofrece una reseña.<\/p>","link_label":"","link":""}},"column_YkR8jy":{"type":"column","settings":{"image":"shopify:\/\/shop_images\/Gemini_Generated_Image_w62hvw62hvw62hvw.png","title":"Grúa y Auxlio Mecanico","text":"<p>Vincula un texto con una imagen para atraer la atención hacia tu producto, colección o artículo de blog seleccionados. Agrega detalles sobre disponibilidad y estilo, o incluso ofrece una reseña.<\/p>","link_label":"","link":""}},"column_RCiXUB":{"type":"column","settings":{"image":"shopify:\/\/shop_images\/itv-cita-previa-barcelona.jpg","title":"Inspecciones ITV","text":"<p>Vincula un texto con una imagen para atraer la atención hacia tu producto, colección o artículo de blog seleccionados. Agrega detalles sobre disponibilidad y estilo, o incluso ofrece una reseña.<\/p>","link_label":"","link":""}}},"block_order":["column_yD9BtG","column_b7DFjy","column_TGXxiA","column_q7XxVG","column_4FQw4P","column_ExphRE","column_Q4aCUg","column_YkR8jy","column_RCiXUB"],"name":"t:sections.multicolumn.presets.name","settings":{"title":"¿Qué necesita tu coche?","heading_size":"h1","image_width":"full","image_ratio":"adapt","button_label":"Contacto por Whatsapp","button_link":"https:\/\/w.app\/lacocheraplace","columns_desktop":3,"column_alignment":"left","background_style":"primary","color_scheme":"","columns_mobile":"1","swipe_on_mobile":false,"padding_top":36,"padding_bottom":36}},"featured_collection":{"type":"featured-collection","settings":{"collection":"all","products_to_show":8,"title":"Featured products","heading_size":"h2","description":"","show_description":false,"description_style":"body","columns_desktop":4,"enable_desktop_slider":false,"full_width":false,"show_view_all":true,"view_all_style":"solid","color_scheme":"scheme-1","image_ratio":"adapt","image_shape":"default","show_secondary_image":true,"show_vendor":false,"show_rating":false,"quick_add":"none","columns_mobile":"2","swipe_on_mobile":false,"padding_top":44,"padding_bottom":36}}},"order":["image_banner","multicolumn_aHED4U","featured_collection"]}
+{
+  "sections": {
+    "image_banner": {
+      "type": "image-banner",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Servicios profesionales para tu vehiculo en Barcelona, todo en un mismo lugar.",
+            "heading_size": "h1"
+          }
+        },
+        "button": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "",
+            "button_link_1": "",
+            "button_style_secondary_1": true,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "button"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/coche.jpg",
+        "image_overlay_opacity": 40,
+        "image_height": "large",
+        "image_behavior": "none",
+        "desktop_content_position": "middle-center",
+        "desktop_content_alignment": "center",
+        "show_text_box": false,
+        "color_scheme": "scheme-3",
+        "stack_images_on_mobile": false,
+        "mobile_content_alignment": "center",
+        "show_text_below": false
+      }
+    },
+    "multicolumn_aHED4U": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_lavado": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Gemini_Generated_Image_r65atgr65atgr65a.png",
+            "title": "Lavado de coches",
+            "text": "<p>Limpieza interior y exterior para mantener tu coche siempre impecable. Desde lavados rapidos hasta servicios completos con acabado profesional.<\/p>",
+            "link_label": "Explorar servicio",
+            "link": "shopify://collections/lavado"
+          }
+        },
+        "column_detailing": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Gemini_Generated_Image_xexmmbxexmmbxexm.png",
+            "title": "Pulido y detailing de coches",
+            "text": "<p>Restauracion estetica y cuidado profundo del vehiculo. Incluye pulido, correccion de pintura y tratamientos ceramicos para proteger y realzar el brillo.<\/p>",
+            "link_label": "Explorar servicio",
+            "link": "shopify://collections/detailing"
+          }
+        },
+        "column_neumaticos": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/itv-cita-previa-barcelona.jpg",
+            "title": "Cambio de neumaticos y llantas",
+            "text": "<p>Sustitucion y mantenimiento de neumaticos para una conduccion segura. Servicios de alineacion, balanceo y reparacion de pinchazos.<\/p>",
+            "link_label": "Explorar servicio",
+            "link": "shopify://pages/servicios"
+          }
+        },
+        "column_ppf": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Gemini_Generated_Image_v23m88v23m88v23m.png",
+            "title": "PPF y vinilo para coches (Wrap)",
+            "text": "<p>Proteccion y personalizacion de la carroceria con laminas PPF o vinilo. Evita danos en la pintura o cambia el estilo de tu coche.<\/p>",
+            "link_label": "Explorar servicio",
+            "link": "shopify://collections/ppf-wrap-tintado-lunas"
+          }
+        },
+        "column_tintado": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Gemini_Generated_Image_v23m88v23m88v23m.png",
+            "title": "Tintado de lunas y parabrisas",
+            "text": "<p>Tintado de cristales para mayor privacidad, confort y proteccion solar. Incluye reparacion y sustitucion de lunas o parabrisas.<\/p>",
+            "link_label": "Explorar servicio",
+            "link": "shopify://collections/ppf-wrap-tintado-lunas"
+          }
+        },
+        "column_chapa": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Gemini_Generated_Image_mu6yc9mu6yc9mu6y.png",
+            "title": "Chapa, pintura y abolladuras",
+            "text": "<p>Reparacion de golpes, aranazos y danos en la carroceria. Eliminacion de abolladuras sin pintar y acabados profesionales.<\/p>",
+            "link_label": "Explorar servicio",
+            "link": "shopify://collections/chapa-y-pintura"
+          }
+        },
+        "column_mantenimiento": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Gemini_Generated_Image_eoqb8xeoqb8xeoqb.png",
+            "title": "Mantenimiento rapido de coches",
+            "text": "<p>Servicios esenciales para el buen funcionamiento del vehiculo, como cambio de aceite, filtros y revisiones basicas.<\/p>",
+            "link_label": "Explorar servicio",
+            "link": "shopify://collections/mantenimiento-ligero"
+          }
+        },
+        "column_grua": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Gemini_Generated_Image_w62hvw62hvw62hvw.png",
+            "title": "Grua y asistencia en carretera",
+            "text": "<p>Asistencia inmediata ante averias o emergencias. Servicio de grua, arranque de bateria y ayuda en carretera cuando lo necesites.<\/p>",
+            "link_label": "Explorar servicio",
+            "link": "shopify://collections/grua-y-auxlio-mecanico"
+          }
+        },
+        "column_parking": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/parking-benidorm-1200x731.jpg",
+            "title": "Parking y aparcamiento",
+            "text": "<p>Opciones de aparcamiento seguro por horas, dias o larga estancia, ideales para ciudad o viajes.<\/p>",
+            "link_label": "Explorar servicio",
+            "link": "shopify://collections/parking"
+          }
+        },
+        "column_productos": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Gemini_Generated_Image_x0vc4ax0vc4ax0vc.png",
+            "title": "Accesorios y productos para coche",
+            "text": "<p>Accesorios y productos para cuidar y mejorar tu coche, desde lo esencial hasta soluciones profesionales.<\/p>",
+            "link_label": "Ver categoria",
+            "link": "shopify://collections/productos-y-accesorios-para-el-cuidado-automotriz"
+          }
+        }
+      },
+      "block_order": [
+        "column_lavado",
+        "column_detailing",
+        "column_neumaticos",
+        "column_ppf",
+        "column_tintado",
+        "column_chapa",
+        "column_mantenimiento",
+        "column_grua",
+        "column_parking",
+        "column_productos"
+      ],
+      "name": "t:sections.multicolumn.presets.name",
+      "settings": {
+        "title": "Que necesita tu vehiculo?",
+        "heading_size": "h1",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "button_label": "Ver todos los servicios",
+        "button_link": "shopify://pages/servicios",
+        "columns_desktop": 3,
+        "column_alignment": "left",
+        "background_style": "primary",
+        "color_scheme": "",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "rich_text_marketplace_intro": {
+      "type": "rich-text",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Como funciona La Cochera Place",
+            "heading_size": "h1"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Explora categorias, compara opciones y conecta con talleres para solicitar el servicio que tu coche necesita. Esta seccion reemplaza el bloque generico de productos destacados y acerca la home a una experiencia de marketplace de servicios.<\/p>"
+          }
+        },
+        "button": {
+          "type": "button",
+          "settings": {
+            "button_label": "Ver como funciona",
+            "button_link": "shopify://pages/como-funciona",
+            "button_style_secondary": false,
+            "button_label_2": "Ver servicios",
+            "button_link_2": "shopify://pages/servicios",
+            "button_style_secondary_2": true
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "text",
+        "button"
+      ],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-1",
+        "full_width": false,
+        "padding_top": 44,
+        "padding_bottom": 20
+      }
+    },
+    "rich_text_providers_intro": {
+      "type": "rich-text",
+      "blocks": {
+        "caption": {
+          "type": "caption",
+          "settings": {
+            "caption": "Talleres y proveedores",
+            "text_style": "caption-with-letter-spacing",
+            "text_size": "medium"
+          }
+        },
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Empieza con talleres que ya destacan en la plataforma",
+            "heading_size": "h1"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Este bloque no busca mostrar todos los proveedores, sino darte una primera seleccion de talleres visibles dentro del marketplace para que puedas comparar y avanzar mas rapido.<\/p>"
+          }
+        },
+        "button": {
+          "type": "button",
+          "settings": {
+            "button_label": "Explorar servicios",
+            "button_link": "shopify://pages/servicios",
+            "button_style_secondary": false,
+            "button_label_2": "WhatsApp 614 445 146",
+            "button_link_2": "https://wa.me/34614445146",
+            "button_style_secondary_2": true
+          }
+        }
+      },
+      "block_order": [
+        "caption",
+        "heading",
+        "text",
+        "button"
+      ],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-2",
+        "full_width": false,
+        "padding_top": 24,
+        "padding_bottom": 20
+      }
+    },
+    "collection_list_providers_home": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_provider_1": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "lavado-barcelona-laundry"
+          }
+        },
+        "featured_collection_provider_2": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "lavado-la-cochera-place"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_provider_1",
+        "featured_collection_provider_2"
+      ],
+      "name": "t:sections.collection-list.presets.name",
+      "settings": {
+        "title": "Talleres destacados para empezar",
+        "heading_size": "h1",
+        "image_ratio": "adapt",
+        "columns_desktop": 2,
+        "color_scheme": "",
+        "show_view_all": false,
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 8,
+        "padding_bottom": 52
+      }
+    },
+    "provider_reviews_home": {
+      "type": "apps",
+      "blocks": {
+        "judge_me_reviews_testimonials_carousel_home": {
+          "type": "shopify:\/\/apps\/judge-me-reviews\/blocks\/testimonials_carousel\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "show_sample_reviews": true,
+            "reviews_selection": "all",
+            "products": [],
+            "star_rating": "all",
+            "max_reviews": 20,
+            "quote_marks_size": "small",
+            "product_name_text_size": "small",
+            "verified_badge_style": "icon",
+            "card_height": "medium",
+            "text_size": "small",
+            "stars_size": "medium",
+            "arrows_position": "bottom",
+            "max_width": 1100,
+            "corner_styling": "soft",
+            "quote_marks_style": "serif",
+            "card_color": "#F9F9F9",
+            "stars_and_quote_marks_color": "#108474",
+            "text_color": "#000000",
+            "arrows_color": "#000000",
+            "show_border": false,
+            "border_color": "#108474",
+            "show_drop_shadow": false,
+            "transition_speed": 5,
+            "header_text": "Lo que dicen de los proveedores",
+            "show_average_rating": true
+          }
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_testimonials_carousel_home"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    }
+  },
+  "order": [
+    "image_banner",
+    "multicolumn_aHED4U",
+    "rich_text_marketplace_intro",
+    "rich_text_providers_intro",
+    "collection_list_providers_home",
+    "provider_reviews_home"
+  ]
+}

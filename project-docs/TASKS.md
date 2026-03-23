@@ -3,7 +3,9 @@
 ## Estado
 - Proyecto: `lacocheraplace.com`
 - Theme base de trabajo: `theme-dawn-export`
+- Rama activa: `feature/homepage-round-1`
 - Modo actual: trabajo local primero, despliegue solo tras aprobacion
+- Ultimo hito confirmado: `homepage round 3 providers emphasis`
 
 ## Reglas de ejecucion
 - No tocar theme publicado sin aprobacion explicita
@@ -23,18 +25,49 @@
 - [x] Extraer theme actual en local
 - [x] Auditar estructura general del theme
 - [x] Detectar gap entre e-commerce y marketplace de servicios
-- [ ] Auditar homepage en detalle
-- [ ] Definir arquitectura homepage tipo marketplace
-- [ ] Rediseñar homepage sin romper contenido actual
+- [x] Auditar homepage en detalle
+- [x] Definir arquitectura homepage tipo marketplace
+- [~] Redisenar homepage sin romper contenido actual
 - [ ] Transformar ficha de producto a ficha de servicio
 - [ ] Definir modelo de talleres/proveedores
 - [ ] Reducir elementos de carrito clasico donde no aplique
 - [ ] Preparar flujo de preview seguro
 
 ## Tareas inmediatas
+- [x] Crear primer lote de cambios aprobables para homepage
+- [x] Crear segundo lote visible de homepage con categorias navegables
 - [ ] Mantener inventario de cambios por archivo
-- [ ] Crear primer lote de cambios aprobables para homepage
-- [ ] Validar mecanismo de preview con tienda
+- [~] Crear bloque de talleres/proveedores mas robusto para homepage
+- [x] Validar mecanismo de preview con tienda
+
+## Estado actual de homepage
+- [x] Sustituido el bloque generico de productos destacados
+- [x] Mejorado el copy de categorias
+- [x] Enlazadas categorias a colecciones reales
+- [x] Anadido bloque inicial de talleres destacados
+- [~] Anadido bloque introductorio para reforzar talleres destacados
+- [x] Generada preview en tema borrador de Shopify
+- [ ] Revisar el resultado visual en preview Shopify
+- [x] Decidir el siguiente foco de iteracion: `talleres destacados`
+
+## Punto de reentrada recomendado
+- Revisar visualmente la homepage en Shopify preview o theme borrador
+- Si el bloque de talleres ya convence, siguiente foco: ficha de servicio
+- Si aun falta claridad, siguiente foco: mejorar la presentacion de `Talleres destacados`
+
+## Preview activa
+- Theme borrador: `Codex Preview Homepage Round 3`
+- Theme ID: `196749918545`
+- Preview URL: `https://cs3msy-n8.myshopify.com?preview_theme_id=196749918545`
+- Editor URL: `https://cs3msy-n8.myshopify.com/admin/themes/196749918545/editor`
+- Nota: al retomar, validar visualmente esta preview antes de abrir una nueva linea de trabajo
+
+## Commits de referencia
+- `335f889` baseline local del proyecto
+- `8ffc73b` homepage round 1 marketplace positioning
+- `1762372` organize docs and add shopify marketplace skill
+- `828f848` homepage round 2 navigation and providers
+- `c280404` homepage round 3 providers emphasis
 
 ## Registro de decisiones
 - El proyecto se tratara como plataforma en construccion, no como tienda Shopify clasica
