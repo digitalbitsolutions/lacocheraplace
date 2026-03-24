@@ -34,12 +34,91 @@
       padding-bottom: {{ section.settings.padding_bottom }}px;
     }
   }
+
+  .service-providers-overview {
+    margin-bottom: 3.2rem;
+  }
+
+  .service-providers-overview__header {
+    margin-bottom: 2.4rem;
+    max-width: 72rem;
+  }
+
+  .service-providers-overview__eyebrow {
+    display: inline-block;
+    margin: 0 0 0.8rem;
+    font-size: 1.2rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(var(--color-foreground), 0.7);
+  }
+
+  .service-providers-overview__heading {
+    margin: 0 0 0.8rem;
+  }
+
+  .service-providers-overview__text {
+    margin: 0;
+    color: rgba(var(--color-foreground), 0.8);
+  }
+
+  .service-provider-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .service-provider-card__media {
+    background: rgba(var(--color-foreground), 0.04);
+  }
+
+  .service-provider-card__content {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 0.8rem;
+    padding: 1.8rem;
+  }
+
+  .service-provider-card__title {
+    margin: 0;
+  }
+
+  .service-provider-card__meta {
+    margin: 0;
+    font-size: 1.3rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(var(--color-foreground), 0.65);
+  }
+
+  .service-provider-card__description {
+    margin: 0;
+    color: rgba(var(--color-foreground), 0.8);
+  }
+
+  .service-provider-card__cta {
+    margin-top: auto;
+    font-weight: 600;
+  }
 {%- endstyle -%}
 
 <div class="section-{{ section.id }}-padding gradient color-{{ section.settings.color_scheme }}">
   {%- paginate collection.products by section.settings.products_per_page -%}
+    {%- liquid
+      assign current_provider_tag = blank
+      for tag in current_tags
+        if tag contains 'proveedor-'
+          assign current_provider_tag = tag
+          break
+        endif
+      endfor
+    -%}
     {% comment %} Sort is the first tabbable element when filter type is vertical {% endcomment %}
-    {%- if section.settings.enable_sorting and section.settings.filter_type == 'vertical' -%}
+    {%- if section.settings.enable_sorting and section.settings.filter_type == 'vertical' and current_provider_tag == blank -%}
       <facet-filters-form class="facets facets-vertical-sort page-width small-hide">
         <form class="facets-vertical-form" id="FacetSortForm">
           <div class="facet-filters sorting caption">
@@ -100,94 +179,202 @@
     <div class="{% if section.settings.filter_type == 'vertical' %} facets-vertical page-width{% endif %}">
       {{ 'component-facets.css' | asset_url | stylesheet_tag }}
       <script src="{{ 'facets.js' | asset_url }}" defer="defer"></script>
-      {%- if section.settings.enable_filtering or section.settings.enable_sorting -%}
-        <aside
-          aria-labelledby="verticalTitle"
-          class="facets-wrapper{% unless section.settings.enable_filtering %} facets-wrapper--no-filters{% endunless %}{% if section.settings.filter_type != 'vertical' %} page-width{% endif %}"
-          id="main-collection-filters"
-          data-id="{{ section.id }}"
-        >
-          {% render 'facets',
-            results: collection,
-            enable_filtering: section.settings.enable_filtering,
-            enable_sorting: section.settings.enable_sorting,
-            filter_type: section.settings.filter_type,
-            paginate: paginate
-          %}
-        </aside>
+      {%- liquid
+        assign provider_count = 0
+        assign provider_tokens = '|'
+        for product in collection.products
+          if product.vendor != blank
+            assign provider_token = '|' | append: product.vendor | append: '|'
+            unless provider_tokens contains provider_token
+              assign provider_tokens = provider_tokens | append: product.vendor | append: '|'
+              assign provider_count = provider_count | plus: 1
+            endunless
+          endif
+        endfor
+        assign show_provider_directory = false
+        if collection.products.size > 0 and provider_count > 0 and current_provider_tag == blank
+          assign show_provider_directory = true
+        endif
+      -%}
+      {%- if show_provider_directory -%}
+        <div class="page-width service-providers-overview">
+          <div class="service-providers-overview__header">
+            <span class="service-providers-overview__eyebrow">Proveedores disponibles</span>
+            <h1 class="title service-providers-overview__heading">
+              Proveedores de {{ collection.title }}
+            </h1>
+            <p class="service-providers-overview__text">
+              Explora los talleres y proveedores que ofrecen este servicio en la plataforma. Entra en cualquiera
+              para revisar su propuesta disponible dentro de esta categoria.
+            </p>
+          </div>
+          <ul class="grid product-grid grid--1-col-tablet-down grid--3-col-desktop" role="list">
+            {%- assign provider_tokens = '|' -%}
+            {%- for product in collection.products -%}
+              {%- if product.vendor != blank -%}
+                {%- assign provider_token = '|' | append: product.vendor | append: '|' -%}
+                {%- unless provider_tokens contains provider_token -%}
+                  {%- assign provider_tokens = provider_tokens | append: product.vendor | append: '|' -%}
+                  {%- assign provider_service_count = 0 -%}
+                  {%- for vendor_product in collection.products -%}
+                    {%- if vendor_product.vendor == product.vendor -%}
+                      {%- assign provider_service_count = provider_service_count | plus: 1 -%}
+                    {%- endif -%}
+                  {%- endfor -%}
+                  {%- assign provider_tag = 'proveedor-' | append: product.vendor | handleize -%}
+                  <li class="grid__item">
+                    <a href="{{ routes.all_products_collection_url }}/{{ provider_tag }}" class="service-provider-card card-wrapper underline-links-hover">
+                      <div class="card card--{{ settings.card_style }} card--media{% if settings.card_style == 'card' %} color-{{ settings.card_color_scheme }} gradient{% endif %}">
+                        <div class="card__inner color-{{ settings.card_color_scheme }} gradient ratio" style="--ratio-percent: 75%;">
+                          <div class="card__media">
+                            <div class="media media--transparent service-provider-card__media">
+                              {%- if product.featured_media -%}
+                                {{
+                                  product.featured_media
+                                  | image_url: width: 900
+                                  | image_tag:
+                                    widths: '320, 480, 720, 900',
+                                    sizes: '(min-width: 990px) 30vw, 100vw',
+                                    class: 'motion-reduce',
+                                    loading: 'lazy'
+                                }}
+                              {%- endif -%}
+                            </div>
+                          </div>
+                        </div>
+                        <div class="service-provider-card__content color-{{ settings.card_color_scheme }} gradient">
+                          <p class="service-provider-card__meta">
+                            {{ provider_service_count }}
+                            {% if provider_service_count == 1 %}
+                              servicio disponible
+                            {% else %}
+                              servicios disponibles
+                            {% endif %}
+                          </p>
+                          <h3 class="h4 service-provider-card__title">{{ product.vendor }}</h3>
+                          <p class="service-provider-card__description">
+                            Accede a la ficha de este proveedor dentro de {{ collection.title | downcase }}.
+                          </p>
+                          <span class="service-provider-card__cta link animate-arrow">
+                            Ver proveedor
+                            <span class="svg-wrapper"
+                              ><span class="icon-wrap">&nbsp;{{ 'icon-arrow.svg' | inline_asset_content }}</span></span
+                            >
+                          </span>
+                        </div>
+                      </div>
+                    </a>
+                  </li>
+                {%- endunless -%}
+              {%- endif -%}
+            {%- endfor -%}
+          </ul>
+        </div>
+      {%- elsif current_provider_tag != blank and collection.products.size > 0 -%}
+        <div class="page-width service-providers-overview">
+          <div class="service-providers-overview__header">
+            <span class="service-providers-overview__eyebrow">Proveedor seleccionado</span>
+            <h1 class="title service-providers-overview__heading">
+              Servicios de {{ collection.products.first.vendor }}
+            </h1>
+            <p class="service-providers-overview__text">
+              Aqui puedes ver todos los productos y servicios disponibles actualmente para este proveedor.
+            </p>
+          </div>
+        </div>
+      {%- endif -%}
+      {%- if show_provider_directory == false and current_provider_tag == blank -%}
+        {%- if section.settings.enable_filtering or section.settings.enable_sorting -%}
+          <aside
+            aria-labelledby="verticalTitle"
+            class="facets-wrapper{% unless section.settings.enable_filtering %} facets-wrapper--no-filters{% endunless %}{% if section.settings.filter_type != 'vertical' %} page-width{% endif %}"
+            id="main-collection-filters"
+            data-id="{{ section.id }}"
+          >
+            {% render 'facets',
+              results: collection,
+              enable_filtering: section.settings.enable_filtering,
+              enable_sorting: section.settings.enable_sorting,
+              filter_type: section.settings.filter_type,
+              paginate: paginate
+            %}
+          </aside>
+        {%- endif -%}
       {%- endif -%}
 
-      <div
-        class="product-grid-container{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
-        id="ProductGridContainer"
-        {% if settings.animations_reveal_on_scroll %}
-          data-cascade
-        {% endif %}
-      >
-        {%- if collection.products.size == 0 -%}
-          <div class="collection collection--empty page-width" id="product-grid" data-id="{{ section.id }}">
-            <div class="loading-overlay gradient"></div>
-            <div class="title-wrapper center">
-              <h2 class="title title--primary">
-                {{ 'sections.collection_template.empty' | t -}}
-                <br>
-                {{
-                  'sections.collection_template.use_fewer_filters_html'
-                  | t: link: collection.url, class: 'underlined-link link'
-                }}
-              </h2>
+      {%- unless show_provider_directory -%}
+        <div
+          class="product-grid-container{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+          id="ProductGridContainer"
+          {% if settings.animations_reveal_on_scroll %}
+            data-cascade
+          {% endif %}
+        >
+          {%- if collection.products.size == 0 -%}
+            <div class="collection collection--empty page-width" id="product-grid" data-id="{{ section.id }}">
+              <div class="loading-overlay gradient"></div>
+              <div class="title-wrapper center">
+                <h2 class="title title--primary">
+                  {{ 'sections.collection_template.empty' | t -}}
+                  <br>
+                  {{
+                    'sections.collection_template.use_fewer_filters_html'
+                    | t: link: collection.url, class: 'underlined-link link'
+                  }}
+                </h2>
+              </div>
             </div>
-          </div>
-        {%- else -%}
-          <div
-            class="collection{% if section.settings.filter_type != 'vertical' %} page-width{% endif %}"
-          >
-            <div class="loading-overlay gradient"></div>
-            <ul
-              id="product-grid"
-              data-id="{{ section.id }}"
-              class="
-                grid product-grid grid--{{ section.settings.columns_mobile }}-col-tablet-down
-                grid--{{ section.settings.columns_desktop }}-col-desktop
-                {% if section.settings.quick_add == 'bulk' %} collection-quick-add-bulk{% endif %}
-              "
+          {%- else -%}
+            <div
+              class="collection{% if section.settings.filter_type != 'vertical' %} page-width{% endif %}"
             >
-              {% assign skip_card_product_styles = false %}
-              {%- for product in collection.products -%}
-                {% assign lazy_load = false %}
-                {%- if forloop.index > 2 -%}
-                  {%- assign lazy_load = true -%}
-                {%- endif -%}
-                <li
-                  class="grid__item{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
-                  {% if settings.animations_reveal_on_scroll %}
-                    data-cascade
-                    style="--animation-order: {{ forloop.index }};"
-                  {% endif %}
-                >
-                  {% render 'card-product',
-                    card_product: product,
-                    media_aspect_ratio: section.settings.image_ratio,
-                    image_shape: section.settings.image_shape,
-                    show_secondary_image: section.settings.show_secondary_image,
-                    show_vendor: section.settings.show_vendor,
-                    show_rating: section.settings.show_rating,
-                    lazy_load: lazy_load,
-                    skip_styles: skip_card_product_styles,
-                    quick_add: section.settings.quick_add,
-                    section_id: section.id
-                  %}
-                </li>
-                {%- assign skip_card_product_styles = true -%}
-              {%- endfor -%}
-            </ul>
+              <div class="loading-overlay gradient"></div>
+              <ul
+                id="product-grid"
+                data-id="{{ section.id }}"
+                class="
+                  grid product-grid grid--{{ section.settings.columns_mobile }}-col-tablet-down
+                  grid--{{ section.settings.columns_desktop }}-col-desktop
+                  {% if section.settings.quick_add == 'bulk' %} collection-quick-add-bulk{% endif %}
+                "
+              >
+                {% assign skip_card_product_styles = false %}
+                {%- for product in collection.products -%}
+                  {% assign lazy_load = false %}
+                  {%- if forloop.index > 2 -%}
+                    {%- assign lazy_load = true -%}
+                  {%- endif -%}
+                  <li
+                    class="grid__item{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+                    {% if settings.animations_reveal_on_scroll %}
+                      data-cascade
+                      style="--animation-order: {{ forloop.index }};"
+                    {% endif %}
+                  >
+                    {% render 'card-product',
+                      card_product: product,
+                      media_aspect_ratio: section.settings.image_ratio,
+                      image_shape: section.settings.image_shape,
+                      show_secondary_image: section.settings.show_secondary_image,
+                      show_vendor: section.settings.show_vendor,
+                      show_rating: section.settings.show_rating,
+                      lazy_load: lazy_load,
+                      skip_styles: skip_card_product_styles,
+                      quick_add: section.settings.quick_add,
+                      section_id: section.id
+                    %}
+                  </li>
+                  {%- assign skip_card_product_styles = true -%}
+                {%- endfor -%}
+              </ul>
 
-            {%- if paginate.pages > 1 -%}
-              {% render 'pagination', paginate: paginate, anchor: '' %}
-            {%- endif -%}
-          </div>
-        {%- endif -%}
-      </div>
+              {%- if paginate.pages > 1 -%}
+                {% render 'pagination', paginate: paginate, anchor: '' %}
+              {%- endif -%}
+            </div>
+          {%- endif -%}
+        </div>
+      {%- endunless -%}
     </div>
   {%- endpaginate -%}
   {% if section.settings.image_shape == 'arch' %}
