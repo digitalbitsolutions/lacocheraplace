@@ -16,6 +16,8 @@ Este paquete deja preparado sample data para Shopify sin tocar todavia los datos
   Carga 30 servicios demo activos y visibles en tienda online.
 - `shopify-demo-services-addon-visible.csv`
   Amplia los demos existentes con 20 servicios adicionales para dejar 5 servicios por proveedor.
+- `shopify-demo-services-coverage-visible.csv`
+  Añade servicios puntuales para asegurar que cada categoria visible tenga al menos 3 proveedores.
 - `demo-providers.json`
   Registro auxiliar de los 10 proveedores demo con zonas, especialidades y los handles de sus 3 servicios.
 
@@ -33,6 +35,14 @@ Cuando se necesite escalar a 5 servicios por proveedor:
 - usar `shopify-demo-services-addon-visible.csv`
 - anadir 20 servicios nuevos
 - resultado final: 50 servicios demo, 5 por proveedor
+
+## Cobertura minima por categoria
+
+Para asegurar que cada categoria del home tenga al menos 3 proveedores visibles:
+
+- usar `shopify-demo-services-coverage-visible.csv`
+- anadir servicios puntuales en las categorias con menor cobertura
+- objetivo: minimo 3 proveedores por categoria visible
 
 ## Importacion manual en Shopify
 
