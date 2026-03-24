@@ -14,6 +14,8 @@ Este paquete deja preparado sample data para Shopify sin tocar todavia los datos
   Carga 30 servicios demo como borrador. Es la opcion mas segura.
 - `shopify-demo-services-visible.csv`
   Carga 30 servicios demo activos y visibles en tienda online.
+- `shopify-demo-services-addon-visible.csv`
+  Amplia los demos existentes con 20 servicios adicionales para dejar 5 servicios por proveedor.
 - `demo-providers.json`
   Registro auxiliar de los 10 proveedores demo con zonas, especialidades y los handles de sus 3 servicios.
 
@@ -23,6 +25,14 @@ Este paquete deja preparado sample data para Shopify sin tocar todavia los datos
 - 3 servicios por proveedor
 - 30 servicios en total
 - contenido orientado a Barcelona
+
+## Extension de demo
+
+Cuando se necesite escalar a 5 servicios por proveedor:
+
+- usar `shopify-demo-services-addon-visible.csv`
+- anadir 20 servicios nuevos
+- resultado final: 50 servicios demo, 5 por proveedor
 
 ## Importacion manual en Shopify
 
