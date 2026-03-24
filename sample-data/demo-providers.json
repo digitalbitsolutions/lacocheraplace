@@ -1,0 +1,122 @@
+[
+  {
+    "name": "Barcelona Wash Hub",
+    "zone": "Eixample",
+    "specialties": ["lavado", "detailing", "mantenimiento-rapido"],
+    "email": "barcelona-wash-hub@example.com",
+    "phone": "+34 600 000 101",
+    "service_handles": [
+      "lavado-premium-barcelona-wash-hub",
+      "detailing-esencial-barcelona-wash-hub",
+      "mantenimiento-rapido-barcelona-wash-hub"
+    ]
+  },
+  {
+    "name": "Detail Lab BCN",
+    "zone": "Les Corts",
+    "specialties": ["detailing", "ppf-wrap", "tintado-lunas"],
+    "email": "detail-lab-bcn@example.com",
+    "phone": "+34 600 000 102",
+    "service_handles": [
+      "pulido-correccion-detail-lab-bcn",
+      "ppf-frontal-detail-lab-bcn",
+      "tintado-lunas-detail-lab-bcn"
+    ]
+  },
+  {
+    "name": "Montjuic Car Care",
+    "zone": "Sants-Montjuic",
+    "specialties": ["lavado", "chapa-pintura", "grua"],
+    "email": "montjuic-car-care@example.com",
+    "phone": "+34 600 000 103",
+    "service_handles": [
+      "lavado-completo-montjuic-car-care",
+      "chapa-pintura-montjuic-car-care",
+      "grua-urbana-montjuic-car-care"
+    ]
+  },
+  {
+    "name": "Gracia Auto Spa",
+    "zone": "Gracia",
+    "specialties": ["lavado", "detailing", "accesorios"],
+    "email": "gracia-auto-spa@example.com",
+    "phone": "+34 600 000 104",
+    "service_handles": [
+      "lavado-ecologico-gracia-auto-spa",
+      "detailing-interior-gracia-auto-spa",
+      "kit-cuidado-gracia-auto-spa"
+    ]
+  },
+  {
+    "name": "Eixample Tire Center",
+    "zone": "Eixample",
+    "specialties": ["neumaticos", "llantas", "mantenimiento-rapido"],
+    "email": "eixample-tire-center@example.com",
+    "phone": "+34 600 000 105",
+    "service_handles": [
+      "cambio-neumaticos-eixample-tire-center",
+      "alineacion-balanceo-eixample-tire-center",
+      "revision-aceite-eixample-tire-center"
+    ]
+  },
+  {
+    "name": "Sants Wrap Studio",
+    "zone": "Sants",
+    "specialties": ["wrap", "ppf", "tintado-lunas"],
+    "email": "sants-wrap-studio@example.com",
+    "phone": "+34 600 000 106",
+    "service_handles": [
+      "vinilo-completo-sants-wrap-studio",
+      "ppf-capot-sants-wrap-studio",
+      "tintado-premium-sants-wrap-studio"
+    ]
+  },
+  {
+    "name": "Costa Garage Express",
+    "zone": "Barceloneta",
+    "specialties": ["mantenimiento-rapido", "grua", "parking"],
+    "email": "costa-garage-express@example.com",
+    "phone": "+34 600 000 107",
+    "service_handles": [
+      "cambio-aceite-costa-garage-express",
+      "asistencia-bateria-costa-garage-express",
+      "parking-dia-costa-garage-express"
+    ]
+  },
+  {
+    "name": "Poblenou Road Assist",
+    "zone": "Poblenou",
+    "specialties": ["grua", "parabrisas", "mantenimiento-rapido"],
+    "email": "poblenou-road-assist@example.com",
+    "phone": "+34 600 000 108",
+    "service_handles": [
+      "grua-express-poblenou-road-assist",
+      "parabrisas-poblenou-road-assist",
+      "revision-basica-poblenou-road-assist"
+    ]
+  },
+  {
+    "name": "Ramblas Parking Service",
+    "zone": "Ciutat Vella",
+    "specialties": ["parking", "lavado", "accesorios"],
+    "email": "ramblas-parking-service@example.com",
+    "phone": "+34 600 000 109",
+    "service_handles": [
+      "parking-fin-semana-ramblas-parking-service",
+      "lavado-rapido-ramblas-parking-service",
+      "accesorios-ramblas-parking-service"
+    ]
+  },
+  {
+    "name": "Besos Auto Essentials",
+    "zone": "Sant Adria",
+    "specialties": ["accesorios", "detailing", "chapa-pintura"],
+    "email": "besos-auto-essentials@example.com",
+    "phone": "+34 600 000 110",
+    "service_handles": [
+      "ceramico-besos-auto-essentials",
+      "reparacion-aranazos-besos-auto-essentials",
+      "pack-accesorios-besos-auto-essentials"
+    ]
+  }
+]
