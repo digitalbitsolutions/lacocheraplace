@@ -1,0 +1,93 @@
+{%- liquid
+  assign service_directory_handles = 'lavado,detailing,neumaticos-y-llantas,ppf-wrap-tintado-lunas,chapa-y-pintura,mantenimiento-ligero,grua-y-auxlio-mecanico,parking' | split: ','
+  assign show_directory = false
+  if service_directory_handles contains collection.handle
+    assign show_directory = true
+  endif
+
+  assign provider_vendors_string = ''
+  assign provider_vendor_keys = '|'
+
+  if show_directory
+    for product in collection.products
+      assign provider_vendor_name = product.vendor | strip
+      if provider_vendor_name != blank
+        assign provider_vendor_token = '|' | append: provider_vendor_name | append: '|'
+        unless provider_vendor_keys contains provider_vendor_token
+          assign provider_vendor_keys = provider_vendor_keys | append: provider_vendor_name | append: '|'
+          assign provider_vendors_string = provider_vendors_string | append: provider_vendor_name | append: '|||'
+        endunless
+      endif
+    endfor
+  endif
+
+  assign provider_vendor_list = provider_vendors_string | split: '|||'
+  assign provider_vendor_count = 0
+  for provider_vendor in provider_vendor_list
+    if provider_vendor != blank
+      assign provider_vendor_count = provider_vendor_count | plus: 1
+    endif
+  endfor
+  assign provider_columns = columns | default: provider_vendor_count
+  assign directory_heading = heading
+  if directory_heading == blank
+    assign directory_heading = 'Proveedores disponibles para ' | append: collection.title
+  endif
+
+  assign directory_intro = intro
+  if directory_intro == blank
+    assign directory_intro = 'Elige un proveedor para ver todos los productos y servicios que ofrece.'
+  endif
+
+  if provider_columns < 1
+    assign provider_columns = 1
+  endif
+  if provider_columns > 4
+    assign provider_columns = 4
+  endif
+-%}
+
+{%- if show_directory and provider_vendor_count > 0 -%}
+  <div class="page-width">
+    <div class="title-wrapper title-wrapper--no-top-margin">
+      <h2 class="title inline-richtext h1">{{ directory_heading }}</h2>
+    </div>
+    <p>{{ directory_intro }}</p>
+    <ul
+      class="
+        collection-list contains-card contains-card--collection
+        {% if settings.card_style == 'standard' %} contains-card--standard{% endif %}
+        grid grid--1-col-tablet-down grid--{{ provider_columns }}-col-desktop
+      "
+      role="list"
+    >
+      {%- for provider_vendor in provider_vendor_list -%}
+        {%- if provider_vendor != blank -%}
+          {%- liquid
+            assign provider_product = blank
+            for product in collection.products
+              if product.vendor == provider_vendor
+                assign provider_product = product
+                break
+              endif
+            endfor
+
+            assign provider_vendor_query = provider_vendor | url_param_escape
+            assign provider_vendor_url = routes.collections_url | append: '/vendors?q=' | append: provider_vendor_query
+            assign provider_image = provider_product.featured_image | default: collection.image
+          -%}
+          <li class="collection-list__item grid__item">
+            {% render 'card-collection',
+              card_collection: collection,
+              media_aspect_ratio: image_ratio | default: 'adapt',
+              columns: provider_columns,
+              card_title: provider_vendor,
+              card_image: provider_image,
+              card_url: provider_vendor_url
+            %}
+          </li>
+        {%- endif -%}
+      {%- endfor -%}
+    </ul>
+  </div>
+{%- endif -%}

@@ -1,1 +1,28 @@
-{"sections":{"banner":{"type":"main-collection-banner","disabled":true,"settings":{"show_collection_description":true,"show_collection_image":false,"color_scheme":"scheme-1"}},"product-grid":{"type":"main-collection-product-grid","disabled":true,"settings":{"products_per_page":16,"columns_desktop":4,"columns_mobile":"2","color_scheme":"scheme-1","image_ratio":"adapt","image_shape":"default","show_secondary_image":false,"show_vendor":true,"show_rating":true,"quick_add":"standard","enable_filtering":true,"filter_type":"horizontal","enable_sorting":true,"padding_top":36,"padding_bottom":36}},"collection_list_Rp8Le4":{"type":"collection-list","blocks":{"featured_collection_Vf77Y7":{"type":"featured_collection","settings":{"collection":"lavado-barcelona-laundry"}},"featured_collection_YKJqAq":{"type":"featured_collection","settings":{"collection":"lavado-la-cochera-place"}}},"block_order":["featured_collection_Vf77Y7","featured_collection_YKJqAq"],"name":"t:sections.collection-list.presets.name","settings":{"title":"Colecciones","heading_size":"h1","image_ratio":"square","columns_desktop":3,"color_scheme":"","show_view_all":false,"columns_mobile":"1","swipe_on_mobile":false,"padding_top":36,"padding_bottom":36}}},"order":["banner","product-grid","collection_list_Rp8Le4"]}
+{
+  "sections": {
+    "banner": {
+      "type": "main-collection-banner",
+      "disabled": true,
+      "settings": {
+        "show_collection_description": true,
+        "show_collection_image": false,
+        "color_scheme": "scheme-1"
+      }
+    },
+    "service_provider_directory": {
+      "type": "service-provider-directory",
+      "settings": {
+        "title": "",
+        "heading_size": "h1",
+        "image_ratio": "adapt",
+        "color_scheme": "scheme-1",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "service_provider_directory"
+  ]
+}
