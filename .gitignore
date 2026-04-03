@@ -8,3 +8,12 @@ Thumbs.db
 # Local archives and temp artifacts
 *.zip
 *.log
+
+# Local project workspaces and generated checks
+.live-check/
+backups/
+working-theme-20260323/
+
+# Python cache
+__pycache__/
+*.pyc
