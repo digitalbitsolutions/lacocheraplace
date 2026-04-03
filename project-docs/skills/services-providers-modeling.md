@@ -28,6 +28,21 @@ Definir como representar servicios y talleres/proveedores dentro de Shopify.
 - Seccion: [service-provider-directory.liquid](/d:/development/lacocheraplace.com/theme-dawn-export/sections/service-provider-directory.liquid)
 - La replicacion correcta para otras categorias consiste en ampliar el mapeo `collection.handle -> provider_handles` dentro de esa seccion
 
+## Registro de proveedores implementado en v1
+- La alta publica de proveedores se resuelve con una pagina dedicada y un formulario de contacto extendido
+- Plantilla publica: [page.quiero-ser-proveedor.json](/d:/development/lacocheraplace.com/theme-dawn-export/templates/page.quiero-ser-proveedor.json)
+- Seccion del formulario: [provider-application-form.liquid](/d:/development/lacocheraplace.com/theme-dawn-export/sections/provider-application-form.liquid)
+- Script de serializacion del formulario: [provider-application-form.js](/d:/development/lacocheraplace.com/theme-dawn-export/assets/provider-application-form.js)
+- Estilos del formulario: [section-provider-application-form.css](/d:/development/lacocheraplace.com/theme-dawn-export/assets/section-provider-application-form.css)
+- Definicion objetivo del perfil enriquecido: [provider_profile_metaobject_definition.json](/d:/development/lacocheraplace.com/sample-data/provider_profile_metaobject_definition.json)
+- Helper de aprobacion manual + geocodificacion: [provider_approval_workflow.py](/d:/development/lacocheraplace.com/scripts/provider_approval_workflow.py)
+- Runbook operativo: [provider-registration-workflow.md](/d:/development/lacocheraplace.com/project-docs/provider-registration-workflow.md)
+
+## Regla de convivencia actual
+- `product.vendor` sigue siendo necesario para el storefront actual
+- `provider_profile` sera la fuente enriquecida para ubicacion, reputacion, geolocalizacion y ficha futura del proveedor
+- El enlace estable recomendado entre catalogo y perfil es `provider_slug`
+
 ## Entregables
 - Modelo conceptual
 - Campos necesarios

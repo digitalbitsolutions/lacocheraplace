@@ -1,0 +1,385 @@
+{{ 'section-multicolumn.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+
+  .home-testimonials__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-bottom: 2.4rem;
+  }
+
+  .home-testimonials__header .title-wrapper {
+    margin: 0;
+  }
+
+  .home-testimonials__viewport {
+    overflow: hidden;
+  }
+
+  .home-testimonials__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: calc(100% - 1.6rem);
+    --home-testimonials-columns: {{ section.settings.columns_desktop | default: 3 }};
+    gap: 2.4rem;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    scroll-snap-type: x mandatory;
+  }
+
+  .home-testimonials__list::-webkit-scrollbar {
+    display: none;
+  }
+
+  .home-testimonials__item {
+    min-width: 0;
+    scroll-snap-align: start;
+  }
+
+  .home-testimonials__card {
+    height: 100%;
+    min-height: 27rem;
+    padding: 2.4rem;
+    border-radius: 1.6rem;
+    background: rgb(var(--color-background));
+    box-shadow: 0 1rem 3rem rgba(var(--color-foreground), 0.08);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .home-testimonials__stars {
+    margin: 0 0 1.2rem;
+    letter-spacing: 0.18em;
+    color: #f5b301;
+    font-size: 1.8rem;
+    line-height: 1;
+  }
+
+  .home-testimonials__quote {
+    margin: 0 0 2rem;
+    color: rgba(var(--color-foreground), 0.82);
+  }
+
+  .home-testimonials__author {
+    margin: auto 0 0;
+    font-weight: 700;
+    color: rgb(var(--color-foreground));
+  }
+
+  .home-testimonials__meta {
+    margin: 0.4rem 0 0;
+    font-size: 1.3rem;
+    color: rgba(var(--color-foreground), 0.68);
+  }
+
+  .home-testimonials__controls {
+    display: none;
+    align-items: center;
+    gap: 1.2rem;
+    flex-shrink: 0;
+  }
+
+  .home-testimonials__buttons {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  .home-testimonials__button {
+    width: 4.4rem;
+    height: 4.4rem;
+    border: 0;
+    border-radius: 999px;
+    background: rgb(var(--color-foreground));
+    color: rgb(var(--color-background));
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+  }
+
+  .home-testimonials__button[disabled] {
+    opacity: 0.3;
+    cursor: default;
+  }
+
+  .home-testimonials__counter {
+    font-size: 1.3rem;
+    color: rgba(var(--color-foreground), 0.68);
+    white-space: nowrap;
+  }
+
+  .home-testimonials__button .icon {
+    width: 1.4rem;
+    height: auto;
+  }
+
+  .home-testimonials__button[name='previous'] .icon {
+    transform: rotate(90deg);
+  }
+
+  .home-testimonials__button[name='next'] .icon {
+    transform: rotate(-90deg);
+  }
+
+  @media screen and (min-width: 750px) {
+    .home-testimonials__list {
+      grid-auto-columns: calc((100% - (2.4rem * (var(--home-testimonials-columns) - 1))) / var(--home-testimonials-columns));
+    }
+
+    .home-testimonials__controls {
+      display: flex;
+    }
+  }
+{%- endstyle -%}
+
+<div class="color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width section-{{ section.id }}-padding">
+    <div class="home-testimonials__header">
+      {%- if section.settings.title != blank -%}
+        <div class="title-wrapper title-wrapper--no-top-margin">
+          <h2 class="title inline-richtext {{ section.settings.heading_size }}">{{ section.settings.title }}</h2>
+        </div>
+      {%- endif -%}
+
+      <div class="home-testimonials__controls small-hide">
+        <div class="home-testimonials__counter caption">
+          <span data-testimonials-current="{{ section.id }}">1</span>
+          <span aria-hidden="true"> / </span>
+          <span class="visually-hidden">{{ 'general.slider.of' | t }}</span>
+          <span data-testimonials-total="{{ section.id }}">{{ section.blocks.size }}</span>
+        </div>
+        <div class="home-testimonials__buttons">
+          <button
+            type="button"
+            class="home-testimonials__button"
+            name="previous"
+            aria-label="{{ 'general.slider.previous_slide' | t }}"
+            data-testimonials-previous="{{ section.id }}"
+          >
+            <span class="svg-wrapper">
+              {{- 'icon-caret.svg' | inline_asset_content -}}
+            </span>
+          </button>
+          <button
+            type="button"
+            class="home-testimonials__button"
+            name="next"
+            aria-label="{{ 'general.slider.next_slide' | t }}"
+            data-testimonials-next="{{ section.id }}"
+          >
+            <span class="svg-wrapper">
+              {{- 'icon-caret.svg' | inline_asset_content -}}
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="home-testimonials__viewport" id="TestimonialsViewport-{{ section.id }}">
+      <ul class="home-testimonials__list" id="TestimonialsList-{{ section.id }}" role="list">
+        {%- for block in section.blocks -%}
+          <li
+            id="Testimonial-{{ section.id }}-{{ forloop.index }}"
+            class="home-testimonials__item"
+            {{ block.shopify_attributes }}
+          >
+            <article class="home-testimonials__card">
+              <p class="home-testimonials__stars" aria-label="{{ block.settings.stars }} de 5 estrellas">
+                {%- for _ in (1..block.settings.stars) -%}&#9733;{%- endfor -%}
+              </p>
+              <p class="home-testimonials__quote">{{ block.settings.quote }}</p>
+              <p class="home-testimonials__author">{{ block.settings.author }}</p>
+              {%- if block.settings.meta != blank -%}
+                <p class="home-testimonials__meta">{{ block.settings.meta }}</p>
+              {%- endif -%}
+            </article>
+          </li>
+        {%- endfor -%}
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script>
+  (() => {
+    const container = document.getElementById('TestimonialsViewport-{{ section.id }}');
+    const slider = document.getElementById('TestimonialsList-{{ section.id }}');
+    if (!container || !slider) return;
+
+    const slides = Array.from(slider.children);
+    const prevButton = document.querySelector('[data-testimonials-previous="{{ section.id }}"]');
+    const nextButton = document.querySelector('[data-testimonials-next="{{ section.id }}"]');
+    const currentElement = document.querySelector('[data-testimonials-current="{{ section.id }}"]');
+    const totalElement = document.querySelector('[data-testimonials-total="{{ section.id }}"]');
+
+    let currentIndex = 0;
+
+    const getVisibleSlides = () => {
+      if (window.innerWidth < 750) return 1;
+      return Math.max({{ section.settings.columns_desktop | default: 3 }}, 1);
+    };
+
+    const getStepWidth = () => {
+      if (slides.length < 2) return slides[0]?.offsetWidth || 0;
+      return slides[1].offsetLeft - slides[0].offsetLeft;
+    };
+
+    const getMaxIndex = () => Math.max(slides.length - getVisibleSlides(), 0);
+
+    const update = () => {
+      if (currentElement) currentElement.textContent = String(currentIndex + 1);
+      if (totalElement) totalElement.textContent = String(slides.length);
+      if (prevButton) prevButton.disabled = currentIndex <= 0;
+      if (nextButton) nextButton.disabled = currentIndex >= getMaxIndex();
+    };
+
+    const scrollToIndex = (index) => {
+      currentIndex = Math.max(0, Math.min(index, getMaxIndex()));
+      slider.scrollTo({
+        left: getStepWidth() * currentIndex,
+        behavior: 'smooth'
+      });
+      update();
+    };
+
+    const syncFromScroll = () => {
+      const stepWidth = getStepWidth();
+      if (!stepWidth) return;
+      currentIndex = Math.max(0, Math.min(Math.round(slider.scrollLeft / stepWidth), getMaxIndex()));
+      update();
+    };
+
+    prevButton?.addEventListener('click', () => scrollToIndex(currentIndex - 1));
+    nextButton?.addEventListener('click', () => scrollToIndex(currentIndex + 1));
+    slider.addEventListener('scroll', () => window.requestAnimationFrame(syncFromScroll));
+    window.addEventListener('resize', () => {
+      currentIndex = Math.min(currentIndex, getMaxIndex());
+      slider.scrollTo({ left: getStepWidth() * currentIndex, behavior: 'auto' });
+      update();
+    });
+
+    update();
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Home Testimonials",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Opiniones de clientes"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "label": "Heading size",
+      "default": "h1",
+      "options": [
+        { "value": "h2", "label": "Small" },
+        { "value": "h1", "label": "Medium" },
+        { "value": "h0", "label": "Large" }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "min": 1,
+      "max": 3,
+      "step": 1,
+      "default": 3,
+      "label": "Columns desktop"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Top padding",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom padding",
+      "default": 48
+    }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Testimonial",
+      "settings": [
+        {
+          "type": "range",
+          "id": "stars",
+          "min": 1,
+          "max": 5,
+          "step": 1,
+          "default": 5,
+          "label": "Stars"
+        },
+        {
+          "type": "textarea",
+          "id": "quote",
+          "label": "Quote",
+          "default": "Servicio rapido, claro y muy comodo. En pocos minutos encontre un taller que encajaba con lo que necesitaba."
+        },
+        {
+          "type": "text",
+          "id": "author",
+          "label": "Author",
+          "default": "Cliente satisfecho"
+        },
+        {
+          "type": "text",
+          "id": "meta",
+          "label": "Meta",
+          "default": "Barcelona"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Home Testimonials"
+    }
+  ]
+}
+{% endschema %}

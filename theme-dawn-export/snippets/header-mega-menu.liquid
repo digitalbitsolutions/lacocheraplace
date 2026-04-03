@@ -9,9 +9,16 @@
   <ul class="list-menu list-menu--inline" role="list">
     {%- for link in section.settings.menu.links -%}
       {%- assign normalized_link_title = link.title | strip | downcase -%}
+      {%- assign normalized_link_handle = link.handle | strip | downcase -%}
+      {%- assign normalized_link_url = link.url | strip | downcase -%}
       {%- if normalized_link_title == 'marketplace'
         or normalized_link_title == 'market place'
         or normalized_link_title == 'opiniones'
+        or normalized_link_handle == 'marketplace'
+        or normalized_link_handle == 'market-place'
+        or normalized_link_handle == 'opiniones'
+        or normalized_link_url contains '/pages/opiniones'
+        or normalized_link_url contains '/pages/marketplace'
       -%}
         {% continue %}
       {%- endif -%}
@@ -97,5 +104,23 @@
         {%- endif -%}
       </li>
     {%- endfor -%}
+    <li>
+      <a
+        id="HeaderMenu-quiero-ser-proveedor"
+        href="/pages/quiero-ser-proveedor"
+        class="header__menu-item list-menu__item link link--text focus-inset"
+        {% if request.path contains '/pages/quiero-ser-proveedor' %}
+          aria-current="page"
+        {% endif %}
+      >
+        <span
+          {%- if request.path contains '/pages/quiero-ser-proveedor' %}
+            class="header__active-menu-item"
+          {% endif %}
+        >
+          Quiero ser proveedor
+        </span>
+      </a>
+    </li>
   </ul>
 </nav>

@@ -23,9 +23,16 @@
             <ul class="menu-drawer__menu has-submenu list-menu" role="list">
               {%- for link in section.settings.menu.links -%}
                 {%- assign normalized_link_title = link.title | strip | downcase -%}
+                {%- assign normalized_link_handle = link.handle | strip | downcase -%}
+                {%- assign normalized_link_url = link.url | strip | downcase -%}
                 {%- if normalized_link_title == 'marketplace'
                   or normalized_link_title == 'market place'
                   or normalized_link_title == 'opiniones'
+                  or normalized_link_handle == 'marketplace'
+                  or normalized_link_handle == 'market-place'
+                  or normalized_link_handle == 'opiniones'
+                  or normalized_link_url contains '/pages/opiniones'
+                  or normalized_link_url contains '/pages/marketplace'
                 -%}
                   {% continue %}
                 {%- endif -%}
@@ -140,6 +147,18 @@
                   {%- endif -%}
                 </li>
               {%- endfor -%}
+              <li>
+                <a
+                  id="HeaderDrawer-quiero-ser-proveedor"
+                  href="/pages/quiero-ser-proveedor"
+                  class="menu-drawer__menu-item list-menu__item link link--text focus-inset{% if request.path contains '/pages/quiero-ser-proveedor' %} menu-drawer__menu-item--active{% endif %}"
+                  {% if request.path contains '/pages/quiero-ser-proveedor' %}
+                    aria-current="page"
+                  {% endif %}
+                >
+                  Quiero ser proveedor
+                </a>
+              </li>
             </ul>
           </nav>
           <div class="menu-drawer__utility-links">
@@ -240,6 +259,16 @@
                       {{- 'icon-instagram.svg' | inline_asset_content -}}
                     </span>
                     <span class="visually-hidden">{{ 'general.social.links.instagram' | t }}</span>
+                  </a>
+                </li>
+              {%- endif -%}
+              {%- if settings.social_linkedin_link != blank -%}
+                <li class="list-social__item">
+                  <a href="{{ settings.social_linkedin_link }}" class="list-social__link link">
+                    <span class="svg-wrapper">
+                      {{- 'icon-linkedin.svg' | inline_asset_content -}}
+                    </span>
+                    <span class="visually-hidden">LinkedIn</span>
                   </a>
                 </li>
               {%- endif -%}

@@ -39,6 +39,14 @@ Actuar como arquitecto tecnico y ejecutor del theme, priorizando seguridad, reve
 - El patron correcto es `card de servicio -> coleccion raiz del servicio -> listado de proveedores -> catalogo completo del proveedor`
 - Implementacion validada: la card del proveedor debe enlazar a la vendor collection de Shopify (`/collections/vendors?q=Proveedor`) para mostrar todos los productos y servicios de ese proveedor
 
+## Registro de proveedores v1
+- El alta de proveedores no reutiliza `customers/register`
+- El patron correcto es `pagina publica Quiero ser proveedor -> formulario Shopify contact extendido -> revision manual -> geocodificacion Google -> creacion de metaobject provider_profile`
+- En v1 la solicitud publica no crea automaticamente el proveedor operativo ni publica el perfil
+- La fuente de verdad enriquecida prevista para proveedores es el metaobject `provider_profile`
+- Mientras dure la transicion, el catalogo publico sigue siendo compatible con `product.vendor`
+- La guia operativa y el helper de aprobacion viven en `project-docs/provider-registration-workflow.md` y `scripts/provider_approval_workflow.py`
+
 ## Definicion de terminado por iteracion
 - El cambio compila o queda estructuralmente valido
 - Existe diff revisable
