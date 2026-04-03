@@ -1,0 +1,28 @@
+{
+  "submission_id": "provider-20260401103000-x4j7k2",
+  "status": "pending",
+  "provider_slug": "taller-eixample-detail",
+  "display_name": "Taller Eixample Detail",
+  "legal_name": "Taller Eixample Detail SL",
+  "contact_name": "Marta Gomez",
+  "email": "marta@eixampledetail.example.com",
+  "phone": "+34 600 123 456",
+  "whatsapp": "+34 600 123 456",
+  "address_line_1": "Carrer de Mallorca 120",
+  "address_line_2": "Local 2",
+  "city": "Barcelona",
+  "postal_code": "08036",
+  "province_or_region": "Barcelona",
+  "country": "Spain",
+  "service_categories": [
+    "Lavado",
+    "Detailing",
+    "PPF"
+  ],
+  "description": "Especialistas en detailing premium, pulido y proteccion de pintura para vehiculos de gama media y alta.",
+  "opening_hours": "Lun-Vie 09:00-19:00\nSab 10:00-14:00",
+  "website_url": "https://eixampledetail.example.com",
+  "instagram_url": "https://instagram.com/eixampledetail",
+  "logo_source_url": "https://cdn.example.com/providers/eixample-detail/logo.png",
+  "gallery_source_urls": "https://cdn.example.com/providers/eixample-detail/1.jpg\nhttps://cdn.example.com/providers/eixample-detail/2.jpg"
+}

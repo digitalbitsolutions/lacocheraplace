@@ -1,0 +1,29 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "padding_top": 36,
+        "padding_bottom": 0
+      }
+    },
+    "provider_application_form": {
+      "type": "provider-application-form",
+      "settings": {
+        "heading": "Quiero ser proveedor",
+        "intro": "<p>Si ofreces servicios automotrices y quieres aparecer en La Cochera Place, completa esta solicitud. Revisaremos tus datos, validaremos la ubicacion del negocio y te contactaremos antes de aprobar el alta.</p>",
+        "heading_size": "h1",
+        "pending_note": "La solicitud no crea el proveedor automaticamente. Primero queda pendiente de revision, validacion y geocodificacion.",
+        "success_message": "Solicitud recibida. La hemos registrado como pendiente de revision. Nuestro equipo revisara la informacion y te contactara para los siguientes pasos.",
+        "submit_label": "Enviar solicitud de proveedor",
+        "color_scheme": "scheme-1",
+        "padding_top": 20,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "main",
+    "provider_application_form"
+  ]
+}

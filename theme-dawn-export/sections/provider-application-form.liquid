@@ -1,0 +1,272 @@
+{{ 'section-contact-form.css' | asset_url | stylesheet_tag }}
+{{ 'section-provider-application-form.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'provider-application-form.js' | asset_url }}" defer="defer"></script>
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="color-{{ section.settings.color_scheme }} gradient">
+  <div class="provider-application page-width section-{{ section.id }}-padding">
+    {%- assign provider_form_id = 'ProviderApplicationForm-' | append: section.id -%}
+    {%- if section.settings.heading != blank -%}
+      <h2 class="title title-wrapper--no-top-margin inline-richtext {{ section.settings.heading_size }}">
+        {{ section.settings.heading }}
+      </h2>
+    {%- endif -%}
+    {%- if section.settings.intro != blank -%}
+      <div class="provider-application__intro rte">
+        {{ section.settings.intro }}
+      </div>
+    {%- endif -%}
+
+    {%- form 'contact', id: provider_form_id, class: 'isolate', novalidate: 'novalidate', data-provider-application-form: '' -%}
+      {%- if form.posted_successfully? -%}
+        <div class="form-status form-status-list form__message provider-application__status" tabindex="-1" autofocus>
+          {{- 'icon-success.svg' | inline_asset_content -}}
+          {{ section.settings.success_message }}
+        </div>
+      {%- elsif form.errors -%}
+        <div class="form__message provider-application__status" tabindex="-1" autofocus>
+          {{- 'icon-error.svg' | inline_asset_content -}}
+          {{ 'templates.contact.form.error_heading' | t }}
+        </div>
+      {%- endif -%}
+
+      <p class="provider-application__note">
+        {{ section.settings.pending_note }}
+      </p>
+
+      <div class="provider-application__group provider-application__group--business">
+        <h3 class="provider-application__group-title">Datos del negocio</h3>
+        <div class="provider-application__grid provider-application__grid--two provider-application__grid--business">
+          <div class="field">
+            <input class="field__input" type="text" id="ProviderDisplayName-{{ section.id }}" name="provider_display_name" required placeholder="Nombre comercial">
+            <label class="field__label" for="ProviderDisplayName-{{ section.id }}">Nombre comercial <span class="provider-application__required">*</span></label>
+          </div>
+          <div class="field">
+            <input class="field__input" type="text" id="ProviderLegalName-{{ section.id }}" name="provider_legal_name" placeholder="Nombre legal o razon social">
+            <label class="field__label" for="ProviderLegalName-{{ section.id }}">Nombre legal o razon social</label>
+          </div>
+          <div class="field provider-application__grid-item-full">
+            <input class="field__input" type="text" id="ProviderCatalogVendorName-{{ section.id }}" name="provider_catalog_vendor_name" placeholder="Nombre como aparecera en el catalogo de Shopify">
+            <label class="field__label" for="ProviderCatalogVendorName-{{ section.id }}">Nombre del proveedor en catalogo</label>
+          </div>
+          <div class="field provider-application__grid-item-full">
+            <textarea rows="6" id="ProviderDescription-{{ section.id }}" class="text-area field__input" name="provider_description" required placeholder="Describe tu taller, especialidades y experiencia"></textarea>
+            <label class="field__label" for="ProviderDescription-{{ section.id }}">Descripcion del proveedor <span class="provider-application__required">*</span></label>
+          </div>
+          <div class="field provider-application__grid-item-full">
+            <textarea rows="4" id="ProviderOpeningHours-{{ section.id }}" class="text-area field__input" name="provider_opening_hours" placeholder="Ej: Lun-Vie 09:00-18:00 / Sab 10:00-14:00"></textarea>
+            <label class="field__label" for="ProviderOpeningHours-{{ section.id }}">Horarios</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="provider-application__group">
+        <h3 class="provider-application__group-title">Contacto</h3>
+        <div class="provider-application__grid provider-application__grid--two">
+          <div class="field">
+            <input class="field__input" autocomplete="name" type="text" id="ProviderContactName-{{ section.id }}" name="contact[name]" required placeholder="Persona de contacto">
+            <label class="field__label" for="ProviderContactName-{{ section.id }}">Persona de contacto <span class="provider-application__required">*</span></label>
+          </div>
+          <div class="field">
+            <input class="field__input" autocomplete="email" type="email" id="ProviderEmail-{{ section.id }}" name="contact[email]" spellcheck="false" autocapitalize="off" aria-required="true" required placeholder="Correo electronico">
+            <label class="field__label" for="ProviderEmail-{{ section.id }}">Correo electronico <span class="provider-application__required">*</span></label>
+          </div>
+          <div class="field">
+            <input class="field__input" autocomplete="tel" type="tel" id="ProviderPhone-{{ section.id }}" name="contact[phone]" required placeholder="Telefono">
+            <label class="field__label" for="ProviderPhone-{{ section.id }}">Telefono <span class="provider-application__required">*</span></label>
+          </div>
+          <div class="field">
+            <input class="field__input" autocomplete="tel" type="tel" id="ProviderWhatsapp-{{ section.id }}" name="provider_whatsapp" placeholder="WhatsApp">
+            <label class="field__label" for="ProviderWhatsapp-{{ section.id }}">WhatsApp</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="provider-application__group">
+        <h3 class="provider-application__group-title">Ubicacion</h3>
+        <div class="provider-application__grid provider-application__grid--two">
+          <div class="field">
+            <input class="field__input" type="text" id="ProviderAddressLine1-{{ section.id }}" name="provider_address_line_1" required placeholder="Direccion principal">
+            <label class="field__label" for="ProviderAddressLine1-{{ section.id }}">Direccion principal <span class="provider-application__required">*</span></label>
+          </div>
+          <div class="field">
+            <input class="field__input" type="text" id="ProviderAddressLine2-{{ section.id }}" name="provider_address_line_2" placeholder="Informacion adicional">
+            <label class="field__label" for="ProviderAddressLine2-{{ section.id }}">Informacion adicional</label>
+          </div>
+          <div class="field">
+            <input class="field__input" type="text" id="ProviderCity-{{ section.id }}" name="provider_city" required placeholder="Ciudad">
+            <label class="field__label" for="ProviderCity-{{ section.id }}">Ciudad <span class="provider-application__required">*</span></label>
+          </div>
+          <div class="field">
+            <input class="field__input" type="text" id="ProviderPostalCode-{{ section.id }}" name="provider_postal_code" required placeholder="Codigo postal">
+            <label class="field__label" for="ProviderPostalCode-{{ section.id }}">Codigo postal <span class="provider-application__required">*</span></label>
+          </div>
+          <div class="field">
+            <input class="field__input" type="text" id="ProviderProvince-{{ section.id }}" name="provider_province_or_region" placeholder="Provincia o region">
+            <label class="field__label" for="ProviderProvince-{{ section.id }}">Provincia o region</label>
+          </div>
+          <div class="field">
+            <input class="field__input" type="text" id="ProviderCountry-{{ section.id }}" name="provider_country" required placeholder="Pais">
+            <label class="field__label" for="ProviderCountry-{{ section.id }}">Pais <span class="provider-application__required">*</span></label>
+          </div>
+        </div>
+      </div>
+
+      <div class="provider-application__group">
+        <h3 class="provider-application__group-title">Servicios</h3>
+        <p class="provider-application__note">Selecciona al menos una categoria de servicio.</p>
+        <div class="provider-application__choices">
+          {%- assign provider_service_categories = 'Lavado,Detailing,PPF,Wrap,Tintado de lunas,Chapa y pintura,Mecanica basica,Llanteria,Parking,Venta de productos,Capacitaciones,Asistencia en carretera' | split: ',' -%}
+          {%- for category in provider_service_categories -%}
+            <label class="provider-application__choice" for="ProviderCategory-{{ section.id }}-{{ forloop.index }}">
+              <input type="checkbox" id="ProviderCategory-{{ section.id }}-{{ forloop.index }}" name="provider_service_categories[]" value="{{ category | strip }}">
+              <span>{{ category | strip }}</span>
+            </label>
+          {%- endfor -%}
+        </div>
+        <p class="provider-application__error" data-provider-category-error>Debes seleccionar al menos una categoria de servicio.</p>
+      </div>
+      <p class="provider-application__error" data-provider-slug-error>No pudimos generar el identificador del proveedor. Revisa el nombre comercial o el nombre legal.</p>
+
+      <div class="provider-application__group">
+        <h3 class="provider-application__group-title">Presencia digital y activos</h3>
+        <div class="provider-application__grid provider-application__grid--two">
+          <div class="field">
+            <input class="field__input" type="url" id="ProviderWebsite-{{ section.id }}" name="provider_website_url" placeholder="https://">
+            <label class="field__label" for="ProviderWebsite-{{ section.id }}">Sitio web</label>
+          </div>
+          <div class="field">
+            <input class="field__input" type="url" id="ProviderInstagram-{{ section.id }}" name="provider_instagram_url" placeholder="https://instagram.com/...">
+            <label class="field__label" for="ProviderInstagram-{{ section.id }}">Instagram</label>
+          </div>
+          <div class="field">
+            <input class="field__input" type="url" id="ProviderLogoSource-{{ section.id }}" name="provider_logo_source_url" placeholder="https://...">
+            <label class="field__label" for="ProviderLogoSource-{{ section.id }}">URL del logo</label>
+          </div>
+          <div class="field">
+            <textarea rows="4" id="ProviderGallerySource-{{ section.id }}" class="text-area field__input" name="provider_gallery_source_urls" placeholder="Una URL por linea"></textarea>
+            <label class="field__label" for="ProviderGallerySource-{{ section.id }}">URLs de galeria</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="provider-application__group">
+        <h3 class="provider-application__group-title">Revision y consentimiento</h3>
+        <label class="provider-application__choice" for="ProviderConsent-{{ section.id }}">
+          <input type="checkbox" id="ProviderConsent-{{ section.id }}" name="provider_consent" value="accepted" required>
+          <span>Acepto que la solicitud quede en revision manual antes de aprobarse y que mis datos se usen para evaluar el alta del proveedor.</span>
+        </label>
+      </div>
+
+      <div class="provider-application__hidden">
+        <input type="hidden" name="contact[provider_submission_id]" value="">
+        <input type="hidden" name="contact[provider_slug]" value="">
+        <input type="hidden" name="contact[provider_status]" value="pending">
+        <input type="hidden" name="contact[provider_topic]" value="Solicitud proveedor">
+        <textarea name="contact[body]" rows="1"></textarea>
+      </div>
+
+      <div class="provider-application__actions">
+        <button type="submit" class="button">{{ section.settings.submit_label }}</button>
+      </div>
+    {%- endform -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Provider Application Form",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "default": "Quiero ser proveedor",
+      "label": "Heading"
+    },
+    {
+      "type": "richtext",
+      "id": "intro",
+      "default": "<p>Completa tu solicitud para unirte al marketplace. Revisaremos manualmente la informacion antes de activar tu perfil como proveedor.</p>",
+      "label": "Intro"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "options": [
+        { "value": "h2", "label": "Small" },
+        { "value": "h1", "label": "Medium" },
+        { "value": "h0", "label": "Large" }
+      ],
+      "default": "h1",
+      "label": "Heading size"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "pending_note",
+      "default": "Tu solicitud quedara con estado pendiente hasta ser validada manualmente por el equipo.",
+      "label": "Pending note"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "success_message",
+      "default": "Solicitud recibida. Ha quedado en estado pendiente de revision y te contactaremos cuando avance el proceso.",
+      "label": "Success message"
+    },
+    {
+      "type": "text",
+      "id": "submit_label",
+      "default": "Enviar solicitud",
+      "label": "Submit label"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Top padding",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom padding",
+      "default": 36
+    }
+  ],
+  "presets": [
+    {
+      "name": "Provider Application Form"
+    }
+  ]
+}
+{% endschema %}
