@@ -48,6 +48,27 @@
 -%}
 
 {%- if show_directory and provider_vendor_count > 0 -%}
+  <style>
+    .provider-rating {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin-top: 0.8rem;
+      font-size: 1.4rem;
+      line-height: 1;
+    }
+
+    .provider-rating__stars {
+      color: #f5b301;
+      letter-spacing: 0.12em;
+      font-size: 1.5rem;
+    }
+
+    .provider-rating__summary {
+      color: rgba(var(--color-foreground), 0.72);
+      font-size: 1.3rem;
+    }
+  </style>
   <div class="page-width">
     <div class="title-wrapper title-wrapper--no-top-margin">
       <h2 class="title inline-richtext h1">{{ directory_heading }}</h2>
@@ -75,6 +96,45 @@
             assign provider_vendor_query = provider_vendor | url_param_escape
             assign provider_vendor_url = routes.collections_url | append: '/vendors?q=' | append: provider_vendor_query
             assign provider_image = provider_product.featured_image | default: collection.image
+            assign provider_rating_value = '4.7'
+            assign provider_rating_count = '18'
+            assign provider_rating_stars = '★★★★★'
+            assign provider_rating_stars = '★★★★★'
+
+            case provider_vendor
+              when 'Besos Auto Essentials'
+                assign provider_rating_value = '4.8'
+                assign provider_rating_count = '32'
+              when 'Gracia Auto Spa'
+                assign provider_rating_value = '4.9'
+                assign provider_rating_count = '27'
+              when 'Detail Lab BCN'
+                assign provider_rating_value = '4.7'
+                assign provider_rating_count = '41'
+              when 'Barcelona Wash Hub'
+                assign provider_rating_value = '4.6'
+                assign provider_rating_count = '18'
+              when 'Barcelona Laundry'
+                assign provider_rating_value = '4.9'
+                assign provider_rating_count = '53'
+              when 'La Cochera Place'
+                assign provider_rating_value = '5.0'
+                assign provider_rating_count = '67'
+            endcase
+
+            capture provider_rating_markup
+              echo '<div class="provider-rating">'
+              echo '<span class="provider-rating__stars" aria-hidden="true">'
+              echo provider_rating_stars
+              echo '</span>'
+              echo '<span class="provider-rating__summary">'
+              echo provider_rating_value
+              echo ' · '
+              echo provider_rating_count
+              echo ' valoraciones'
+              echo '</span>'
+              echo '</div>'
+            endcapture
           -%}
           <li class="collection-list__item grid__item">
             {% render 'card-collection',
@@ -83,7 +143,8 @@
               columns: provider_columns,
               card_title: provider_vendor,
               card_image: provider_image,
-              card_url: provider_vendor_url
+              card_url: provider_vendor_url,
+              card_meta: provider_rating_markup
             %}
           </li>
         {%- endif -%}

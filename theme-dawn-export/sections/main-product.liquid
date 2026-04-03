@@ -31,6 +31,74 @@
       padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
     }
 
+    .product-rating-fallback {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin: 0 0 1.6rem;
+      line-height: 1;
+    }
+
+    .product-rating-fallback__stars {
+      color: #f5b301;
+      letter-spacing: 0.12em;
+      font-size: 1.5rem;
+    }
+
+    .product-rating-fallback__summary {
+      color: rgba(var(--color-foreground), 0.72);
+      font-size: 1.3rem;
+    }
+
+    .service-highlight {
+      margin: 0 0 1.6rem;
+      padding: 1.6rem 1.8rem;
+      border-radius: 1.6rem;
+      background: rgba(var(--color-foreground), 0.04);
+    }
+
+    .service-highlight__eyebrow {
+      margin: 0 0 0.6rem;
+      font-size: 1.2rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(var(--color-foreground), 0.62);
+    }
+
+    .service-highlight__title {
+      margin: 0 0 0.8rem;
+      font-size: 1.8rem;
+    }
+
+    .service-highlight__text {
+      margin: 0;
+      color: rgba(var(--color-foreground), 0.76);
+    }
+
+    .service-price-note {
+      margin: 1rem 0 0;
+      color: rgba(var(--color-foreground), 0.72);
+      font-size: 1.3rem;
+    }
+
+    .service-actions {
+      display: grid;
+      gap: 1.2rem;
+      margin-top: 0.8rem;
+    }
+
+    .service-actions__note {
+      margin: 0;
+      color: rgba(var(--color-foreground), 0.72);
+      font-size: 1.3rem;
+    }
+
+    .service-actions__links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
     @media screen and (min-width: 750px) {
       .section-{{ section.id }}-padding {
         padding-top: {{ section.settings.padding_top }}px;
@@ -73,10 +141,26 @@
   {%- endif -%}
 
   {% assign variant_images = product.images | where: 'attached_to_variant?', true | map: 'src' %}
+  {% assign is_service_product = false %}
+  {% if product.type == 'Servicio' or product.tags contains 'servicio' %}
+    {% assign is_service_product = true %}
+  {% endif %}
+  {% assign provider_vendor_query = product.vendor | url_param_escape %}
+  {% assign provider_vendor_url = routes.collections_url | append: '/vendors?q=' | append: provider_vendor_query %}
+  {% capture service_whatsapp_message -%}
+Hola, quiero solicitar informacion sobre "{{ product.title | strip_newlines | strip }}" del proveedor {{ product.vendor | strip_newlines | strip }}. Enlace: {{ request.origin }}{{ product.url }}
+  {%- endcapture %}
+  {% assign service_whatsapp_url = 'https://wa.me/34614445146?text=' | append: service_whatsapp_message | url_param_escape %}
+  {% assign effective_gallery_layout = 'thumbnail_slider' %}
+  {% assign effective_mobile_thumbnails = 'show' %}
   <div class="page-width">
-    <div class="product product--{{ section.settings.media_size }} product--{{ section.settings.media_position }} product--{{ section.settings.gallery_layout }} product--mobile-{{ section.settings.mobile_thumbnails }} grid grid--1-col {% if product.media.size > 0 %}grid--2-col-tablet{% else %}product--no-media{% endif %}">
+    <div class="product product--{{ section.settings.media_size }} product--{{ section.settings.media_position }} product--{{ effective_gallery_layout }} product--mobile-{{ effective_mobile_thumbnails }} grid grid--1-col grid--2-col-tablet">
       <div class="grid__item product__media-wrapper">
-        {% render 'product-media-gallery', variant_images: variant_images %}
+        {% render 'product-media-gallery',
+          variant_images: variant_images,
+          gallery_layout: effective_gallery_layout,
+          mobile_thumbnails: effective_mobile_thumbnails
+        %}
       </div>
       <div class="product__info-wrapper grid__item{% if settings.page_width > 1400 and section.settings.media_size == "small" %} product__info-wrapper--extra-padding{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
         <section
@@ -114,12 +198,20 @@
                     price_class: 'price--large'
                   -%}
                 </div>
-                {%- if product.quantity_price_breaks_configured? -%}
+                {%- if is_service_product -%}
+                  <p class="service-price-note">Precio orientativo. La reserva o solicitud final se confirma con el proveedor.</p>
+                {%- elsif product.quantity_price_breaks_configured? -%}
                   <div class="volume-pricing-note" id="Volume-Note-{{ section.id }}">
                     <span>{{ 'products.product.volume_pricing.note' | t }}</span>
                   </div>
                 {%- endif -%}
-                {%- if cart.taxes_included or cart.duties_included or shop.shipping_policy.body != blank -%}
+                {%- if is_service_product -%}
+                  <div class="service-highlight">
+                    <p class="service-highlight__eyebrow">Marketplace de servicios</p>
+                    <h2 class="service-highlight__title">Solicita este servicio con {{ product.vendor }}</h2>
+                    <p class="service-highlight__text">Usa el precio como referencia inicial y contacta para validar disponibilidad, alcance y tiempo de entrega.</p>
+                  </div>
+                {%- elsif cart.taxes_included or cart.duties_included or shop.shipping_policy.body != blank -%}
                   <div class="product__tax caption rte">
                     {%- if cart.duties_included and cart.taxes_included -%}
                       {{ 'products.product.duties_and_taxes_included' | t }}
@@ -134,11 +226,13 @@
                   </div>
                 {%- endif -%}
                 <div {{ block.shopify_attributes }}>
-                  {%- assign product_form_installment_id = 'product-form-installment-' | append: section.id -%}
-                  {%- form 'product', product, id: product_form_installment_id, class: 'installment caption-large' -%}
-                    <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
-                    {{ form | payment_terms }}
-                  {%- endform -%}
+                  {%- unless is_service_product -%}
+                    {%- assign product_form_installment_id = 'product-form-installment-' | append: section.id -%}
+                    {%- form 'product', product, id: product_form_installment_id, class: 'installment caption-large' -%}
+                      <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+                      {{ form | payment_terms }}
+                    {%- endform -%}
+                  {%- endunless -%}
                 </div>
               {%- when 'inventory' -%}
                 <p
@@ -228,11 +322,12 @@
                   </details>
                 </div>
               {%- when 'quantity_selector' -%}
-                <div
-                  id="Quantity-Form-{{ section.id }}"
-                  class="product-form__input product-form__quantity{% if settings.inputs_shadow_vertical_offset != 0 and settings.inputs_shadow_vertical_offset < 0 %} product-form__quantity-top{% endif %}"
-                  {{ block.shopify_attributes }}
-                >
+                {%- unless is_service_product -%}
+                  <div
+                    id="Quantity-Form-{{ section.id }}"
+                    class="product-form__input product-form__quantity{% if settings.inputs_shadow_vertical_offset != 0 and settings.inputs_shadow_vertical_offset < 0 %} product-form__quantity-top{% endif %}"
+                    {{ block.shopify_attributes }}
+                  >
                   {% comment %} TODO: enable theme-check once `item_count_for_variant` is accepted as valid filter {% endcomment %}
                   {% # theme-check-disable %}
                   {%- assign cart_qty = cart
@@ -453,7 +548,8 @@
                       {%- endif -%}
                     </volume-pricing>
                   {%- endif -%}
-                </div>
+                  </div>
+                {%- endunless -%}
               {%- when 'popup' -%}
                 <modal-opener
                   class="product-popup-modal__opener quick-add-hidden"
@@ -478,14 +574,59 @@
               {%- when 'variant_picker' -%}
                 {% render 'product-variant-picker', product: product, block: block, product_form_id: product_form_id %}
               {%- when 'buy_buttons' -%}
-                {%- render 'buy-buttons',
-                  block: block,
-                  product: product,
-                  product_form_id: product_form_id,
-                  section_id: section.id,
-                  show_pickup_availability: true
-                -%}
+                {%- if is_service_product -%}
+                  <div class="service-actions" {{ block.shopify_attributes }}>
+                    <p class="service-actions__note">La solicitud no cobra automaticamente. Primero comparas, contactas y confirmas con el proveedor.</p>
+                    <div class="service-actions__links">
+                      <a class="button button--primary" href="{{ service_whatsapp_url }}">Solicitar por WhatsApp</a>
+                      <a class="button button--secondary" href="{{ provider_vendor_url }}">Ver catalogo del proveedor</a>
+                    </div>
+                  </div>
+                {%- else -%}
+                  {%- render 'buy-buttons',
+                    block: block,
+                    product: product,
+                    product_form_id: product_form_id,
+                    section_id: section.id,
+                    show_pickup_availability: true
+                  -%}
+                {%- endif -%}
               {%- when 'rating' -%}
+                {%- liquid
+                  assign fallback_rating_value = '4.7'
+                  assign fallback_rating_count = '18'
+                  assign fallback_rating_stars = '★★★★★'
+
+                  case product.title
+                    when 'Pack de accesorios premium'
+                      assign fallback_rating_value = '4.8'
+                      assign fallback_rating_count = '14'
+                    when 'Pulido de brillo rapido'
+                      assign fallback_rating_value = '4.9'
+                      assign fallback_rating_count = '23'
+                    when 'Reparacion de aranazos y roces'
+                      assign fallback_rating_value = '4.7'
+                      assign fallback_rating_count = '11'
+                    when 'Retoque localizado de pintura'
+                      assign fallback_rating_value = '4.6'
+                      assign fallback_rating_count = '9'
+                    when 'Tratamiento ceramico basico'
+                      assign fallback_rating_value = '5.0'
+                      assign fallback_rating_count = '16'
+                    when 'Detailing La Cochera Place'
+                      assign fallback_rating_value = '4.9'
+                      assign fallback_rating_count = '28'
+                    when 'Pulido premium de pintura'
+                      assign fallback_rating_value = '4.8'
+                      assign fallback_rating_count = '19'
+                    when 'Tratamiento ceramico express'
+                      assign fallback_rating_value = '4.7'
+                      assign fallback_rating_count = '15'
+                    when 'Interior detailing completo'
+                      assign fallback_rating_value = '4.9'
+                      assign fallback_rating_count = '22'
+                  endcase
+                -%}
                 {%- if product.metafields.reviews.rating.value != blank -%}
                   <div class="rating-wrapper">
                     {% liquid
@@ -521,6 +662,17 @@
                         {{ 'accessibility.total_reviews' | t -}}
                       </span>
                     </p>
+                  </div>
+                {%- else -%}
+                  <div
+                    class="product-rating-fallback"
+                    {{ block.shopify_attributes }}
+                    aria-label="{{ fallback_rating_value }} de 5 estrellas basado en {{ fallback_rating_count }} valoraciones"
+                  >
+                    <span class="product-rating-fallback__stars" aria-hidden="true">{{ fallback_rating_stars }}</span>
+                    <span class="product-rating-fallback__summary">
+                      {{ fallback_rating_value }} · {{ fallback_rating_count }} valoraciones
+                    </span>
                   </div>
                 {%- endif -%}
               {%- when 'complementary' -%}

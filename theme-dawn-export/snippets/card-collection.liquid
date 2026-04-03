@@ -12,6 +12,7 @@
   - card_title: {String} Custom title override for the card (optional)
   - card_image: {Object} Custom image override for the card (optional)
   - card_description: {String} Custom description override for the card (optional)
+  - card_meta: {String} Custom markup shown below the title (optional)
 
   Usage:
   {% render 'card-collection' %}
@@ -22,6 +23,7 @@
   assign collection_card_title = card_title | default: card_collection.title
   assign collection_card_image = card_image | default: card_collection.featured_image
   assign collection_card_description = card_description | default: card_collection.description
+  assign collection_card_meta = card_meta
   assign ratio = 1
   if collection_card_image and media_aspect_ratio == 'portrait'
     assign ratio = 0.8
@@ -120,6 +122,9 @@
                 </span>
               </p>
             {%- endif -%}
+            {%- if collection_card_meta != blank -%}
+              {{ collection_card_meta }}
+            {%- endif -%}
           </div>
         </div>
       {%- endif -%}
@@ -155,6 +160,9 @@
                 {{- 'icon-arrow.svg' | inline_asset_content -}}
               </span>
             </p>
+          {%- endif -%}
+          {%- if collection_card_meta != blank -%}
+            {{ collection_card_meta }}
           {%- endif -%}
         </div>
       </div>
