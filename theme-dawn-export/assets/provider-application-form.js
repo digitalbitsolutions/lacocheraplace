@@ -20,6 +20,27 @@
     return `provider-${stamp}-${random}`;
   };
 
+  const normalizeIban = (value) => (value || '').replace(/\s+/g, '').toUpperCase();
+
+  const isValidIban = (value) => {
+    const iban = normalizeIban(value);
+    if (!/^[A-Z]{2}\d{2}[A-Z0-9]{11,30}$/.test(iban)) {
+      return false;
+    }
+
+    const rearranged = `${iban.slice(4)}${iban.slice(0, 4)}`;
+    let remainder = 0;
+
+    for (const char of rearranged) {
+      const fragment = /[A-Z]/.test(char) ? String(char.charCodeAt(0) - 55) : char;
+      for (const digit of fragment) {
+        remainder = (remainder * 10 + Number(digit)) % 97;
+      }
+    }
+
+    return remainder === 1;
+  };
+
   const serializePayload = (payload) => {
     const valueOrDash = (value) => value || '-';
     const galleryUrls = payload.gallery_source_urls
@@ -55,6 +76,13 @@
       `- Codigo postal: ${valueOrDash(payload.postal_code)}`,
       `- Provincia o region: ${valueOrDash(payload.province_or_region)}`,
       `- Pais: ${valueOrDash(payload.country)}`,
+      '',
+      'Datos fiscales y bancarios',
+      `- Titular de la cuenta: ${valueOrDash(payload.account_holder)}`,
+      `- NIF/CIF: ${valueOrDash(payload.tax_id)}`,
+      `- IBAN: ${valueOrDash(payload.iban)}`,
+      `- Banco: ${valueOrDash(payload.bank_name)}`,
+      `- Pais de la cuenta: ${valueOrDash(payload.bank_country)}`,
       '',
       'Servicios',
       `- Categorias: ${payload.service_categories.length ? payload.service_categories.join(', ') : '-'}`,
@@ -131,6 +159,10 @@
       return 'Introduce un correo electronico valido.';
     }
 
+    if (element.name === 'provider_iban' && value && !isValidIban(value)) {
+      return 'Introduce un IBAN valido.';
+    }
+
     if (urlFields.includes(element.name) && value && !isValidHttpUrl(value)) {
       return 'Introduce una URL valida completa, por ejemplo https://...';
     }
@@ -181,7 +213,7 @@
   document.querySelectorAll('[data-provider-application-form]').forEach((form) => {
     const fieldsToValidate = Array.from(
       form.querySelectorAll(
-        'input[required], input[type="email"], input[name="provider_website_url"], input[name="provider_instagram_url"], input[name="provider_logo_source_url"], textarea[name="provider_gallery_source_urls"]'
+        'input[required], select[required], input[type="email"], input[name="provider_website_url"], input[name="provider_instagram_url"], input[name="provider_logo_source_url"], textarea[name="provider_gallery_source_urls"]'
       )
     );
     const consentCheckbox = form.querySelector('[name="provider_consent"]');
@@ -190,6 +222,7 @@
     fieldsToValidate.forEach((field) => {
       field.addEventListener('blur', () => validateField(field));
       field.addEventListener('input', () => clearFieldError(field));
+      field.addEventListener('change', () => clearFieldError(field));
     });
 
     consentCheckbox?.addEventListener('change', () => {
@@ -245,7 +278,7 @@
       if (!isValid) {
         event.preventDefault();
         const firstInvalidField =
-          form.querySelector('.provider-application__field--invalid .field__input, .provider-application__field--invalid textarea') ||
+          form.querySelector('.provider-application__field--invalid .field__input, .provider-application__field--invalid textarea, .provider-application__field--invalid select') ||
           form.querySelector('[aria-invalid="true"]');
         firstInvalidField?.focus();
         return;
@@ -270,6 +303,11 @@
         postal_code: form.querySelector('[name="provider_postal_code"]').value.trim(),
         province_or_region: form.querySelector('[name="provider_province_or_region"]').value.trim(),
         country: form.querySelector('[name="provider_country"]').value.trim(),
+        account_holder: form.querySelector('[name="provider_account_holder"]').value.trim(),
+        tax_id: form.querySelector('[name="provider_tax_id"]').value.trim(),
+        iban: normalizeIban(form.querySelector('[name="provider_iban"]').value.trim()),
+        bank_name: form.querySelector('[name="provider_bank_name"]').value.trim(),
+        bank_country: form.querySelector('[name="provider_bank_country"]').value.trim(),
         service_categories: categories,
         description: form.querySelector('[name="provider_description"]').value.trim(),
         opening_hours: form.querySelector('[name="provider_opening_hours"]').value.trim(),

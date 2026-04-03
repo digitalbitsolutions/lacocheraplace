@@ -126,6 +126,43 @@
       </div>
 
       <div class="provider-application__group">
+        <h3 class="provider-application__group-title">Datos fiscales y bancarios</h3>
+        <div class="provider-application__grid provider-application__grid--two">
+          <div class="field">
+            <input class="field__input" type="text" id="ProviderAccountHolder-{{ section.id }}" name="provider_account_holder" required placeholder="Titular de la cuenta">
+            <label class="field__label" for="ProviderAccountHolder-{{ section.id }}">Titular de la cuenta <span class="provider-application__required">*</span></label>
+          </div>
+          <div class="field">
+            <input class="field__input" type="text" id="ProviderTaxId-{{ section.id }}" name="provider_tax_id" required placeholder="NIF/CIF">
+            <label class="field__label" for="ProviderTaxId-{{ section.id }}">NIF/CIF <span class="provider-application__required">*</span></label>
+          </div>
+          <div class="field">
+            <input class="field__input" type="text" id="ProviderIban-{{ section.id }}" name="provider_iban" required placeholder="ES12 3456 7890 1234 5678 9012" autocapitalize="characters" spellcheck="false">
+            <label class="field__label" for="ProviderIban-{{ section.id }}">IBAN <span class="provider-application__required">*</span></label>
+          </div>
+          <div class="field">
+            <select class="field__input" id="ProviderBankName-{{ section.id }}" name="provider_bank_name" required>
+              <option value="">Selecciona un banco</option>
+              <option value="Santander">Santander</option>
+              <option value="Caixa Bank">Caixa Bank</option>
+              <option value="Sabadell">Sabadell</option>
+            </select>
+            <label class="field__label" for="ProviderBankName-{{ section.id }}">Banco <span class="provider-application__required">*</span></label>
+          </div>
+          <div class="field provider-application__grid-item-full">
+            <select class="field__input" id="ProviderBankCountry-{{ section.id }}" name="provider_bank_country" required>
+              <option value="">Selecciona el pais de la cuenta</option>
+              {%- assign eu_countries = 'Alemania,Austria,Belgica,Bulgaria,Chipre,Croacia,Dinamarca,Eslovaquia,Eslovenia,Espana,Estonia,Finlandia,Francia,Grecia,Hungria,Irlanda,Italia,Letonia,Lituania,Luxemburgo,Malta,Paises Bajos,Polonia,Portugal,Republica Checa,Rumania,Suecia' | split: ',' -%}
+              {%- for country in eu_countries -%}
+                <option value="{{ country | strip }}">{{ country | strip }}</option>
+              {%- endfor -%}
+            </select>
+            <label class="field__label" for="ProviderBankCountry-{{ section.id }}">Pais de la cuenta <span class="provider-application__required">*</span></label>
+          </div>
+        </div>
+      </div>
+
+      <div class="provider-application__group">
         <h3 class="provider-application__group-title">Servicios</h3>
         <p class="provider-application__note">Selecciona al menos una categoria de servicio.</p>
         <div class="provider-application__choices">
