@@ -21,37 +21,60 @@
   };
 
   const serializePayload = (payload) => {
+    const valueOrDash = (value) => value || '-';
+    const galleryUrls = payload.gallery_source_urls
+      ? payload.gallery_source_urls
+          .split('\n')
+          .map((line) => line.trim())
+          .filter(Boolean)
+      : [];
+
     const lines = [
-      'Solicitud proveedor',
-      `submission_id: ${payload.submission_id}`,
-      `status: ${payload.status}`,
-      `provider_slug: ${payload.provider_slug}`,
-      `display_name: ${payload.display_name}`,
-      `legal_name: ${payload.legal_name}`,
-      `catalog_vendor_name: ${payload.catalog_vendor_name}`,
-      `contact_name: ${payload.contact_name}`,
-      `email: ${payload.email}`,
-      `phone: ${payload.phone}`,
-      `whatsapp: ${payload.whatsapp}`,
-      `address_line_1: ${payload.address_line_1}`,
-      `address_line_2: ${payload.address_line_2}`,
-      `city: ${payload.city}`,
-      `postal_code: ${payload.postal_code}`,
-      `province_or_region: ${payload.province_or_region}`,
-      `country: ${payload.country}`,
-      `service_categories: ${payload.service_categories.join(', ')}`,
-      `opening_hours: ${payload.opening_hours}`,
-      `website_url: ${payload.website_url}`,
-      `instagram_url: ${payload.instagram_url}`,
-      `logo_source_url: ${payload.logo_source_url}`,
-      `gallery_source_urls: ${payload.gallery_source_urls}`,
+      'SOLICITUD DE PROVEEDOR',
       '',
-      'Descripcion:',
-      payload.description,
+      'Resumen',
+      `- Submission ID: ${payload.submission_id}`,
+      `- Estado: ${payload.status}`,
+      `- Provider slug: ${payload.provider_slug}`,
       '',
-      'JSON:',
-      JSON.stringify(payload, null, 2),
+      'Datos del negocio',
+      `- Nombre comercial: ${valueOrDash(payload.display_name)}`,
+      `- Nombre legal o razon social: ${valueOrDash(payload.legal_name)}`,
+      `- Nombre en catalogo: ${valueOrDash(payload.catalog_vendor_name)}`,
+      '',
+      'Contacto',
+      `- Persona de contacto: ${valueOrDash(payload.contact_name)}`,
+      `- Email: ${valueOrDash(payload.email)}`,
+      `- Telefono: ${valueOrDash(payload.phone)}`,
+      `- WhatsApp: ${valueOrDash(payload.whatsapp)}`,
+      '',
+      'Ubicacion',
+      `- Direccion principal: ${valueOrDash(payload.address_line_1)}`,
+      `- Informacion adicional: ${valueOrDash(payload.address_line_2)}`,
+      `- Ciudad: ${valueOrDash(payload.city)}`,
+      `- Codigo postal: ${valueOrDash(payload.postal_code)}`,
+      `- Provincia o region: ${valueOrDash(payload.province_or_region)}`,
+      `- Pais: ${valueOrDash(payload.country)}`,
+      '',
+      'Servicios',
+      `- Categorias: ${payload.service_categories.length ? payload.service_categories.join(', ') : '-'}`,
+      `- Horarios: ${valueOrDash(payload.opening_hours)}`,
+      '',
+      'Descripcion',
+      valueOrDash(payload.description),
+      '',
+      'Presencia digital y activos',
+      `- Sitio web: ${valueOrDash(payload.website_url)}`,
+      `- Instagram: ${valueOrDash(payload.instagram_url)}`,
+      `- URL del logo: ${valueOrDash(payload.logo_source_url)}`,
+      '- URLs de galeria:',
     ];
+
+    if (galleryUrls.length) {
+      galleryUrls.forEach((url) => lines.push(`  - ${url}`));
+    } else {
+      lines.push('  - -');
+    }
 
     return lines.join('\n');
   };
