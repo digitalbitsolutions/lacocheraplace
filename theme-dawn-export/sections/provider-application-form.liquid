@@ -98,13 +98,9 @@
       <div class="provider-application__group">
         <h3 class="provider-application__group-title">Ubicacion</h3>
         <div class="provider-application__grid provider-application__grid--two">
-          <div class="field">
+          <div class="field provider-application__grid-item-full">
             <input class="field__input" type="text" id="ProviderAddressLine1-{{ section.id }}" name="provider_address_line_1" required placeholder="Direccion principal">
             <label class="field__label" for="ProviderAddressLine1-{{ section.id }}">Direccion principal <span class="provider-application__required">*</span></label>
-          </div>
-          <div class="field">
-            <input class="field__input" type="text" id="ProviderAddressLine2-{{ section.id }}" name="provider_address_line_2" placeholder="Informacion adicional">
-            <label class="field__label" for="ProviderAddressLine2-{{ section.id }}">Informacion adicional</label>
           </div>
           <div class="field">
             <input class="field__input" type="text" id="ProviderCity-{{ section.id }}" name="provider_city" required placeholder="Ciudad">
@@ -121,6 +117,10 @@
           <div class="field">
             <input class="field__input" type="text" id="ProviderCountry-{{ section.id }}" name="provider_country" required placeholder="Pais">
             <label class="field__label" for="ProviderCountry-{{ section.id }}">Pais <span class="provider-application__required">*</span></label>
+          </div>
+          <div class="field provider-application__grid-item-full">
+            <input class="field__input" type="text" id="ProviderAddressLine2-{{ section.id }}" name="provider_address_line_2" placeholder="Informacion adicional">
+            <label class="field__label" for="ProviderAddressLine2-{{ section.id }}">Informacion adicional</label>
           </div>
         </div>
       </div>
@@ -219,10 +219,10 @@
       </div>
 
       <div class="provider-application__hidden">
-        <input type="hidden" name="contact[provider_submission_id]" value="">
-        <input type="hidden" name="contact[provider_slug]" value="">
-        <input type="hidden" name="contact[provider_status]" value="pending">
-        <input type="hidden" name="contact[provider_topic]" value="Solicitud proveedor">
+        <input type="hidden" name="provider_submission_id" value="">
+        <input type="hidden" name="provider_slug" value="">
+        <input type="hidden" name="provider_status" value="pending">
+        <input type="hidden" name="provider_topic" value="Solicitud proveedor">
         <textarea name="contact[body]" rows="1"></textarea>
       </div>
 

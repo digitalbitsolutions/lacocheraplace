@@ -220,10 +220,10 @@
       form.querySelectorAll('input[name="provider_service_categories[]"]:checked')
     ).map((input) => input.value);
 
-    const hiddenSubmission = form.querySelector('[name="contact[provider_submission_id]"]');
-    const hiddenSlug = form.querySelector('[name="contact[provider_slug]"]');
-    const hiddenStatus = form.querySelector('[name="contact[provider_status]"]');
-    const hiddenTopic = form.querySelector('[name="contact[provider_topic]"]');
+    const hiddenSubmission = form.querySelector('[name="provider_submission_id"]');
+    const hiddenSlug = form.querySelector('[name="provider_slug"]');
+    const hiddenStatus = form.querySelector('[name="provider_status"]');
+    const hiddenTopic = form.querySelector('[name="provider_topic"]');
     const hiddenBody = form.querySelector('[name="contact[body]"]');
 
     let submissionId = hiddenSubmission?.value?.trim() || '';
