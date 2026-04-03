@@ -141,23 +141,33 @@
             <label class="field__label" for="ProviderIban-{{ section.id }}">IBAN <span class="provider-application__required">*</span></label>
           </div>
           <div class="field">
-            <select class="field__input" id="ProviderBankName-{{ section.id }}" name="provider_bank_name" required>
-              <option value="">Selecciona un banco</option>
-              <option value="Santander">Santander</option>
-              <option value="Caixa Bank">Caixa Bank</option>
-              <option value="Sabadell">Sabadell</option>
-            </select>
-            <label class="field__label" for="ProviderBankName-{{ section.id }}">Banco <span class="provider-application__required">*</span></label>
+            <label class="provider-application__select-label" for="ProviderBankName-{{ section.id }}">Banco <span class="provider-application__required">*</span></label>
+            <div class="select">
+              <select class="select__select" id="ProviderBankName-{{ section.id }}" name="provider_bank_name" required>
+                <option value="">Selecciona un banco</option>
+                <option value="Santander">Santander</option>
+                <option value="Caixa Bank">Caixa Bank</option>
+                <option value="Sabadell">Sabadell</option>
+              </select>
+              <span class="svg-wrapper">
+                {{- 'icon-caret.svg' | inline_asset_content -}}
+              </span>
+            </div>
           </div>
           <div class="field provider-application__grid-item-full">
-            <select class="field__input" id="ProviderBankCountry-{{ section.id }}" name="provider_bank_country" required>
-              <option value="">Selecciona el pais de la cuenta</option>
-              {%- assign eu_countries = 'Alemania,Austria,Belgica,Bulgaria,Chipre,Croacia,Dinamarca,Eslovaquia,Eslovenia,Espana,Estonia,Finlandia,Francia,Grecia,Hungria,Irlanda,Italia,Letonia,Lituania,Luxemburgo,Malta,Paises Bajos,Polonia,Portugal,Republica Checa,Rumania,Suecia' | split: ',' -%}
-              {%- for country in eu_countries -%}
-                <option value="{{ country | strip }}">{{ country | strip }}</option>
-              {%- endfor -%}
-            </select>
-            <label class="field__label" for="ProviderBankCountry-{{ section.id }}">Pais de la cuenta <span class="provider-application__required">*</span></label>
+            <label class="provider-application__select-label" for="ProviderBankCountry-{{ section.id }}">Pais de la cuenta <span class="provider-application__required">*</span></label>
+            <div class="select">
+              <select class="select__select" id="ProviderBankCountry-{{ section.id }}" name="provider_bank_country" required>
+                <option value="">Selecciona el pais de la cuenta</option>
+                {%- assign eu_countries = 'Alemania,Austria,Belgica,Bulgaria,Chipre,Croacia,Dinamarca,Eslovaquia,Eslovenia,Espana,Estonia,Finlandia,Francia,Grecia,Hungria,Irlanda,Italia,Letonia,Lituania,Luxemburgo,Malta,Paises Bajos,Polonia,Portugal,Republica Checa,Rumania,Suecia' | split: ',' -%}
+                {%- for country in eu_countries -%}
+                  <option value="{{ country | strip }}">{{ country | strip }}</option>
+                {%- endfor -%}
+              </select>
+              <span class="svg-wrapper">
+                {{- 'icon-caret.svg' | inline_asset_content -}}
+              </span>
+            </div>
           </div>
         </div>
       </div>

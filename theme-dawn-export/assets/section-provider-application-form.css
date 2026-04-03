@@ -79,13 +79,24 @@
   font-size: 1.2rem;
 }
 
+.provider-application__select-label {
+  display: inline-block;
+  margin: 0 0 0.8rem;
+  color: rgba(var(--color-foreground), 0.75);
+  font-size: 1.2rem;
+  line-height: 1.4;
+}
+
 .field.provider-application__field--invalid .field__input,
-.field.provider-application__field--invalid .text-area.field__input {
+.field.provider-application__field--invalid .text-area.field__input,
+.field.provider-application__field--invalid .select__select,
+.field.provider-application__field--invalid .select:after {
   border-color: rgb(180, 38, 38);
   box-shadow: 0 0 0 0.1rem rgba(180, 38, 38, 0.15);
 }
 
-.field.provider-application__field--invalid .field__label {
+.field.provider-application__field--invalid .field__label,
+.field.provider-application__field--invalid .provider-application__select-label {
   color: rgb(180, 38, 38);
 }
 
