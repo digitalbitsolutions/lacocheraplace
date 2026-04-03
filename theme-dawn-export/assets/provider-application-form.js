@@ -210,6 +210,67 @@
     return false;
   };
 
+  const syncHiddenFields = (form) => {
+    if (!form) return;
+
+    const displayName = form.querySelector('[name="provider_display_name"]')?.value.trim() || '';
+    const legalName = form.querySelector('[name="provider_legal_name"]')?.value.trim() || '';
+    const providerSlug = slugify(displayName || legalName);
+    const categories = Array.from(
+      form.querySelectorAll('input[name="provider_service_categories[]"]:checked')
+    ).map((input) => input.value);
+
+    const hiddenSubmission = form.querySelector('[name="contact[provider_submission_id]"]');
+    const hiddenSlug = form.querySelector('[name="contact[provider_slug]"]');
+    const hiddenStatus = form.querySelector('[name="contact[provider_status]"]');
+    const hiddenTopic = form.querySelector('[name="contact[provider_topic]"]');
+    const hiddenBody = form.querySelector('[name="contact[body]"]');
+
+    let submissionId = hiddenSubmission?.value?.trim() || '';
+    if (!submissionId) {
+      submissionId = buildSubmissionId();
+      if (hiddenSubmission) hiddenSubmission.value = submissionId;
+    }
+
+    const payload = {
+      submission_id: submissionId,
+      status: 'pending',
+      provider_slug: providerSlug,
+      display_name: displayName,
+      legal_name: legalName,
+      catalog_vendor_name: form.querySelector('[name="provider_catalog_vendor_name"]')?.value.trim() || '',
+      contact_name: form.querySelector('[name="contact[name]"]')?.value.trim() || '',
+      email: form.querySelector('[name="contact[email]"]')?.value.trim() || '',
+      phone: form.querySelector('[name="contact[phone]"]')?.value.trim() || '',
+      whatsapp: form.querySelector('[name="provider_whatsapp"]')?.value.trim() || '',
+      address_line_1: form.querySelector('[name="provider_address_line_1"]')?.value.trim() || '',
+      address_line_2: form.querySelector('[name="provider_address_line_2"]')?.value.trim() || '',
+      city: form.querySelector('[name="provider_city"]')?.value.trim() || '',
+      postal_code: form.querySelector('[name="provider_postal_code"]')?.value.trim() || '',
+      province_or_region: form.querySelector('[name="provider_province_or_region"]')?.value.trim() || '',
+      country: form.querySelector('[name="provider_country"]')?.value.trim() || '',
+      account_holder: form.querySelector('[name="provider_account_holder"]')?.value.trim() || '',
+      tax_id: form.querySelector('[name="provider_tax_id"]')?.value.trim() || '',
+      iban: normalizeIban(form.querySelector('[name="provider_iban"]')?.value.trim() || ''),
+      bank_name: form.querySelector('[name="provider_bank_name"]')?.value.trim() || '',
+      bank_country: form.querySelector('[name="provider_bank_country"]')?.value.trim() || '',
+      service_categories: categories,
+      description: form.querySelector('[name="provider_description"]')?.value.trim() || '',
+      opening_hours: form.querySelector('[name="provider_opening_hours"]')?.value.trim() || '',
+      website_url: form.querySelector('[name="provider_website_url"]')?.value.trim() || '',
+      instagram_url: form.querySelector('[name="provider_instagram_url"]')?.value.trim() || '',
+      logo_source_url: form.querySelector('[name="provider_logo_source_url"]')?.value.trim() || '',
+      gallery_source_urls: form.querySelector('[name="provider_gallery_source_urls"]')?.value.trim() || '',
+    };
+
+    if (hiddenSlug) hiddenSlug.value = providerSlug;
+    if (hiddenStatus) hiddenStatus.value = payload.status;
+    if (hiddenTopic) hiddenTopic.value = 'Solicitud proveedor';
+    if (hiddenBody) hiddenBody.value = serializePayload(payload);
+
+    return payload;
+  };
+
   document.querySelectorAll('[data-provider-application-form]').forEach((form) => {
     const fieldsToValidate = Array.from(
       form.querySelectorAll(
@@ -221,13 +282,20 @@
 
     fieldsToValidate.forEach((field) => {
       field.addEventListener('blur', () => validateField(field));
-      field.addEventListener('input', () => clearFieldError(field));
-      field.addEventListener('change', () => clearFieldError(field));
+      field.addEventListener('input', () => {
+        clearFieldError(field);
+        syncHiddenFields(form);
+      });
+      field.addEventListener('change', () => {
+        clearFieldError(field);
+        syncHiddenFields(form);
+      });
     });
 
     consentCheckbox?.addEventListener('change', () => {
       consentCheckbox.closest('.provider-application__choice')?.classList.remove('provider-application__choice--invalid');
       consentCheckbox.removeAttribute('aria-invalid');
+      syncHiddenFields(form);
     });
 
     categoryInputs.forEach((input) => {
@@ -236,8 +304,11 @@
         if (categoryInputs.some((checkbox) => checkbox.checked)) {
           categoryError?.classList.remove('is-visible');
         }
+        syncHiddenFields(form);
       });
     });
+
+    syncHiddenFields(form);
 
     form.addEventListener('submit', (event) => {
       let isValid = true;
@@ -284,50 +355,7 @@
         return;
       }
 
-      const submissionId = buildSubmissionId();
-
-      const payload = {
-        submission_id: submissionId,
-        status: 'pending',
-        provider_slug: providerSlug,
-        display_name: displayName,
-        legal_name: legalName,
-        catalog_vendor_name: form.querySelector('[name="provider_catalog_vendor_name"]').value.trim(),
-        contact_name: form.querySelector('[name="contact[name]"]').value.trim(),
-        email: form.querySelector('[name="contact[email]"]').value.trim(),
-        phone: form.querySelector('[name="contact[phone]"]').value.trim(),
-        whatsapp: form.querySelector('[name="provider_whatsapp"]').value.trim(),
-        address_line_1: form.querySelector('[name="provider_address_line_1"]').value.trim(),
-        address_line_2: form.querySelector('[name="provider_address_line_2"]').value.trim(),
-        city: form.querySelector('[name="provider_city"]').value.trim(),
-        postal_code: form.querySelector('[name="provider_postal_code"]').value.trim(),
-        province_or_region: form.querySelector('[name="provider_province_or_region"]').value.trim(),
-        country: form.querySelector('[name="provider_country"]').value.trim(),
-        account_holder: form.querySelector('[name="provider_account_holder"]').value.trim(),
-        tax_id: form.querySelector('[name="provider_tax_id"]').value.trim(),
-        iban: normalizeIban(form.querySelector('[name="provider_iban"]').value.trim()),
-        bank_name: form.querySelector('[name="provider_bank_name"]').value.trim(),
-        bank_country: form.querySelector('[name="provider_bank_country"]').value.trim(),
-        service_categories: categories,
-        description: form.querySelector('[name="provider_description"]').value.trim(),
-        opening_hours: form.querySelector('[name="provider_opening_hours"]').value.trim(),
-        website_url: form.querySelector('[name="provider_website_url"]').value.trim(),
-        instagram_url: form.querySelector('[name="provider_instagram_url"]').value.trim(),
-        logo_source_url: form.querySelector('[name="provider_logo_source_url"]').value.trim(),
-        gallery_source_urls: form.querySelector('[name="provider_gallery_source_urls"]').value.trim(),
-      };
-
-      const hiddenBody = form.querySelector('[name="contact[body]"]');
-      const hiddenSubmission = form.querySelector('[name="contact[provider_submission_id]"]');
-      const hiddenSlug = form.querySelector('[name="contact[provider_slug]"]');
-      const hiddenStatus = form.querySelector('[name="contact[provider_status]"]');
-      const hiddenTopic = form.querySelector('[name="contact[provider_topic]"]');
-
-      if (hiddenBody) hiddenBody.value = serializePayload(payload);
-      if (hiddenSubmission) hiddenSubmission.value = submissionId;
-      if (hiddenSlug) hiddenSlug.value = providerSlug;
-      if (hiddenStatus) hiddenStatus.value = payload.status;
-      if (hiddenTopic) hiddenTopic.value = 'Solicitud proveedor';
+      syncHiddenFields(form);
     });
   });
 })();
