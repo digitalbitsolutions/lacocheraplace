@@ -122,6 +122,21 @@
     }
   };
 
+  const sanitizeOptionalUrl = (value) => {
+    const normalized = (value || '').trim();
+    if (!normalized) return '';
+    return isValidHttpUrl(normalized) ? normalized : '';
+  };
+
+  const sanitizeGalleryUrls = (value) => {
+    const normalized = (value || '')
+      .split('\n')
+      .map((line) => line.trim())
+      .filter(Boolean);
+
+    return normalized.every((line) => isValidHttpUrl(line)) ? normalized.join('\n') : '';
+  };
+
   const loadGoogleMapsPlaces = (apiKey) => {
     if (!apiKey) return Promise.resolve(null);
     if (window.google?.maps?.places) return Promise.resolve(window.google);
@@ -269,6 +284,7 @@
     const error = getOrCreateFieldError(element);
     if (wrapper) wrapper.classList.remove('provider-application__field--invalid');
     if (error) error.textContent = '';
+    if (element?.setCustomValidity) element.setCustomValidity('');
     element?.removeAttribute('aria-invalid');
   };
 
@@ -277,6 +293,7 @@
     const error = getOrCreateFieldError(element);
     if (wrapper) wrapper.classList.add('provider-application__field--invalid');
     if (error) error.textContent = message;
+    if (element?.setCustomValidity) element.setCustomValidity(message);
     element?.setAttribute('aria-invalid', 'true');
   };
 
@@ -392,10 +409,10 @@
       service_categories: categories,
       description: form.querySelector('[name="provider_description"]')?.value.trim() || '',
       opening_hours: form.querySelector('[name="provider_opening_hours"]')?.value.trim() || '',
-      website_url: form.querySelector('[name="provider_website_url"]')?.value.trim() || '',
-      instagram_url: form.querySelector('[name="provider_instagram_url"]')?.value.trim() || '',
-      logo_source_url: form.querySelector('[name="provider_logo_source_url"]')?.value.trim() || '',
-      gallery_source_urls: form.querySelector('[name="provider_gallery_source_urls"]')?.value.trim() || '',
+      website_url: sanitizeOptionalUrl(form.querySelector('[name="provider_website_url"]')?.value),
+      instagram_url: sanitizeOptionalUrl(form.querySelector('[name="provider_instagram_url"]')?.value),
+      logo_source_url: sanitizeOptionalUrl(form.querySelector('[name="provider_logo_source_url"]')?.value),
+      gallery_source_urls: sanitizeGalleryUrls(form.querySelector('[name="provider_gallery_source_urls"]')?.value),
     };
 
     if (hiddenSlug) hiddenSlug.value = providerSlug;
