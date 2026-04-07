@@ -17,3 +17,7 @@ working-theme-20260323/
 # Python cache
 __pycache__/
 *.pyc
+
+# Sensitive local approval data
+private-data/provider-approvals/*
+!private-data/provider-approvals/.gitkeep
