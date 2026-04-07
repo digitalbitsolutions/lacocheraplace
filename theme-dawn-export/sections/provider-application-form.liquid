@@ -30,7 +30,15 @@
       </div>
     {%- endif -%}
 
-    {%- form 'contact', id: provider_form_id, class: 'isolate', novalidate: 'novalidate', data-provider-application-form: '' -%}
+    {%- form
+      'contact',
+      id: provider_form_id,
+      class: 'isolate',
+      novalidate: 'novalidate',
+      data-provider-application-form: '',
+      data-google-maps-api-key: section.settings.google_maps_api_key,
+      data-google-maps-country-bias: section.settings.google_maps_country_bias
+    -%}
       {%- if form.posted_successfully? -%}
         <div class="form-status form-status-list form__message provider-application__status" tabindex="-1" autofocus>
           {{- 'icon-success.svg' | inline_asset_content -}}
@@ -99,23 +107,23 @@
         <h3 class="provider-application__group-title">Ubicacion</h3>
         <div class="provider-application__grid provider-application__grid--two">
           <div class="field provider-application__grid-item-full">
-            <input class="field__input" type="text" id="ProviderAddressLine1-{{ section.id }}" name="provider_address_line_1" required placeholder="Direccion principal">
+            <input class="field__input" type="text" id="ProviderAddressLine1-{{ section.id }}" name="provider_address_line_1" required placeholder="Direccion principal" data-provider-address-line-1="true" autocomplete="street-address">
             <label class="field__label" for="ProviderAddressLine1-{{ section.id }}">Direccion principal <span class="provider-application__required">*</span></label>
           </div>
           <div class="field">
-            <input class="field__input" type="text" id="ProviderCity-{{ section.id }}" name="provider_city" required placeholder="Ciudad">
+            <input class="field__input" type="text" id="ProviderCity-{{ section.id }}" name="provider_city" required placeholder="Ciudad" data-provider-city="true" autocomplete="address-level2">
             <label class="field__label" for="ProviderCity-{{ section.id }}">Ciudad <span class="provider-application__required">*</span></label>
           </div>
           <div class="field">
-            <input class="field__input" type="text" id="ProviderPostalCode-{{ section.id }}" name="provider_postal_code" required placeholder="Codigo postal">
+            <input class="field__input" type="text" id="ProviderPostalCode-{{ section.id }}" name="provider_postal_code" required placeholder="Codigo postal" data-provider-postal-code="true" autocomplete="postal-code">
             <label class="field__label" for="ProviderPostalCode-{{ section.id }}">Codigo postal <span class="provider-application__required">*</span></label>
           </div>
           <div class="field">
-            <input class="field__input" type="text" id="ProviderProvince-{{ section.id }}" name="provider_province_or_region" placeholder="Provincia o region">
+            <input class="field__input" type="text" id="ProviderProvince-{{ section.id }}" name="provider_province_or_region" placeholder="Provincia o region" data-provider-province="true" autocomplete="address-level1">
             <label class="field__label" for="ProviderProvince-{{ section.id }}">Provincia o region</label>
           </div>
           <div class="field">
-            <input class="field__input" type="text" id="ProviderCountry-{{ section.id }}" name="provider_country" required placeholder="Pais">
+            <input class="field__input" type="text" id="ProviderCountry-{{ section.id }}" name="provider_country" required placeholder="Pais" data-provider-country="true" autocomplete="country-name">
             <label class="field__label" for="ProviderCountry-{{ section.id }}">Pais <span class="provider-application__required">*</span></label>
           </div>
           <div class="field provider-application__grid-item-full">
@@ -282,6 +290,17 @@
       "id": "submit_label",
       "default": "Enviar solicitud",
       "label": "Submit label"
+    },
+    {
+      "type": "text",
+      "id": "google_maps_api_key",
+      "label": "Google Maps API key"
+    },
+    {
+      "type": "text",
+      "id": "google_maps_country_bias",
+      "default": "es",
+      "label": "Google Maps country bias"
     },
     {
       "type": "color_scheme",

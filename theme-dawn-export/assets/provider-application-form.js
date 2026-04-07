@@ -1,4 +1,6 @@
 (() => {
+  let googleMapsScriptPromise;
+
   const urlFields = [
     'provider_website_url',
     'provider_instagram_url',
@@ -113,6 +115,114 @@
       return url.protocol === 'http:' || url.protocol === 'https:';
     } catch {
       return false;
+    }
+  };
+
+  const loadGoogleMapsPlaces = (apiKey) => {
+    if (!apiKey) return Promise.resolve(null);
+    if (window.google?.maps?.places) return Promise.resolve(window.google);
+    if (googleMapsScriptPromise) return googleMapsScriptPromise;
+
+    googleMapsScriptPromise = new Promise((resolve, reject) => {
+      const script = document.createElement('script');
+      const params = new URLSearchParams({
+        key: apiKey,
+        libraries: 'places',
+        language: document.documentElement.lang || 'es',
+        loading: 'async',
+      });
+
+      script.src = `https://maps.googleapis.com/maps/api/js?${params.toString()}`;
+      script.async = true;
+      script.defer = true;
+      script.onload = () => {
+        if (window.google?.maps?.places) {
+          resolve(window.google);
+          return;
+        }
+
+        reject(new Error('Google Maps Places no se ha cargado correctamente.'));
+      };
+      script.onerror = () => reject(new Error('No se pudo cargar Google Maps.'));
+      document.head.appendChild(script);
+    });
+
+    return googleMapsScriptPromise;
+  };
+
+  const setFieldValue = (field, value) => {
+    if (!field) return;
+    field.value = value || '';
+    field.dispatchEvent(new Event('input', { bubbles: true }));
+    field.dispatchEvent(new Event('change', { bubbles: true }));
+  };
+
+  const getAddressComponent = (components, type) =>
+    components.find((component) => component.types.includes(type));
+
+  const buildAddressLine = (components, fallbackValue) => {
+    const streetNumber = getAddressComponent(components, 'street_number')?.long_name || '';
+    const route = getAddressComponent(components, 'route')?.long_name || '';
+    const composed = [route, streetNumber].filter(Boolean).join(' ').trim();
+    return composed || fallbackValue || '';
+  };
+
+  const fillAddressFieldsFromPlace = (form, place) => {
+    const components = place?.address_components || [];
+    if (!components.length) return;
+
+    const addressLine1Field = form.querySelector('[data-provider-address-line-1]');
+    const cityField = form.querySelector('[data-provider-city]');
+    const postalCodeField = form.querySelector('[data-provider-postal-code]');
+    const provinceField = form.querySelector('[data-provider-province]');
+    const countryField = form.querySelector('[data-provider-country]');
+
+    const city =
+      getAddressComponent(components, 'locality')?.long_name ||
+      getAddressComponent(components, 'postal_town')?.long_name ||
+      getAddressComponent(components, 'administrative_area_level_2')?.long_name ||
+      '';
+    const postalCode = getAddressComponent(components, 'postal_code')?.long_name || '';
+    const province =
+      getAddressComponent(components, 'administrative_area_level_1')?.long_name || '';
+    const country = getAddressComponent(components, 'country')?.long_name || '';
+    const addressLine = buildAddressLine(components, addressLine1Field?.value.trim());
+
+    setFieldValue(addressLine1Field, addressLine);
+    setFieldValue(cityField, city);
+    setFieldValue(postalCodeField, postalCode);
+    setFieldValue(provinceField, province);
+    setFieldValue(countryField, country);
+  };
+
+  const initGoogleAddressAutocomplete = async (form) => {
+    const apiKey = form.dataset.googleMapsApiKey?.trim();
+    if (!apiKey) return;
+
+    const addressField = form.querySelector('[data-provider-address-line-1]');
+    if (!addressField) return;
+
+    try {
+      await loadGoogleMapsPlaces(apiKey);
+
+      if (!window.google?.maps?.places) return;
+
+      const options = {
+        fields: ['address_components', 'formatted_address'],
+        types: ['address'],
+      };
+      const countryBias = form.dataset.googleMapsCountryBias?.trim().toLowerCase();
+      if (countryBias) {
+        options.componentRestrictions = { country: countryBias };
+      }
+
+      const autocomplete = new window.google.maps.places.Autocomplete(addressField, options);
+      autocomplete.addListener('place_changed', () => {
+        const place = autocomplete.getPlace();
+        fillAddressFieldsFromPlace(form, place);
+      });
+    } catch (error) {
+      console.warn('[provider-application-form] Google Maps autocomplete unavailable.', error);
     }
   };
 
@@ -308,6 +418,7 @@
       });
     });
 
+    initGoogleAddressAutocomplete(form);
     syncHiddenFields(form);
 
     form.addEventListener('submit', (event) => {
