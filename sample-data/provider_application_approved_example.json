@@ -14,6 +14,9 @@
   "postal_code": "08036",
   "province_or_region": "Barcelona",
   "country": "Spain",
+  "google_place_id": "ChIJx5fmkCVpuhIR7N3xKQ0rPz8",
+  "latitude": 41.390205,
+  "longitude": 2.154007,
   "service_categories": [
     "Lavado",
     "Detailing",

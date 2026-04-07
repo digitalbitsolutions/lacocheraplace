@@ -75,6 +75,43 @@ def geocode_address(address, api_key):
     }
 
 
+def parse_decimal(value, field_name):
+    if value in (None, ""):
+        return None
+
+    try:
+        return float(value)
+    except (TypeError, ValueError) as exc:
+        raise RuntimeError(f"El campo '{field_name}' debe ser numerico.") from exc
+
+
+def resolve_geodata(submission, api_key):
+    latitude = parse_decimal(submission.get("latitude"), "latitude")
+    longitude = parse_decimal(submission.get("longitude"), "longitude")
+    google_place_id = submission.get("google_place_id", "")
+
+    if latitude is not None and longitude is not None:
+        return {
+            "latitude": latitude,
+            "longitude": longitude,
+            "google_place_id": google_place_id,
+            "formatted_address": build_address(submission),
+            "source": "submission",
+        }
+
+    if latitude is not None or longitude is not None:
+        raise RuntimeError("Debes informar latitude y longitude juntas, o ninguna de las dos.")
+
+    if not api_key:
+        raise RuntimeError(
+            "Define GOOGLE_MAPS_API_KEY para geocodificar la direccion aprobada o incluye latitude/longitude en el JSON."
+        )
+
+    geocoded = geocode_address(build_address(submission), api_key)
+    geocoded["source"] = "geocoding"
+    return geocoded
+
+
 def definition_payload():
     return {
         "definition": {
@@ -163,7 +200,7 @@ def command_definition(args):
     store = os.getenv("SHOPIFY_STORE")
     token = os.getenv("SHOPIFY_ADMIN_TOKEN")
     if not store or not token:
-        raise RuntimeError("Define SHOPIFY_STORE y SHOPIFY_ADMIN_TOKEN para ejecutar la mutación.")
+        raise RuntimeError("Define SHOPIFY_STORE y SHOPIFY_ADMIN_TOKEN para ejecutar la mutacion.")
 
     query = """
     mutation CreateProviderProfileDefinition($definition: MetaobjectDefinitionCreateInput!) {
@@ -179,10 +216,7 @@ def command_definition(args):
 def command_approve(args):
     submission = load_submission(args.input)
     api_key = os.getenv("GOOGLE_MAPS_API_KEY")
-    if not api_key:
-        raise RuntimeError("Define GOOGLE_MAPS_API_KEY para geocodificar la dirección aprobada.")
-
-    geocoded = geocode_address(build_address(submission), api_key)
+    geocoded = resolve_geodata(submission, api_key)
     payload = metaobject_payload(submission, geocoded)
 
     if not args.execute:
@@ -192,7 +226,7 @@ def command_approve(args):
     store = os.getenv("SHOPIFY_STORE")
     token = os.getenv("SHOPIFY_ADMIN_TOKEN")
     if not store or not token:
-        raise RuntimeError("Define SHOPIFY_STORE y SHOPIFY_ADMIN_TOKEN para ejecutar la mutación.")
+        raise RuntimeError("Define SHOPIFY_STORE y SHOPIFY_ADMIN_TOKEN para ejecutar la mutacion.")
 
     query = """
     mutation CreateProviderProfile($metaobject: MetaobjectCreateInput!) {
@@ -228,3 +262,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+

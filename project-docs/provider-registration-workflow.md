@@ -7,7 +7,8 @@ Implementar un alta de proveedores separada del registro de clientes, con revisi
 - El formulario publico de alta vive en [provider-application-form.liquid](/d:/development/lacocheraplace.com/theme-dawn-export/sections/provider-application-form.liquid)
 - La pagina publica prevista usa [page.quiero-ser-proveedor.json](/d:/development/lacocheraplace.com/theme-dawn-export/templates/page.quiero-ser-proveedor.json)
 - La persistencia inicial se hace mediante `form 'contact'`
-- La solicitud se serializa en `contact[body]` con un bloque legible y un JSON embebido
+- La solicitud se serializa en `contact[body]` con un bloque legible para email admin
+- El formulario puede capturar `google_place_id`, `latitude` y `longitude` cuando el usuario selecciona una sugerencia de Google Maps
 - La definicion objetivo del perfil esta descrita en [provider_profile_metaobject_definition.json](/d:/development/lacocheraplace.com/sample-data/provider_profile_metaobject_definition.json)
 - El helper manual de aprobacion esta en [provider_approval_workflow.py](/d:/development/lacocheraplace.com/scripts/provider_approval_workflow.py)
 
@@ -18,9 +19,10 @@ Implementar un alta de proveedores separada del registro de clientes, con revisi
    - `submission_id`
    - `provider_slug`
    - `status = pending`
+   - `google_place_id`, `latitude` y `longitude` si se selecciona una sugerencia de Google
 4. Shopify recibe la solicitud como contacto extendido
 5. El equipo revisa la solicitud manualmente
-6. Si procede, se geocodifica la direccion con Google Maps Geocoding API
+6. Si procede, se reutilizan las coordenadas del formulario; si faltan, se geocodifica la direccion con Google Maps Geocoding API
 7. Con coordenadas validas se crea el metaobject `provider_profile`
 8. Despues se vincula o prepara el catalogo del proveedor en Shopify
 
@@ -38,6 +40,9 @@ Implementar un alta de proveedores separada del registro de clientes, con revisi
 - `postal_code`
 - `province_or_region`
 - `country`
+- `google_place_id`
+- `latitude`
+- `longitude`
 - `service_categories`
 - `description`
 - `opening_hours`
@@ -97,7 +102,7 @@ Campos previstos:
 Variables necesarias:
 - `SHOPIFY_STORE`
 - `SHOPIFY_ADMIN_TOKEN`
-- `GOOGLE_MAPS_API_KEY`
+- `GOOGLE_MAPS_API_KEY` solo si el JSON aprobado no trae `latitude` y `longitude`
 
 Dry run de definicion:
 ```powershell
@@ -113,6 +118,8 @@ Dry run de aprobacion:
 ```powershell
 python scripts/provider_approval_workflow.py approve --input sample-data/provider_application_approved_example.json
 ```
+
+Si el JSON aprobado ya incluye `google_place_id`, `latitude` y `longitude`, el helper reutiliza esos valores y no necesita geocodificar.
 
 Crear metaobject aprobado:
 ```powershell
