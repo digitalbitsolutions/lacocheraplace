@@ -97,6 +97,7 @@ Campos previstos:
 ### Paso 2. Preparar JSON aprobado
 - Copiar la solicitud a un JSON estructurado
 - Usar como referencia [provider_application_approved_example.json](/d:/development/lacocheraplace.com/sample-data/provider_application_approved_example.json)
+- Para aprobaciones reales, partir de [provider_application_approval_template.json](/d:/development/lacocheraplace.com/sample-data/provider_application_approval_template.json) y pegar los datos que lleguen por email
 
 ### Paso 3. Geocodificar y crear el perfil
 Variables necesarias:
