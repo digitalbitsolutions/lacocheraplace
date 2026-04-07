@@ -194,7 +194,10 @@
     const province =
       getAddressComponent(components, 'administrative_area_level_1')?.long_name || '';
     const country = getAddressComponent(components, 'country')?.long_name || '';
-    const addressLine = buildAddressLine(components, addressLine1Field?.value.trim());
+    const addressLine = buildAddressLine(
+      components,
+      place?.formatted_address || addressLine1Field?.value.trim()
+    );
     const latitude = place?.geometry?.location?.lat?.();
     const longitude = place?.geometry?.location?.lng?.();
 
@@ -228,7 +231,6 @@
 
       const options = {
         fields: ['address_components', 'formatted_address', 'geometry', 'place_id'],
-        types: ['address'],
       };
       const countryBias = form.dataset.googleMapsCountryBias?.trim().toLowerCase();
       if (countryBias) {
