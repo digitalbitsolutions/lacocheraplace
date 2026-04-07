@@ -79,6 +79,9 @@
       `- Codigo postal: ${valueOrDash(payload.postal_code)}`,
       `- Provincia o region: ${valueOrDash(payload.province_or_region)}`,
       `- Pais: ${valueOrDash(payload.country)}`,
+      `- Google Place ID: ${valueOrDash(payload.google_place_id)}`,
+      `- Latitud: ${valueOrDash(payload.latitude)}`,
+      `- Longitud: ${valueOrDash(payload.longitude)}`,
       '',
       '=== DATOS FISCALES Y BANCARIOS ===',
       `- Titular de la cuenta: ${valueOrDash(payload.account_holder)}`,
@@ -178,6 +181,9 @@
     const postalCodeField = form.querySelector('[data-provider-postal-code]');
     const provinceField = form.querySelector('[data-provider-province]');
     const countryField = form.querySelector('[data-provider-country]');
+    const placeIdField = form.querySelector('[name="provider_google_place_id"]');
+    const latitudeField = form.querySelector('[name="provider_latitude"]');
+    const longitudeField = form.querySelector('[name="provider_longitude"]');
 
     const city =
       getAddressComponent(components, 'locality')?.long_name ||
@@ -189,12 +195,23 @@
       getAddressComponent(components, 'administrative_area_level_1')?.long_name || '';
     const country = getAddressComponent(components, 'country')?.long_name || '';
     const addressLine = buildAddressLine(components, addressLine1Field?.value.trim());
+    const latitude = place?.geometry?.location?.lat?.();
+    const longitude = place?.geometry?.location?.lng?.();
 
     setFieldValue(addressLine1Field, addressLine);
     setFieldValue(cityField, city);
     setFieldValue(postalCodeField, postalCode);
     setFieldValue(provinceField, province);
     setFieldValue(countryField, country);
+    setFieldValue(placeIdField, place?.place_id || '');
+    setFieldValue(latitudeField, latitude != null ? String(latitude) : '');
+    setFieldValue(longitudeField, longitude != null ? String(longitude) : '');
+  };
+
+  const clearGeocodedFields = (form) => {
+    setFieldValue(form.querySelector('[name="provider_google_place_id"]'), '');
+    setFieldValue(form.querySelector('[name="provider_latitude"]'), '');
+    setFieldValue(form.querySelector('[name="provider_longitude"]'), '');
   };
 
   const initGoogleAddressAutocomplete = async (form) => {
@@ -210,7 +227,7 @@
       if (!window.google?.maps?.places) return;
 
       const options = {
-        fields: ['address_components', 'formatted_address'],
+        fields: ['address_components', 'formatted_address', 'geometry', 'place_id'],
         types: ['address'],
       };
       const countryBias = form.dataset.googleMapsCountryBias?.trim().toLowerCase();
@@ -219,6 +236,7 @@
       }
 
       const autocomplete = new window.google.maps.places.Autocomplete(addressField, options);
+      addressField.addEventListener('input', () => clearGeocodedFields(form));
       autocomplete.addListener('place_changed', () => {
         const place = autocomplete.getPlace();
         fillAddressFieldsFromPlace(form, place);
@@ -361,6 +379,9 @@
       postal_code: form.querySelector('[name="provider_postal_code"]')?.value.trim() || '',
       province_or_region: form.querySelector('[name="provider_province_or_region"]')?.value.trim() || '',
       country: form.querySelector('[name="provider_country"]')?.value.trim() || '',
+      google_place_id: form.querySelector('[name="provider_google_place_id"]')?.value.trim() || '',
+      latitude: form.querySelector('[name="provider_latitude"]')?.value.trim() || '',
+      longitude: form.querySelector('[name="provider_longitude"]')?.value.trim() || '',
       account_holder: form.querySelector('[name="provider_account_holder"]')?.value.trim() || '',
       tax_id: form.querySelector('[name="provider_tax_id"]')?.value.trim() || '',
       iban: normalizeIban(form.querySelector('[name="provider_iban"]')?.value.trim() || ''),
