@@ -63,20 +63,20 @@
             <label class="field__label" for="ProviderDisplayName-{{ section.id }}">Nombre comercial <span class="provider-application__required">*</span></label>
           </div>
           <div class="field">
-            <input class="field__input" type="text" id="ProviderLegalName-{{ section.id }}" name="provider_legal_name" placeholder="Nombre legal o razon social">
-            <label class="field__label" for="ProviderLegalName-{{ section.id }}">Nombre legal o razon social</label>
+            <input class="field__input" type="text" id="ProviderLegalName-{{ section.id }}" name="provider_legal_name" required placeholder="Nombre legal o razon social">
+            <label class="field__label" for="ProviderLegalName-{{ section.id }}">Nombre legal o razon social <span class="provider-application__required">*</span></label>
           </div>
           <div class="field provider-application__grid-item-full">
-            <input class="field__input" type="text" id="ProviderCatalogVendorName-{{ section.id }}" name="provider_catalog_vendor_name" placeholder="Nombre como aparecera en el catalogo de Shopify">
-            <label class="field__label" for="ProviderCatalogVendorName-{{ section.id }}">Nombre del proveedor en catalogo</label>
+            <input class="field__input" type="text" id="ProviderCatalogVendorName-{{ section.id }}" name="provider_catalog_vendor_name" required placeholder="Nombre como aparecera en el catalogo de Shopify">
+            <label class="field__label" for="ProviderCatalogVendorName-{{ section.id }}">Nombre del proveedor en catalogo <span class="provider-application__required">*</span></label>
           </div>
           <div class="field provider-application__grid-item-full">
             <textarea rows="6" id="ProviderDescription-{{ section.id }}" class="text-area field__input" name="provider_description" required placeholder="Describe tu taller, especialidades y experiencia"></textarea>
             <label class="field__label" for="ProviderDescription-{{ section.id }}">Descripcion del proveedor <span class="provider-application__required">*</span></label>
           </div>
           <div class="field provider-application__grid-item-full">
-            <textarea rows="4" id="ProviderOpeningHours-{{ section.id }}" class="text-area field__input" name="provider_opening_hours" placeholder="Ej: Lun-Vie 09:00-18:00 / Sab 10:00-14:00"></textarea>
-            <label class="field__label" for="ProviderOpeningHours-{{ section.id }}">Horarios</label>
+            <textarea rows="4" id="ProviderOpeningHours-{{ section.id }}" class="text-area field__input" name="provider_opening_hours" required placeholder="Ej: Lun-Vie 09:00-18:00 / Sab 10:00-14:00"></textarea>
+            <label class="field__label" for="ProviderOpeningHours-{{ section.id }}">Horarios <span class="provider-application__required">*</span></label>
           </div>
         </div>
       </div>
@@ -97,8 +97,8 @@
             <label class="field__label" for="ProviderPhone-{{ section.id }}">Telefono <span class="provider-application__required">*</span></label>
           </div>
           <div class="field">
-            <input class="field__input" autocomplete="tel" type="tel" id="ProviderWhatsapp-{{ section.id }}" name="provider_whatsapp" placeholder="WhatsApp">
-            <label class="field__label" for="ProviderWhatsapp-{{ section.id }}">WhatsApp</label>
+            <input class="field__input" autocomplete="tel" type="tel" id="ProviderWhatsapp-{{ section.id }}" name="provider_whatsapp" required placeholder="WhatsApp">
+            <label class="field__label" for="ProviderWhatsapp-{{ section.id }}">WhatsApp <span class="provider-application__required">*</span></label>
           </div>
         </div>
       </div>
@@ -119,16 +119,16 @@
             <label class="field__label" for="ProviderPostalCode-{{ section.id }}">Codigo postal <span class="provider-application__required">*</span></label>
           </div>
           <div class="field">
-            <input class="field__input" type="text" id="ProviderProvince-{{ section.id }}" name="provider_province_or_region" placeholder="Provincia o region" data-provider-province="true" autocomplete="address-level1">
-            <label class="field__label" for="ProviderProvince-{{ section.id }}">Provincia o region</label>
+            <input class="field__input" type="text" id="ProviderProvince-{{ section.id }}" name="provider_province_or_region" required placeholder="Provincia o region" data-provider-province="true" autocomplete="address-level1">
+            <label class="field__label" for="ProviderProvince-{{ section.id }}">Provincia o region <span class="provider-application__required">*</span></label>
           </div>
           <div class="field">
             <input class="field__input" type="text" id="ProviderCountry-{{ section.id }}" name="provider_country" required placeholder="Pais" data-provider-country="true" autocomplete="country-name">
             <label class="field__label" for="ProviderCountry-{{ section.id }}">Pais <span class="provider-application__required">*</span></label>
           </div>
           <div class="field provider-application__grid-item-full">
-            <input class="field__input" type="text" id="ProviderAddressLine2-{{ section.id }}" name="provider_address_line_2" placeholder="Informacion adicional">
-            <label class="field__label" for="ProviderAddressLine2-{{ section.id }}">Informacion adicional</label>
+            <input class="field__input" type="text" id="ProviderAddressLine2-{{ section.id }}" name="provider_address_line_2" required placeholder="Informacion adicional">
+            <label class="field__label" for="ProviderAddressLine2-{{ section.id }}">Informacion adicional <span class="provider-application__required">*</span></label>
           </div>
         </div>
       </div>

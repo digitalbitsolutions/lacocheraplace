@@ -5,7 +5,6 @@
   const urlFields = [
     'provider_website_url',
     'provider_instagram_url',
-    'provider_logo_source_url',
   ];
 
   const slugify = (value) =>
@@ -25,6 +24,8 @@
 
   const normalizeIban = (value) => (value || '').replace(/\s+/g, '').toUpperCase();
 
+  const normalizeTaxId = (value) => (value || '').replace(/\s+/g, '').toUpperCase();
+
   const isValidIban = (value) => {
     const iban = normalizeIban(value);
     if (!/^[A-Z]{2}\d{2}[A-Z0-9]{11,30}$/.test(iban)) {
@@ -42,6 +43,61 @@
     }
 
     return remainder === 1;
+  };
+
+  const isValidSpanishTaxId = (value) => {
+    const taxId = normalizeTaxId(value);
+    if (!taxId) return false;
+
+    const dniMatch = taxId.match(/^(\d{8})([A-Z])$/);
+    if (dniMatch) {
+      const letters = 'TRWAGMYFPDXBNJZSQVHLCKE';
+      return letters[Number(dniMatch[1]) % 23] === dniMatch[2];
+    }
+
+    const nieMatch = taxId.match(/^([XYZ])(\d{7})([A-Z])$/);
+    if (nieMatch) {
+      const prefixMap = { X: '0', Y: '1', Z: '2' };
+      const number = `${prefixMap[nieMatch[1]]}${nieMatch[2]}`;
+      const letters = 'TRWAGMYFPDXBNJZSQVHLCKE';
+      return letters[Number(number) % 23] === nieMatch[3];
+    }
+
+    const cifMatch = taxId.match(/^([ABCDEFGHJNPQRSUVW])(\d{7})([0-9A-J])$/);
+    if (cifMatch) {
+      const letter = cifMatch[1];
+      const digits = cifMatch[2];
+      const control = cifMatch[3];
+
+      let sumEven = 0;
+      let sumOdd = 0;
+
+      digits.split('').forEach((digit, index) => {
+        const number = Number(digit);
+        if (index % 2 === 0) {
+          const doubled = number * 2;
+          sumOdd += Math.floor(doubled / 10) + (doubled % 10);
+        } else {
+          sumEven += number;
+        }
+      });
+
+      const total = sumEven + sumOdd;
+      const controlDigit = (10 - (total % 10)) % 10;
+      const controlLetter = 'JABCDEFGHI'[controlDigit];
+
+      if ('PQRSNW'.includes(letter)) {
+        return control === controlLetter;
+      }
+
+      if ('ABEH'.includes(letter)) {
+        return control === String(controlDigit);
+      }
+
+      return control === String(controlDigit) || control === controlLetter;
+    }
+
+    return false;
   };
 
   const serializePayload = (payload) => {
@@ -300,12 +356,16 @@
   const getValidationMessage = (element) => {
     const value = element.value.trim();
 
-    if (element.validity.valueMissing) {
+    if (element.hasAttribute('required') && !value) {
       return 'Este campo es obligatorio.';
     }
 
     if (element.type === 'email' && value && element.validity.typeMismatch) {
       return 'Introduce un correo electronico valido.';
+    }
+
+    if (element.name === 'provider_tax_id' && value && !isValidSpanishTaxId(value)) {
+      return 'Introduce un NIF o CIF valido.';
     }
 
     if (element.name === 'provider_iban' && value && !isValidIban(value)) {
@@ -426,7 +486,7 @@
   document.querySelectorAll('[data-provider-application-form]').forEach((form) => {
     const fieldsToValidate = Array.from(
       form.querySelectorAll(
-        'input[required], select[required], input[type="email"], input[name="provider_website_url"], input[name="provider_instagram_url"], input[name="provider_logo_source_url"], textarea[name="provider_gallery_source_urls"]'
+        'input[required], select[required], textarea[required], input[type="email"], input[name="provider_website_url"], input[name="provider_instagram_url"], input[name="provider_logo_source_url"], textarea[name="provider_gallery_source_urls"]'
       )
     );
     const consentCheckbox = form.querySelector('[name="provider_consent"]');
@@ -465,6 +525,7 @@
 
     form.addEventListener('submit', (event) => {
       let isValid = true;
+      syncHiddenFields(form);
       const categories = Array.from(
         form.querySelectorAll('input[name="provider_service_categories[]"]:checked')
       ).map((input) => input.value);
@@ -505,6 +566,7 @@
           form.querySelector('.provider-application__field--invalid .field__input, .provider-application__field--invalid textarea, .provider-application__field--invalid select') ||
           form.querySelector('[aria-invalid="true"]');
         firstInvalidField?.focus();
+        firstInvalidField?.reportValidity?.();
         return;
       }
 
