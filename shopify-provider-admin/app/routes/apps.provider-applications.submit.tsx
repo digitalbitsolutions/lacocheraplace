@@ -8,57 +8,74 @@ import {
 } from "../models/provider-applications.server";
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
-  await authenticate.public.appProxy(request);
+  try {
+    await authenticate.public.appProxy(request);
 
-  return json({
-    ok: true,
-    message: "Usa POST para crear solicitudes de proveedores.",
-  });
-};
-
-export const action = async ({ request }: ActionFunctionArgs) => {
-  const { admin } = await authenticate.public.appProxy(request);
-
-  if (!admin) {
+    return json({
+      ok: true,
+      message: "Usa POST para crear solicitudes de proveedores.",
+    });
+  } catch (error) {
+    console.error("[provider-applications.submit][loader]", error);
     return json(
       {
         ok: false,
         message:
-          "No se pudo autenticar la app proxy. Comprueba que la app este instalada y configurada en la tienda.",
+          error instanceof Error
+            ? error.message
+            : "Fallo autenticando la app proxy.",
       },
-      { status: 503 },
+      { status: 500 },
     );
   }
+};
 
-  const payload =
-    ((await request.json()) as Partial<ProviderApplicationSubmission>) || {};
-  const validation = validateProviderApplicationSubmission(payload);
-
-  if (!validation.valid) {
-    return json(
-      {
-        ok: false,
-        message: "La solicitud contiene errores de validacion.",
-        errors: validation.errors,
-      },
-      { status: 422 },
-    );
-  }
-
+export const action = async ({ request }: ActionFunctionArgs) => {
   try {
+    const { admin } = await authenticate.public.appProxy(request);
+
+    if (!admin) {
+      return json(
+        {
+          ok: false,
+          message:
+            "No se pudo autenticar la app proxy. Comprueba que la app este instalada y configurada en la tienda.",
+        },
+        { status: 503 },
+      );
+    }
+
+    const payload =
+      ((await request.json()) as Partial<ProviderApplicationSubmission>) || {};
+    const validation = validateProviderApplicationSubmission(payload);
+
+    if (!validation.valid) {
+      return json(
+        {
+          ok: false,
+          message: "La solicitud contiene errores de validacion.",
+          errors: validation.errors,
+        },
+        { status: 422 },
+      );
+    }
+
     const record = await createProviderApplicationRequest(
       admin,
       payload as ProviderApplicationSubmission,
     );
 
-    return json({
-      ok: true,
-      requestId: record.id,
-      submissionId: record.submissionId,
-      providerSlug: record.providerSlug,
-      status: record.status,
-    });
+    return json(
+      {
+        ok: true,
+        requestId: record.id,
+        submissionId: record.submissionId,
+        providerSlug: record.providerSlug,
+        status: record.status,
+      },
+    );
   } catch (error) {
+    console.error("[provider-applications.submit][action]", error);
     return json(
       {
         ok: false,

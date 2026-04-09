@@ -1,4 +1,5 @@
 (() => {
+  const defaultProviderAppProxyPath = '/apps/provider-applications/submit';
   let googleMapsScriptPromise;
   const googleMapsCallbackName = 'providerApplicationGoogleMapsLoaded';
 
@@ -192,6 +193,9 @@
 
     return normalized.every((line) => isValidHttpUrl(line)) ? normalized.join('\n') : '';
   };
+
+  const getProviderAppProxyUrl = (form) =>
+    form?.dataset.providerAppProxyUrl?.trim() || defaultProviderAppProxyPath;
 
   const loadGoogleMapsPlaces = (apiKey) => {
     if (!apiKey) return Promise.resolve(null);
@@ -558,7 +562,7 @@
   };
 
   const submitStructuredRequest = async (form, payload) => {
-    const proxyUrl = form.dataset.providerAppProxyUrl?.trim();
+    const proxyUrl = getProviderAppProxyUrl(form);
     if (!proxyUrl) return null;
 
     const response = await fetch(proxyUrl, {
@@ -681,7 +685,7 @@
         return;
       }
 
-      const proxyUrl = form.dataset.providerAppProxyUrl?.trim();
+      const proxyUrl = getProviderAppProxyUrl(form);
       if (!proxyUrl) {
         syncHiddenFields(form);
         return;

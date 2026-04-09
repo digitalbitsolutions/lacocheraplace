@@ -2,6 +2,8 @@
 {{ 'section-provider-application-form.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'provider-application-form.js' | asset_url }}" defer="defer"></script>
 
+{%- assign provider_application_proxy_path = section.settings.provider_application_proxy_path | default: '/apps/provider-applications/submit' -%}
+
 {%- style -%}
   .section-{{ section.id }}-padding {
     padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
@@ -38,7 +40,7 @@
       data-provider-application-form: '',
       data-google-maps-api-key: section.settings.google_maps_api_key,
       data-google-maps-country-bias: section.settings.google_maps_country_bias,
-      data-provider-app-proxy-url: section.settings.provider_application_proxy_path
+      data-provider-app-proxy-url: provider_application_proxy_path
     -%}
       {%- if form.posted_successfully? -%}
         <div class="form-status form-status-list form__message provider-application__status" tabindex="-1" autofocus>

@@ -11,7 +11,6 @@ import {
   Layout,
   Page,
   Text,
-  TextField,
 } from "@shopify/polaris";
 import { TitleBar } from "@shopify/app-bridge-react";
 import { requireOwnerAdmin } from "../models/access.server";
@@ -211,13 +210,37 @@ export default function ProviderApplicationDetail() {
                     <Form method="post">
                       <input type="hidden" name="intent" value="decline" />
                       <BlockStack gap="200">
-                        <TextField
-                          label="Motivo del rechazo"
+                        <label
+                          htmlFor="decline-reason"
+                          style={{
+                            display: "block",
+                            fontSize: "0.875rem",
+                            fontWeight: 600,
+                            color: "var(--p-color-text)",
+                          }}
+                        >
+                          Motivo del rechazo
+                        </label>
+                        <textarea
+                          id="decline-reason"
                           name="declineReason"
-                          autoComplete="off"
-                          multiline={4}
-                          helpText="Este campo es obligatorio para declinar."
+                          rows={4}
+                          required
+                          defaultValue=""
+                          style={{
+                            width: "100%",
+                            padding: "0.75rem",
+                            borderRadius: "0.75rem",
+                            border: "1px solid var(--p-color-border)",
+                            background: "var(--p-color-bg-surface)",
+                            color: "var(--p-color-text)",
+                            font: "inherit",
+                            resize: "vertical",
+                          }}
                         />
+                        <Text as="p" tone="subdued">
+                          Este campo es obligatorio para declinar.
+                        </Text>
                         <Button submit tone="critical" fullWidth>
                           Declinar solicitud
                         </Button>
