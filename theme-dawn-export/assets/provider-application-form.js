@@ -404,6 +404,16 @@
     return true;
   };
 
+  const checkFieldValidity = (element, { showErrors = false } = {}) => {
+    if (!element) return true;
+
+    if (!showErrors) {
+      return !getValidationMessage(element);
+    }
+
+    return validateField(element);
+  };
+
   const validateRequiredCheckbox = (checkbox) => {
     if (!checkbox) return true;
 
@@ -417,6 +427,70 @@
     choice?.classList.add('provider-application__choice--invalid');
     checkbox.setAttribute('aria-invalid', 'true');
     return false;
+  };
+
+  const checkRequiredCheckboxValidity = (checkbox, { showErrors = false } = {}) => {
+    if (!checkbox) return true;
+    if (!showErrors) return checkbox.checked;
+    return validateRequiredCheckbox(checkbox);
+  };
+
+  const updateSubmitButtonState = (form, isValid) => {
+    const submitButton = form.querySelector('button[type="submit"]');
+    if (!submitButton) return;
+
+    submitButton.disabled = !isValid;
+    submitButton.setAttribute('aria-disabled', String(!isValid));
+  };
+
+  const setSubmitError = (form, message = '') => {
+    const error = form.querySelector('[data-provider-submit-error]');
+    if (!error) return;
+
+    error.textContent = message;
+    error.classList.toggle('is-visible', Boolean(message));
+  };
+
+  const validateFormState = (form, fieldsToValidate, consentCheckbox, categoryInputs, { showErrors = false } = {}) => {
+    let isValid = true;
+
+    fieldsToValidate.forEach((field) => {
+      if (!checkFieldValidity(field, { showErrors })) {
+        isValid = false;
+      }
+    });
+
+    if (!checkRequiredCheckboxValidity(consentCheckbox, { showErrors })) {
+      isValid = false;
+    }
+
+    const categoryError = form.querySelector('[data-provider-category-error]');
+    const hasCategories = categoryInputs.some((checkbox) => checkbox.checked);
+    if (!hasCategories) {
+      isValid = false;
+      if (showErrors && categoryError) {
+        categoryError.classList.add('is-visible');
+      }
+    } else if (categoryError) {
+      categoryError.classList.remove('is-visible');
+    }
+
+    const displayName = form.querySelector('[name="provider_display_name"]')?.value.trim() || '';
+    const legalName = form.querySelector('[name="provider_legal_name"]')?.value.trim() || '';
+    const providerSlug = slugify(displayName || legalName);
+    const slugError = form.querySelector('[data-provider-slug-error]');
+
+    if (!providerSlug) {
+      isValid = false;
+      if (showErrors && slugError) {
+        slugError.classList.add('is-visible');
+      }
+    } else if (slugError) {
+      slugError.classList.remove('is-visible');
+    }
+
+    updateSubmitButtonState(form, isValid);
+    return isValid;
   };
 
   const syncHiddenFields = (form) => {
@@ -483,6 +557,60 @@
     return payload;
   };
 
+  const submitStructuredRequest = async (form, payload) => {
+    const proxyUrl = form.dataset.providerAppProxyUrl?.trim();
+    if (!proxyUrl) return null;
+
+    const response = await fetch(proxyUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+      body: JSON.stringify({
+        displayName: payload.display_name,
+        legalName: payload.legal_name,
+        catalogVendorName: payload.catalog_vendor_name,
+        contactName: payload.contact_name,
+        email: payload.email,
+        phone: payload.phone,
+        whatsapp: payload.whatsapp,
+        addressLine1: payload.address_line_1,
+        addressLine2: payload.address_line_2,
+        city: payload.city,
+        postalCode: payload.postal_code,
+        provinceOrRegion: payload.province_or_region,
+        country: payload.country,
+        googlePlaceId: payload.google_place_id,
+        latitude: payload.latitude,
+        longitude: payload.longitude,
+        accountHolder: payload.account_holder,
+        taxId: payload.tax_id,
+        iban: payload.iban,
+        bankName: payload.bank_name,
+        bankCountry: payload.bank_country,
+        serviceCategories: payload.service_categories,
+        description: payload.description,
+        openingHours: payload.opening_hours,
+        websiteUrl: payload.website_url,
+        instagramUrl: payload.instagram_url,
+        logoSourceUrl: payload.logo_source_url,
+        gallerySourceUrls: payload.gallery_source_urls,
+        consentAccepted: true,
+      }),
+    });
+
+    const result = await response.json().catch(() => ({}));
+
+    if (!response.ok || !result?.ok) {
+      throw new Error(
+        result?.message || 'No se pudo registrar la solicitud en Shopify Admin.'
+      );
+    }
+
+    return result;
+  };
+
   document.querySelectorAll('[data-provider-application-form]').forEach((form) => {
     const fieldsToValidate = Array.from(
       form.querySelectorAll(
@@ -495,70 +623,49 @@
     fieldsToValidate.forEach((field) => {
       field.addEventListener('blur', () => validateField(field));
       field.addEventListener('input', () => {
+        setSubmitError(form, '');
         clearFieldError(field);
         syncHiddenFields(form);
+        validateFormState(form, fieldsToValidate, consentCheckbox, categoryInputs);
       });
       field.addEventListener('change', () => {
+        setSubmitError(form, '');
         clearFieldError(field);
         syncHiddenFields(form);
+        validateFormState(form, fieldsToValidate, consentCheckbox, categoryInputs);
       });
     });
 
     consentCheckbox?.addEventListener('change', () => {
+      setSubmitError(form, '');
       consentCheckbox.closest('.provider-application__choice')?.classList.remove('provider-application__choice--invalid');
       consentCheckbox.removeAttribute('aria-invalid');
       syncHiddenFields(form);
+      validateFormState(form, fieldsToValidate, consentCheckbox, categoryInputs);
     });
 
     categoryInputs.forEach((input) => {
       input.addEventListener('change', () => {
+        setSubmitError(form, '');
         const categoryError = form.querySelector('[data-provider-category-error]');
         if (categoryInputs.some((checkbox) => checkbox.checked)) {
           categoryError?.classList.remove('is-visible');
         }
         syncHiddenFields(form);
+        validateFormState(form, fieldsToValidate, consentCheckbox, categoryInputs);
       });
     });
 
     initGoogleAddressAutocomplete(form);
     syncHiddenFields(form);
+    validateFormState(form, fieldsToValidate, consentCheckbox, categoryInputs);
 
     form.addEventListener('submit', (event) => {
-      let isValid = true;
-      syncHiddenFields(form);
-      const categories = Array.from(
-        form.querySelectorAll('input[name="provider_service_categories[]"]:checked')
-      ).map((input) => input.value);
-
-      fieldsToValidate.forEach((field) => {
-        if (!validateField(field)) {
-          isValid = false;
-        }
+      setSubmitError(form, '');
+      const payload = syncHiddenFields(form);
+      const isValid = validateFormState(form, fieldsToValidate, consentCheckbox, categoryInputs, {
+        showErrors: true,
       });
-
-      if (!validateRequiredCheckbox(consentCheckbox)) {
-        isValid = false;
-      }
-
-      const categoryError = form.querySelector('[data-provider-category-error]');
-      if (!categories.length) {
-        isValid = false;
-        if (categoryError) categoryError.classList.add('is-visible');
-      } else if (categoryError) {
-        categoryError.classList.remove('is-visible');
-      }
-
-      const displayName = form.querySelector('[name="provider_display_name"]').value.trim();
-      const legalName = form.querySelector('[name="provider_legal_name"]').value.trim();
-      const providerSlug = slugify(displayName || legalName);
-      const slugError = form.querySelector('[data-provider-slug-error]');
-
-      if (!providerSlug) {
-        isValid = false;
-        if (slugError) slugError.classList.add('is-visible');
-      } else if (slugError) {
-        slugError.classList.remove('is-visible');
-      }
 
       if (!isValid) {
         event.preventDefault();
@@ -570,7 +677,49 @@
         return;
       }
 
-      syncHiddenFields(form);
+      if (form.dataset.providerProxySubmitted === 'true') {
+        return;
+      }
+
+      const proxyUrl = form.dataset.providerAppProxyUrl?.trim();
+      if (!proxyUrl) {
+        syncHiddenFields(form);
+        return;
+      }
+
+      event.preventDefault();
+      const submitButton = form.querySelector('button[type="submit"]');
+      if (submitButton) {
+        submitButton.disabled = true;
+        submitButton.setAttribute('aria-disabled', 'true');
+      }
+
+      submitStructuredRequest(form, payload)
+        .then((result) => {
+          const hiddenSubmission = form.querySelector('[name="provider_submission_id"]');
+          const hiddenSlug = form.querySelector('[name="provider_slug"]');
+
+          if (hiddenSubmission && result?.submissionId) {
+            hiddenSubmission.value = result.submissionId;
+          }
+
+          if (hiddenSlug && result?.providerSlug) {
+            hiddenSlug.value = result.providerSlug;
+          }
+
+          syncHiddenFields(form);
+          form.dataset.providerProxySubmitted = 'true';
+          window.HTMLFormElement.prototype.submit.call(form);
+        })
+        .catch((error) => {
+          setSubmitError(
+            form,
+            error instanceof Error
+              ? error.message
+              : 'No se pudo guardar la solicitud en la consola del Admin.'
+          );
+          validateFormState(form, fieldsToValidate, consentCheckbox, categoryInputs);
+        });
     });
   });
 })();

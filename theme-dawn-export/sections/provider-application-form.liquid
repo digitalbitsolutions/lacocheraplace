@@ -37,7 +37,8 @@
       novalidate: 'novalidate',
       data-provider-application-form: '',
       data-google-maps-api-key: section.settings.google_maps_api_key,
-      data-google-maps-country-bias: section.settings.google_maps_country_bias
+      data-google-maps-country-bias: section.settings.google_maps_country_bias,
+      data-provider-app-proxy-url: section.settings.provider_application_proxy_path
     -%}
       {%- if form.posted_successfully? -%}
         <div class="form-status form-status-list form__message provider-application__status" tabindex="-1" autofocus>
@@ -237,8 +238,10 @@
         <textarea name="contact[body]" rows="1"></textarea>
       </div>
 
+      <p class="provider-application__error" data-provider-submit-error></p>
+
       <div class="provider-application__actions">
-        <button type="submit" class="button">{{ section.settings.submit_label }}</button>
+        <button type="submit" class="button" disabled>{{ section.settings.submit_label }}</button>
       </div>
     {%- endform -%}
   </div>
@@ -293,6 +296,12 @@
       "id": "submit_label",
       "default": "Enviar solicitud",
       "label": "Submit label"
+    },
+    {
+      "type": "text",
+      "id": "provider_application_proxy_path",
+      "default": "/apps/provider-applications/submit",
+      "label": "Provider application proxy path"
     },
     {
       "type": "text",
