@@ -8,6 +8,7 @@ Thumbs.db
 # Local archives and temp artifacts
 *.zip
 *.log
+.tmp-shopify-cli/
 
 # Local project workspaces and generated checks
 .live-check/

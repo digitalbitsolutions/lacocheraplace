@@ -88,6 +88,23 @@ Campos previstos:
 - `source_submission_id`
 
 ## Aprobacion manual
+### Consola ligera local
+- Existe una interfaz local ligera en [provider_approval_console.py](/d:/development/lacocheraplace.com/scripts/provider_approval_console.py)
+- Permite pegar el cuerpo del email, parsear campos, revisar datos, guardar borradores privados y decidir `aprobar` o `declinar`
+- Se ejecuta asi:
+
+```powershell
+& "C:\Users\Meeguel\AppData\Local\Programs\Python\Python314\python.exe" scripts/provider_approval_console.py
+```
+
+- Luego abrir en navegador:
+
+```text
+http://127.0.0.1:8765
+```
+
+- Los borradores privados se guardan en `private-data/provider-approvals/`
+
 ### Paso 1. Revisar la solicitud
 - Confirmar que los datos clave existen
 - Confirmar consentimiento y categorias
