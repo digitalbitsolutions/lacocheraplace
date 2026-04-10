@@ -1,6 +1,7 @@
 (() => {
   const defaultProviderAppProxyPath = '/apps/provider-applications/submit';
   let googleMapsScriptPromise;
+  let providerPublicConfigPromise;
   const googleMapsCallbackName = 'providerApplicationGoogleMapsLoaded';
 
   const urlFields = [
@@ -194,8 +195,56 @@
     return normalized.every((line) => isValidHttpUrl(line)) ? normalized.join('\n') : '';
   };
 
+  const getTrimmedString = (value) => (typeof value === 'string' ? value.trim() : '');
+
   const getProviderAppProxyUrl = (form) =>
-    form?.dataset.providerAppProxyUrl?.trim() || defaultProviderAppProxyPath;
+    getTrimmedString(form?.dataset.providerAppProxyUrl) || defaultProviderAppProxyPath;
+
+  const fetchProviderPublicConfig = async (form) => {
+    if (providerPublicConfigPromise) return providerPublicConfigPromise;
+
+    const proxyUrl = getProviderAppProxyUrl(form);
+    if (!proxyUrl) {
+      providerPublicConfigPromise = Promise.resolve({ googleMapsApiKey: '' });
+      return providerPublicConfigPromise;
+    }
+
+    providerPublicConfigPromise = fetch(proxyUrl, {
+      method: 'GET',
+      headers: {
+        Accept: 'application/json',
+      },
+    })
+      .then(async (response) => {
+        const payload = await response.json().catch(() => ({}));
+
+        if (!response.ok || payload?.ok === false) {
+          throw new Error(
+            payload?.message || 'No se pudo cargar la configuracion publica del formulario.'
+          );
+        }
+
+        return {
+          googleMapsApiKey:
+            getTrimmedString(payload?.config?.googleMapsBrowserApiKey) ||
+            getTrimmedString(payload?.googleMapsBrowserApiKey),
+        };
+      })
+      .catch((error) => {
+        console.warn('[provider-application-form] Public config unavailable.', error);
+        return { googleMapsApiKey: '' };
+      });
+
+    return providerPublicConfigPromise;
+  };
+
+  const resolveGoogleMapsApiKey = async (form) => {
+    const themeApiKey = getTrimmedString(form?.dataset.googleMapsApiKey);
+    if (themeApiKey) return themeApiKey;
+
+    const publicConfig = await fetchProviderPublicConfig(form);
+    return publicConfig.googleMapsApiKey || '';
+  };
 
   const loadGoogleMapsPlaces = (apiKey) => {
     if (!apiKey) return Promise.resolve(null);
@@ -293,7 +342,7 @@
   };
 
   const initGoogleAddressAutocomplete = async (form) => {
-    const apiKey = form.dataset.googleMapsApiKey?.trim();
+    const apiKey = await resolveGoogleMapsApiKey(form);
     if (!apiKey) return;
 
     const addressField = form.querySelector('[data-provider-address-line-1]');

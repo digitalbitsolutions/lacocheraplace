@@ -9,6 +9,7 @@ Implementar un alta de proveedores separada del registro de clientes, con revisi
 - La solicitud se sigue serializando en `contact[body]` con un bloque legible para email admin
 - Ademas, el formulario ya crea un registro estructurado `provider_application_request` mediante app proxy
 - El formulario puede capturar `google_place_id`, `latitude` y `longitude` cuando el usuario selecciona una sugerencia de Google Maps
+- La browser key publica para autocomplete ya no se guarda en el theme; la app proxy la entrega desde `GOOGLE_MAPS_BROWSER_API_KEY` cuando esta configurada
 - La consola del owner ya existe como custom app embebida en Shopify Admin: `Laco Prov Admin`
 - La definicion objetivo del perfil esta descrita en [provider_profile_metaobject_definition.json](/d:/development/lacocheraplace.com/sample-data/provider_profile_metaobject_definition.json)
 - El helper manual de aprobacion sigue disponible en [provider_approval_workflow.py](/d:/development/lacocheraplace.com/scripts/provider_approval_workflow.py) como soporte o migracion
@@ -178,6 +179,7 @@ http://127.0.0.1:8765
 Variables necesarias:
 - `SHOPIFY_STORE`
 - `SHOPIFY_ADMIN_TOKEN`
+- `GOOGLE_MAPS_BROWSER_API_KEY` opcional para autocomplete publico del formulario. Debe ser una browser key restringida por referrer
 - `GOOGLE_MAPS_API_KEY` solo si el JSON aprobado no trae `latitude` y `longitude`
 
 Dry run de definicion:

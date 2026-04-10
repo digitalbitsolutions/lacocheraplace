@@ -16,7 +16,6 @@
         "pending_note": "La solicitud no crea el proveedor automaticamente. Primero queda pendiente de revision, validacion y geocodificacion.",
         "success_message": "Solicitud recibida. La hemos registrado como pendiente de revision. Nuestro equipo revisara la informacion y te contactara para los siguientes pasos.",
         "submit_label": "Enviar solicitud de proveedor",
-        "google_maps_api_key": "AIzaSyAFeizgTcF5Tsz0eOM-TxjQehiCwvrvURo",
         "google_maps_country_bias": "es",
         "color_scheme": "scheme-1",
         "padding_top": 20,

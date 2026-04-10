@@ -11,10 +11,22 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
   try {
     await authenticate.public.appProxy(request);
 
-    return json({
-      ok: true,
-      message: "Usa POST para crear solicitudes de proveedores.",
-    });
+    return json(
+      {
+        ok: true,
+        message: "Configuracion publica del formulario cargada.",
+        config: {
+          // Expose only a dedicated browser key via the proxy.
+          googleMapsBrowserApiKey:
+            process.env.GOOGLE_MAPS_BROWSER_API_KEY || "",
+        },
+      },
+      {
+        headers: {
+          "Cache-Control": "no-store",
+        },
+      },
+    );
   } catch (error) {
     console.error("[provider-applications.submit][loader]", error);
     return json(
@@ -25,7 +37,12 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
             ? error.message
             : "Fallo autenticando la app proxy.",
       },
-      { status: 500 },
+      {
+        status: 500,
+        headers: {
+          "Cache-Control": "no-store",
+        },
+      },
     );
   }
 };
