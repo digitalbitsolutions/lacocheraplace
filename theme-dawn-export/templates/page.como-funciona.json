@@ -1,1 +1,84 @@
-{"sections":{"main":{"type":"main-page","disabled":true,"settings":{"padding_top":28,"padding_bottom":28}},"multicolumn_4hGMmU":{"type":"multicolumn","blocks":{"column_aqncGK":{"type":"column","settings":{"image":"shopify:\/\/shop_images\/old-rusty-cars-sit-under-trees-in-the-desert.jpg","title":"Columna","text":"<p>Vincula un texto con una imagen para atraer la atención hacia tu producto, colección o artículo de blog seleccionados. Agrega detalles sobre disponibilidad y estilo, o incluso ofrece una reseña.<\/p>","link_label":"","link":""}},"column_FF6d4t":{"type":"column","settings":{"image":"shopify:\/\/shop_images\/orange-sports-car-close-up.jpg","title":"Columna","text":"<p>Vincula un texto con una imagen para atraer la atención hacia tu producto, colección o artículo de blog seleccionados. Agrega detalles sobre disponibilidad y estilo, o incluso ofrece una reseña.<\/p>","link_label":"","link":""}},"column_kRydkq":{"type":"column","settings":{"image":"shopify:\/\/shop_images\/motorcycle-rides-up-narrow-cobblestone-street.jpg","title":"Columna","text":"<p>Vincula un texto con una imagen para atraer la atención hacia tu producto, colección o artículo de blog seleccionados. Agrega detalles sobre disponibilidad y estilo, o incluso ofrece una reseña.<\/p>","link_label":"","link":""}},"column_7nCNry":{"type":"column","settings":{"image":"shopify:\/\/shop_images\/classic-car-parked-under-the-trees.jpg","title":"Columna","text":"<p>Vincula un texto con una imagen para atraer la atención hacia tu producto, colección o artículo de blog seleccionados. Agrega detalles sobre disponibilidad y estilo, o incluso ofrece una reseña.<\/p>","link_label":"","link":""}}},"block_order":["column_aqncGK","column_FF6d4t","column_kRydkq","column_7nCNry"],"name":"t:sections.multicolumn.presets.name","settings":{"title":"Varias columnas","heading_size":"h1","image_width":"full","image_ratio":"adapt","button_label":"Etiqueta de botón","button_link":"","columns_desktop":4,"column_alignment":"left","background_style":"primary","color_scheme":"","columns_mobile":"1","swipe_on_mobile":false,"padding_top":36,"padding_bottom":36}}},"order":["main","multicolumn_4hGMmU"]}
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "multicolumn_4hGMmU": {
+      "type": "multicolumn",
+      "blocks": {
+        "step_1": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Gemini_Generated_Image_r65atgr65atgr65a.png",
+            "title": "1. Busca el servicio o taller ideal",
+            "text": "<p>Explora entre talleres y profesionales especializados en lavado de autos, detailing, PPF, polarizado, pintura y mas.</p><p>Filtra por ubicacion, tipo de servicio y valoraciones reales para elegir con confianza.</p><p>\ud83d\udc49 Encuentra el mejor servicio cerca de ti en segundos.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "step_2": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Gemini_Generated_Image_xexmmbxexmmbxexm.png",
+            "title": "\ud83d\uded2 2. Reserva o compra online",
+            "text": "<p>Selecciona el servicio o producto, elige fecha y realiza tu pago de forma segura desde la plataforma.</p><p>Sin llamadas, sin esperas.</p><p>\ud83d\udc49 Reserva tu servicio automotriz en minutos.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "step_3": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/itv-cita-previa-barcelona.jpg",
+            "title": "\ud83d\udce9 3. Recibe tu confirmacion inmediata",
+            "text": "<p>Te enviaremos un correo y/o mensaje con todos los detalles: servicio contratado, fecha, ubicacion y datos del proveedor.</p><p>\ud83d\udc49 Todo claro, organizado y listo para tu cita.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "step_4": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Gemini_Generated_Image_mu6yc9mu6yc9mu6y.png",
+            "title": "\u2b50 4. Vive la experiencia y valora el servicio",
+            "text": "<p>Acude a tu cita o recibe tu producto donde lo necesites.</p><p>Al finalizar, deja tu opinion y ayuda a otros usuarios a elegir mejor.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "step_1",
+        "step_2",
+        "step_3",
+        "step_4"
+      ],
+      "name": "t:sections.multicolumn.presets.name",
+      "settings": {
+        "title": "Como funciona La Cochera Place",
+        "heading_size": "h1",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "button_label": "",
+        "button_link": "",
+        "columns_desktop": 4,
+        "column_alignment": "left",
+        "background_style": "primary",
+        "color_scheme": "",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "main",
+    "multicolumn_4hGMmU"
+  ]
+}

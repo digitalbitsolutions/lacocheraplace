@@ -18,8 +18,12 @@
 {%- liquid
   assign columns_mobile_int = section.settings.columns_mobile | plus: 0
   assign show_mobile_slider = false
+  assign is_como_funciona_override = false
   if section.settings.swipe_on_mobile and section.blocks.size > columns_mobile_int
     assign show_mobile_slider = true
+  endif
+  if request.page_type == 'page' and page and page.handle == 'como-funciona'
+    assign is_como_funciona_override = true
   endif
 -%}
 
@@ -30,6 +34,101 @@
       data-cascade
     {% endif %}
   >
+    {%- if is_como_funciona_override -%}
+      <div class="title-wrapper-with-link title-wrapper--self-padded-mobile title-wrapper--no-top-margin multicolumn__title">
+        <h2 class="title inline-richtext h1">Como funciona La Cochera Place</h2>
+      </div>
+      <div class="slider-mobile-gutter">
+        <ul class="multicolumn-list contains-content-container grid grid--1-col-tablet-down grid--4-col-desktop" role="list">
+          <li class="multicolumn-list__item grid__item">
+            <div class="multicolumn-card content-container">
+              <div class="multicolumn-card__image-wrapper multicolumn-card__image-wrapper--full-width multicolumn-card-spacing">
+                <div class="media media--transparent media--adapt" style="padding-bottom: 54.54545454545454%;">
+                  <img
+                    src="{{ 'Gemini_Generated_Image_r65atgr65atgr65a.png' | file_img_url: 'master' }}"
+                    alt="Busca el servicio o taller ideal"
+                    loading="lazy"
+                    class="multicolumn-card__image"
+                  >
+                </div>
+              </div>
+              <div class="multicolumn-card__info">
+                <h3 class="inline-richtext">1. Busca el servicio o taller ideal</h3>
+                <div class="rte">
+                  <p>Explora entre talleres y profesionales especializados en lavado de autos, detailing, PPF, polarizado, pintura y mas.</p>
+                  <p>Filtra por ubicacion, tipo de servicio y valoraciones reales para elegir con confianza.</p>
+                  <p>Encuentra el mejor servicio cerca de ti en segundos.</p>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="multicolumn-list__item grid__item">
+            <div class="multicolumn-card content-container">
+              <div class="multicolumn-card__image-wrapper multicolumn-card__image-wrapper--full-width multicolumn-card-spacing">
+                <div class="media media--transparent media--adapt" style="padding-bottom: 54.54545454545454%;">
+                  <img
+                    src="{{ 'Gemini_Generated_Image_xexmmbxexmmbxexm.png' | file_img_url: 'master' }}"
+                    alt="Reserva o compra online"
+                    loading="lazy"
+                    class="multicolumn-card__image"
+                  >
+                </div>
+              </div>
+              <div class="multicolumn-card__info">
+                <h3 class="inline-richtext">2. Reserva o compra online</h3>
+                <div class="rte">
+                  <p>Selecciona el servicio o producto, elige fecha y realiza tu pago de forma segura desde la plataforma.</p>
+                  <p>Sin llamadas, sin esperas.</p>
+                  <p>Reserva tu servicio automotriz en minutos.</p>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="multicolumn-list__item grid__item">
+            <div class="multicolumn-card content-container">
+              <div class="multicolumn-card__image-wrapper multicolumn-card__image-wrapper--full-width multicolumn-card-spacing">
+                <div class="media media--transparent media--adapt" style="padding-bottom: 54.54545454545454%;">
+                  <img
+                    src="{{ 'itv-cita-previa-barcelona.jpg' | file_img_url: 'master' }}"
+                    alt="Recibe tu confirmacion inmediata"
+                    loading="lazy"
+                    class="multicolumn-card__image"
+                  >
+                </div>
+              </div>
+              <div class="multicolumn-card__info">
+                <h3 class="inline-richtext">3. Recibe tu confirmacion inmediata</h3>
+                <div class="rte">
+                  <p>Te enviaremos un correo y/o mensaje con todos los detalles: servicio contratado, fecha, ubicacion y datos del proveedor.</p>
+                  <p>Todo claro, organizado y listo para tu cita.</p>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="multicolumn-list__item grid__item">
+            <div class="multicolumn-card content-container">
+              <div class="multicolumn-card__image-wrapper multicolumn-card__image-wrapper--full-width multicolumn-card-spacing">
+                <div class="media media--transparent media--adapt" style="padding-bottom: 54.54545454545454%;">
+                  <img
+                    src="{{ 'Gemini_Generated_Image_mu6yc9mu6yc9mu6y.png' | file_img_url: 'master' }}"
+                    alt="Vive la experiencia y valora el servicio"
+                    loading="lazy"
+                    class="multicolumn-card__image"
+                  >
+                </div>
+              </div>
+              <div class="multicolumn-card__info">
+                <h3 class="inline-richtext">4. Vive la experiencia y valora el servicio</h3>
+                <div class="rte">
+                  <p>Acude a tu cita o recibe tu producto donde lo necesites.</p>
+                  <p>Al finalizar, deja tu opinion y ayuda a otros usuarios a elegir mejor.</p>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    {%- else -%}
     {%- unless section.settings.title == blank -%}
       <div class="title-wrapper-with-link title-wrapper--self-padded-mobile title-wrapper--no-top-margin multicolumn__title">
         <h2 class="title inline-richtext {{ section.settings.heading_size }}">
@@ -202,6 +301,7 @@
         </a>
       {%- endif -%}
     </div>
+    {%- endif -%}
   </div>
 </div>
 
