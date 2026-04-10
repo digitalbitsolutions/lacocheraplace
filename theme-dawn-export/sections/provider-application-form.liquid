@@ -223,9 +223,19 @@
 
       <div class="provider-application__group">
         <h3 class="provider-application__group-title">Revision y consentimiento</h3>
-        <label class="provider-application__choice" for="ProviderConsent-{{ section.id }}">
-          <input type="checkbox" id="ProviderConsent-{{ section.id }}" name="provider_consent" value="accepted" required>
-          <span>Acepto que la solicitud quede en revision manual antes de aprobarse y que mis datos se usen para evaluar el alta del proveedor.</span>
+        <label class="provider-application__choice provider-application__choice--consent" for="ProviderConsent-{{ section.id }}">
+          <input
+            class="provider-application__checkbox-input visually-hidden"
+            type="checkbox"
+            id="ProviderConsent-{{ section.id }}"
+            name="provider_consent"
+            value="accepted"
+            required
+          >
+          <span class="provider-application__checkbox-ui" aria-hidden="true"></span>
+          <span class="provider-application__choice-content">
+            <span class="provider-application__choice-text">Acepto que la solicitud quede en revision manual antes de aprobarse y que mis datos se usen para evaluar el alta del proveedor.</span>
+          </span>
         </label>
       </div>
 
