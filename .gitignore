@@ -1,5 +1,9 @@
 # Workspace assets not meant for version control
 assets/
+theme-dawn-export/assets/*
+!theme-dawn-export/assets/home-cambio-neumaticos.webp
+!theme-dawn-export/assets/home-ppf.webp
+!theme-dawn-export/assets/home-tintado-lunas.webp
 
 # OS / editor noise
 .DS_Store

@@ -157,7 +157,19 @@
         -%}
         {%- for block in section.blocks -%}
           {%- assign empty_column = '' -%}
+          {%- assign custom_home_image_asset = '' -%}
+          {%- if section.id == 'multicolumn_aHED4U' -%}
+            {%- case block.id -%}
+              {%- when 'column_neumaticos' -%}
+                {%- assign custom_home_image_asset = 'home-cambio-neumaticos.webp' -%}
+              {%- when 'column_ppf' -%}
+                {%- assign custom_home_image_asset = 'home-ppf.webp' -%}
+              {%- when 'column_tintado' -%}
+                {%- assign custom_home_image_asset = 'home-tintado-lunas.webp' -%}
+            {%- endcase -%}
+          {%- endif -%}
           {%- if block.settings.image == blank
+            and custom_home_image_asset == blank
             and block.settings.title == blank
             and block.settings.text == blank
             and block.settings.link_label == blank
@@ -179,7 +191,7 @@
             {% else %}
               <div class="multicolumn-card content-container">
             {% endif %}
-              {%- if block.settings.image != blank -%}
+              {%- if block.settings.image != blank or custom_home_image_asset != blank -%}
                 {% if section.settings.image_ratio == 'adapt' or section.settings.image_ratio == 'circle' %}
                   {% assign spaced_image = true %}
                 {% endif %}
@@ -210,14 +222,25 @@
                       (min-width: 750px) calc((100vw - {{ grid_space_tablet }}) * {{ image_width }} / {{ number_of_columns_mobile }}),
                       calc((100vw - {{ grid_space_mobile }}) * {{ image_width }} / {{ number_of_columns_mobile }})
                     {% endcapture %}
-                    {{
-                      block.settings.image
-                      | image_url: width: 3200
-                      | image_tag:
-                        widths: '50, 75, 100, 150, 200, 300, 400, 500, 750, 1000, 1250, 1500, 1750, 2000, 2250, 2500, 2750, 3000, 3200',
-                        sizes: sizes,
-                        class: 'multicolumn-card__image'
-                    }}
+                    {%- if custom_home_image_asset != blank -%}
+                      {{
+                        custom_home_image_asset
+                        | asset_url
+                        | image_tag:
+                          class: 'multicolumn-card__image',
+                          loading: 'lazy',
+                          alt: block.settings.title
+                      }}
+                    {%- else -%}
+                      {{
+                        block.settings.image
+                        | image_url: width: 3200
+                        | image_tag:
+                          widths: '50, 75, 100, 150, 200, 300, 400, 500, 750, 1000, 1250, 1500, 1750, 2000, 2250, 2500, 2750, 3000, 3200',
+                          sizes: sizes,
+                          class: 'multicolumn-card__image'
+                      }}
+                    {%- endif -%}
                   </div>
                 </div>
               {%- endif -%}
