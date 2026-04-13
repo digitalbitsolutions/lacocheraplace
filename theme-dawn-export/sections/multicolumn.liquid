@@ -157,17 +157,7 @@
         -%}
         {%- for block in section.blocks -%}
           {%- assign empty_column = '' -%}
-          {%- assign custom_home_image_asset = '' -%}
-          {%- if section.id == 'multicolumn_aHED4U' -%}
-            {%- case block.id -%}
-              {%- when 'column_neumaticos' -%}
-                {%- assign custom_home_image_asset = 'home-cambio-neumaticos.webp' -%}
-              {%- when 'column_ppf' -%}
-                {%- assign custom_home_image_asset = 'home-ppf.webp' -%}
-              {%- when 'column_tintado' -%}
-                {%- assign custom_home_image_asset = 'home-tintado-lunas.webp' -%}
-            {%- endcase -%}
-          {%- endif -%}
+          {%- assign custom_home_image_asset = block.settings.custom_asset_image | strip -%}
           {%- if block.settings.image == blank
             and custom_home_image_asset == blank
             and block.settings.title == blank
@@ -223,14 +213,12 @@
                       calc((100vw - {{ grid_space_mobile }}) * {{ image_width }} / {{ number_of_columns_mobile }})
                     {% endcapture %}
                     {%- if custom_home_image_asset != blank -%}
-                      {{
-                        custom_home_image_asset
-                        | asset_url
-                        | image_tag:
-                          class: 'multicolumn-card__image',
-                          loading: 'lazy',
-                          alt: block.settings.title
-                      }}
+                      <img
+                        src="{{ custom_home_image_asset | asset_url }}"
+                        alt="{{ block.settings.title | escape }}"
+                        loading="lazy"
+                        class="multicolumn-card__image"
+                      >
                     {%- else -%}
                       {{
                         block.settings.image
@@ -546,6 +534,12 @@
           "type": "image_picker",
           "id": "image",
           "label": "t:sections.multicolumn.blocks.column.settings.image.label"
+        },
+        {
+          "type": "text",
+          "id": "custom_asset_image",
+          "label": "Custom asset image filename",
+          "info": "Optional theme asset filename in /assets, e.g. home-cambio-neumaticos.webp"
         },
         {
           "type": "inline_richtext",

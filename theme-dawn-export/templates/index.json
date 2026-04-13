@@ -66,7 +66,8 @@
         "column_neumaticos": {
           "type": "column",
           "settings": {
-            "image": "shopify://shop_images/itv-cita-previa-barcelona.jpg",
+            "image": "shopify://shop_images/cambio-neumaticos.webp",
+            "custom_asset_image": "cambio-neumaticos.webp",
             "title": "Cambio de neumaticos y llantas",
             "text": "<p>Sustitucion y mantenimiento de neumaticos para una conduccion segura. Servicios de alineacion, balanceo y reparacion de pinchazos.<\/p>",
             "link_label": "Explorar servicio",
@@ -76,7 +77,8 @@
         "column_ppf": {
           "type": "column",
           "settings": {
-            "image": "shopify://shop_images/Gemini_Generated_Image_v23m88v23m88v23m.png",
+            "image": "shopify://shop_images/PPF.webp",
+            "custom_asset_image": "home-ppf.webp",
             "title": "PPF y vinilo para coches (Wrap)",
             "text": "<p>Proteccion y personalizacion de la carroceria con laminas PPF o vinilo. Evita danos en la pintura o cambia el estilo de tu coche.<\/p>",
             "link_label": "Explorar servicio",
@@ -86,7 +88,8 @@
         "column_tintado": {
           "type": "column",
           "settings": {
-            "image": "shopify://shop_images/Gemini_Generated_Image_v23m88v23m88v23m.png",
+            "image": "shopify://shop_images/tintado-de-lunas.webp",
+            "custom_asset_image": "home-tintado-lunas.webp",
             "title": "Tintado de lunas y parabrisas",
             "text": "<p>Tintado de cristales para mayor privacidad, confort y proteccion solar. Incluye reparacion y sustitucion de lunas o parabrisas.<\/p>",
             "link_label": "Explorar servicio",
