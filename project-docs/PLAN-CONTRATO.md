@@ -3,8 +3,9 @@
 ## Proyecto
 - Nombre: `La Cochera Place`
 - Base tecnica: `theme-dawn-export`
+- App admin base: `shopify-provider-admin`
 - Repositorio local: `d:\\development\\lacocheraplace.com`
-- Rama activa al inicio de este acuerdo: `feature/homepage-round-1`
+- Rama activa: `main`
 
 ## Naturaleza del trabajo
 Este documento define el marco de trabajo para evolucionar el theme actual de Shopify hacia una plataforma con percepcion de marketplace de servicios automotrices.
@@ -27,6 +28,7 @@ Transformar la experiencia actual para que deje de parecer una tienda Shopify tr
 - Reorganizacion de homepage
 - Preparacion para preview segura
 - Preparacion documental para MCP, skills y versionado
+- Implementacion progresiva de compra guiada para servicios opt-in
 
 ### No incluido por ahora
 - Publicacion directa a produccion
@@ -42,6 +44,7 @@ Transformar la experiencia actual para que deje de parecer una tienda Shopify tr
 - No se elimina codigo sin justificacion
 - Se reutiliza Dawn siempre que ayude a reducir riesgo
 - Ningun cambio se considera final sin validacion
+- Las iniciativas nuevas deben tener rollout gradual y rollback explicito
 
 ## Fases del plan
 
@@ -58,8 +61,39 @@ Transformar la experiencia actual para que deje de parecer una tienda Shopify tr
 
 ### Fase 3. Ficha de servicio
 - Transformar `product` en experiencia de servicio
-- Reducir señales de carrito clasico
+- Reducir senales de carrito clasico
 - Introducir datos utiles de servicio
+
+#### Subfase 3.A Validacion de vehiculo, compatibilidad y precio por familia+talla
+- Alcance v1 en `Espana`
+- Taxonomia inicial: `moto`, `coche`, `SUV`, `furgon` con tallas `S/M/L`
+- Precio final siempre por variante nativa Shopify
+- Opt-in por metafield de producto `service.purchase_flow`
+- Modos minimos: `consultative` y `vehicle_precheck_checkout`
+- Compatibilidad por existencia de variante; ausencia = no compatible
+
+#### Subfase 3.B Backend y persistencia operativa
+- Extender `schema.prisma` mas alla de `Session`
+- Incluir entidades equivalentes a `customer_contact`, `vehicle`, `vehicle_lookup_log`, `service_precheck` y `order_vehicle_link`
+- Crear endpoint app proxy `POST /apps/service-precheck`
+- Encapsular proveedor externo bajo adaptador `lookupByPlate`
+- Persistir PII, historial y trazabilidad en DB propia de app (no metaobjects)
+
+#### Subfase 3.C UI de compra guiada en ficha
+- Sustituir bloque consultivo en `main-product.liquid` solo cuando `service.purchase_flow = vehicle_precheck_checkout`
+- Capturar `nombre`, `email`, `telefono` y `matricula`
+- Validar matricula y mostrar resumen de vehiculo verificado
+- Mantener `Anadir al carrito` deshabilitado hasta validacion correcta
+- Seleccionar variante compatible automaticamente y mostrar precio final
+- Enviar propiedades `Matricula`, `Vehiculo`, `Familia`, `Talla` y `_service_precheck_id`
+- Si no hay verificacion o no hay compatibilidad, bloquear compra y mostrar fallback WhatsApp/contacto
+
+#### Subfase 3.D Trazabilidad de pedido y activacion progresiva
+- Implementar webhook `orders/create`
+- Vincular orden Shopify con `_service_precheck_id`
+- Dejar trazabilidad pedido-cliente-vehiculo-servicio
+- Activar primero en subconjunto pequeno de servicios con pricing por tamano
+- Migrar de `sqlite` local a `Postgres` alojado antes de produccion
 
 ### Fase 4. Talleres / proveedores
 - Definir representacion visible de talleres
@@ -79,6 +113,7 @@ Cada iteracion debe dejar:
 - explicacion breve del impacto
 - commit independiente
 - opcion clara de rollback
+- evidencia de prueba del lote
 
 ## Criterio de aprobacion
 Una iteracion se considera aprobada cuando:
@@ -87,12 +122,14 @@ Una iteracion se considera aprobada cuando:
 - el resultado visual o funcional es entendible
 - existe commit separado
 - el propietario acepta seguir con la siguiente fase
+- existe prueba minima del flujo afectado
 
 ## Regla de rollback
 Si un cambio no convence o introduce riesgo:
 - se revierte solo el lote afectado
 - no se mezcla rollback con nuevas funcionalidades
 - se vuelve al ultimo commit estable aprobado
+- en servicios opt-in se puede desactivar el flujo volviendo `service.purchase_flow` a `consultative`
 
 ## Control de versiones
 - `main` conserva el baseline estable
@@ -117,12 +154,16 @@ Hasta ese momento, el trabajo principal sigue siendo local.
 - Homepage round 2 completada
 - Homepage round 3 completada
 - Preview de tema borrador creada en Shopify
-- Pendiente: validacion visual y definicion de si seguimos con homepage o ficha de servicio
+- Mejoras recientes en flujo de proveedores y contenidos informativos
+- Siguiente foco: ejecutar Subfase 3.A-3.D por lotes verificables
 
 ## Siguiente paso recomendado
-Antes de abrir una nueva linea de trabajo, revisar la preview del tema borrador y decidir una de estas dos rutas:
-- continuar puliendo homepage
-- pasar a ficha de servicio
+Abrir la iniciativa de compra guiada por matricula en este orden:
+- lote 1: contrato de datos y migraciones (`schema.prisma`)
+- lote 2: endpoint `POST /apps/service-precheck`
+- lote 3: opt-in de catalogo y variantes `familia + talla`
+- lote 4: bloque de intake en `main-product.liquid`
+- lote 5: webhook `orders/create` y trazabilidad end-to-end
 
 ## Aceptacion operativa
 Mientras no se indique lo contrario, este proyecto se ejecuta bajo este acuerdo:
