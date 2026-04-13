@@ -32,3 +32,147 @@ model Session {
   refreshToken        String?
   refreshTokenExpires DateTime?
 }
+
+enum VehicleFamily {
+  MOTO
+  COCHE
+  SUV
+  FURGON
+}
+
+enum VehicleSize {
+  S
+  M
+  L
+}
+
+enum LookupStatus {
+  SUCCESS
+  NOT_FOUND
+  ERROR
+}
+
+enum ServicePrecheckStatus {
+  OK
+  INCOMPATIBLE
+  UNVERIFIED
+}
+
+model CustomerContact {
+  id                 String             @id @default(cuid())
+  shop               String
+  fullName           String
+  email              String
+  phone              String?
+  shopifyCustomerGid String?
+  createdAt          DateTime           @default(now())
+  updatedAt          DateTime           @updatedAt
+  vehicles           Vehicle[]
+  servicePrechecks   ServicePrecheck[]
+  orderVehicleLinks  OrderVehicleLink[]
+
+  @@index([shop, email])
+}
+
+model Vehicle {
+  id                    String             @id @default(cuid())
+  shop                  String
+  customerContactId     String
+  plateRaw              String
+  plateNormalized       String
+  countryCode           String             @default("ES")
+  vin                   String?
+  make                  String?
+  model                 String?
+  trim                  String?
+  fuelType              String?
+  engine                String?
+  firstRegistrationDate DateTime?
+  year                  Int?
+  family                VehicleFamily?
+  size                  VehicleSize?
+  sourceSnapshot        String?
+  createdAt             DateTime           @default(now())
+  updatedAt             DateTime           @updatedAt
+  customerContact       CustomerContact    @relation(fields: [customerContactId], references: [id], onDelete: Cascade)
+  lookupLogs            VehicleLookupLog[]
+  servicePrechecks      ServicePrecheck[]
+  orderVehicleLinks     OrderVehicleLink[]
+
+  @@unique([shop, plateNormalized])
+  @@index([shop, customerContactId])
+}
+
+model VehicleLookupLog {
+  id              String           @id @default(cuid())
+  shop            String
+  plateRaw        String
+  plateNormalized String
+  countryCode     String           @default("ES")
+  provider        String
+  requestPayload  String?
+  responsePayload String?
+  status          LookupStatus
+  errorCode       String?
+  errorMessage    String?
+  resolvedFamily  VehicleFamily?
+  resolvedSize    VehicleSize?
+  resolvedAt      DateTime?
+  createdAt       DateTime         @default(now())
+  vehicleId       String?
+  vehicle         Vehicle?         @relation(fields: [vehicleId], references: [id], onDelete: SetNull)
+  servicePrecheck ServicePrecheck?
+
+  @@index([shop, plateNormalized, createdAt])
+}
+
+model ServicePrecheck {
+  id                     String                @id @default(cuid())
+  shop                   String
+  productGid             String
+  productHandle          String?
+  purchaseFlow           String?
+  customerContactId      String
+  vehicleId              String?
+  lookupLogId            String?               @unique
+  plateNormalized        String
+  family                 VehicleFamily?
+  size                   VehicleSize?
+  status                 ServicePrecheckStatus @default(UNVERIFIED)
+  isCompatible           Boolean               @default(false)
+  compatibilityReason    String?
+  compatibleVariantGid   String?
+  compatibleVariantTitle String?
+  requestedAt            DateTime              @default(now())
+  verifiedAt             DateTime?
+  expiresAt              DateTime?
+  createdAt              DateTime              @default(now())
+  updatedAt              DateTime              @updatedAt
+  customerContact        CustomerContact       @relation(fields: [customerContactId], references: [id], onDelete: Restrict)
+  vehicle                Vehicle?              @relation(fields: [vehicleId], references: [id], onDelete: SetNull)
+  lookupLog              VehicleLookupLog?     @relation(fields: [lookupLogId], references: [id], onDelete: SetNull)
+  orderVehicleLinks      OrderVehicleLink[]
+
+  @@index([shop, productGid, status])
+  @@index([shop, requestedAt])
+}
+
+model OrderVehicleLink {
+  id                 String           @id @default(cuid())
+  shop               String
+  shopifyOrderGid    String
+  shopifyOrderName   String?
+  shopifyLineItemGid String?
+  servicePrecheckId  String
+  customerContactId  String?
+  vehicleId          String?
+  linkedAt           DateTime         @default(now())
+  createdAt          DateTime         @default(now())
+  updatedAt          DateTime         @updatedAt
+  servicePrecheck    ServicePrecheck  @relation(fields: [servicePrecheckId], references: [id], onDelete: Cascade)
+  customerContact    CustomerContact? @relation(fields: [customerContactId], references: [id], onDelete: SetNull)
+  vehicle            Vehicle?         @relation(fields: [vehicleId], references: [id], onDelete: SetNull)
+
+  @@unique([shop, shopifyOrderGid, servicePrecheckId])
+  @@index([shop, linkedAt])
+}
