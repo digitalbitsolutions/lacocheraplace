@@ -1,4 +1,4 @@
-{{ 'section-image-banner.css' | asset_url | stylesheet_tag }}
+﻿{{ 'section-image-banner.css' | asset_url | stylesheet_tag }}
 
 {%- if section.settings.image_height == 'adapt' and section.settings.image != blank -%}
   {%- style -%}
@@ -33,9 +33,17 @@
   assign full_width = '100vw'
   assign widths = '375, 550, 750, 1100, 1500, 1780, 2000, 3000, 3840'
   assign use_home_hero_video = false
+  assign show_home_service_search = false
   assign home_hero_video_asset = 'video-home-hero.mp4'
+  assign home_hero_video_url = ''
+  if section.settings.home_hero_video != blank
+    assign home_hero_video_url = section.settings.home_hero_video.sources[0].url
+  endif
   if request.page_type == 'index' and section.index == 1
-    assign use_home_hero_video = true
+    if section.settings.enable_home_hero_video
+      assign use_home_hero_video = true
+    endif
+    assign show_home_service_search = true
   endif
 
   if section.settings.image_behavior == 'ambient'
@@ -70,11 +78,12 @@
         playsinline
         preload="auto"
         disablepictureinpicture
-        {% if section.settings.image != blank %}
-          poster="{{ section.settings.image | image_url: width: 1920 }}"
-        {% endif %}
       >
-        <source src="{{ home_hero_video_asset | asset_url }}" type="video/mp4">
+        {%- if home_hero_video_url != blank -%}
+          <source src="{{ home_hero_video_url }}" type="video/mp4">
+        {%- else -%}
+          <source src="{{ home_hero_video_asset | asset_url }}" type="video/mp4">
+        {%- endif -%}
       </video>
     </div>
   {%- elsif section.settings.image != blank -%}
@@ -184,9 +193,142 @@
             </div>
         {%- endcase -%}
       {%- endfor -%}
+
+      {%- if show_home_service_search -%}
+        <div class="home-hero-service-search" data-static-search>
+          <button type="button" class="home-hero-service-search__button" id="HeroNearbyBtn-{{ section.id }}">
+            Encuentra servicios cerca a ti
+          </button>
+          <div class="home-hero-nearby" id="HeroNearbyPanel-{{ section.id }}" hidden>
+            <p class="home-hero-nearby__status" id="HeroNearbyStatus-{{ section.id }}">
+              Pulsa el boton para ver proveedores cercanos.
+            </p>
+            <ul class="home-hero-nearby__list" id="HeroNearbyList-{{ section.id }}"></ul>
+          </div>
+        </div>
+      {%- endif -%}
     </div>
   </div>
 </div>
+
+{%- if show_home_service_search -%}
+  {%- capture nearby_providers_json -%}
+    [
+      {%- assign has_provider = false -%}
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'nearby_provider' and block.settings.provider_name != blank and block.settings.latitude != blank and block.settings.longitude != blank -%}
+          {%- if has_provider -%},{%- endif -%}
+          {
+            "name": {{ block.settings.provider_name | json }},
+            "lat": {{ block.settings.latitude | plus: 0 | json }},
+            "lon": {{ block.settings.longitude | plus: 0 | json }},
+            "url": {{ block.settings.provider_url | json }}
+          }
+          {%- assign has_provider = true -%}
+        {%- endif -%}
+      {%- endfor -%}
+    ]
+  {%- endcapture -%}
+  <script>
+    (() => {
+      const button = document.getElementById('HeroNearbyBtn-{{ section.id }}');
+      const panel = document.getElementById('HeroNearbyPanel-{{ section.id }}');
+      const status = document.getElementById('HeroNearbyStatus-{{ section.id }}');
+      const list = document.getElementById('HeroNearbyList-{{ section.id }}');
+      const providers = {{ nearby_providers_json | strip_newlines }};
+      const RADIUS_METERS = 500;
+
+      if (!button || !panel || !status || !list) return;
+
+      const toRad = (deg) => (deg * Math.PI) / 180;
+      const distanceMeters = (aLat, aLon, bLat, bLon) => {
+        const earth = 6371000;
+        const dLat = toRad(bLat - aLat);
+        const dLon = toRad(bLon - aLon);
+        const lat1 = toRad(aLat);
+        const lat2 = toRad(bLat);
+        const h =
+          Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+          Math.cos(lat1) * Math.cos(lat2) * Math.sin(dLon / 2) * Math.sin(dLon / 2);
+        return 2 * earth * Math.asin(Math.sqrt(h));
+      };
+
+      const renderProviders = (items) => {
+        list.innerHTML = '';
+        items.forEach((item) => {
+          const li = document.createElement('li');
+          li.className = 'home-hero-nearby__item';
+          const label = `${item.name} - ${Math.round(item.distance)} m`;
+          if (item.url) {
+            const a = document.createElement('a');
+            a.className = 'home-hero-nearby__link';
+            a.href = item.url;
+            a.textContent = label;
+            li.appendChild(a);
+          } else {
+            li.textContent = label;
+          }
+          list.appendChild(li);
+        });
+      };
+
+      button.addEventListener('click', () => {
+        panel.hidden = false;
+
+        if (!providers.length) {
+          status.textContent =
+            'Aun no hay proveedores configurados en el editor para esta busqueda.';
+          return;
+        }
+
+        if (!navigator.geolocation) {
+          status.textContent =
+            'Tu navegador no permite geolocalizacion. Activa ubicacion para ver proveedores cercanos.';
+          return;
+        }
+
+        status.textContent = 'Buscando proveedores cercanos...';
+        list.innerHTML = '';
+
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            const { latitude, longitude } = position.coords;
+            const matches = providers
+              .map((provider) => ({
+                ...provider,
+                distance: distanceMeters(
+                  latitude,
+                  longitude,
+                  Number(provider.lat),
+                  Number(provider.lon),
+                ),
+              }))
+              .filter((provider) => provider.distance <= RADIUS_METERS)
+              .sort((a, b) => a.distance - b.distance);
+
+            if (!matches.length) {
+              status.textContent =
+                'No encontramos proveedores en un radio de 500 m desde tu ubicacion.';
+              return;
+            }
+
+            status.textContent = `Proveedores encontrados en un radio de ${RADIUS_METERS} m:`;
+            renderProviders(matches);
+          },
+          () => {
+            status.textContent =
+              'No pudimos obtener tu ubicacion. Revisa permisos del navegador e intentalo de nuevo.';
+          },
+          {
+            enableHighAccuracy: true,
+            timeout: 10000,
+            maximumAge: 60000,
+          },
+        );
+      });
+    })();
+  </script>
+{%- endif -%}
 
 {%- if use_home_hero_video -%}
   {%- style -%}
@@ -195,6 +337,96 @@
       height: 100%;
       object-fit: cover;
       display: block;
+    }
+  {%- endstyle -%}
+{%- endif -%}
+
+{%- if show_home_service_search -%}
+  {%- style -%}
+    #Banner-{{ section.id }} .home-hero-service-search {
+      margin-top: 3.2rem;
+      width: min(72rem, 100%);
+      margin-inline: auto;
+      text-align: center;
+    }
+
+    #Banner-{{ section.id }} .home-hero-service-search__button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: min(52rem, 100%);
+      margin-inline: auto;
+      min-height: 6.2rem;
+      border-radius: 999px;
+      border: 0.2rem solid rgba(255, 255, 255, 0.75);
+      padding: 1.6rem 2.2rem;
+      font-size: 2.1rem;
+      font-weight: 700;
+      line-height: 1.3;
+      color: #ffffff;
+      background: linear-gradient(135deg, #0f4cbd 0%, #173a85 100%);
+      box-shadow: 0 1rem 2.4rem rgba(0, 0, 0, 0.28);
+      cursor: pointer;
+      text-shadow: 0 0.1rem 0.2rem rgba(0, 0, 0, 0.2);
+    }
+
+    #Banner-{{ section.id }} .home-hero-service-search__button:hover {
+      filter: brightness(1.06);
+    }
+
+    #Banner-{{ section.id }} .home-hero-nearby {
+      margin-top: 1.4rem;
+      margin-inline: auto;
+      width: min(62rem, 100%);
+      background: rgba(0, 0, 0, 0.55);
+      border: 0.1rem solid rgba(255, 255, 255, 0.35);
+      border-radius: 1.2rem;
+      padding: 1.2rem 1.4rem;
+      text-align: left;
+      backdrop-filter: blur(2px);
+    }
+
+    #Banner-{{ section.id }} .home-hero-nearby__status {
+      margin: 0;
+      color: #ffffff;
+      font-size: 1.5rem;
+      line-height: 1.4;
+    }
+
+    #Banner-{{ section.id }} .home-hero-nearby__list {
+      margin: 0.8rem 0 0;
+      padding-left: 1.8rem;
+      color: #ffffff;
+      font-size: 1.45rem;
+    }
+
+    #Banner-{{ section.id }} .home-hero-nearby__item + .home-hero-nearby__item {
+      margin-top: 0.4rem;
+    }
+
+    #Banner-{{ section.id }} .home-hero-nearby__link {
+      color: #ffffff;
+      text-decoration: underline;
+      text-underline-offset: 0.2rem;
+    }
+
+    @media screen and (max-width: 749px) {
+      #Banner-{{ section.id }} .home-hero-service-search {
+        margin-top: 2.4rem;
+      }
+
+      #Banner-{{ section.id }} .home-hero-service-search__button {
+        min-height: 5.4rem;
+        font-size: 1.8rem;
+      }
+
+      #Banner-{{ section.id }} .home-hero-nearby__status {
+        font-size: 1.35rem;
+      }
+
+      #Banner-{{ section.id }} .home-hero-nearby__list {
+        font-size: 1.3rem;
+      }
     }
   {%- endstyle -%}
 {%- endif -%}
@@ -217,6 +449,21 @@
       "type": "image_picker",
       "id": "image_2",
       "label": "t:sections.image-banner.settings.image_2.label"
+    },
+    {
+      "type": "header",
+      "content": "Video en home"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_home_hero_video",
+      "default": true,
+      "label": "Activar video en el hero de home"
+    },
+    {
+      "type": "video",
+      "id": "home_hero_video",
+      "label": "Video del hero (subido a Shopify Files)"
     },
     {
       "type": "range",
@@ -518,6 +765,32 @@
           "label": "t:sections.image-banner.blocks.buttons.settings.button_style_secondary_2.label"
         }
       ]
+    },
+    {
+      "type": "nearby_provider",
+      "name": "Proveedor cercano (hero)",
+      "settings": [
+        {
+          "type": "text",
+          "id": "provider_name",
+          "label": "Nombre del proveedor"
+        },
+        {
+          "type": "text",
+          "id": "latitude",
+          "label": "Latitud (ej. 41.3874)"
+        },
+        {
+          "type": "text",
+          "id": "longitude",
+          "label": "Longitud (ej. 2.1686)"
+        },
+        {
+          "type": "url",
+          "id": "provider_url",
+          "label": "Enlace del proveedor (opcional)"
+        }
+      ]
     }
   ],
   "presets": [
@@ -538,3 +811,4 @@
   ]
 }
 {% endschema %}
+

@@ -20,11 +20,41 @@
             "button_link_2": "",
             "button_style_secondary_2": false
           }
+        },
+        "nearby_provider_1": {
+          "type": "nearby_provider",
+          "settings": {
+            "provider_name": "Detailing Padilla 318 - Carrer de Padilla 318, 08025",
+            "latitude": "41.4079",
+            "longitude": "2.1747",
+            "provider_url": ""
+          }
+        },
+        "nearby_provider_2": {
+          "type": "nearby_provider",
+          "settings": {
+            "provider_name": "Lavado Sagrada Familia - Carrer de Lepant 330, 08025",
+            "latitude": "41.4068",
+            "longitude": "2.1728",
+            "provider_url": ""
+          }
+        },
+        "nearby_provider_3": {
+          "type": "nearby_provider",
+          "settings": {
+            "provider_name": "Neumaticos Dos de Maig - Carrer Dos de Maig 278, 08025",
+            "latitude": "41.4088",
+            "longitude": "2.1764",
+            "provider_url": ""
+          }
         }
       },
       "block_order": [
         "heading",
-        "button"
+        "button",
+        "nearby_provider_1",
+        "nearby_provider_2",
+        "nearby_provider_3"
       ],
       "settings": {
         "image": "shopify://shop_images/coche.jpg",
