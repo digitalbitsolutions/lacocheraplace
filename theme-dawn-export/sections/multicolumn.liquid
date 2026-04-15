@@ -13,6 +13,63 @@
       padding-bottom: {{ section.settings.padding_bottom }}px;
     }
   }
+
+  {%- if section.settings.enable_stitch_cards -%}
+    .multicolumn--stitch-{{ section.id }} .multicolumn-list {
+      row-gap: 1.8rem;
+      column-gap: 1.6rem;
+    }
+
+    .multicolumn--stitch-{{ section.id }} .multicolumn-card {
+      border: 0.1rem solid rgba(var(--color-foreground), 0.08);
+      border-radius: 1.2rem;
+      overflow: hidden;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      background: rgb(var(--color-background));
+    }
+
+    .multicolumn--stitch-{{ section.id }} .multicolumn-card:hover {
+      transform: translateY(-0.2rem);
+      box-shadow: 0 1rem 2.6rem rgba(var(--color-foreground), 0.11);
+    }
+
+    .multicolumn--stitch-{{ section.id }} .multicolumn-card__image-wrapper {
+      margin-bottom: 0;
+    }
+
+    .multicolumn--stitch-{{ section.id }} .multicolumn-card__info {
+      padding: 1.2rem 1.2rem 1.3rem;
+    }
+
+    .multicolumn--stitch-{{ section.id }} .multicolumn-card__info > h3 {
+      margin: 0 0 0.6rem;
+      font-size: 1.5rem;
+      line-height: 1.35;
+    }
+
+    .multicolumn--stitch-{{ section.id }} .multicolumn-card__info .rte {
+      margin: 0;
+      font-size: 1.2rem;
+      color: rgba(var(--color-foreground), 0.72);
+      line-height: 1.45;
+    }
+
+    .multicolumn--stitch-{{ section.id }} .multicolumn-card__info .rte p {
+      margin: 0;
+    }
+
+    .multicolumn--stitch-{{ section.id }} .multicolumn-card__info .rte p + p {
+      display: none;
+    }
+
+    .multicolumn--stitch-{{ section.id }} .multicolumn-card .link.animate-arrow {
+      margin-top: 0.9rem;
+      display: inline-flex;
+      align-items: center;
+      font-size: 1.25rem;
+      font-weight: 600;
+    }
+  {%- endif -%}
 {%- endstyle -%}
 
 {%- liquid
@@ -27,7 +84,7 @@
   endif
 -%}
 
-<div class="multicolumn color-{{ section.settings.color_scheme }} gradient{% unless section.settings.background_style == 'none' and settings.text_boxes_border_thickness > 0 or settings.text_boxes_shadow_opacity > 0 %} background-{{ section.settings.background_style }}{% endunless %}{% if section.settings.title == blank %} no-heading{% endif %}">
+<div class="multicolumn multicolumn--stitch-{{ section.id }} color-{{ section.settings.color_scheme }} gradient{% unless section.settings.background_style == 'none' and settings.text_boxes_border_thickness > 0 or settings.text_boxes_shadow_opacity > 0 %} background-{{ section.settings.background_style }}{% endunless %}{% if section.settings.title == blank %} no-heading{% endif %}">
   <div
     class="page-width section-{{ section.id }}-padding isolate{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
     {% if settings.animations_reveal_on_scroll %}
@@ -499,6 +556,12 @@
       "id": "swipe_on_mobile",
       "default": false,
       "label": "t:sections.multicolumn.settings.swipe_on_mobile.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_stitch_cards",
+      "default": false,
+      "label": "Estilo Stitch para tarjetas"
     },
     {
       "type": "header",

@@ -6,7 +6,7 @@
         "heading": {
           "type": "heading",
           "settings": {
-            "heading": "Servicios profesionales para tu vehiculo en Barcelona, todo en un mismo lugar.",
+            "heading": "",
             "heading_size": "h1"
           }
         },
@@ -79,7 +79,7 @@
             "image": "shopify://shop_images/Gemini_Generated_Image_r65atgr65atgr65a.png",
             "title": "Lavado de coches",
             "text": "<p>Limpieza interior y exterior para mantener tu coche siempre impecable. Desde lavados rapidos hasta servicios completos con acabado profesional.<\/p>",
-            "link_label": "Explorar servicio",
+            "link_label": "Reservar ahora",
             "link": "shopify://collections/lavado"
           }
         },
@@ -89,7 +89,7 @@
             "image": "shopify://shop_images/Gemini_Generated_Image_xexmmbxexmmbxexm.png",
             "title": "Pulido y detailing de coches",
             "text": "<p>Restauracion estetica y cuidado profundo del vehiculo. Incluye pulido, correccion de pintura y tratamientos ceramicos para proteger y realzar el brillo.<\/p>",
-            "link_label": "Explorar servicio",
+            "link_label": "Reservar ahora",
             "link": "shopify://collections/detailing"
           }
         },
@@ -100,7 +100,7 @@
             "custom_asset_image": "cambio-neumaticos.webp",
             "title": "Cambio de neumaticos y llantas",
             "text": "<p>Sustitucion y mantenimiento de neumaticos para una conduccion segura. Servicios de alineacion, balanceo y reparacion de pinchazos.<\/p>",
-            "link_label": "Explorar servicio",
+            "link_label": "Reservar ahora",
             "link": "shopify://collections/neumaticos-y-llantas"
           }
         },
@@ -111,7 +111,7 @@
             "custom_asset_image": "home-ppf.webp",
             "title": "PPF y vinilo para coches (Wrap)",
             "text": "<p>Proteccion y personalizacion de la carroceria con laminas PPF o vinilo. Evita danos en la pintura o cambia el estilo de tu coche.<\/p>",
-            "link_label": "Explorar servicio",
+            "link_label": "Reservar ahora",
             "link": "shopify://collections/ppf-wrap-tintado-lunas"
           }
         },
@@ -122,7 +122,7 @@
             "custom_asset_image": "home-tintado-lunas.webp",
             "title": "Tintado de lunas y parabrisas",
             "text": "<p>Tintado de cristales para mayor privacidad, confort y proteccion solar. Incluye reparacion y sustitucion de lunas o parabrisas.<\/p>",
-            "link_label": "Explorar servicio",
+            "link_label": "Reservar ahora",
             "link": "shopify://collections/ppf-wrap-tintado-lunas"
           }
         },
@@ -132,7 +132,7 @@
             "image": "shopify://shop_images/Gemini_Generated_Image_mu6yc9mu6yc9mu6y.png",
             "title": "Chapa, pintura y abolladuras",
             "text": "<p>Reparacion de golpes, aranazos y danos en la carroceria. Eliminacion de abolladuras sin pintar y acabados profesionales.<\/p>",
-            "link_label": "Explorar servicio",
+            "link_label": "Reservar ahora",
             "link": "shopify://collections/chapa-y-pintura"
           }
         },
@@ -142,7 +142,7 @@
             "image": "shopify://shop_images/Gemini_Generated_Image_eoqb8xeoqb8xeoqb.png",
             "title": "Mantenimiento rapido de coches",
             "text": "<p>Servicios esenciales para el buen funcionamiento del vehiculo, como cambio de aceite, filtros y revisiones basicas.<\/p>",
-            "link_label": "Explorar servicio",
+            "link_label": "Reservar ahora",
             "link": "shopify://collections/mantenimiento-ligero"
           }
         },
@@ -152,7 +152,7 @@
             "image": "shopify://shop_images/Gemini_Generated_Image_w62hvw62hvw62hvw.png",
             "title": "Grua y asistencia en carretera",
             "text": "<p>Asistencia inmediata ante averias o emergencias. Servicio de grua, arranque de bateria y ayuda en carretera cuando lo necesites.<\/p>",
-            "link_label": "Explorar servicio",
+            "link_label": "Reservar ahora",
             "link": "shopify://collections/grua-y-auxlio-mecanico"
           }
         },
@@ -162,7 +162,7 @@
             "image": "shopify://shop_images/parking-benidorm-1200x731.jpg",
             "title": "Parking y aparcamiento",
             "text": "<p>Opciones de aparcamiento seguro por horas, dias o larga estancia, ideales para ciudad o viajes.<\/p>",
-            "link_label": "Explorar servicio",
+            "link_label": "Reservar ahora",
             "link": "shopify://collections/parking"
           }
         },
@@ -172,7 +172,7 @@
             "image": "shopify://shop_images/Gemini_Generated_Image_x0vc4ax0vc4ax0vc.png",
             "title": "Accesorios y productos para coche",
             "text": "<p>Accesorios y productos para cuidar y mejorar tu coche, desde lo esencial hasta soluciones profesionales.<\/p>",
-            "link_label": "Ver categoria",
+            "link_label": "Reservar ahora",
             "link": "shopify://collections/productos-y-accesorios-para-el-cuidado-automotriz"
           }
         }
@@ -191,20 +191,142 @@
       ],
       "name": "t:sections.multicolumn.presets.name",
       "settings": {
-        "title": "Que necesita tu vehiculo?",
+        "title": "Servicios Populares",
         "heading_size": "h1",
         "image_width": "full",
-        "image_ratio": "adapt",
-        "button_label": "Ver todos los servicios",
+        "image_ratio": "square",
+        "button_label": "",
         "button_link": "shopify://pages/servicios",
-        "columns_desktop": 3,
+        "columns_desktop": 5,
         "column_alignment": "left",
-        "background_style": "primary",
-        "color_scheme": "",
-        "columns_mobile": "1",
+        "background_style": "none",
+        "color_scheme": "scheme-1",
+        "columns_mobile": "2",
         "swipe_on_mobile": false,
+        "enable_stitch_cards": true,
         "padding_top": 36,
-        "padding_bottom": 36
+        "padding_bottom": 20
+      }
+    },
+    "home_how_it_works_home": {
+      "type": "home-how-it-works-steps",
+      "blocks": {
+        "step_1": {
+          "type": "step",
+          "settings": {
+            "icon": "search",
+            "title": "1. Buscar servicio",
+            "text": "Busca y compara servicios por categoria y ubicacion."
+          }
+        },
+        "step_2": {
+          "type": "step",
+          "settings": {
+            "icon": "map",
+            "title": "2. Elegir taller",
+            "text": "Elige el taller ideal por precio, horario y valoraciones."
+          }
+        },
+        "step_3": {
+          "type": "step",
+          "settings": {
+            "icon": "calendar",
+            "title": "3. Reservar y relajarse",
+            "text": "Reserva online y recibe confirmacion inmediata."
+          }
+        }
+      },
+      "block_order": [
+        "step_1",
+        "step_2",
+        "step_3"
+      ],
+      "settings": {
+        "title": "Como funciona",
+        "heading_size": "h1",
+        "color_scheme": "scheme-1",
+        "padding_top": 8,
+        "padding_bottom": 12
+      }
+    },
+    "home_featured_providers_home": {
+      "type": "home-featured-providers-strip",
+      "blocks": {
+        "provider_1": {
+          "type": "provider",
+          "settings": {
+            "image": "shopify://shop_images/Gemini_Generated_Image_r65atgr65atgr65a.png",
+            "name": "La Cochera Place",
+            "rating": "4.8/5",
+            "tag": "Verificado",
+            "link": "/search?q=La+Cochera+Place&type=product"
+          }
+        },
+        "provider_2": {
+          "type": "provider",
+          "settings": {
+            "image": "shopify://shop_images/Gemini_Generated_Image_xexmmbxexmmbxexm.png",
+            "name": "Workshop",
+            "rating": "4.8/5",
+            "tag": "Verificado",
+            "link": "/search?q=Workshop&type=product"
+          }
+        },
+        "provider_3": {
+          "type": "provider",
+          "settings": {
+            "image": "shopify://shop_images/Gemini_Generated_Image_mu6yc9mu6yc9mu6y.png",
+            "name": "Warmtless",
+            "rating": "4.8/5",
+            "tag": "Verificado",
+            "link": "/search?q=Warmtless&type=product"
+          }
+        },
+        "provider_4": {
+          "type": "provider",
+          "settings": {
+            "image": "shopify://shop_images/Gemini_Generated_Image_r65atgr65atgr65a.png",
+            "name": "Taller Mecanico",
+            "rating": "4.7/5",
+            "tag": "Verificado",
+            "link": "/search?q=Taller+Mecanico&type=product"
+          }
+        },
+        "provider_5": {
+          "type": "provider",
+          "settings": {
+            "image": "shopify://shop_images/Gemini_Generated_Image_xexmmbxexmmbxexm.png",
+            "name": "Taller Vies",
+            "rating": "4.6/5",
+            "tag": "Verificado",
+            "link": "/search?q=Taller+Vies&type=product"
+          }
+        },
+        "provider_6": {
+          "type": "provider",
+          "settings": {
+            "image": "shopify://shop_images/Gemini_Generated_Image_mu6yc9mu6yc9mu6y.png",
+            "name": "Costa Garage",
+            "rating": "4.8/5",
+            "tag": "Verificado",
+            "link": "/search?q=Costa+Garage&type=product"
+          }
+        }
+      },
+      "block_order": [
+        "provider_1",
+        "provider_2",
+        "provider_3",
+        "provider_4",
+        "provider_5",
+        "provider_6"
+      ],
+      "settings": {
+        "title": "Talleres Destacados",
+        "heading_size": "h1",
+        "color_scheme": "scheme-1",
+        "padding_top": 8,
+        "padding_bottom": 20
       }
     },
     "rich_text_marketplace_intro": {
@@ -436,10 +558,11 @@
   "order": [
     "image_banner",
     "multicolumn_aHED4U",
-    "rich_text_marketplace_intro",
-    "rich_text_providers_intro",
-    "collection_list_providers_home",
-    "provider_reviews_home",
+    "home_how_it_works_home",
+    "home_featured_providers_home",
     "home_testimonials_custom"
   ]
 }
+
+
+

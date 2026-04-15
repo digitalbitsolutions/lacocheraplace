@@ -196,6 +196,30 @@
 
       {%- if show_home_service_search -%}
         <div class="home-hero-service-search" data-static-search>
+          <form
+            action="{{ routes.search_url }}"
+            method="get"
+            role="search"
+            class="home-hero-service-search__form"
+          >
+            <input type="hidden" name="type" value="product">
+            <input type="hidden" name="options[prefix]" value="last">
+            <span class="home-hero-service-search__icon" aria-hidden="true">
+              {{- 'icon-search.svg' | inline_asset_content -}}
+            </span>
+            <input
+              class="home-hero-service-search__input"
+              type="search"
+              name="q"
+              value="{{ search.terms | escape }}"
+              placeholder="Busca un servicio (ej. Lavado, Neumaticos)"
+              aria-label="Busca un servicio"
+              autocorrect="off"
+              autocomplete="off"
+              autocapitalize="off"
+              spellcheck="false"
+            >
+          </form>
           <button type="button" class="home-hero-service-search__button" id="HeroNearbyBtn-{{ section.id }}">
             Encuentra servicios cerca a ti
           </button>
@@ -354,11 +378,55 @@
       text-align: center;
     }
 
+    #Banner-{{ section.id }} .home-hero-service-search__form {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      width: min(64rem, 100%);
+      margin: 0 auto 1.2rem;
+      min-height: 5.6rem;
+      border-radius: 999px;
+      padding: 0 1.8rem;
+      background: rgba(255, 255, 255, 0.97);
+      border: 0.1rem solid rgba(17, 24, 39, 0.12);
+      box-shadow: 0 0.8rem 2rem rgba(15, 23, 42, 0.22);
+    }
+
+    #Banner-{{ section.id }} .home-hero-service-search__icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 2rem;
+      height: 2rem;
+      color: #3f4958;
+      flex: 0 0 auto;
+    }
+
+    #Banner-{{ section.id }} .home-hero-service-search__icon .icon {
+      width: 2rem;
+      height: 2rem;
+    }
+
+    #Banner-{{ section.id }} .home-hero-service-search__input {
+      width: 100%;
+      border: 0;
+      outline: 0;
+      background: transparent;
+      color: #1f2937;
+      font-size: 1.6rem;
+      line-height: 1.3;
+      padding: 0;
+    }
+
+    #Banner-{{ section.id }} .home-hero-service-search__input::placeholder {
+      color: #6b7280;
+    }
+
     #Banner-{{ section.id }} .home-hero-service-search__button {
       display: flex;
       align-items: center;
       justify-content: center;
-      width: min(52rem, 100%);
+      width: min(64rem, 100%);
       margin-inline: auto;
       min-height: 6.2rem;
       border-radius: 999px;
@@ -417,6 +485,15 @@
     @media screen and (max-width: 749px) {
       #Banner-{{ section.id }} .home-hero-service-search {
         margin-top: 2.4rem;
+      }
+
+      #Banner-{{ section.id }} .home-hero-service-search__form {
+        min-height: 5.1rem;
+        padding: 0 1.4rem;
+      }
+
+      #Banner-{{ section.id }} .home-hero-service-search__input {
+        font-size: 1.45rem;
       }
 
       #Banner-{{ section.id }} .home-hero-service-search__button {

@@ -1,0 +1,176 @@
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+
+  .home-providers-strip-{{ section.id }} .home-providers-strip__title {
+    margin: 0 0 2rem;
+  }
+
+  .home-providers-strip-{{ section.id }} .home-providers-strip__grid {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    gap: 1.2rem;
+  }
+
+  .home-providers-strip-{{ section.id }} .home-providers-strip__card {
+    display: grid;
+    grid-template-columns: 5.2rem 1fr;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    border-radius: 1rem;
+    text-decoration: none;
+    color: inherit;
+    border: 0.1rem solid rgba(var(--color-foreground), 0.1);
+    background: rgb(var(--color-background));
+    box-shadow: 0 0.6rem 1.6rem rgba(var(--color-foreground), 0.08);
+  }
+
+  .home-providers-strip-{{ section.id }} .home-providers-strip__logo {
+    width: 5.2rem;
+    height: 5.2rem;
+    border-radius: 0.8rem;
+    object-fit: cover;
+    background: rgba(var(--color-foreground), 0.06);
+  }
+
+  .home-providers-strip-{{ section.id }} .home-providers-strip__name {
+    margin: 0 0 0.2rem;
+    font-size: 1.45rem;
+    line-height: 1.35;
+  }
+
+  .home-providers-strip-{{ section.id }} .home-providers-strip__meta {
+    margin: 0;
+    font-size: 1.25rem;
+    color: rgba(var(--color-foreground), 0.74);
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .home-providers-strip-{{ section.id }} .home-providers-strip__badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 2rem;
+    padding: 0 0.8rem;
+    border-radius: 999px;
+    font-size: 1.1rem;
+    background: rgba(15, 76, 189, 0.11);
+    color: #0f4cbd;
+    font-weight: 700;
+  }
+
+  @media screen and (min-width: 750px) {
+    .home-providers-strip-{{ section.id }} .home-providers-strip__grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+{%- endstyle -%}
+
+<section class="home-providers-strip-{{ section.id }} color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-padding">
+  <div class="page-width">
+    {%- if section.settings.title != blank -%}
+      <h2 class="home-providers-strip__title {{ section.settings.heading_size }}">{{ section.settings.title }}</h2>
+    {%- endif -%}
+
+    <ul class="home-providers-strip__grid" role="list">
+      {%- for block in section.blocks -%}
+        <li {{ block.shopify_attributes }}>
+          <a
+            class="home-providers-strip__card"
+            {% if block.settings.link != blank %}
+              href="{{ block.settings.link }}"
+            {% else %}
+              role="link" aria-disabled="true"
+            {% endif %}
+          >
+            {%- if block.settings.image != blank -%}
+              {{
+                block.settings.image
+                | image_url: width: 180
+                | image_tag:
+                  widths: '80, 120, 160, 180',
+                  class: 'home-providers-strip__logo',
+                  alt: block.settings.name
+              }}
+            {%- else -%}
+              <span class="home-providers-strip__logo"></span>
+            {%- endif -%}
+
+            <span>
+              <p class="home-providers-strip__name">{{ block.settings.name }}</p>
+              <p class="home-providers-strip__meta">
+                <span>{{ block.settings.rating }}</span>
+                <span aria-hidden="true">|</span>
+                <span class="home-providers-strip__badge">{{ block.settings.tag }}</span>
+              </p>
+            </span>
+          </a>
+        </li>
+      {%- endfor -%}
+    </ul>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Home Featured Providers",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Title", "default": "Talleres destacados" },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "label": "Heading size",
+      "default": "h1",
+      "options": [
+        { "value": "h2", "label": "Small" },
+        { "value": "h1", "label": "Medium" },
+        { "value": "h0", "label": "Large" }
+      ]
+    },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "Top padding", "default": 12 },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "Bottom padding", "default": 28 }
+  ],
+  "blocks": [
+    {
+      "type": "provider",
+      "name": "Provider",
+      "limit": 9,
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Logo" },
+        { "type": "text", "id": "name", "label": "Name", "default": "La Cochera Place" },
+        { "type": "text", "id": "rating", "label": "Rating text", "default": "4.8/5" },
+        { "type": "text", "id": "tag", "label": "Tag", "default": "Verificado" },
+        { "type": "url", "id": "link", "label": "Link" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Home Featured Providers",
+      "blocks": [
+        { "type": "provider", "settings": { "name": "La Cochera Place", "rating": "4.8/5", "tag": "Verificado" } },
+        { "type": "provider", "settings": { "name": "Workshop", "rating": "4.8/5", "tag": "Verificado" } },
+        { "type": "provider", "settings": { "name": "Warmtless", "rating": "4.8/5", "tag": "Verificado" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
