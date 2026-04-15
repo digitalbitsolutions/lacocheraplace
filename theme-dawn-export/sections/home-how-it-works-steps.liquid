@@ -92,6 +92,13 @@
           <p class="home-how-steps__text">{{ block.settings.text }}</p>
         </li>
       {%- endfor -%}
+      <li class="home-how-steps__item">
+        <span class="home-how-steps__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.2 1 5.9L12 17l-5.2 2.8 1-5.9-4.3-4.2 5.9-.9L12 3.5z"></path></svg>
+        </span>
+        <h3 class="home-how-steps__title">{{ section.settings.step_4_title }}</h3>
+        <p class="home-how-steps__text">{{ section.settings.step_4_text }}</p>
+      </li>
     </ul>
   </div>
 </section>
@@ -115,6 +122,8 @@
       ]
     },
     { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" },
+    { "type": "text", "id": "step_4_title", "label": "Step 4 title", "default": "4. Vive la experiencia y valora el servicio" },
+    { "type": "text", "id": "step_4_text", "label": "Step 4 text", "default": "Acude a tu cita y comparte tu opinion para ayudar a otros usuarios." },
     { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "Top padding", "default": 20 },
     { "type": "range", "id": "padding_bottom", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "Bottom padding", "default": 20 }
   ],
@@ -139,27 +148,6 @@
         { "type": "text", "id": "title", "label": "Title", "default": "1. Buscar servicio" },
         { "type": "text", "id": "text", "label": "Text", "default": "Busca y compara servicios para tu coche en segundos." }
       ]
-    },
-    {
-      "type": "step_extra",
-      "name": "Step Extra",
-      "limit": 1,
-      "settings": [
-        {
-          "type": "select",
-          "id": "icon",
-          "label": "Icon",
-          "default": "star",
-          "options": [
-            { "value": "search", "label": "Search" },
-            { "value": "map", "label": "Map" },
-            { "value": "calendar", "label": "Calendar" },
-            { "value": "star", "label": "Star" }
-          ]
-        },
-        { "type": "text", "id": "title", "label": "Title", "default": "4. Vive la experiencia y valora el servicio" },
-        { "type": "text", "id": "text", "label": "Text", "default": "Acude a tu cita y comparte tu opinion para ayudar a otros usuarios." }
-      ]
     }
   ],
   "presets": [
@@ -168,8 +156,7 @@
       "blocks": [
         { "type": "step", "settings": { "icon": "search", "title": "1. Buscar servicio", "text": "Busca el servicio y compara talleres cerca de ti." } },
         { "type": "step", "settings": { "icon": "map", "title": "2. Elegir taller", "text": "Selecciona la mejor opcion por precio, ubicacion y valoraciones." } },
-        { "type": "step", "settings": { "icon": "calendar", "title": "3. Reservar y relajarse", "text": "Reserva online y recibe la confirmacion de tu cita." } },
-        { "type": "step", "settings": { "icon": "star", "title": "4. Vive la experiencia y valora el servicio", "text": "Acude a tu cita y comparte tu opinion para ayudar a otros usuarios." } }
+        { "type": "step", "settings": { "icon": "calendar", "title": "3. Reservar y relajarse", "text": "Reserva online y recibe la confirmacion de tu cita." } }
       ]
     }
   ]

@@ -234,26 +234,19 @@
             "title": "3. Reservar y relajarse",
             "text": "Reserva online y recibe confirmacion inmediata."
           }
-        },
-        "step_4": {
-          "type": "step_extra",
-          "settings": {
-            "icon": "star",
-            "title": "4. Vive la experiencia y valora el servicio",
-            "text": "Acude a tu cita y comparte tu opinion para ayudar a otros usuarios."
-          }
         }
       },
       "block_order": [
         "step_1",
         "step_2",
-        "step_3",
-        "step_4"
+        "step_3"
       ],
       "settings": {
         "title": "Como funciona",
         "heading_size": "h1",
         "color_scheme": "scheme-1",
+        "step_4_title": "4. Vive la experiencia y valora el servicio",
+        "step_4_text": "Acude a tu cita y comparte tu opinion para ayudar a otros usuarios.",
         "padding_top": 8,
         "padding_bottom": 12
       }
