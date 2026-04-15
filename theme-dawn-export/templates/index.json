@@ -331,6 +331,86 @@
         "padding_bottom": 20
       }
     },
+    "home_featured_products_home": {
+      "type": "home-featured-providers-strip",
+      "blocks": {
+        "product_1": {
+          "type": "provider",
+          "settings": {
+            "image": "shopify://shop_images/Gemini_Generated_Image_x0vc4ax0vc4ax0vc.png",
+            "name": "Kit limpieza interior premium",
+            "rating": "4.8/5",
+            "tag": "Disponible",
+            "link": "shopify://collections/productos-y-accesorios-para-el-cuidado-automotriz"
+          }
+        },
+        "product_2": {
+          "type": "provider",
+          "settings": {
+            "image": "shopify://shop_images/Gemini_Generated_Image_x0vc4ax0vc4ax0vc.png",
+            "name": "Cera y sellador de pintura",
+            "rating": "4.7/5",
+            "tag": "Disponible",
+            "link": "shopify://collections/productos-y-accesorios-para-el-cuidado-automotriz"
+          }
+        },
+        "product_3": {
+          "type": "provider",
+          "settings": {
+            "image": "shopify://shop_images/Gemini_Generated_Image_x0vc4ax0vc4ax0vc.png",
+            "name": "Ambientadores y fragancias",
+            "rating": "4.9/5",
+            "tag": "Disponible",
+            "link": "shopify://collections/productos-y-accesorios-para-el-cuidado-automotriz"
+          }
+        },
+        "product_4": {
+          "type": "provider",
+          "settings": {
+            "image": "shopify://shop_images/Gemini_Generated_Image_x0vc4ax0vc4ax0vc.png",
+            "name": "Limpiallantas y brillo neumatico",
+            "rating": "4.6/5",
+            "tag": "Disponible",
+            "link": "shopify://collections/productos-y-accesorios-para-el-cuidado-automotriz"
+          }
+        },
+        "product_5": {
+          "type": "provider",
+          "settings": {
+            "image": "shopify://shop_images/Gemini_Generated_Image_x0vc4ax0vc4ax0vc.png",
+            "name": "Toallas microfibra detailing",
+            "rating": "4.8/5",
+            "tag": "Disponible",
+            "link": "shopify://collections/productos-y-accesorios-para-el-cuidado-automotriz"
+          }
+        },
+        "product_6": {
+          "type": "provider",
+          "settings": {
+            "image": "shopify://shop_images/Gemini_Generated_Image_x0vc4ax0vc4ax0vc.png",
+            "name": "Accesorios interior y confort",
+            "rating": "4.7/5",
+            "tag": "Disponible",
+            "link": "shopify://collections/productos-y-accesorios-para-el-cuidado-automotriz"
+          }
+        }
+      },
+      "block_order": [
+        "product_1",
+        "product_2",
+        "product_3",
+        "product_4",
+        "product_5",
+        "product_6"
+      ],
+      "settings": {
+        "title": "Productos y accesorios destacados",
+        "heading_size": "h1",
+        "color_scheme": "scheme-1",
+        "padding_top": 8,
+        "padding_bottom": 20
+      }
+    },
     "rich_text_marketplace_intro": {
       "type": "rich-text",
       "blocks": {
@@ -565,6 +645,7 @@
     "multicolumn_aHED4U",
     "home_how_it_works_home",
     "home_featured_providers_home",
+    "home_featured_products_home",
     "provider_reviews_home",
     "rich_text_marketplace_intro",
     "rich_text_providers_intro",
