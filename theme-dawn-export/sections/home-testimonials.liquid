@@ -93,9 +93,11 @@
   .home-testimonials__controls {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 1.2rem;
-    flex-shrink: 0;
-    margin-left: auto;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-top: 1.6rem;
   }
 
   .home-testimonials__buttons {
@@ -154,16 +156,7 @@
 
   @media screen and (max-width: 749px) {
     .home-testimonials__header {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 1.2rem;
-    }
-
-    .home-testimonials__controls {
-      margin-left: 0;
-      width: 100%;
-      justify-content: space-between;
-      padding: 0.8rem 0.2rem 0;
+      margin-bottom: 1.6rem;
     }
 
     .home-testimonials__button {
@@ -187,39 +180,6 @@
           <h2 class="title inline-richtext {{ section.settings.heading_size }}">{{ section.settings.title }}</h2>
         </div>
       {%- endif -%}
-
-      <div class="home-testimonials__controls">
-        <div class="home-testimonials__counter caption">
-          <span data-testimonials-current="{{ section.id }}">1</span>
-          <span aria-hidden="true"> / </span>
-          <span class="visually-hidden">{{ 'general.slider.of' | t }}</span>
-          <span data-testimonials-total="{{ section.id }}">{{ section.blocks.size }}</span>
-        </div>
-        <div class="home-testimonials__buttons">
-          <button
-            type="button"
-            class="home-testimonials__button"
-            name="previous"
-            aria-label="{{ 'general.slider.previous_slide' | t }}"
-            data-testimonials-previous="{{ section.id }}"
-          >
-            <span class="svg-wrapper">
-              {{- 'icon-caret.svg' | inline_asset_content -}}
-            </span>
-          </button>
-          <button
-            type="button"
-            class="home-testimonials__button"
-            name="next"
-            aria-label="{{ 'general.slider.next_slide' | t }}"
-            data-testimonials-next="{{ section.id }}"
-          >
-            <span class="svg-wrapper">
-              {{- 'icon-caret.svg' | inline_asset_content -}}
-            </span>
-          </button>
-        </div>
-      </div>
     </div>
 
     <div class="home-testimonials__viewport" id="TestimonialsViewport-{{ section.id }}">
@@ -243,6 +203,39 @@
           </li>
         {%- endfor -%}
       </ul>
+    </div>
+
+    <div class="home-testimonials__controls">
+      <div class="home-testimonials__counter caption">
+        <span data-testimonials-current="{{ section.id }}">1</span>
+        <span aria-hidden="true"> / </span>
+        <span class="visually-hidden">{{ 'general.slider.of' | t }}</span>
+        <span data-testimonials-total="{{ section.id }}">{{ section.blocks.size }}</span>
+      </div>
+      <div class="home-testimonials__buttons">
+        <button
+          type="button"
+          class="home-testimonials__button"
+          name="previous"
+          aria-label="{{ 'general.slider.previous_slide' | t }}"
+          data-testimonials-previous="{{ section.id }}"
+        >
+          <span class="svg-wrapper">
+            {{- 'icon-caret.svg' | inline_asset_content -}}
+          </span>
+        </button>
+        <button
+          type="button"
+          class="home-testimonials__button"
+          name="next"
+          aria-label="{{ 'general.slider.next_slide' | t }}"
+          data-testimonials-next="{{ section.id }}"
+        >
+          <span class="svg-wrapper">
+            {{- 'icon-caret.svg' | inline_asset_content -}}
+          </span>
+        </button>
+      </div>
     </div>
   </div>
 </div>
