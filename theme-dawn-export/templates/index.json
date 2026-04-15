@@ -234,12 +234,21 @@
             "title": "3. Reservar y relajarse",
             "text": "Reserva online y recibe confirmacion inmediata."
           }
+        },
+        "step_4": {
+          "type": "step",
+          "settings": {
+            "icon": "star",
+            "title": "4. Vive la experiencia y valora el servicio",
+            "text": "Acude a tu cita y comparte tu opinion para ayudar a otros usuarios."
+          }
         }
       },
       "block_order": [
         "step_1",
         "step_2",
-        "step_3"
+        "step_3",
+        "step_4"
       ],
       "settings": {
         "title": "Como funciona",
