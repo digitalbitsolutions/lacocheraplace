@@ -91,10 +91,11 @@
   }
 
   .home-testimonials__controls {
-    display: none;
+    display: flex;
     align-items: center;
     gap: 1.2rem;
     flex-shrink: 0;
+    margin-left: auto;
   }
 
   .home-testimonials__buttons {
@@ -106,7 +107,7 @@
   .home-testimonials__button {
     width: 4.4rem;
     height: 4.4rem;
-    border: 0;
+    border: 0.2rem solid rgba(var(--color-foreground), 0.85);
     border-radius: 999px;
     background: rgb(var(--color-foreground));
     color: rgb(var(--color-background));
@@ -114,18 +115,28 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transition: opacity 0.2s ease;
+    transition: opacity 0.2s ease, transform 0.2s ease;
   }
 
   .home-testimonials__button[disabled] {
-    opacity: 0.3;
+    opacity: 0.45;
     cursor: default;
+  }
+
+  .home-testimonials__button:not([disabled]):hover {
+    transform: translateY(-0.1rem);
+  }
+
+  .home-testimonials__button:focus-visible {
+    outline: 0.2rem solid rgb(var(--color-foreground));
+    outline-offset: 0.2rem;
   }
 
   .home-testimonials__counter {
     font-size: 1.3rem;
-    color: rgba(var(--color-foreground), 0.68);
+    color: rgb(var(--color-foreground));
     white-space: nowrap;
+    font-weight: 700;
   }
 
   .home-testimonials__button .icon {
@@ -141,13 +152,29 @@
     transform: rotate(-90deg);
   }
 
-  @media screen and (min-width: 750px) {
-    .home-testimonials__list {
-      grid-auto-columns: calc((100% - (2.4rem * (var(--home-testimonials-columns) - 1))) / var(--home-testimonials-columns));
+  @media screen and (max-width: 749px) {
+    .home-testimonials__header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1.2rem;
     }
 
     .home-testimonials__controls {
-      display: flex;
+      margin-left: 0;
+      width: 100%;
+      justify-content: space-between;
+      padding: 0.8rem 0.2rem 0;
+    }
+
+    .home-testimonials__button {
+      width: 4.8rem;
+      height: 4.8rem;
+    }
+  }
+
+  @media screen and (min-width: 750px) {
+    .home-testimonials__list {
+      grid-auto-columns: calc((100% - (2.4rem * (var(--home-testimonials-columns) - 1))) / var(--home-testimonials-columns));
     }
   }
 {%- endstyle -%}
@@ -161,7 +188,7 @@
         </div>
       {%- endif -%}
 
-      <div class="home-testimonials__controls small-hide">
+      <div class="home-testimonials__controls">
         <div class="home-testimonials__counter caption">
           <span data-testimonials-current="{{ section.id }}">1</span>
           <span aria-hidden="true"> / </span>
