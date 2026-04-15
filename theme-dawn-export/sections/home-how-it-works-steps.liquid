@@ -122,7 +122,7 @@
     {
       "type": "step",
       "name": "Step",
-      "limit": 4,
+      "limit": 3,
       "settings": [
         {
           "type": "select",
@@ -138,6 +138,27 @@
         },
         { "type": "text", "id": "title", "label": "Title", "default": "1. Buscar servicio" },
         { "type": "text", "id": "text", "label": "Text", "default": "Busca y compara servicios para tu coche en segundos." }
+      ]
+    },
+    {
+      "type": "step_extra",
+      "name": "Step Extra",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "default": "star",
+          "options": [
+            { "value": "search", "label": "Search" },
+            { "value": "map", "label": "Map" },
+            { "value": "calendar", "label": "Calendar" },
+            { "value": "star", "label": "Star" }
+          ]
+        },
+        { "type": "text", "id": "title", "label": "Title", "default": "4. Vive la experiencia y valora el servicio" },
+        { "type": "text", "id": "text", "label": "Text", "default": "Acude a tu cita y comparte tu opinion para ayudar a otros usuarios." }
       ]
     }
   ],

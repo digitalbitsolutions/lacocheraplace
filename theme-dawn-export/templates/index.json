@@ -236,7 +236,7 @@
           }
         },
         "step_4": {
-          "type": "step",
+          "type": "step_extra",
           "settings": {
             "icon": "star",
             "title": "4. Vive la experiencia y valora el servicio",
