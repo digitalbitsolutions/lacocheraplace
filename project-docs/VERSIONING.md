@@ -37,7 +37,7 @@ Tener una forma simple de avanzar, revisar y volver atras si algo sale mal o no 
 ## Estado actual del versionado
 - Repositorio Git inicializado y conectado a remoto
 - Rama base estable: `main`
-- Rama de trabajo actual: `feature/homepage-round-1`
+- Rama de trabajo actual: `main` (adelantada sobre `origin/main`)
 - Baseline remoto publicado en `origin/main`
 
 ## Hitos guardados
@@ -46,6 +46,8 @@ Tener una forma simple de avanzar, revisar y volver atras si algo sale mal o no 
 - `1762372` organizacion documental + skill Shopify marketplace
 - `828f848` segunda ronda de homepage con navegacion y proveedores
 - `c280404` tercera ronda de homepage con refuerzo de proveedores
+- `c639114` lote 2: endpoint app proxy `service-precheck`
+- `dee1061` lote 2: adaptador configurable de lookup por matricula
 
 ## Estado de validacion visual
 - Theme borrador creado en Shopify para validacion
@@ -53,6 +55,10 @@ Tener una forma simple de avanzar, revisar y volver atras si algo sale mal o no 
 - ID: `196749918545`
 - Store: `cs3msy-n8.myshopify.com`
 - La siguiente decision funcional debe salir de esa revision visual
+
+## Nota de despliegue app
+- Se publico una release de la app en Shopify Partners, pero con URL temporal de tunel caducada
+- Pendiente: migrar `application_url` a hosting estable y volver a desplegar para acceso online continuo
 
 ## Siguiente regla operativa
 - No abrir una nueva linea de trabajo sin decidir primero si la siguiente iteracion sera UX de homepage, talleres/proveedores o ficha de servicio

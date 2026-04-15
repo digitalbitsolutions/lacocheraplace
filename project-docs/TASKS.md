@@ -6,8 +6,8 @@
 - App admin base: `shopify-provider-admin`
 - Rama activa: `main`
 - Modo actual: trabajo local primero, despliegue solo tras aprobacion
-- Ultimo hito confirmado: `12fe1e6 chore: add DBS credit link in footer`
-- Iniciativa activa: `validacion de vehiculo y compra guiada por matricula (v1 Espana)`
+- Ultimo hito confirmado: `dee1061 feat(precheck): add configurable http plate lookup adapter`
+- Iniciativa activa: `lote 3 catalogo opt-in + preparacion de hosting estable para app`
 
 ## Reglas de ejecucion
 - No tocar theme publicado sin aprobacion explicita
@@ -60,20 +60,25 @@ Objetivo: mover un subconjunto de servicios al flujo de compra guiada con valida
 - [x] Resolver drift local de `prisma/dev.sqlite` antes de ejecutar `prisma migrate dev` de forma normal
 
 ### Lote 2: Endpoint publico de precheck (app proxy)
-- [ ] Crear `POST /apps/service-precheck` en app existente
-- [ ] Normalizar matricula espanola (validas e invalidas)
-- [ ] Ejecutar lookup externo via adaptador
-- [ ] Clasificar `familia + talla`
-- [ ] Resolver compatibilidad contra variantes del producto
-- [ ] Persistir precheck y devolver payload de UI
-- [ ] Criterio de salida: endpoint estable con respuestas para `ok`, `incompatible`, `unverified`
+- [x] Crear `POST /apps/service-precheck` en app existente
+- [x] Normalizar matricula espanola (validas e invalidas)
+- [x] Ejecutar lookup externo via adaptador
+- [x] Clasificar `familia + talla`
+- [x] Resolver compatibilidad contra variantes del producto
+- [x] Persistir precheck y devolver payload de UI
+- [x] Criterio de salida: endpoint estable con respuestas para `ok`, `incompatible`, `unverified`
 
 ### Lote 3: Catalogo Shopify opt-in
-- [ ] Crear metafield de producto `service.purchase_flow`
-- [ ] Soportar valores `consultative` y `vehicle_precheck_checkout`
-- [ ] Preparar subconjunto piloto de servicios con variantes `familia + talla`
-- [ ] Mantener servicios no opt-in en flujo consultivo actual
-- [ ] Criterio de salida: piloto pequeno activo y reversible por metafield
+- [x] Crear metafield de producto `service.purchase_flow` (gestionado desde app admin)
+- [x] Soportar valores `consultative` y `vehicle_precheck_checkout`
+- [x] Preparar subconjunto piloto de servicios con variantes `familia + talla`
+- [x] Mantener servicios no opt-in en flujo consultivo actual (default `consultative`)
+- [~] Criterio de salida: piloto pequeno activo y reversible por metafield
+
+### Bloqueo operativo actual (app online)
+- [ ] Definir URL estable de hosting externo para la app embebida
+- [ ] Actualizar `application_url`, redirects, app proxy y webhooks a URL fija
+- [ ] Re-desplegar release de app con URL estable y validar acceso owner a `/app/purchase-flow`
 
 ### Lote 4: Ficha de servicio (theme)
 - [ ] Actualizar `main-product.liquid` para detectar `vehicle_precheck_checkout`
@@ -110,8 +115,8 @@ Objetivo: mover un subconjunto de servicios al flujo de compra guiada con valida
 
 ## Roadmap de rollout y rollback
 - [ ] Rollout 0: backend oscuro sin impacto storefront
-- [ ] Rollout 1: endpoint activo con logging y sin bloqueo de compra global
-- [ ] Rollout 2: piloto en subconjunto pequeno de servicios opt-in
+- [x] Rollout 1: endpoint activo con logging y sin bloqueo de compra global
+- [~] Rollout 2: piloto en subconjunto pequeno de servicios opt-in
 - [ ] Rollout 3: ampliar cobertura tras metricas y validacion manual
 - [ ] Rollback rapido: volver `service.purchase_flow` a `consultative`
 - [ ] Rollback tecnico: revertir lote por commit sin mezclar features nuevas
@@ -130,6 +135,10 @@ Objetivo: mover un subconjunto de servicios al flujo de compra guiada con valida
 - `828f848` homepage round 2 navigation and providers
 - `c280404` homepage round 3 providers emphasis
 - `12fe1e6` DBS credit link en footer
+- `07d20fe` lote 1 contrato de datos + migracion prisma
+- `641692a` update docs lote 1 + rollback notes
+- `c639114` lote 2 endpoint app proxy `service-precheck`
+- `dee1061` adaptador real configurable de lookup por matricula
 
 ## Registro de decisiones
 - El proyecto se tratara como plataforma en construccion, no como tienda Shopify clasica

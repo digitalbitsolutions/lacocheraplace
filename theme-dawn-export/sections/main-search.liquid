@@ -41,12 +41,54 @@
   .search__button .icon {
     height: 1.8rem;
   }
+
+  .provider-pilot-grid {
+    margin-top: 2rem;
+  }
+
+  .provider-pilot-card {
+    border: 0.1rem solid rgba(0, 0, 0, 0.08);
+    border-radius: 1.2rem;
+    overflow: hidden;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .provider-pilot-card__media {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    background: #f3f4f6;
+  }
+
+  .provider-pilot-card__body {
+    padding: 1.4rem 1.4rem 1.8rem;
+  }
+
+  .provider-pilot-card__title {
+    margin: 0 0 0.6rem;
+    font-size: 1.9rem;
+    line-height: 1.3;
+  }
+
+  .provider-pilot-card__meta {
+    margin: 0 0 1.2rem;
+    color: rgba(var(--color-foreground), 0.72);
+    font-size: 1.4rem;
+  }
 </style>
 
 {%- liquid
   assign sort_by = search.sort_by | default: search.default_sort_by
   assign terms = search.terms | escape
   assign search_url = '?q=' | append: terms | append: '&options%5Bprefix%5D=last&sort_by=' | append: sort_by
+  assign search_terms_downcase = search.terms | downcase | strip
+  assign show_pilot_provider_services = false
+  if search_terms_downcase contains 'detailing padilla 318'
+    assign show_pilot_provider_services = true
+  endif
 -%}
 
 {%- style -%}
@@ -227,23 +269,95 @@
           {%- endif -%}
         {%- endif -%}
         <div class="product-grid-container" id="ProductGridContainer">
-          {%- if search.results.size == 0 and search.filters != empty -%}
+          {%- if search.results.size == 0 -%}
             <div
               class="template-search__results collection collection--empty{% if section.settings.filter_type != 'vertical' %} page-width{% endif %}"
               id="product-grid"
               data-id="{{ section.id }}"
             >
               <div class="loading-overlay gradient"></div>
-              <div class="title-wrapper center">
-                <h2 class="title title--primary">
-                  {{ 'sections.collection_template.empty' | t -}}
-                  <br>
-                  {{
-                    'sections.collection_template.use_fewer_filters_html'
-                    | t: link: search_url, class: 'underlined-link link'
-                  }}
-                </h2>
-              </div>
+              {%- if show_pilot_provider_services -%}
+                <div class="title-wrapper center">
+                  <h2 class="title title--primary">Servicios piloto de Detailing Padilla 318</h2>
+                  <p>Este proveedor aun no tiene catalogo real publicado. Mostramos 3 servicios demo para validar flujo.</p>
+                </div>
+                <ul
+                  class="grid product-grid provider-pilot-grid grid--{{ section.settings.columns_mobile }}-col-tablet-down grid--{{ section.settings.columns_desktop }}-col-desktop"
+                  role="list"
+                >
+                  <li class="grid__item">
+                    <article class="provider-pilot-card">
+                      <a href="/pages/servicios" class="provider-pilot-card__media" aria-label="Lavado premium exterior e interior">
+                        <svg viewBox="0 0 640 400" width="640" height="400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Lavado premium exterior e interior">
+                          <rect width="640" height="400" fill="#E8F0FF"/>
+                          <rect x="50" y="220" width="540" height="95" rx="25" fill="#1E3A8A"/>
+                          <circle cx="180" cy="330" r="38" fill="#0F172A"/>
+                          <circle cx="470" cy="330" r="38" fill="#0F172A"/>
+                          <rect x="110" y="190" width="300" height="58" rx="14" fill="#2563EB"/>
+                          <circle cx="505" cy="98" r="36" fill="#60A5FA"/>
+                          <path d="M505 138c-18 0-32-14-32-32s14-32 32-32 32 14 32 32-14 32-32 32z" fill="#93C5FD"/>
+                        </svg>
+                      </a>
+                      <div class="provider-pilot-card__body">
+                        <h3 class="provider-pilot-card__title">Lavado premium exterior e interior</h3>
+                        <p class="provider-pilot-card__meta">Detailing Padilla 318 · EUR 59,00</p>
+                        <a class="button button--primary" href="/pages/servicios">Ver servicio</a>
+                      </div>
+                    </article>
+                  </li>
+                  <li class="grid__item">
+                    <article class="provider-pilot-card">
+                      <a href="/pages/servicios" class="provider-pilot-card__media" aria-label="Pulido de pintura en 1 etapa">
+                        <svg viewBox="0 0 640 400" width="640" height="400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Pulido de pintura en 1 etapa">
+                          <rect width="640" height="400" fill="#ECFEFF"/>
+                          <rect x="70" y="210" width="500" height="105" rx="24" fill="#0F766E"/>
+                          <rect x="105" y="176" width="255" height="58" rx="14" fill="#14B8A6"/>
+                          <circle cx="190" cy="330" r="36" fill="#0F172A"/>
+                          <circle cx="450" cy="330" r="36" fill="#0F172A"/>
+                          <rect x="420" y="110" width="120" height="70" rx="14" fill="#99F6E4"/>
+                          <circle cx="480" cy="145" r="18" fill="#0F766E"/>
+                        </svg>
+                      </a>
+                      <div class="provider-pilot-card__body">
+                        <h3 class="provider-pilot-card__title">Pulido de pintura en 1 etapa</h3>
+                        <p class="provider-pilot-card__meta">Detailing Padilla 318 · EUR 149,00</p>
+                        <a class="button button--primary" href="/pages/servicios">Ver servicio</a>
+                      </div>
+                    </article>
+                  </li>
+                  <li class="grid__item">
+                    <article class="provider-pilot-card">
+                      <a href="/pages/servicios" class="provider-pilot-card__media" aria-label="Tratamiento ceramico express">
+                        <svg viewBox="0 0 640 400" width="640" height="400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Tratamiento ceramico express">
+                          <rect width="640" height="400" fill="#F5F3FF"/>
+                          <rect x="55" y="220" width="530" height="95" rx="25" fill="#5B21B6"/>
+                          <rect x="118" y="186" width="285" height="58" rx="14" fill="#7C3AED"/>
+                          <circle cx="180" cy="332" r="37" fill="#111827"/>
+                          <circle cx="470" cy="332" r="37" fill="#111827"/>
+                          <path d="M450 90h110v90H450z" fill="#DDD6FE"/>
+                          <circle cx="505" cy="135" r="26" fill="#8B5CF6"/>
+                        </svg>
+                      </a>
+                      <div class="provider-pilot-card__body">
+                        <h3 class="provider-pilot-card__title">Tratamiento ceramico express</h3>
+                        <p class="provider-pilot-card__meta">Detailing Padilla 318 · EUR 189,00</p>
+                        <a class="button button--primary" href="/pages/servicios">Ver servicio</a>
+                      </div>
+                    </article>
+                  </li>
+                </ul>
+              {%- else -%}
+                <div class="title-wrapper center">
+                  <h2 class="title title--primary">
+                    {{ 'sections.collection_template.empty' | t -}}
+                    <br>
+                    {{
+                      'sections.collection_template.use_fewer_filters_html'
+                      | t: link: search_url, class: 'underlined-link link'
+                    }}
+                  </h2>
+                </div>
+              {%- endif -%}
             </div>
           {%- else -%}
             <div

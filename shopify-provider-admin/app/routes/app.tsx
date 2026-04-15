@@ -28,6 +28,7 @@ export default function App() {
         <Link to="/app" rel="home">
           Solicitudes
         </Link>
+        <Link to="/app/purchase-flow">Purchase Flow</Link>
       </NavMenu>
       <Outlet />
     </AppProvider>

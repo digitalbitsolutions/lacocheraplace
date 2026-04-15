@@ -237,6 +237,8 @@
       const list = document.getElementById('HeroNearbyList-{{ section.id }}');
       const providers = {{ nearby_providers_json | strip_newlines }};
       const RADIUS_METERS = 500;
+      const DEFAULT_PROVIDER_URL = '/pages/servicios';
+      const CITY_DRIVING_SPEED_KMH = 22;
 
       if (!button || !panel || !status || !list) return;
 
@@ -253,21 +255,23 @@
         return 2 * earth * Math.asin(Math.sqrt(h));
       };
 
+      const etaMinutes = (distance) => {
+        const minutes = (distance / 1000 / CITY_DRIVING_SPEED_KMH) * 60;
+        return Math.max(1, Math.round(minutes));
+      };
+
       const renderProviders = (items) => {
         list.innerHTML = '';
         items.forEach((item) => {
           const li = document.createElement('li');
           li.className = 'home-hero-nearby__item';
-          const label = `${item.name} - ${Math.round(item.distance)} m`;
-          if (item.url) {
-            const a = document.createElement('a');
-            a.className = 'home-hero-nearby__link';
-            a.href = item.url;
-            a.textContent = label;
-            li.appendChild(a);
-          } else {
-            li.textContent = label;
-          }
+          const eta = etaMinutes(item.distance);
+          const label = `${item.name} - ${Math.round(item.distance)} m - ETA aprox ${eta} min`;
+          const a = document.createElement('a');
+          a.className = 'home-hero-nearby__link';
+          a.href = item.url || DEFAULT_PROVIDER_URL;
+          a.textContent = label;
+          li.appendChild(a);
           list.appendChild(li);
         });
       };
@@ -312,7 +316,7 @@
               return;
             }
 
-            status.textContent = `Proveedores encontrados en un radio de ${RADIUS_METERS} m:`;
+            status.textContent = `Proveedores encontrados en un radio de ${RADIUS_METERS} m. Elige uno para ver sus servicios:`;
             renderProviders(matches);
           },
           () => {

@@ -27,7 +27,7 @@
             "provider_name": "Detailing Padilla 318 - Carrer de Padilla 318, 08025",
             "latitude": "41.4079",
             "longitude": "2.1747",
-            "provider_url": ""
+            "provider_url": "/search?q=Detailing+Padilla+318&type=product"
           }
         },
         "nearby_provider_2": {
@@ -36,7 +36,7 @@
             "provider_name": "Lavado Sagrada Familia - Carrer de Lepant 330, 08025",
             "latitude": "41.4068",
             "longitude": "2.1728",
-            "provider_url": ""
+            "provider_url": "/search?q=Lavado+Sagrada+Familia&type=product"
           }
         },
         "nearby_provider_3": {
@@ -45,7 +45,7 @@
             "provider_name": "Neumaticos Dos de Maig - Carrer Dos de Maig 278, 08025",
             "latitude": "41.4088",
             "longitude": "2.1764",
-            "provider_url": ""
+            "provider_url": "/search?q=Neumaticos+Dos+de+Maig&type=product"
           }
         }
       },

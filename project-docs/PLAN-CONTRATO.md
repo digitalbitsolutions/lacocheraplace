@@ -155,13 +155,16 @@ Hasta ese momento, el trabajo principal sigue siendo local.
 - Homepage round 3 completada
 - Preview de tema borrador creada en Shopify
 - Mejoras recientes en flujo de proveedores y contenidos informativos
-- Siguiente foco: ejecutar Subfase 3.A-3.D por lotes verificables
+- Lote 1 completado: contrato de datos Prisma + adaptador `lookupByPlate` + migracion versionada + rollback documentado
+- Drift local de `prisma/dev.sqlite` resuelto y migraciones aplicadas en entorno dev
+- Lote 2 completado: endpoint `POST /apps/service-precheck` + persistencia + respuesta `ok/incompatible/unverified`
+- Lote 3 en curso: metafield `service.purchase_flow` gestionado desde app y set piloto inicial preparado
+- Bloqueo actual: release de app publicada con URL temporal de tunel; pendiente mover a hosting estable con URL fija
 
 ## Siguiente paso recomendado
-Abrir la iniciativa de compra guiada por matricula en este orden:
-- lote 1: contrato de datos y migraciones (`schema.prisma`)
-- lote 2: endpoint `POST /apps/service-precheck`
-- lote 3: opt-in de catalogo y variantes `familia + talla`
+Continuar la iniciativa de compra guiada por matricula en este orden:
+- infraestructura app: URL estable de hosting externo + redeploy de app con redirects/proxy/webhooks fijos
+- lote 3: aplicar piloto opt-in real en productos objetivo desde `Purchase Flow`
 - lote 4: bloque de intake en `main-product.liquid`
 - lote 5: webhook `orders/create` y trazabilidad end-to-end
 
