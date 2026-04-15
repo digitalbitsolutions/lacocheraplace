@@ -362,6 +362,7 @@
         "text",
         "button"
       ],
+      "disabled": true,
       "settings": {
         "desktop_content_position": "center",
         "content_alignment": "center",
@@ -413,6 +414,7 @@
         "text",
         "button"
       ],
+      "disabled": true,
       "settings": {
         "desktop_content_position": "center",
         "content_alignment": "center",
@@ -443,6 +445,7 @@
         "featured_collection_provider_2"
       ],
       "name": "t:sections.collection-list.presets.name",
+      "disabled": true,
       "settings": {
         "title": "Talleres destacados para empezar",
         "heading_size": "h1",
@@ -560,9 +563,14 @@
     "multicolumn_aHED4U",
     "home_how_it_works_home",
     "home_featured_providers_home",
+    "provider_reviews_home",
+    "rich_text_marketplace_intro",
+    "rich_text_providers_intro",
+    "collection_list_providers_home",
     "home_testimonials_custom"
   ]
 }
+
 
 
 
