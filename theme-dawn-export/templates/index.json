@@ -21,40 +21,82 @@
             "button_style_secondary_2": false
           }
         },
-        "nearby_provider_1": {
-          "type": "nearby_provider",
+        "service_category_option_1": {
+          "type": "service_category_option",
           "settings": {
-            "provider_name": "Detailing Padilla 318 - Carrer de Padilla 318, 08025",
-            "latitude": "41.4079",
-            "longitude": "2.1747",
-            "provider_url": "/search?q=Detailing+Padilla+318&type=product"
+            "service_collection": "lavado",
+            "option_label": "Lavado de coches"
           }
         },
-        "nearby_provider_2": {
-          "type": "nearby_provider",
+        "service_category_option_2": {
+          "type": "service_category_option",
           "settings": {
-            "provider_name": "Lavado Sagrada Familia - Carrer de Lepant 330, 08025",
-            "latitude": "41.4068",
-            "longitude": "2.1728",
-            "provider_url": "/search?q=Lavado+Sagrada+Familia&type=product"
+            "service_collection": "detailing",
+            "option_label": "Detailing"
           }
         },
-        "nearby_provider_3": {
-          "type": "nearby_provider",
+        "service_category_option_3": {
+          "type": "service_category_option",
           "settings": {
-            "provider_name": "Neumaticos Dos de Maig - Carrer Dos de Maig 278, 08025",
-            "latitude": "41.4088",
-            "longitude": "2.1764",
-            "provider_url": "/search?q=Neumaticos+Dos+de+Maig&type=product"
+            "service_collection": "neumaticos-y-llantas",
+            "option_label": "Neumaticos y llantas"
+          }
+        },
+        "service_category_option_4": {
+          "type": "service_category_option",
+          "settings": {
+            "service_collection": "ppf-wrap-tintado-lunas",
+            "option_label": "PPF, wrap y tintado de lunas"
+          }
+        },
+        "service_category_option_5": {
+          "type": "service_category_option",
+          "settings": {
+            "service_collection": "chapa-y-pintura",
+            "option_label": "Chapa y pintura"
+          }
+        },
+        "service_category_option_6": {
+          "type": "service_category_option",
+          "settings": {
+            "service_collection": "mantenimiento-ligero",
+            "option_label": "Mecanica basica"
+          }
+        },
+        "service_category_option_7": {
+          "type": "service_category_option",
+          "settings": {
+            "service_collection": "grua-y-auxlio-mecanico",
+            "option_label": "Grua y auxilio mecanico"
+          }
+        },
+        "service_category_option_8": {
+          "type": "service_category_option",
+          "settings": {
+            "service_collection": "parking",
+            "option_label": "Parking"
+          }
+        },
+        "service_category_option_9": {
+          "type": "service_category_option",
+          "settings": {
+            "service_collection": "productos-y-accesorios-para-el-cuidado-automotriz",
+            "option_label": "Productos y accesorios"
           }
         }
       },
       "block_order": [
         "heading",
         "button",
-        "nearby_provider_1",
-        "nearby_provider_2",
-        "nearby_provider_3"
+        "service_category_option_1",
+        "service_category_option_2",
+        "service_category_option_3",
+        "service_category_option_4",
+        "service_category_option_5",
+        "service_category_option_6",
+        "service_category_option_7",
+        "service_category_option_8",
+        "service_category_option_9"
       ],
       "settings": {
         "image": "shopify://shop_images/coche.jpg",

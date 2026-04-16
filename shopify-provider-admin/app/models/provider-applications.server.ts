@@ -94,6 +94,24 @@ export interface ProviderApplicationRecord {
   updatedAt: string;
 }
 
+export interface ProviderProfileRecord {
+  id: string;
+  handle: string;
+  displayName: string;
+  providerSlug: string;
+  catalogVendorName: string;
+  addressLine1: string;
+  addressLine2: string;
+  city: string;
+  postalCode: string;
+  provinceOrRegion: string;
+  country: string;
+  latitude: string;
+  longitude: string;
+  serviceCategories: string[];
+  status: string;
+}
+
 type MetaobjectNode = {
   id: string;
   handle: string;
@@ -312,6 +330,28 @@ function fieldValue(
   fallback = "",
 ) {
   return fieldMap.get(key) ?? fallback;
+}
+
+function parseProviderProfileNode(node: MetaobjectNode): ProviderProfileRecord {
+  const fields = fieldMapFromNode(node);
+
+  return {
+    id: node.id,
+    handle: node.handle,
+    displayName: fieldValue(fields, "display_name", node.displayName || ""),
+    providerSlug: fieldValue(fields, "provider_slug", node.handle),
+    catalogVendorName: fieldValue(fields, "catalog_vendor_name"),
+    addressLine1: fieldValue(fields, "address_line_1"),
+    addressLine2: fieldValue(fields, "address_line_2"),
+    city: fieldValue(fields, "city"),
+    postalCode: fieldValue(fields, "postal_code"),
+    provinceOrRegion: fieldValue(fields, "province_or_region"),
+    country: fieldValue(fields, "country"),
+    latitude: fieldValue(fields, "latitude"),
+    longitude: fieldValue(fields, "longitude"),
+    serviceCategories: parseListValue(fieldValue(fields, "service_categories")),
+    status: fieldValue(fields, "status"),
+  };
 }
 
 function parseApplicationNode(node: MetaobjectNode): ProviderApplicationRecord {
@@ -801,6 +841,38 @@ export async function listProviderApplicationRequests(admin: GraphqlAdmin) {
       const rightDate = new Date(right.reviewedAt || right.submittedAt).getTime();
       return rightDate - leftDate;
     });
+}
+
+export async function listApprovedProviderProfiles(admin: GraphqlAdmin) {
+  await ensureProviderProfileDefinition(admin);
+
+  const data = await shopifyGraphql<{
+    metaobjects: {
+      nodes: MetaobjectNode[];
+    };
+  }>(
+    admin,
+    `#graphql
+      query ListProviderProfiles($type: String!) {
+        metaobjects(type: $type, first: 100) {
+          nodes {
+            id
+            handle
+            displayName
+            fields {
+              key
+              value
+              type
+            }
+          }
+        }
+      }`,
+    { type: PROVIDER_PROFILE_TYPE },
+  );
+
+  return data.metaobjects.nodes
+    .map(parseProviderProfileNode)
+    .filter((profile) => profile.status === "approved");
 }
 
 export async function getProviderApplicationRequest(

@@ -197,38 +197,95 @@
       {%- if show_home_service_search -%}
         <div class="home-hero-service-search" data-static-search>
           <form
-            action="{{ routes.search_url }}"
+            action="#"
             method="get"
             role="search"
             class="home-hero-service-search__form"
+            id="HeroServiceSearchForm-{{ section.id }}"
           >
-            <input type="hidden" name="type" value="product">
-            <input type="hidden" name="options[prefix]" value="last">
-            <span class="home-hero-service-search__icon" aria-hidden="true">
-              {{- 'icon-search.svg' | inline_asset_content -}}
-            </span>
-            <input
-              class="home-hero-service-search__input"
-              type="search"
-              name="q"
-              value="{{ search.terms | escape }}"
-              placeholder="Busca un servicio (ej. Lavado, Neumaticos)"
-              aria-label="Busca un servicio"
-              autocorrect="off"
-              autocomplete="off"
-              autocapitalize="off"
-              spellcheck="false"
-            >
-          </form>
-          <button type="button" class="home-hero-service-search__button" id="HeroNearbyBtn-{{ section.id }}">
-            Encuentra servicios cerca a ti
-          </button>
-          <div class="home-hero-nearby" id="HeroNearbyPanel-{{ section.id }}" hidden>
-            <p class="home-hero-nearby__status" id="HeroNearbyStatus-{{ section.id }}">
-              Pulsa el boton para ver proveedores cercanos.
+            {%- capture hero_service_options_markup -%}
+              {%- assign has_service_category_options = false -%}
+              {%- for block in section.blocks -%}
+                {%- if block.type == 'service_category_option' and block.settings.service_collection != blank -%}
+                  {%- assign has_service_category_options = true -%}
+                  {%- assign service_option_label = block.settings.option_label | strip -%}
+                  {%- if service_option_label == blank -%}
+                    {%- assign service_option_label = block.settings.service_collection.title -%}
+                  {%- endif -%}
+                  <button
+                    type="button"
+                    class="home-hero-service-search__option"
+                    role="option"
+                    data-service-value="{{ block.settings.service_collection.url }}"
+                    data-service-handle="{{ block.settings.service_collection.handle }}"
+                    data-service-label="{{ service_option_label | escape }}"
+                    aria-selected="false"
+                  >
+                    <span class="home-hero-service-search__option-label">{{ service_option_label | escape }}</span>
+                    <span class="home-hero-service-search__option-check" aria-hidden="true">&#10003;</span>
+                  </button>
+                {%- endif -%}
+              {%- endfor -%}
+              {%- unless has_service_category_options -%}
+                <button type="button" class="home-hero-service-search__option" role="option" data-service-value="/collections/lavado" data-service-handle="lavado" data-service-label="Lavado de coches" aria-selected="false"><span class="home-hero-service-search__option-label">Lavado de coches</span><span class="home-hero-service-search__option-check" aria-hidden="true">&#10003;</span></button>
+                <button type="button" class="home-hero-service-search__option" role="option" data-service-value="/collections/detailing" data-service-handle="detailing" data-service-label="Detailing" aria-selected="false"><span class="home-hero-service-search__option-label">Detailing</span><span class="home-hero-service-search__option-check" aria-hidden="true">&#10003;</span></button>
+                <button type="button" class="home-hero-service-search__option" role="option" data-service-value="/collections/neumaticos-y-llantas" data-service-handle="neumaticos-y-llantas" data-service-label="Neumaticos y llantas" aria-selected="false"><span class="home-hero-service-search__option-label">Neumaticos y llantas</span><span class="home-hero-service-search__option-check" aria-hidden="true">&#10003;</span></button>
+                <button type="button" class="home-hero-service-search__option" role="option" data-service-value="/collections/ppf-wrap-tintado-lunas" data-service-handle="ppf-wrap-tintado-lunas" data-service-label="PPF, wrap y tintado de lunas" aria-selected="false"><span class="home-hero-service-search__option-label">PPF, wrap y tintado de lunas</span><span class="home-hero-service-search__option-check" aria-hidden="true">&#10003;</span></button>
+                <button type="button" class="home-hero-service-search__option" role="option" data-service-value="/collections/chapa-y-pintura" data-service-handle="chapa-y-pintura" data-service-label="Chapa y pintura" aria-selected="false"><span class="home-hero-service-search__option-label">Chapa y pintura</span><span class="home-hero-service-search__option-check" aria-hidden="true">&#10003;</span></button>
+                <button type="button" class="home-hero-service-search__option" role="option" data-service-value="/collections/mantenimiento-ligero" data-service-handle="mantenimiento-ligero" data-service-label="Mecanica basica" aria-selected="false"><span class="home-hero-service-search__option-label">Mecanica basica</span><span class="home-hero-service-search__option-check" aria-hidden="true">&#10003;</span></button>
+                <button type="button" class="home-hero-service-search__option" role="option" data-service-value="/collections/grua-y-auxlio-mecanico" data-service-handle="grua-y-auxlio-mecanico" data-service-label="Grua y auxilio mecanico" aria-selected="false"><span class="home-hero-service-search__option-label">Grua y auxilio mecanico</span><span class="home-hero-service-search__option-check" aria-hidden="true">&#10003;</span></button>
+                <button type="button" class="home-hero-service-search__option" role="option" data-service-value="/collections/parking" data-service-handle="parking" data-service-label="Parking" aria-selected="false"><span class="home-hero-service-search__option-label">Parking</span><span class="home-hero-service-search__option-check" aria-hidden="true">&#10003;</span></button>
+                <button type="button" class="home-hero-service-search__option" role="option" data-service-value="/collections/productos-y-accesorios-para-el-cuidado-automotriz" data-service-handle="productos-y-accesorios-para-el-cuidado-automotriz" data-service-label="Productos y accesorios" aria-selected="false"><span class="home-hero-service-search__option-label">Productos y accesorios</span><span class="home-hero-service-search__option-check" aria-hidden="true">&#10003;</span></button>
+              {%- endunless -%}
+            {%- endcapture -%}
+            <div class="home-hero-service-search__field">
+              <span class="home-hero-service-search__icon" aria-hidden="true">
+                {{- 'icon-search.svg' | inline_asset_content -}}
+              </span>
+              <input type="hidden" id="HeroServiceValue-{{ section.id }}" name="service_directory" value="">
+              <input type="hidden" id="HeroServiceHandle-{{ section.id }}" name="service_handle" value="">
+              <button
+                type="button"
+                class="home-hero-service-search__trigger"
+                id="HeroServiceTrigger-{{ section.id }}"
+                aria-haspopup="listbox"
+                aria-expanded="false"
+                aria-controls="HeroServiceMenu-{{ section.id }}"
+                aria-describedby="HeroServiceHelp-{{ section.id }} HeroServiceError-{{ section.id }}"
+                aria-invalid="false"
+              >
+                <span class="home-hero-service-search__trigger-label" id="HeroServiceLabel-{{ section.id }}">
+                  Selecciona un servicio para ver proveedores
+                </span>
+              </button>
+              <span class="home-hero-service-search__chevron" aria-hidden="true">&#9662;</span>
+              <div
+                class="home-hero-service-search__menu"
+                id="HeroServiceMenu-{{ section.id }}"
+                role="listbox"
+                aria-label="Servicios disponibles"
+                tabindex="-1"
+                hidden
+              >
+                {{ hero_service_options_markup }}
+              </div>
+            </div>
+            <p class="visually-hidden" id="HeroServiceHelp-{{ section.id }}">
+              Usa flecha abajo para abrir la lista. Usa flechas para navegar opciones y Enter para seleccionar.
             </p>
-            <ul class="home-hero-nearby__list" id="HeroNearbyList-{{ section.id }}"></ul>
-          </div>
+            <p class="home-hero-service-search__error" id="HeroServiceError-{{ section.id }}" role="alert" hidden>
+              Selecciona un servicio antes de continuar.
+            </p>
+            <button type="submit" class="home-hero-service-search__button">
+              Encuentra proveedores cerca de ti
+            </button>
+            <div class="home-hero-nearby" id="HeroNearbyPanel-{{ section.id }}" hidden>
+              <p class="home-hero-nearby__status" id="HeroNearbyStatus-{{ section.id }}" role="status" aria-live="polite">
+                Selecciona una categoria para buscar proveedores cercanos.
+              </p>
+              <ul class="home-hero-nearby__list" id="HeroNearbyList-{{ section.id }}"></ul>
+            </div>
+          </form>
         </div>
       {%- endif -%}
     </div>
@@ -236,35 +293,24 @@
 </div>
 
 {%- if show_home_service_search -%}
-  {%- capture nearby_providers_json -%}
-    [
-      {%- assign has_provider = false -%}
-      {%- for block in section.blocks -%}
-        {%- if block.type == 'nearby_provider' and block.settings.provider_name != blank and block.settings.latitude != blank and block.settings.longitude != blank -%}
-          {%- if has_provider -%},{%- endif -%}
-          {
-            "name": {{ block.settings.provider_name | json }},
-            "lat": {{ block.settings.latitude | plus: 0 | json }},
-            "lon": {{ block.settings.longitude | plus: 0 | json }},
-            "url": {{ block.settings.provider_url | json }}
-          }
-          {%- assign has_provider = true -%}
-        {%- endif -%}
-      {%- endfor -%}
-    ]
-  {%- endcapture -%}
   <script>
     (() => {
-      const button = document.getElementById('HeroNearbyBtn-{{ section.id }}');
-      const panel = document.getElementById('HeroNearbyPanel-{{ section.id }}');
-      const status = document.getElementById('HeroNearbyStatus-{{ section.id }}');
-      const list = document.getElementById('HeroNearbyList-{{ section.id }}');
-      const providers = {{ nearby_providers_json | strip_newlines }};
-      const RADIUS_METERS = 500;
-      const DEFAULT_PROVIDER_URL = '/pages/servicios';
-      const CITY_DRIVING_SPEED_KMH = 22;
+      const form = document.getElementById('HeroServiceSearchForm-{{ section.id }}');
+      const trigger = document.getElementById('HeroServiceTrigger-{{ section.id }}');
+      const label = document.getElementById('HeroServiceLabel-{{ section.id }}');
+      const menu = document.getElementById('HeroServiceMenu-{{ section.id }}');
+      const valueInput = document.getElementById('HeroServiceValue-{{ section.id }}');
+      const handleInput = document.getElementById('HeroServiceHandle-{{ section.id }}');
+      const errorMessage = document.getElementById('HeroServiceError-{{ section.id }}');
+      const nearbyPanel = document.getElementById('HeroNearbyPanel-{{ section.id }}');
+      const nearbyStatus = document.getElementById('HeroNearbyStatus-{{ section.id }}');
+      const nearbyList = document.getElementById('HeroNearbyList-{{ section.id }}');
+      const options = menu ? Array.from(menu.querySelectorAll('[data-service-value]')) : [];
+      const RADIUS_METERS = 2000;
+      const nearbyEndpoint = '/apps/provider-applications/providers-nearby';
 
-      if (!button || !panel || !status || !list) return;
+      if (!form || !trigger || !label || !menu || !valueInput || !handleInput || !options.length) return;
+      let activeIndex = 0;
 
       const toRad = (deg) => (deg * Math.PI) / 180;
       const distanceMeters = (aLat, aLon, bLat, bLon) => {
@@ -279,73 +325,263 @@
         return 2 * earth * Math.asin(Math.sqrt(h));
       };
 
-      const etaMinutes = (distance) => {
-        const minutes = (distance / 1000 / CITY_DRIVING_SPEED_KMH) * 60;
-        return Math.max(1, Math.round(minutes));
-      };
-
-      const renderProviders = (items) => {
-        list.innerHTML = '';
+      const renderNearbyResults = (items) => {
+        if (!nearbyList) return;
+        nearbyList.innerHTML = '';
         items.forEach((item) => {
           const li = document.createElement('li');
           li.className = 'home-hero-nearby__item';
-          const eta = etaMinutes(item.distance);
-          const label = `${item.name} - ${Math.round(item.distance)} m - ETA aprox ${eta} min`;
-          const a = document.createElement('a');
-          a.className = 'home-hero-nearby__link';
-          a.href = item.url || DEFAULT_PROVIDER_URL;
-          a.textContent = label;
-          li.appendChild(a);
-          list.appendChild(li);
+
+          const link = document.createElement('a');
+          link.className = 'home-hero-nearby__link';
+          link.href = item.url || valueInput.value || '#';
+
+          const name = document.createElement('span');
+          name.className = 'home-hero-nearby__provider';
+          name.textContent = item.name;
+
+          const meta = document.createElement('span');
+          meta.className = 'home-hero-nearby__meta';
+          meta.textContent = `${Math.round(item.distance)} m de tu ubicacion`;
+
+          link.appendChild(name);
+          link.appendChild(meta);
+          li.appendChild(link);
+          nearbyList.appendChild(li);
         });
       };
 
-      button.addEventListener('click', () => {
-        panel.hidden = false;
+      const closeMenu = () => {
+        menu.hidden = true;
+        trigger.setAttribute('aria-expanded', 'false');
+        form.classList.remove('is-open');
+        menu.removeAttribute('aria-activedescendant');
+      };
 
-        if (!providers.length) {
-          status.textContent =
-            'Aun no hay proveedores configurados en el editor para esta busqueda.';
+      const openMenu = () => {
+        menu.hidden = false;
+        trigger.setAttribute('aria-expanded', 'true');
+        form.classList.add('is-open');
+        const selectedIndex = options.findIndex((item) => item.getAttribute('aria-selected') === 'true');
+        setActive(selectedIndex >= 0 ? selectedIndex : activeIndex, true);
+      };
+
+      const toggleMenu = () => {
+        if (menu.hidden) {
+          openMenu();
           return;
+        }
+        closeMenu();
+      };
+
+      const clearInvalid = () => {
+        trigger.setAttribute('aria-invalid', 'false');
+        form.classList.remove('is-invalid');
+        if (errorMessage) {
+          errorMessage.hidden = true;
+        }
+      };
+
+      const setInvalid = () => {
+        trigger.setAttribute('aria-invalid', 'true');
+        form.classList.add('is-invalid');
+        if (errorMessage) {
+          errorMessage.hidden = false;
+        }
+      };
+
+      const setActive = (index, moveFocus) => {
+        if (!options.length) return;
+        if (index < 0) index = options.length - 1;
+        if (index >= options.length) index = 0;
+        activeIndex = index;
+        options.forEach((item, itemIndex) => {
+          if (itemIndex === activeIndex) {
+            item.classList.add('is-active');
+            item.setAttribute('tabindex', '0');
+            menu.setAttribute('aria-activedescendant', item.id);
+            if (moveFocus) {
+              item.focus();
+            }
+          } else {
+            item.classList.remove('is-active');
+            item.setAttribute('tabindex', '-1');
+          }
+        });
+      };
+
+      const setSelection = (option) => {
+        options.forEach((item) => item.setAttribute('aria-selected', 'false'));
+        option.setAttribute('aria-selected', 'true');
+        valueInput.value = option.dataset.serviceValue || '';
+        handleInput.value = option.dataset.serviceHandle || '';
+        label.textContent = option.dataset.serviceLabel || 'Selecciona un servicio para ver proveedores';
+        form.classList.add('has-selection');
+        clearInvalid();
+      };
+
+      options.forEach((option, index) => {
+        option.id = `HeroServiceOption-{{ section.id }}-${index}`;
+        option.setAttribute('tabindex', '-1');
+        option.addEventListener('click', () => {
+          setActive(index, false);
+          setSelection(option);
+          closeMenu();
+          trigger.focus();
+        });
+        option.addEventListener('mouseenter', () => {
+          setActive(index, false);
+        });
+        option.addEventListener('keydown', (event) => {
+          if (event.key === 'ArrowDown') {
+            event.preventDefault();
+            setActive(activeIndex + 1, true);
+          } else if (event.key === 'ArrowUp') {
+            event.preventDefault();
+            setActive(activeIndex - 1, true);
+          } else if (event.key === 'Home') {
+            event.preventDefault();
+            setActive(0, true);
+          } else if (event.key === 'End') {
+            event.preventDefault();
+            setActive(options.length - 1, true);
+          } else if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            setSelection(option);
+            closeMenu();
+            trigger.focus();
+          } else if (event.key === 'Escape') {
+            event.preventDefault();
+            closeMenu();
+            trigger.focus();
+          } else if (event.key === 'Tab') {
+            closeMenu();
+          }
+        });
+      });
+
+      trigger.addEventListener('click', toggleMenu);
+      trigger.addEventListener('keydown', (event) => {
+        if (event.key === 'ArrowDown' || event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          openMenu();
+        } else if (event.key === 'ArrowUp') {
+          event.preventDefault();
+          openMenu();
+          setActive(activeIndex - 1, true);
+        }
+        if (event.key === 'Escape') {
+          closeMenu();
+        }
+      });
+
+      document.addEventListener('click', (event) => {
+        if (!form.contains(event.target)) {
+          closeMenu();
+        }
+      });
+
+      form.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        const targetUrl = valueInput.value;
+        const selectedHandle = handleInput.value;
+
+        if (!targetUrl || !selectedHandle) {
+          setInvalid();
+          openMenu();
+          return;
+        }
+        if (nearbyPanel) {
+          nearbyPanel.hidden = false;
         }
 
         if (!navigator.geolocation) {
-          status.textContent =
-            'Tu navegador no permite geolocalizacion. Activa ubicacion para ver proveedores cercanos.';
+          if (nearbyStatus) {
+            nearbyStatus.textContent =
+              'Tu navegador no permite geolocalizacion. Activa ubicacion para ver proveedores cercanos.';
+          }
+          if (nearbyList) {
+            nearbyList.innerHTML = '';
+          }
           return;
         }
 
-        status.textContent = 'Buscando proveedores cercanos...';
-        list.innerHTML = '';
+        if (nearbyStatus) {
+          nearbyStatus.textContent = 'Buscando proveedores cercanos...';
+        }
+        if (nearbyList) {
+          nearbyList.innerHTML = '';
+        }
 
         navigator.geolocation.getCurrentPosition(
-          (position) => {
+          async (position) => {
             const { latitude, longitude } = position.coords;
-            const matches = providers
-              .map((provider) => ({
-                ...provider,
-                distance: distanceMeters(
-                  latitude,
-                  longitude,
-                  Number(provider.lat),
-                  Number(provider.lon),
-                ),
-              }))
-              .filter((provider) => provider.distance <= RADIUS_METERS)
-              .sort((a, b) => a.distance - b.distance);
+            try {
+              const response = await fetch(
+                `${nearbyEndpoint}?service_handle=${encodeURIComponent(selectedHandle)}`,
+                {
+                  method: 'GET',
+                  headers: {
+                    Accept: 'application/json',
+                  },
+                },
+              );
+              const payload = await response.json();
+              const providers = Array.isArray(payload?.providers) ? payload.providers : [];
 
-            if (!matches.length) {
-              status.textContent =
-                'No encontramos proveedores en un radio de 500 m desde tu ubicacion.';
-              return;
+              if (!response.ok) {
+                throw new Error(
+                  payload?.message || 'No se pudo consultar el directorio de proveedores.',
+                );
+              }
+
+              if (!providers.length) {
+                if (nearbyStatus) {
+                  nearbyStatus.textContent =
+                    'No encontramos proveedores aprobados para esta categoria.';
+                }
+                return;
+              }
+
+              const nearbyMatches = providers
+                .map((provider) => ({
+                  ...provider,
+                  distance: distanceMeters(
+                    latitude,
+                    longitude,
+                    Number(provider.latitude),
+                    Number(provider.longitude),
+                  ),
+                }))
+                .filter((provider) => provider.distance <= RADIUS_METERS)
+                .sort((a, b) => a.distance - b.distance);
+
+              if (!nearbyMatches.length) {
+                if (nearbyStatus) {
+                  nearbyStatus.textContent =
+                    'No encontramos proveedores dentro de un radio de 2 km para esta categoria.';
+                }
+                return;
+              }
+
+              if (nearbyStatus) {
+                nearbyStatus.textContent = `Encontramos ${nearbyMatches.length} proveedor(es) dentro de 2 km. Elige uno para ver sus servicios o productos.`;
+              }
+              renderNearbyResults(nearbyMatches);
+            } catch (error) {
+              if (nearbyStatus) {
+                nearbyStatus.textContent =
+                  error instanceof Error
+                    ? error.message
+                    : 'No se pudo cargar el directorio de proveedores cercanos.';
+              }
             }
-
-            status.textContent = `Proveedores encontrados en un radio de ${RADIUS_METERS} m. Elige uno para ver sus servicios:`;
-            renderProviders(matches);
           },
           () => {
-            status.textContent =
-              'No pudimos obtener tu ubicacion. Revisa permisos del navegador e intentalo de nuevo.';
+            if (nearbyStatus) {
+              nearbyStatus.textContent =
+                'No pudimos obtener tu ubicacion. Revisa los permisos del navegador e intentalo de nuevo.';
+            }
           },
           {
             enableHighAccuracy: true,
@@ -354,6 +590,8 @@
           },
         );
       });
+
+      setActive(0, false);
     })();
   </script>
 {%- endif -%}
@@ -379,17 +617,35 @@
     }
 
     #Banner-{{ section.id }} .home-hero-service-search__form {
+      display: block;
+      width: min(64rem, 100%);
+      margin: 0 auto;
+    }
+
+    #Banner-{{ section.id }} .home-hero-service-search__field {
       display: flex;
       align-items: center;
       gap: 1rem;
-      width: min(64rem, 100%);
-      margin: 0 auto 1.2rem;
-      min-height: 5.6rem;
+      width: 100%;
+      min-height: 5.8rem;
       border-radius: 999px;
       padding: 0 1.8rem;
       background: rgba(255, 255, 255, 0.97);
       border: 0.1rem solid rgba(17, 24, 39, 0.12);
       box-shadow: 0 0.8rem 2rem rgba(15, 23, 42, 0.22);
+      transition: box-shadow 0.2s ease, transform 0.2s ease;
+      position: relative;
+      isolation: isolate;
+    }
+
+    #Banner-{{ section.id }} .home-hero-service-search__form.is-invalid .home-hero-service-search__field {
+      border-color: #b91c1c;
+      box-shadow: 0 0 0 0.25rem rgba(185, 28, 28, 0.2), 0 0.8rem 2rem rgba(15, 23, 42, 0.22);
+    }
+
+    #Banner-{{ section.id }} .home-hero-service-search__field:focus-within {
+      box-shadow: 0 1.1rem 2.4rem rgba(15, 23, 42, 0.28);
+      transform: translateY(-0.1rem);
     }
 
     #Banner-{{ section.id }} .home-hero-service-search__icon {
@@ -407,7 +663,7 @@
       height: 2rem;
     }
 
-    #Banner-{{ section.id }} .home-hero-service-search__input {
+    #Banner-{{ section.id }} .home-hero-service-search__trigger {
       width: 100%;
       border: 0;
       outline: 0;
@@ -416,18 +672,133 @@
       font-size: 1.6rem;
       line-height: 1.3;
       padding: 0;
+      min-height: 5.2rem;
+      cursor: pointer;
+      text-align: left;
+      font-weight: 500;
+      font-family: inherit;
+      border-radius: 1.2rem;
     }
 
-    #Banner-{{ section.id }} .home-hero-service-search__input::placeholder {
+    #Banner-{{ section.id }} .home-hero-service-search__trigger:focus-visible {
+      outline: 0.25rem solid #1d4ed8;
+      outline-offset: 0.15rem;
+    }
+
+    #Banner-{{ section.id }} .home-hero-service-search__trigger-label {
+      display: block;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      max-width: 100%;
+    }
+
+    #Banner-{{ section.id }} .home-hero-service-search__chevron {
+      flex: 0 0 auto;
+      font-size: 1.3rem;
       color: #6b7280;
+      line-height: 1;
+      transform: translateY(0.1rem);
+      pointer-events: none;
+      transition: transform 0.2s ease, color 0.2s ease;
+    }
+
+    #Banner-{{ section.id }} .home-hero-service-search__form.is-open .home-hero-service-search__chevron {
+      transform: rotate(180deg);
+      color: #1d4ed8;
+    }
+
+    #Banner-{{ section.id }} .home-hero-service-search__menu {
+      position: absolute;
+      top: calc(100% + 0.8rem);
+      left: 0;
+      right: 0;
+      max-height: 30rem;
+      overflow-y: auto;
+      border-radius: 1.6rem;
+      background: rgba(255, 255, 255, 0.99);
+      border: 0.1rem solid rgba(29, 78, 216, 0.16);
+      box-shadow: 0 1.8rem 3.6rem rgba(15, 23, 42, 0.24);
+      padding: 0.6rem;
+      text-align: left;
+      z-index: 4;
+      backdrop-filter: blur(10px);
+    }
+
+    #Banner-{{ section.id }} .home-hero-service-search__option {
+      width: 100%;
+      border: 0;
+      background: transparent;
+      min-height: 4.4rem;
+      border-radius: 1.1rem;
+      padding: 1rem 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.2rem;
+      color: #243047;
+      cursor: pointer;
+      font-size: 1.55rem;
+      line-height: 1.3;
+      font-family: inherit;
+      text-align: left;
+    }
+
+    #Banner-{{ section.id }} .home-hero-service-search__option:hover {
+      background: #eef4ff;
+      color: #173a85;
+    }
+
+    #Banner-{{ section.id }} .home-hero-service-search__option:focus-visible,
+    #Banner-{{ section.id }} .home-hero-service-search__option.is-active {
+      outline: 0.2rem solid #1d4ed8;
+      outline-offset: -0.1rem;
+      background: #e8f0ff;
+    }
+
+    #Banner-{{ section.id }} .home-hero-service-search__option[aria-selected='true'] {
+      background: linear-gradient(135deg, rgba(15, 76, 189, 0.1) 0%, rgba(23, 58, 133, 0.12) 100%);
+      color: #102b63;
+      font-weight: 600;
+    }
+
+    #Banner-{{ section.id }} .home-hero-service-search__option-check {
+      opacity: 0;
+      transform: scale(0.85);
+      transition: opacity 0.15s ease, transform 0.15s ease;
+      color: #0f4cbd;
+      font-size: 1.45rem;
+      line-height: 1;
+    }
+
+    #Banner-{{ section.id }} .home-hero-service-search__option[aria-selected='true'] .home-hero-service-search__option-check {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    #Banner-{{ section.id }} .home-hero-service-search__form:not(.has-selection) .home-hero-service-search__trigger-label {
+      color: #6b7280;
+    }
+
+    #Banner-{{ section.id }} .home-hero-service-search__error {
+      margin: 0.8rem auto 0;
+      width: min(64rem, 100%);
+      text-align: left;
+      color: #ffffff;
+      background: rgba(153, 27, 27, 0.92);
+      border: 0.1rem solid rgba(255, 255, 255, 0.45);
+      border-radius: 0.8rem;
+      padding: 0.7rem 1rem;
+      font-size: 1.35rem;
+      line-height: 1.4;
     }
 
     #Banner-{{ section.id }} .home-hero-service-search__button {
       display: flex;
       align-items: center;
       justify-content: center;
-      width: min(64rem, 100%);
-      margin-inline: auto;
+      width: 100%;
+      margin-top: 1.2rem;
       min-height: 6.2rem;
       border-radius: 999px;
       border: 0.2rem solid rgba(255, 255, 255, 0.75);
@@ -448,38 +819,62 @@
 
     #Banner-{{ section.id }} .home-hero-nearby {
       margin-top: 1.4rem;
-      margin-inline: auto;
-      width: min(62rem, 100%);
-      background: rgba(0, 0, 0, 0.55);
-      border: 0.1rem solid rgba(255, 255, 255, 0.35);
-      border-radius: 1.2rem;
-      padding: 1.2rem 1.4rem;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.18);
+      border: 0.1rem solid rgba(255, 255, 255, 0.32);
+      border-radius: 1.8rem;
+      padding: 1.4rem;
       text-align: left;
-      backdrop-filter: blur(2px);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 1.2rem 2.4rem rgba(15, 23, 42, 0.18);
     }
 
     #Banner-{{ section.id }} .home-hero-nearby__status {
       margin: 0;
       color: #ffffff;
-      font-size: 1.5rem;
-      line-height: 1.4;
+      font-size: 1.45rem;
+      line-height: 1.5;
     }
 
     #Banner-{{ section.id }} .home-hero-nearby__list {
-      margin: 0.8rem 0 0;
-      padding-left: 1.8rem;
-      color: #ffffff;
-      font-size: 1.45rem;
+      list-style: none;
+      margin: 1rem 0 0;
+      padding: 0;
+      display: grid;
+      gap: 0.8rem;
     }
 
-    #Banner-{{ section.id }} .home-hero-nearby__item + .home-hero-nearby__item {
-      margin-top: 0.4rem;
+    #Banner-{{ section.id }} .home-hero-nearby__item {
+      margin: 0;
     }
 
     #Banner-{{ section.id }} .home-hero-nearby__link {
-      color: #ffffff;
-      text-decoration: underline;
-      text-underline-offset: 0.2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      padding: 1.1rem 1.2rem;
+      border-radius: 1.2rem;
+      background: rgba(255, 255, 255, 0.92);
+      color: #132238;
+      text-decoration: none;
+      box-shadow: 0 0.8rem 1.8rem rgba(15, 23, 42, 0.12);
+    }
+
+    #Banner-{{ section.id }} .home-hero-nearby__link:hover {
+      transform: translateY(-0.1rem);
+      box-shadow: 0 1rem 2rem rgba(15, 23, 42, 0.16);
+    }
+
+    #Banner-{{ section.id }} .home-hero-nearby__provider {
+      font-size: 1.55rem;
+      font-weight: 700;
+      line-height: 1.3;
+    }
+
+    #Banner-{{ section.id }} .home-hero-nearby__meta {
+      font-size: 1.3rem;
+      line-height: 1.4;
+      color: #4b5563;
     }
 
     @media screen and (max-width: 749px) {
@@ -487,12 +882,21 @@
         margin-top: 2.4rem;
       }
 
-      #Banner-{{ section.id }} .home-hero-service-search__form {
+      #Banner-{{ section.id }} .home-hero-service-search__field {
         min-height: 5.1rem;
         padding: 0 1.4rem;
       }
 
-      #Banner-{{ section.id }} .home-hero-service-search__input {
+      #Banner-{{ section.id }} .home-hero-service-search__trigger {
+        font-size: 1.45rem;
+      }
+
+      #Banner-{{ section.id }} .home-hero-service-search__menu {
+        top: calc(100% + 0.6rem);
+      }
+
+      #Banner-{{ section.id }} .home-hero-service-search__option {
+        min-height: 4.2rem;
         font-size: 1.45rem;
       }
 
@@ -501,12 +905,20 @@
         font-size: 1.8rem;
       }
 
+      #Banner-{{ section.id }} .home-hero-service-search__error {
+        font-size: 1.25rem;
+      }
+
+      #Banner-{{ section.id }} .home-hero-nearby {
+        padding: 1.2rem;
+      }
+
       #Banner-{{ section.id }} .home-hero-nearby__status {
         font-size: 1.35rem;
       }
 
-      #Banner-{{ section.id }} .home-hero-nearby__list {
-        font-size: 1.3rem;
+      #Banner-{{ section.id }} .home-hero-nearby__provider {
+        font-size: 1.45rem;
       }
     }
   {%- endstyle -%}
@@ -848,31 +1260,21 @@
       ]
     },
     {
-      "type": "nearby_provider",
-      "name": "Proveedor cercano (hero)",
+      "type": "service_category_option",
+      "name": "Categoria buscador hero",
       "settings": [
         {
-          "type": "text",
-          "id": "provider_name",
-          "label": "Nombre del proveedor"
+          "type": "collection",
+          "id": "service_collection",
+          "label": "Coleccion de servicio"
         },
         {
           "type": "text",
-          "id": "latitude",
-          "label": "Latitud (ej. 41.3874)"
-        },
-        {
-          "type": "text",
-          "id": "longitude",
-          "label": "Longitud (ej. 2.1686)"
-        },
-        {
-          "type": "url",
-          "id": "provider_url",
-          "label": "Enlace del proveedor (opcional)"
+          "id": "option_label",
+          "label": "Etiqueta personalizada (opcional)"
         }
       ]
-    }
+    },
   ],
   "presets": [
     {
