@@ -3,6 +3,7 @@
 <script src="{{ 'provider-application-form.js' | asset_url }}" defer="defer"></script>
 
 {%- assign provider_application_proxy_path = section.settings.provider_application_proxy_path | default: '/apps/provider-applications/submit' -%}
+{%- assign google_maps_api_key = section.settings.google_maps_api_key | escape -%}
 
 {%- style -%}
   .section-{{ section.id }}-padding {
@@ -38,6 +39,7 @@
       class: 'isolate',
       novalidate: 'novalidate',
       data-provider-application-form: '',
+      data-google-maps-api-key: google_maps_api_key,
       data-google-maps-country-bias: section.settings.google_maps_country_bias,
       data-provider-app-proxy-url: provider_application_proxy_path
     -%}
@@ -313,6 +315,12 @@
       "id": "provider_application_proxy_path",
       "default": "/apps/provider-applications/submit",
       "label": "Provider application proxy path"
+    },
+    {
+      "type": "text",
+      "id": "google_maps_api_key",
+      "label": "Google Maps browser API key",
+      "info": "Opcional. Si se completa, el autocomplete podra funcionar aunque la app proxy no responda."
     },
     {
       "type": "text",

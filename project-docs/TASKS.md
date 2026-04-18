@@ -7,7 +7,7 @@
 - Rama activa: `main`
 - Modo actual: trabajo local primero, despliegue solo tras aprobacion
 - Ultimo hito confirmado: `dee1061 feat(precheck): add configurable http plate lookup adapter`
-- Iniciativa activa: `lote 3 catalogo opt-in + preparacion de hosting estable para app`
+- Iniciativa activa: `catalogo QA de proveedores + lote 3 catalogo opt-in + preparacion de hosting estable para app`
 
 ## Reglas de ejecucion
 - No tocar theme publicado sin aprobacion explicita
@@ -74,6 +74,15 @@ Objetivo: mover un subconjunto de servicios al flujo de compra guiada con valida
 - [x] Preparar subconjunto piloto de servicios con variantes `familia + talla`
 - [x] Mantener servicios no opt-in en flujo consultivo actual (default `consultative`)
 - [~] Criterio de salida: piloto pequeno activo y reversible por metafield
+
+### Lote QA: Catalogo de proveedores para buscador y directorios
+- [x] Recuperar app embebida `Laco Prov Admin` con tunnel temporal operativo
+- [x] Aprobar en lote solicitudes de proveedor de prueba para crear `provider_profile`
+- [x] Ampliar scopes de app a `read_products` y `write_products`
+- [x] Preparar semilla de solicitudes/proveedores para pruebas masivas (`scripts/seed_provider_requests_and_profiles.cjs`)
+- [x] Confirmar regla de catalogo: todo producto de prueba debe llevar `vendor` asignado a un proveedor
+- [~] Crear catalogo semilla de productos por categoria y proveedor para probar filtros del Hero
+- [ ] Documentar estrategia de limpieza del catalogo QA una vez termine la validacion
 
 ### Bloqueo operativo actual (app online)
 - [ ] Definir URL estable de hosting externo para la app embebida
@@ -146,3 +155,4 @@ Objetivo: mover un subconjunto de servicios al flujo de compra guiada con valida
 - No se subira nada a produccion sin revision del propietario
 - La iniciativa de compra guiada por matricula es un lote independiente dentro de ficha de servicio
 - El lookup sin verificacion bloquea compra online para servicios opt-in
+- El catalogo de pruebas para proveedores debe seguir la misma regla de storefront actual: resolver oferta por `product.vendor` y no dejar productos huerfanos de proveedor

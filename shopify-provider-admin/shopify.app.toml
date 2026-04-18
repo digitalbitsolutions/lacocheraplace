@@ -2,7 +2,7 @@
 
 client_id = "a855294f6e78b76e92d6dce223bdd291"
 name = "Laco Prov Admin"
-application_url = "https://bryan-interested-ham-exposed.trycloudflare.com"
+application_url = "https://hist-closely-uniprotkb-ntsc.trycloudflare.com"
 embedded = true
 
 [build]
@@ -10,13 +10,13 @@ automatically_update_urls_on_dev = true
 
 [access_scopes]
 # Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
-scopes = "read_metaobjects,write_metaobjects,read_metaobject_definitions,write_metaobject_definitions,write_app_proxy"
+scopes = "read_metaobjects,write_metaobjects,read_metaobject_definitions,write_metaobject_definitions,write_app_proxy,read_products,write_products"
 
 [auth]
 redirect_urls = [
-  "https://bryan-interested-ham-exposed.trycloudflare.com/auth/callback",
-  "https://bryan-interested-ham-exposed.trycloudflare.com/auth/shopify/callback",
-  "https://bryan-interested-ham-exposed.trycloudflare.com/api/auth/callback",
+  "https://hist-closely-uniprotkb-ntsc.trycloudflare.com/auth/callback",
+  "https://hist-closely-uniprotkb-ntsc.trycloudflare.com/auth/shopify/callback",
+  "https://hist-closely-uniprotkb-ntsc.trycloudflare.com/api/auth/callback",
 ]
 
 [app_proxy]

@@ -47,6 +47,8 @@ Actuar como arquitecto tecnico y ejecutor del theme, priorizando seguridad, reve
 - La bandeja operativa del owner vive en la custom app embebida `Laco Prov Admin`
 - Los estados operativos confirmados son `pending`, `approved` y `declined`
 - Mientras dure la transicion, el catalogo publico sigue siendo compatible con `product.vendor`
+- Regla operativa de catalogo QA: no deben existir productos de prueba sin `vendor` asignado; cada producto o servicio sembrado para pruebas debe quedar asociado a un proveedor concreto
+- Para cargas masivas de catalogo desde la app, `Laco Prov Admin` ya requiere permisos `read_products` y `write_products`
 - La guia operativa y el helper de aprobacion viven en `project-docs/provider-registration-workflow.md`, `scripts/provider_approval_workflow.py` y `shopify-provider-admin/`
 
 ## Definicion de terminado por iteracion
