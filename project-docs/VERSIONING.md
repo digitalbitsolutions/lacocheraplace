@@ -18,6 +18,12 @@ Tener una forma simple de avanzar, revisar y volver atras si algo sale mal o no 
 - Lote 02: header/footer
 - Lote 03: ficha servicio
 - Lote 04: cards y listados
+- Lote C0: contexto catalogo carwash Ches
+- Lote C1: modelo Shopify nativo carwash
+- Lote C2: CSV draft carwash
+- Lote C3: ficha servicio checkout/consultiva
+- Lote C4: colecciones y navegacion carwash
+- Lote C5: validacion, aprobacion y publicacion controlada
 
 ## Opciones de control de versiones
 
@@ -54,11 +60,15 @@ Tener una forma simple de avanzar, revisar y volver atras si algo sale mal o no 
 - Nombre: `Codex Preview Homepage Round 3`
 - ID: `196749918545`
 - Store: `cs3msy-n8.myshopify.com`
-- La siguiente decision funcional debe salir de esa revision visual
+- El piloto carwash debe validarse primero en local/draft y despues en theme borrador antes de publicar
 
 ## Nota de despliegue app
 - Se publico una release de la app en Shopify Partners, pero con URL temporal de tunel caducada
 - Pendiente: migrar `application_url` a hosting estable y volver a desplegar para acceso online continuo
+- El piloto carwash no debe depender de la app ni de tuneles si se puede resolver con productos, variantes, colecciones y checkout nativo Shopify
 
 ## Siguiente regla operativa
-- No abrir una nueva linea de trabajo sin decidir primero si la siguiente iteracion sera UX de homepage, talleres/proveedores o ficha de servicio
+- La siguiente linea de trabajo confirmada es `catalogo piloto carwash Ches`
+- Cada lote carwash debe ser reversible y verificable antes de avanzar al siguiente
+- No publicar productos carwash con precios EUR no aprobados por Ches
+- Si se detecta un bloqueo de arquitectura, datos o checkout, se documenta y se decide entre Codex y Meeguel antes de ejecutar

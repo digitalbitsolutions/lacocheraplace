@@ -2,6 +2,9 @@
 
 ## Proyecto
 - Nombre: `La Cochera Place`
+- Owner de negocio: `Ches`
+- Dev responsable: `Meeguel`
+- Asistente tecnico: `Codex`
 - Base tecnica: `theme-dawn-export`
 - App admin base: `shopify-provider-admin`
 - Repositorio local: `d:\\development\\lacocheraplace.com`
@@ -17,6 +20,7 @@ Transformar la experiencia actual para que deje de parecer una tienda Shopify tr
 - servicios
 - talleres / proveedores
 - solicitud / reserva
+- checkout nativo cuando el servicio tenga precio cerrado y condiciones claras
 
 ## Alcance actual
 
@@ -29,6 +33,7 @@ Transformar la experiencia actual para que deje de parecer una tienda Shopify tr
 - Preparacion para preview segura
 - Preparacion documental para MCP, skills y versionado
 - Implementacion progresiva de compra guiada para servicios opt-in
+- Catalogo piloto carwash/detailing de Ches, modelado como productos Shopify nativos
 
 ### No incluido por ahora
 - Publicacion directa a produccion
@@ -36,6 +41,7 @@ Transformar la experiencia actual para que deje de parecer una tienda Shopify tr
 - Sistema de reservas avanzado ya operativo
 - Automatizaciones complejas del Admin de Shopify
 - Cambios destructivos sobre el theme activo
+- Pasarelas de pago externas o flujos de cobro fuera del checkout nativo de Shopify para el piloto carwash
 
 ## Principios de ejecucion
 - Todo cambio empieza en local
@@ -45,6 +51,8 @@ Transformar la experiencia actual para que deje de parecer una tienda Shopify tr
 - Se reutiliza Dawn siempre que ayude a reducir riesgo
 - Ningun cambio se considera final sin validacion
 - Las iniciativas nuevas deben tener rollout gradual y rollback explicito
+- No se inventan entidades o flujos si Shopify ya ofrece un modelo nativo suficiente
+- Las decisiones con impacto en arquitectura, checkout, datos o publicacion se resuelven entre Codex y Meeguel antes de ejecutar
 
 ## Fases del plan
 
@@ -63,6 +71,18 @@ Transformar la experiencia actual para que deje de parecer una tienda Shopify tr
 - Transformar `product` en experiencia de servicio
 - Reducir senales de carrito clasico
 - Introducir datos utiles de servicio
+
+#### Subfase 3.0 Catalogo carwash Ches con checkout nativo
+- Prioridad operativa inmediata antes de retomar la compra guiada por matricula
+- Fuente de negocio: documento `DESCRIPCION DE SERVICIOS.txt` propuesto por Ches
+- Modelado base: cada servicio es un producto Shopify `Type = Servicio`
+- Proveedor piloto: `La Cochera Place` via `product.vendor`
+- Mercado objetivo de storefront: `Espana`
+- Servicios con checkout nativo: `Lavado Completo`, `Lavado Vapor`, `Lavado Salon`, `Motor a Vapor`, `Pulido Faros`
+- Servicios consultivos sin checkout directo: `Pulido Pintura`, `Descontaminado`, `Ceramico Carpro`, `Cueros / Aros`
+- Variantes para servicios con precio cerrado: `Coche`, `SUV`, `7 plazas`
+- Precios finales en EUR requieren aprobacion de Ches antes de publicar
+- La primera carga debe ser local/draft/importable y revisable antes de tocar tienda publicada
 
 #### Subfase 3.A Validacion de vehiculo, compatibilidad y precio por familia+talla
 - Alcance v1 en `Espana`
@@ -95,6 +115,8 @@ Transformar la experiencia actual para que deje de parecer una tienda Shopify tr
 - Activar primero en subconjunto pequeno de servicios con pricing por tamano
 - Migrar de `sqlite` local a `Postgres` alojado antes de produccion
 
+Nota: las subfases 3.A-3.D quedan pausadas operativamente mientras se ejecuta el piloto carwash. No se eliminan; se retoman despues de validar el modelo nativo de catalogo + checkout.
+
 ### Fase 4. Talleres / proveedores
 - Definir representacion visible de talleres
 - Crear bloques de confianza y relacion taller -> servicio
@@ -114,6 +136,7 @@ Cada iteracion debe dejar:
 - commit independiente
 - opcion clara de rollback
 - evidencia de prueba del lote
+- decision de continuidad o pausa si aparece un bloqueo tecnico/negocio
 
 ## Criterio de aprobacion
 Una iteracion se considera aprobada cuando:
@@ -160,13 +183,17 @@ Hasta ese momento, el trabajo principal sigue siendo local.
 - Lote 2 completado: endpoint `POST /apps/service-precheck` + persistencia + respuesta `ok/incompatible/unverified`
 - Lote 3 en curso: metafield `service.purchase_flow` gestionado desde app y set piloto inicial preparado
 - Bloqueo actual: release de app publicada con URL temporal de tunel; pendiente mover a hosting estable con URL fija
+- Cambio de prioridad confirmado: Ches solicita piloto carwash con checkout para servicios de precio cerrado
+- La app/proxy no es requisito para el piloto carwash si Shopify nativo cubre catalogo, variantes y checkout
 
 ## Siguiente paso recomendado
-Continuar la iniciativa de compra guiada por matricula en este orden:
-- infraestructura app: URL estable de hosting externo + redeploy de app con redirects/proxy/webhooks fijos
-- lote 3: aplicar piloto opt-in real en productos objetivo desde `Purchase Flow`
-- lote 4: bloque de intake en `main-product.liquid`
-- lote 5: webhook `orders/create` y trazabilidad end-to-end
+Continuar el piloto carwash de Ches en este orden:
+- C0: cerrar documentos de contexto y reglas de avance
+- C1: definir modelo Shopify nativo del catalogo
+- C2: crear CSV draft importable
+- C3: ajustar/verificar ficha de servicio para checkout vs consultivo
+- C4: validar colecciones, proveedor y navegacion
+- C5: importar en borrador, revisar con Ches/Meeguel y publicar solo con aprobacion
 
 ## Aceptacion operativa
 Mientras no se indique lo contrario, este proyecto se ejecuta bajo este acuerdo:

@@ -2,7 +2,7 @@
 {{ 'section-provider-application-form.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'provider-application-form.js' | asset_url }}" defer="defer"></script>
 
-{%- assign provider_application_proxy_path = section.settings.provider_application_proxy_path | default: '/apps/provider-applications/submit' -%}
+{%- assign provider_application_proxy_path = section.settings.provider_application_proxy_path | strip -%}
 {%- assign google_maps_api_key = section.settings.google_maps_api_key | escape -%}
 
 {%- style -%}
@@ -313,8 +313,8 @@
     {
       "type": "text",
       "id": "provider_application_proxy_path",
-      "default": "/apps/provider-applications/submit",
-      "label": "Provider application proxy path"
+      "label": "Provider application proxy path",
+      "info": "Opcional. Dejalo vacio para usar solo el formulario nativo de contacto de Shopify."
     },
     {
       "type": "text",

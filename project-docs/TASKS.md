@@ -2,12 +2,15 @@
 
 ## Estado
 - Proyecto: `lacocheraplace.com`
+- Owner de negocio: `Ches`
+- Dev responsable: `Meeguel`
+- Asistente tecnico: `Codex`
 - Theme base de trabajo: `theme-dawn-export`
 - App admin base: `shopify-provider-admin`
 - Rama activa: `main`
 - Modo actual: trabajo local primero, despliegue solo tras aprobacion
 - Ultimo hito confirmado: `dee1061 feat(precheck): add configurable http plate lookup adapter`
-- Iniciativa activa: `catalogo QA de proveedores + lote 3 catalogo opt-in + preparacion de hosting estable para app`
+- Iniciativa activa: `catalogo piloto carwash de Ches con checkout Shopify nativo`
 
 ## Reglas de ejecucion
 - No tocar theme publicado sin aprobacion explicita
@@ -16,6 +19,8 @@
 - Cada cambio debe poder revertirse
 - No romper flujo actual de servicios consultivos ni productos fisicos
 - Activar el nuevo flujo solo por opt-in de producto (`service.purchase_flow`)
+- Prioridad inmediata: resolver el piloto carwash de Ches de forma nativa en Shopify, sin tuneles ni dependencias externas para checkout
+- Si aparece un obstaculo de arquitectura, datos, checkout, privacidad o Shopify Admin, se pausa y se decide entre Codex y Meeguel antes de ejecutar
 
 ## Flujo de trabajo
 1. Auditar la zona a modificar
@@ -39,6 +44,8 @@
 
 ## Epic activo: Validacion de vehiculo y compra guiada (v1)
 Objetivo: mover un subconjunto de servicios al flujo de compra guiada con validacion por matricula, sin romper lo existente.
+
+Nota de prioridad: este epic queda en pausa operativa para no mezclarlo con el piloto carwash de Ches. No se elimina ni se revierte; se retoma despues de validar el catalogo carwash y su checkout nativo.
 
 ### Alcance funcional confirmado
 - [x] Pais objetivo v1: `Espana`
@@ -89,6 +96,73 @@ Objetivo: mover un subconjunto de servicios al flujo de compra guiada con valida
 - [ ] Actualizar `application_url`, redirects, app proxy y webhooks a URL fija
 - [ ] Re-desplegar release de app con URL estable y validar acceso owner a `/app/purchase-flow`
 
+## Epic activo inmediato: Catalogo carwash Ches + checkout Shopify nativo
+Objetivo: transformar el documento `DESCRIPCION DE SERVICIOS.txt` de Ches en un catalogo piloto de servicios Shopify, con checkout solo para servicios de precio cerrado y flujo consultivo para servicios a cotizar.
+
+### Decisiones confirmadas
+- [x] Owner de negocio: `Ches`
+- [x] Dev: `Meeguel`
+- [x] Enfoque: buenas practicas, escalable, global, sin inventar logicas fuera de Shopify
+- [x] Plataforma de pago: checkout nativo Shopify si aplica
+- [x] Servicios con checkout: `Lavado Completo`, `Lavado Vapor`, `Lavado Salon`, `Motor a Vapor`, `Pulido Faros`
+- [x] Servicios sin checkout: `Pulido Pintura`, `Descontaminado`, `Ceramico Carpro`, `Cueros / Aros`
+- [x] Variantes visibles: `Coche`, `SUV`, `7 plazas`
+- [x] Proveedor piloto: `La Cochera Place`
+- [x] Mercado objetivo de storefront: `Espana`
+- [x] Precios finales EUR: pendientes de confirmacion de Ches antes de publicar
+
+### Lote C0: Contexto y contrato
+- [x] Leer documento de Ches completo
+- [x] Registrar cambio de plan: si habra checkout para servicios cerrados
+- [x] Actualizar roadmap, contrato operativo y reglas de agente
+- [x] Definir criterios de avance por lotes
+
+### Lote C1: Modelo Shopify nativo
+- [x] Definir estructura de producto/servicio para CSV importable
+- [x] Definir tags globales y colecciones objetivo
+- [x] Definir etiqueta de control para distinguir `checkout` vs `consultative`
+- [x] Documentar contrato en `project-docs/CARWASH-SHOPIFY-MODEL.md`
+- [x] Criterio de salida: modelo revisado antes de crear/importar catalogo
+
+### Lote C2: CSV draft del catalogo Ches
+- [x] Crear CSV local en `sample-data/` con 9 servicios
+- [x] Mantener productos como `draft` hasta aprobacion
+- [x] Crear variantes `Coche`, `SUV`, `7 plazas` para servicios de precio cerrado
+- [x] Marcar servicios consultivos sin compra directa
+- [x] Aplicar tags `service-flow-checkout` o `service-flow-consultative`
+- [x] Mantener tag `price-pending-eur` hasta aprobacion de Ches
+- [x] Criterio de salida: CSV validable e importable sin tocar produccion
+
+### Lote C3: Ficha de servicio Shopify-native
+- [x] Revisar estado real de `main-product.liquid`
+- [x] Asegurar que servicios de checkout mantienen variante + compra nativa
+- [x] Asegurar que servicios consultivos sustituyen compra por formulario/contacto
+- [x] No romper productos fisicos ni servicios existentes
+- [x] Criterio de salida: preview local/draft con un producto checkout y uno consultivo
+- Preview checkout: `https://cs3msy-n8.myshopify.com/products/lavado-completo-la-cochera-place?preview_theme_id=196749918545`
+- Preview consultivo: `https://cs3msy-n8.myshopify.com/products/pulido-pintura-la-cochera-place?preview_theme_id=196749918545`
+- Preview publico directo checkout: `https://lacocheraplace.com/products/lavado-completo-la-cochera-place`
+- Preview publico directo consultivo: `https://lacocheraplace.com/products/pulido-pintura-la-cochera-place`
+- Avance: cambios subidos al theme borrador `Codex Preview Homepage Round 3` (`196749918545`) para preparar preview.
+- Resuelto: se uso una app Dev Dashboard con client credentials grant para obtener token temporal e importar productos draft.
+
+### Lote C4: Colecciones y navegacion
+- [x] Ubicar carwash en coleccion raiz adecuada (`lavado`/`detailing` segun servicio)
+- [x] Confirmar que cards de home llevan a colecciones raiz, no a proveedor unico
+- [x] Confirmar que proveedor enlaza a vendor collection completa
+- [ ] Criterio de salida: navegacion coherente servicio -> proveedor -> catalogo
+- Bloqueo: requiere que las colecciones de Shopify filtren por tags `lavado`, `detailing` y `mantenimiento-ligero` tras importar productos draft.
+
+### Lote C5: Validacion y aprobacion
+- [x] Importar primero en borrador o staging
+- [ ] Revisar precios EUR con Ches
+- [ ] Revisar visualmente con Meeguel
+- [ ] Publicar solo tras aprobacion explicita
+- [ ] Criterio de salida: piloto aprobado o rollback documentado
+- Bloqueo: no publicar ni retirar `price-pending-eur` hasta aprobacion explicita de precios EUR por Ches.
+- Importacion completada: 9 productos creados en Shopify como `draft`, con `published_at = null` y tag `price-pending-eur`.
+- Para preview real, `Lavado Completo` y `Pulido Pintura` quedaron temporalmente en estado `unlisted`; el resto del catalogo sigue en `draft`.
+
 ### Lote 4: Ficha de servicio (theme)
 - [ ] Actualizar `main-product.liquid` para detectar `vehicle_precheck_checkout`
 - [ ] Sustituir bloque consultivo por bloque intake solo en opt-in
@@ -114,6 +188,11 @@ Objetivo: mover un subconjunto de servicios al flujo de compra guiada con valida
 - [ ] Criterio de salida: entorno estable para activar rollout controlado
 
 ## Plan de pruebas (obligatorio por lote)
+- [ ] Catalogo Ches: 9 servicios creados como productos Shopify
+- [ ] Catalogo Ches: servicios 1-5 con variantes y checkout nativo activo
+- [ ] Catalogo Ches: servicios 6-9 sin checkout directo y con CTA/formulario consultivo
+- [ ] Catalogo Ches: vendor `La Cochera Place` visible y agrupable
+- [ ] Catalogo Ches: precios finales EUR aprobados por Ches antes de publicar
 - [ ] Normalizacion de matriculas espanolas validas e invalidas
 - [ ] Mapeo externo -> `familia`, `talla`, dimensiones y snapshot persistido
 - [ ] Compatible: seleccion de variante correcta y compra habilitada

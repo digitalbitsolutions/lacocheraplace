@@ -303,7 +303,7 @@
             "name": "La Cochera Place",
             "rating": "4.8/5",
             "tag": "Verificado",
-            "link": "/search?q=La+Cochera+Place&type=product"
+            "link": "/collections/vendors?q=La+Cochera+Place"
           }
         },
         "provider_2": {
@@ -313,7 +313,7 @@
             "name": "Workshop",
             "rating": "4.8/5",
             "tag": "Verificado",
-            "link": "/search?q=Workshop&type=product"
+            "link": "/collections/vendors?q=Workshop"
           }
         },
         "provider_3": {
@@ -323,7 +323,7 @@
             "name": "Warmtless",
             "rating": "4.8/5",
             "tag": "Verificado",
-            "link": "/search?q=Warmtless&type=product"
+            "link": "/collections/vendors?q=Warmtless"
           }
         },
         "provider_4": {
@@ -333,7 +333,7 @@
             "name": "Taller Mecanico",
             "rating": "4.7/5",
             "tag": "Verificado",
-            "link": "/search?q=Taller+Mecanico&type=product"
+            "link": "/collections/vendors?q=Taller+Mecanico"
           }
         },
         "provider_5": {
@@ -343,7 +343,7 @@
             "name": "Taller Vies",
             "rating": "4.6/5",
             "tag": "Verificado",
-            "link": "/search?q=Taller+Vies&type=product"
+            "link": "/collections/vendors?q=Taller+Vies"
           }
         },
         "provider_6": {
@@ -353,7 +353,7 @@
             "name": "Costa Garage",
             "rating": "4.8/5",
             "tag": "Verificado",
-            "link": "/search?q=Costa+Garage&type=product"
+            "link": "/collections/vendors?q=Costa+Garage"
           }
         }
       },
@@ -526,8 +526,8 @@
             "button_label": "Explorar servicios",
             "button_link": "shopify://pages/servicios",
             "button_style_secondary": false,
-            "button_label_2": "WhatsApp 614 445 146",
-            "button_link_2": "https://wa.me/34614445146",
+            "button_label_2": "Contactar",
+            "button_link_2": "shopify://pages/contact",
             "button_style_secondary_2": true
           }
         }
@@ -581,39 +581,6 @@
         "swipe_on_mobile": false,
         "padding_top": 8,
         "padding_bottom": 52
-      }
-    },
-    "provider_reviews_home": {
-      "type": "apps",
-      "blocks": {
-        "judgeme_carousel_iFfbnP": {
-          "type": "shopify://apps/judgeme-product-reviews/blocks/carousel/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
-          "settings": {
-            "carousel_title": "Lo que dicen de los proveedores",
-            "all_reviews_page": "",
-            "for_products": "all",
-            "theme": "",
-            "review_card_count": 5,
-            "rating_font_size": 16,
-            "body_font_size": 16,
-            "review_card_color": "#ffffff",
-            "review_card_theme": "light",
-            "review_card_shadow": true,
-            "review_border_radius": 6,
-            "review_count_color": "#3d4852",
-            "review_body_color": "#3d4852",
-            "review_name_color": "#3d4852",
-            "widget_margin_top": 16,
-            "widget_margin_bottom": 16
-          }
-        }
-      },
-      "block_order": [
-        "judgeme_carousel_iFfbnP"
-      ],
-      "disabled": true,
-      "settings": {
-        "include_margins": true
       }
     },
     "home_testimonials_custom": {
@@ -688,7 +655,6 @@
     "home_how_it_works_home",
     "home_featured_providers_home",
     "home_featured_products_home",
-    "provider_reviews_home",
     "rich_text_marketplace_intro",
     "rich_text_providers_intro",
     "collection_list_providers_home",

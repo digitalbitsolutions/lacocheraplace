@@ -279,12 +279,6 @@
             <button type="submit" class="home-hero-service-search__button">
               Encuentra proveedores cerca de ti
             </button>
-            <div class="home-hero-nearby" id="HeroNearbyPanel-{{ section.id }}" hidden>
-              <p class="home-hero-nearby__status" id="HeroNearbyStatus-{{ section.id }}" role="status" aria-live="polite">
-                Selecciona una categoria para buscar proveedores cercanos.
-              </p>
-              <ul class="home-hero-nearby__list" id="HeroNearbyList-{{ section.id }}"></ul>
-            </div>
           </form>
         </div>
       {%- endif -%}
@@ -302,54 +296,10 @@
       const valueInput = document.getElementById('HeroServiceValue-{{ section.id }}');
       const handleInput = document.getElementById('HeroServiceHandle-{{ section.id }}');
       const errorMessage = document.getElementById('HeroServiceError-{{ section.id }}');
-      const nearbyPanel = document.getElementById('HeroNearbyPanel-{{ section.id }}');
-      const nearbyStatus = document.getElementById('HeroNearbyStatus-{{ section.id }}');
-      const nearbyList = document.getElementById('HeroNearbyList-{{ section.id }}');
       const options = menu ? Array.from(menu.querySelectorAll('[data-service-value]')) : [];
-      const RADIUS_METERS = 2000;
-      const nearbyEndpoint = '/apps/provider-applications/providers-nearby';
 
       if (!form || !trigger || !label || !menu || !valueInput || !handleInput || !options.length) return;
       let activeIndex = 0;
-
-      const toRad = (deg) => (deg * Math.PI) / 180;
-      const distanceMeters = (aLat, aLon, bLat, bLon) => {
-        const earth = 6371000;
-        const dLat = toRad(bLat - aLat);
-        const dLon = toRad(bLon - aLon);
-        const lat1 = toRad(aLat);
-        const lat2 = toRad(bLat);
-        const h =
-          Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-          Math.cos(lat1) * Math.cos(lat2) * Math.sin(dLon / 2) * Math.sin(dLon / 2);
-        return 2 * earth * Math.asin(Math.sqrt(h));
-      };
-
-      const renderNearbyResults = (items) => {
-        if (!nearbyList) return;
-        nearbyList.innerHTML = '';
-        items.forEach((item) => {
-          const li = document.createElement('li');
-          li.className = 'home-hero-nearby__item';
-
-          const link = document.createElement('a');
-          link.className = 'home-hero-nearby__link';
-          link.href = item.url || valueInput.value || '#';
-
-          const name = document.createElement('span');
-          name.className = 'home-hero-nearby__provider';
-          name.textContent = item.name;
-
-          const meta = document.createElement('span');
-          meta.className = 'home-hero-nearby__meta';
-          meta.textContent = `${Math.round(item.distance)} m de tu ubicacion`;
-
-          link.appendChild(name);
-          link.appendChild(meta);
-          li.appendChild(link);
-          nearbyList.appendChild(li);
-        });
-      };
 
       const closeMenu = () => {
         menu.hidden = true;
@@ -481,7 +431,7 @@
         }
       });
 
-      form.addEventListener('submit', async (event) => {
+      form.addEventListener('submit', (event) => {
         event.preventDefault();
         const targetUrl = valueInput.value;
         const selectedHandle = handleInput.value;
@@ -491,104 +441,7 @@
           openMenu();
           return;
         }
-        if (nearbyPanel) {
-          nearbyPanel.hidden = false;
-        }
-
-        if (!navigator.geolocation) {
-          if (nearbyStatus) {
-            nearbyStatus.textContent =
-              'Tu navegador no permite geolocalizacion. Activa ubicacion para ver proveedores cercanos.';
-          }
-          if (nearbyList) {
-            nearbyList.innerHTML = '';
-          }
-          return;
-        }
-
-        if (nearbyStatus) {
-          nearbyStatus.textContent = 'Buscando proveedores cercanos...';
-        }
-        if (nearbyList) {
-          nearbyList.innerHTML = '';
-        }
-
-        navigator.geolocation.getCurrentPosition(
-          async (position) => {
-            const { latitude, longitude } = position.coords;
-            try {
-              const response = await fetch(
-                `${nearbyEndpoint}?service_handle=${encodeURIComponent(selectedHandle)}`,
-                {
-                  method: 'GET',
-                  headers: {
-                    Accept: 'application/json',
-                  },
-                },
-              );
-              const payload = await response.json();
-              const providers = Array.isArray(payload?.providers) ? payload.providers : [];
-
-              if (!response.ok) {
-                throw new Error(
-                  payload?.message || 'No se pudo consultar el directorio de proveedores.',
-                );
-              }
-
-              if (!providers.length) {
-                if (nearbyStatus) {
-                  nearbyStatus.textContent =
-                    'No encontramos proveedores aprobados para esta categoria.';
-                }
-                return;
-              }
-
-              const nearbyMatches = providers
-                .map((provider) => ({
-                  ...provider,
-                  distance: distanceMeters(
-                    latitude,
-                    longitude,
-                    Number(provider.latitude),
-                    Number(provider.longitude),
-                  ),
-                }))
-                .filter((provider) => provider.distance <= RADIUS_METERS)
-                .sort((a, b) => a.distance - b.distance);
-
-              if (!nearbyMatches.length) {
-                if (nearbyStatus) {
-                  nearbyStatus.textContent =
-                    'No encontramos proveedores dentro de un radio de 2 km para esta categoria.';
-                }
-                return;
-              }
-
-              if (nearbyStatus) {
-                nearbyStatus.textContent = `Encontramos ${nearbyMatches.length} proveedor(es) dentro de 2 km. Elige uno para ver sus servicios o productos.`;
-              }
-              renderNearbyResults(nearbyMatches);
-            } catch (error) {
-              if (nearbyStatus) {
-                nearbyStatus.textContent =
-                  error instanceof Error
-                    ? error.message
-                    : 'No se pudo cargar el directorio de proveedores cercanos.';
-              }
-            }
-          },
-          () => {
-            if (nearbyStatus) {
-              nearbyStatus.textContent =
-                'No pudimos obtener tu ubicacion. Revisa los permisos del navegador e intentalo de nuevo.';
-            }
-          },
-          {
-            enableHighAccuracy: true,
-            timeout: 10000,
-            maximumAge: 60000,
-          },
-        );
+        window.location.assign(targetUrl);
       });
 
       setActive(0, false);
@@ -817,66 +670,6 @@
       filter: brightness(1.06);
     }
 
-    #Banner-{{ section.id }} .home-hero-nearby {
-      margin-top: 1.4rem;
-      width: 100%;
-      background: rgba(255, 255, 255, 0.18);
-      border: 0.1rem solid rgba(255, 255, 255, 0.32);
-      border-radius: 1.8rem;
-      padding: 1.4rem;
-      text-align: left;
-      backdrop-filter: blur(10px);
-      box-shadow: 0 1.2rem 2.4rem rgba(15, 23, 42, 0.18);
-    }
-
-    #Banner-{{ section.id }} .home-hero-nearby__status {
-      margin: 0;
-      color: #ffffff;
-      font-size: 1.45rem;
-      line-height: 1.5;
-    }
-
-    #Banner-{{ section.id }} .home-hero-nearby__list {
-      list-style: none;
-      margin: 1rem 0 0;
-      padding: 0;
-      display: grid;
-      gap: 0.8rem;
-    }
-
-    #Banner-{{ section.id }} .home-hero-nearby__item {
-      margin: 0;
-    }
-
-    #Banner-{{ section.id }} .home-hero-nearby__link {
-      display: flex;
-      flex-direction: column;
-      gap: 0.35rem;
-      padding: 1.1rem 1.2rem;
-      border-radius: 1.2rem;
-      background: rgba(255, 255, 255, 0.92);
-      color: #132238;
-      text-decoration: none;
-      box-shadow: 0 0.8rem 1.8rem rgba(15, 23, 42, 0.12);
-    }
-
-    #Banner-{{ section.id }} .home-hero-nearby__link:hover {
-      transform: translateY(-0.1rem);
-      box-shadow: 0 1rem 2rem rgba(15, 23, 42, 0.16);
-    }
-
-    #Banner-{{ section.id }} .home-hero-nearby__provider {
-      font-size: 1.55rem;
-      font-weight: 700;
-      line-height: 1.3;
-    }
-
-    #Banner-{{ section.id }} .home-hero-nearby__meta {
-      font-size: 1.3rem;
-      line-height: 1.4;
-      color: #4b5563;
-    }
-
     @media screen and (max-width: 749px) {
       #Banner-{{ section.id }} .home-hero-service-search {
         margin-top: 2.4rem;
@@ -909,17 +702,6 @@
         font-size: 1.25rem;
       }
 
-      #Banner-{{ section.id }} .home-hero-nearby {
-        padding: 1.2rem;
-      }
-
-      #Banner-{{ section.id }} .home-hero-nearby__status {
-        font-size: 1.35rem;
-      }
-
-      #Banner-{{ section.id }} .home-hero-nearby__provider {
-        font-size: 1.45rem;
-      }
     }
   {%- endstyle -%}
 {%- endif -%}

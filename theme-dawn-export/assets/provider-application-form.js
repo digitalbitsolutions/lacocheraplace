@@ -1,5 +1,5 @@
 (() => {
-  const defaultProviderAppProxyPath = '/apps/provider-applications/submit';
+  const defaultProviderAppProxyPath = '';
   let googleMapsScriptPromise;
   let providerPublicConfigPromise;
   const googleMapsCallbackName = 'providerApplicationGoogleMapsLoaded';

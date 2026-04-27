@@ -20,6 +20,8 @@ Este paquete deja preparado sample data para Shopify sin tocar todavia los datos
   Añade servicios puntuales para asegurar que cada categoria visible tenga al menos 3 proveedores.
 - `demo-providers.json`
   Registro auxiliar de los 10 proveedores demo con zonas, especialidades y los handles de sus 3 servicios.
+- `shopify-carwash-ches-draft.csv`
+  Carga piloto carwash de Ches para `La Cochera Place` como productos Shopify en borrador. Mantiene precios `0.00` y tag `price-pending-eur` hasta aprobacion final.
 
 ## Alcance
 

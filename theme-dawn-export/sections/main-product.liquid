@@ -99,6 +99,26 @@
       gap: 1rem;
     }
 
+    .service-inquiry-form {
+      display: grid;
+      gap: 1.2rem;
+    }
+
+    .service-inquiry-form__grid {
+      display: grid;
+      gap: 1.2rem;
+    }
+
+    .service-inquiry-form__status {
+      margin: 0;
+    }
+
+    @media screen and (min-width: 750px) {
+      .service-inquiry-form__grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
     @media screen and (min-width: 750px) {
       .section-{{ section.id }}-padding {
         padding-top: {{ section.settings.padding_top }}px;
@@ -145,12 +165,16 @@
   {% if product.type == 'Servicio' or product.tags contains 'servicio' %}
     {% assign is_service_product = true %}
   {% endif %}
+  {% assign is_service_checkout = false %}
+  {% if is_service_product and product.tags contains 'service-flow-checkout' %}
+    {% assign is_service_checkout = true %}
+  {% endif %}
+  {% assign is_service_consultative = false %}
+  {% if is_service_product and is_service_checkout == false %}
+    {% assign is_service_consultative = true %}
+  {% endif %}
   {% assign provider_vendor_query = product.vendor | url_param_escape %}
   {% assign provider_vendor_url = routes.collections_url | append: '/vendors?q=' | append: provider_vendor_query %}
-  {% capture service_whatsapp_message -%}
-Hola, quiero solicitar informacion sobre "{{ product.title | strip_newlines | strip }}" del proveedor {{ product.vendor | strip_newlines | strip }}. Enlace: {{ request.origin }}{{ product.url }}
-  {%- endcapture %}
-  {% assign service_whatsapp_url = 'https://wa.me/34614445146?text=' | append: service_whatsapp_message | url_param_escape %}
   {% assign effective_gallery_layout = 'thumbnail_slider' %}
   {% assign effective_mobile_thumbnails = 'show' %}
   <div class="page-width">
@@ -208,8 +232,13 @@ Hola, quiero solicitar informacion sobre "{{ product.title | strip_newlines | st
                 {%- if is_service_product -%}
                   <div class="service-highlight">
                     <p class="service-highlight__eyebrow">Marketplace de servicios</p>
-                    <h2 class="service-highlight__title">Solicita este servicio con {{ product.vendor }}</h2>
-                    <p class="service-highlight__text">Usa el precio como referencia inicial y contacta para validar disponibilidad, alcance y tiempo de entrega.</p>
+                    {%- if is_service_checkout -%}
+                      <h2 class="service-highlight__title">Reserva este servicio con {{ product.vendor }}</h2>
+                      <p class="service-highlight__text">Elige la variante adecuada y continua con el checkout nativo de Shopify.</p>
+                    {%- else -%}
+                      <h2 class="service-highlight__title">Solicita este servicio con {{ product.vendor }}</h2>
+                      <p class="service-highlight__text">Usa el formulario para validar disponibilidad, alcance y tiempo de entrega antes de confirmar.</p>
+                    {%- endif -%}
                   </div>
                 {%- elsif cart.taxes_included or cart.duties_included or shop.shipping_policy.body != blank -%}
                   <div class="product__tax caption rte">
@@ -574,11 +603,46 @@ Hola, quiero solicitar informacion sobre "{{ product.title | strip_newlines | st
               {%- when 'variant_picker' -%}
                 {% render 'product-variant-picker', product: product, block: block, product_form_id: product_form_id %}
               {%- when 'buy_buttons' -%}
-                {%- if is_service_product -%}
+                {%- if is_service_consultative -%}
                   <div class="service-actions" {{ block.shopify_attributes }}>
                     <p class="service-actions__note">La solicitud no cobra automaticamente. Primero comparas, contactas y confirmas con el proveedor.</p>
+                    {%- assign service_contact_form_id = 'ServiceInquiryForm-' | append: section.id -%}
+                    {%- form 'contact', id: service_contact_form_id, class: 'service-inquiry-form' -%}
+                      {%- if form.posted_successfully? -%}
+                        <p class="form-status form-status-list form__message service-inquiry-form__status" tabindex="-1" autofocus>
+                          {{- 'icon-success.svg' | inline_asset_content -}}
+                          Solicitud enviada. Te contactaremos para confirmar disponibilidad y siguientes pasos.
+                        </p>
+                      {%- elsif form.errors -%}
+                        <div class="form__message service-inquiry-form__status" tabindex="-1" autofocus>
+                          {{- 'icon-error.svg' | inline_asset_content -}}
+                          {{ 'templates.contact.form.error_heading' | t }}
+                        </div>
+                      {%- endif -%}
+                      <input type="hidden" name="contact[Servicio]" value="{{ product.title | escape }}">
+                      <input type="hidden" name="contact[Proveedor]" value="{{ product.vendor | escape }}">
+                      <input type="hidden" name="contact[URL]" value="{{ request.origin }}{{ product.url }}">
+                      <div class="service-inquiry-form__grid">
+                        <div class="field">
+                          <input class="field__input" autocomplete="name" type="text" id="ServiceContactName-{{ section.id }}" name="contact[name]" required placeholder="Nombre">
+                          <label class="field__label" for="ServiceContactName-{{ section.id }}">Nombre</label>
+                        </div>
+                        <div class="field">
+                          <input class="field__input" autocomplete="email" type="email" id="ServiceContactEmail-{{ section.id }}" name="contact[email]" spellcheck="false" autocapitalize="off" required placeholder="Correo electronico">
+                          <label class="field__label" for="ServiceContactEmail-{{ section.id }}">Correo electronico</label>
+                        </div>
+                      </div>
+                      <div class="field">
+                        <input class="field__input" autocomplete="tel" type="tel" id="ServiceContactPhone-{{ section.id }}" name="contact[phone]" placeholder="Telefono">
+                        <label class="field__label" for="ServiceContactPhone-{{ section.id }}">Telefono</label>
+                      </div>
+                      <div class="field">
+                        <textarea rows="5" id="ServiceContactBody-{{ section.id }}" class="text-area field__input" name="contact[body]" required placeholder="Cuentanos que necesitas">Hola, quiero solicitar informacion sobre "{{ product.title | strip_newlines | strip }}" del proveedor {{ product.vendor | strip_newlines | strip }}.</textarea>
+                        <label class="field__label" for="ServiceContactBody-{{ section.id }}">Solicitud</label>
+                      </div>
+                      <button type="submit" class="button button--primary">Solicitar servicio</button>
+                    {%- endform -%}
                     <div class="service-actions__links">
-                      <a class="button button--primary" href="{{ service_whatsapp_url }}">Solicitar por WhatsApp</a>
                       <a class="button button--secondary" href="{{ provider_vendor_url }}">Ver catalogo del proveedor</a>
                     </div>
                   </div>
