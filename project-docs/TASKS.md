@@ -150,8 +150,8 @@ Objetivo: transformar el documento `DESCRIPCION DE SERVICIOS.txt` de Ches en un 
 - [x] Ubicar carwash en coleccion raiz adecuada (`lavado`/`detailing` segun servicio)
 - [x] Confirmar que cards de home llevan a colecciones raiz, no a proveedor unico
 - [x] Confirmar que proveedor enlaza a vendor collection completa
-- [ ] Criterio de salida: navegacion coherente servicio -> proveedor -> catalogo
-- Bloqueo: requiere que las colecciones de Shopify filtren por tags `lavado`, `detailing` y `mantenimiento-ligero` tras importar productos draft.
+- [x] Criterio de salida: navegacion coherente servicio -> proveedor -> catalogo
+- Produccion verificada HTTP 200: `/collections/lavado`, `/collections/detailing`, `/collections/mantenimiento-ligero` y `/collections/vendors?q=La+Cochera+Place`.
 
 ### Lote C5: Validacion y aprobacion
 - [x] Importar primero en borrador o staging
@@ -162,6 +162,19 @@ Objetivo: transformar el documento `DESCRIPCION DE SERVICIOS.txt` de Ches en un 
 - Bloqueo: no publicar ni retirar `price-pending-eur` hasta aprobacion explicita de precios EUR por Ches.
 - Importacion completada: 9 productos creados en Shopify como `draft`, con `published_at = null` y tag `price-pending-eur`.
 - Para preview real, `Lavado Completo` y `Pulido Pintura` quedaron temporalmente en estado `unlisted`; el resto del catalogo sigue en `draft`.
+- Actualizacion posterior solicitada por Meeguel: los 9 productos carwash quedaron `active` y publicados en Online Store para preview real en produccion, manteniendo `price-pending-eur` y precios `0.00` hasta aprobacion de Ches.
+- Piloto de contenido/precio real aplicado a `Lavado Completo`: descripcion corta/larga desde documento Ches, nota de tolerancia de estacionamiento y variantes EUR `Auto = 50.00`, `Camioneta SUV = 60.00`, `Camioneta 3 filas = 70.00`.
+- Ajuste UX para `Lavado Completo`: se retiro `price-pending-eur`, se agrego `service-checkout-disabled`, se desactivo gestion de inventario para evitar variantes tachadas y el theme live bloquea checkout mostrando CTA/formulario consultivo.
+- Galeria piloto de `Lavado Completo`: 5 imagenes WebP subidas a Shopify desde `D:\development\assets\lacocheraplace\lavado-completo\toWEBP`; `img-lavado-completo (1).webp` quedo como imagen principal.
+- Decision posterior de Ches: `Lavado Completo` vuelve a checkout habilitado. Se retiro `service-checkout-disabled`, se elimino el formulario consultivo para este caso y el boton de compra nativo volvio a mostrarse.
+
+### Hoja de ejecucion inmediata C5 (2026-05-07)
+- [ ] Paso 1: consolidar matriz final de precios EUR por servicio/variante con validacion explicita de Ches
+- [ ] Paso 2: revisar visualmente con Meeguel en preview activa (`196749918545`) al menos 1 servicio checkout y 1 consultivo
+- [ ] Paso 3: validar que los servicios consultivos no muestran compra directa y que checkout solo aparece donde corresponde
+- [ ] Paso 4: confirmar estado final de tags de control (`service-flow-checkout`, `service-flow-consultative`, `price-pending-eur`) por producto
+- [ ] Paso 5: registrar decision final del lote: `aprobado para publicacion controlada` o `rollback documentado`
+- Evidencia minima a adjuntar en cierre C5: links de producto revisado + captura/nota de estado por servicio + decision firmada por Ches/Meeguel
 
 ### Lote 4: Ficha de servicio (theme)
 - [ ] Actualizar `main-product.liquid` para detectar `vehicle_precheck_checkout`
