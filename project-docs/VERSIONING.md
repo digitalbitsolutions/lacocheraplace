@@ -24,6 +24,7 @@ Tener una forma simple de avanzar, revisar y volver atras si algo sale mal o no 
 - Lote C3: ficha servicio checkout/consultiva
 - Lote C4: colecciones y navegacion carwash
 - Lote C5: validacion, aprobacion y publicacion controlada
+- Lote C5.1: asignacion de imagenes alojadas a productos carwash existentes
 
 ## Opciones de control de versiones
 
@@ -54,6 +55,7 @@ Tener una forma simple de avanzar, revisar y volver atras si algo sale mal o no 
 - `c280404` tercera ronda de homepage con refuerzo de proveedores
 - `c639114` lote 2: endpoint app proxy `service-precheck`
 - `dee1061` lote 2: adaptador configurable de lookup por matricula
+- `pendiente de commit` lote C5.1: asignacion de imagenes Shopify Files -> productos carwash por `handle`
 
 ## Estado de validacion visual
 - Theme borrador creado en Shopify para validacion
@@ -72,3 +74,4 @@ Tener una forma simple de avanzar, revisar y volver atras si algo sale mal o no 
 - Cada lote carwash debe ser reversible y verificable antes de avanzar al siguiente
 - No publicar productos carwash con precios EUR no aprobados por Ches
 - Si se detecta un bloqueo de arquitectura, datos o checkout, se documenta y se decide entre Codex y Meeguel antes de ejecutar
+- Validacion operativa 2026-05-08: asignacion de galerias completada en 9 productos carwash sin duplicar `Lavado Completo`

@@ -9,7 +9,7 @@
 - App admin base: `shopify-provider-admin`
 - Rama activa: `main`
 - Modo actual: trabajo local primero, despliegue solo tras aprobacion
-- Ultimo hito confirmado: `dee1061 feat(precheck): add configurable http plate lookup adapter`
+- Ultimo hito confirmado: `asignacion de imagenes alojadas en Shopify Files a los 9 productos carwash existentes`
 - Iniciativa activa: `catalogo piloto carwash de Ches con checkout Shopify nativo`
 
 ## Reglas de ejecucion
@@ -167,6 +167,8 @@ Objetivo: transformar el documento `DESCRIPCION DE SERVICIOS.txt` de Ches en un 
 - Ajuste UX para `Lavado Completo`: se retiro `price-pending-eur`, se agrego `service-checkout-disabled`, se desactivo gestion de inventario para evitar variantes tachadas y el theme live bloquea checkout mostrando CTA/formulario consultivo.
 - Galeria piloto de `Lavado Completo`: 5 imagenes WebP subidas a Shopify desde `D:\development\assets\lacocheraplace\lavado-completo\toWEBP`; `img-lavado-completo (1).webp` quedo como imagen principal.
 - Decision posterior de Ches: `Lavado Completo` vuelve a checkout habilitado. Se retiro `service-checkout-disabled`, se elimino el formulario consultivo para este caso y el boton de compra nativo volvio a mostrarse.
+- Asignacion completada (2026-05-08): se vincularon imagenes alojadas en Shopify Files a los 9 productos carwash por `handle` usando `productCreateMedia`.
+- Detalle de asignacion (2026-05-08): `Lavado Completo` ya tenia 5 imagenes y se mantuvo sin duplicados; en los otros 8 servicios se agregaron galerias segun mapping operativo.
 
 ### Hoja de ejecucion inmediata C5 (2026-05-07)
 - [ ] Paso 1: consolidar matriz final de precios EUR por servicio/variante con validacion explicita de Ches
@@ -175,6 +177,16 @@ Objetivo: transformar el documento `DESCRIPCION DE SERVICIOS.txt` de Ches en un 
 - [ ] Paso 4: confirmar estado final de tags de control (`service-flow-checkout`, `service-flow-consultative`, `price-pending-eur`) por producto
 - [ ] Paso 5: registrar decision final del lote: `aprobado para publicacion controlada` o `rollback documentado`
 - Evidencia minima a adjuntar en cierre C5: links de producto revisado + captura/nota de estado por servicio + decision firmada por Ches/Meeguel
+- Evidencia agregada (imagenes): productos verificados para revision visual:
+- `https://lacocheraplace.com/products/lavado-completo-la-cochera-place`
+- `https://lacocheraplace.com/products/lavado-vapor-interior-la-cochera-place`
+- `https://lacocheraplace.com/products/lavado-salon-detailing-interior-la-cochera-place`
+- `https://lacocheraplace.com/products/motor-a-vapor-la-cochera-place`
+- `https://lacocheraplace.com/products/pulido-faros-la-cochera-place`
+- `https://lacocheraplace.com/products/pulido-pintura-la-cochera-place`
+- `https://lacocheraplace.com/products/descontaminado-pintura-la-cochera-place`
+- `https://lacocheraplace.com/products/ceramico-carpro-la-cochera-place`
+- `https://lacocheraplace.com/products/cueros-aros-la-cochera-place`
 
 ### Lote 4: Ficha de servicio (theme)
 - [ ] Actualizar `main-product.liquid` para detectar `vehicle_precheck_checkout`
