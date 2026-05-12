@@ -88,40 +88,181 @@
     {%- endif -%}
 
     <ul class="home-providers-strip__grid" role="list">
-      {%- for block in section.blocks -%}
-        <li {{ block.shopify_attributes }}>
-          <a
-            class="home-providers-strip__card"
-            {% if block.settings.link != blank %}
-              href="{{ block.settings.link }}"
-            {% else %}
-              role="link" aria-disabled="true"
-            {% endif %}
-          >
-            {%- if block.settings.image != blank -%}
-              {{
-                block.settings.image
-                | image_url: width: 180
-                | image_tag:
-                  widths: '80, 120, 160, 180',
-                  class: 'home-providers-strip__logo',
-                  alt: block.settings.name
-              }}
-            {%- else -%}
-              <span class="home-providers-strip__logo"></span>
-            {%- endif -%}
+      {%- assign source_collection = section.settings.source_collection -%}
+      {%- assign dynamic_limit = section.settings.dynamic_limit | default: 6 -%}
+      {%- assign provider_profiles = shop.metaobjects.provider_profile.values -%}
+      {%- if source_collection != blank and source_collection.products_count > 0 -%}
+        {%- for product in source_collection.products limit: dynamic_limit -%}
+          {%- assign rating_value = product.metafields.reviews.rating.value.rating | default: product.metafields.reviews.rating.value | default: '' -%}
+          {%- assign rating_count = product.metafields.reviews.rating_count | default: '' -%}
+          {%- assign provider_logo_url = '' -%}
+          {%- if section.settings.use_provider_profile_logo and provider_profiles != blank and product.vendor != blank -%}
+            {%- for provider_profile in provider_profiles -%}
+              {%- assign profile_vendor_name = provider_profile.catalog_vendor_name.value | default: provider_profile.display_name.value | default: '' -%}
+              {%- if profile_vendor_name == product.vendor -%}
+                {%- assign provider_logo_url = provider_profile.logo_source_url.value | default: '' -%}
+                {%- break -%}
+              {%- endif -%}
+            {%- endfor -%}
+          {%- endif -%}
+          <li>
+            <a class="home-providers-strip__card" href="{{ product.url }}">
+              {%- if provider_logo_url != blank -%}
+                <img
+                  class="home-providers-strip__logo"
+                  src="{{ provider_logo_url | escape }}"
+                  alt="{{ product.vendor | default: product.title | escape }}"
+                  loading="lazy"
+                  width="180"
+                  height="180"
+                >
+              {%- elsif product.featured_image != blank -%}
+                {{
+                  product.featured_image
+                  | image_url: width: 180
+                  | image_tag:
+                    widths: '80, 120, 160, 180',
+                    class: 'home-providers-strip__logo',
+                    alt: product.title
+                }}
+              {%- else -%}
+                <span class="home-providers-strip__logo"></span>
+              {%- endif -%}
 
-            <span>
-              <p class="home-providers-strip__name">{{ block.settings.name }}</p>
-              <p class="home-providers-strip__meta">
-                <span>{{ block.settings.rating }}</span>
-                <span aria-hidden="true">|</span>
-                <span class="home-providers-strip__badge">{{ block.settings.tag }}</span>
-              </p>
-            </span>
-          </a>
-        </li>
-      {%- endfor -%}
+              <span>
+                <p class="home-providers-strip__name">{{ product.title }}</p>
+                <p class="home-providers-strip__meta">
+                  <span>
+                    {%- if rating_value != blank and rating_count != blank -%}
+                      {{ rating_value }}/5
+                    {%- elsif rating_value != blank -%}
+                      {{ rating_value }}/5
+                    {%- else -%}
+                      {{ section.settings.fallback_rating }}
+                    {%- endif -%}
+                  </span>
+                  <span aria-hidden="true">|</span>
+                  <span class="home-providers-strip__badge">
+                    {%- if product.available -%}
+                      {{ section.settings.available_tag }}
+                    {%- else -%}
+                      {{ section.settings.unavailable_tag }}
+                    {%- endif -%}
+                  </span>
+                </p>
+              </span>
+            </a>
+          </li>
+        {%- endfor -%}
+      {%- else -%}
+        {%- for block in section.blocks -%}
+          {%- assign block_vendor_name = block.settings.name | strip -%}
+          {%- assign provider_logo_url = '' -%}
+          {%- assign provider_gallery_image = blank -%}
+          {%- assign provider_reference_product = block.settings.provider_product -%}
+          {%- assign mapped_product_handle = '' -%}
+
+          {%- case block.settings.name -%}
+            {%- when 'Kit limpieza interior premium' -%}
+              {%- assign mapped_product_handle = 'cueros-aros-la-cochera-place' -%}
+            {%- when 'Cera y sellador de pintura' -%}
+              {%- assign mapped_product_handle = 'pulido-correccion-detail-lab-bcn' -%}
+            {%- when 'Ambientadores y fragancias' -%}
+              {%- assign mapped_product_handle = 'lavado-ecologico-gracia-auto-spa' -%}
+            {%- when 'Limpiallantas y brillo neumatico' -%}
+              {%- assign mapped_product_handle = 'detailing-esencial-barcelona-wash-hub' -%}
+            {%- when 'Toallas microfibra detailing' -%}
+              {%- assign mapped_product_handle = 'reparacion-paragolpes-sants-wrap-studio' -%}
+            {%- when 'Accesorios interior y confort' -%}
+              {%- assign mapped_product_handle = 'asistencia-bateria-costa-garage-express' -%}
+          {%- endcase -%}
+          {%- if block.settings.link contains '/collections/vendors?q=' -%}
+            {%- assign vendor_query = block.settings.link | split: 'q=' | last | split: '&' | first -%}
+            {%- assign block_vendor_name = vendor_query | replace: '+', ' ' | url_decode | strip -%}
+          {%- endif -%}
+          {%- if mapped_product_handle != blank and all_products[mapped_product_handle] and all_products[mapped_product_handle].featured_image != blank -%}
+            {%- assign provider_gallery_image = all_products[mapped_product_handle].featured_image -%}
+          {%- elsif provider_reference_product != blank and provider_reference_product.featured_image != blank -%}
+            {%- assign provider_gallery_image = provider_reference_product.featured_image -%}
+          {%- elsif block_vendor_name != blank and collections.all != blank -%}
+            {%- for candidate_product in collections.all.products -%}
+              {%- if candidate_product.vendor == block_vendor_name -%}
+                {%- assign last_media_with_image = blank -%}
+                {%- for media_item in candidate_product.media -%}
+                  {%- if media_item.media_type == 'image' and media_item.preview_image != blank -%}
+                    {%- assign last_media_with_image = media_item.preview_image -%}
+                  {%- endif -%}
+                {%- endfor -%}
+                {%- if last_media_with_image != blank -%}
+                  {%- assign provider_gallery_image = last_media_with_image -%}
+                {%- elsif candidate_product.featured_image != blank -%}
+                  {%- assign provider_gallery_image = candidate_product.featured_image -%}
+                {%- endif -%}
+                {%- break -%}
+              {%- endif -%}
+            {%- endfor -%}
+          {%- endif -%}
+          {%- if section.settings.use_provider_profile_logo and provider_profiles != blank and block_vendor_name != blank -%}
+            {%- for provider_profile in provider_profiles -%}
+              {%- assign profile_vendor_name = provider_profile.catalog_vendor_name.value | default: provider_profile.display_name.value | default: '' -%}
+              {%- if profile_vendor_name == block_vendor_name -%}
+                {%- assign provider_logo_url = provider_profile.logo_source_url.value | default: '' -%}
+                {%- break -%}
+              {%- endif -%}
+            {%- endfor -%}
+          {%- endif -%}
+          <li {{ block.shopify_attributes }}>
+            <a
+              class="home-providers-strip__card"
+              {% if block.settings.link != blank %}
+                href="{{ block.settings.link }}"
+              {% else %}
+                role="link" aria-disabled="true"
+              {% endif %}
+            >
+              {%- if provider_logo_url != blank -%}
+                <img
+                  class="home-providers-strip__logo"
+                  src="{{ provider_logo_url | escape }}"
+                  alt="{{ block_vendor_name | default: block.settings.name | escape }}"
+                  loading="lazy"
+                  width="180"
+                  height="180"
+                >
+              {%- elsif provider_gallery_image != blank -%}
+                {{
+                  provider_gallery_image
+                  | image_url: width: 180
+                  | image_tag:
+                    widths: '80, 120, 160, 180',
+                    class: 'home-providers-strip__logo',
+                    alt: block_vendor_name
+                }}
+              {%- elsif block.settings.image != blank -%}
+                {{
+                  block.settings.image
+                  | image_url: width: 180
+                  | image_tag:
+                    widths: '80, 120, 160, 180',
+                    class: 'home-providers-strip__logo',
+                    alt: block.settings.name
+                }}
+              {%- else -%}
+                <span class="home-providers-strip__logo"></span>
+              {%- endif -%}
+
+              <span>
+                <p class="home-providers-strip__name">{{ block.settings.name }}</p>
+                <p class="home-providers-strip__meta">
+                  <span>{{ block.settings.rating }}</span>
+                  <span aria-hidden="true">|</span>
+                  <span class="home-providers-strip__badge">{{ block.settings.tag }}</span>
+                </p>
+              </span>
+            </a>
+          </li>
+        {%- endfor -%}
+      {%- endif -%}
     </ul>
   </div>
 </section>
@@ -133,6 +274,12 @@
   "class": "section",
   "settings": [
     { "type": "text", "id": "title", "label": "Title", "default": "Talleres destacados" },
+    { "type": "checkbox", "id": "use_provider_profile_logo", "label": "Use provider profile logo when available", "default": true },
+    { "type": "collection", "id": "source_collection", "label": "Dynamic source collection" },
+    { "type": "range", "id": "dynamic_limit", "min": 3, "max": 12, "step": 1, "default": 6, "label": "Dynamic items limit" },
+    { "type": "text", "id": "fallback_rating", "label": "Fallback rating", "default": "4.8/5" },
+    { "type": "text", "id": "available_tag", "label": "Available tag", "default": "Disponible" },
+    { "type": "text", "id": "unavailable_tag", "label": "Unavailable tag", "default": "No disponible" },
     {
       "type": "select",
       "id": "heading_size",
@@ -155,6 +302,7 @@
       "limit": 9,
       "settings": [
         { "type": "image_picker", "id": "image", "label": "Logo" },
+        { "type": "product", "id": "provider_product", "label": "Provider reference product (uses featured image)" },
         { "type": "text", "id": "name", "label": "Name", "default": "La Cochera Place" },
         { "type": "text", "id": "rating", "label": "Rating text", "default": "4.8/5" },
         { "type": "text", "id": "tag", "label": "Tag", "default": "Verificado" },

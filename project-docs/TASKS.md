@@ -198,6 +198,10 @@ Objetivo: transformar el documento `DESCRIPCION DE SERVICIOS.txt` de Ches en un 
 - bloque derecho limpio con titulo, rating, precio/estado segun flujo y CTA principal
 - acordeones de contenido (`Descripcion`, `Proceso`) debajo de la galeria
 - Regla complementaria de imagenes para homologacion visual: `6` imagenes por producto (`1` principal + `5` galeria).
+- Actualizacion home (2026-05-12):
+- `Talleres Destacados`: cards con prioridad de imagen `logo_source_url provider_profile` -> `producto de referencia` -> `fallback manual`.
+- `Productos y accesorios destacados`: mapeo determinista por card para evitar imagen repetida; cada card apunta a un `provider_product` concreto y usa su `featured_image`.
+- Nota operativa QA: el dominio publico puede mostrar cache agresivo. Verificar cambios con query param (`?v=...`) o hard refresh.
 
 ### Lote 4: Ficha de servicio (theme)
 - [ ] Actualizar `main-product.liquid` para detectar `vehicle_precheck_checkout`

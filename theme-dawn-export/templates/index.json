@@ -300,6 +300,7 @@
           "type": "provider",
           "settings": {
             "image": "shopify://shop_images/Gemini_Generated_Image_r65atgr65atgr65a.png",
+            "provider_product": "shopify://products/ceramico-carpro-la-cochera-place",
             "name": "La Cochera Place",
             "rating": "4.8/5",
             "tag": "Verificado",
@@ -310,50 +311,55 @@
           "type": "provider",
           "settings": {
             "image": "shopify://shop_images/Gemini_Generated_Image_xexmmbxexmmbxexm.png",
-            "name": "Workshop",
+            "provider_product": "shopify://products/ppf-frontal-detail-lab-bcn",
+            "name": "Detail Lab BCN",
             "rating": "4.8/5",
             "tag": "Verificado",
-            "link": "/collections/vendors?q=Workshop"
+            "link": "/collections/vendors?q=Detail+Lab+BCN"
           }
         },
         "provider_3": {
           "type": "provider",
           "settings": {
             "image": "shopify://shop_images/Gemini_Generated_Image_mu6yc9mu6yc9mu6y.png",
-            "name": "Warmtless",
+            "provider_product": "shopify://products/detailing-interior-gracia-auto-spa",
+            "name": "Gracia Auto Spa",
             "rating": "4.8/5",
             "tag": "Verificado",
-            "link": "/collections/vendors?q=Warmtless"
+            "link": "/collections/vendors?q=Gracia+Auto+Spa"
           }
         },
         "provider_4": {
           "type": "provider",
           "settings": {
-            "image": "shopify://shop_images/Gemini_Generated_Image_r65atgr65atgr65a.png",
-            "name": "Taller Mecanico",
+            "image": "shopify://shop_images/Gemini_Generated_Image_eoqb8xeoqb8xeoqb.png",
+            "provider_product": "shopify://products/ozono-interior-barcelona-wash-hub",
+            "name": "Barcelona Wash Hub",
             "rating": "4.7/5",
             "tag": "Verificado",
-            "link": "/collections/vendors?q=Taller+Mecanico"
+            "link": "/collections/vendors?q=Barcelona+Wash+Hub"
           }
         },
         "provider_5": {
           "type": "provider",
           "settings": {
-            "image": "shopify://shop_images/Gemini_Generated_Image_xexmmbxexmmbxexm.png",
-            "name": "Taller Vies",
+            "image": "shopify://shop_images/Gemini_Generated_Image_w62hvw62hvw62hvw.png",
+            "provider_product": "shopify://products/ppf-capot-sants-wrap-studio",
+            "name": "Sants Wrap Studio",
             "rating": "4.6/5",
             "tag": "Verificado",
-            "link": "/collections/vendors?q=Taller+Vies"
+            "link": "/collections/vendors?q=Sants+Wrap+Studio"
           }
         },
         "provider_6": {
           "type": "provider",
           "settings": {
-            "image": "shopify://shop_images/Gemini_Generated_Image_mu6yc9mu6yc9mu6y.png",
-            "name": "Costa Garage",
+            "image": "shopify://shop_images/coche.jpg",
+            "provider_product": "shopify://products/alineacion-rapida-costa-garage-express",
+            "name": "Costa Garage Express",
             "rating": "4.8/5",
             "tag": "Verificado",
-            "link": "/collections/vendors?q=Costa+Garage"
+            "link": "/collections/vendors?q=Costa+Garage+Express"
           }
         }
       },
@@ -380,6 +386,7 @@
           "type": "provider",
           "settings": {
             "image": "shopify://shop_images/Gemini_Generated_Image_x0vc4ax0vc4ax0vc.png",
+            "provider_product": "shopify://products/cueros-aros-la-cochera-place",
             "name": "Kit limpieza interior premium",
             "rating": "4.8/5",
             "tag": "Disponible",
@@ -390,6 +397,7 @@
           "type": "provider",
           "settings": {
             "image": "shopify://shop_images/Gemini_Generated_Image_x0vc4ax0vc4ax0vc.png",
+            "provider_product": "shopify://products/pulido-correccion-detail-lab-bcn",
             "name": "Cera y sellador de pintura",
             "rating": "4.7/5",
             "tag": "Disponible",
@@ -400,6 +408,7 @@
           "type": "provider",
           "settings": {
             "image": "shopify://shop_images/Gemini_Generated_Image_x0vc4ax0vc4ax0vc.png",
+            "provider_product": "shopify://products/lavado-ecologico-gracia-auto-spa",
             "name": "Ambientadores y fragancias",
             "rating": "4.9/5",
             "tag": "Disponible",
@@ -410,6 +419,7 @@
           "type": "provider",
           "settings": {
             "image": "shopify://shop_images/Gemini_Generated_Image_x0vc4ax0vc4ax0vc.png",
+            "provider_product": "shopify://products/detailing-esencial-barcelona-wash-hub",
             "name": "Limpiallantas y brillo neumatico",
             "rating": "4.6/5",
             "tag": "Disponible",
@@ -420,6 +430,7 @@
           "type": "provider",
           "settings": {
             "image": "shopify://shop_images/Gemini_Generated_Image_x0vc4ax0vc4ax0vc.png",
+            "provider_product": "shopify://products/reparacion-paragolpes-sants-wrap-studio",
             "name": "Toallas microfibra detailing",
             "rating": "4.8/5",
             "tag": "Disponible",
@@ -430,6 +441,7 @@
           "type": "provider",
           "settings": {
             "image": "shopify://shop_images/Gemini_Generated_Image_x0vc4ax0vc4ax0vc.png",
+            "provider_product": "shopify://products/asistencia-bateria-costa-garage-express",
             "name": "Accesorios interior y confort",
             "rating": "4.7/5",
             "tag": "Disponible",
