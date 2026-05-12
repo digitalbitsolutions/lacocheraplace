@@ -169,6 +169,10 @@ Objetivo: transformar el documento `DESCRIPCION DE SERVICIOS.txt` de Ches en un 
 - Decision posterior de Ches: `Lavado Completo` vuelve a checkout habilitado. Se retiro `service-checkout-disabled`, se elimino el formulario consultivo para este caso y el boton de compra nativo volvio a mostrarse.
 - Asignacion completada (2026-05-08): se vincularon imagenes alojadas en Shopify Files a los 9 productos carwash por `handle` usando `productCreateMedia`.
 - Detalle de asignacion (2026-05-08): `Lavado Completo` ya tenia 5 imagenes y se mantuvo sin duplicados; en los otros 8 servicios se agregaron galerias segun mapping operativo.
+- Descarga ampliada (2026-05-08): pipeline de imagenes ejecutado con objetivo `120`; resultado `120/120` guardado en logs del modulo `scripts/product-image-pipeline`.
+- Subida incremental (2026-05-08): se subieron `47` imagenes nuevas a Shopify Files, omitiendo archivos ya existentes online por nombre.
+- Asignacion incremental (2026-05-08): se asignaron imagenes recien subidas a productos existentes sin repetir URLs ya enlazadas por producto.
+- Normalizacion final de galeria (2026-05-08): los 9 productos carwash quedaron ajustados a `6` imagenes exactas por producto para revision visual consistente.
 
 ### Hoja de ejecucion inmediata C5 (2026-05-07)
 - [ ] Paso 1: consolidar matriz final de precios EUR por servicio/variante con validacion explicita de Ches

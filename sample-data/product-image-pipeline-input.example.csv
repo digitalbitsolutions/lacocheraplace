@@ -1,0 +1,29 @@
+sku,handle,category,keyword,image_count
+LAV-001,lavado-completo,lavado-coches,car wash detailing exterior no people no logo,6
+LAV-002,limpieza-interior-premium,limpieza-interior-coche,car interior cleaning detailing no people no logo,6
+DET-001,detailing-premium,detailing-coche,automotive detailing studio clean car no people,6
+PUL-001,pulido-ceramico,pulido-carroceria,car polishing paint correction no people no logo,5
+MEC-001,mantenimiento-basico,mecanica-coche,car mechanic workshop tools no faces no logos,5
+NEU-001,cambio-neumaticos-rapido,cambio-neumaticos,tire change workshop automotive no people,5
+DIA-001,diagnostico-computarizado,diagnostico-coche,automotive diagnostic scanner dashboard no people,5
+TAL-001,revision-general-taller,taller-automotriz,automotive garage service bay clean no logos,5
+LAV-003,lavado-vapor-interior,lavado-vapor,steam car interior cleaning no people no logo,6
+LAV-004,lavado-salon-interior,lavado-interior,car cabin deep cleaning detailing no people,6
+MEC-002,motor-a-vapor,motor-limpieza,engine bay steam cleaning car no people no logo,6
+DET-002,pulido-faros,pulido-faros,car headlight restoration polishing no people,6
+DET-003,pulido-pintura,pulido-pintura,paint correction machine polishing car no people,6
+DET-004,descontaminado-pintura,descontaminado-pintura,clay bar car paint decontamination no people,6
+DET-005,ceramico-carpro,ceramico-carpro,ceramic coating car detailing closeup no people,6
+DET-006,cueros-aros,cuidado-cueros-aros,car leather seat care and wheel cleaning no people,6
+LAV-005,lavado-exterior-premium,lavado-exterior,foam car wash exterior rinse no people,6
+LAV-006,lavado-llantas-aros,lavado-llantas,wheel rim cleaning car wash no people no logo,6
+MEC-003,aspirado-interior-pro,aspirado-interior,car vacuum interior detailing no people,6
+MEC-004,limpieza-tapiceria,tapiceria-coche,car upholstery cleaning interior no people,6
+DET-007,encerado-carroceria,encerado-coche,car waxing polishing shine no people,6
+DET-008,sellado-pintura,sellado-pintura,paint sealant application on car no people,6
+DET-009,detailing-suv,detailing-suv,suv detailing studio clean no people,6
+DET-010,detailing-7plazas,detailing-7-plazas,minivan interior detailing no people no logo,6
+TAL-002,taller-servicio-general,taller-servicio,automotive service bay mechanic tools no people,6
+NEU-002,alineacion-balanceo,alineacion-balanceo,wheel alignment machine car workshop no people,6
+DIA-002,revision-precompra,revision-precompra,car inspection workshop diagnostics no people,6
+LAV-007,lavado-rapido-express,lavado-express,quick express car wash no people no logo,6

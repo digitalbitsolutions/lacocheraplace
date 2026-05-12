@@ -55,7 +55,8 @@ Tener una forma simple de avanzar, revisar y volver atras si algo sale mal o no 
 - `c280404` tercera ronda de homepage con refuerzo de proveedores
 - `c639114` lote 2: endpoint app proxy `service-precheck`
 - `dee1061` lote 2: adaptador configurable de lookup por matricula
-- `pendiente de commit` lote C5.1: asignacion de imagenes Shopify Files -> productos carwash por `handle`
+- `887097e` docs(context): registrar exito de asignacion de imagenes carwash
+- `pendiente de commit` lote C5.1.b: descarga 120 + subida incremental sin duplicados + normalizacion de galerias a 6 imagenes por producto
 
 ## Estado de validacion visual
 - Theme borrador creado en Shopify para validacion
@@ -75,3 +76,4 @@ Tener una forma simple de avanzar, revisar y volver atras si algo sale mal o no 
 - No publicar productos carwash con precios EUR no aprobados por Ches
 - Si se detecta un bloqueo de arquitectura, datos o checkout, se documenta y se decide entre Codex y Meeguel antes de ejecutar
 - Validacion operativa 2026-05-08: asignacion de galerias completada en 9 productos carwash sin duplicar `Lavado Completo`
+- Validacion operativa 2026-05-08 (cierre C5.1.b): los 9 productos carwash quedaron con 6 imagenes exactas por producto tras limpieza de excedentes

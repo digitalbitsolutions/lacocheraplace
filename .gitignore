@@ -27,3 +27,14 @@ __pycache__/
 # Sensitive local approval data
 private-data/provider-approvals/*
 !private-data/provider-approvals/.gitkeep
+private-data/shopify-admin.env
+.env.local
+
+# Dependencies
+node_modules/
+scripts/product-image-pipeline/node_modules/
+
+# Generated product image pipeline artifacts
+product-images/
+scripts/product-image-pipeline/logs/
+scripts/product-image-pipeline/.env

@@ -16,7 +16,9 @@
     "shopify": "shopify",
     "prisma": "prisma",
     "graphql-codegen": "graphql-codegen",
-    "vite": "vite"
+    "vite": "vite",
+    "images:pipeline:dry-run": "npm --prefix ../scripts/product-image-pipeline run dry-run",
+    "images:pipeline": "npm --prefix ../scripts/product-image-pipeline run run -- --input ../../sample-data/product-image-pipeline-input.example.csv --max 40"
   },
   "type": "module",
   "engines": {

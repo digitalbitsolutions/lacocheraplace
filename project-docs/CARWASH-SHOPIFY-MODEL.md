@@ -66,6 +66,8 @@ Servicios con `service-flow-consultative`:
 - El CSV draft puede usar `0.00` como placeholder tecnico con tag `price-pending-eur`.
 - Antes de publicar, Ches debe aprobar precios EUR y se debe retirar `price-pending-eur`.
 - Ningun producto con `price-pending-eur` puede publicarse.
+- Excepcion piloto confirmada por Meeguel/Ches: `Lavado Completo` usa importes `50.00`, `60.00` y `70.00` como precios en EUR para validar contenido real en storefront.
+- Decision mas reciente de Ches: `Lavado Completo` habilita checkout nativo con esos importes; no usa `service-checkout-disabled`.
 
 ## Colecciones y tags de categoria
 Las colecciones se resolveran por tags, siguiendo el patron actual del theme.

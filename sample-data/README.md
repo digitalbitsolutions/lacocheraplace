@@ -22,6 +22,10 @@ Este paquete deja preparado sample data para Shopify sin tocar todavia los datos
   Registro auxiliar de los 10 proveedores demo con zonas, especialidades y los handles de sus 3 servicios.
 - `shopify-carwash-ches-draft.csv`
   Carga piloto carwash de Ches para `La Cochera Place` como productos Shopify en borrador. Mantiene precios `0.00` y tag `price-pending-eur` hasta aprobacion final.
+- `product-image-pipeline-input.example.csv`
+  CSV base para el nuevo pipeline de imagenes (SKU/handle/categoria/keyword/image_count).
+- `product-image-pipeline-metadata.example.csv`
+  Ejemplo de salida metadata del pipeline de imagenes para trazabilidad y licensing.
 
 ## Alcance
 
