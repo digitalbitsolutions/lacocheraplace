@@ -116,3 +116,12 @@ Reglas:
 - No requiere app ni app proxy.
 - No rompe la compra guiada por matricula existente.
 - Define tags, variantes, columnas y reglas de publicacion para C2.
+
+## Referencia visual QA (2026-05-12)
+- URL patron: `https://www.lacocheraplace.com/products/lavado-completo-la-cochera-place`
+- Esta ficha se considera `vista perfecta` para consistencia de storefront.
+- Regla de homogeneizacion:
+- Mantener layout visual consistente entre checkout y consultivo.
+- En consultivo se conserva el formulario (sin checkout), pero con estetica equivalente del panel derecho.
+- Evitar mostrar estados tecnicos de compra no aplicables en consultivo (ejemplo: `0,00` y badge de stock) cuando rompan la presentacion esperada.
+- Regla de galeria obligatoria (QA): cada producto debe tener `6` imagenes en total: `1` imagen principal + `5` imagenes de galeria.

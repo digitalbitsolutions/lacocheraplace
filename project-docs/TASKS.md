@@ -21,6 +21,7 @@
 - Activar el nuevo flujo solo por opt-in de producto (`service.purchase_flow`)
 - Prioridad inmediata: resolver el piloto carwash de Ches de forma nativa en Shopify, sin tuneles ni dependencias externas para checkout
 - Si aparece un obstaculo de arquitectura, datos, checkout, privacidad o Shopify Admin, se pausa y se decide entre Codex y Meeguel antes de ejecutar
+- Regla de catalogo visual (obligatoria): cada producto debe mantener `6` imagenes en total (`1` principal + `5` de galeria) para consistencia de storefront y QA
 
 ## Flujo de trabajo
 1. Auditar la zona a modificar
@@ -191,6 +192,12 @@ Objetivo: transformar el documento `DESCRIPCION DE SERVICIOS.txt` de Ches en un 
 - `https://lacocheraplace.com/products/descontaminado-pintura-la-cochera-place`
 - `https://lacocheraplace.com/products/ceramico-carpro-la-cochera-place`
 - `https://lacocheraplace.com/products/cueros-aros-la-cochera-place`
+- Referencia visual oficial QA (2026-05-12): `https://www.lacocheraplace.com/products/lavado-completo-la-cochera-place`
+- Esta vista queda definida como `vista perfecta` para homogeneizar el resto de productos:
+- galeria horizontal con miniaturas visibles
+- bloque derecho limpio con titulo, rating, precio/estado segun flujo y CTA principal
+- acordeones de contenido (`Descripcion`, `Proceso`) debajo de la galeria
+- Regla complementaria de imagenes para homologacion visual: `6` imagenes por producto (`1` principal + `5` galeria).
 
 ### Lote 4: Ficha de servicio (theme)
 - [ ] Actualizar `main-product.liquid` para detectar `vehicle_precheck_checkout`

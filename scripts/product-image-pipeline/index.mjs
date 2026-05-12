@@ -89,6 +89,8 @@ readEnvFileIfPresent(path.join(MODULE_DIR, '.env'));
   const dryRun = args['dry-run'] === true;
   const inputPath = args.input ? path.resolve(process.cwd(), args.input) : DEFAULT_INPUT;
   const maxImagesPerRun = toInt(args.max ?? process.env.MAX_IMAGES_PER_RUN, 100);
+  const filenameSuffixRaw = String(args['filename-suffix'] ?? process.env.IMAGE_FILENAME_SUFFIX ?? '').trim();
+  const filenameSuffix = filenameSuffixRaw ? slugify(filenameSuffixRaw) : '';
   const perRowCap = toInt(process.env.MAX_IMAGES_PER_CATEGORY, 6);
   const unsplashKey = process.env.UNSPLASH_ACCESS_KEY || '';
   const pexelsKey = process.env.PEXELS_API_KEY || '';
@@ -152,7 +154,8 @@ readEnvFileIfPresent(path.join(MODULE_DIR, '.env'));
       }
 
       const index = String(savedForRow + 1).padStart(2, '0');
-      const filename = `${handleSlug}-${index}.webp`;
+      const filenameCore = filenameSuffix ? `${handleSlug}-${filenameSuffix}` : handleSlug;
+      const filename = `${filenameCore}-${index}.webp`;
       const localPath = path.join(productDir, filename);
       const relativeLocalPath = path.relative(ROOT_DIR, localPath).replaceAll('\\', '/');
 
@@ -263,6 +266,7 @@ readEnvFileIfPresent(path.join(MODULE_DIR, '.env'));
     dryRun,
     inputPath,
     maxImagesPerRun,
+    filenameSuffix,
     metadataPath,
     downloadLogPath,
     totalRows: rows.length,
