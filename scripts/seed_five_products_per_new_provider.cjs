@@ -176,8 +176,32 @@ async function findProductByHandle(handle) {
   return data.productByHandle;
 }
 
+async function findProductByServiceKey(serviceKey) {
+  const data = await shopifyGraphql(
+    `#graphql
+      query FindProductByServiceKey($query: String!) {
+        products(first: 1, query: $query) {
+          nodes {
+            id
+            handle
+            title
+          }
+        }
+      }`,
+    { query: `tag:service_key:${serviceKey}` },
+  );
+  return data.products.nodes[0] || null;
+}
+
 async function createProduct({ title, vendor, providerSlug, collectionTag, collectionHandle }) {
   const handle = slugify(`${title}-${providerSlug}`);
+  const serviceKey = slugify(title);
+
+  const existingByServiceKey = await findProductByServiceKey(serviceKey);
+  if (existingByServiceKey) {
+    return { status: "exists_by_service_key", ...existingByServiceKey };
+  }
+
   const existing = await findProductByHandle(handle);
   if (existing) return { status: "exists", ...existing };
 
@@ -209,6 +233,7 @@ async function createProduct({ title, vendor, providerSlug, collectionTag, colle
           "servicio",
           "provider-seed-barcelona",
           `provider-${providerSlug}`,
+          `service_key:${serviceKey}`,
         ],
         status: "ACTIVE",
       },

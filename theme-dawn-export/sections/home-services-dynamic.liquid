@@ -1,0 +1,203 @@
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+{{ 'component-price.css' | asset_url | stylesheet_tag }}
+{{ 'section-collection-list.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign source_handles_raw = section.settings.source_collection_handles | default: '' | strip
+  assign source_handles = source_handles_raw | split: ','
+  assign max_cards = section.settings.max_cards | default: 12
+  assign max_per_collection = section.settings.max_per_collection | default: 2
+  assign shown_service_keys = '|'
+  assign rendered_cards = 0
+-%}
+
+<section class="section color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-padding">
+  <div class="collection-list-wrapper page-width isolate">
+    {%- if section.settings.title != blank -%}
+      <div class="title-wrapper-with-link title-wrapper--self-padded-mobile title-wrapper--no-top-margin">
+        <h2 class="collection-list-title inline-richtext {{ section.settings.heading_size }}">
+          {{ section.settings.title }}
+        </h2>
+      </div>
+    {%- endif -%}
+
+    <ul
+      class="collection-list contains-card contains-card--collection grid grid--{{ section.settings.columns_desktop }}-col-desktop grid--{{ section.settings.columns_mobile }}-col-tablet-down"
+      role="list"
+    >
+      {%- for raw_handle in source_handles -%}
+        {%- assign collection_handle = raw_handle | strip -%}
+        {%- if collection_handle == blank -%}
+          {%- continue -%}
+        {%- endif -%}
+
+        {%- assign source_collection = collections[collection_handle] -%}
+        {%- if source_collection == blank -%}
+          {%- continue -%}
+        {%- endif -%}
+
+        {%- assign rendered_for_collection = 0 -%}
+        {%- for product in source_collection.products -%}
+          {%- if rendered_cards >= max_cards -%}
+            {%- break -%}
+          {%- endif -%}
+          {%- if rendered_for_collection >= max_per_collection -%}
+            {%- break -%}
+          {%- endif -%}
+
+          {%- assign service_key = product.metafields.custom.service_key.value | default: '' | strip | downcase -%}
+          {%- if service_key == blank -%}
+            {%- for product_tag in product.tags -%}
+              {%- if product_tag contains 'service_key:' -%}
+                {%- assign service_key = product_tag | remove_first: 'service_key:' | strip | downcase -%}
+                {%- break -%}
+              {%- endif -%}
+            {%- endfor -%}
+          {%- endif -%}
+          {%- if service_key == blank -%}
+            {%- assign derived_key = product.handle | split: '-' -%}
+            {%- assign service_key = derived_key | slice: 0, 5 | join: '-' -%}
+          {%- endif -%}
+
+          {%- assign service_token = '|' | append: service_key | append: '|' -%}
+          {%- if shown_service_keys contains service_token -%}
+            {%- continue -%}
+          {%- endif -%}
+
+          {%- assign shown_service_keys = shown_service_keys | append: service_key | append: '|' -%}
+          {%- assign rendered_cards = rendered_cards | plus: 1 -%}
+          {%- assign rendered_for_collection = rendered_for_collection | plus: 1 -%}
+
+          <li class="collection-list__item grid__item">
+            {% render 'card-product',
+              card_product: product,
+              media_aspect_ratio: section.settings.image_ratio,
+              show_secondary_image: false,
+              show_vendor: true,
+              show_rating: false,
+              section_id: section.id
+            %}
+          </li>
+        {%- endfor -%}
+
+        {%- if rendered_cards >= max_cards -%}
+          {%- break -%}
+        {%- endif -%}
+      {%- endfor -%}
+    </ul>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Home Services Dynamic",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "title",
+      "default": "Servicios Populares",
+      "label": "Titulo"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "options": [
+        { "value": "h2", "label": "Pequeno" },
+        { "value": "h1", "label": "Grande" },
+        { "value": "h0", "label": "Muy grande" }
+      ],
+      "default": "h1",
+      "label": "Tamano del titulo"
+    },
+    {
+      "type": "textarea",
+      "id": "source_collection_handles",
+      "label": "Handles de colecciones origen (coma separada)",
+      "default": "lavado,detailing,neumaticos-y-llantas,ppf-wrap-tintado-lunas,chapa-y-pintura,mantenimiento-ligero,grua-y-auxlio-mecanico,parking,productos-usados-y-liquidaciones,renta-de-espacios-y-herramientas-para-automocion"
+    },
+    {
+      "type": "range",
+      "id": "max_cards",
+      "min": 4,
+      "max": 24,
+      "step": 1,
+      "default": 12,
+      "label": "Maximo de servicios"
+    },
+    {
+      "type": "range",
+      "id": "max_per_collection",
+      "min": 1,
+      "max": 6,
+      "step": 1,
+      "default": 2,
+      "label": "Maximo por coleccion"
+    },
+    {
+      "type": "select",
+      "id": "image_ratio",
+      "options": [
+        { "value": "adapt", "label": "Adaptable" },
+        { "value": "portrait", "label": "Vertical" },
+        { "value": "square", "label": "Cuadrada" }
+      ],
+      "default": "square",
+      "label": "Relacion de imagen"
+    },
+    {
+      "type": "select",
+      "id": "columns_desktop",
+      "options": [
+        { "value": "3", "label": "3 columnas" },
+        { "value": "4", "label": "4 columnas" },
+        { "value": "5", "label": "5 columnas" }
+      ],
+      "default": "4",
+      "label": "Columnas escritorio"
+    },
+    {
+      "type": "select",
+      "id": "columns_mobile",
+      "options": [
+        { "value": "1", "label": "1 columna" },
+        { "value": "2", "label": "2 columnas" }
+      ],
+      "default": "2",
+      "label": "Columnas movil"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Esquema de color",
+      "default": "scheme-1"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding superior",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding inferior",
+      "default": 20
+    }
+  ],
+  "presets": [
+    {
+      "name": "Home Services Dynamic"
+    }
+  ]
+}
+{% endschema %}

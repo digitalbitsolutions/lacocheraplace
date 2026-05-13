@@ -327,6 +327,23 @@ async function findProductByHandle(handle) {
   return data.productByHandle;
 }
 
+async function findProductByServiceKey(serviceKey) {
+  const data = await shopifyGraphql(
+    `#graphql
+      query FindProductByServiceKey($query: String!) {
+        products(first: 1, query: $query) {
+          nodes {
+            id
+            handle
+            title
+          }
+        }
+      }`,
+    { query: `tag:service_key:${serviceKey}` },
+  );
+  return data.products.nodes[0] || null;
+}
+
 function slugify(value) {
   return String(value || "")
     .normalize("NFD")
@@ -338,6 +355,11 @@ function slugify(value) {
 
 async function createProduct(provider) {
   const handle = slugify(`${provider.productTitle}-${provider.providerSlug}`);
+  const serviceKey = slugify(provider.productTitle);
+
+  const existingByServiceKey = await findProductByServiceKey(serviceKey);
+  if (existingByServiceKey) return { existing: true, dedupedByServiceKey: true, ...existingByServiceKey };
+
   const existing = await findProductByHandle(handle);
   if (existing) return { existing: true, ...existing };
 
@@ -368,6 +390,7 @@ async function createProduct(provider) {
           "servicio",
           "provider-seed-barcelona",
           provider.collectionHandle,
+          `service_key:${serviceKey}`,
         ],
         status: "ACTIVE",
       },
