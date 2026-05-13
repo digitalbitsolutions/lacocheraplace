@@ -352,3 +352,20 @@ Estado: completado en modo seguro (sin cambios destructivos).
 - [ ] Validar URLs:
 - `/collections/productos-usados-y-liquidaciones`
 - `/collections/renta-de-espacios-y-herramientas-para-automocion`
+
+## Cierre operativo home/colecciones (2026-05-13)
+- [x] Reintegrar homepage a patron de cards por coleccion (no listado directo de productos)
+- [x] Agregar las dos nuevas categorias al selector de servicios del hero:
+- `productos-usados-y-liquidaciones`
+- `renta-de-espacios-y-herramientas-para-automocion`
+- [x] Agregar las dos nuevas cards en `multicolumn` de home con enlace nativo a coleccion
+- [x] Corregir cards sin imagen en frontend asignando `image` en `templates/index.json`
+- [x] Subir cambios al theme activo:
+- `Codex Preview Hero Select` (`198115623249`)
+- [x] Regla de deduplicacion para sembrado de productos/proveedores:
+- clave canonical `service_key` via tag `service_key:<slug>`
+- evitar creacion duplicada si el `service_key` ya existe en catalogo
+
+### Nota de estado
+- El home vuelve a mostrar categorias de servicio como cards (estilo previo), incluyendo las 2 nuevas solicitadas.
+- La logica dinamica por producto se conserva como experimento local en `theme-dawn-export/sections/home-services-dynamic.liquid`, pero no queda activa en el template de home actual.
