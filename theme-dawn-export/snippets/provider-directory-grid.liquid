@@ -1,5 +1,5 @@
 {%- liquid
-  assign service_directory_handles = 'lavado,detailing,neumaticos-y-llantas,ppf-wrap-tintado-lunas,chapa-y-pintura,mantenimiento-ligero,grua-y-auxlio-mecanico,parking' | split: ','
+  assign service_directory_handles = 'lavado,detailing,neumaticos-y-llantas,ppf-wrap-tintado-lunas,chapa-y-pintura,mantenimiento-ligero,grua-y-auxlio-mecanico,parking,productos-usados-y-liquidaciones,renta-de-espacios-y-herramientas-para-automocion' | split: ','
   assign show_directory = false
   if service_directory_handles contains collection.handle
     assign show_directory = true
