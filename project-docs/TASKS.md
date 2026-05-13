@@ -275,3 +275,80 @@ Objetivo: transformar el documento `DESCRIPCION DE SERVICIOS.txt` de Ches en un 
 - La iniciativa de compra guiada por matricula es un lote independiente dentro de ficha de servicio
 - El lookup sin verificacion bloquea compra online para servicios opt-in
 - El catalogo de pruebas para proveedores debe seguir la misma regla de storefront actual: resolver oferta por `product.vendor` y no dejar productos huerfanos de proveedor
+
+## Tarea segura: revision y actualizacion de scopes Shopify (2026-05-13)
+Estado: completado en modo seguro (sin cambios destructivos).
+
+### Estado actual encontrado
+- Archivo principal de configuracion de app: `shopify-provider-admin/shopify.app.toml`
+- Archivo web detectado: `shopify-provider-admin/shopify.web.toml`
+- Archivo de entorno app detectado: `shopify-provider-admin/.env`
+- Documento operativo usado: `project-docs/TASKS.md`
+
+### Archivo donde se gestionan los scopes
+- Fuente de verdad para Managed Install / Shopify CLI: `shopify-provider-admin/shopify.app.toml` en la seccion `[access_scopes]`.
+- Seccion encontrada:
+- `scopes = "read_metaobjects,write_metaobjects,read_metaobject_definitions,write_metaobject_definitions,write_app_proxy,read_products,write_products,read_files,write_files"`
+
+### Scopes actuales
+- En `shopify.app.toml`:
+- `read_metaobjects`
+- `write_metaobjects`
+- `read_metaobject_definitions`
+- `write_metaobject_definitions`
+- `write_app_proxy`
+- `read_products`
+- `write_products`
+- `read_files`
+- `write_files`
+- En `shopify-provider-admin/.env` (`SCOPES`):
+- `read_metaobject_definitions`
+- `read_metaobjects`
+- `write_app_proxy`
+- `write_metaobject_definitions`
+- `write_metaobjects`
+- `read_products`
+- `write_products`
+
+### Scopes propuestos
+- Objetivo de gestion de productos ya cubierto:
+- `read_products`
+- `write_products`
+- No se requiere agregar ni eliminar scopes para cumplir este objetivo.
+- No se detectan duplicados.
+
+### Sincronizacion TOML vs .env
+- `SCOPES` en `.env` no incluye actualmente `read_files` y `write_files`, que si existen en `shopify.app.toml`.
+- Recomendacion: mantener ambos sincronizados para evitar diferencias entre runtime local y configuracion declarativa.
+- Como no es necesario para el objetivo de productos y puede impactar comportamiento local, se deja como accion pendiente controlada (sin tocar credenciales).
+
+### Pasos para aplicar cambio (cuando si haya cambio de scopes)
+1. Modificar `shopify-provider-admin/shopify.app.toml` en `[access_scopes]`.
+2. Ejecutar `shopify app deploy`.
+3. Abrir la app en Shopify.
+4. Reautorizar permisos.
+5. Validar con `shopify app info`.
+
+### Nota importante
+- Cuando la app usa Shopify Managed Install / Shopify CLI, los permisos se cambian desde el TOML y despliegue CLI, no desde el dashboard web nuevo de Shopify.
+
+### Plan de rollback
+1. Restaurar los scopes anteriores en `shopify-provider-admin/shopify.app.toml`.
+2. Ejecutar nuevamente `shopify app deploy`.
+3. Reinstalar o reautorizar la app si Shopify lo solicita.
+
+### Implementacion ejecutada
+- No se modifico `shopify-provider-admin/shopify.app.toml` porque el objetivo (`read_products`, `write_products`) ya estaba aplicado.
+- Se documenta el estado real y el procedimiento seguro para cambios futuros.
+- Confirmacion operativa: como no hubo cambio de scopes en esta ejecucion, no se requiere reinstalar ni reautorizar ahora.
+
+## Solicitud Ches: nuevas categorias/colecciones nativas Shopify (2026-05-13)
+- [x] Definir implementacion nativa Shopify para:
+- `Productos usados y liquidaciones`
+- `Renta de Espacios y Herramientas para Automocion`
+- [x] Documentar ejecucion en Admin sin recursos externos:
+- ver `project-docs/COLLECTIONS-CHES-NATIVAS.md`
+- [ ] Ejecutar en Shopify Admin la creacion de ambas smart collections por tag.
+- [ ] Validar URLs:
+- `/collections/productos-usados-y-liquidaciones`
+- `/collections/renta-de-espacios-y-herramientas-para-automocion`
