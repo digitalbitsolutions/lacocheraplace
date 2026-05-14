@@ -12,6 +12,72 @@
 - Ultimo hito confirmado: `asignacion de imagenes alojadas en Shopify Files a los 9 productos carwash existentes`
 - Iniciativa activa: `catalogo piloto carwash de Ches con checkout Shopify nativo`
 
+## Nuevo plan aprobado (2026-05-14): arquitectura por tipo de flujo
+Objetivo: separar fichas/experiencias de producto-servicio por `flow_type` sin hardcode y administrable desde Shopify Admin.
+
+### Diagnostico
+- Estado actual con reglas mixtas en theme (tags + condicionales) no escala bien para 12 categorias con modelos distintos.
+- Se requiere una capa de orquestacion unica para decidir interfaz/CTA/validaciones por producto.
+
+### Decision de arquitectura
+- Fuente de verdad: metafields de producto (`namespace: lcp`).
+- Soporte: colecciones para navegacion y descubrimiento.
+- Legacy temporal: tags solo como compatibilidad durante migracion.
+
+### Matriz anti-hardcode (resumen)
+- No usar: `title`, `handle`, `collection` para decidir flujo.
+- Si usar: `product.metafields.lcp.flow_type` + `lcp.subflow_mode` + `lcp.form_schema`.
+
+### Metafields requeridos (v1)
+- `lcp.flow_type`
+- `lcp.service_category`
+- `lcp.subflow_mode`
+- `lcp.cta_primary_label`
+- `lcp.cta_primary_action`
+- `lcp.requires_vehicle_data`
+- `lcp.requires_photos`
+- `lcp.requires_schedule`
+- `lcp.form_schema`
+- `lcp.whatsapp_phone`
+- `lcp.price_label_from`
+- `lcp.is_used_or_clearance`
+
+### Archivos objetivo para implementacion (siguiente etapa, aun sin ejecutar)
+- Modificar: `sections/main-product.liquid` (entrypoint + router)
+- Crear:
+- `snippets/lcp-product-flow-router.liquid`
+- `snippets/lcp-flow-ecommerce.liquid`
+- `snippets/lcp-flow-reserva-directa.liquid`
+- `snippets/lcp-flow-cotizacion.liquid`
+- `snippets/lcp-flow-lead-generation.liquid`
+- `snippets/lcp-flow-urgente.liquid`
+- `snippets/lcp-flow-hibrido.liquid`
+- `snippets/lcp-service-fields-dynamic.liquid`
+
+### Fases de implementacion
+- Fase A: contrato de metafields y mapeo por categoria.
+- Fase B: router minimo (`ecommerce` + `cotizacion`) bajo feature flag.
+- Fase C: `reserva_directa`, `hibrido`, `urgente`, `lead_generation`.
+- Fase D: QA responsive + WCAG + hardening visual premium.
+- Fase E: migracion de catalogo y retiro progresivo de legacy.
+
+### Riesgos clave
+- Regresion en checkout nativo.
+- Coexistencia temporal tags/metafields.
+- Complejidad de hibridos.
+
+### Rollback
+- Feature flag `lcp_enable_flow_router` para desactivar router.
+- Revertir por lote/commit sin mezclar nuevos cambios.
+- Mantener compatibilidad legacy hasta cierre de migracion.
+
+### Criterios de aceptacion
+- UI correcta por `flow_type`.
+- `ecommerce` mantiene checkout Shopify nativo intacto.
+- `cotizacion/lead/urgente` sin compra directa.
+- Hibridos resuelven por `subflow_mode`.
+- Cumplimiento responsive + accesibilidad base.
+
 ## Reglas de ejecucion
 - No tocar theme publicado sin aprobacion explicita
 - Todo cambio empieza en local

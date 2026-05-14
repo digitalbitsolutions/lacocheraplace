@@ -195,6 +195,83 @@ Continuar el piloto carwash de Ches en este orden:
 - C4: validar colecciones, proveedor y navegacion
 - C5: importar en borrador, revisar con Ches/Meeguel y publicar solo con aprobacion
 
+## Anexo de arquitectura (2026-05-14): Flujos por categoria sin hardcode
+
+### Objetivo
+Definir una arquitectura nativa Shopify para que cada producto/servicio renderice una interfaz y flujo segun su tipo operativo, sin condicionar por `title`, `handle` o `collection` hardcodeados.
+
+### Tipos de flujo objetivo
+- `ecommerce`
+- `reserva_directa`
+- `cotizacion`
+- `lead_generation`
+- `urgente`
+- `hibrido`
+
+### Fuente de verdad (obligatoria)
+- Principal: metafields de producto namespace `lcp`.
+- Secundario: colecciones para descubrimiento/navegacion.
+- Legacy temporal: tags solo como compatibilidad durante migracion.
+
+### Metafields propuestos (namespace `lcp`)
+- `flow_type` (single_line_text, enum)
+- `service_category` (single_line_text, enum)
+- `subflow_mode` (single_line_text, enum opcional para hibridos)
+- `cta_primary_label` (single_line_text)
+- `cta_primary_action` (single_line_text, enum: `add_to_cart`, `start_booking`, `open_quote_form`, `open_whatsapp`, `open_lead_form`)
+- `requires_vehicle_data` (boolean)
+- `requires_photos` (boolean)
+- `requires_schedule` (boolean)
+- `form_schema` (json)
+- `whatsapp_phone` (single_line_text)
+- `price_label_from` (boolean)
+- `is_used_or_clearance` (boolean)
+
+### Regla anti-hardcode
+- Prohibido: reglas por `if collection.handle == ...`, `if title contains ...`.
+- Permitido: router por `product.metafields.lcp.flow_type` y parametrizacion por metafields.
+
+### Enfoque de render recomendado
+- Mantener `sections/main-product.liquid` como entrypoint.
+- Crear router reusable:
+- `snippets/lcp-product-flow-router.liquid`
+- Crear vistas por flujo:
+- `snippets/lcp-flow-ecommerce.liquid`
+- `snippets/lcp-flow-reserva-directa.liquid`
+- `snippets/lcp-flow-cotizacion.liquid`
+- `snippets/lcp-flow-lead-generation.liquid`
+- `snippets/lcp-flow-urgente.liquid`
+- `snippets/lcp-flow-hibrido.liquid`
+- Renderer de campos dinamicos:
+- `snippets/lcp-service-fields-dynamic.liquid`
+
+### Rollout por fases (sin ejecutar aun)
+1. Fase A: contrato de metafields y mapeo de categorias.
+2. Fase B: router minimo (`ecommerce` + `cotizacion`) con feature flag.
+3. Fase C: `reserva_directa`, `hibrido`, `urgente`, `lead_generation`.
+4. Fase D: QA responsive/WCAG + ajuste visual premium.
+5. Fase E: migracion de catalogo y retiro progresivo de reglas legacy.
+
+### Riesgos y mitigaciones
+- Riesgo: regresion en checkout nativo.
+- Mitigacion: no tocar flujo ecommerce si `flow_type` no aplica.
+- Riesgo: coexistencia tags/metafields.
+- Mitigacion: periodo dual con precedencia clara de metafields.
+- Riesgo: complejidad en hibridos.
+- Mitigacion: `subflow_mode` y `form_schema` como contrato cerrado.
+
+### Rollback
+- Feature flag global `lcp_enable_flow_router` (theme setting) para apagar router y volver a comportamiento previo.
+- Reversion por lote/commit sin mezclar funcionalidades.
+- Mantener tags legacy activos hasta cierre de migracion.
+
+### Criterio de aceptacion
+- Cada producto renderiza UI correcta segun `lcp.flow_type`.
+- `ecommerce` mantiene carrito/checkout Shopify nativo.
+- `cotizacion/urgente/lead_generation` no exponen checkout directo.
+- Hibridos cambian comportamiento por `subflow_mode`.
+- Compatible mobile + teclado + lectura accesible (WCAG base).
+
 ## Aceptacion operativa
 Mientras no se indique lo contrario, este proyecto se ejecuta bajo este acuerdo:
 - cambios controlados
