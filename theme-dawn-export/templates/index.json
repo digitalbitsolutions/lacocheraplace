@@ -332,72 +332,66 @@
       }
     },
     "home_featured_providers_home": {
-      "type": "home-featured-providers-strip",
+      "type": "multicolumn",
       "blocks": {
         "provider_1": {
-          "type": "provider",
+          "type": "column",
           "settings": {
-            "image": "shopify://shop_images/Gemini_Generated_Image_r65atgr65atgr65a.png",
-            "provider_product": "shopify://products/ceramico-carpro-la-cochera-place",
-            "name": "La Cochera Place",
-            "rating": "4.8/5",
-            "tag": "Verificado",
-            "link": "/collections/vendors?q=La+Cochera+Place"
+            "image": "shopify://shop_images/gracia-garage-tools__token-branded__token-branded-kraken.svg",
+            "title": "Gracia Garage Tools",
+            "text": "",
+            "link_label": "",
+            "link": ""
           }
         },
         "provider_2": {
-          "type": "provider",
+          "type": "column",
           "settings": {
-            "image": "shopify://shop_images/Gemini_Generated_Image_xexmmbxexmmbxexm.png",
-            "provider_product": "shopify://products/ppf-frontal-detail-lab-bcn",
-            "name": "Detail Lab BCN",
-            "rating": "4.8/5",
-            "tag": "Verificado",
-            "link": "/collections/vendors?q=Detail+Lab+BCN"
+            "image": "shopify://shop_images/poblenou-box-rental__token-branded__token-branded-coinbase.svg",
+            "title": "Poblenou Box Rental",
+            "text": "",
+            "link_label": "",
+            "link": ""
           }
         },
         "provider_3": {
-          "type": "provider",
+          "type": "column",
           "settings": {
-            "image": "shopify://shop_images/Gemini_Generated_Image_mu6yc9mu6yc9mu6y.png",
-            "provider_product": "shopify://products/detailing-interior-gracia-auto-spa",
-            "name": "Gracia Auto Spa",
-            "rating": "4.8/5",
-            "tag": "Verificado",
-            "link": "/collections/vendors?q=Gracia+Auto+Spa"
+            "image": "shopify://shop_images/sants-liquidaciones-auto__token-branded__token-branded-uniswap.svg",
+            "title": "Sants Liquidaciones Auto",
+            "text": "",
+            "link_label": "",
+            "link": ""
           }
         },
         "provider_4": {
-          "type": "provider",
+          "type": "column",
           "settings": {
-            "image": "shopify://shop_images/Gemini_Generated_Image_eoqb8xeoqb8xeoqb.png",
-            "provider_product": "shopify://products/ozono-interior-barcelona-wash-hub",
-            "name": "Barcelona Wash Hub",
-            "rating": "4.7/5",
-            "tag": "Verificado",
-            "link": "/collections/vendors?q=Barcelona+Wash+Hub"
+            "image": "shopify://shop_images/eixample-ocasion-motor__token-branded__token-branded-wallet-connect.svg",
+            "title": "Eixample Ocasion Motor",
+            "text": "",
+            "link_label": "",
+            "link": ""
           }
         },
         "provider_5": {
-          "type": "provider",
+          "type": "column",
           "settings": {
-            "image": "shopify://shop_images/Gemini_Generated_Image_w62hvw62hvw62hvw.png",
-            "provider_product": "shopify://products/ppf-capot-sants-wrap-studio",
-            "name": "Sants Wrap Studio",
-            "rating": "4.6/5",
-            "tag": "Verificado",
-            "link": "/collections/vendors?q=Sants+Wrap+Studio"
+            "image": "shopify://shop_images/pamplona-auto-care-54__token-branded__token-branded-metamask.svg",
+            "title": "Pamplona Auto Care 54",
+            "text": "",
+            "link_label": "",
+            "link": ""
           }
         },
         "provider_6": {
-          "type": "provider",
+          "type": "column",
           "settings": {
-            "image": "shopify://shop_images/coche.jpg",
-            "provider_product": "shopify://products/alineacion-rapida-costa-garage-express",
-            "name": "Costa Garage Express",
-            "rating": "4.8/5",
-            "tag": "Verificado",
-            "link": "/collections/vendors?q=Costa+Garage+Express"
+            "image": "shopify://shop_images/cordoba-auto-care-52__token-branded__token-branded-cardano.svg",
+            "title": "Cordoba Auto Care 52",
+            "text": "",
+            "link_label": "",
+            "link": ""
           }
         }
       },
@@ -411,6 +405,16 @@
       ],
       "settings": {
         "title": "Talleres Destacados",
+        "image_width": "half",
+        "image_ratio": "circle",
+        "button_label": "",
+        "button_link": "",
+        "columns_desktop": 6,
+        "column_alignment": "center",
+        "background_style": "none",
+        "columns_mobile": "2",
+        "swipe_on_mobile": true,
+        "enable_stitch_cards": false,
         "heading_size": "h1",
         "color_scheme": "scheme-1",
         "padding_top": 8,

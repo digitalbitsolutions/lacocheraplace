@@ -202,6 +202,10 @@ Objetivo: transformar el documento `DESCRIPCION DE SERVICIOS.txt` de Ches en un 
 - `Talleres Destacados`: cards con prioridad de imagen `logo_source_url provider_profile` -> `producto de referencia` -> `fallback manual`.
 - `Productos y accesorios destacados`: mapeo determinista por card para evitar imagen repetida; cada card apunta a un `provider_product` concreto y usa su `featured_image`.
 - Nota operativa QA: el dominio publico puede mostrar cache agresivo. Verificar cambios con query param (`?v=...`) o hard refresh.
+- Actualizacion home (2026-05-14):
+- `Talleres Destacados` migrado a componente nativo Shopify `multicolumn` para edicion simple desde admin (`image_picker` por bloque).
+- Layout fijado a `6` logos en una sola fila en desktop (`columns_desktop: 6`), con swipe en mobile.
+- Logos cargados desde `Shopify Files` segun seleccion operativa (primeros 6 de listado QA); reemplazo puntual aplicado: `Santander Auto Care 53` -> `Cordoba Auto Care 52`.
 
 ### Lote 4: Ficha de servicio (theme)
 - [ ] Actualizar `main-product.liquid` para detectar `vehicle_precheck_checkout`
@@ -369,3 +373,60 @@ Estado: completado en modo seguro (sin cambios destructivos).
 ### Nota de estado
 - El home vuelve a mostrar categorias de servicio como cards (estilo previo), incluyendo las 2 nuevas solicitadas.
 - La logica dinamica por producto se conserva como experimento local en `theme-dawn-export/sections/home-services-dynamic.liquid`, pero no queda activa en el template de home actual.
+
+## Runbook bloqueo API/token Shopify (2026-05-13)
+Estado: documentado y validado en ejecucion real.
+
+### Objetivo
+Evitar bloqueos por credenciales Shopify Admin API y tener recuperacion operativa rapida.
+
+### Regla de dominio (critica)
+- Para token por Client Credentials Grant, usar dominio OAuth canonico:
+- `SHOPIFY_SHOP=lacocheraplace.myshopify.com`
+- No usar dominios alternos para el endpoint OAuth aunque GraphQL responda con otro `myshopifyDomain`.
+
+### Flujo oficial implementado (Dev Dashboard 2026)
+- Endpoint:
+- `POST https://${SHOPIFY_SHOP}/admin/oauth/access_token`
+- Body `application/x-www-form-urlencoded`:
+- `grant_type=client_credentials`
+- `client_id=${SHOPIFY_CLIENT_ID}`
+- `client_secret=${SHOPIFY_CLIENT_SECRET}`
+- Respuesta esperada:
+- `access_token`
+- `expires_in`
+- `scope` (o `scopes`)
+
+### Helpers implementados
+- `scripts/lib/shopify-auth.cjs`
+- `getShopifyAccessToken()`: solicita token, cachea en memoria y renueva antes de expirar.
+- `shopifyGraphQL(query, variables)`: wrapper Admin GraphQL con `X-Shopify-Access-Token`.
+- `verifyShopifyConnection()`: valida conectividad con query `shop { name myshopifyDomain }`.
+- `scripts/verify_shopify_auth.cjs`: verificacion operativa del flujo completo.
+
+### Variables de entorno recomendadas
+- `SHOPIFY_SHOP=lacocheraplace.myshopify.com`
+- `SHOPIFY_CLIENT_ID=...`
+- `SHOPIFY_CLIENT_SECRET=...`
+- `SHOPIFY_API_VERSION=2026-04` (o la vigente del script)
+
+### Compatibilidad legacy
+- `SHOPIFY_ADMIN_TOKEN` queda como fallback opcional, no obligatorio.
+- Para habilitar fallback legacy de forma explicita:
+- `SHOPIFY_ENABLE_LEGACY_FALLBACK=true`
+
+### Comando de verificacion rapida
+- `node scripts/verify_shopify_auth.cjs --env-file private-data/shopify-admin.env`
+- Debe mostrar:
+- token obtenido correctamente
+- `expires_in`
+- `scopes`
+- resultado query: `shop.name` y `shop.myshopifyDomain`
+
+### Diagnostico rapido de errores
+- `404` en `/admin/oauth/access_token`:
+- revisar `SHOPIFY_SHOP` (dominio OAuth incorrecto).
+- `401` en GraphQL:
+- revisar `SHOPIFY_CLIENT_ID/SHOPIFY_CLIENT_SECRET` o scopes publicados.
+- Token ok pero mapeo 0:
+- revisar correspondencia entre manifest y `provider_profile` reales (slug/vendor).
