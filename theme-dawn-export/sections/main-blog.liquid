@@ -22,26 +22,143 @@
       {{ blog.title | escape }}
     </h1>
 
-    <div class="blog-articles {% if section.settings.layout == 'collage' %}blog-articles--collage{% endif %}">
-      {%- for article in blog.articles -%}
-        <div
-          class="blog-articles__article article{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
-          {% if settings.animations_reveal_on_scroll %}
-            data-cascade
-            style="--animation-order: {{ forloop.index }};"
-          {% endif %}
-        >
-          {%- render 'article-card',
-            article: article,
-            media_height: section.settings.image_height,
-            media_aspect_ratio: article.image.aspect_ratio,
-            show_image: section.settings.show_image,
-            show_date: section.settings.show_date,
-            show_author: section.settings.show_author,
-            show_excerpt: true
-          -%}
+    <div class="main-blog__layout">
+      <div class="main-blog__content">
+        <div class="blog-articles {% if section.settings.layout == 'collage' %}blog-articles--collage{% endif %}">
+          {%- for article in blog.articles -%}
+            <div
+              class="blog-articles__article article{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+              {% if settings.animations_reveal_on_scroll %}
+                data-cascade
+                style="--animation-order: {{ forloop.index }};"
+              {% endif %}
+            >
+              {%- render 'article-card',
+                article: article,
+                media_height: section.settings.image_height,
+                media_aspect_ratio: article.image.aspect_ratio,
+                show_image: section.settings.show_image,
+                show_date: section.settings.show_date,
+                show_author: section.settings.show_author,
+                show_excerpt: true
+              -%}
+            </div>
+          {%- endfor -%}
         </div>
-      {%- endfor -%}
+      </div>
+
+      {%- if section.settings.show_sidebar -%}
+        <aside class="main-blog__sidebar" aria-label="{{ section.settings.sidebar_heading | escape }}">
+          <section class="main-blog__sidebar-card main-blog__sidebar-card--most-read">
+            <h2 class="main-blog__sidebar-title h4">{{ section.settings.sidebar_heading | escape }}</h2>
+            <ol class="main-blog__most-read-list" role="list">
+              {%- for article in blog.articles limit: 3 -%}
+                <li class="main-blog__most-read-item">
+                  <a href="{{ article.url }}" class="main-blog__most-read-link">
+                    <span class="main-blog__most-read-index">
+                      {%- if forloop.index < 10 -%}0{{ forloop.index }}{%- else -%}{{ forloop.index }}{%- endif -%}
+                    </span>
+                    <span class="main-blog__most-read-text">{{ article.title | escape }}</span>
+                  </a>
+                </li>
+              {%- endfor -%}
+            </ol>
+          </section>
+
+          <section class="main-blog__sidebar-card main-blog__sidebar-card--newsletter">
+            <h2 class="main-blog__sidebar-title h4">{{ section.settings.newsletter_title | escape }}</h2>
+            <p class="main-blog__newsletter-text">{{ section.settings.newsletter_text | escape }}</p>
+            {%- form 'customer', class: 'main-blog__newsletter-form' -%}
+              <input type="hidden" name="contact[tags]" value="newsletter">
+              <div class="field">
+                <input
+                  id="SidebarNewsletterEmail-{{ section.id }}"
+                  type="email"
+                  name="contact[email]"
+                  class="field__input"
+                  value="{{ form.email }}"
+                  aria-required="true"
+                  autocorrect="off"
+                  autocapitalize="off"
+                  autocomplete="email"
+                  {% if form.errors %}
+                    autofocus
+                    aria-invalid="true"
+                    aria-describedby="SidebarNewsletter-error-{{ section.id }}"
+                  {% elsif form.posted_successfully? %}
+                    aria-describedby="SidebarNewsletter-success-{{ section.id }}"
+                  {% endif %}
+                  placeholder="{{ section.settings.newsletter_placeholder | escape }}"
+                  required
+                >
+                <label class="field__label" for="SidebarNewsletterEmail-{{ section.id }}">
+                  {{ section.settings.newsletter_placeholder | escape }}
+                </label>
+              </div>
+              <button type="submit" class="button button--primary main-blog__newsletter-button">
+                {{ section.settings.newsletter_button_label | escape }}
+              </button>
+              {%- if form.errors -%}
+                <small class="main-blog__newsletter-feedback" id="SidebarNewsletter-error-{{ section.id }}">
+                  {{ form.errors.translated_fields.email | capitalize }} {{ form.errors.messages.email }}
+                </small>
+              {%- endif -%}
+              {%- if form.posted_successfully? -%}
+                <small class="main-blog__newsletter-feedback" id="SidebarNewsletter-success-{{ section.id }}">
+                  {{ 'newsletter.success' | t }}
+                </small>
+              {%- endif -%}
+            {%- endform -%}
+            <p class="main-blog__newsletter-footnote">{{ section.settings.newsletter_footnote | escape }}</p>
+          </section>
+
+          <section class="main-blog__sidebar-card main-blog__sidebar-card--certifications">
+            <h2 class="main-blog__sidebar-title h4">Certificaciones Top</h2>
+            <ul class="main-blog__certifications-list" role="list">
+              <li class="main-blog__certification-item">
+                <span class="main-blog__certification-icon" aria-hidden="true">C1</span>
+                <div>
+                  <p class="main-blog__certification-title">Master in Detailing</p>
+                  <p class="main-blog__certification-subtitle">ESPECIALIZACION PRO</p>
+                </div>
+              </li>
+              <li class="main-blog__certification-item">
+                <span class="main-blog__certification-icon" aria-hidden="true">C2</span>
+                <div>
+                  <p class="main-blog__certification-title">Diagnosis OBD-II Expert</p>
+                  <p class="main-blog__certification-subtitle">ELECTRONICA AVANZADA</p>
+                </div>
+              </li>
+            </ul>
+          </section>
+
+          <section class="main-blog__sidebar-card main-blog__sidebar-card--provider-cta color-{{ section.settings.provider_cta_color_scheme }}">
+            <div class="main-blog__provider-cta-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
+                <path d="M3 10.5L12 4l9 6.5v8.5a1 1 0 0 1-1 1h-4v-6h-8v6H4a1 1 0 0 1-1-1z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M9.5 20v-4h5v4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h2 class="main-blog__provider-cta-title h3">{{ section.settings.provider_cta_title | escape }}</h2>
+            <p class="main-blog__provider-cta-text">{{ section.settings.provider_cta_text | escape }}</p>
+            <a class="button button--secondary main-blog__provider-cta-button" href="{{ section.settings.provider_cta_link | default: routes.root_url | append: 'pages/quiero-ser-proveedor' }}">
+              <span class="main-blog__provider-cta-button-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
+                  <circle cx="12" cy="8" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/>
+                  <path d="M4 20c0-3.6 3.6-6 8-6s8 2.4 8 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                </svg>
+              </span>
+              <span class="main-blog__provider-cta-button-label">{{ section.settings.provider_cta_button_label | escape }}</span>
+              <span class="main-blog__provider-cta-button-arrow" aria-hidden="true">
+                <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
+                  <path d="M5 12h13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                  <path d="M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+            </a>
+          </section>
+        </aside>
+      {%- endif -%}
     </div>
 
     {%- if paginate.pages > 1 -%}
@@ -113,6 +230,77 @@
       "id": "show_author",
       "default": false,
       "label": "t:sections.main-blog.settings.show_author.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_sidebar",
+      "default": true,
+      "label": "Mostrar barra lateral"
+    },
+    {
+      "type": "text",
+      "id": "sidebar_heading",
+      "default": "Lo mas leido",
+      "label": "Titulo de barra lateral"
+    },
+    {
+      "type": "text",
+      "id": "newsletter_title",
+      "default": "Newsletter Pro",
+      "label": "Titulo newsletter"
+    },
+    {
+      "type": "textarea",
+      "id": "newsletter_text",
+      "default": "Suscribete para recibir reportes tecnicos exclusivos y alertas en tu bandeja de entrada.",
+      "label": "Texto newsletter"
+    },
+    {
+      "type": "text",
+      "id": "newsletter_placeholder",
+      "default": "Tu correo profesional",
+      "label": "Placeholder email"
+    },
+    {
+      "type": "text",
+      "id": "newsletter_button_label",
+      "default": "Suscribirme",
+      "label": "Texto boton newsletter"
+    },
+    {
+      "type": "text",
+      "id": "newsletter_footnote",
+      "default": "Unete a miles de profesionales.",
+      "label": "Nota newsletter"
+    },
+    {
+      "type": "text",
+      "id": "provider_cta_title",
+      "default": "Tu empresa puede vender y captar clientes aqui",
+      "label": "Titulo del CTA de proveedores"
+    },
+    {
+      "type": "textarea",
+      "id": "provider_cta_text",
+      "default": "Si ofreces servicios automotrices o vendes productos similares, registrate como proveedor y haz crecer tu negocio con nuestra comunidad.",
+      "label": "Texto del CTA de proveedores"
+    },
+    {
+      "type": "text",
+      "id": "provider_cta_button_label",
+      "default": "Quiero registrarme como proveedor",
+      "label": "Texto del boton CTA"
+    },
+    {
+      "type": "url",
+      "id": "provider_cta_link",
+      "label": "Enlace del boton CTA"
+    },
+    {
+      "type": "color_scheme",
+      "id": "provider_cta_color_scheme",
+      "label": "Esquema de color del CTA",
+      "default": "accent-1"
     },
     {
       "type": "header",

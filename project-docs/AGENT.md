@@ -58,6 +58,15 @@ Actuar como arquitecto tecnico y ejecutor del theme, priorizando seguridad, reve
 - La compra guiada por matricula queda pausada mientras se cierra este piloto para no mezclar responsabilidades
 - El metafield `service.purchase_flow` queda reservado para la compra guiada por matricula, no para el piloto carwash
 
+## Regla funcional confirmada 4: estandar editorial de blog
+- El blog usa un layout editorial nativo en `main-article` + `section-blog-post.css`.
+- Los articulos SEO deben mantener:
+- fecha + titulo dominante + metadata de lectura
+- hero principal
+- secciones con jerarquia clara
+- soporte de tabla comparativa y bloque `.article-grid` en contenido
+- Todas las imagenes nuevas para articulos se suben en `webp`.
+
 ## Registro de proveedores v1
 - El alta de proveedores no reutiliza `customers/register`
 - El patron actual es `pagina publica Quiero ser proveedor -> formulario validado con Google Maps -> dual write a email admin + provider_application_request -> revision desde app admin -> aprobacion/declinacion -> creacion de metaobject provider_profile`

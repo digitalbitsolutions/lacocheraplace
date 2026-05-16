@@ -346,6 +346,24 @@ Objetivo: transformar el documento `DESCRIPCION DE SERVICIOS.txt` de Ches en un 
 - El lookup sin verificacion bloquea compra online para servicios opt-in
 - El catalogo de pruebas para proveedores debe seguir la misma regla de storefront actual: resolver oferta por `product.vendor` y no dejar productos huerfanos de proveedor
 
+## Estandar editorial de Blog (2026-05-16)
+- [x] Definir estilo y layout oficial para articulos del blog, validado por Ches
+- [x] Aplicar estilo en template nativo (`main-article`) y CSS de articulo (`section-blog-post.css`)
+- [x] Publicar articulo de referencia con este estandar:
+- `https://lacocheraplace.com/blogs/noticias/cuanto-cuesta-detailing-barcelona-2026`
+
+### Patron visual aprobado
+- Cabecera editorial: fecha superior, titulo dominante, metadata compacta con tiempo de lectura.
+- Hero principal del articulo visible inmediatamente bajo el titulo.
+- Cuerpo con jerarquia clara (`h3` numerados), ritmo tipografico y espaciado amplio.
+- Soporte nativo para tabla comparativa y bloque en rejilla (`.article-grid`) dentro del contenido.
+- Cierre con enlaces internos y externos orientados a conversion.
+
+### Regla operativa para siguientes articulos
+- Todo nuevo articulo SEO debe respetar este layout base.
+- Las imagenes se suben en formato `webp`.
+- El contenido se publica inicialmente en borrador para revision de Ches, salvo instruccion explicita de publicar.
+
 ## Tarea segura: revision y actualizacion de scopes Shopify (2026-05-13)
 Estado: completado en modo seguro (sin cambios destructivos).
 
