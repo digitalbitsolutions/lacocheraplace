@@ -88,6 +88,209 @@
       }
     }
   {%- endif -%}
+
+  {%- if request.page_type == 'page' and page and page.handle == 'como-funciona' and section.id == 'multicolumn_steps' -%}
+    .multicolumn--como-funciona .multicolumn-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      column-gap: 2rem;
+      row-gap: 2rem;
+    }
+
+    .multicolumn--como-funciona .multicolumn-list__item {
+      width: auto;
+      max-width: none;
+      margin: 0;
+    }
+
+    @media screen and (min-width: 990px) {
+      .multicolumn--como-funciona .multicolumn-list {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+    }
+
+    .multicolumn--como-funciona .multicolumn__title .title {
+      margin-bottom: 0.8rem;
+      font-size: clamp(2.8rem, 2.3rem + 0.9vw, 3.8rem);
+      letter-spacing: -0.01em;
+    }
+
+    .multicolumn--como-funciona .multicolumn-card {
+      border: 0.1rem solid rgba(var(--color-foreground), 0.12);
+      border-radius: 0.8rem;
+      background: rgb(var(--color-background));
+      box-shadow: none;
+      overflow: hidden;
+    }
+
+    .multicolumn--como-funciona .multicolumn-card__image-wrapper {
+      margin-bottom: 0;
+    }
+
+    .multicolumn--como-funciona .multicolumn-card__info {
+      padding: 1.6rem 2rem 1.8rem;
+    }
+
+    .multicolumn--como-funciona .multicolumn-card__info > h3 {
+      margin: 0 0 1.2rem;
+      font-size: 2.8rem;
+      line-height: 1.1;
+      color: rgba(40, 92, 203, 1);
+    }
+
+    .multicolumn--como-funciona .multicolumn-card__info .rte {
+      color: rgba(var(--color-foreground), 0.78);
+    }
+
+    .multicolumn--como-funciona .multicolumn-card__info .rte p {
+      margin: 0 0 1rem;
+      font-size: 1.55rem;
+      line-height: 1.55;
+    }
+
+    .multicolumn--como-funciona .multicolumn-card__info .rte p:first-child {
+      margin-bottom: 1rem;
+      font-size: 3rem;
+      line-height: 1.1;
+      color: rgb(var(--color-foreground));
+      letter-spacing: -0.01em;
+    }
+
+    @media screen and (max-width: 989px) {
+      .multicolumn--como-funciona .multicolumn-card__info .rte p:first-child {
+        font-size: 2.4rem;
+      }
+    }
+  {%- endif -%}
+
+  {%- if section.id contains 'provider_benefits' -%}
+    .multicolumn--provider-benefits {
+      margin-top: -17.2rem;
+      margin-bottom: 2.4rem;
+      position: relative;
+      z-index: 4;
+      background: transparent;
+    }
+
+    .multicolumn--provider-benefits .page-width {
+      max-width: 112rem;
+      background: linear-gradient(90deg, rgba(7, 12, 22, 0.84), rgba(7, 12, 22, 0.7));
+      border-radius: 0;
+      padding-top: 0;
+      padding-bottom: 1rem;
+      padding-left: 1.4rem;
+      padding-right: 1.4rem;
+      width: min(100%, 112rem);
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .multicolumn--provider-benefits .multicolumn-list {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 0;
+    }
+
+    .multicolumn--provider-benefits .multicolumn-list__item {
+      width: auto;
+      max-width: none;
+      margin: 0;
+      border-right: 0.1rem solid rgba(255, 255, 255, 0.18);
+    }
+
+    .multicolumn--provider-benefits .multicolumn-list__item:last-child {
+      border-right: 0;
+    }
+
+    .multicolumn--provider-benefits .multicolumn-card {
+      background: transparent;
+      border: 0;
+      box-shadow: none;
+    }
+
+    .multicolumn--provider-benefits .multicolumn-card__info {
+      padding: 0.5rem 1.2rem 0.5rem 1.2rem;
+    }
+
+    .multicolumn--provider-benefits .provider-benefit-icon {
+      display: inline-flex;
+      width: 2.8rem;
+      height: 2.8rem;
+      color: #1f5fe0;
+      margin-bottom: 0.7rem;
+    }
+
+    .multicolumn--provider-benefits .provider-benefit-icon svg,
+    .multicolumn--provider-benefits .provider-benefit-icon svg * {
+      width: 100%;
+      height: 100%;
+      fill: currentColor !important;
+      stroke: currentColor !important;
+    }
+
+    .multicolumn--provider-benefits .multicolumn-card__info > h3,
+    .multicolumn--provider-benefits .multicolumn-card__info .rte,
+    .multicolumn--provider-benefits .multicolumn-card__info .rte p {
+      color: rgba(255, 255, 255, 0.92);
+    }
+
+    .multicolumn--provider-benefits .multicolumn-card__info > h3 {
+      margin: 0 0 0.6rem;
+      font-size: 1.7rem;
+      line-height: 1.25;
+      letter-spacing: -0.01em;
+      font-weight: 600;
+    }
+
+    .multicolumn--provider-benefits .multicolumn-card__info .rte p {
+      margin: 0;
+      font-size: 1.25rem;
+      line-height: 1.45;
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    @media screen and (max-width: 989px) {
+      .multicolumn--provider-benefits {
+        margin-top: -7rem;
+        margin-bottom: 2.4rem;
+      }
+
+      .multicolumn--provider-benefits .page-width {
+        width: calc(100% - 2.4rem);
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: 1.4rem;
+        padding-right: 1.4rem;
+      }
+
+      .multicolumn--provider-benefits .multicolumn-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1.4rem 1.8rem;
+      }
+
+      .multicolumn--provider-benefits .multicolumn-list__item {
+        border-right: 0;
+      }
+
+      .multicolumn--provider-benefits .multicolumn-card__info {
+        padding-left: 0;
+        padding-right: 0;
+      }
+
+      .multicolumn--provider-benefits .provider-benefit-icon {
+        width: 2.5rem;
+        height: 2.5rem;
+      }
+
+      .multicolumn--provider-benefits .multicolumn-card__info > h3 {
+        font-size: 1.6rem;
+      }
+
+      .multicolumn--provider-benefits .multicolumn-card__info .rte p {
+        font-size: 1.2rem;
+      }
+    }
+  {%- endif -%}
 {%- endstyle -%}
 
 {%- liquid
@@ -97,113 +300,15 @@
   if section.settings.swipe_on_mobile and section.blocks.size > columns_mobile_int
     assign show_mobile_slider = true
   endif
-  if request.page_type == 'page' and page and page.handle == 'como-funciona'
-    assign is_como_funciona_override = true
-  endif
 -%}
 
-<div class="multicolumn multicolumn--stitch-{{ section.id }} color-{{ section.settings.color_scheme }} gradient{% unless section.settings.background_style == 'none' and settings.text_boxes_border_thickness > 0 or settings.text_boxes_shadow_opacity > 0 %} background-{{ section.settings.background_style }}{% endunless %}{% if section.settings.title == blank %} no-heading{% endif %}">
+<div class="multicolumn multicolumn--stitch-{{ section.id }}{% if request.page_type == 'page' and page and page.handle == 'como-funciona' and section.id == 'multicolumn_steps' %} multicolumn--como-funciona{% endif %}{% if section.id contains 'provider_benefits' %} multicolumn--provider-benefits{% endif %} color-{{ section.settings.color_scheme }} gradient{% unless section.settings.background_style == 'none' and settings.text_boxes_border_thickness > 0 or settings.text_boxes_shadow_opacity > 0 %} background-{{ section.settings.background_style }}{% endunless %}{% if section.settings.title == blank %} no-heading{% endif %}">
   <div
     class="page-width section-{{ section.id }}-padding isolate{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
     {% if settings.animations_reveal_on_scroll %}
       data-cascade
     {% endif %}
   >
-    {%- if is_como_funciona_override -%}
-      <div class="title-wrapper-with-link title-wrapper--self-padded-mobile title-wrapper--no-top-margin multicolumn__title">
-        <h2 class="title inline-richtext h1">Como funciona La Cochera Place</h2>
-      </div>
-      <div class="slider-mobile-gutter">
-        <ul class="multicolumn-list contains-content-container grid grid--1-col-tablet-down grid--4-col-desktop" role="list">
-          <li class="multicolumn-list__item grid__item">
-            <div class="multicolumn-card content-container">
-              <div class="multicolumn-card__image-wrapper multicolumn-card__image-wrapper--full-width multicolumn-card-spacing">
-                <div class="media media--transparent media--adapt" style="padding-bottom: 54.54545454545454%;">
-                  <img
-                    src="{{ 'paso1-1280x720.webp' | file_url }}"
-                    alt="Busca el servicio o taller ideal"
-                    loading="lazy"
-                    class="multicolumn-card__image"
-                  >
-                </div>
-              </div>
-              <div class="multicolumn-card__info">
-                <h3 class="inline-richtext">1. Busca el servicio o taller ideal</h3>
-                <div class="rte">
-                  <p>Explora entre talleres y profesionales especializados en lavado de autos, detailing, PPF, polarizado, pintura y mas.</p>
-                  <p>Filtra por ubicacion, tipo de servicio y valoraciones reales para elegir con confianza.</p>
-                  <p>Encuentra el mejor servicio cerca de ti en segundos.</p>
-                </div>
-              </div>
-            </div>
-          </li>
-          <li class="multicolumn-list__item grid__item">
-            <div class="multicolumn-card content-container">
-              <div class="multicolumn-card__image-wrapper multicolumn-card__image-wrapper--full-width multicolumn-card-spacing">
-                <div class="media media--transparent media--adapt" style="padding-bottom: 54.54545454545454%;">
-                  <img
-                    src="{{ 'paso2-1280x720.webp' | file_url }}"
-                    alt="Reserva o compra online"
-                    loading="lazy"
-                    class="multicolumn-card__image"
-                  >
-                </div>
-              </div>
-              <div class="multicolumn-card__info">
-                <h3 class="inline-richtext">2. Reserva o compra online</h3>
-                <div class="rte">
-                  <p>Selecciona el servicio o producto, elige fecha y realiza tu pago de forma segura desde la plataforma.</p>
-                  <p>Sin llamadas, sin esperas.</p>
-                  <p>Reserva tu servicio automotriz en minutos.</p>
-                </div>
-              </div>
-            </div>
-          </li>
-          <li class="multicolumn-list__item grid__item">
-            <div class="multicolumn-card content-container">
-              <div class="multicolumn-card__image-wrapper multicolumn-card__image-wrapper--full-width multicolumn-card-spacing">
-                <div class="media media--transparent media--adapt" style="padding-bottom: 54.54545454545454%;">
-                  <img
-                    src="{{ 'paso3-1280x720.webp' | file_url }}"
-                    alt="Recibe tu confirmacion inmediata"
-                    loading="lazy"
-                    class="multicolumn-card__image"
-                  >
-                </div>
-              </div>
-              <div class="multicolumn-card__info">
-                <h3 class="inline-richtext">3. Recibe tu confirmacion inmediata</h3>
-                <div class="rte">
-                  <p>Te enviaremos un correo y/o mensaje con todos los detalles: servicio contratado, fecha, ubicacion y datos del proveedor.</p>
-                  <p>Todo claro, organizado y listo para tu cita.</p>
-                </div>
-              </div>
-            </div>
-          </li>
-          <li class="multicolumn-list__item grid__item">
-            <div class="multicolumn-card content-container">
-              <div class="multicolumn-card__image-wrapper multicolumn-card__image-wrapper--full-width multicolumn-card-spacing">
-                <div class="media media--transparent media--adapt" style="padding-bottom: 54.54545454545454%;">
-                  <img
-                    src="{{ 'paso4-1280x720.webp' | file_url }}"
-                    alt="Vive la experiencia y valora el servicio"
-                    loading="lazy"
-                    class="multicolumn-card__image"
-                  >
-                </div>
-              </div>
-              <div class="multicolumn-card__info">
-                <h3 class="inline-richtext">4. Vive la experiencia y valora el servicio</h3>
-                <div class="rte">
-                  <p>Acude a tu cita o recibe tu producto donde lo necesites.</p>
-                  <p>Al finalizar, deja tu opinion y ayuda a otros usuarios a elegir mejor.</p>
-                </div>
-              </div>
-            </div>
-          </li>
-        </ul>
-      </div>
-    {%- else -%}
     {%- unless section.settings.title == blank -%}
       <div class="title-wrapper-with-link title-wrapper--self-padded-mobile title-wrapper--no-top-margin multicolumn__title">
         <h2 class="title inline-richtext {{ section.settings.heading_size }}">
@@ -308,6 +413,24 @@
                 </div>
               {%- endif -%}
               <div class="multicolumn-card__info">
+                {%- if section.id contains 'provider_benefits' -%}
+                  {%- liquid
+                    assign benefit_icon = 'icon-account.svg'
+                    case forloop.index
+                      when 1
+                        assign benefit_icon = 'icon-account.svg'
+                      when 2
+                        assign benefit_icon = 'icon-lightning-bolt.svg'
+                      when 3
+                        assign benefit_icon = 'icon-chat-bubble.svg'
+                      when 4
+                        assign benefit_icon = 'icon-padlock.svg'
+                    endcase
+                  -%}
+                  <span class="provider-benefit-icon" aria-hidden="true">
+                    {{ benefit_icon | inline_asset_content }}
+                  </span>
+                {%- endif -%}
                 {%- if block.settings.title != blank -%}
                   <h3 class="inline-richtext">{{ block.settings.title }}</h3>
                 {%- endif -%}
@@ -387,7 +510,6 @@
         </a>
       {%- endif -%}
     </div>
-    {%- endif -%}
   </div>
 </div>
 

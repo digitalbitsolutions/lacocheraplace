@@ -57,6 +57,7 @@ Tener una forma simple de avanzar, revisar y volver atras si algo sale mal o no 
 - `dee1061` lote 2: adaptador configurable de lookup por matricula
 - `887097e` docs(context): registrar exito de asignacion de imagenes carwash
 - `pendiente de commit` lote C5.1.b: descarga 120 + subida incremental sin duplicados + normalizacion de galerias a 6 imagenes por producto
+- `pendiente de commit` UI contacto: CTA inferior alineado 1:1 con referencia de como-funciona, limpieza de bloque mapa/redes y ajuste de iconos
 
 ## Estado de validacion visual
 - Theme borrador creado en Shopify para validacion

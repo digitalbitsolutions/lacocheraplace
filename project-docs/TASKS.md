@@ -514,3 +514,10 @@ Evitar bloqueos por credenciales Shopify Admin API y tener recuperacion operativ
 - revisar `SHOPIFY_CLIENT_ID/SHOPIFY_CLIENT_SECRET` o scopes publicados.
 - Token ok pero mapeo 0:
 - revisar correspondencia entre manifest y `provider_profile` reales (slug/vendor).
+
+## Cierre UI contacto/como-funciona (2026-05-21)
+- [x] Alinear visual del banner CTA inferior de `/pages/contact` con referencia de `/pages/como-funciona`.
+- [x] Ajustar barra multicolumna inferior (fondo, separadores, espaciado y tipografia).
+- [x] Eliminar bloque lateral de mapa + redes en contacto por solicitud de producto.
+- [x] Corregir alineacion horizontal de iconos en la franja inferior (misma altura entre columnas).
+- [x] Publicar cambios al theme live `Codex Preview Homepage Round 3` (`196749918545`).
