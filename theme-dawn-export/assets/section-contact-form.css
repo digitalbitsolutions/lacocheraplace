@@ -1,0 +1,307 @@
+﻿.contact {
+  max-width: 132rem;
+}
+
+.contact__eyebrow {
+  display: inline-block;
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: rgba(var(--color-foreground), 0.72);
+  background: rgba(var(--color-foreground), 0.06);
+  padding: 0.5rem 0.8rem;
+  margin: 0 0 1.6rem;
+}
+
+.contact .title {
+  margin-bottom: 1.2rem;
+}
+
+.contact__intro {
+  margin: 0 0 2.8rem;
+  max-width: 68rem;
+  color: rgba(var(--color-foreground), 0.74);
+}
+
+.contact__layout {
+  display: grid;
+  gap: 2rem;
+}
+
+.contact__form-wrap {
+  border: 0.1rem solid rgba(var(--color-foreground), 0.1);
+  padding: 2rem;
+  background: rgba(var(--color-background), 0.94);
+}
+
+.contact .form__message {
+  align-items: flex-start;
+}
+
+.contact .icon-success {
+  margin-top: 0.2rem;
+}
+
+.contact .field {
+  margin-bottom: 1.5rem;
+}
+
+.contact__privacy {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8rem;
+  margin-top: 0.6rem;
+  font-size: 1.2rem;
+  color: rgba(var(--color-foreground), 0.7);
+}
+
+.contact__privacy input {
+  margin-top: 0.1rem;
+}
+
+.contact__button {
+  margin-top: 2rem;
+}
+
+.contact__button .button {
+  min-width: 18rem;
+}
+
+.contact__side {
+  display: grid;
+  gap: 1.2rem;
+}
+
+.contact__card {
+  border: 0.1rem solid rgba(var(--color-foreground), 0.12);
+  padding: 1.6rem;
+  background: rgba(var(--color-background), 0.94);
+}
+
+.contact__card h3 {
+  margin: 0 0 0.8rem;
+  font-size: 1.8rem;
+}
+
+.contact__card p {
+  margin: 0;
+  color: rgba(var(--color-foreground), 0.76);
+}
+
+.contact__map {
+  min-height: 18rem;
+  border: 0.1rem solid rgba(var(--color-foreground), 0.12);
+  position: relative;
+  overflow: hidden;
+  background: rgba(var(--color-foreground), 0.08);
+}
+
+.contact__map img {
+  width: 100%;
+  height: 100%;
+  min-height: 18rem;
+  object-fit: cover;
+  display: block;
+  filter: grayscale(100%) contrast(1.05);
+}
+
+.contact__map-badge {
+  position: absolute;
+  left: 1rem;
+  bottom: 1rem;
+  font-size: 1.1rem;
+  background: rgba(255, 255, 255, 0.95);
+  color: rgba(var(--color-foreground), 0.84);
+  padding: 0.4rem 0.7rem;
+  border-radius: 0.2rem;
+}
+
+.contact__social-inline {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.contact__social-inline span {
+  font-size: 1.2rem;
+  color: rgba(var(--color-foreground), 0.72);
+}
+
+.contact__social-inline .list-social {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.contact__social-inline .list-social__link {
+  width: 2.8rem;
+  height: 2.8rem;
+  border: 0.1rem solid rgba(var(--color-foreground), 0.18);
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contact__cta-hero {
+  margin-top: 3.2rem;
+  position: relative;
+  border-radius: 0;
+  overflow: hidden;
+  min-height: 64rem;
+  background-image: var(--contact-cta-hero-image);
+  background-size: cover;
+  background-position: center;
+}
+
+.contact__cta-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(8, 12, 20, 0.9) 0%, rgba(8, 12, 20, 0.7) 52%, rgba(8, 12, 20, 0.52) 100%);
+}
+
+.contact__cta-content {
+  position: relative;
+  z-index: 2;
+  max-width: 52rem;
+  margin-left: clamp(2.4rem, 20vw, 38.5rem);
+  padding: 5.2rem 0 2rem;
+}
+
+.contact__cta-content h2 {
+  margin: 0 0 1.2rem;
+  color: #fff;
+  font-size: clamp(3.4rem, 2.6rem + 1vw, 6rem);
+  line-height: 1.04;
+  letter-spacing: -0.01em;
+}
+
+.contact__cta-content p {
+  margin: 0 0 2rem;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.contact__cta-content .button {
+  min-width: 29rem;
+  background: #0d1117;
+  border: 0.1rem solid rgba(255, 255, 255, 0.75);
+  margin-bottom: 0.8rem;
+}
+
+.contact__cta-hero .contact__cta-benefits {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(100%, 111rem);
+  bottom: 4.6rem;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  background: linear-gradient(90deg, rgba(7, 12, 22, 0.84), rgba(7, 12, 22, 0.7));
+}
+
+.contact__cta-hero .contact__cta-benefit {
+  padding: 0.45rem 1.8rem 0.45rem 0;
+  border-right: 0.1rem solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.contact__cta-hero .contact__cta-benefit:last-child {
+  border-right: 0;
+}
+
+.contact__cta-hero .contact__cta-benefit:first-child {
+  padding-left: 1.8rem;
+}
+
+.contact__cta-benefit-icon {
+  width: 2.8rem;
+  height: 2.8rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 2.8rem;
+  color: #1f5fe0;
+  margin-bottom: 0.7rem;
+}
+
+.contact__cta-benefit-icon svg,
+.contact__cta-benefit-icon svg * {
+  width: 100%;
+  height: 100%;
+  fill: currentColor !important;
+  stroke: currentColor !important;
+}
+
+.contact__cta-hero .contact__cta-benefit h3 {
+  margin: 0 0 0.6rem;
+  color: #fff;
+  font-size: 1.7rem;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+  font-weight: 600;
+}
+
+.contact__cta-hero .contact__cta-benefit p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.25rem;
+  line-height: 1.55;
+}
+
+@media screen and (min-width: 750px) {
+  .contact .field {
+    margin-bottom: 2rem;
+  }
+
+  .contact__fields {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 2rem;
+  }
+
+  .contact__layout {
+    grid-template-columns: 1.6fr 1fr;
+    align-items: start;
+  }
+
+  .contact__cta-hero {
+    min-height: 64rem;
+  }
+}
+
+@media screen and (max-width: 989px) {
+  .contact__cta-hero {
+    min-height: 64rem;
+  }
+
+  .contact__cta-content {
+    padding: 2.4rem 1.8rem 1.6rem;
+    margin-left: 0;
+    max-width: none;
+  }
+
+  .contact__cta-content .button {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .contact__cta-hero .contact__cta-benefits {
+    left: 1.8rem;
+    transform: none;
+    width: auto;
+    bottom: 1.2rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .contact__cta-hero .contact__cta-benefit {
+    border-right: 0;
+    padding-right: 0;
+    padding-top: 0.45rem;
+  }
+
+  .contact__cta-hero .contact__cta-benefit:first-child {
+    padding-left: 0;
+  }
+}
