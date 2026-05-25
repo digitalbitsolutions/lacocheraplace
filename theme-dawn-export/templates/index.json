@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "image_banner": {
@@ -97,6 +106,13 @@
             "service_collection": "renta-de-espacios-y-herramientas-para-automocion",
             "option_label": "Renta de espacios y herramientas"
           }
+        },
+        "service_category_option_12": {
+          "type": "service_category_option",
+          "settings": {
+            "service_collection": "ppf-wrap-tintado-lunas",
+            "option_label": "Tintado de lunas y parabrisas"
+          }
         }
       },
       "block_order": [
@@ -112,7 +128,8 @@
         "service_category_option_8",
         "service_category_option_9",
         "service_category_option_10",
-        "service_category_option_11"
+        "service_category_option_11",
+        "service_category_option_12"
       ],
       "settings": {
         "image": "shopify://shop_images/coche.jpg",
@@ -332,66 +349,150 @@
       }
     },
     "home_featured_providers_home": {
-      "type": "multicolumn",
+      "type": "home-category-provider-logos-slider",
       "blocks": {
         "provider_1": {
-          "type": "column",
+          "type": "provider_logo",
           "settings": {
-            "image": "shopify://shop_images/gracia-garage-tools__token-branded__token-branded-kraken.svg",
-            "title": "Gracia Garage Tools",
-            "text": "",
-            "link_label": "",
-            "link": ""
+            "category": "Mantenimiento rapido",
+            "logo": "shopify://shop_images/gracia-garage-tools__token-branded__token-branded-kraken.svg",
+            "provider_name": "Gracia Garage Tools",
+            "link": "shopify://collections/mantenimiento-ligero"
           }
         },
         "provider_2": {
-          "type": "column",
+          "type": "provider_logo",
           "settings": {
-            "image": "shopify://shop_images/poblenou-box-rental__token-branded__token-branded-coinbase.svg",
-            "title": "Poblenou Box Rental",
-            "text": "",
-            "link_label": "",
-            "link": ""
+            "category": "Renta de espacios",
+            "logo": "shopify://shop_images/poblenou-box-rental__token-branded__token-branded-coinbase.svg",
+            "provider_name": "Poblenou Box Rental",
+            "link": "shopify://collections/renta-de-espacios-y-herramientas-para-automocion"
           }
         },
         "provider_3": {
-          "type": "column",
+          "type": "provider_logo",
           "settings": {
-            "image": "shopify://shop_images/sants-liquidaciones-auto__token-branded__token-branded-uniswap.svg",
-            "title": "Sants Liquidaciones Auto",
-            "text": "",
-            "link_label": "",
-            "link": ""
+            "category": "Usados y liquidaciones",
+            "logo": "shopify://shop_images/sants-liquidaciones-auto__token-branded__token-branded-uniswap.svg",
+            "provider_name": "Sants Liquidaciones Auto",
+            "link": "shopify://collections/productos-usados-y-liquidaciones"
           }
         },
         "provider_4": {
-          "type": "column",
+          "type": "provider_logo",
           "settings": {
-            "image": "shopify://shop_images/eixample-ocasion-motor__token-branded__token-branded-wallet-connect.svg",
-            "title": "Eixample Ocasion Motor",
-            "text": "",
-            "link_label": "",
-            "link": ""
+            "category": "Vehiculos de ocasion",
+            "logo": "shopify://shop_images/eixample-ocasion-motor__token-branded__token-branded-wallet-connect.svg",
+            "provider_name": "Eixample Ocasion Motor",
+            "link": "shopify://collections/productos-usados-y-liquidaciones"
           }
         },
         "provider_5": {
-          "type": "column",
+          "type": "provider_logo",
           "settings": {
-            "image": "shopify://shop_images/pamplona-auto-care-54__token-branded__token-branded-metamask.svg",
-            "title": "Pamplona Auto Care 54",
-            "text": "",
-            "link_label": "",
-            "link": ""
+            "category": "Lavado y detailing",
+            "logo": "shopify://shop_images/barcelona-wash-hub__token-branded__token-branded-coinbase.svg",
+            "provider_name": "Barcelona Wash Hub",
+            "link": "shopify://collections/lavado"
           }
         },
         "provider_6": {
-          "type": "column",
+          "type": "provider_logo",
           "settings": {
-            "image": "shopify://shop_images/cordoba-auto-care-52__token-branded__token-branded-cardano.svg",
-            "title": "Cordoba Auto Care 52",
-            "text": "",
-            "link_label": "",
-            "link": ""
+            "category": "Chapa y pintura",
+            "logo": "shopify://shop_images/sants-wrap-studio__token-branded__token-branded-solana.svg",
+            "provider_name": "Sants Wrap Studio",
+            "link": "shopify://collections/chapa-y-pintura"
+          }
+        },
+        "provider_7": {
+          "type": "provider_logo",
+          "settings": {
+            "category": "Lavado premium",
+            "logo": "shopify://shop_images/barcelona-laundry__token-branded__token-branded-coinbase.svg",
+            "provider_name": "Barcelona Laundry",
+            "link": "shopify://collections/lavado"
+          }
+        },
+        "provider_8": {
+          "type": "provider_logo",
+          "settings": {
+            "category": "Accesorios y cuidado",
+            "logo": "shopify://shop_images/besos-auto-essentials__token-branded__token-branded-sui.svg",
+            "provider_name": "Besos Auto Essentials",
+            "link": "shopify://collections/productos-y-accesorios-para-el-cuidado-automotriz"
+          }
+        },
+        "provider_9": {
+          "type": "provider_logo",
+          "settings": {
+            "category": "Mecanica rapida",
+            "logo": "shopify://shop_images/costa-garage-express__token-branded__token-branded-optimism.svg",
+            "provider_name": "Costa Garage Express",
+            "link": "shopify://collections/mecanica-basica"
+          }
+        },
+        "provider_10": {
+          "type": "provider_logo",
+          "settings": {
+            "category": "PPF y correccion",
+            "logo": "shopify://shop_images/detail-lab-bcn__token-branded__token-branded-kraken.svg",
+            "provider_name": "Detail Lab BCN",
+            "link": "shopify://collections/detailing"
+          }
+        },
+        "provider_11": {
+          "type": "provider_logo",
+          "settings": {
+            "category": "Neumaticos y llantas",
+            "logo": "shopify://shop_images/eixample-tire-center__token-branded__token-branded-stellar.svg",
+            "provider_name": "Eixample Tire Center",
+            "link": "shopify://collections/llanteria"
+          }
+        },
+        "provider_12": {
+          "type": "provider_logo",
+          "settings": {
+            "category": "Spa automotriz",
+            "logo": "shopify://shop_images/gracia-auto-spa__token-branded__token-branded-chain.svg",
+            "provider_name": "Gracia Auto Spa",
+            "link": "shopify://collections/lavado"
+          }
+        },
+        "provider_13": {
+          "type": "provider_logo",
+          "settings": {
+            "category": "Detailing premium",
+            "logo": "shopify://shop_images/la-cochera-place__token-branded__token-branded-coinbase.svg",
+            "provider_name": "La Cochera Place",
+            "link": "shopify://collections/detailing"
+          }
+        },
+        "provider_14": {
+          "type": "provider_logo",
+          "settings": {
+            "category": "Grua y carroceria",
+            "logo": "shopify://shop_images/montjuic-car-care__token-branded__token-branded-polygon.svg",
+            "provider_name": "Montjuic Car Care",
+            "link": "shopify://collections/chapa-y-pintura"
+          }
+        },
+        "provider_15": {
+          "type": "provider_logo",
+          "settings": {
+            "category": "Asistencia vial",
+            "logo": "shopify://shop_images/poblenou-road-assist__token-branded__token-branded-arb.svg",
+            "provider_name": "Poblenou Road Assist",
+            "link": "shopify://collections/mantenimiento-ligero"
+          }
+        },
+        "provider_16": {
+          "type": "provider_logo",
+          "settings": {
+            "category": "Parking y servicios",
+            "logo": "shopify://shop_images/ramblas-parking-service__token-branded__token-branded-near.svg",
+            "provider_name": "Ramblas Parking Service",
+            "link": "shopify://collections/productos-y-accesorios-para-el-cuidado-automotriz"
           }
         }
       },
@@ -401,20 +502,20 @@
         "provider_3",
         "provider_4",
         "provider_5",
-        "provider_6"
+        "provider_6",
+        "provider_7",
+        "provider_8",
+        "provider_9",
+        "provider_10",
+        "provider_11",
+        "provider_12",
+        "provider_13",
+        "provider_14",
+        "provider_15",
+        "provider_16"
       ],
       "settings": {
         "title": "Talleres Destacados",
-        "image_width": "half",
-        "image_ratio": "circle",
-        "button_label": "",
-        "button_link": "",
-        "columns_desktop": 6,
-        "column_alignment": "center",
-        "background_style": "none",
-        "columns_mobile": "2",
-        "swipe_on_mobile": true,
-        "enable_stitch_cards": false,
         "heading_size": "h1",
         "color_scheme": "scheme-1",
         "padding_top": 8,

@@ -1,0 +1,268 @@
+{{ 'component-slider.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+
+  .provider-logos-slider-{{ section.id }} .title {
+    margin: 0 0 2.2rem;
+  }
+
+  .provider-logos-slider-{{ section.id }} .provider-logos-slider__viewport {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: calc((100% - (1.2rem * 1)) / 2);
+    gap: 1.2rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    padding-bottom: 0.4rem;
+    scrollbar-width: none;
+  }
+
+  .provider-logos-slider-{{ section.id }} .provider-logos-slider__viewport::-webkit-scrollbar {
+    display: none;
+  }
+
+  .provider-logos-slider-{{ section.id }} .provider-logos-slider__slide {
+    scroll-snap-align: start;
+    text-align: center;
+    padding: 0.2rem 0.8rem 0.8rem;
+  }
+
+  .provider-logos-slider-{{ section.id }} .provider-logos-slider__category {
+    margin: 0 0 0.9rem;
+    font-size: 2rem;
+    line-height: 1.2;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: rgba(var(--color-foreground), 0.92);
+    min-height: 3.2rem;
+  }
+
+  .provider-logos-slider-{{ section.id }} .provider-logos-slider__logo-link {
+    display: inline-flex;
+    width: 9.8rem;
+    height: 9.8rem;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.9rem;
+    text-decoration: none;
+  }
+
+  .provider-logos-slider-{{ section.id }} .provider-logos-slider__logo {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+
+  .provider-logos-slider-{{ section.id }} .provider-logos-slider__provider {
+    margin: 0;
+    font-size: 1.45rem;
+    line-height: 1.35;
+    color: rgba(var(--color-foreground), 0.78);
+  }
+
+  .provider-logos-slider-{{ section.id }} .slider-buttons {
+    margin-top: 1.2rem;
+    display: flex;
+    justify-content: center;
+    gap: 1.2rem;
+  }
+
+  .provider-logos-slider-{{ section.id }} .slider-button {
+    border: 0.1rem solid rgba(var(--color-foreground), 0.24);
+    border-radius: 50%;
+    width: 4.2rem;
+    height: 4.2rem;
+    background: rgb(var(--color-background));
+  }
+
+  .provider-logos-slider-{{ section.id }} .slider-button[disabled] {
+    opacity: 0.35;
+  }
+
+  @media screen and (min-width: 990px) {
+    .provider-logos-slider-{{ section.id }} .provider-logos-slider__viewport {
+      grid-auto-columns: calc((100% - (1.2rem * 3)) / 4);
+    }
+  }
+{%- endstyle -%}
+
+<div class="provider-logos-slider provider-logos-slider-{{ section.id }} color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width section-{{ section.id }}-padding">
+    {%- if section.settings.title != blank -%}
+      <h2 class="title inline-richtext {{ section.settings.heading_size }}">{{ section.settings.title }}</h2>
+    {%- endif -%}
+
+    <div class="provider-logos-slider__viewport" id="ProviderLogosSlider-{{ section.id }}" data-slider-track>
+      {%- for block in section.blocks -%}
+        <article class="provider-logos-slider__slide" {{ block.shopify_attributes }}>
+          {%- if block.settings.category != blank -%}
+            <p class="provider-logos-slider__category">{{ block.settings.category }}</p>
+          {%- else -%}
+            <p class="provider-logos-slider__category">&nbsp;</p>
+          {%- endif -%}
+
+          {%- assign logo_alt = block.settings.provider_name | default: block.settings.category | default: 'Proveedor destacado' -%}
+          {%- assign provider_image_filename = '' -%}
+          {%- case block.settings.provider_name -%}
+            {%- when 'Barcelona Laundry' -%}{%- assign provider_image_filename = 'barcelona-laundry-lavado-detailing.jpg' -%}
+            {%- when 'Barcelona Wash Hub' -%}{%- assign provider_image_filename = 'barcelona-wash-hub-ozono-lavado.jpg' -%}
+            {%- when 'Besos Auto Essentials' -%}{%- assign provider_image_filename = 'besos-auto-essentials-accesorios-pulido.jpg' -%}
+            {%- when 'Costa Garage Express' -%}{%- assign provider_image_filename = 'costa-garage-express-aceite-bateria.jpg' -%}
+            {%- when 'Detail Lab BCN' -%}{%- assign provider_image_filename = 'detail-lab-bcn-ppf-pulido-lunas.jpg' -%}
+            {%- when 'Eixample Ocasion Motor' -%}{%- assign provider_image_filename = 'eixample-ocasion-motor-vehiculos-ocasion.jpg' -%}
+            {%- when 'Eixample Tire Center' -%}{%- assign provider_image_filename = 'eixample-tire-center-neumaticos-alineacion.jpg' -%}
+            {%- when 'Gracia Auto Spa' -%}{%- assign provider_image_filename = 'gracia-auto-spa-lavado-ecologico.jpg' -%}
+            {%- when 'Gracia Garage Tools' -%}{%- assign provider_image_filename = 'gracia-garage-tools-renta-box-herramientas.jpg' -%}
+            {%- when 'La Cochera Place' -%}{%- assign provider_image_filename = 'la-cochera-place-detailing-premium.jpg' -%}
+            {%- when 'Montjuic Car Care' -%}{%- assign provider_image_filename = 'montjuic-car-care-grua-desabollado.jpg' -%}
+            {%- when 'Poblenou Box Rental' -%}{%- assign provider_image_filename = 'poblenou-box-rental-alquiler-box.jpg' -%}
+            {%- when 'Poblenou Road Assist' -%}{%- assign provider_image_filename = 'poblenou-road-assist-asistencia-carretera.jpg' -%}
+            {%- when 'Ramblas Parking Service' -%}{%- assign provider_image_filename = 'ramblas-parking-service-parking-lavado.jpg' -%}
+            {%- when 'Sants Liquidaciones Auto' -%}{%- assign provider_image_filename = 'sants-liquidaciones-auto-liquidacion-suv.jpg' -%}
+            {%- when 'Sants Wrap Studio' -%}{%- assign provider_image_filename = 'sants-wrap-studio-ppf-paragolpes-lunas.jpg' -%}
+          {%- endcase -%}
+          {%- if block.settings.link != blank -%}
+            <a class="provider-logos-slider__logo-link" href="{{ block.settings.link }}">
+          {%- else -%}
+            <span class="provider-logos-slider__logo-link">
+          {%- endif -%}
+              {%- if provider_image_filename != blank -%}
+                <img
+                  class="provider-logos-slider__logo"
+                  src="{{ provider_image_filename | asset_url }}"
+                  alt="{{ logo_alt | escape }}"
+                  loading="lazy"
+                  width="280"
+                  height="280"
+                >
+              {%- elsif block.settings.logo != blank -%}
+                {{
+                  block.settings.logo
+                  | image_url: width: 280
+                  | image_tag:
+                    widths: '100, 140, 180, 220, 280',
+                    sizes: '(min-width: 990px) 160px, 120px',
+                    class: 'provider-logos-slider__logo',
+                    alt: logo_alt
+                }}
+              {%- endif -%}
+          {%- if block.settings.link != blank -%}
+            </a>
+          {%- else -%}
+            </span>
+          {%- endif -%}
+
+          {%- if block.settings.provider_name != blank -%}
+            <p class="provider-logos-slider__provider">{{ block.settings.provider_name }}</p>
+          {%- endif -%}
+        </article>
+      {%- endfor -%}
+    </div>
+
+    <div class="slider-buttons no-js-hidden">
+      <button
+        type="button"
+        class="slider-button slider-button--prev"
+        name="previous"
+        aria-label="{{ 'general.slider.previous_slide' | t }}"
+        data-slider-prev
+      >
+        <span class="svg-wrapper">{{ 'icon-caret.svg' | inline_asset_content }}</span>
+      </button>
+      <button
+        type="button"
+        class="slider-button slider-button--next"
+        name="next"
+        aria-label="{{ 'general.slider.next_slide' | t }}"
+        data-slider-next
+      >
+        <span class="svg-wrapper">{{ 'icon-caret.svg' | inline_asset_content }}</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+  (() => {
+    const root = document.querySelector('.provider-logos-slider-{{ section.id }}');
+    if (!root) return;
+
+    const track = root.querySelector('[data-slider-track]');
+    const prev = root.querySelector('[data-slider-prev]');
+    const next = root.querySelector('[data-slider-next]');
+    if (!track || !prev || !next) return;
+
+    const updateButtons = () => {
+      const maxScrollLeft = track.scrollWidth - track.clientWidth;
+      prev.disabled = track.scrollLeft <= 0;
+      next.disabled = track.scrollLeft >= maxScrollLeft - 2;
+    };
+
+    const slideByViewport = (direction) => {
+      const amount = Math.max(220, Math.round(track.clientWidth * 0.85));
+      track.scrollBy({ left: amount * direction, behavior: 'smooth' });
+    };
+
+    prev.addEventListener('click', () => slideByViewport(-1));
+    next.addEventListener('click', () => slideByViewport(1));
+    track.addEventListener('scroll', updateButtons, { passive: true });
+    window.addEventListener('resize', updateButtons);
+    updateButtons();
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Featured Provider Logos",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Title", "default": "Talleres Destacados" },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "label": "Heading size",
+      "default": "h1",
+      "options": [
+        { "value": "h2", "label": "Small" },
+        { "value": "h1", "label": "Medium" },
+        { "value": "h0", "label": "Large" }
+      ]
+    },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" },
+    { "type": "range", "id": "padding_top", "label": "Top padding", "min": 0, "max": 100, "step": 4, "unit": "px", "default": 8 },
+    { "type": "range", "id": "padding_bottom", "label": "Bottom padding", "min": 0, "max": 100, "step": 4, "unit": "px", "default": 20 }
+  ],
+  "blocks": [
+    {
+      "type": "provider_logo",
+      "name": "Provider logo",
+      "settings": [
+        { "type": "text", "id": "category", "label": "Category (shown above logo)", "default": "Categoria" },
+        { "type": "image_picker", "id": "logo", "label": "Provider logo" },
+        { "type": "text", "id": "provider_name", "label": "Provider name", "default": "Proveedor" },
+        { "type": "url", "id": "link", "label": "Link" }
+      ]
+    }
+  ],
+  "max_blocks": 24,
+  "presets": [
+    {
+      "name": "Featured Provider Logos"
+    }
+  ]
+}
+{% endschema %}
