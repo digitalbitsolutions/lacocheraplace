@@ -521,3 +521,14 @@ Evitar bloqueos por credenciales Shopify Admin API y tener recuperacion operativ
 - [x] Eliminar bloque lateral de mapa + redes en contacto por solicitud de producto.
 - [x] Corregir alineacion horizontal de iconos en la franja inferior (misma altura entre columnas).
 - [x] Publicar cambios al theme live `Codex Preview Homepage Round 3` (`196749918545`).
+
+## Contexto imagenes Home - Talleres Destacados (2026-05-26)
+- [x] Confirmado: los 16 assets de `theme-dawn-export/assets/provider-image-candidates` se usan en formato `webp` cuadrado (`1600x1600`) para flujo de subida.
+- [x] Confirmado por usuario: imagenes ya subidas al servidor de Shopify.
+- [x] Fuente de verdad de asignaciones registrada en:
+- `project-docs/exports/home-featured-workshops-slider-images-2026-05-26.json`
+- [x] Prioridad operativa para cards principales del slider Home:
+- `Mantenimiento rapido` -> `gracia-garage-tools-candidate-01-cambio-aceite.webp`
+- `Renta de espacios` -> `poblenou-box-rental-candidate-04-box-servicio-pexels.webp`
+- `Usados y liquidaciones` -> `sants-liquidaciones-auto-candidate-01-servicio-tramitacion-cambio-titularidad.webp`
+- `Vehiculos de ocasion` -> `eixample-ocasion-motor-candidate-01-vehiculo-ocasion.webp`

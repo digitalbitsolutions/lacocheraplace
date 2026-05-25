@@ -1,0 +1,104 @@
+{
+  "updated_at": "2026-05-26",
+  "context": "Imagenes oficiales para el slider de Talleres Destacados del Home",
+  "format_policy": {
+    "shape": "square",
+    "format": "webp",
+    "size": "1600x1600"
+  },
+  "source_folder": "theme-dawn-export/assets/provider-image-candidates",
+  "shopify_upload_status": "uploaded_by_user",
+  "entries": [
+    {
+      "provider_slug": "barcelona-laundry",
+      "file_name": "barcelona-laundry-candidate-03-lavado-espuma-pexels.webp"
+    },
+    {
+      "provider_slug": "barcelona-wash-hub",
+      "file_name": "barcelona-wash-hub-candidate-05-limpieza-detailing-moderno.webp"
+    },
+    {
+      "provider_slug": "besos-auto-essentials",
+      "file_name": "besos-auto-essentials-candidate-11-pack-accesorios-premium-coche-barcelona.webp"
+    },
+    {
+      "provider_slug": "chamartin-glass-detail",
+      "file_name": "chamartin-glass-detail-candidate-01-pulido-faros.webp"
+    },
+    {
+      "provider_slug": "costa-garage-express",
+      "file_name": "costa-garage-express-candidate-06-cambio-aceite-express-barcelona.webp"
+    },
+    {
+      "provider_slug": "detail-lab-bcn",
+      "file_name": "detail-lab-bcn-candidate-03-ppf-correccion-pexels.webp"
+    },
+    {
+      "provider_slug": "eixample-ocasion-motor",
+      "file_name": "eixample-ocasion-motor-candidate-01-vehiculo-ocasion.webp"
+    },
+    {
+      "provider_slug": "eixample-tire-center",
+      "file_name": "eixample-tire-center-candidate-06-neumaticos-alineacion-pexels-api.webp"
+    },
+    {
+      "provider_slug": "gracia-garage-tools",
+      "file_name": "gracia-garage-tools-candidate-01-cambio-aceite.webp"
+    },
+    {
+      "provider_slug": "montjuic-car-care",
+      "file_name": "montjuic-car-care-candidate-01-grua-desabollado.webp"
+    },
+    {
+      "provider_slug": "poblenou-box-rental",
+      "file_name": "poblenou-box-rental-candidate-04-box-servicio-pexels.webp"
+    },
+    {
+      "provider_slug": "poblenou-road-assist",
+      "file_name": "poblenou-road-assist-candidate-01-asistencia-vial.webp"
+    },
+    {
+      "provider_slug": "ramblas-parking-service",
+      "file_name": "ramblas-parking-service-candidate-02-lavado-rapido.webp"
+    },
+    {
+      "provider_slug": "rivas-detailing-studio",
+      "file_name": "rivas-detailing-studio-candidate-01-ppf-frontal.webp"
+    },
+    {
+      "provider_slug": "sants-liquidaciones-auto",
+      "file_name": "sants-liquidaciones-auto-candidate-01-servicio-tramitacion-cambio-titularidad.webp"
+    },
+    {
+      "provider_slug": "sants-wrap-studio",
+      "file_name": "sants-wrap-studio-candidate-03-wrap-vinilo-pexels.webp"
+    }
+  ],
+  "home_slider_priority_groups": [
+    {
+      "category": "Mantenimiento rapido",
+      "provider": "Gracia Garage Tools",
+      "provider_slug": "gracia-garage-tools",
+      "file_name": "gracia-garage-tools-candidate-01-cambio-aceite.webp"
+    },
+    {
+      "category": "Renta de espacios",
+      "provider": "Poblenou Box Rental",
+      "provider_slug": "poblenou-box-rental",
+      "file_name": "poblenou-box-rental-candidate-04-box-servicio-pexels.webp"
+    },
+    {
+      "category": "Usados y liquidaciones",
+      "provider": "Sants Liquidaciones Auto",
+      "provider_slug": "sants-liquidaciones-auto",
+      "file_name": "sants-liquidaciones-auto-candidate-01-servicio-tramitacion-cambio-titularidad.webp"
+    },
+    {
+      "category": "Vehiculos de ocasion",
+      "provider": "Eixample Ocasion Motor",
+      "provider_slug": "eixample-ocasion-motor",
+      "file_name": "eixample-ocasion-motor-candidate-01-vehiculo-ocasion.webp"
+    }
+  ]
+}
+

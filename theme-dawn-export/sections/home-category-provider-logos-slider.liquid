@@ -139,16 +139,7 @@
           {%- else -%}
             <span class="provider-logos-slider__logo-link">
           {%- endif -%}
-              {%- if provider_image_filename != blank -%}
-                <img
-                  class="provider-logos-slider__logo"
-                  src="{{ provider_image_filename | asset_url }}"
-                  alt="{{ logo_alt | escape }}"
-                  loading="lazy"
-                  width="280"
-                  height="280"
-                >
-              {%- elsif block.settings.logo != blank -%}
+              {%- if block.settings.logo != blank -%}
                 {{
                   block.settings.logo
                   | image_url: width: 280
@@ -158,6 +149,15 @@
                     class: 'provider-logos-slider__logo',
                     alt: logo_alt
                 }}
+              {%- elsif provider_image_filename != blank -%}
+                <img
+                  class="provider-logos-slider__logo"
+                  src="{{ provider_image_filename | asset_url }}"
+                  alt="{{ logo_alt | escape }}"
+                  loading="lazy"
+                  width="280"
+                  height="280"
+                >
               {%- endif -%}
           {%- if block.settings.link != blank -%}
             </a>
