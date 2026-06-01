@@ -12,6 +12,37 @@
 - Ultimo hito confirmado: `asignacion de imagenes alojadas en Shopify Files a los 9 productos carwash existentes`
 - Iniciativa activa: `catalogo piloto carwash de Ches con checkout Shopify nativo`
 
+## Plan Home final Ches (2026-06-01)
+Objetivo: implementar el diseno final del Home (excepto Hero), en secciones nativas Shopify y editables desde customizer.
+
+### Alcance confirmado
+- No tocar Hero (`image_banner`).
+- Jerarquia objetivo despues del Hero:
+- `Categorias principales`
+- `Servicios destacados`
+- `Talleres destacados`
+- `Productos y accesorios destacados`
+- `Opiniones de clientes`
+- `CTA proveedores`
+- `Ultimos articulos del blog`
+
+### Implementacion ejecutada (local)
+- Nueva seccion `theme-dawn-export/sections/lc-home-categories.liquid`:
+- grid responsive con blocks editables (icono texto, nombre, enlace).
+- Nueva seccion `theme-dawn-export/sections/lc-home-featured-services.liquid`:
+- carrusel horizontal con imagen, badge opcional, nombre, precio, rating, ciudad y proveedor.
+- Nueva seccion `theme-dawn-export/sections/lc-home-provider-cta.liquid`:
+- card CTA horizontal con titulo, texto y boton editable.
+- Reordenado `theme-dawn-export/templates/index.json` para respetar la secuencia final sin alterar `image_banner`.
+- Reuso de secciones existentes:
+- `home-category-provider-logos-slider` para talleres destacados.
+- `home-featured-providers-strip` para productos/accesorios destacados.
+- `home-testimonials` para opiniones.
+- `featured-blog` para ultimos articulos del blog.
+
+### Siguiente paso operativo
+- Validacion visual en preview (desktop/tablet/mobile) y ajuste fino de tipografia, espaciados y enlaces del customizer si Ches pide micro-cambios.
+
 ## Nuevo plan aprobado (2026-05-14): arquitectura por tipo de flujo
 Objetivo: separar fichas/experiencias de producto-servicio por `flow_type` sin hardcode y administrable desde Shopify Admin.
 
@@ -532,3 +563,18 @@ Evitar bloqueos por credenciales Shopify Admin API y tener recuperacion operativ
 - `Renta de espacios` -> `poblenou-box-rental-candidate-04-box-servicio-pexels.webp`
 - `Usados y liquidaciones` -> `sants-liquidaciones-auto-candidate-01-servicio-tramitacion-cambio-titularidad.webp`
 - `Vehiculos de ocasion` -> `eixample-ocasion-motor-candidate-01-vehiculo-ocasion.webp`
+
+## Implementacion final slider Home (2026-05-26)
+- [x] Theme live confirmado para despliegues directos: `Codex Preview Homepage Round 3` (`196749918545`).
+- [x] El slider `Talleres Destacados` usa primero imagen de Shopify Files en bloque (`image_picker`) y deja asset theme como fallback.
+- [x] Comportamiento visual aplicado al slider:
+- imagen cuadrada, `object-fit: cover`, y aumento aproximado del 30% en frontend (`16.6rem`).
+- [x] Navegacion aplicada en todos los bloques del slider:
+- cada card apunta a su vendor listing nativo:
+- `/collections/vendors?q={Nombre+Proveedor}`
+- [x] Zonas clicables activas por card:
+- categoria, imagen y nombre de proveedor.
+- [x] Encabezado dinamico en pagina vendor:
+- `Servicios de {Proveedor}` cuando la ruta es `/collections/vendors?q=...`.
+- [x] Seccion donde se renderiza el encabezado vendor:
+- `theme-dawn-export/sections/main-collection-product-grid.liquid`

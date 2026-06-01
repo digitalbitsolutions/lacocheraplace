@@ -13,216 +13,225 @@
     }
   }
 
-  .provider-logos-slider-{{ section.id }} .title {
-    margin: 0 0 2.2rem;
+  .lcp-workshops-{{ section.id }} .lcp-workshops__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 1.2rem;
+    margin-bottom: 1.8rem;
   }
 
-  .provider-logos-slider-{{ section.id }} .provider-logos-slider__viewport {
+  .lcp-workshops-{{ section.id }} .lcp-workshops__sub {
+    margin: 0.4rem 0 0;
+    color: rgba(var(--color-foreground), 0.72);
+  }
+
+  .lcp-workshops-{{ section.id }} .lcp-workshops__viewport {
     display: grid;
     grid-auto-flow: column;
-    grid-auto-columns: calc((100% - (1.2rem * 1)) / 2);
+    grid-auto-columns: calc(100% - 3.2rem);
     gap: 1.2rem;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
-    scroll-behavior: smooth;
-    padding-bottom: 0.4rem;
     scrollbar-width: none;
   }
 
-  .provider-logos-slider-{{ section.id }} .provider-logos-slider__viewport::-webkit-scrollbar {
+  .lcp-workshops-{{ section.id }} .lcp-workshops__viewport::-webkit-scrollbar {
     display: none;
   }
 
-  .provider-logos-slider-{{ section.id }} .provider-logos-slider__slide {
+  .lcp-workshops-{{ section.id }} .lcp-workshops__card {
+    border: 0.1rem solid rgba(var(--color-foreground), 0.1);
+    border-radius: 1.4rem;
+    background: rgb(var(--color-background));
+    overflow: hidden;
     scroll-snap-align: start;
-    text-align: center;
-    padding: 0.2rem 0.8rem 0.8rem;
   }
 
-  .provider-logos-slider-{{ section.id }} .provider-logos-slider__category {
-    margin: 0 0 0.9rem;
-    font-size: 2rem;
-    line-height: 1.2;
-    font-weight: 700;
-    letter-spacing: -0.01em;
-    color: rgba(var(--color-foreground), 0.92);
-    min-height: 3.2rem;
-  }
-
-  .provider-logos-slider-{{ section.id }} .provider-logos-slider__logo-link {
-    display: inline-flex;
-    width: 12.8rem;
-    height: 12.8rem;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 0.9rem;
-    text-decoration: none;
-    border-radius: 0.8rem;
+  .lcp-workshops-{{ section.id }} .lcp-workshops__media-wrap {
+    position: relative;
+    display: block;
+    aspect-ratio: 16 / 9;
     overflow: hidden;
   }
 
-  .provider-logos-slider-{{ section.id }} .provider-logos-slider__logo {
+  .lcp-workshops-{{ section.id }} .lcp-workshops__media {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
   }
 
-  .provider-logos-slider-{{ section.id }} .provider-logos-slider__provider {
-    margin: 0;
-    font-size: 1.45rem;
-    line-height: 1.35;
+  .lcp-workshops-{{ section.id }} .lcp-workshops__badge {
+    position: absolute;
+    left: 1rem;
+    bottom: 1rem;
+    z-index: 1;
+    width: 5.2rem;
+    height: 5.2rem;
+    border-radius: 99rem;
+    border: 0.25rem solid #fff;
+    background: #111;
+    color: #fff;
+    display: grid;
+    place-items: center;
+    text-align: center;
+    padding: 0.4rem;
+    font-size: 1.2rem;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+
+  .lcp-workshops-{{ section.id }} .lcp-workshops__body {
+    padding: 1.2rem;
+  }
+
+  .lcp-workshops-{{ section.id }} .lcp-workshops__title {
+    margin: 0 0 0.55rem;
+    font-size: 2.2rem;
+    line-height: 1.25;
+  }
+
+  .lcp-workshops-{{ section.id }} .lcp-workshops__meta {
+    margin: 0 0 0.8rem;
+    font-size: 1.25rem;
     color: rgba(var(--color-foreground), 0.78);
   }
 
-  .provider-logos-slider-{{ section.id }} .slider-buttons {
-    margin-top: 1.2rem;
+  .lcp-workshops-{{ section.id }} .lcp-workshops__chips {
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+
+  .lcp-workshops-{{ section.id }} .lcp-workshops__chip {
+    border-radius: 99rem;
+    padding: 0.25rem 0.75rem;
+    font-size: 1.1rem;
+    background: rgba(26, 60, 141, 0.08);
+    color: rgba(26, 60, 141, 0.9);
+    line-height: 1.2;
+  }
+
+  .lcp-workshops-{{ section.id }} .lcp-workshops__controls {
+    margin-top: 1.4rem;
     display: flex;
     justify-content: center;
-    gap: 1.2rem;
+    gap: 0.8rem;
   }
 
-  .provider-logos-slider-{{ section.id }} .slider-button {
-    border: 0.1rem solid rgba(var(--color-foreground), 0.24);
-    border-radius: 50%;
+  .lcp-workshops-{{ section.id }} .lcp-workshops__btn {
     width: 4.2rem;
     height: 4.2rem;
+    border: 0.1rem solid rgba(var(--color-foreground), 0.24);
+    border-radius: 99rem;
     background: rgb(var(--color-background));
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
   }
 
-  .provider-logos-slider-{{ section.id }} .slider-button[disabled] {
-    opacity: 0.35;
+  .lcp-workshops-{{ section.id }} .lcp-workshops__btn[disabled] {
+    opacity: 0.4;
+  }
+
+  @media screen and (min-width: 750px) {
+    .lcp-workshops-{{ section.id }} .lcp-workshops__viewport {
+      grid-auto-columns: calc((100% - 1.2rem) / 2);
+    }
   }
 
   @media screen and (min-width: 990px) {
-    .provider-logos-slider-{{ section.id }} .provider-logos-slider__viewport {
+    .lcp-workshops-{{ section.id }} .lcp-workshops__viewport {
       grid-auto-columns: calc((100% - (1.2rem * 3)) / 4);
     }
   }
 {%- endstyle -%}
 
-<div class="provider-logos-slider provider-logos-slider-{{ section.id }} color-{{ section.settings.color_scheme }} gradient">
+<section class="lcp-workshops-{{ section.id }} color-{{ section.settings.color_scheme }} gradient">
   <div class="page-width section-{{ section.id }}-padding">
-    {%- if section.settings.title != blank -%}
-      <h2 class="title inline-richtext {{ section.settings.heading_size }}">{{ section.settings.title }}</h2>
-    {%- endif -%}
+    <div class="lcp-workshops__head">
+      <div>
+        <h2 class="title inline-richtext {{ section.settings.heading_size }}">{{ section.settings.title }}</h2>
+        <p class="lcp-workshops__sub">{{ section.settings.subtitle }}</p>
+      </div>
+      {%- if section.settings.view_all_label != blank and section.settings.view_all_link != blank -%}
+        <a href="{{ section.settings.view_all_link }}">{{ section.settings.view_all_label }}</a>
+      {%- endif -%}
+    </div>
 
-    <div class="provider-logos-slider__viewport" id="ProviderLogosSlider-{{ section.id }}" data-slider-track>
+    <div class="lcp-workshops__viewport" data-slider-track>
       {%- for block in section.blocks -%}
-        <article class="provider-logos-slider__slide" {{ block.shopify_attributes }}>
-          {%- if block.settings.category != blank -%}
-            <p class="provider-logos-slider__category">{{ block.settings.category }}</p>
-          {%- else -%}
-            <p class="provider-logos-slider__category">&nbsp;</p>
-          {%- endif -%}
-
-          {%- assign logo_alt = block.settings.provider_name | default: block.settings.category | default: 'Proveedor destacado' -%}
-          {%- assign provider_image_filename = '' -%}
-          {%- case block.settings.provider_name -%}
-            {%- when 'Barcelona Laundry' -%}{%- assign provider_image_filename = 'barcelona-laundry-lavado-detailing.webp' -%}
-            {%- when 'Barcelona Wash Hub' -%}{%- assign provider_image_filename = 'barcelona-wash-hub-ozono-lavado.webp' -%}
-            {%- when 'Besos Auto Essentials' -%}{%- assign provider_image_filename = 'besos-auto-essentials-accesorios-pulido.webp' -%}
-            {%- when 'Costa Garage Express' -%}{%- assign provider_image_filename = 'costa-garage-express-aceite-bateria.webp' -%}
-            {%- when 'Detail Lab BCN' -%}{%- assign provider_image_filename = 'detail-lab-bcn-ppf-pulido-lunas.webp' -%}
-            {%- when 'Eixample Ocasion Motor' -%}{%- assign provider_image_filename = 'eixample-ocasion-motor-vehiculos-ocasion.webp' -%}
-            {%- when 'Eixample Tire Center' -%}{%- assign provider_image_filename = 'eixample-tire-center-neumaticos-alineacion.webp' -%}
-            {%- when 'Gracia Auto Spa' -%}{%- assign provider_image_filename = 'gracia-auto-spa-lavado-ecologico.webp' -%}
-            {%- when 'Gracia Garage Tools' -%}{%- assign provider_image_filename = 'gracia-garage-tools-renta-box-herramientas.webp' -%}
-            {%- when 'La Cochera Place' -%}{%- assign provider_image_filename = 'la-cochera-place-detailing-premium.webp' -%}
-            {%- when 'Montjuic Car Care' -%}{%- assign provider_image_filename = 'montjuic-car-care-grua-desabollado.webp' -%}
-            {%- when 'Poblenou Box Rental' -%}{%- assign provider_image_filename = 'poblenou-box-rental-alquiler-box.webp' -%}
-            {%- when 'Poblenou Road Assist' -%}{%- assign provider_image_filename = 'poblenou-road-assist-asistencia-carretera.webp' -%}
-            {%- when 'Ramblas Parking Service' -%}{%- assign provider_image_filename = 'ramblas-parking-service-parking-lavado.webp' -%}
-            {%- when 'Sants Liquidaciones Auto' -%}{%- assign provider_image_filename = 'sants-liquidaciones-auto-liquidacion-suv.webp' -%}
-            {%- when 'Sants Wrap Studio' -%}{%- assign provider_image_filename = 'sants-wrap-studio-ppf-paragolpes-lunas.webp' -%}
-          {%- endcase -%}
-          {%- if block.settings.link != blank -%}
-            <a class="provider-logos-slider__logo-link" href="{{ block.settings.link }}">
-          {%- else -%}
-            <span class="provider-logos-slider__logo-link">
-          {%- endif -%}
-              {%- if block.settings.logo != blank -%}
-                {{
-                  block.settings.logo
-                  | image_url: width: 280
-                  | image_tag:
-                    widths: '100, 140, 180, 220, 280',
-                    sizes: '(min-width: 990px) 160px, 120px',
-                    class: 'provider-logos-slider__logo',
-                    alt: logo_alt
-                }}
-              {%- elsif provider_image_filename != blank -%}
-                <img
-                  class="provider-logos-slider__logo"
-                  src="{{ provider_image_filename | asset_url }}"
-                  alt="{{ logo_alt | escape }}"
-                  loading="lazy"
-                  width="280"
-                  height="280"
-                >
-              {%- endif -%}
-          {%- if block.settings.link != blank -%}
-            </a>
-          {%- else -%}
-            </span>
-          {%- endif -%}
-
-          {%- if block.settings.provider_name != blank -%}
-            <p class="provider-logos-slider__provider">{{ block.settings.provider_name }}</p>
-          {%- endif -%}
+        <article class="lcp-workshops__card" {{ block.shopify_attributes }}>
+          <a class="lcp-workshops__media-wrap" href="{{ block.settings.link | default: '#' }}">
+            {%- assign workshop_image = block.settings.image | default: block.settings.logo -%}
+            {%- if workshop_image != blank -%}
+              {{
+                workshop_image
+                | image_url: width: 960
+                | image_tag:
+                  class: 'lcp-workshops__media',
+                  loading: 'lazy',
+                  alt: block.settings.provider_name
+              }}
+            {%- endif -%}
+            {%- assign badge_text = block.settings.badge_text | default: block.settings.category -%}
+            {%- if badge_text != blank -%}
+              <span class="lcp-workshops__badge">{{ badge_text }}</span>
+            {%- endif -%}
+          </a>
+          <div class="lcp-workshops__body">
+            <h3 class="lcp-workshops__title"><a href="{{ block.settings.link | default: '#' }}">{{ block.settings.provider_name }}</a></h3>
+            <p class="lcp-workshops__meta">{{ block.settings.rating_text | default: '4.8 (96)' }} | {{ block.settings.city | default: 'Barcelona' }}</p>
+            <p class="lcp-workshops__chips">
+              {%- if block.settings.chip_1 != blank -%}<span class="lcp-workshops__chip">{{ block.settings.chip_1 }}</span>{%- elsif block.settings.category != blank -%}<span class="lcp-workshops__chip">{{ block.settings.category }}</span>{%- endif -%}
+              {%- if block.settings.chip_2 != blank -%}<span class="lcp-workshops__chip">{{ block.settings.chip_2 }}</span>{%- endif -%}
+              {%- if block.settings.chip_3 != blank -%}<span class="lcp-workshops__chip">{{ block.settings.chip_3 }}</span>{%- endif -%}
+            </p>
+          </div>
         </article>
       {%- endfor -%}
     </div>
 
-    <div class="slider-buttons no-js-hidden">
-      <button
-        type="button"
-        class="slider-button slider-button--prev"
-        name="previous"
-        aria-label="{{ 'general.slider.previous_slide' | t }}"
-        data-slider-prev
-      >
+    <div class="lcp-workshops__controls">
+      <button type="button" class="lcp-workshops__btn" aria-label="{{ 'general.slider.previous_slide' | t }}" data-slider-prev>
         <span class="svg-wrapper">{{ 'icon-caret.svg' | inline_asset_content }}</span>
       </button>
-      <button
-        type="button"
-        class="slider-button slider-button--next"
-        name="next"
-        aria-label="{{ 'general.slider.next_slide' | t }}"
-        data-slider-next
-      >
+      <button type="button" class="lcp-workshops__btn" aria-label="{{ 'general.slider.next_slide' | t }}" data-slider-next>
         <span class="svg-wrapper">{{ 'icon-caret.svg' | inline_asset_content }}</span>
       </button>
     </div>
   </div>
-</div>
+</section>
 
 <script>
   (() => {
-    const root = document.querySelector('.provider-logos-slider-{{ section.id }}');
+    const root = document.querySelector('.lcp-workshops-{{ section.id }}');
     if (!root) return;
-
     const track = root.querySelector('[data-slider-track]');
     const prev = root.querySelector('[data-slider-prev]');
     const next = root.querySelector('[data-slider-next]');
     if (!track || !prev || !next) return;
 
-    const updateButtons = () => {
-      const maxScrollLeft = track.scrollWidth - track.clientWidth;
+    const update = () => {
+      const max = track.scrollWidth - track.clientWidth;
       prev.disabled = track.scrollLeft <= 0;
-      next.disabled = track.scrollLeft >= maxScrollLeft - 2;
+      next.disabled = track.scrollLeft >= max - 2;
     };
 
-    const slideByViewport = (direction) => {
-      const amount = Math.max(220, Math.round(track.clientWidth * 0.85));
-      track.scrollBy({ left: amount * direction, behavior: 'smooth' });
+    const slide = (dir) => {
+      const amount = Math.max(220, Math.round(track.clientWidth * 0.9));
+      track.scrollBy({ left: amount * dir, behavior: 'smooth' });
     };
 
-    prev.addEventListener('click', () => slideByViewport(-1));
-    next.addEventListener('click', () => slideByViewport(1));
-    track.addEventListener('scroll', updateButtons, { passive: true });
-    window.addEventListener('resize', updateButtons);
-    updateButtons();
+    prev.addEventListener('click', () => slide(-1));
+    next.addEventListener('click', () => slide(1));
+    track.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    update();
   })();
 </script>
 
@@ -232,7 +241,10 @@
   "tag": "section",
   "class": "section",
   "settings": [
-    { "type": "text", "id": "title", "label": "Title", "default": "Talleres Destacados" },
+    { "type": "text", "id": "title", "label": "Title", "default": "Talleres destacados" },
+    { "type": "text", "id": "subtitle", "label": "Subtitle", "default": "Profesionales verificados cerca de ti" },
+    { "type": "text", "id": "view_all_label", "label": "View all label", "default": "Ver todos los talleres" },
+    { "type": "url", "id": "view_all_link", "label": "View all link" },
     {
       "type": "select",
       "id": "heading_size",
@@ -251,16 +263,23 @@
   "blocks": [
     {
       "type": "provider_logo",
-      "name": "Provider logo",
+      "name": "Workshop card",
       "settings": [
-        { "type": "text", "id": "category", "label": "Category (shown above logo)", "default": "Categoria" },
-        { "type": "image_picker", "id": "logo", "label": "Provider logo" },
-        { "type": "text", "id": "provider_name", "label": "Provider name", "default": "Proveedor" },
+        { "type": "image_picker", "id": "logo", "label": "Legacy logo/image (compat)" },
+        { "type": "image_picker", "id": "image", "label": "Card image" },
+        { "type": "text", "id": "category", "label": "Legacy category (compat)", "default": "Mecanica" },
+        { "type": "text", "id": "badge_text", "label": "Badge text", "default": "MEC AUTO" },
+        { "type": "text", "id": "provider_name", "label": "Provider name", "default": "MecAuto Services" },
+        { "type": "text", "id": "rating_text", "label": "Rating text", "default": "4.8 (132)" },
+        { "type": "text", "id": "city", "label": "City", "default": "Hospitalet de Llobregat" },
+        { "type": "text", "id": "chip_1", "label": "Chip 1", "default": "Mecanica" },
+        { "type": "text", "id": "chip_2", "label": "Chip 2", "default": "Frenos" },
+        { "type": "text", "id": "chip_3", "label": "Chip 3", "default": "Diagnostico" },
         { "type": "url", "id": "link", "label": "Link" }
       ]
     }
   ],
-  "max_blocks": 24,
+  "max_blocks": 16,
   "presets": [
     {
       "name": "Featured Provider Logos"

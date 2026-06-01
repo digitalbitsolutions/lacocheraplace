@@ -357,7 +357,7 @@
             "category": "Mantenimiento rapido",
             "logo": "shopify://shop_images/gracia-garage-tools-candidate-01-cambio-aceite.webp",
             "provider_name": "Gracia Garage Tools",
-            "link": "shopify://products/renta-elevador-por-hora-gracia-garage-tools"
+            "link": "/collections/vendors?q=Gracia+Garage+Tools"
           }
         },
         "provider_2": {
@@ -366,7 +366,7 @@
             "category": "Renta de espacios",
             "logo": "shopify://shop_images/poblenou-box-rental-candidate-04-box-servicio-pexels.webp",
             "provider_name": "Poblenou Box Rental",
-            "link": "shopify://products/alquiler-box-2-horas-poblenou-box-rental"
+            "link": "/collections/vendors?q=Poblenou+Box+Rental"
           }
         },
         "provider_3": {
@@ -375,7 +375,7 @@
             "category": "Usados y liquidaciones",
             "logo": "shopify://shop_images/sants-liquidaciones-auto-candidate-01-servicio-tramitacion-cambio-titularidad.webp",
             "provider_name": "Sants Liquidaciones Auto",
-            "link": "shopify://products/servicio-tramitacion-cambio-titularidad-sants-liquidaciones-auto"
+            "link": "/collections/vendors?q=Sants+Liquidaciones+Auto"
           }
         },
         "provider_4": {
@@ -384,7 +384,7 @@
             "category": "Vehiculos de ocasion",
             "logo": "shopify://shop_images/eixample-ocasion-motor-candidate-01-vehiculo-ocasion.webp",
             "provider_name": "Eixample Ocasion Motor",
-            "link": "shopify://products/suv-seminuevo-certificado-eixample-ocasion-motor"
+            "link": "/collections/vendors?q=Eixample+Ocasion+Motor"
           }
         },
         "provider_5": {
@@ -393,7 +393,7 @@
             "category": "Lavado y detailing",
             "logo": "shopify://shop_images/barcelona-wash-hub-candidate-05-limpieza-detailing-moderno.webp",
             "provider_name": "Barcelona Wash Hub",
-            "link": "shopify://products/lavado-premium-barcelona-wash-hub"
+            "link": "/collections/vendors?q=Barcelona+Wash+Hub"
           }
         },
         "provider_6": {
@@ -402,7 +402,7 @@
             "category": "Wrap y vinilo",
             "logo": "shopify://shop_images/sants-wrap-studio-candidate-03-wrap-vinilo-pexels.webp",
             "provider_name": "Sants Wrap Studio",
-            "link": "shopify://products/vinilo-completo-sants-wrap-studio"
+            "link": "/collections/vendors?q=Sants+Wrap+Studio"
           }
         },
         "provider_7": {
@@ -411,7 +411,7 @@
             "category": "Lavado premium",
             "logo": "shopify://shop_images/barcelona-laundry-candidate-03-lavado-espuma-pexels.webp",
             "provider_name": "Barcelona Laundry",
-            "link": "shopify://products/lavado-full"
+            "link": "/collections/vendors?q=Barcelona+Laundry"
           }
         },
         "provider_8": {
@@ -420,7 +420,7 @@
             "category": "Accesorios y cuidado",
             "logo": "shopify://shop_images/besos-auto-essentials-candidate-11-pack-accesorios-premium-coche-barcelona.webp",
             "provider_name": "Besos Auto Essentials",
-            "link": "shopify://products/pack-accesorios-besos-auto-essentials"
+            "link": "/collections/vendors?q=Besos+Auto+Essentials"
           }
         },
         "provider_9": {
@@ -429,7 +429,7 @@
             "category": "Mecanica rapida",
             "logo": "shopify://shop_images/costa-garage-express-candidate-06-cambio-aceite-express-barcelona.webp",
             "provider_name": "Costa Garage Express",
-            "link": "shopify://products/cambio-aceite-costa-garage-express"
+            "link": "/collections/vendors?q=Costa+Garage+Express"
           }
         },
         "provider_10": {
@@ -438,7 +438,7 @@
             "category": "PPF y correccion",
             "logo": "shopify://shop_images/detail-lab-bcn-candidate-03-ppf-correccion-pexels.webp",
             "provider_name": "Detail Lab BCN",
-            "link": "shopify://products/pulido-correccion-detail-lab-bcn"
+            "link": "/collections/vendors?q=Detail+Lab+BCN"
           }
         },
         "provider_11": {
@@ -447,7 +447,7 @@
             "category": "Neumaticos y llantas",
             "logo": "shopify://shop_images/eixample-tire-center-candidate-06-neumaticos-alineacion-pexels-api.webp",
             "provider_name": "Eixample Tire Center",
-            "link": "shopify://products/cambio-neumaticos-eixample-tire-center"
+            "link": "/collections/vendors?q=Eixample+Tire+Center"
           }
         },
         "provider_12": {
@@ -456,7 +456,7 @@
             "category": "Grua y carroceria",
             "logo": "shopify://shop_images/montjuic-car-care-candidate-01-grua-desabollado.webp",
             "provider_name": "Montjuic Car Care",
-            "link": "shopify://products/grua-urbana-montjuic-car-care"
+            "link": "/collections/vendors?q=Montjuic+Car+Care"
           }
         },
         "provider_13": {
@@ -465,7 +465,7 @@
             "category": "Parabrisas y lunas",
             "logo": "shopify://shop_images/chamartin-glass-detail-candidate-01-pulido-faros.webp",
             "provider_name": "Chamartin Glass & Detail",
-            "link": "shopify://products/pulido-de-faros-chamartin-glass-detail"
+            "link": "/collections/vendors?q=Chamartin+Glass+%26+Detail"
           }
         },
         "provider_14": {
@@ -474,7 +474,7 @@
             "category": "Asistencia vial",
             "logo": "shopify://shop_images/poblenou-road-assist-candidate-01-asistencia-vial.webp",
             "provider_name": "Poblenou Road Assist",
-            "link": "shopify://products/grua-express-poblenou-road-assist"
+            "link": "/collections/vendors?q=Poblenou+Road+Assist"
           }
         },
         "provider_15": {
@@ -483,7 +483,7 @@
             "category": "Parking y lavado",
             "logo": "shopify://shop_images/ramblas-parking-service-candidate-02-lavado-rapido.webp",
             "provider_name": "Ramblas Parking Service",
-            "link": "shopify://products/lavado-rapido-ramblas-parking-service"
+            "link": "/collections/vendors?q=Ramblas+Parking+Service"
           }
         },
         "provider_16": {
@@ -492,7 +492,7 @@
             "category": "PPF frontal",
             "logo": "shopify://shop_images/rivas-detailing-studio-candidate-01-ppf-frontal.webp",
             "provider_name": "Rivas Detailing Studio",
-            "link": "shopify://products/ppf-frontal-rivas-detailing-studio"
+            "link": "/collections/vendors?q=Rivas+Detailing+Studio"
           }
         }
       },
@@ -606,6 +606,212 @@
         "color_scheme": "scheme-1",
         "padding_top": 8,
         "padding_bottom": 20
+      }
+    },
+    "lc_home_categories": {
+      "type": "lc-home-categories",
+      "blocks": {
+        "cat_1": {
+          "type": "category",
+          "settings": {
+            "icon_text": "L",
+            "name": "Limpieza",
+            "link": "shopify://collections/lavado"
+          }
+        },
+        "cat_2": {
+          "type": "category",
+          "settings": {
+            "icon_text": "D",
+            "name": "Detailing",
+            "link": "shopify://collections/detailing"
+          }
+        },
+        "cat_3": {
+          "type": "category",
+          "settings": {
+            "icon_text": "M",
+            "name": "Mecanica",
+            "link": "shopify://collections/mantenimiento-ligero"
+          }
+        },
+        "cat_4": {
+          "type": "category",
+          "settings": {
+            "icon_text": "N",
+            "name": "Neumaticos",
+            "link": "shopify://collections/neumaticos-y-llantas"
+          }
+        },
+        "cat_5": {
+          "type": "category",
+          "settings": {
+            "icon_text": "B",
+            "name": "Baterias",
+            "link": "shopify://collections/mantenimiento-ligero"
+          }
+        },
+        "cat_6": {
+          "type": "category",
+          "settings": {
+            "icon_text": "F",
+            "name": "Frenos",
+            "link": "shopify://collections/mantenimiento-ligero"
+          }
+        },
+        "cat_7": {
+          "type": "category",
+          "settings": {
+            "icon_text": "DG",
+            "name": "Diagnostico",
+            "link": "shopify://collections/mantenimiento-ligero"
+          }
+        },
+        "cat_8": {
+          "type": "category",
+          "settings": {
+            "icon_text": "ITV",
+            "name": "ITV",
+            "link": "shopify://collections/mantenimiento-ligero"
+          }
+        }
+      },
+      "block_order": [
+        "cat_1",
+        "cat_2",
+        "cat_3",
+        "cat_4",
+        "cat_5",
+        "cat_6",
+        "cat_7",
+        "cat_8"
+      ],
+      "settings": {
+        "title": "Categorias principales",
+        "view_all_label": "Ver todas las categorias",
+        "view_all_link": "shopify://pages/servicios",
+        "heading_size": "h1",
+        "color_scheme": "scheme-1",
+        "padding_top": 20,
+        "padding_bottom": 20
+      }
+    },
+    "lc_home_featured_services": {
+      "type": "lc-home-featured-services",
+      "blocks": {
+        "service_1": {
+          "type": "service",
+          "settings": {
+            "image": "shopify://shop_images/barcelona-laundry-candidate-03-lavado-espuma-pexels.webp",
+            "badge": "Mas reservado",
+            "title": "Lavado premium",
+            "price_text": "Desde 29EUR",
+            "rating_text": "4.9 (128)",
+            "city": "Barcelona",
+            "provider": "DetailPro BCN",
+            "link": "shopify://collections/lavado"
+          }
+        },
+        "service_2": {
+          "type": "service",
+          "settings": {
+            "image": "shopify://shop_images/detail-lab-bcn-candidate-03-ppf-correccion-pexels.webp",
+            "badge": "Popular",
+            "title": "Detailing interior",
+            "price_text": "Desde 89EUR",
+            "rating_text": "4.8 (96)",
+            "city": "Barcelona",
+            "provider": "CleanCar Studio",
+            "link": "shopify://collections/detailing"
+          }
+        },
+        "service_3": {
+          "type": "service",
+          "settings": {
+            "image": "shopify://shop_images/costa-garage-express-candidate-06-cambio-aceite-express-barcelona.webp",
+            "badge": "Nuevo",
+            "title": "Cambio de bateria a domicilio",
+            "price_text": "Desde 140EUR",
+            "rating_text": "4.9 (74)",
+            "city": "Barcelona",
+            "provider": "Battery Assist",
+            "link": "shopify://collections/mantenimiento-ligero"
+          }
+        },
+        "service_4": {
+          "type": "service",
+          "settings": {
+            "image": "shopify://shop_images/eixample-tire-center-candidate-06-neumaticos-alineacion-pexels-api.webp",
+            "badge": "",
+            "title": "Cambio de neumaticos",
+            "price_text": "Desde 49EUR",
+            "rating_text": "4.7 (63)",
+            "city": "Barcelona",
+            "provider": "Neumax",
+            "link": "shopify://collections/neumaticos-y-llantas"
+          }
+        },
+        "service_5": {
+          "type": "service",
+          "settings": {
+            "image": "shopify://shop_images/chamartin-glass-detail-candidate-01-pulido-faros.webp",
+            "badge": "",
+            "title": "Pulido de carroceria",
+            "price_text": "Desde 120EUR",
+            "rating_text": "4.8 (55)",
+            "city": "Barcelona",
+            "provider": "Shine & Go",
+            "link": "shopify://collections/detailing"
+          }
+        }
+      },
+      "block_order": [
+        "service_1",
+        "service_2",
+        "service_3",
+        "service_4",
+        "service_5"
+      ],
+      "settings": {
+        "title": "Servicios destacados",
+        "subtitle": "Los servicios mas demandados por nuestros usuarios",
+        "view_all_label": "Ver todos los servicios",
+        "view_all_link": "shopify://pages/servicios",
+        "heading_size": "h1",
+        "color_scheme": "scheme-1",
+        "padding_top": 12,
+        "padding_bottom": 20
+      }
+    },
+    "lc_home_provider_cta": {
+      "type": "lc-home-provider-cta",
+      "settings": {
+        "icon_text": "W",
+        "title": "Brindas servicios de automocion?",
+        "text": "Unete a nuestra red de talleres y consigue nuevos clientes. Haz crecer tu negocio con La Cochera Place.",
+        "button_label": "Quiero ser proveedor",
+        "button_link": "shopify://pages/quiero-ser-proveedor",
+        "heading_size": "h1",
+        "color_scheme": "scheme-1",
+        "padding_top": 12,
+        "padding_bottom": 12
+      }
+    },
+    "featured_blog_home": {
+      "type": "featured-blog",
+      "settings": {
+        "blog": "news",
+        "post_limit": 4,
+        "heading": "Ultimos articulos del blog",
+        "heading_size": "h1",
+        "columns_desktop": 4,
+        "show_view_all": true,
+        "show_image": true,
+        "show_date": true,
+        "show_author": false,
+        "color_scheme": "scheme-1",
+        "padding_top": 12,
+        "padding_bottom": 24
       }
     },
     "rich_text_marketplace_intro": {
@@ -806,13 +1012,17 @@
   },
   "order": [
     "image_banner",
-    "multicolumn_aHED4U",
-    "home_how_it_works_home",
+    "lc_home_categories",
+    "lc_home_featured_services",
     "home_featured_providers_home",
     "home_featured_products_home",
+    "home_testimonials_custom",
+    "lc_home_provider_cta",
+    "featured_blog_home",
+    "multicolumn_aHED4U",
+    "home_how_it_works_home",
     "rich_text_marketplace_intro",
     "rich_text_providers_intro",
-    "collection_list_providers_home",
-    "home_testimonials_custom"
+    "collection_list_providers_home"
   ]
 }
