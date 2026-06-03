@@ -357,6 +357,45 @@ Objetivo: transformar el documento `DESCRIPCION DE SERVICIOS.txt` de Ches en un 
 - Editor URL: `https://cs3msy-n8.myshopify.com/admin/themes/196749918545/editor`
 - Nota: al retomar, validar visualmente esta preview antes de abrir una nueva linea de trabajo
 
+## Runbook despliegue theme live (validado 2026-06-03)
+- Contexto real confirmado:
+- Store base original: `cs3msy-n8.myshopify.com`
+- Theme live confirmado: `Codex Preview Homepage Round 3` (`196749918545`)
+- Metodo que funciono desde este equipo:
+- `Shopify CLI` local (`4.1.0`) con sesion ya autenticada del owner
+- Instalacion usada:
+- `npm install -g @shopify/cli@latest`
+- Comandos validados:
+- `shopify theme info --path theme-dawn-export`
+- `shopify theme list --store cs3msy-n8.myshopify.com`
+- `shopify theme push --store cs3msy-n8.myshopify.com --theme 196749918545 --path theme-dawn-export --only <ruta> --allow-live --nodelete`
+- `shopify theme pull --store cs3msy-n8.myshopify.com --theme 196749918545 --path .tmp-theme-pull --only <ruta> --nodelete`
+- Ubicacion de sesion/config CLI detectada en Windows:
+- `%APPDATA%\\shopify-cli-store-nodejs\\Config\\config.json`
+- `%APPDATA%\\shopify-cli-theme-conf-nodejs\\Config\\config.json`
+- `%APPDATA%\\shopify-app-account-info-nodejs\\Config\\config.json`
+- Regla operativa:
+- Para cambios pequenos en live, subir solo los archivos necesarios con `--only`.
+- Despues de push, comprobar storefront real y, si hay duda, hacer `theme pull` puntual para contrastar remoto vs local.
+
+## Incidencia Shopify 2026-06-03
+- Fecha del incidente: `2026-06-03`
+- Fuente oficial: `https://www.shopifystatus.com/`
+- Incidente oficial detectado:
+- `Some merchants and customers may encounter issues with with one or more of the following: admins, checkouts, storefronts, Retail POS. Access to Support also impacted.`
+- Linea temporal oficial relevante:
+- `09:27 EDT` Investigating: problemas en admin, Retail POS, storefronts y checkouts.
+- `10:37 EDT` Identified: problema identificado y mitigaciones en curso.
+- `11:31 EDT` Monitoring: resuelto y monitorizado.
+- `12:38 EDT` y `14:00 EDT` seguian monitorizando.
+- `15:13 EDT` Update: issue resolved, monitoring continued.
+- Impacto observado en este proyecto:
+- El admin de Shopify cargaba de forma intermitente.
+- El storefront publico llego a mostrar `This store does not exist`.
+- El fallo podia parecer de DNS/dominio aunque era infraestructura Shopify.
+- Leccion operativa:
+- Si vuelve a aparecer `This store does not exist` o fallos simultaneos en admin/storefront el mismo dia, comprobar primero `shopifystatus.com` antes de asumir error de dominio, tema o configuracion local.
+
 ## Commits de referencia
 - `335f889` baseline local del proyecto
 - `8ffc73b` homepage round 1 marketplace positioning
