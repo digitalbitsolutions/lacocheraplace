@@ -8,72 +8,53 @@
         "padding_bottom": 28
       }
     },
-    "multicolumn_4hGMmU": {
-      "type": "multicolumn",
+    "page_how_it_works": {
+      "type": "home-how-it-works-steps",
       "blocks": {
         "step_1": {
-          "type": "column",
+          "type": "step",
           "settings": {
+            "icon": "search",
             "image": "shopify://shop_images/paso1-1280x720.webp",
-            "title": "1. Busca el servicio o taller ideal",
-            "text": "<p>Explora entre talleres y profesionales especializados en lavado de autos, detailing, PPF, polarizado, pintura y mas.</p><p>Filtra por ubicacion, tipo de servicio y valoraciones reales para elegir con confianza.</p><p>\ud83d\udc49 Encuentra el mejor servicio cerca de ti en segundos.</p>",
-            "link_label": "",
-            "link": ""
+            "title": "1. Buscar servicio",
+            "text": "Busca y compara servicios por categoria y ubicacion."
           }
         },
         "step_2": {
-          "type": "column",
+          "type": "step",
           "settings": {
+            "icon": "map",
             "image": "shopify://shop_images/paso2-1280x720.webp",
-            "title": "\ud83d\uded2 2. Reserva o compra online",
-            "text": "<p>Selecciona el servicio o producto, elige fecha y realiza tu pago de forma segura desde la plataforma.</p><p>Sin llamadas, sin esperas.</p><p>\ud83d\udc49 Reserva tu servicio automotriz en minutos.</p>",
-            "link_label": "",
-            "link": ""
+            "title": "2. Elegir taller",
+            "text": "Elige el taller ideal por precio, horario, ubicacion y valoraciones."
           }
         },
         "step_3": {
-          "type": "column",
+          "type": "step",
           "settings": {
+            "icon": "calendar",
             "image": "shopify://shop_images/paso3-1280x720.webp",
-            "title": "\ud83d\udce9 3. Recibe tu confirmacion inmediata",
-            "text": "<p>Te enviaremos un correo y/o mensaje con todos los detalles: servicio contratado, fecha, ubicacion y datos del proveedor.</p><p>\ud83d\udc49 Todo claro, organizado y listo para tu cita.</p>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "step_4": {
-          "type": "column",
-          "settings": {
-            "image": "shopify://shop_images/paso4-1280x720.webp",
-            "title": "\u2b50 4. Vive la experiencia y valora el servicio",
-            "text": "<p>Acude a tu cita o recibe tu producto donde lo necesites.</p><p>Al finalizar, deja tu opinion y ayuda a otros usuarios a elegir mejor.</p>",
-            "link_label": "",
-            "link": ""
+            "title": "3. Reservar y relajarse",
+            "text": "Reserva online y recibe confirmacion inmediata."
           }
         }
       },
       "block_order": [
         "step_1",
         "step_2",
-        "step_3",
-        "step_4"
+        "step_3"
       ],
-      "name": "t:sections.multicolumn.presets.name",
       "settings": {
-        "title": "Como funciona La Cochera Place",
+        "eyebrow": "Como funciona",
+        "title": "Asi de facil es reservar en La Cochera Place",
+        "subtitle": "Encuentra talleres de confianza, compara opciones, reserva online y disfruta la mejor experiencia para tu coche.",
         "heading_size": "h1",
-        "image_width": "full",
-        "image_ratio": "adapt",
-        "button_label": "",
-        "button_link": "",
-        "columns_desktop": 4,
-        "column_alignment": "left",
-        "background_style": "primary",
-        "color_scheme": "",
-        "columns_mobile": "1",
-        "swipe_on_mobile": false,
-        "padding_top": 36,
-        "padding_bottom": 36
+        "color_scheme": "scheme-1",
+        "step_4_image": "shopify://shop_images/paso4-1280x720.webp",
+        "step_4_title": "4. Vive la experiencia y valora el servicio",
+        "step_4_text": "Acude a tu cita y comparte tu opinion para ayudar a otros usuarios.",
+        "padding_top": 28,
+        "padding_bottom": 24
       }
     },
     "how_it_works_advantages_MQm4qq": {
@@ -83,11 +64,126 @@
         "padding_top": 0,
         "padding_bottom": 52
       }
+    },
+    "provider_cta": {
+      "type": "image-banner",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Tu empresa puede vender y captar clientes aqui",
+            "heading_size": "h1"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "Si ofreces servicios automotrices o vendes productos similares, registrate como proveedor y haz crecer tu negocio con nuestra comunidad."
+          }
+        },
+        "button": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "Quiero registrarme como proveedor",
+            "button_link_1": "shopify://pages/quiero-ser-proveedor",
+            "button_style_secondary_1": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "text",
+        "button"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/backgound-footer-como-funciona.webp",
+        "image_overlay_opacity": 70,
+        "image_height": "medium",
+        "image_behavior": "none",
+        "desktop_content_position": "middle-left",
+        "desktop_content_alignment": "left",
+        "show_text_box": false,
+        "color_scheme": "scheme-3",
+        "stack_images_on_mobile": false,
+        "mobile_content_alignment": "left",
+        "show_text_below": false,
+        "padding_top": 20,
+        "padding_bottom": 8
+      }
+    },
+    "provider_benefits": {
+      "type": "multicolumn",
+      "blocks": {
+        "benefit_1": {
+          "type": "column",
+          "settings": {
+            "title": "Mas visibilidad para tu negocio",
+            "text": "<p>Destaca frente a clientes que ya estan buscando servicios automotrices en tu zona.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "benefit_2": {
+          "type": "column",
+          "settings": {
+            "title": "Aumenta tus ventas",
+            "text": "<p>Convierte visitas en reservas con una experiencia de busqueda y compra simple.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "benefit_3": {
+          "type": "column",
+          "settings": {
+            "title": "Conecta con nuevos clientes",
+            "text": "<p>Amplia tu alcance y recibe oportunidades de clientes que valoran calidad.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "benefit_4": {
+          "type": "column",
+          "settings": {
+            "title": "Plataforma segura y confiable",
+            "text": "<p>Gestiona solicitudes con una base tecnica escalable y de mantenimiento simple.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "benefit_1",
+        "benefit_2",
+        "benefit_3",
+        "benefit_4"
+      ],
+      "settings": {
+        "title": "",
+        "heading_size": "h2",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "button_label": "",
+        "button_link": "",
+        "columns_desktop": 4,
+        "column_alignment": "left",
+        "background_style": "none",
+        "color_scheme": "scheme-1",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "enable_stitch_cards": false,
+        "padding_top": 0,
+        "padding_bottom": 28
+      }
     }
   },
   "order": [
     "main",
-    "multicolumn_4hGMmU",
-    "how_it_works_advantages_MQm4qq"
+    "page_how_it_works",
+    "how_it_works_advantages_MQm4qq",
+    "provider_cta",
+    "provider_benefits"
   ]
 }
