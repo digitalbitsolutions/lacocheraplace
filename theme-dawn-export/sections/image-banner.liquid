@@ -27,6 +27,93 @@
   #Banner-{{ section.id }}::after {
     opacity: {{ section.settings.image_overlay_opacity | divided_by: 100.0 }};
   }
+
+  {%- if request.page_type == 'page' and page and page.handle == 'como-funciona' and section.id contains 'provider_cta' -%}
+    #Banner-{{ section.id }} {
+      min-height: 66rem;
+    }
+
+    #Banner-{{ section.id }} .banner__content {
+      align-items: flex-end;
+      justify-content: flex-start;
+      padding: 4rem 3.2rem 19.5rem;
+    }
+
+    #Banner-{{ section.id }} .banner__box {
+      max-width: 55rem;
+      background: transparent;
+      border: 0;
+      box-shadow: none;
+      padding: 0;
+      margin: 0;
+      text-align: left;
+    }
+
+    #Banner-{{ section.id }} .banner__heading {
+      color: rgb(255, 255, 255);
+      font-size: clamp(3.8rem, 3.2rem + 1.3vw, 5.6rem);
+      line-height: 1.02;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.6rem;
+    }
+
+    #Banner-{{ section.id }} .banner__text {
+      color: rgba(255, 255, 255, 0.93);
+      max-width: 52rem;
+      margin-bottom: 2.2rem;
+    }
+
+    #Banner-{{ section.id }} .banner__text p {
+      margin: 0;
+      font-size: clamp(1.9rem, 1.7rem + 0.2vw, 2.4rem);
+      line-height: 1.45;
+    }
+
+    #Banner-{{ section.id }} .banner__buttons .button {
+      min-width: 31rem;
+      min-height: 5.4rem;
+      border-radius: 0;
+      background: #0d1117;
+      color: #ffffff;
+      border: 0;
+      font-size: 2rem;
+      font-weight: 600;
+      letter-spacing: 0;
+      padding: 1.4rem 2.4rem;
+    }
+
+    #Banner-{{ section.id }} .banner__buttons {
+      margin-bottom: 1.8rem;
+    }
+
+    #Banner-{{ section.id }} .banner__buttons .button:hover,
+    #Banner-{{ section.id }} .banner__buttons .button:focus-visible {
+      background: #000000;
+    }
+
+    @media screen and (max-width: 989px) {
+      #Banner-{{ section.id }} {
+        min-height: 54rem;
+      }
+
+      #Banner-{{ section.id }} .banner__content {
+        padding: 2.4rem 2rem 11rem;
+      }
+
+      #Banner-{{ section.id }} .banner__heading {
+        font-size: clamp(3rem, 2.4rem + 2vw, 4rem);
+      }
+
+      #Banner-{{ section.id }} .banner__text p {
+        font-size: 1.9rem;
+      }
+
+      #Banner-{{ section.id }} .banner__buttons .button {
+        width: 100%;
+        min-width: 0;
+      }
+    }
+  {%- endif -%}
 {%- endstyle -%}
 
 {%- liquid
@@ -276,8 +363,62 @@
             <p class="home-hero-service-search__error" id="HeroServiceError-{{ section.id }}" role="alert" hidden>
               Selecciona un servicio antes de continuar.
             </p>
+            <div class="home-hero-service-search__distance-wrap">
+              <div class="home-hero-service-search__distance-head">
+                <div class="home-hero-service-search__distance-title">
+                  <span class="home-hero-service-search__distance-pin" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" role="presentation" focusable="false">
+                      <path fill="currentColor" d="M12 2.75c-4.42 0-8 3.5-8 7.83 0 5.48 6.8 10.32 7.09 10.52a1.6 1.6 0 0 0 1.82 0c.29-.2 7.09-5.04 7.09-10.52 0-4.33-3.58-7.83-8-7.83Zm0 10.83a3 3 0 1 1 0-6 3 3 0 0 1 0 6Z"/>
+                    </svg>
+                  </span>
+                  <label class="home-hero-service-search__distance-label" for="HeroDistanceRange-{{ section.id }}">
+                    Distancia maxima
+                  </label>
+                </div>
+                <button type="button" class="home-hero-service-search__geo-btn" id="HeroGeoBtn-{{ section.id }}">
+                  <span class="home-hero-service-search__geo-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" role="presentation" focusable="false">
+                      <path fill="currentColor" d="M11 2.6a1 1 0 1 1 2 0v2.02a7.4 7.4 0 0 1 6.38 6.38h2.02a1 1 0 1 1 0 2h-2.02a7.4 7.4 0 0 1-6.38 6.38v2.02a1 1 0 1 1-2 0v-2.02a7.4 7.4 0 0 1-6.38-6.38H2.6a1 1 0 1 1 0-2h2.02A7.4 7.4 0 0 1 11 4.62V2.6Zm1 4.02a5.4 5.4 0 1 0 0 10.8 5.4 5.4 0 0 0 0-10.8Zm0 2.63a2.77 2.77 0 1 1 0 5.54 2.77 2.77 0 0 1 0-5.54Z"/>
+                    </svg>
+                  </span>
+                  Usar mi ubicacion
+                </button>
+              </div>
+              <div class="home-hero-service-search__distance-slider">
+                <output class="home-hero-service-search__distance-badge" id="HeroDistanceBadge-{{ section.id }}">10 km</output>
+                <input
+                  class="home-hero-service-search__distance-range"
+                  id="HeroDistanceRange-{{ section.id }}"
+                  type="range"
+                  min="5"
+                  max="100"
+                  step="1"
+                  value="10"
+                  list="HeroDistanceSteps-{{ section.id }}"
+                >
+                <datalist id="HeroDistanceSteps-{{ section.id }}">
+                  <option value="5" label="5 km"></option>
+                  <option value="10" label="10 km"></option>
+                  <option value="25" label="25 km"></option>
+                  <option value="50" label="50 km"></option>
+                  <option value="100" label="100 km"></option>
+                </datalist>
+                <div class="home-hero-service-search__distance-scale">
+                  <span class="is-edge-start" style="--distance-stop: 0%;">5 km</span>
+                  <span style="--distance-stop: 5.2632%;">10 km</span>
+                  <span style="--distance-stop: 21.0526%;">25 km</span>
+                  <span style="--distance-stop: 47.3684%;">50 km</span>
+                  <span class="is-edge-end" style="--distance-stop: 100%;">100 km</span>
+                </div>
+              </div>
+            </div>
+            <input type="hidden" id="HeroDistance-{{ section.id }}" name="distance_km" value="10">
+            <input type="hidden" id="HeroUserLat-{{ section.id }}" name="lat" value="">
+            <input type="hidden" id="HeroUserLng-{{ section.id }}" name="lng" value="">
+            <p class="home-hero-service-search__geo-status" id="HeroGeoStatus-{{ section.id }}" hidden></p>
             <button type="submit" class="home-hero-service-search__button">
-              Encuentra proveedores cerca de ti
+              <span>Encuentra proveedores cerca de ti</span>
+              <span class="home-hero-service-search__button-arrow" aria-hidden="true">&#8594;</span>
             </button>
           </form>
         </div>
@@ -296,6 +437,13 @@
       const valueInput = document.getElementById('HeroServiceValue-{{ section.id }}');
       const handleInput = document.getElementById('HeroServiceHandle-{{ section.id }}');
       const errorMessage = document.getElementById('HeroServiceError-{{ section.id }}');
+      const distanceInput = document.getElementById('HeroDistance-{{ section.id }}');
+      const distanceRange = document.getElementById('HeroDistanceRange-{{ section.id }}');
+      const distanceBadge = document.getElementById('HeroDistanceBadge-{{ section.id }}');
+      const geoButton = document.getElementById('HeroGeoBtn-{{ section.id }}');
+      const geoStatus = document.getElementById('HeroGeoStatus-{{ section.id }}');
+      const userLatInput = document.getElementById('HeroUserLat-{{ section.id }}');
+      const userLngInput = document.getElementById('HeroUserLng-{{ section.id }}');
       const options = menu ? Array.from(menu.querySelectorAll('[data-service-value]')) : [];
 
       if (!form || !trigger || !label || !menu || !valueInput || !handleInput || !options.length) return;
@@ -431,7 +579,68 @@
         }
       });
 
-      form.addEventListener('submit', (event) => {
+      const showGeoStatus = (message, isError) => {
+        if (!geoStatus) return;
+        geoStatus.textContent = message;
+        geoStatus.hidden = false;
+        geoStatus.classList.toggle('is-error', Boolean(isError));
+      };
+
+      const requestUserLocation = () => new Promise((resolve, reject) => {
+        if (!navigator.geolocation) {
+          showGeoStatus('Tu navegador no soporta geolocalizacion.', true);
+          reject(new Error('geolocation_not_supported'));
+          return;
+        }
+
+        if (geoButton) {
+          geoButton.disabled = true;
+        }
+
+        showGeoStatus('Obteniendo ubicacion...', false);
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            userLatInput.value = String(position.coords.latitude || '');
+            userLngInput.value = String(position.coords.longitude || '');
+            showGeoStatus('Ubicacion detectada. Aplicaremos el filtro por distancia.', false);
+            if (geoButton) {
+              geoButton.disabled = false;
+            }
+            resolve(position);
+          },
+          () => {
+            showGeoStatus('Necesitamos tu ubicacion para mostrar proveedores cerca de ti.', true);
+            if (geoButton) {
+              geoButton.disabled = false;
+            }
+            reject(new Error('geolocation_denied'));
+          },
+          { enableHighAccuracy: false, timeout: 8000, maximumAge: 300000 }
+        );
+      });
+
+      if (geoButton && userLatInput && userLngInput) {
+        geoButton.addEventListener('click', () => {
+          requestUserLocation().catch(() => {});
+        });
+      }
+
+      if (distanceRange && distanceInput && distanceBadge) {
+        const setDistance = () => {
+          const km = Number(distanceRange.value || 10);
+          distanceInput.value = String(km);
+          distanceBadge.textContent = `${km} km`;
+          const min = Number(distanceRange.min || 5);
+          const max = Number(distanceRange.max || 100);
+          const percent = ((km - min) * 100) / (max - min);
+          distanceRange.style.setProperty('--distance-percent', `${percent}%`);
+          distanceBadge.style.left = `clamp(4rem, ${percent}%, calc(100% - 4rem))`;
+        };
+        distanceRange.addEventListener('input', setDistance);
+        setDistance();
+      }
+
+      form.addEventListener('submit', async (event) => {
         event.preventDefault();
         const targetUrl = valueInput.value;
         const selectedHandle = handleInput.value;
@@ -441,7 +650,28 @@
           openMenu();
           return;
         }
-        window.location.assign(targetUrl);
+        const nextUrl = new URL(targetUrl, window.location.origin);
+        if (distanceInput && distanceInput.value) {
+          nextUrl.searchParams.set('distance_km', distanceInput.value);
+        }
+
+        if (userLatInput && userLngInput && (!userLatInput.value || !userLngInput.value)) {
+          try {
+            await requestUserLocation();
+          } catch (_error) {
+            return;
+          }
+        }
+
+        if (userLatInput && userLatInput.value && userLngInput && userLngInput.value) {
+          nextUrl.searchParams.set('lat', userLatInput.value);
+          nextUrl.searchParams.set('lng', userLngInput.value);
+        } else {
+          showGeoStatus('Necesitamos tu ubicacion para mostrar proveedores cerca de ti.', true);
+          return;
+        }
+
+        window.location.assign(nextUrl.toString());
       });
 
       setActive(0, false);
@@ -489,6 +719,11 @@
       transition: box-shadow 0.2s ease, transform 0.2s ease;
       position: relative;
       isolation: isolate;
+      z-index: 2;
+    }
+
+    #Banner-{{ section.id }} .home-hero-service-search__form.is-open .home-hero-service-search__field {
+      z-index: 30;
     }
 
     #Banner-{{ section.id }} .home-hero-service-search__form.is-invalid .home-hero-service-search__field {
@@ -574,7 +809,7 @@
       box-shadow: 0 1.8rem 3.6rem rgba(15, 23, 42, 0.24);
       padding: 0.6rem;
       text-align: left;
-      z-index: 4;
+      z-index: 40;
       backdrop-filter: blur(10px);
     }
 
@@ -651,11 +886,11 @@
       align-items: center;
       justify-content: center;
       width: 100%;
-      margin-top: 1.2rem;
+      margin-top: 1.8rem;
       min-height: 6.2rem;
       border-radius: 999px;
       border: 0.2rem solid rgba(255, 255, 255, 0.75);
-      padding: 1.6rem 2.2rem;
+      padding: 1.3rem 1.6rem;
       font-size: 2.1rem;
       font-weight: 700;
       line-height: 1.3;
@@ -668,6 +903,197 @@
 
     #Banner-{{ section.id }} .home-hero-service-search__button:hover {
       filter: brightness(1.06);
+    }
+
+    #Banner-{{ section.id }} .home-hero-service-search__button span:first-child {
+      flex: 1 1 auto;
+      text-align: center;
+    }
+
+    #Banner-{{ section.id }} .home-hero-service-search__button-arrow {
+      width: 5.4rem;
+      height: 5.4rem;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(12, 49, 133, 0.95);
+      font-size: 3rem;
+      line-height: 1;
+      box-shadow: inset 0 0 0 0.1rem rgba(255, 255, 255, 0.2);
+    }
+
+    #Banner-{{ section.id }} .home-hero-service-search__distance-wrap {
+      margin-top: 1.4rem;
+      padding: 1rem 0.2rem 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    #Banner-{{ section.id }} .home-hero-service-search__distance-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 0.9rem;
+    }
+
+    #Banner-{{ section.id }} .home-hero-service-search__distance-title {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+      color: #ffffff;
+    }
+
+    #Banner-{{ section.id }} .home-hero-service-search__distance-pin {
+      width: 2.8rem;
+      height: 2.8rem;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.14);
+      color: #ffffff;
+      padding: 0.55rem;
+    }
+
+    #Banner-{{ section.id }} .home-hero-service-search__distance-pin svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    #Banner-{{ section.id }} .home-hero-service-search__distance-label {
+      font-size: 1.45rem;
+      font-weight: 600;
+    }
+
+    #Banner-{{ section.id }} .home-hero-service-search__geo-btn {
+      min-height: 4rem;
+      border-radius: 999px;
+      border: 0.1rem solid rgba(255, 255, 255, 0.5);
+      background: transparent;
+      color: #ffffff;
+      padding: 0.55rem 1.4rem;
+      font-size: 1.35rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
+    }
+
+    #Banner-{{ section.id }} .home-hero-service-search__geo-icon {
+      display: inline-flex;
+      width: 1.9rem;
+      height: 1.9rem;
+      color: #2f72ff;
+    }
+
+    #Banner-{{ section.id }} .home-hero-service-search__geo-icon svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    #Banner-{{ section.id }} .home-hero-service-search__geo-btn:disabled {
+      opacity: 0.7;
+      cursor: wait;
+    }
+
+    #Banner-{{ section.id }} .home-hero-service-search__distance-slider {
+      position: relative;
+      padding-top: 2.8rem;
+    }
+
+    #Banner-{{ section.id }} .home-hero-service-search__distance-badge {
+      position: absolute;
+      top: 0;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, #2463dc 0%, #1d4ed8 100%);
+      color: #ffffff;
+      min-width: 8rem;
+      text-align: center;
+      border-radius: 1.2rem;
+      padding: 0.5rem 0.9rem;
+      font-size: 1.2rem;
+      font-weight: 700;
+      box-shadow: 0 0.8rem 1.8rem rgba(9, 25, 67, 0.35);
+    }
+
+    #Banner-{{ section.id }} .home-hero-service-search__distance-range {
+      --distance-percent: 5%;
+      width: 100%;
+      -webkit-appearance: none;
+      appearance: none;
+      height: 0.8rem;
+      border-radius: 999px;
+      background: linear-gradient(
+        to right,
+        #2b6fff 0%,
+        #2b6fff var(--distance-percent),
+        rgba(255, 255, 255, 0.65) var(--distance-percent),
+        rgba(255, 255, 255, 0.65) 100%
+      );
+      outline: none;
+    }
+
+    #Banner-{{ section.id }} .home-hero-service-search__distance-range::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 3.2rem;
+      height: 3.2rem;
+      border-radius: 999px;
+      background: #ffffff;
+      border: 0.25rem solid #2b6fff;
+      box-shadow: 0 0.6rem 1.5rem rgba(9, 25, 67, 0.35);
+      cursor: pointer;
+    }
+
+    #Banner-{{ section.id }} .home-hero-service-search__distance-range::-moz-range-thumb {
+      width: 3.2rem;
+      height: 3.2rem;
+      border-radius: 999px;
+      background: #ffffff;
+      border: 0.25rem solid #2b6fff;
+      box-shadow: 0 0.6rem 1.5rem rgba(9, 25, 67, 0.35);
+      cursor: pointer;
+    }
+
+    #Banner-{{ section.id }} .home-hero-service-search__distance-scale {
+      position: relative;
+      height: 1.6rem;
+      margin-top: 0.9rem;
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 1.15rem;
+      line-height: 1.2;
+    }
+
+    #Banner-{{ section.id }} .home-hero-service-search__distance-scale span {
+      position: absolute;
+      left: var(--distance-stop);
+      transform: translateX(-50%);
+      white-space: nowrap;
+    }
+
+    #Banner-{{ section.id }} .home-hero-service-search__distance-scale .is-edge-start {
+      left: 0;
+      transform: none;
+    }
+
+    #Banner-{{ section.id }} .home-hero-service-search__distance-scale .is-edge-end {
+      left: 100%;
+      transform: translateX(-100%);
+    }
+
+    #Banner-{{ section.id }} .home-hero-service-search__geo-status {
+      margin: 0.6rem 0 0;
+      text-align: left;
+      font-size: 1.25rem;
+      color: #e8f0ff;
+    }
+
+    #Banner-{{ section.id }} .home-hero-service-search__geo-status.is-error {
+      color: #fecaca;
     }
 
     @media screen and (max-width: 749px) {
