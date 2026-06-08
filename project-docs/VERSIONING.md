@@ -56,6 +56,8 @@ Tener una forma simple de avanzar, revisar y volver atras si algo sale mal o no 
 - `c639114` lote 2: endpoint app proxy `service-precheck`
 - `dee1061` lote 2: adaptador configurable de lookup por matricula
 - `887097e` docs(context): registrar exito de asignacion de imagenes carwash
+- `ca85c5d` hero home: distancia + geolocalizacion en CTA principal
+- `0181b5c` hero home: pulido de flujo geolocalizado y retirada de CTA secundario
 - `pendiente de commit` lote C5.1.b: descarga 120 + subida incremental sin duplicados + normalizacion de galerias a 6 imagenes por producto
 - `pendiente de commit` UI contacto: CTA inferior alineado 1:1 con referencia de como-funciona, limpieza de bloque mapa/redes y ajuste de iconos
 
@@ -65,6 +67,7 @@ Tener una forma simple de avanzar, revisar y volver atras si algo sale mal o no 
 - ID: `196749918545`
 - Store: `cs3msy-n8.myshopify.com`
 - El piloto carwash debe validarse primero en local/draft y despues en theme borrador antes de publicar
+- Validacion online 2026-06-08: buscador del hero verificado en storefront original tras ajuste de geolocalizacion y mensajes de error.
 
 ## Nota de despliegue app
 - Se publico una release de la app en Shopify Partners, pero con URL temporal de tunel caducada

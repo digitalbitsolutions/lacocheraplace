@@ -377,6 +377,12 @@ Objetivo: transformar el documento `DESCRIPCION DE SERVICIOS.txt` de Ches en un 
 - Regla operativa:
 - Para cambios pequenos en live, subir solo los archivos necesarios con `--only`.
 - Despues de push, comprobar storefront real y, si hay duda, hacer `theme pull` puntual para contrastar remoto vs local.
+- Validacion hero geolocalizado (2026-06-08):
+- Archivo afectado: `theme-dawn-export/sections/image-banner.liquid`
+- Se retiro el CTA secundario `Usar mi ubicacion`; el flujo queda centralizado en el boton principal del hero.
+- El submit del hero ahora evita dobles envios, reutiliza una sola peticion de geolocalizacion y redirige directamente con `lat`, `lng` y `distance_km` cuando hay coordenadas validas.
+- Se diferencian errores de permiso denegado, timeout y ubicacion no disponible para evitar el falso mensaje tras aceptar permiso.
+- Validado online por usuario/Ches en el dominio original tras push incremental al theme live `196749918545`.
 
 ## Incidencia Shopify 2026-06-03
 - Fecha del incidente: `2026-06-03`

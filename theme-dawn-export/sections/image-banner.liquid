@@ -441,6 +441,7 @@
       if (!form || !trigger || !label || !menu || !valueInput || !handleInput || !options.length) return;
       let activeIndex = 0;
       let locationRequestPromise = null;
+      let isSubmitting = false;
 
       const closeMenu = () => {
         menu.hidden = true;
@@ -586,6 +587,25 @@
         geoStatus.classList.remove('is-error');
       };
 
+      const setSubmittingState = (submitting) => {
+        isSubmitting = submitting;
+        if (submitButton) {
+          submitButton.disabled = submitting;
+        }
+      };
+
+      const buildSearchUrl = (targetUrl, latitude, longitude) => {
+        const nextUrl = new URL(targetUrl, window.location.origin);
+        if (distanceInput && distanceInput.value) {
+          nextUrl.searchParams.set('distance_km', distanceInput.value);
+        }
+        if (latitude && longitude) {
+          nextUrl.searchParams.set('lat', latitude);
+          nextUrl.searchParams.set('lng', longitude);
+        }
+        return nextUrl.toString();
+      };
+
       const requestUserLocation = () => {
         if (userLatInput && userLngInput && userLatInput.value && userLngInput.value) {
           return Promise.resolve({
@@ -620,11 +640,24 @@
                 userLngInput.value = longitude;
               }
 
+              hideGeoStatus();
               resolve(position);
             },
-            () => {
-              showGeoStatus('Necesitamos tu ubicacion para mostrar proveedores cerca de ti.', true);
-              reject(new Error('geolocation_denied'));
+            (error) => {
+              if (error && error.code === error.PERMISSION_DENIED) {
+                showGeoStatus('Necesitamos tu ubicacion para mostrar proveedores cerca de ti.', true);
+                reject(new Error('geolocation_denied'));
+                return;
+              }
+
+              if (error && error.code === error.TIMEOUT) {
+                showGeoStatus('No hemos podido obtener tu ubicacion a tiempo. Intenta de nuevo.', true);
+                reject(new Error('geolocation_timeout'));
+                return;
+              }
+
+              showGeoStatus('Has permitido la ubicacion, pero no hemos podido detectarla. Reintenta o activa la ubicacion del dispositivo.', true);
+              reject(new Error('geolocation_unavailable'));
             },
             { enableHighAccuracy: false, timeout: 8000, maximumAge: 300000 }
           );
@@ -654,7 +687,10 @@
         event.preventDefault();
         const targetUrl = valueInput.value;
         const selectedHandle = handleInput.value;
-        let coords = null;
+
+        if (isSubmitting) {
+          return;
+        }
 
         if (!targetUrl || !selectedHandle) {
           setInvalid();
@@ -662,46 +698,32 @@
           return;
         }
 
-        if (submitButton) {
-          submitButton.disabled = true;
-        }
-
-        const nextUrl = new URL(targetUrl, window.location.origin);
-        if (distanceInput && distanceInput.value) {
-          nextUrl.searchParams.set('distance_km', distanceInput.value);
-        }
+        setSubmittingState(true);
+        hideGeoStatus();
 
         try {
-          coords = await requestUserLocation();
-        } catch (_error) {
-          if (submitButton) {
-            submitButton.disabled = false;
+          const coords = await requestUserLocation();
+          const latitude = String(coords?.coords?.latitude ?? userLatInput?.value ?? '');
+          const longitude = String(coords?.coords?.longitude ?? userLngInput?.value ?? '');
+
+          if (!latitude || !longitude) {
+            showGeoStatus('Has permitido la ubicacion, pero no hemos podido detectarla. Reintenta o activa la ubicacion del dispositivo.', true);
+            setSubmittingState(false);
+            return;
           }
-          return;
-        }
 
-        const latitude = String(coords?.coords?.latitude ?? userLatInput?.value ?? '');
-        const longitude = String(coords?.coords?.longitude ?? userLngInput?.value ?? '');
-
-        if (latitude && longitude) {
           if (userLatInput) {
             userLatInput.value = latitude;
           }
           if (userLngInput) {
             userLngInput.value = longitude;
           }
-          hideGeoStatus();
-          nextUrl.searchParams.set('lat', latitude);
-          nextUrl.searchParams.set('lng', longitude);
-        } else {
-          showGeoStatus('Necesitamos tu ubicacion para mostrar proveedores cerca de ti.', true);
-          if (submitButton) {
-            submitButton.disabled = false;
-          }
+
+          window.location.assign(buildSearchUrl(targetUrl, latitude, longitude));
+        } catch (_error) {
+          setSubmittingState(false);
           return;
         }
-
-        window.location.assign(nextUrl.toString());
       });
 
       setActive(0, false);
