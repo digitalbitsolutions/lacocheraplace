@@ -375,14 +375,6 @@
                     Distancia maxima
                   </label>
                 </div>
-                <button type="button" class="home-hero-service-search__geo-btn" id="HeroGeoBtn-{{ section.id }}">
-                  <span class="home-hero-service-search__geo-icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" role="presentation" focusable="false">
-                      <path fill="currentColor" d="M11 2.6a1 1 0 1 1 2 0v2.02a7.4 7.4 0 0 1 6.38 6.38h2.02a1 1 0 1 1 0 2h-2.02a7.4 7.4 0 0 1-6.38 6.38v2.02a1 1 0 1 1-2 0v-2.02a7.4 7.4 0 0 1-6.38-6.38H2.6a1 1 0 1 1 0-2h2.02A7.4 7.4 0 0 1 11 4.62V2.6Zm1 4.02a5.4 5.4 0 1 0 0 10.8 5.4 5.4 0 0 0 0-10.8Zm0 2.63a2.77 2.77 0 1 1 0 5.54 2.77 2.77 0 0 1 0-5.54Z"/>
-                    </svg>
-                  </span>
-                  Usar mi ubicacion
-                </button>
               </div>
               <div class="home-hero-service-search__distance-slider">
                 <output class="home-hero-service-search__distance-badge" id="HeroDistanceBadge-{{ section.id }}">10 km</output>
@@ -440,14 +432,15 @@
       const distanceInput = document.getElementById('HeroDistance-{{ section.id }}');
       const distanceRange = document.getElementById('HeroDistanceRange-{{ section.id }}');
       const distanceBadge = document.getElementById('HeroDistanceBadge-{{ section.id }}');
-      const geoButton = document.getElementById('HeroGeoBtn-{{ section.id }}');
       const geoStatus = document.getElementById('HeroGeoStatus-{{ section.id }}');
       const userLatInput = document.getElementById('HeroUserLat-{{ section.id }}');
       const userLngInput = document.getElementById('HeroUserLng-{{ section.id }}');
+      const submitButton = form ? form.querySelector('button[type="submit"]') : null;
       const options = menu ? Array.from(menu.querySelectorAll('[data-service-value]')) : [];
 
       if (!form || !trigger || !label || !menu || !valueInput || !handleInput || !options.length) return;
       let activeIndex = 0;
+      let locationRequestPromise = null;
 
       const closeMenu = () => {
         menu.hidden = true;
@@ -586,44 +579,61 @@
         geoStatus.classList.toggle('is-error', Boolean(isError));
       };
 
-      const requestUserLocation = () => new Promise((resolve, reject) => {
-        if (!navigator.geolocation) {
-          showGeoStatus('Tu navegador no soporta geolocalizacion.', true);
-          reject(new Error('geolocation_not_supported'));
-          return;
+      const hideGeoStatus = () => {
+        if (!geoStatus) return;
+        geoStatus.hidden = true;
+        geoStatus.textContent = '';
+        geoStatus.classList.remove('is-error');
+      };
+
+      const requestUserLocation = () => {
+        if (userLatInput && userLngInput && userLatInput.value && userLngInput.value) {
+          return Promise.resolve({
+            coords: {
+              latitude: Number(userLatInput.value),
+              longitude: Number(userLngInput.value),
+            },
+          });
         }
 
-        if (geoButton) {
-          geoButton.disabled = true;
+        if (locationRequestPromise) {
+          return locationRequestPromise;
         }
 
-        showGeoStatus('Obteniendo ubicacion...', false);
-        navigator.geolocation.getCurrentPosition(
-          (position) => {
-            userLatInput.value = String(position.coords.latitude || '');
-            userLngInput.value = String(position.coords.longitude || '');
-            showGeoStatus('Ubicacion detectada. Aplicaremos el filtro por distancia.', false);
-            if (geoButton) {
-              geoButton.disabled = false;
-            }
-            resolve(position);
-          },
-          () => {
-            showGeoStatus('Necesitamos tu ubicacion para mostrar proveedores cerca de ti.', true);
-            if (geoButton) {
-              geoButton.disabled = false;
-            }
-            reject(new Error('geolocation_denied'));
-          },
-          { enableHighAccuracy: false, timeout: 8000, maximumAge: 300000 }
-        );
-      });
+        locationRequestPromise = new Promise((resolve, reject) => {
+          if (!navigator.geolocation) {
+            showGeoStatus('Tu navegador no soporta geolocalizacion.', true);
+            reject(new Error('geolocation_not_supported'));
+            return;
+          }
 
-      if (geoButton && userLatInput && userLngInput) {
-        geoButton.addEventListener('click', () => {
-          requestUserLocation().catch(() => {});
+          showGeoStatus('Obteniendo ubicacion...', false);
+          navigator.geolocation.getCurrentPosition(
+            (position) => {
+              const latitude = String(position.coords.latitude ?? '');
+              const longitude = String(position.coords.longitude ?? '');
+
+              if (userLatInput) {
+                userLatInput.value = latitude;
+              }
+              if (userLngInput) {
+                userLngInput.value = longitude;
+              }
+
+              resolve(position);
+            },
+            () => {
+              showGeoStatus('Necesitamos tu ubicacion para mostrar proveedores cerca de ti.', true);
+              reject(new Error('geolocation_denied'));
+            },
+            { enableHighAccuracy: false, timeout: 8000, maximumAge: 300000 }
+          );
+        }).finally(() => {
+          locationRequestPromise = null;
         });
-      }
+
+        return locationRequestPromise;
+      };
 
       if (distanceRange && distanceInput && distanceBadge) {
         const setDistance = () => {
@@ -644,30 +654,50 @@
         event.preventDefault();
         const targetUrl = valueInput.value;
         const selectedHandle = handleInput.value;
+        let coords = null;
 
         if (!targetUrl || !selectedHandle) {
           setInvalid();
           openMenu();
           return;
         }
+
+        if (submitButton) {
+          submitButton.disabled = true;
+        }
+
         const nextUrl = new URL(targetUrl, window.location.origin);
         if (distanceInput && distanceInput.value) {
           nextUrl.searchParams.set('distance_km', distanceInput.value);
         }
 
-        if (userLatInput && userLngInput && (!userLatInput.value || !userLngInput.value)) {
-          try {
-            await requestUserLocation();
-          } catch (_error) {
-            return;
+        try {
+          coords = await requestUserLocation();
+        } catch (_error) {
+          if (submitButton) {
+            submitButton.disabled = false;
           }
+          return;
         }
 
-        if (userLatInput && userLatInput.value && userLngInput && userLngInput.value) {
-          nextUrl.searchParams.set('lat', userLatInput.value);
-          nextUrl.searchParams.set('lng', userLngInput.value);
+        const latitude = String(coords?.coords?.latitude ?? userLatInput?.value ?? '');
+        const longitude = String(coords?.coords?.longitude ?? userLngInput?.value ?? '');
+
+        if (latitude && longitude) {
+          if (userLatInput) {
+            userLatInput.value = latitude;
+          }
+          if (userLngInput) {
+            userLngInput.value = longitude;
+          }
+          hideGeoStatus();
+          nextUrl.searchParams.set('lat', latitude);
+          nextUrl.searchParams.set('lng', longitude);
         } else {
           showGeoStatus('Necesitamos tu ubicacion para mostrar proveedores cerca de ti.', true);
+          if (submitButton) {
+            submitButton.disabled = false;
+          }
           return;
         }
 
@@ -933,9 +963,7 @@
     #Banner-{{ section.id }} .home-hero-service-search__distance-head {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-      flex-wrap: wrap;
+      justify-content: flex-start;
       margin-bottom: 0.9rem;
     }
 
@@ -966,38 +994,6 @@
     #Banner-{{ section.id }} .home-hero-service-search__distance-label {
       font-size: 1.45rem;
       font-weight: 600;
-    }
-
-    #Banner-{{ section.id }} .home-hero-service-search__geo-btn {
-      min-height: 4rem;
-      border-radius: 999px;
-      border: 0.1rem solid rgba(255, 255, 255, 0.5);
-      background: transparent;
-      color: #ffffff;
-      padding: 0.55rem 1.4rem;
-      font-size: 1.35rem;
-      font-weight: 600;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.7rem;
-    }
-
-    #Banner-{{ section.id }} .home-hero-service-search__geo-icon {
-      display: inline-flex;
-      width: 1.9rem;
-      height: 1.9rem;
-      color: #2f72ff;
-    }
-
-    #Banner-{{ section.id }} .home-hero-service-search__geo-icon svg {
-      width: 100%;
-      height: 100%;
-    }
-
-    #Banner-{{ section.id }} .home-hero-service-search__geo-btn:disabled {
-      opacity: 0.7;
-      cursor: wait;
     }
 
     #Banner-{{ section.id }} .home-hero-service-search__distance-slider {
