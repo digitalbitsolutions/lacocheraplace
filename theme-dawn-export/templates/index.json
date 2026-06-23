@@ -34,7 +34,7 @@
           "type": "service_category_option",
           "settings": {
             "service_collection": "lavado",
-            "option_label": "Lavado de coches"
+            "option_label": "Lavado de vehículos"
           }
         },
         "service_category_option_2": {
@@ -152,8 +152,8 @@
           "type": "column",
           "settings": {
             "image": "shopify://shop_images/Gemini_Generated_Image_r65atgr65atgr65a.png",
-            "title": "Lavado de coches",
-            "text": "<p>Limpieza interior y exterior para mantener tu coche siempre impecable. Desde lavados rápidos hasta servicios completos con acabado profesional.</p>",
+            "title": "Lavado de vehículos",
+            "text": "<p>Limpieza interior y exterior para mantener tu vehículo siempre impecable. Desde lavados rápidos hasta servicios completos con acabado profesional.</p>",
             "link_label": "Reservar ahora",
             "link": "shopify://collections/lavado"
           }
@@ -162,7 +162,7 @@
           "type": "column",
           "settings": {
             "image": "shopify://shop_images/Gemini_Generated_Image_xexmmbxexmmbxexm.png",
-            "title": "Pulido y detailing de coches",
+            "title": "Pulido y detailing de vehículos",
             "text": "<p>Restauración estética y cuidado profundo del vehículo. Incluye pulido, corrección de pintura y tratamientos cerámicos para proteger y realzar el brillo.</p>",
             "link_label": "Reservar ahora",
             "link": "shopify://collections/detailing"
@@ -184,8 +184,8 @@
           "settings": {
             "image": "shopify://shop_images/PPF.webp",
             "custom_asset_image": "home-ppf.webp",
-            "title": "PPF y vinilo para coches (Wrap)",
-            "text": "<p>Protección y personalización de la carrocería con láminas PPF o vinilo. Evita daños en la pintura o cambia el estilo de tu coche.</p>",
+            "title": "PPF y vinilo para vehículos (Wrap)",
+            "text": "<p>Protección y personalización de la carrocería con láminas PPF o vinilo. Evita daños en la pintura o cambia el estilo de tu vehículo.</p>",
             "link_label": "Reservar ahora",
             "link": "shopify://collections/ppf-wrap-tintado-lunas"
           }
@@ -215,7 +215,7 @@
           "type": "column",
           "settings": {
             "image": "shopify://shop_images/Gemini_Generated_Image_eoqb8xeoqb8xeoqb.png",
-            "title": "Mantenimiento rápido de coches",
+            "title": "Mantenimiento rápido de vehículos",
             "text": "<p>Servicios esenciales para el buen funcionamiento del vehículo, como cambio de aceite, filtros y revisiones básicas.</p>",
             "link_label": "Reservar ahora",
             "link": "shopify://collections/mantenimiento-ligero"
@@ -245,8 +245,8 @@
           "type": "column",
           "settings": {
             "image": "shopify://shop_images/Gemini_Generated_Image_x0vc4ax0vc4ax0vc.png",
-            "title": "Accesorios y productos para coche",
-            "text": "<p>Accesorios y productos para cuidar y mejorar tu coche, desde lo esencial hasta soluciones profesionales.</p>",
+            "title": "Accesorios y productos para vehículos",
+            "text": "<p>Accesorios y productos para cuidar y mejorar tu vehículo, desde lo esencial hasta soluciones profesionales.</p>",
             "link_label": "Reservar ahora",
             "link": "shopify://collections/productos-y-accesorios-para-el-cuidado-automotriz"
           }
@@ -345,7 +345,7 @@
       "settings": {
         "title": "Cómo funciona",
         "heading_size": "h1",
-        "subtitle": "Reserva en pocos pasos y disfruta la mejor experiencia para tu coche.",
+        "subtitle": "Reserva en pocos pasos y disfruta la mejor experiencia para tu vehículo.",
         "color_scheme": "scheme-1",
         "step_4_image": "shopify://shop_images/paso4-1280x720.webp",
         "step_4_title": "Vive la experiencia y valora el servicio",
@@ -630,7 +630,7 @@
           "settings": {
             "icon_key": "sparkles",
             "icon_text": "",
-            "name": "Lavado de coches",
+            "name": "Lavado de vehículos",
             "link": "shopify://collections/lavado"
           }
         },
@@ -639,7 +639,7 @@
           "settings": {
             "icon_key": "spray",
             "icon_text": "",
-            "name": "Pulido y detailing de coches",
+            "name": "Pulido y detailing de vehículos",
             "link": "shopify://collections/detailing"
           }
         },
@@ -657,7 +657,7 @@
           "settings": {
             "icon_key": "shield",
             "icon_text": "",
-            "name": "PPF y vinilo para coches (Wrap)",
+            "name": "PPF y vinilo para vehículos (Wrap)",
             "link": "shopify://collections/ppf-wrap-tintado-lunas"
           }
         },
@@ -684,7 +684,7 @@
           "settings": {
             "icon_key": "service",
             "icon_text": "",
-            "name": "Mantenimiento rápido de coches",
+            "name": "Mantenimiento rápido de vehículos",
             "link": "shopify://collections/mantenimiento-ligero"
           }
         },
@@ -711,7 +711,7 @@
           "settings": {
             "icon_key": "kit",
             "icon_text": "",
-            "name": "Accesorios y productos para coche",
+            "name": "Accesorios y productos para vehículos",
             "link": "shopify://collections/productos-y-accesorios-para-el-cuidado-automotriz"
           }
         },
@@ -889,7 +889,7 @@
         "text": {
           "type": "text",
           "settings": {
-            "text": "<p>Explora categorías, compara opciones y conecta con talleres para solicitar el servicio que tu coche necesita. Esta sección reemplaza el bloque genérico de productos destacados y acerca la home a una experiencia de marketplace de servicios.</p>"
+            "text": "<p>Explora categorías, compara opciones y conecta con talleres para solicitar el servicio que tu vehículo necesita. Esta sección reemplaza el bloque genérico de productos destacados y acerca la home a una experiencia de marketplace de servicios.</p>"
           }
         },
         "button": {
@@ -1013,9 +1013,9 @@
           "type": "testimonial",
           "settings": {
             "stars": 5,
-            "quote": "Reservé un lavado interior y exterior en menos de cinco minutos. El taller fue puntual y el coche quedó impecable.",
+            "quote": "Reservé un lavado interior y exterior en menos de cinco minutos. El taller fue puntual y el vehículo quedó impecable.",
             "author": "Marta G.",
-            "meta": "Lavado de coches"
+            "meta": "Lavado de vehículos"
           }
         },
         "testimonial_2": {
