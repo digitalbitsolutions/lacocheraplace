@@ -48,7 +48,7 @@
           "type": "service_category_option",
           "settings": {
             "service_collection": "neumaticos-y-llantas",
-            "option_label": "Neumaticos y llantas"
+            "option_label": "Neumáticos y llantas"
           }
         },
         "service_category_option_4": {
@@ -69,14 +69,14 @@
           "type": "service_category_option",
           "settings": {
             "service_collection": "mantenimiento-ligero",
-            "option_label": "Mecanica basica"
+            "option_label": "Mecánica básica"
           }
         },
         "service_category_option_7": {
           "type": "service_category_option",
           "settings": {
             "service_collection": "grua-y-auxlio-mecanico",
-            "option_label": "Grua y auxilio mecanico"
+            "option_label": "Grúa y auxilio mecánico"
           }
         },
         "service_category_option_8": {
@@ -153,7 +153,7 @@
           "settings": {
             "image": "shopify://shop_images/Gemini_Generated_Image_r65atgr65atgr65a.png",
             "title": "Lavado de coches",
-            "text": "<p>Limpieza interior y exterior para mantener tu coche siempre impecable. Desde lavados rapidos hasta servicios completos con acabado profesional.</p>",
+            "text": "<p>Limpieza interior y exterior para mantener tu coche siempre impecable. Desde lavados rápidos hasta servicios completos con acabado profesional.</p>",
             "link_label": "Reservar ahora",
             "link": "shopify://collections/lavado"
           }
@@ -163,7 +163,7 @@
           "settings": {
             "image": "shopify://shop_images/Gemini_Generated_Image_xexmmbxexmmbxexm.png",
             "title": "Pulido y detailing de coches",
-            "text": "<p>Restauracion estetica y cuidado profundo del vehiculo. Incluye pulido, correccion de pintura y tratamientos ceramicos para proteger y realzar el brillo.</p>",
+            "text": "<p>Restauración estética y cuidado profundo del vehículo. Incluye pulido, corrección de pintura y tratamientos cerámicos para proteger y realzar el brillo.</p>",
             "link_label": "Reservar ahora",
             "link": "shopify://collections/detailing"
           }
@@ -173,8 +173,8 @@
           "settings": {
             "image": "shopify://shop_images/cambio-neumaticos.webp",
             "custom_asset_image": "cambio-neumaticos.webp",
-            "title": "Cambio de neumaticos y llantas",
-            "text": "<p>Sustitucion y mantenimiento de neumaticos para una conduccion segura. Servicios de alineacion, balanceo y reparacion de pinchazos.</p>",
+            "title": "Cambio de neumáticos y llantas",
+            "text": "<p>Sustitución y mantenimiento de neumáticos para una conducción segura. Servicios de alineación, balanceo y reparación de pinchazos.</p>",
             "link_label": "Reservar ahora",
             "link": "shopify://collections/neumaticos-y-llantas"
           }
@@ -185,7 +185,7 @@
             "image": "shopify://shop_images/PPF.webp",
             "custom_asset_image": "home-ppf.webp",
             "title": "PPF y vinilo para coches (Wrap)",
-            "text": "<p>Proteccion y personalizacion de la carroceria con laminas PPF o vinilo. Evita danos en la pintura o cambia el estilo de tu coche.</p>",
+            "text": "<p>Protección y personalización de la carrocería con láminas PPF o vinilo. Evita daños en la pintura o cambia el estilo de tu coche.</p>",
             "link_label": "Reservar ahora",
             "link": "shopify://collections/ppf-wrap-tintado-lunas"
           }
@@ -196,7 +196,7 @@
             "image": "shopify://shop_images/tintado-de-lunas.webp",
             "custom_asset_image": "home-tintado-lunas.webp",
             "title": "Tintado de lunas y parabrisas",
-            "text": "<p>Tintado de cristales para mayor privacidad, confort y proteccion solar. Incluye reparacion y sustitucion de lunas o parabrisas.</p>",
+            "text": "<p>Tintado de cristales para mayor privacidad, confort y protección solar. Incluye reparación y sustitución de lunas o parabrisas.</p>",
             "link_label": "Reservar ahora",
             "link": "shopify://collections/ppf-wrap-tintado-lunas"
           }
@@ -206,7 +206,7 @@
           "settings": {
             "image": "shopify://shop_images/Gemini_Generated_Image_mu6yc9mu6yc9mu6y.png",
             "title": "Chapa, pintura y abolladuras",
-            "text": "<p>Reparacion de golpes, aranazos y danos en la carroceria. Eliminacion de abolladuras sin pintar y acabados profesionales.</p>",
+            "text": "<p>Reparación de golpes, arañazos y daños en la carrocería. Eliminación de abolladuras sin pintar y acabados profesionales.</p>",
             "link_label": "Reservar ahora",
             "link": "shopify://collections/chapa-y-pintura"
           }
@@ -215,8 +215,8 @@
           "type": "column",
           "settings": {
             "image": "shopify://shop_images/Gemini_Generated_Image_eoqb8xeoqb8xeoqb.png",
-            "title": "Mantenimiento rapido de coches",
-            "text": "<p>Servicios esenciales para el buen funcionamiento del vehiculo, como cambio de aceite, filtros y revisiones basicas.</p>",
+            "title": "Mantenimiento rápido de coches",
+            "text": "<p>Servicios esenciales para el buen funcionamiento del vehículo, como cambio de aceite, filtros y revisiones básicas.</p>",
             "link_label": "Reservar ahora",
             "link": "shopify://collections/mantenimiento-ligero"
           }
@@ -225,8 +225,8 @@
           "type": "column",
           "settings": {
             "image": "shopify://shop_images/Gemini_Generated_Image_w62hvw62hvw62hvw.png",
-            "title": "Grua y asistencia en carretera",
-            "text": "<p>Asistencia inmediata ante averias o emergencias. Servicio de grua, arranque de bateria y ayuda en carretera cuando lo necesites.</p>",
+            "title": "Grúa y asistencia en carretera",
+            "text": "<p>Asistencia inmediata ante averías o emergencias. Servicio de grúa, arranque de batería y ayuda en carretera cuando lo necesites.</p>",
             "link_label": "Reservar ahora",
             "link": "shopify://collections/grua-y-auxlio-mecanico"
           }
@@ -236,7 +236,7 @@
           "settings": {
             "image": "shopify://shop_images/parking-benidorm-1200x731.jpg",
             "title": "Parking y aparcamiento",
-            "text": "<p>Opciones de aparcamiento seguro por horas, dias o larga estancia, ideales para ciudad o viajes.</p>",
+            "text": "<p>Opciones de aparcamiento seguro por horas, días o larga estancia, ideales para ciudad o viajes.</p>",
             "link_label": "Reservar ahora",
             "link": "shopify://collections/parking"
           }
@@ -256,7 +256,7 @@
           "settings": {
             "image": "shopify://shop_images/Gemini_Generated_Image_x0vc4ax0vc4ax0vc.png",
             "title": "Productos usados y liquidaciones",
-            "text": "<p>Encuentra oportunidades de vehiculos usados revisados y servicios asociados de liquidacion con proveedores en Barcelona.</p>",
+            "text": "<p>Encuentra oportunidades de vehículos usados revisados y servicios asociados de liquidación con proveedores de Perú.</p>",
             "link_label": "Reservar ahora",
             "link": "shopify://collections/productos-usados-y-liquidaciones"
           }
@@ -265,8 +265,8 @@
           "type": "column",
           "settings": {
             "image": "shopify://shop_images/parking-benidorm-1200x731.jpg",
-            "title": "Renta de Espacios y Herramientas para Automocion",
-            "text": "<p>Reserva boxes y herramientas para trabajos de automocion por horas o jornada completa, con soporte profesional.</p>",
+            "title": "Renta de espacios y herramientas para automoción",
+            "text": "<p>Reserva boxes y herramientas para trabajos de automoción por horas o jornada completa, con soporte profesional.</p>",
             "link_label": "Reservar ahora",
             "link": "shopify://collections/renta-de-espacios-y-herramientas-para-automocion"
           }
@@ -287,6 +287,7 @@
         "column_renta_espacios_herramientas"
       ],
       "name": "t:sections.multicolumn.presets.name",
+      "disabled": true,
       "settings": {
         "title": "Servicios Populares",
         "heading_size": "h1",
@@ -312,15 +313,17 @@
           "type": "step",
           "settings": {
             "icon": "search",
-            "title": "1. Buscar servicio",
-            "text": "Busca y compara servicios por categoria y ubicacion."
+            "image": "shopify://shop_images/paso1-1280x720.webp",
+            "title": "Buscar servicio",
+            "text": "Busca y compara servicios por categoría y ubicación."
           }
         },
         "step_2": {
           "type": "step",
           "settings": {
             "icon": "map",
-            "title": "2. Elegir taller",
+            "image": "shopify://shop_images/paso2-1280x720.webp",
+            "title": "Elegir taller",
             "text": "Elige el taller ideal por precio, horario y valoraciones."
           }
         },
@@ -328,8 +331,9 @@
           "type": "step",
           "settings": {
             "icon": "calendar",
-            "title": "3. Reservar y relajarse",
-            "text": "Reserva online y recibe confirmacion inmediata."
+            "image": "shopify://shop_images/paso3-1280x720.webp",
+            "title": "Reservar y relajarse",
+            "text": "Reserva online y recibe confirmación inmediata."
           }
         }
       },
@@ -339,13 +343,23 @@
         "step_3"
       ],
       "settings": {
-        "title": "Como funciona",
+        "title": "Cómo funciona",
         "heading_size": "h1",
+        "subtitle": "Reserva en pocos pasos y disfruta la mejor experiencia para tu coche.",
         "color_scheme": "scheme-1",
-        "step_4_title": "4. Vive la experiencia y valora el servicio",
-        "step_4_text": "Acude a tu cita y comparte tu opinion para ayudar a otros usuarios.",
-        "padding_top": 8,
-        "padding_bottom": 12
+        "step_4_image": "shopify://shop_images/paso4-1280x720.webp",
+        "step_4_title": "Vive la experiencia y valora el servicio",
+        "step_4_text": "Acude a tu cita y comparte tu opinión para ayudar a otros usuarios.",
+        "padding_top": 12,
+        "padding_bottom": 8
+      }
+    },
+    "home_how_it_works_advantages": {
+      "type": "how-it-works-advantages",
+      "settings": {
+        "color_scheme": "scheme-1",
+        "padding_top": 4,
+        "padding_bottom": 24
       }
     },
     "home_featured_providers_home": {
@@ -354,10 +368,10 @@
         "provider_1": {
           "type": "provider_logo",
           "settings": {
-            "category": "Mantenimiento rapido",
+            "category": "Mantenimiento rápido",
             "logo": "shopify://shop_images/gracia-garage-tools-candidate-01-cambio-aceite.webp",
-            "provider_name": "Gracia Garage Tools",
-            "link": "/collections/vendors?q=Gracia+Garage+Tools"
+            "provider_name": "Lima Garage Tools",
+            "link": "/collections/vendors?q=Lima+Garage+Tools"
           }
         },
         "provider_2": {
@@ -365,8 +379,8 @@
           "settings": {
             "category": "Renta de espacios",
             "logo": "shopify://shop_images/poblenou-box-rental-candidate-04-box-servicio-pexels.webp",
-            "provider_name": "Poblenou Box Rental",
-            "link": "/collections/vendors?q=Poblenou+Box+Rental"
+            "provider_name": "Box Rental Lima",
+            "link": "/collections/vendors?q=Box+Rental+Lima"
           }
         },
         "provider_3": {
@@ -374,17 +388,17 @@
           "settings": {
             "category": "Usados y liquidaciones",
             "logo": "shopify://shop_images/sants-liquidaciones-auto-candidate-01-servicio-tramitacion-cambio-titularidad.webp",
-            "provider_name": "Sants Liquidaciones Auto",
-            "link": "/collections/vendors?q=Sants+Liquidaciones+Auto"
+            "provider_name": "Liquidaciones Auto Perú",
+            "link": "/collections/vendors?q=Liquidaciones+Auto+Per%C3%BA"
           }
         },
         "provider_4": {
           "type": "provider_logo",
           "settings": {
-            "category": "Vehiculos de ocasion",
+            "category": "Vehículos de ocasión",
             "logo": "shopify://shop_images/eixample-ocasion-motor-candidate-01-vehiculo-ocasion.webp",
-            "provider_name": "Eixample Ocasion Motor",
-            "link": "/collections/vendors?q=Eixample+Ocasion+Motor"
+            "provider_name": "Ocasión Motor Perú",
+            "link": "/collections/vendors?q=Ocasi%C3%B3n+Motor+Per%C3%BA"
           }
         },
         "provider_5": {
@@ -392,8 +406,8 @@
           "settings": {
             "category": "Lavado y detailing",
             "logo": "shopify://shop_images/barcelona-wash-hub-candidate-05-limpieza-detailing-moderno.webp",
-            "provider_name": "Barcelona Wash Hub",
-            "link": "/collections/vendors?q=Barcelona+Wash+Hub"
+            "provider_name": "Lima Wash Hub",
+            "link": "/collections/vendors?q=Lima+Wash+Hub"
           }
         },
         "provider_6": {
@@ -401,8 +415,8 @@
           "settings": {
             "category": "Wrap y vinilo",
             "logo": "shopify://shop_images/sants-wrap-studio-candidate-03-wrap-vinilo-pexels.webp",
-            "provider_name": "Sants Wrap Studio",
-            "link": "/collections/vendors?q=Sants+Wrap+Studio"
+            "provider_name": "Wrap Studio Lima",
+            "link": "/collections/vendors?q=Wrap+Studio+Lima"
           }
         },
         "provider_7": {
@@ -410,8 +424,8 @@
           "settings": {
             "category": "Lavado premium",
             "logo": "shopify://shop_images/barcelona-laundry-candidate-03-lavado-espuma-pexels.webp",
-            "provider_name": "Barcelona Laundry",
-            "link": "/collections/vendors?q=Barcelona+Laundry"
+            "provider_name": "La Cochera Perú",
+            "link": "/collections/vendors?q=La+Cochera+Per%C3%BA"
           }
         },
         "provider_8": {
@@ -426,7 +440,7 @@
         "provider_9": {
           "type": "provider_logo",
           "settings": {
-            "category": "Mecanica rapida",
+            "category": "Mecánica rápida",
             "logo": "shopify://shop_images/costa-garage-express-candidate-06-cambio-aceite-express-barcelona.webp",
             "provider_name": "Costa Garage Express",
             "link": "/collections/vendors?q=Costa+Garage+Express"
@@ -435,7 +449,7 @@
         "provider_10": {
           "type": "provider_logo",
           "settings": {
-            "category": "PPF y correccion",
+            "category": "PPF y corrección",
             "logo": "shopify://shop_images/detail-lab-bcn-candidate-03-ppf-correccion-pexels.webp",
             "provider_name": "Detail Lab BCN",
             "link": "/collections/vendors?q=Detail+Lab+BCN"
@@ -444,16 +458,16 @@
         "provider_11": {
           "type": "provider_logo",
           "settings": {
-            "category": "Neumaticos y llantas",
+            "category": "Neumáticos y llantas",
             "logo": "shopify://shop_images/eixample-tire-center-candidate-06-neumaticos-alineacion-pexels-api.webp",
-            "provider_name": "Eixample Tire Center",
-            "link": "/collections/vendors?q=Eixample+Tire+Center"
+            "provider_name": "Tire Center Lima",
+            "link": "/collections/vendors?q=Tire+Center+Lima"
           }
         },
         "provider_12": {
           "type": "provider_logo",
           "settings": {
-            "category": "Grua y carroceria",
+            "category": "Grúa y carrocería",
             "logo": "shopify://shop_images/montjuic-car-care-candidate-01-grua-desabollado.webp",
             "provider_name": "Montjuic Car Care",
             "link": "/collections/vendors?q=Montjuic+Car+Care"
@@ -464,8 +478,8 @@
           "settings": {
             "category": "Parabrisas y lunas",
             "logo": "shopify://shop_images/chamartin-glass-detail-candidate-01-pulido-faros.webp",
-            "provider_name": "Chamartin Glass & Detail",
-            "link": "/collections/vendors?q=Chamartin+Glass+%26+Detail"
+            "provider_name": "Glass & Detail Perú",
+            "link": "/collections/vendors?q=Glass+%26+Detail+Per%C3%BA"
           }
         },
         "provider_14": {
@@ -473,8 +487,8 @@
           "settings": {
             "category": "Asistencia vial",
             "logo": "shopify://shop_images/poblenou-road-assist-candidate-01-asistencia-vial.webp",
-            "provider_name": "Poblenou Road Assist",
-            "link": "/collections/vendors?q=Poblenou+Road+Assist"
+            "provider_name": "Road Assist Perú",
+            "link": "/collections/vendors?q=Road+Assist+Per%C3%BA"
           }
         },
         "provider_15": {
@@ -482,8 +496,8 @@
           "settings": {
             "category": "Parking y lavado",
             "logo": "shopify://shop_images/ramblas-parking-service-candidate-02-lavado-rapido.webp",
-            "provider_name": "Ramblas Parking Service",
-            "link": "/collections/vendors?q=Ramblas+Parking+Service"
+            "provider_name": "Parking Service Lima",
+            "link": "/collections/vendors?q=Parking+Service+Lima"
           }
         },
         "provider_16": {
@@ -491,8 +505,8 @@
           "settings": {
             "category": "PPF frontal",
             "logo": "shopify://shop_images/rivas-detailing-studio-candidate-01-ppf-frontal.webp",
-            "provider_name": "Rivas Detailing Studio",
-            "link": "/collections/vendors?q=Rivas+Detailing+Studio"
+            "provider_name": "Detailing Studio Perú",
+            "link": "/collections/vendors?q=Detailing+Studio+Per%C3%BA"
           }
         }
       },
@@ -563,7 +577,7 @@
           "settings": {
             "image": "shopify://shop_images/Gemini_Generated_Image_x0vc4ax0vc4ax0vc.png",
             "provider_product": "shopify://products/detailing-esencial-barcelona-wash-hub",
-            "name": "Limpiallantas y brillo neumatico",
+            "name": "Limpiallantas y brillo neumático",
             "rating": "4.6/5",
             "tag": "Disponible",
             "link": "shopify://collections/productos-y-accesorios-para-el-cuidado-automotriz"
@@ -614,65 +628,109 @@
         "cat_1": {
           "type": "category",
           "settings": {
-            "icon_text": "L",
-            "name": "Limpieza",
+            "icon_key": "sparkles",
+            "icon_text": "",
+            "name": "Lavado de coches",
             "link": "shopify://collections/lavado"
           }
         },
         "cat_2": {
           "type": "category",
           "settings": {
-            "icon_text": "D",
-            "name": "Detailing",
+            "icon_key": "spray",
+            "icon_text": "",
+            "name": "Pulido y detailing de coches",
             "link": "shopify://collections/detailing"
           }
         },
         "cat_3": {
           "type": "category",
           "settings": {
-            "icon_text": "M",
-            "name": "Mecanica",
-            "link": "shopify://collections/mantenimiento-ligero"
+            "icon_key": "tire",
+            "icon_text": "",
+            "name": "Cambio de neumáticos y llantas",
+            "link": "shopify://collections/neumaticos-y-llantas"
           }
         },
         "cat_4": {
           "type": "category",
           "settings": {
-            "icon_text": "N",
-            "name": "Neumaticos",
-            "link": "shopify://collections/neumaticos-y-llantas"
+            "icon_key": "shield",
+            "icon_text": "",
+            "name": "PPF y vinilo para coches (Wrap)",
+            "link": "shopify://collections/ppf-wrap-tintado-lunas"
           }
         },
         "cat_5": {
           "type": "category",
           "settings": {
-            "icon_text": "B",
-            "name": "Baterias",
-            "link": "shopify://collections/mantenimiento-ligero"
+            "icon_key": "window",
+            "icon_text": "",
+            "name": "Tintado de lunas y parabrisas",
+            "link": "shopify://collections/ppf-wrap-tintado-lunas"
           }
         },
         "cat_6": {
           "type": "category",
           "settings": {
-            "icon_text": "F",
-            "name": "Frenos",
-            "link": "shopify://collections/mantenimiento-ligero"
+            "icon_key": "hammer",
+            "icon_text": "",
+            "name": "Chapa, pintura y abolladuras",
+            "link": "shopify://collections/chapa-y-pintura"
           }
         },
         "cat_7": {
           "type": "category",
           "settings": {
-            "icon_text": "DG",
-            "name": "Diagnostico",
+            "icon_key": "service",
+            "icon_text": "",
+            "name": "Mantenimiento rápido de coches",
             "link": "shopify://collections/mantenimiento-ligero"
           }
         },
         "cat_8": {
           "type": "category",
           "settings": {
-            "icon_text": "ITV",
-            "name": "ITV",
-            "link": "shopify://collections/mantenimiento-ligero"
+            "icon_key": "tow",
+            "icon_text": "",
+            "name": "Grúa y asistencia en carretera",
+            "link": "shopify://collections/grua-y-auxlio-mecanico"
+          }
+        },
+        "cat_9": {
+          "type": "category",
+          "settings": {
+            "icon_key": "parking",
+            "icon_text": "",
+            "name": "Parking y aparcamiento",
+            "link": "shopify://collections/parking"
+          }
+        },
+        "cat_10": {
+          "type": "category",
+          "settings": {
+            "icon_key": "kit",
+            "icon_text": "",
+            "name": "Accesorios y productos para coche",
+            "link": "shopify://collections/productos-y-accesorios-para-el-cuidado-automotriz"
+          }
+        },
+        "cat_11": {
+          "type": "category",
+          "settings": {
+            "icon_key": "tag",
+            "icon_text": "",
+            "name": "Productos usados y liquidaciones",
+            "link": "shopify://collections/productos-usados-y-liquidaciones"
+          }
+        },
+        "cat_12": {
+          "type": "category",
+          "settings": {
+            "icon_key": "toolbox",
+            "icon_text": "",
+            "name": "Renta de Espacios y Herramientas para Automoción",
+            "link": "shopify://collections/renta-de-espacios-y-herramientas-para-automocion"
           }
         }
       },
@@ -684,11 +742,15 @@
         "cat_5",
         "cat_6",
         "cat_7",
-        "cat_8"
+        "cat_8",
+        "cat_9",
+        "cat_10",
+        "cat_11",
+        "cat_12"
       ],
       "settings": {
         "title": "Categorias principales",
-        "view_all_label": "Ver todas las categorias",
+        "view_all_label": "Ver todas las categorías",
         "view_all_link": "shopify://pages/servicios",
         "heading_size": "h1",
         "color_scheme": "scheme-1",
@@ -703,12 +765,12 @@
           "type": "service",
           "settings": {
             "image": "shopify://shop_images/barcelona-laundry-candidate-03-lavado-espuma-pexels.webp",
-            "badge": "Mas reservado",
+            "badge": "Más reservado",
             "title": "Lavado premium",
-            "price_text": "Desde 29EUR",
+            "price_text": "Desde S/ 49",
             "rating_text": "4.9 (128)",
-            "city": "Barcelona",
-            "provider": "DetailPro BCN",
+            "city": "Lima",
+            "provider": "DetailPro Perú",
             "link": "shopify://collections/lavado"
           }
         },
@@ -718,10 +780,10 @@
             "image": "shopify://shop_images/detail-lab-bcn-candidate-03-ppf-correccion-pexels.webp",
             "badge": "Popular",
             "title": "Detailing interior",
-            "price_text": "Desde 89EUR",
+            "price_text": "Desde S/ 129",
             "rating_text": "4.8 (96)",
-            "city": "Barcelona",
-            "provider": "CleanCar Studio",
+            "city": "Lima",
+            "provider": "CleanCar Perú",
             "link": "shopify://collections/detailing"
           }
         },
@@ -730,10 +792,10 @@
           "settings": {
             "image": "shopify://shop_images/costa-garage-express-candidate-06-cambio-aceite-express-barcelona.webp",
             "badge": "Nuevo",
-            "title": "Cambio de bateria a domicilio",
-            "price_text": "Desde 140EUR",
+            "title": "Cambio de batería a domicilio",
+            "price_text": "Desde S/ 179",
             "rating_text": "4.9 (74)",
-            "city": "Barcelona",
+            "city": "Lima",
             "provider": "Battery Assist",
             "link": "shopify://collections/mantenimiento-ligero"
           }
@@ -743,10 +805,10 @@
           "settings": {
             "image": "shopify://shop_images/eixample-tire-center-candidate-06-neumaticos-alineacion-pexels-api.webp",
             "badge": "",
-            "title": "Cambio de neumaticos",
-            "price_text": "Desde 49EUR",
+            "title": "Cambio de neumáticos",
+            "price_text": "Desde S/ 69",
             "rating_text": "4.7 (63)",
-            "city": "Barcelona",
+            "city": "Lima",
             "provider": "Neumax",
             "link": "shopify://collections/neumaticos-y-llantas"
           }
@@ -756,10 +818,10 @@
           "settings": {
             "image": "shopify://shop_images/chamartin-glass-detail-candidate-01-pulido-faros.webp",
             "badge": "",
-            "title": "Pulido de carroceria",
-            "price_text": "Desde 120EUR",
+            "title": "Pulido de carrocería",
+            "price_text": "Desde S/ 159",
             "rating_text": "4.8 (55)",
-            "city": "Barcelona",
+            "city": "Lima",
             "provider": "Shine & Go",
             "link": "shopify://collections/detailing"
           }
@@ -774,7 +836,7 @@
       ],
       "settings": {
         "title": "Servicios destacados",
-        "subtitle": "Los servicios mas demandados por nuestros usuarios",
+        "subtitle": "Los servicios más demandados por nuestros usuarios",
         "view_all_label": "Ver todos los servicios",
         "view_all_link": "shopify://pages/servicios",
         "heading_size": "h1",
@@ -787,8 +849,8 @@
       "type": "lc-home-provider-cta",
       "settings": {
         "icon_text": "W",
-        "title": "Brindas servicios de automocion?",
-        "text": "Unete a nuestra red de talleres y consigue nuevos clientes. Haz crecer tu negocio con La Cochera Place.",
+        "title": "¿Brindas servicios de automoción?",
+        "text": "Únete a nuestra red de talleres y consigue nuevos clientes. Haz crecer tu negocio con La Cochera Place Perú.",
         "button_label": "Quiero ser proveedor",
         "button_link": "shopify://pages/quiero-ser-proveedor",
         "heading_size": "h1",
@@ -800,9 +862,9 @@
     "featured_blog_home": {
       "type": "featured-blog",
       "settings": {
-        "blog": "news",
+        "blog": "noticias",
         "post_limit": 4,
-        "heading": "Ultimos articulos del blog",
+        "heading": "Últimos artículos del blog",
         "heading_size": "h1",
         "columns_desktop": 4,
         "show_view_all": true,
@@ -820,20 +882,20 @@
         "heading": {
           "type": "heading",
           "settings": {
-            "heading": "Como funciona La Cochera Place",
+            "heading": "Cómo funciona La Cochera Place Perú",
             "heading_size": "h1"
           }
         },
         "text": {
           "type": "text",
           "settings": {
-            "text": "<p>Explora categorias, compara opciones y conecta con talleres para solicitar el servicio que tu coche necesita. Esta seccion reemplaza el bloque generico de productos destacados y acerca la home a una experiencia de marketplace de servicios.</p>"
+            "text": "<p>Explora categorías, compara opciones y conecta con talleres para solicitar el servicio que tu coche necesita. Esta sección reemplaza el bloque genérico de productos destacados y acerca la home a una experiencia de marketplace de servicios.</p>"
           }
         },
         "button": {
           "type": "button",
           "settings": {
-            "button_label": "Ver como funciona",
+            "button_label": "Ver cómo funciona",
             "button_link": "shopify://pages/como-funciona",
             "button_style_secondary": false,
             "button_label_2": "Ver servicios",
@@ -878,7 +940,7 @@
         "text": {
           "type": "text",
           "settings": {
-            "text": "<p>Este bloque no busca mostrar todos los proveedores, sino darte una primera seleccion de talleres visibles dentro del marketplace para que puedas comparar y avanzar mas rapido.</p>"
+            "text": "<p>Este bloque no busca mostrar todos los proveedores, sino darte una primera selección de talleres visibles dentro del marketplace para que puedas comparar y avanzar más rápido.</p>"
           }
         },
         "button": {
@@ -951,7 +1013,7 @@
           "type": "testimonial",
           "settings": {
             "stars": 5,
-            "quote": "Reserve un lavado interior y exterior en menos de cinco minutos. El taller fue puntual y el coche quedo impecable.",
+            "quote": "Reservé un lavado interior y exterior en menos de cinco minutos. El taller fue puntual y el coche quedó impecable.",
             "author": "Marta G.",
             "meta": "Lavado de coches"
           }
@@ -960,7 +1022,7 @@
           "type": "testimonial",
           "settings": {
             "stars": 5,
-            "quote": "Me gusto poder comparar proveedores antes de decidir. Elegi detailing y encontre una opcion muy profesional cerca de casa.",
+            "quote": "Me gustó poder comparar proveedores antes de decidir. Elegí detailing y encontré una opción muy profesional cerca de casa.",
             "author": "Carlos R.",
             "meta": "Pulido y detailing"
           }
@@ -969,16 +1031,16 @@
           "type": "testimonial",
           "settings": {
             "stars": 5,
-            "quote": "Tenia prisa por cambiar dos neumaticos y aqui vi rapidamente quien podia atenderme ese mismo dia. Muy buena experiencia.",
+            "quote": "Tenía prisa por cambiar dos neumáticos y aquí vi rápidamente quién podía atenderme ese mismo día. Muy buena experiencia.",
             "author": "Laura T.",
-            "meta": "Neumaticos y llantas"
+            "meta": "Neumáticos y llantas"
           }
         },
         "testimonial_4": {
           "type": "testimonial",
           "settings": {
             "stars": 4,
-            "quote": "Use la plataforma para buscar tintado de lunas y el proceso fue claro desde el inicio. La informacion del proveedor ayudo mucho a decidir.",
+            "quote": "Usé la plataforma para buscar tintado de lunas y el proceso fue claro desde el inicio. La información del proveedor ayudó mucho a decidir.",
             "author": "Javier P.",
             "meta": "Tintado y PPF"
           }
@@ -987,7 +1049,7 @@
           "type": "testimonial",
           "settings": {
             "stars": 5,
-            "quote": "Lo mejor fue ver varias opciones de parking y mantenimiento en un mismo sitio. Ahorra bastante tiempo cuando no sabes por donde empezar.",
+            "quote": "Lo mejor fue ver varias opciones de parking y mantenimiento en un mismo sitio. Ahorra bastante tiempo cuando no sabes por dónde empezar.",
             "author": "Andrea S.",
             "meta": "Marketplace de servicios"
           }
@@ -1013,14 +1075,15 @@
   "order": [
     "image_banner",
     "lc_home_categories",
+    "home_how_it_works_home",
+    "home_how_it_works_advantages",
     "lc_home_featured_services",
-    "home_featured_providers_home",
     "home_featured_products_home",
+    "home_featured_providers_home",
     "home_testimonials_custom",
     "lc_home_provider_cta",
     "featured_blog_home",
     "multicolumn_aHED4U",
-    "home_how_it_works_home",
     "rich_text_marketplace_intro",
     "rich_text_providers_intro",
     "collection_list_providers_home"

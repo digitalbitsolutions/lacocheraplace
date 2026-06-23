@@ -189,6 +189,8 @@
   {%- endif -%}
 
   {% assign variant_images = product.images | where: 'attached_to_variant?', true | map: 'src' %}
+  {% assign lcp_flow_type = product.metafields.lcp.flow_type.value | default: '' | downcase | strip %}
+  {% assign lcp_subflow_mode = product.metafields.lcp.subflow_mode.value | default: '' | downcase | strip %}
   {% assign is_service_product = false %}
   {% if product.type == 'Servicio' or product.tags contains 'servicio' %}
     {% assign is_service_product = true %}
@@ -205,6 +207,36 @@
   {% if is_service_checkout_disabled %}
     {% assign is_service_consultative = true %}
   {% endif %}
+  {% assign legacy_is_service_consultative = is_service_consultative %}
+
+  {%- comment -%}
+    LCP flow router (v1):
+    - Source of truth: product.metafields.lcp.flow_type
+    - Fallback: legacy tag/type behavior when metafield is not defined
+  {%- endcomment -%}
+  {% if lcp_flow_type != blank %}
+    {% assign is_service_product = true %}
+    {% assign is_service_consultative = false %}
+    {% case lcp_flow_type %}
+      {% when 'cotizacion' %}
+        {% assign is_service_consultative = true %}
+      {% when 'lead_generation' %}
+        {% assign is_service_consultative = true %}
+      {% when 'urgente' %}
+        {% assign is_service_consultative = true %}
+      {% when 'hibrido' %}
+        {% if lcp_subflow_mode contains 'cotizacion' or lcp_subflow_mode contains 'quote' %}
+          {% assign is_service_consultative = true %}
+        {% endif %}
+      {% when 'ecommerce' %}
+        {% assign is_service_product = false %}
+      {% when 'reserva_directa' %}
+        {% assign is_service_consultative = false %}
+      {% else %}
+        {% assign is_service_consultative = legacy_is_service_consultative %}
+    {% endcase %}
+  {% endif %}
+
   {% if is_service_product and is_service_consultative == false %}
     {% assign is_service_checkout = true %}
   {% endif %}
@@ -636,7 +668,7 @@
                   <div class="service-actions" {{ block.shopify_attributes }}>
                     <p class="service-actions__note">Servicio consultivo. Contacta con el proveedor para confirmar disponibilidad, alcance y precio final.</p>
                     <div class="service-actions__links">
-                      <a class="button button--primary" href="{{ provider_vendor_url }}">Ver catalogo del proveedor</a>
+                      <a class="button button--primary" href="{{ provider_vendor_url }}">Ver catálogo del proveedor</a>
                     </div>
                   </div>
                 {%- else -%}

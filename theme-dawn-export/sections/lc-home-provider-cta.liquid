@@ -33,8 +33,21 @@
 
   .lc-home-provider-cta__icon {
     color: #0f4cbd;
-    font-size: 3.2rem;
-    line-height: 1;
+    width: 4.2rem;
+    height: 4.2rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .lc-home-provider-cta__icon svg {
+    width: 3.4rem;
+    height: 3.4rem;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
   }
 
   @media screen and (min-width: 990px) {
@@ -48,7 +61,13 @@
 <section class="color-{{ section.settings.color_scheme }} gradient">
   <div class="page-width section-{{ section.id }}-padding">
     <div class="lc-home-provider-cta">
-      <div class="lc-home-provider-cta__icon" aria-hidden="true">{{ section.settings.icon_text }}</div>
+      <div class="lc-home-provider-cta__icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24">
+          <path d="M14.5 6.5a4 4 0 005 5l-8.7 8.7a2 2 0 11-2.8-2.8l8.7-8.7a4 4 0 01-2.2-2.2z"></path>
+          <path d="M4 4l5 5"></path>
+          <path d="M16.5 3.5l4 4"></path>
+        </svg>
+      </div>
       <div>
         <h2 class="lc-home-provider-cta__title {{ section.settings.heading_size }}">{{ section.settings.title }}</h2>
         <p class="lc-home-provider-cta__text">{{ section.settings.text }}</p>

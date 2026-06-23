@@ -35,6 +35,10 @@
       padding-bottom: {{ section.settings.padding_bottom }}px;
     }
   }
+
+  .vendor-services-title {
+    margin: 0 0 2.2rem;
+  }
 {%- endstyle -%}
 
 {%- liquid
@@ -49,6 +53,9 @@
   {%- if show_provider_directory -%}
     {% render 'provider-directory-grid', collection: collection, columns: section.settings.columns_desktop, image_ratio: 'adapt' %}
   {%- else -%}
+    <div class="page-width" id="VendorServicesTitleContainer" style="display:none;">
+      <h1 class="title inline-richtext h1 vendor-services-title" id="VendorServicesTitle"></h1>
+    </div>
     {%- paginate collection.products by section.settings.products_per_page -%}
     {% comment %} Sort is the first tabbable element when filter type is vertical {% endcomment %}
     {%- if section.settings.enable_sorting and section.settings.filter_type == 'vertical' -%}
@@ -300,6 +307,24 @@
     {{ 'mask-arch.svg' | inline_asset_content }}
   {%- endif -%}
 </div>
+
+<script>
+  (() => {
+    const path = window.location.pathname.replace(/\/+$/, '');
+    if (path !== '/collections/vendors') return;
+
+    const params = new URLSearchParams(window.location.search);
+    const vendor = (params.get('q') || '').trim();
+    if (!vendor) return;
+
+    const container = document.getElementById('VendorServicesTitleContainer');
+    const title = document.getElementById('VendorServicesTitle');
+    if (!container || !title) return;
+
+    title.textContent = `Servicios de ${vendor}`;
+    container.style.display = '';
+  })();
+</script>
 
 {% schema %}
 {

@@ -97,7 +97,7 @@ async function postToStagedTarget(stagedTarget, filePath, mimeType) {
   }
 }
 
-async function createFileAndGetUrl(resourceUrl, alt = "") {
+async function createFileAndGetUrl(resourceUrl, alt = "", contentType = "FILE") {
   const data = await gql(
     `#graphql
       mutation($files:[FileCreateInput!]!){
@@ -116,7 +116,7 @@ async function createFileAndGetUrl(resourceUrl, alt = "") {
         }
       }`,
     {
-      files: [{ originalSource: resourceUrl, contentType: "IMAGE", alt }],
+      files: [{ originalSource: resourceUrl, contentType, alt }],
     },
   );
   const errs = data.fileCreate.userErrors || [];
@@ -125,8 +125,12 @@ async function createFileAndGetUrl(resourceUrl, alt = "") {
   if (!created?.id) throw new Error("No se pudo crear archivo en Shopify Files.");
   const immediateUrl = created?.image?.url || created?.url || "";
   if (immediateUrl) return { id: created.id, url: immediateUrl };
-  const eventualUrl = await waitForFileUrl(created.id);
-  if (!eventualUrl) throw new Error("No se pudo resolver URL del archivo subido.");
+  const eventualUrl = await waitForFileUrl(created.id).catch(() => "");
+  if (!eventualUrl) {
+    // With apps lacking read_files scope, node() polling can be denied.
+    // In that case keep originalSource as URL fallback.
+    return { id: created.id, url: resourceUrl };
+  }
   return { id: created.id, url: eventualUrl };
 }
 
@@ -267,7 +271,12 @@ async function main() {
     throw new Error("Manifest vacio o invalido.");
   }
 
-  const existingFiles = await listAllFileUrls();
+  let existingFiles = new Map();
+  try {
+    existingFiles = await listAllFileUrls();
+  } catch (error) {
+    console.warn(`[warn] No se pudo leer archivos existentes (continuo con upload directo): ${error.message}`);
+  }
   const uploadedByVendorSlug = new Map();
 
   for (const row of manifest) {
@@ -293,9 +302,9 @@ async function main() {
     const stat = fs.statSync(localFile);
     const staged = await stagedUpload(fileName, "image/svg+xml", stat.size);
     await postToStagedTarget(staged, localFile, "image/svg+xml");
-    const created = await createFileAndGetUrl(staged.resourceUrl, row.vendor);
+    const created = await createFileAndGetUrl(staged.resourceUrl, row.vendor, "FILE");
     uploadedByVendorSlug.set(row.vendor_slug, created.url);
-    console.log(`UPLOADED ${fileName}`);
+    console.log(`UPLOADED ${fileName} -> ${created.url}`);
   }
 
   const profiles = await listProviderProfiles();
@@ -344,6 +353,21 @@ async function main() {
   if (notFound.length) {
     console.log(JSON.stringify(notFound, null, 2));
   }
+
+  const outputMapping = manifest.map((row) => ({
+    vendor: row.vendor,
+    vendor_slug: row.vendor_slug,
+    logo_url: uploadedByVendorSlug.get(row.vendor_slug) || "",
+  }));
+  const outputPath = path.join(
+    process.cwd(),
+    "private-data",
+    "provider-logos",
+    "iconify",
+    "mapped-logo-urls.json",
+  );
+  fs.writeFileSync(outputPath, JSON.stringify(outputMapping, null, 2), "utf8");
+  console.log(`Saved mapping: ${outputPath}`);
 }
 
 main().catch((err) => {

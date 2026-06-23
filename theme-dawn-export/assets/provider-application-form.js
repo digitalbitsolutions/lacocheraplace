@@ -6,7 +6,6 @@
 
   const urlFields = [
     'provider_website_url',
-    'provider_instagram_url',
   ];
 
   const slugify = (value) =>
@@ -24,85 +23,23 @@
     return `provider-${stamp}-${random}`;
   };
 
-  const normalizeIban = (value) => (value || '').replace(/\s+/g, '').toUpperCase();
+  const normalizeBankAccount = (value) => (value || '').replace(/\s+/g, '').toUpperCase();
 
   const normalizeTaxId = (value) => (value || '').replace(/\s+/g, '').toUpperCase();
 
-  const isValidIban = (value) => {
-    const iban = normalizeIban(value);
-    if (!/^[A-Z]{2}\d{2}[A-Z0-9]{11,30}$/.test(iban)) {
-      return false;
-    }
-
-    const rearranged = `${iban.slice(4)}${iban.slice(0, 4)}`;
-    let remainder = 0;
-
-    for (const char of rearranged) {
-      const fragment = /[A-Z]/.test(char) ? String(char.charCodeAt(0) - 55) : char;
-      for (const digit of fragment) {
-        remainder = (remainder * 10 + Number(digit)) % 97;
-      }
-    }
-
-    return remainder === 1;
+  const isValidBankAccount = (value) => {
+    const account = normalizeBankAccount(value);
+    if (!account) return false;
+    return /^[A-Z0-9-]{8,34}$/.test(account);
   };
 
-  const isValidSpanishTaxId = (value) => {
+  const isValidPeruvianTaxId = (value) => {
     const taxId = normalizeTaxId(value);
     if (!taxId) return false;
-
-    const dniMatch = taxId.match(/^(\d{8})([A-Z])$/);
-    if (dniMatch) {
-      const letters = 'TRWAGMYFPDXBNJZSQVHLCKE';
-      return letters[Number(dniMatch[1]) % 23] === dniMatch[2];
-    }
-
-    const nieMatch = taxId.match(/^([XYZ])(\d{7})([A-Z])$/);
-    if (nieMatch) {
-      const prefixMap = { X: '0', Y: '1', Z: '2' };
-      const number = `${prefixMap[nieMatch[1]]}${nieMatch[2]}`;
-      const letters = 'TRWAGMYFPDXBNJZSQVHLCKE';
-      return letters[Number(number) % 23] === nieMatch[3];
-    }
-
-    const cifMatch = taxId.match(/^([ABCDEFGHJNPQRSUVW])(\d{7})([0-9A-J])$/);
-    if (cifMatch) {
-      const letter = cifMatch[1];
-      const digits = cifMatch[2];
-      const control = cifMatch[3];
-
-      let sumEven = 0;
-      let sumOdd = 0;
-
-      digits.split('').forEach((digit, index) => {
-        const number = Number(digit);
-        if (index % 2 === 0) {
-          const doubled = number * 2;
-          sumOdd += Math.floor(doubled / 10) + (doubled % 10);
-        } else {
-          sumEven += number;
-        }
-      });
-
-      const total = sumEven + sumOdd;
-      const controlDigit = (10 - (total % 10)) % 10;
-      const controlLetter = 'JABCDEFGHI'[controlDigit];
-
-      if ('PQRSNW'.includes(letter)) {
-        return control === controlLetter;
-      }
-
-      if ('ABEH'.includes(letter)) {
-        return control === String(controlDigit);
-      }
-
-      return control === String(controlDigit) || control === controlLetter;
-    }
-
-    return false;
+    return /^\d{8}$/.test(taxId) || /^\d{11}$/.test(taxId);
   };
 
-  const serializePayload = (payload) => {
+  const serializePayload = (payload, { redactSensitive = false } = {}) => {
     const valueOrDash = (value) => value || '-';
     const galleryUrls = payload.gallery_source_urls
       ? payload.gallery_source_urls
@@ -135,16 +72,22 @@
       `- Informacion adicional: ${valueOrDash(payload.address_line_2)}`,
       `- Ciudad: ${valueOrDash(payload.city)}`,
       `- Codigo postal: ${valueOrDash(payload.postal_code)}`,
-      `- Provincia o region: ${valueOrDash(payload.province_or_region)}`,
+      `- Departamento o region: ${valueOrDash(payload.province_or_region)}`,
       `- Pais: ${valueOrDash(payload.country)}`,
       `- Google Place ID: ${valueOrDash(payload.google_place_id)}`,
       `- Latitud: ${valueOrDash(payload.latitude)}`,
       `- Longitud: ${valueOrDash(payload.longitude)}`,
       '',
       '=== DATOS FISCALES Y BANCARIOS ===',
-      `- Titular de la cuenta: ${valueOrDash(payload.account_holder)}`,
-      `- NIF/CIF: ${valueOrDash(payload.tax_id)}`,
-      `- IBAN: ${valueOrDash(payload.iban)}`,
+      `- Titular de la cuenta: ${valueOrDash(
+        redactSensitive ? '[REDACTED: almacenado via app proxy]' : payload.account_holder
+      )}`,
+      `- RUC o DNI: ${valueOrDash(
+        redactSensitive ? '[REDACTED: almacenado via app proxy]' : payload.tax_id
+      )}`,
+      `- CCI o numero de cuenta: ${valueOrDash(
+        redactSensitive ? '[REDACTED: almacenado via app proxy]' : payload.iban
+      )}`,
       `- Banco: ${valueOrDash(payload.bank_name)}`,
       `- Pais de la cuenta: ${valueOrDash(payload.bank_country)}`,
       '',
@@ -186,9 +129,16 @@
     return isValidHttpUrl(normalized) ? normalized : '';
   };
 
+  const sanitizeInstagramValue = (value) => {
+    const normalized = (value || '').trim();
+    if (!normalized) return '';
+    if (normalized.startsWith('@')) return normalized;
+    return isValidHttpUrl(normalized) ? normalized : '';
+  };
+
   const sanitizeGalleryUrls = (value) => {
     const normalized = (value || '')
-      .split('\n')
+      .split(/[,\n]/)
       .map((line) => line.trim())
       .filter(Boolean);
 
@@ -417,21 +367,28 @@
       return 'Introduce un correo electronico valido.';
     }
 
-    if (element.name === 'provider_tax_id' && value && !isValidSpanishTaxId(value)) {
-      return 'Introduce un NIF o CIF valido.';
+    if (element.name === 'provider_tax_id' && value && !isValidPeruvianTaxId(value)) {
+      return 'Introduce un RUC de 11 digitos o un DNI de 8 digitos.';
     }
 
-    if (element.name === 'provider_iban' && value && !isValidIban(value)) {
-      return 'Introduce un IBAN valido.';
+    if (element.name === 'provider_iban' && value && !isValidBankAccount(value)) {
+      return 'Introduce un CCI o numero de cuenta valido.';
     }
 
     if (urlFields.includes(element.name) && value && !isValidHttpUrl(value)) {
       return 'Introduce una URL valida completa, por ejemplo https://...';
     }
 
+    if (element.name === 'provider_instagram_url' && value) {
+      if (value.startsWith('@')) return '';
+      if (!isValidHttpUrl(value)) {
+        return 'Introduce un @usuario o una URL valida completa.';
+      }
+    }
+
     if (element.name === 'provider_gallery_source_urls' && value) {
       const invalidLine = value
-        .split('\n')
+        .split(/[,\n]/)
         .map((line) => line.trim())
         .find((line) => line && !isValidHttpUrl(line));
 
@@ -590,14 +547,14 @@
       longitude: form.querySelector('[name="provider_longitude"]')?.value.trim() || '',
       account_holder: form.querySelector('[name="provider_account_holder"]')?.value.trim() || '',
       tax_id: form.querySelector('[name="provider_tax_id"]')?.value.trim() || '',
-      iban: normalizeIban(form.querySelector('[name="provider_iban"]')?.value.trim() || ''),
+      iban: normalizeBankAccount(form.querySelector('[name="provider_iban"]')?.value.trim() || ''),
       bank_name: form.querySelector('[name="provider_bank_name"]')?.value.trim() || '',
       bank_country: form.querySelector('[name="provider_bank_country"]')?.value.trim() || '',
       service_categories: categories,
       description: form.querySelector('[name="provider_description"]')?.value.trim() || '',
       opening_hours: form.querySelector('[name="provider_opening_hours"]')?.value.trim() || '',
       website_url: sanitizeOptionalUrl(form.querySelector('[name="provider_website_url"]')?.value),
-      instagram_url: sanitizeOptionalUrl(form.querySelector('[name="provider_instagram_url"]')?.value),
+      instagram_url: sanitizeInstagramValue(form.querySelector('[name="provider_instagram_url"]')?.value),
       logo_source_url: sanitizeOptionalUrl(form.querySelector('[name="provider_logo_source_url"]')?.value),
       gallery_source_urls: sanitizeGalleryUrls(form.querySelector('[name="provider_gallery_source_urls"]')?.value),
     };
@@ -605,7 +562,8 @@
     if (hiddenSlug) hiddenSlug.value = providerSlug;
     if (hiddenStatus) hiddenStatus.value = payload.status;
     if (hiddenTopic) hiddenTopic.value = 'Solicitud proveedor';
-    if (hiddenBody) hiddenBody.value = serializePayload(payload);
+    const proxyConfigured = Boolean(getProviderAppProxyUrl(form));
+    if (hiddenBody) hiddenBody.value = serializePayload(payload, { redactSensitive: proxyConfigured });
 
     return payload;
   };

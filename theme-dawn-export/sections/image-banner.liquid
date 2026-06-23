@@ -316,11 +316,11 @@
               {%- unless has_service_category_options -%}
                 <button type="button" class="home-hero-service-search__option" role="option" data-service-value="/collections/lavado" data-service-handle="lavado" data-service-label="Lavado de coches" aria-selected="false"><span class="home-hero-service-search__option-label">Lavado de coches</span><span class="home-hero-service-search__option-check" aria-hidden="true">&#10003;</span></button>
                 <button type="button" class="home-hero-service-search__option" role="option" data-service-value="/collections/detailing" data-service-handle="detailing" data-service-label="Detailing" aria-selected="false"><span class="home-hero-service-search__option-label">Detailing</span><span class="home-hero-service-search__option-check" aria-hidden="true">&#10003;</span></button>
-                <button type="button" class="home-hero-service-search__option" role="option" data-service-value="/collections/neumaticos-y-llantas" data-service-handle="neumaticos-y-llantas" data-service-label="Neumaticos y llantas" aria-selected="false"><span class="home-hero-service-search__option-label">Neumaticos y llantas</span><span class="home-hero-service-search__option-check" aria-hidden="true">&#10003;</span></button>
+                <button type="button" class="home-hero-service-search__option" role="option" data-service-value="/collections/neumaticos-y-llantas" data-service-handle="neumaticos-y-llantas" data-service-label="Neumáticos y llantas" aria-selected="false"><span class="home-hero-service-search__option-label">Neumáticos y llantas</span><span class="home-hero-service-search__option-check" aria-hidden="true">&#10003;</span></button>
                 <button type="button" class="home-hero-service-search__option" role="option" data-service-value="/collections/ppf-wrap-tintado-lunas" data-service-handle="ppf-wrap-tintado-lunas" data-service-label="PPF, wrap y tintado de lunas" aria-selected="false"><span class="home-hero-service-search__option-label">PPF, wrap y tintado de lunas</span><span class="home-hero-service-search__option-check" aria-hidden="true">&#10003;</span></button>
                 <button type="button" class="home-hero-service-search__option" role="option" data-service-value="/collections/chapa-y-pintura" data-service-handle="chapa-y-pintura" data-service-label="Chapa y pintura" aria-selected="false"><span class="home-hero-service-search__option-label">Chapa y pintura</span><span class="home-hero-service-search__option-check" aria-hidden="true">&#10003;</span></button>
-                <button type="button" class="home-hero-service-search__option" role="option" data-service-value="/collections/mantenimiento-ligero" data-service-handle="mantenimiento-ligero" data-service-label="Mecanica basica" aria-selected="false"><span class="home-hero-service-search__option-label">Mecanica basica</span><span class="home-hero-service-search__option-check" aria-hidden="true">&#10003;</span></button>
-                <button type="button" class="home-hero-service-search__option" role="option" data-service-value="/collections/grua-y-auxlio-mecanico" data-service-handle="grua-y-auxlio-mecanico" data-service-label="Grua y auxilio mecanico" aria-selected="false"><span class="home-hero-service-search__option-label">Grua y auxilio mecanico</span><span class="home-hero-service-search__option-check" aria-hidden="true">&#10003;</span></button>
+                <button type="button" class="home-hero-service-search__option" role="option" data-service-value="/collections/mantenimiento-ligero" data-service-handle="mantenimiento-ligero" data-service-label="Mecánica básica" aria-selected="false"><span class="home-hero-service-search__option-label">Mecánica básica</span><span class="home-hero-service-search__option-check" aria-hidden="true">&#10003;</span></button>
+                <button type="button" class="home-hero-service-search__option" role="option" data-service-value="/collections/grua-y-auxlio-mecanico" data-service-handle="grua-y-auxlio-mecanico" data-service-label="Grúa y auxilio mecánico" aria-selected="false"><span class="home-hero-service-search__option-label">Grúa y auxilio mecánico</span><span class="home-hero-service-search__option-check" aria-hidden="true">&#10003;</span></button>
                 <button type="button" class="home-hero-service-search__option" role="option" data-service-value="/collections/parking" data-service-handle="parking" data-service-label="Parking" aria-selected="false"><span class="home-hero-service-search__option-label">Parking</span><span class="home-hero-service-search__option-check" aria-hidden="true">&#10003;</span></button>
                 <button type="button" class="home-hero-service-search__option" role="option" data-service-value="/collections/productos-y-accesorios-para-el-cuidado-automotriz" data-service-handle="productos-y-accesorios-para-el-cuidado-automotriz" data-service-label="Productos y accesorios" aria-selected="false"><span class="home-hero-service-search__option-label">Productos y accesorios</span><span class="home-hero-service-search__option-check" aria-hidden="true">&#10003;</span></button>
               {%- endunless -%}
@@ -372,7 +372,7 @@
                     </svg>
                   </span>
                   <label class="home-hero-service-search__distance-label" for="HeroDistanceRange-{{ section.id }}">
-                    Distancia maxima
+                    Distancia máxima
                   </label>
                 </div>
               </div>
@@ -622,12 +622,12 @@
 
         locationRequestPromise = new Promise((resolve, reject) => {
           if (!navigator.geolocation) {
-            showGeoStatus('Tu navegador no soporta geolocalizacion.', true);
+            showGeoStatus('Tu navegador no soporta geolocalización.', true);
             reject(new Error('geolocation_not_supported'));
             return;
           }
 
-          showGeoStatus('Obteniendo ubicacion...', false);
+          showGeoStatus('Obteniendo ubicación...', false);
           navigator.geolocation.getCurrentPosition(
             (position) => {
               const latitude = String(position.coords.latitude ?? '');
@@ -645,18 +645,18 @@
             },
             (error) => {
               if (error && error.code === error.PERMISSION_DENIED) {
-                showGeoStatus('Necesitamos tu ubicacion para mostrar proveedores cerca de ti.', true);
+                showGeoStatus('Necesitamos tu ubicación para mostrar proveedores cerca de ti.', true);
                 reject(new Error('geolocation_denied'));
                 return;
               }
 
               if (error && error.code === error.TIMEOUT) {
-                showGeoStatus('No hemos podido obtener tu ubicacion a tiempo. Intenta de nuevo.', true);
+                showGeoStatus('No hemos podido obtener tu ubicación a tiempo. Intenta de nuevo.', true);
                 reject(new Error('geolocation_timeout'));
                 return;
               }
 
-              showGeoStatus('Has permitido la ubicacion, pero no hemos podido detectarla. Reintenta o activa la ubicacion del dispositivo.', true);
+              showGeoStatus('Has permitido la ubicación, pero no hemos podido detectarla. Reintenta o activa la ubicación del dispositivo.', true);
               reject(new Error('geolocation_unavailable'));
             },
             { enableHighAccuracy: false, timeout: 8000, maximumAge: 300000 }
@@ -707,7 +707,7 @@
           const longitude = String(coords?.coords?.longitude ?? userLngInput?.value ?? '');
 
           if (!latitude || !longitude) {
-            showGeoStatus('Has permitido la ubicacion, pero no hemos podido detectarla. Reintenta o activa la ubicacion del dispositivo.', true);
+            showGeoStatus('Has permitido la ubicación, pero no hemos podido detectarla. Reintenta o activa la ubicación del dispositivo.', true);
             setSubmittingState(false);
             return;
           }

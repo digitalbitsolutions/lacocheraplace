@@ -16,7 +16,7 @@
 
 <div class="color-{{ section.settings.color_scheme }} gradient">
   <div class="contact page-width section-{{ section.id }}-padding">
-    <p class="contact__eyebrow">ATENCION AL CLIENTE</p>
+    <p class="contact__eyebrow">ATENCIÓN AL CLIENTE</p>
     {%- if section.settings.heading != blank -%}
       <h1 class="title title-wrapper--no-top-margin inline-richtext {{ section.settings.heading_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
         {{ section.settings.heading }}
@@ -25,7 +25,7 @@
       <h1 class="visually-hidden">{{ 'templates.contact.form.title' | t }}</h1>
     {%- endif -%}
     <p class="contact__intro">
-      Nuestro equipo tecnico esta listo para resolver tus dudas sobre servicios de lavado, mecanica y gestion de citas.
+      Nuestro equipo está listo para ayudarte con reservas, servicios automotrices y alianzas comerciales en Perú.
     </p>
     {%- liquid
       assign contact_form_class = 'isolate'
@@ -85,7 +85,7 @@
                   aria-invalid="true"
                   aria-describedby="ContactForm-email-error"
                 {% endif %}
-                placeholder="Correo electronico"
+              placeholder="Correo electrónico"
               >
               <label class="field__label" for="ContactForm-email">
                 {{- 'templates.contact.form.email' | t }}
@@ -114,7 +114,7 @@
               name="contact[{{ 'templates.contact.form.phone' | t }}]"
               pattern="[0-9\-+ ]*"
               value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}"
-              placeholder="+34 600 000 000"
+              placeholder="+51 999 999 999"
             >
             <label class="field__label" for="ContactForm-phone">{{ 'templates.contact.form.phone' | t }}</label>
           </div>
@@ -124,7 +124,7 @@
               id="ContactForm-body"
               class="text-area field__input"
               name="contact[{{ 'templates.contact.form.comment' | t }}]"
-              placeholder="En que podemos ayudarte?"
+              placeholder="¿En qué podemos ayudarte?"
             >
               {{- form.body -}}
             </textarea>
@@ -134,7 +134,7 @@
           </div>
           <label class="contact__privacy">
             <input type="checkbox" required>
-            <span>Acepto la politica de privacidad y el tratamiento de mis datos.</span>
+            <span>Acepto la política de privacidad y el tratamiento de mis datos.</span>
           </label>
           <div class="contact__button">
             <button type="submit" class="button">
@@ -148,12 +148,12 @@
         <article class="contact__card">
           <h3>Email directo</h3>
           <p>soporte@lacocheraplace.com</p>
-          <p>info@lacocheraplace.com</p>
+          <p>alianzas@lacocheraplace.com</p>
         </article>
         <article class="contact__card">
-          <h3>Ubicacion</h3>
-          <p>Passeig de Gracia, 110</p>
-          <p>08008 Barcelona, Espana</p>
+          <h3>Ubicación</h3>
+          <p>Lima Metropolitana</p>
+          <p>Perú</p>
         </article>
       </div>
     </div>
@@ -164,25 +164,25 @@
     >
       <div class="contact__cta-overlay"></div>
       <div class="contact__cta-content">
-        <h2>Tu empresa puede vender y captar clientes aqui</h2>
-        <p>Si ofreces servicios automotrices o vendes productos similares, registrate como proveedor y haz crecer tu negocio con nuestra comunidad.</p>
+        <h2>Tu empresa puede vender y captar clientes aquí</h2>
+        <p>Si ofreces servicios automotrices o vendes productos relacionados, regístrate como proveedor y haz crecer tu negocio con nuestra comunidad en Perú.</p>
         <a class="button" href="/pages/quiero-ser-proveedor">Quiero registrarme como proveedor</a>
       </div>
       <div class="contact__cta-benefits">
         <article class="contact__cta-benefit">
           <span class="contact__cta-benefit-icon">{{ 'icon-account.svg' | inline_asset_content }}</span>
-          <h3>Mas visibilidad para tu negocio</h3>
-          <p>Destaca frente a clientes que ya estan buscando servicios automotrices en tu zona.</p>
+          <h3>Más visibilidad para tu negocio</h3>
+          <p>Destaca frente a clientes que ya estan buscando servicios automotrices en tu ciudad.</p>
         </article>
         <article class="contact__cta-benefit">
           <span class="contact__cta-benefit-icon">{{ 'icon-lightning-bolt.svg' | inline_asset_content }}</span>
           <h3>Aumenta tus ventas</h3>
-          <p>Convierte visitas en reservas con una experiencia de busqueda y compra simple.</p>
+          <p>Convierte visitas en reservas con una experiencia de búsqueda y compra simple.</p>
         </article>
         <article class="contact__cta-benefit">
           <span class="contact__cta-benefit-icon">{{ 'icon-chat-bubble.svg' | inline_asset_content }}</span>
           <h3>Conecta con nuevos clientes</h3>
-          <p>Amplia tu alcance y recibe oportunidades de clientes que valoran calidad.</p>
+          <p>Amplía tu alcance y recibe oportunidades de clientes que valoran calidad.</p>
         </article>
         <article class="contact__cta-benefit">
           <span class="contact__cta-benefit-icon">{{ 'icon-padlock.svg' | inline_asset_content }}</span>

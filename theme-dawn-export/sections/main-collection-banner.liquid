@@ -45,6 +45,25 @@
   </div>
 </div>
 
+<script>
+  (() => {
+    const path = window.location.pathname.replace(/\/+$/, '');
+    if (path !== '/collections/vendors') return;
+
+    const params = new URLSearchParams(window.location.search);
+    const vendor = (params.get('q') || '').trim();
+    if (!vendor) return;
+
+    const title = document.querySelector('.collection-hero__title');
+    if (!title) return;
+
+    const sr = title.querySelector('.visually-hidden');
+    title.textContent = '';
+    if (sr) title.appendChild(sr);
+    title.appendChild(document.createTextNode(`Servicios de ${vendor}`));
+  })();
+</script>
+
 {% schema %}
 {
   "name": "t:sections.main-collection-banner.name",

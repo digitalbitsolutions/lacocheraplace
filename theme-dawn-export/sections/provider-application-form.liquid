@@ -55,111 +55,117 @@
         </div>
       {%- endif -%}
 
-      <p class="provider-application__note">
-        {{ section.settings.pending_note }}
-      </p>
+      <p class="provider-application__note">{{ section.settings.pending_note }}</p>
+      {%- if provider_application_proxy_path == blank -%}
+        <p class="provider-application__note">Modo nativo activo: la solicitud se registra en Contactos de Shopify para revisión manual.</p>
+      {%- endif -%}
 
       <div class="provider-application__group provider-application__group--business">
-        <h3 class="provider-application__group-title">Datos del negocio</h3>
+        <h3 class="provider-application__group-title">{{ 'icon-shopify.svg' | inline_asset_content }} Datos del negocio</h3>
         <div class="provider-application__grid provider-application__grid--two provider-application__grid--business">
           <div class="field">
-            <input class="field__input" type="text" id="ProviderDisplayName-{{ section.id }}" name="provider_display_name" required placeholder="Nombre comercial">
+            <input class="field__input" type="text" id="ProviderDisplayName-{{ section.id }}" name="provider_display_name" required placeholder="Ej. Detailing Pro Lima">
             <label class="field__label" for="ProviderDisplayName-{{ section.id }}">Nombre comercial <span class="provider-application__required">*</span></label>
           </div>
           <div class="field">
-            <input class="field__input" type="text" id="ProviderLegalName-{{ section.id }}" name="provider_legal_name" required placeholder="Nombre legal o razon social">
-            <label class="field__label" for="ProviderLegalName-{{ section.id }}">Nombre legal o razon social <span class="provider-application__required">*</span></label>
+            <input class="field__input" type="text" id="ProviderLegalName-{{ section.id }}" name="provider_legal_name" required placeholder="Nombre legal de la empresa">
+            <label class="field__label" for="ProviderLegalName-{{ section.id }}">Razón social <span class="provider-application__required">*</span></label>
+          </div>
+          <div class="field">
+            <input class="field__input" type="text" id="ProviderCatalogVendorName-{{ section.id }}" name="provider_catalog_vendor_name" required placeholder="Cómo aparecerá en nuestra web">
+            <label class="field__label" for="ProviderCatalogVendorName-{{ section.id }}">Nombre para el catálogo <span class="provider-application__required">*</span></label>
+          </div>
+          <div class="field">
+            <input class="field__input" type="text" id="ProviderOpeningHours-{{ section.id }}" name="provider_opening_hours" required placeholder="Ej. Lun-Sab: 09:00 - 18:00">
+            <label class="field__label" for="ProviderOpeningHours-{{ section.id }}">Horario de atención <span class="provider-application__required">*</span></label>
           </div>
           <div class="field provider-application__grid-item-full">
-            <input class="field__input" type="text" id="ProviderCatalogVendorName-{{ section.id }}" name="provider_catalog_vendor_name" required placeholder="Nombre como aparecera en el catalogo de Shopify">
-            <label class="field__label" for="ProviderCatalogVendorName-{{ section.id }}">Nombre del proveedor en catalogo <span class="provider-application__required">*</span></label>
+            <textarea rows="5" id="ProviderDescription-{{ section.id }}" class="text-area field__input" name="provider_description" required placeholder="Breve descripción técnica de tu especialidad, cobertura y trayectoria..."></textarea>
+            <label class="field__label" for="ProviderDescription-{{ section.id }}">Descripción del negocio <span class="provider-application__required">*</span></label>
           </div>
-          <div class="field provider-application__grid-item-full">
-            <textarea rows="6" id="ProviderDescription-{{ section.id }}" class="text-area field__input" name="provider_description" required placeholder="Describe tu taller, especialidades y experiencia"></textarea>
-            <label class="field__label" for="ProviderDescription-{{ section.id }}">Descripcion del proveedor <span class="provider-application__required">*</span></label>
+        </div>
+      </div>
+      <div class="provider-application__group-columns">
+        <div class="provider-application__group">
+          <h3 class="provider-application__group-title">{{ 'icon-account.svg' | inline_asset_content }} Contacto</h3>
+          <div class="provider-application__grid provider-application__grid--two">
+            <div class="field provider-application__grid-item-full">
+              <input class="field__input" autocomplete="name" type="text" id="ProviderContactName-{{ section.id }}" name="contact[name]" required placeholder="">
+              <label class="field__label" for="ProviderContactName-{{ section.id }}">Persona de contacto <span class="provider-application__required">*</span></label>
+            </div>
+            <div class="field provider-application__grid-item-full">
+              <input class="field__input" autocomplete="email" type="email" id="ProviderEmail-{{ section.id }}" name="contact[email]" spellcheck="false" autocapitalize="off" aria-required="true" required placeholder="">
+              <label class="field__label" for="ProviderEmail-{{ section.id }}">Correo electrónico <span class="provider-application__required">*</span></label>
+            </div>
+            <div class="field">
+              <input class="field__input" autocomplete="tel" type="tel" id="ProviderPhone-{{ section.id }}" name="contact[phone]" required placeholder="">
+              <label class="field__label" for="ProviderPhone-{{ section.id }}">Teléfono <span class="provider-application__required">*</span></label>
+            </div>
+            <div class="field">
+              <input class="field__input" autocomplete="tel" type="tel" id="ProviderWhatsapp-{{ section.id }}" name="provider_whatsapp" placeholder="">
+              <label class="field__label" for="ProviderWhatsapp-{{ section.id }}">WhatsApp</label>
+            </div>
           </div>
-          <div class="field provider-application__grid-item-full">
-            <textarea rows="4" id="ProviderOpeningHours-{{ section.id }}" class="text-area field__input" name="provider_opening_hours" required placeholder="Ej: Lun-Vie 09:00-18:00 / Sab 10:00-14:00"></textarea>
-            <label class="field__label" for="ProviderOpeningHours-{{ section.id }}">Horarios <span class="provider-application__required">*</span></label>
+        </div>
+        <div class="provider-application__group">
+          <h3 class="provider-application__group-title">{{ 'icon-map-pin.svg' | inline_asset_content }} Ubicación</h3>
+          <div class="provider-application__grid provider-application__grid--two">
+            <div class="field provider-application__grid-item-full">
+              <input class="field__input" type="text" id="ProviderAddressLine1-{{ section.id }}" name="provider_address_line_1" required placeholder="" data-provider-address-line-1="true" autocomplete="street-address">
+              <label class="field__label" for="ProviderAddressLine1-{{ section.id }}">Dirección principal <span class="provider-application__required">*</span></label>
+            </div>
+            <div class="field">
+              <input class="field__input" type="text" id="ProviderCity-{{ section.id }}" name="provider_city" required placeholder="" data-provider-city="true" autocomplete="address-level2">
+              <label class="field__label" for="ProviderCity-{{ section.id }}">Ciudad <span class="provider-application__required">*</span></label>
+            </div>
+            <div class="field">
+              <input class="field__input" type="text" id="ProviderPostalCode-{{ section.id }}" name="provider_postal_code" required placeholder="" data-provider-postal-code="true" autocomplete="postal-code">
+              <label class="field__label" for="ProviderPostalCode-{{ section.id }}">Código postal <span class="provider-application__required">*</span></label>
+            </div>
+            <div class="field">
+              <input class="field__input" type="text" id="ProviderProvince-{{ section.id }}" name="provider_province_or_region" required placeholder="" data-provider-province="true" autocomplete="address-level1">
+              <label class="field__label" for="ProviderProvince-{{ section.id }}">Departamento / región <span class="provider-application__required">*</span></label>
+            </div>
+            <div class="field">
+              <label class="provider-application__select-label" for="ProviderCountry-{{ section.id }}">País <span class="provider-application__required">*</span></label>
+              <div class="select">
+                <select class="select__select" id="ProviderCountry-{{ section.id }}" name="provider_country" required data-provider-country="true">
+                  <option value="Perú" selected>Perú</option>
+                  <option value="Chile">Chile</option>
+                  <option value="Colombia">Colombia</option>
+                  <option value="Mexico">Mexico</option>
+                </select>
+                <span class="svg-wrapper">{{- 'icon-caret.svg' | inline_asset_content -}}</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
       <div class="provider-application__group">
-        <h3 class="provider-application__group-title">Contacto</h3>
-        <div class="provider-application__grid provider-application__grid--two">
-          <div class="field">
-            <input class="field__input" autocomplete="name" type="text" id="ProviderContactName-{{ section.id }}" name="contact[name]" required placeholder="Persona de contacto">
-            <label class="field__label" for="ProviderContactName-{{ section.id }}">Persona de contacto <span class="provider-application__required">*</span></label>
-          </div>
-          <div class="field">
-            <input class="field__input" autocomplete="email" type="email" id="ProviderEmail-{{ section.id }}" name="contact[email]" spellcheck="false" autocapitalize="off" aria-required="true" required placeholder="Correo electronico">
-            <label class="field__label" for="ProviderEmail-{{ section.id }}">Correo electronico <span class="provider-application__required">*</span></label>
-          </div>
-          <div class="field">
-            <input class="field__input" autocomplete="tel" type="tel" id="ProviderPhone-{{ section.id }}" name="contact[phone]" required placeholder="Telefono">
-            <label class="field__label" for="ProviderPhone-{{ section.id }}">Telefono <span class="provider-application__required">*</span></label>
-          </div>
-          <div class="field">
-            <input class="field__input" autocomplete="tel" type="tel" id="ProviderWhatsapp-{{ section.id }}" name="provider_whatsapp" required placeholder="WhatsApp">
-            <label class="field__label" for="ProviderWhatsapp-{{ section.id }}">WhatsApp <span class="provider-application__required">*</span></label>
-          </div>
-        </div>
-      </div>
-
-      <div class="provider-application__group">
-        <h3 class="provider-application__group-title">Ubicacion</h3>
-        <div class="provider-application__grid provider-application__grid--two">
-          <div class="field provider-application__grid-item-full">
-            <input class="field__input" type="text" id="ProviderAddressLine1-{{ section.id }}" name="provider_address_line_1" required placeholder="Direccion principal" data-provider-address-line-1="true" autocomplete="street-address">
-            <label class="field__label" for="ProviderAddressLine1-{{ section.id }}">Direccion principal <span class="provider-application__required">*</span></label>
-          </div>
-          <div class="field">
-            <input class="field__input" type="text" id="ProviderCity-{{ section.id }}" name="provider_city" required placeholder="Ciudad" data-provider-city="true" autocomplete="address-level2">
-            <label class="field__label" for="ProviderCity-{{ section.id }}">Ciudad <span class="provider-application__required">*</span></label>
-          </div>
-          <div class="field">
-            <input class="field__input" type="text" id="ProviderPostalCode-{{ section.id }}" name="provider_postal_code" required placeholder="Codigo postal" data-provider-postal-code="true" autocomplete="postal-code">
-            <label class="field__label" for="ProviderPostalCode-{{ section.id }}">Codigo postal <span class="provider-application__required">*</span></label>
-          </div>
-          <div class="field">
-            <input class="field__input" type="text" id="ProviderProvince-{{ section.id }}" name="provider_province_or_region" required placeholder="Provincia o region" data-provider-province="true" autocomplete="address-level1">
-            <label class="field__label" for="ProviderProvince-{{ section.id }}">Provincia o region <span class="provider-application__required">*</span></label>
-          </div>
-          <div class="field">
-            <input class="field__input" type="text" id="ProviderCountry-{{ section.id }}" name="provider_country" required placeholder="Pais" data-provider-country="true" autocomplete="country-name">
-            <label class="field__label" for="ProviderCountry-{{ section.id }}">Pais <span class="provider-application__required">*</span></label>
-          </div>
-          <div class="field provider-application__grid-item-full">
-            <input class="field__input" type="text" id="ProviderAddressLine2-{{ section.id }}" name="provider_address_line_2" required placeholder="Informacion adicional">
-            <label class="field__label" for="ProviderAddressLine2-{{ section.id }}">Informacion adicional <span class="provider-application__required">*</span></label>
-          </div>
-        </div>
-      </div>
-
-      <div class="provider-application__group">
-        <h3 class="provider-application__group-title">Datos fiscales y bancarios</h3>
+        <h3 class="provider-application__group-title">{{ 'icon-price-tag.svg' | inline_asset_content }} Datos fiscales y bancarios</h3>
         <div class="provider-application__grid provider-application__grid--two">
           <div class="field">
             <input class="field__input" type="text" id="ProviderAccountHolder-{{ section.id }}" name="provider_account_holder" required placeholder="Titular de la cuenta">
             <label class="field__label" for="ProviderAccountHolder-{{ section.id }}">Titular de la cuenta <span class="provider-application__required">*</span></label>
           </div>
           <div class="field">
-            <input class="field__input" type="text" id="ProviderTaxId-{{ section.id }}" name="provider_tax_id" required placeholder="NIF/CIF">
-            <label class="field__label" for="ProviderTaxId-{{ section.id }}">NIF/CIF <span class="provider-application__required">*</span></label>
+            <input class="field__input" type="text" id="ProviderTaxId-{{ section.id }}" name="provider_tax_id" required placeholder="RUC o DNI">
+            <label class="field__label" for="ProviderTaxId-{{ section.id }}">RUC o DNI <span class="provider-application__required">*</span></label>
           </div>
           <div class="field">
-            <input class="field__input" type="text" id="ProviderIban-{{ section.id }}" name="provider_iban" required placeholder="ES12 3456 7890 1234 5678 9012" autocapitalize="characters" spellcheck="false">
-            <label class="field__label" for="ProviderIban-{{ section.id }}">IBAN <span class="provider-application__required">*</span></label>
+            <input class="field__input" type="text" id="ProviderIban-{{ section.id }}" name="provider_iban" required placeholder="CCI o número de cuenta bancaria" autocapitalize="characters" spellcheck="false">
+            <label class="field__label" for="ProviderIban-{{ section.id }}">CCI o número de cuenta <span class="provider-application__required">*</span></label>
           </div>
           <div class="field">
             <label class="provider-application__select-label" for="ProviderBankName-{{ section.id }}">Banco <span class="provider-application__required">*</span></label>
             <div class="select">
               <select class="select__select" id="ProviderBankName-{{ section.id }}" name="provider_bank_name" required>
-                <option value="">Selecciona un banco</option>
-                <option value="Santander">Santander</option>
-                <option value="Caixa Bank">Caixa Bank</option>
-                <option value="Sabadell">Sabadell</option>
+                <option value="">Seleccionar entidad...</option>
+                <option value="BCP">BCP</option>
+                <option value="Interbank">Interbank</option>
+                <option value="BBVA Perú">BBVA Perú</option>
+                <option value="Scotiabank">Scotiabank</option>
               </select>
               <span class="svg-wrapper">
                 {{- 'icon-caret.svg' | inline_asset_content -}}
@@ -167,12 +173,12 @@
             </div>
           </div>
           <div class="field provider-application__grid-item-full">
-            <label class="provider-application__select-label" for="ProviderBankCountry-{{ section.id }}">Pais de la cuenta <span class="provider-application__required">*</span></label>
+            <label class="provider-application__select-label" for="ProviderBankCountry-{{ section.id }}">País de la cuenta <span class="provider-application__required">*</span></label>
             <div class="select">
               <select class="select__select" id="ProviderBankCountry-{{ section.id }}" name="provider_bank_country" required>
-                <option value="">Selecciona el pais de la cuenta</option>
-                {%- assign eu_countries = 'Alemania,Austria,Belgica,Bulgaria,Chipre,Croacia,Dinamarca,Eslovaquia,Eslovenia,Espana,Estonia,Finlandia,Francia,Grecia,Hungria,Irlanda,Italia,Letonia,Lituania,Luxemburgo,Malta,Paises Bajos,Polonia,Portugal,Republica Checa,Rumania,Suecia' | split: ',' -%}
-                {%- for country in eu_countries -%}
+                <option value="">Seleccionar país...</option>
+                {%- assign supported_countries = 'Perú,Chile,Colombia,México,Estados Unidos' | split: ',' -%}
+                {%- for country in supported_countries -%}
                   <option value="{{ country | strip }}">{{ country | strip }}</option>
                 {%- endfor -%}
               </select>
@@ -185,10 +191,9 @@
       </div>
 
       <div class="provider-application__group">
-        <h3 class="provider-application__group-title">Servicios</h3>
-        <p class="provider-application__note">Selecciona al menos una categoria de servicio.</p>
+        <h3 class="provider-application__group-title">{{ 'icon-filter.svg' | inline_asset_content }} Servicios</h3>
         <div class="provider-application__choices">
-          {%- assign provider_service_categories = 'Lavado,Detailing,PPF,Wrap,Tintado de lunas,Chapa y pintura,Mecanica basica,Llanteria,Parking,Venta de productos,Capacitaciones,Asistencia en carretera' | split: ',' -%}
+          {%- assign provider_service_categories = 'Lavado,Detailing,PPF,Wrap,Tintado,Chapa y pintura,Mecánica básica,Llantería,Parking,Venta productos,Capacitaciones,Asistencia' | split: ',' -%}
           {%- for category in provider_service_categories -%}
             <label class="provider-application__choice" for="ProviderCategory-{{ section.id }}-{{ forloop.index }}">
               <input type="checkbox" id="ProviderCategory-{{ section.id }}-{{ forloop.index }}" name="provider_service_categories[]" value="{{ category | strip }}">
@@ -196,34 +201,34 @@
             </label>
           {%- endfor -%}
         </div>
-        <p class="provider-application__error" data-provider-category-error>Debes seleccionar al menos una categoria de servicio.</p>
+        <p class="provider-application__error" data-provider-category-error>Debes seleccionar al menos una categoría de servicio.</p>
       </div>
       <p class="provider-application__error" data-provider-slug-error>No pudimos generar el identificador del proveedor. Revisa el nombre comercial o el nombre legal.</p>
 
       <div class="provider-application__group">
-        <h3 class="provider-application__group-title">Presencia digital y activos</h3>
+        <h3 class="provider-application__group-title">{{ 'icon-share.svg' | inline_asset_content }} Presencia digital y activos</h3>
         <div class="provider-application__grid provider-application__grid--two">
           <div class="field">
-            <input class="field__input" type="url" id="ProviderWebsite-{{ section.id }}" name="provider_website_url" placeholder="https://">
+            <input class="field__input" type="url" id="ProviderWebsite-{{ section.id }}" name="provider_website_url" placeholder="https://www.tuweb.com">
             <label class="field__label" for="ProviderWebsite-{{ section.id }}">Sitio web</label>
           </div>
           <div class="field">
-            <input class="field__input" type="url" id="ProviderInstagram-{{ section.id }}" name="provider_instagram_url" placeholder="https://instagram.com/...">
+            <input class="field__input" type="text" id="ProviderInstagram-{{ section.id }}" name="provider_instagram_url" placeholder="@usuario">
             <label class="field__label" for="ProviderInstagram-{{ section.id }}">Instagram</label>
           </div>
-          <div class="field">
-            <input class="field__input" type="url" id="ProviderLogoSource-{{ section.id }}" name="provider_logo_source_url" placeholder="https://...">
-            <label class="field__label" for="ProviderLogoSource-{{ section.id }}">URL del logo</label>
+          <div class="field provider-application__grid-item-full">
+            <input class="field__input" type="url" id="ProviderLogoSource-{{ section.id }}" name="provider_logo_source_url" required placeholder="https://storage.com/mi-logo.png">
+            <label class="field__label" for="ProviderLogoSource-{{ section.id }}">URL del logo (enlace directo) <span class="provider-application__required">*</span></label>
           </div>
-          <div class="field">
-            <textarea rows="4" id="ProviderGallerySource-{{ section.id }}" class="text-area field__input" name="provider_gallery_source_urls" placeholder="Una URL por linea"></textarea>
-            <label class="field__label" for="ProviderGallerySource-{{ section.id }}">URLs de galeria</label>
+          <div class="field provider-application__grid-item-full">
+            <textarea rows="4" id="ProviderGallerySource-{{ section.id }}" class="text-area field__input" name="provider_gallery_source_urls" placeholder="https://link1.jpg, https://link2.jpg..."></textarea>
+            <label class="field__label" for="ProviderGallerySource-{{ section.id }}">Galería de imágenes (URLs separadas por comas)</label>
           </div>
         </div>
       </div>
 
       <div class="provider-application__group">
-        <h3 class="provider-application__group-title">Revision y consentimiento</h3>
+        <h3 class="provider-application__group-title">Revisión y consentimiento</h3>
         <label class="provider-application__choice provider-application__choice--consent" for="ProviderConsent-{{ section.id }}">
           <input
             class="provider-application__checkbox-input visually-hidden"
@@ -235,7 +240,7 @@
           >
           <span class="provider-application__checkbox-ui" aria-hidden="true"></span>
           <span class="provider-application__choice-content">
-            <span class="provider-application__choice-text">Acepto que la solicitud quede en revision manual antes de aprobarse y que mis datos se usen para evaluar el alta del proveedor.</span>
+            <span class="provider-application__choice-text">Confirmo que he revisado toda la información técnica y comercial proporcionada. Entiendo que los datos serán utilizados exclusivamente para la gestión de proveedores de La Cochera Place Perú y autorizo la revisión manual de mi solicitud para garantizar los estándares de calidad de la red.</span>
           </span>
         </label>
       </div>
@@ -250,6 +255,7 @@
         <input type="hidden" name="provider_longitude" value="">
         <textarea name="contact[body]" rows="1"></textarea>
       </div>
+      <p class="provider-application__legal-note">* Campos obligatorios marcados con asterisco.</p>
 
       <p class="provider-application__error" data-provider-submit-error></p>
 
@@ -257,6 +263,24 @@
         <button type="submit" class="button" disabled>{{ section.settings.submit_label }}</button>
       </div>
     {%- endform -%}
+
+    <div class="provider-application__benefits">
+      <article class="provider-application__benefit">
+        <span class="provider-application__benefit-icon">{{ 'icon-checkmark.svg' | inline_asset_content }}</span>
+        <h4>Calidad garantizada</h4>
+        <p>Auditamos cada taller para asegurar una experiencia confiable para los clientes de la plataforma.</p>
+      </article>
+      <article class="provider-application__benefit">
+        <span class="provider-application__benefit-icon">{{ 'icon-star.svg' | inline_asset_content }}</span>
+        <h4>Visibilidad premium</h4>
+        <p>Tu negocio aparecerá frente a clientes que ya están buscando servicios automotrices en Perú.</p>
+      </article>
+      <article class="provider-application__benefit">
+        <span class="provider-application__benefit-icon">{{ 'icon-chat-bubble.svg' | inline_asset_content }}</span>
+        <h4>Soporte directo</h4>
+        <p>Canal de comunicacion directo con nuestro equipo de gestion tecnica.</p>
+      </article>
+    </div>
   </div>
 </div>
 
@@ -278,7 +302,7 @@
     {
       "type": "richtext",
       "id": "intro",
-      "default": "<p>Completa tu solicitud para unirte al marketplace. Revisaremos manualmente la informacion antes de activar tu perfil como proveedor.</p>",
+      "default": "<p>Completa tu solicitud para unirte al marketplace en Perú. Revisaremos manualmente la información antes de activar tu perfil como proveedor.</p>",
       "label": "Intro"
     },
     {
@@ -295,13 +319,13 @@
     {
       "type": "inline_richtext",
       "id": "pending_note",
-      "default": "Tu solicitud quedara con estado pendiente hasta ser validada manualmente por el equipo.",
+      "default": "Tu solicitud quedará con estado pendiente hasta ser validada manualmente por el equipo.",
       "label": "Pending note"
     },
     {
       "type": "inline_richtext",
       "id": "success_message",
-      "default": "Solicitud recibida. Ha quedado en estado pendiente de revision y te contactaremos cuando avance el proceso.",
+      "default": "Solicitud recibida. Ha quedado en estado pendiente de revisión y te contactaremos cuando avance el proceso.",
       "label": "Success message"
     },
     {
@@ -320,12 +344,12 @@
       "type": "text",
       "id": "google_maps_api_key",
       "label": "Google Maps browser API key",
-      "info": "Opcional. Si se completa, el autocomplete podra funcionar aunque la app proxy no responda."
+      "info": "Opcional. Lo recomendado es dejarlo vacio y servir esta clave desde la app proxy."
     },
     {
       "type": "text",
       "id": "google_maps_country_bias",
-      "default": "es",
+      "default": "pe",
       "label": "Google Maps country bias"
     },
     {

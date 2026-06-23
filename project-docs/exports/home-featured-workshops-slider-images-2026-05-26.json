@@ -1,10 +1,38 @@
 {
   "updated_at": "2026-05-26",
   "context": "Imagenes oficiales para el slider de Talleres Destacados del Home",
+  "live_theme": {
+    "name": "Codex Preview Homepage Round 3",
+    "id": "196749918545"
+  },
   "format_policy": {
     "shape": "square",
     "format": "webp",
     "size": "1600x1600"
+  },
+  "frontend_render_policy": {
+    "home_section": "home-category-provider-logos-slider",
+    "image_source_priority": [
+      "block.settings.logo (Shopify Files via image_picker)",
+      "provider_image_filename (fallback asset theme)"
+    ],
+    "image_presentation": {
+      "object_fit": "cover",
+      "container_size_rem": "16.6",
+      "border_radius_rem": "0.8"
+    }
+  },
+  "navigation_policy": {
+    "home_slider_links": "all provider cards link to vendor listing",
+    "vendor_listing_url_pattern": "/collections/vendors?q={Provider+Name}",
+    "clickable_areas": [
+      "category text",
+      "image",
+      "provider name"
+    ],
+    "vendor_page_heading": "Servicios de {Provider Name}",
+    "vendor_heading_render_section": "main-collection-product-grid",
+    "vendor_heading_condition": "pathname == /collections/vendors and q query param is present"
   },
   "source_folder": "theme-dawn-export/assets/provider-image-candidates",
   "shopify_upload_status": "uploaded_by_user",
@@ -99,6 +127,71 @@
       "provider_slug": "eixample-ocasion-motor",
       "file_name": "eixample-ocasion-motor-candidate-01-vehiculo-ocasion.webp"
     }
+  ],
+  "provider_vendor_links": [
+    {
+      "provider": "Gracia Garage Tools",
+      "url": "/collections/vendors?q=Gracia+Garage+Tools"
+    },
+    {
+      "provider": "Poblenou Box Rental",
+      "url": "/collections/vendors?q=Poblenou+Box+Rental"
+    },
+    {
+      "provider": "Sants Liquidaciones Auto",
+      "url": "/collections/vendors?q=Sants+Liquidaciones+Auto"
+    },
+    {
+      "provider": "Eixample Ocasion Motor",
+      "url": "/collections/vendors?q=Eixample+Ocasion+Motor"
+    },
+    {
+      "provider": "Barcelona Wash Hub",
+      "url": "/collections/vendors?q=Barcelona+Wash+Hub"
+    },
+    {
+      "provider": "Sants Wrap Studio",
+      "url": "/collections/vendors?q=Sants+Wrap+Studio"
+    },
+    {
+      "provider": "Barcelona Laundry",
+      "url": "/collections/vendors?q=Barcelona+Laundry"
+    },
+    {
+      "provider": "Besos Auto Essentials",
+      "url": "/collections/vendors?q=Besos+Auto+Essentials"
+    },
+    {
+      "provider": "Costa Garage Express",
+      "url": "/collections/vendors?q=Costa+Garage+Express"
+    },
+    {
+      "provider": "Detail Lab BCN",
+      "url": "/collections/vendors?q=Detail+Lab+BCN"
+    },
+    {
+      "provider": "Eixample Tire Center",
+      "url": "/collections/vendors?q=Eixample+Tire+Center"
+    },
+    {
+      "provider": "Montjuic Car Care",
+      "url": "/collections/vendors?q=Montjuic+Car+Care"
+    },
+    {
+      "provider": "Chamartin Glass & Detail",
+      "url": "/collections/vendors?q=Chamartin+Glass+%26+Detail"
+    },
+    {
+      "provider": "Poblenou Road Assist",
+      "url": "/collections/vendors?q=Poblenou+Road+Assist"
+    },
+    {
+      "provider": "Ramblas Parking Service",
+      "url": "/collections/vendors?q=Ramblas+Parking+Service"
+    },
+    {
+      "provider": "Rivas Detailing Studio",
+      "url": "/collections/vendors?q=Rivas+Detailing+Studio"
+    }
   ]
 }
-

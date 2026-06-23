@@ -1,29 +1,43 @@
-.provider-application {
-  max-width: 96rem;
+﻿.provider-application {
+  max-width: 132rem;
+}
+
+.provider-application .title {
+  font-size: clamp(4.2rem, 3.2rem + 1.4vw, 5.6rem);
+  margin-bottom: 1rem;
 }
 
 .provider-application__intro {
   color: rgba(var(--color-foreground), 0.75);
-  margin: 1.2rem 0 3.2rem;
-  max-width: 72rem;
+  margin: 1.2rem 0 4rem;
+  max-width: 78rem;
 }
 
 .provider-application__group {
-  border: 0.1rem solid rgba(var(--color-foreground), 0.08);
-  border-radius: 2rem;
-  padding: 2.4rem;
-  margin-bottom: 2rem;
-  background: rgba(var(--color-background), 0.88);
+  border: 0.1rem solid rgba(var(--color-foreground), 0.12);
+  border-radius: 0.6rem;
+  padding: 2.6rem;
+  margin-bottom: 2.2rem;
+  background: rgb(var(--color-background));
 }
 
 .provider-application__group-title {
-  margin: 0 0 1.6rem;
-  font-size: 1.8rem;
+  margin: 0 0 2rem;
+  font-size: 2.9rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.provider-application__group-title .icon,
+.provider-application__group-title svg {
+  width: 1.8rem;
+  height: 1.8rem;
 }
 
 .provider-application__grid {
   display: grid;
-  gap: 1.6rem;
+  gap: 1.8rem;
 }
 
 .provider-application__grid--two {
@@ -31,16 +45,22 @@
 }
 
 .provider-application__grid--business {
-  row-gap: 1.6rem;
+  row-gap: 1.8rem;
 }
 
 .provider-application__grid-item-full {
   grid-column: 1 / -1;
 }
 
+.provider-application__group-columns {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.2rem;
+}
+
 .provider-application__choices {
   display: grid;
-  gap: 1.2rem;
+  gap: 1rem;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   margin-top: 1rem;
 }
@@ -49,10 +69,10 @@
   display: flex;
   align-items: center;
   gap: 1rem;
-  min-height: 4.8rem;
+  min-height: 4.4rem;
   border: 0.1rem solid rgba(var(--color-foreground), 0.14);
-  border-radius: 1.4rem;
-  padding: 1.2rem 1.4rem;
+  border-radius: 0.2rem;
+  padding: 0.9rem 1.2rem;
   cursor: pointer;
   transition: border-color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
 }
@@ -75,10 +95,10 @@
   align-items: flex-start;
   gap: 1.4rem;
   min-height: auto;
-  padding: 1.6rem 1.8rem;
+  padding: 2rem;
   border-color: rgba(var(--color-foreground), 0.18);
-  background: rgba(var(--color-foreground), 0.03);
-  box-shadow: 0 0.8rem 2rem rgba(var(--color-foreground), 0.05);
+  background: rgba(var(--color-foreground), 0.02);
+  box-shadow: none;
 }
 
 .provider-application__checkbox-ui {
@@ -90,7 +110,7 @@
   align-items: center;
   justify-content: center;
   border: 0.18rem solid rgba(var(--color-foreground), 0.34);
-  border-radius: 0.6rem;
+  border-radius: 0.3rem;
   background: rgb(var(--color-background));
   color: rgb(var(--color-background));
   box-shadow: inset 0 0 0 0.1rem rgba(var(--color-background), 0.3);
@@ -174,7 +194,7 @@
 
 .provider-application__select-label {
   display: inline-block;
-  margin: 0 0 0.8rem;
+  margin: 0 0 0.6rem;
   color: rgba(var(--color-foreground), 0.75);
   font-size: 1.2rem;
   line-height: 1.4;
@@ -207,10 +227,15 @@
 
 .provider-application__actions {
   display: flex;
-  align-items: center;
+  align-items: flex-end;
+  justify-content: flex-end;
   gap: 1.4rem;
   flex-wrap: wrap;
-  margin-top: 2.4rem;
+  margin-top: 1.4rem;
+}
+
+.provider-application__actions .button {
+  min-width: 20rem;
 }
 
 .provider-application__status {
@@ -221,12 +246,55 @@
   color: rgb(180, 38, 38);
 }
 
+.provider-application__legal-note {
+  margin: 0.4rem 0 0;
+  font-size: 1.2rem;
+  color: rgba(var(--color-foreground), 0.75);
+}
+
+.provider-application__benefits {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.2rem;
+  margin-top: 5.2rem;
+  padding-bottom: 3rem;
+}
+
+.provider-application__benefit {
+  text-align: center;
+}
+
+.provider-application__benefit-icon {
+  display: inline-flex;
+  width: 2.2rem;
+  height: 2.2rem;
+  color: #1f5fe0;
+}
+
+.provider-application__benefit h4 {
+  margin: 1rem 0 0.8rem;
+  font-size: 2.8rem;
+}
+
+.provider-application__benefit p {
+  margin: 0;
+  color: rgba(var(--color-foreground), 0.75);
+}
+
 @media screen and (min-width: 750px) {
   .provider-application__grid--two {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .provider-application__choices {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .provider-application__group-columns {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .provider-application__benefits {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
