@@ -35,9 +35,11 @@ No se modifico Shopify, el theme publicado, Markets, productos ni el servidor pr
 
 ### Cambio pendiente en Shopify Admin
 
-- La moneda base de la tienda continua en `EUR`.
-- La direccion de facturacion continua en `ES`.
-- La zona horaria continua en `Europe/Madrid`.
+- La moneda base se cambio correctamente a `PEN`.
+- La zona horaria se cambio correctamente a `America/Lima`.
+- La direccion de facturacion continua en `ES` y debe corregirse a Peru.
+- Formato monetario activo: `S/. {{amount}}` y `S/. {{amount}} PEN`.
+- La moneda de presentacion unica es `PEN`.
 - Shopify rechazo configurar PEN como moneda del Market con `MULTIPLE_CURRENCIES_NOT_SUPPORTED`, porque la pasarela actual no admite multiples monedas.
 - Se debe cambiar primero la moneda base de la tienda a `PEN` desde Configuracion > General.
 - Por decision del owner, los valores numericos actuales se mantienen sin conversion porque el catalogo publicado es de QA.
