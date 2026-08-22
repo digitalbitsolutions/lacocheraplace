@@ -91,3 +91,14 @@ Para Peru deben revisarse, como minimo:
 - Rama de auditoria: `audit/peru-currency`
 - Punto de control previo: `b8ca70b`
 - No debe hacerse ninguna publicacion o cambio de moneda desde esta rama sin aprobacion explicita.
+
+## Lote de permisos Markets/locales
+
+- Autorizado por el owner el 2026-08-22.
+- Scopes agregados a la configuracion de la app:
+  - `read_markets`
+  - `write_markets`
+  - `read_locales`
+  - `write_locales`
+- El cambio de scopes no modifica por si mismo Markets, idiomas ni moneda.
+- Tras desplegar la configuracion, la app debe reautorizarse antes de que el token operativo incluya los permisos nuevos.
