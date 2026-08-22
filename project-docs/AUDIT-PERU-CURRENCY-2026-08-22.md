@@ -25,13 +25,23 @@ No se modifico Shopify, el theme publicado, Markets, productos ni el servidor pr
 
 ## Markets e idiomas
 
-- Existe un unico Market: `España`.
+- El 2026-08-22 el unico Market se migro de `España` a `Perú` mediante Admin API.
 - Estado del Market: `ACTIVE`.
 - Es el Market primario.
-- Unica region incluida: `ES` (`Spain`).
+- Unica region incluida: `PE` (`Peru`).
 - El Market no devuelve configuracion propia de moneda (`currencySettings = null`), por lo que hereda la moneda base EUR de la tienda.
 - Unico idioma publicado: espanol (`es`).
 - Espanol es el idioma primario.
+
+### Cambio pendiente en Shopify Admin
+
+- La moneda base de la tienda continua en `EUR`.
+- La direccion de facturacion continua en `ES`.
+- La zona horaria continua en `Europe/Madrid`.
+- Shopify rechazo configurar PEN como moneda del Market con `MULTIPLE_CURRENCIES_NOT_SUPPORTED`, porque la pasarela actual no admite multiples monedas.
+- Se debe cambiar primero la moneda base de la tienda a `PEN` desde Configuracion > General.
+- Por decision del owner, los valores numericos actuales se mantienen sin conversion porque el catalogo publicado es de QA.
+- Respaldo previo completo de 103 productos y sus variantes: `.live-check/shopify-pre-peru-market-backup-2026-08-22.json` (archivo local excluido de Git).
 
 ## Estado del catalogo
 
