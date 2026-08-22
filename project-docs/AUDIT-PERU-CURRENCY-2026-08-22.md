@@ -37,7 +37,7 @@ No se modifico Shopify, el theme publicado, Markets, productos ni el servidor pr
 
 - La moneda base se cambio correctamente a `PEN`.
 - La zona horaria se cambio correctamente a `America/Lima`.
-- La direccion de facturacion continua en `ES` y debe corregirse a Peru.
+- La direccion de facturacion se cambio correctamente a Peru (`PE`, Lima).
 - Formato monetario activo: `S/. {{amount}}` y `S/. {{amount}} PEN`.
 - La moneda de presentacion unica es `PEN`.
 - Shopify rechazo configurar PEN como moneda del Market con `MULTIPLE_CURRENCIES_NOT_SUPPORTED`, porque la pasarela actual no admite multiples monedas.
