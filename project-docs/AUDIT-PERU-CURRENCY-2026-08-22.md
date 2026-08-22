@@ -21,7 +21,17 @@ No se modifico Shopify, el theme publicado, Markets, productos ni el servidor pr
 - Zona horaria: `Europe/Madrid` (`CEST`, UTC+02:00 en la fecha de auditoria)
 - Unidad de peso: `KILOGRAMS`
 - Precios con impuestos incluidos: `true`
-- El token operativo actual no dispone de `read_markets`; Markets no pudo auditarse por API.
+- El token operativo dispone ya de acceso a Markets e idiomas tras publicar y autorizar `codex-store-admin-v4-7`.
+
+## Markets e idiomas
+
+- Existe un unico Market: `España`.
+- Estado del Market: `ACTIVE`.
+- Es el Market primario.
+- Unica region incluida: `ES` (`Spain`).
+- El Market no devuelve configuracion propia de moneda (`currencySettings = null`), por lo que hereda la moneda base EUR de la tienda.
+- Unico idioma publicado: espanol (`es`).
+- Espanol es el idioma primario.
 
 ## Estado del catalogo
 
@@ -81,7 +91,6 @@ Para Peru deben revisarse, como minimo:
 
 ## Bloqueos actuales
 
-- Falta `read_markets` en el token/API disponible.
 - Falta una clave SSH valida para el usuario productivo o confirmacion del usuario/host correctos.
 - Falta matriz de precios finales en PEN aprobada por Ches.
 - Falta confirmar datos fiscales, direccion legal y proveedor de pagos para la operacion peruana.
