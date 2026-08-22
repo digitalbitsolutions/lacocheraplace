@@ -15,8 +15,13 @@ import { requireOwnerAdmin } from "../models/access.server";
 export const links = () => [{ rel: "stylesheet", href: polarisStyles }];
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
-  await requireOwnerAdmin(request);
-  return { apiKey: process.env.SHOPIFY_API_KEY || "" };
+  try {
+    await requireOwnerAdmin(request);
+    return { apiKey: process.env.SHOPIFY_API_KEY || "" };
+  } catch (error) {
+    console.error("APP_LOADER_ERROR", error);
+    throw error;
+  }
 };
 
 export default function App() {

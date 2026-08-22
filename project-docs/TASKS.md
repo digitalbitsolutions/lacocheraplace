@@ -189,10 +189,26 @@ Nota de prioridad: este epic queda en pausa operativa para no mezclarlo con el p
 - [~] Crear catalogo semilla de productos por categoria y proveedor para probar filtros del Hero
 - [ ] Documentar estrategia de limpieza del catalogo QA una vez termine la validacion
 
-### Bloqueo operativo actual (app online)
-- [ ] Definir URL estable de hosting externo para la app embebida
-- [ ] Actualizar `application_url`, redirects, app proxy y webhooks a URL fija
-- [ ] Re-desplegar release de app con URL estable y validar acceso owner a `/app/purchase-flow`
+### Acceso operativo actual a `Laco Prov Admin`
+- La entrada correcta para el equipo no es la URL publica del tunnel pegada directamente en el navegador.
+- El acceso operativo debe hacerse desde Shopify Admin: `https://admin.shopify.com/store/lacocheraplace/apps`
+- Dentro de `Apps`, abrir `Laco Prov Admin`.
+- En la ficha de la app, usar el boton `Abrir app`.
+- Si Shopify muestra la pantalla de revision/permisos de una app no publicada, pulsar `Actualizar`.
+- La pantalla objetivo correcta es la consola embebida `Solicitudes de proveedores`.
+- Referencia operativa validada en `Manual La cochera.docx` bajo `D:\development\assets\lacocheraplace\`.
+
+### App online en hosting estable
+- [x] Definir URL estable: `https://admin.lacocheraplace.com`
+- [x] Desplegar app Remix en cPanel/CloudLinux con Node.js 22 + Passenger
+- [x] Migrar persistencia de SQLite local a MySQL alojado
+- [x] Actualizar `application_url`, redirects, app proxy y webhooks a URL fija
+- [x] Publicar release Shopify `laco-prov-admin-18` con URL estable
+- [x] Reautorizar la app tras reconstruir la base para regenerar la sesion offline
+- [x] Validar app proxy contra la sesion MySQL (`providers-nearby` HTTP 200)
+- [x] Retirar `X-Frame-Options: SAMEORIGIN` del dominio para permitir el iframe de Shopify Admin
+- [ ] Validar acceso owner a `/app/purchase-flow` desde Shopify Admin
+- [ ] Ejecutar lote separado de actualizacion de dependencias: auditoria inicial de produccion con `29` avisos (`1` critico transitivo)
 
 ## Epic activo inmediato: Catalogo carwash Ches + checkout Shopify nativo
 Objetivo: transformar el documento `DESCRIPCION DE SERVICIOS.txt` de Ches en un catalogo piloto de servicios Shopify, con checkout solo para servicios de precio cerrado y flujo consultivo para servicios a cotizar.

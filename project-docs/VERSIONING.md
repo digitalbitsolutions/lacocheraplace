@@ -70,8 +70,9 @@ Tener una forma simple de avanzar, revisar y volver atras si algo sale mal o no 
 - Validacion online 2026-06-08: buscador del hero verificado en storefront original tras ajuste de geolocalizacion y mensajes de error.
 
 ## Nota de despliegue app
-- Se publico una release de la app en Shopify Partners, pero con URL temporal de tunel caducada
-- Pendiente: migrar `application_url` a hosting estable y volver a desplegar para acceso online continuo
+- Hosting estable desplegado en `https://admin.lacocheraplace.com` con Node.js 22, Passenger y MySQL
+- Release Shopify `laco-prov-admin-18` publicada con `application_url` y callbacks estables
+- Pendiente de cierre: regenerar la sesion offline tras la reconstruccion de la cuenta y validar la vista embebida
 - El piloto carwash no debe depender de la app ni de tuneles si se puede resolver con productos, variantes, colecciones y checkout nativo Shopify
 
 ## Siguiente regla operativa

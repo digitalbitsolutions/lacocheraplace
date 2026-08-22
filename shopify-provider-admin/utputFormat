@@ -1,0 +1,20 @@
+HTTP/1.1 400 Bad Request
+Date: Wed, 13 May 2026 20:56:17 GMT
+Content-Type: text/html; charset=UTF-8
+Content-Length: 0
+Connection: keep-alive
+CF-RAY: 9fb491a4bf0d1644-BCN
+server-timing: processing;dur=14, verdict_flag_enabled;desc="count=2";dur=0.264
+Server-Timing: cfRequestDuration;dur=72.000027
+x-content-type-options: nosniff
+x-download-options: noopen
+x-permitted-cross-domain-policies: none
+x-xss-protection: 1; mode=block
+x-dc: gcp-europe-west1,gcp-europe-west4,gcp-europe-west4
+x-request-id: ab692ad9-cf36-45ce-a3ac-a5c091e845fb-1778705777
+Alt-Svc: h3=":443"; ma=86400
+cf-cache-status: DYNAMIC
+Report-To: {"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v4?s=pjHYQiGNWXu9BSAZdRj2MKAE9XZUfphT1QH%2Fc3%2BH7c%2B6OcPiBIUwO4RMwCZNRWbxE2186sqXvlLR9D2MbBpg0gOLNWtkVsBPZmxXCwK7PrN3FXDjuRuXZxa43VBJKNx9x3zxAilCIOlsW9PMquY%3D"}],"group":"cf-nel","max_age":604800}
+NEL: {"success_fraction":0.01,"report_to":"cf-nel","max_age":604800}
+Server: cloudflare
+

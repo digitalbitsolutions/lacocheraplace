@@ -2,7 +2,7 @@
 
 client_id = "a855294f6e78b76e92d6dce223bdd291"
 name = "Laco Prov Admin"
-application_url = "https://hist-closely-uniprotkb-ntsc.trycloudflare.com"
+application_url = "https://admin.lacocheraplace.com"
 embedded = true
 
 [build]
@@ -14,9 +14,9 @@ scopes = "read_metaobjects,write_metaobjects,read_metaobject_definitions,write_m
 
 [auth]
 redirect_urls = [
-  "https://hist-closely-uniprotkb-ntsc.trycloudflare.com/auth/callback",
-  "https://hist-closely-uniprotkb-ntsc.trycloudflare.com/auth/shopify/callback",
-  "https://hist-closely-uniprotkb-ntsc.trycloudflare.com/api/auth/callback",
+  "https://admin.lacocheraplace.com/auth/callback",
+  "https://admin.lacocheraplace.com/auth/shopify/callback",
+  "https://admin.lacocheraplace.com/api/auth/callback",
 ]
 
 [app_proxy]

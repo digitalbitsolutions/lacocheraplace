@@ -1,0 +1,94 @@
+title,handle,vendor,product_type,Checkout type,status,total_inventory
+Accesorios esenciales para coche,accesorios-ramblas-parking-service,Ramblas Parking Service,Servicio,,ACTIVE,0
+Alineacion rapida y control de neumaticos,alineacion-rapida-costa-garage-express,Costa Garage Express,Servicio,,ACTIVE,0
+Alineacion y balanceo,alineacion-balanceo-eixample-tire-center,Eixample Tire Center,Servicio,,ACTIVE,0
+Alquiler box 2 horas,alquiler-box-2-horas-poblenou-box-rental,Poblenou Box Rental,Servicio,,ACTIVE,0
+Alquiler box jornada completa,alquiler-box-jornada-completa-poblenou-box-rental,Poblenou Box Rental,Servicio,,ACTIVE,0
+Alquiler box media jornada,alquiler-box-media-jornada-poblenou-box-rental,Poblenou Box Rental,Servicio,,ACTIVE,0
+Asistencia por bateria descargada,asistencia-bateria-costa-garage-express,Costa Garage Express,Servicio,,ACTIVE,0
+Asistencia tecnica de taller,asistencia-tecnica-de-taller-poblenou-box-rental,Poblenou Box Rental,Servicio,,ACTIVE,0
+Cambio de aceite express,cambio-aceite-costa-garage-express,Costa Garage Express,Servicio,,ACTIVE,0
+Cambio de bateria a domicilio,cambio-bateria-poblenou-road-assist,Poblenou Road Assist,Servicio,,ACTIVE,0
+Cambio de neumatico a domicilio,cambio-neumatico-domicilio-poblenou-road-assist,Poblenou Road Assist,Servicio,,ACTIVE,0
+Cambio de neumaticos por eje,cambio-neumaticos-eixample-tire-center,Eixample Tire Center,Servicio,,ACTIVE,0
+Cambio y montaje de llantas,cambio-llantas-eixample-tire-center,Eixample Tire Center,Servicio,,ACTIVE,0
+Ceramico Carpro,ceramico-carpro-la-cochera-place,La Cochera Place,Servicio,,ACTIVE,0
+Compacto urbano revisado,compacto-urbano-revisado-eixample-ocasion-motor,Eixample Ocasion Motor,Servicio,,ACTIVE,0
+Cueros / Aros,cueros-aros-la-cochera-place,La Cochera Place,Servicio,,ACTIVE,0
+Desabollado sin pintura,desabollado-sin-pintura-montjuic-car-care,Montjuic Car Care,Servicio,,ACTIVE,0
+Descontaminado,descontaminado-pintura-la-cochera-place,La Cochera Place,Servicio,,ACTIVE,0
+Desinfeccion interior con ozono,ozono-interior-barcelona-wash-hub,Barcelona Wash Hub,Servicio,,ACTIVE,0
+Detailing Barcelona Laundry,detailing-barcelona-laundry,Barcelona Laundry,Detailing,Normal (incluye variaciones por tamaño de vehículo),ACTIVE,10
+Detailing esencial con proteccion,detailing-esencial-barcelona-wash-hub,Barcelona Wash Hub,Servicio,Normal (incluye variaciones por tamaño de vehículo),ACTIVE,0
+Detailing interior premium,detailing-interior-gracia-auto-spa,Gracia Auto Spa,Servicio,Normal (incluye variaciones por tamaño de vehículo),ACTIVE,0
+Detailing La Cochera Place,detailing,La Cochera Place,Detailing,Normal (incluye variaciones por tamaño de vehículo),ACTIVE,10
+Diagnostico rapido de averia,diagnostico-rapido-poblenou-road-assist,Poblenou Road Assist,Servicio,,ACTIVE,0
+Espacio y herramientas por horas - Gracia Garage Tools,espacio-y-herramientas-por-horas-gracia-garage-tools-gracia-garage-tools,Gracia Garage Tools,Servicio,,ACTIVE,0
+Garantia extendida ocasion,garantia-extendida-ocasion-eixample-ocasion-motor,Eixample Ocasion Motor,Servicio,,ACTIVE,0
+Grua express 24 horas,grua-express-poblenou-road-assist,Poblenou Road Assist,Servicio,,ACTIVE,0
+Grua nocturna urgente,grua-nocturna-costa-garage-express,Costa Garage Express,Servicio,,ACTIVE,0
+Grua urbana inmediata,grua-urbana-montjuic-car-care,Montjuic Car Care,Servicio,,ACTIVE,0
+Lavado Barcelona Laundry,lavado-full,Barcelona Laundry,Lavado,,ACTIVE,0
+Lavado Completo,lavado-completo-la-cochera-place,La Cochera Place,Servicio,Normal (incluye variaciones por tamaño de vehículo),ACTIVE,0
+Lavado completo de carroceria,lavado-completo-montjuic-car-care,Montjuic Car Care,Servicio,Normal (incluye variaciones por tamaño de vehículo),ACTIVE,0
+Lavado ecologico a mano,lavado-ecologico-gracia-auto-spa,Gracia Auto Spa,Servicio,Normal (incluye variaciones por tamaño de vehículo),ACTIVE,0
+Lavado express exterior,lavado-express-barcelona-wash-hub,Barcelona Wash Hub,Servicio,Normal (incluye variaciones por tamaño de vehículo),ACTIVE,0
+Lavado La Cochera Place,lavado-xxl,La Cochera Place,Lavado,Normal (incluye variaciones por tamaño de vehículo),ACTIVE,10
+Lavado premium interior y exterior,lavado-premium-barcelona-wash-hub,Barcelona Wash Hub,Servicio,Normal (incluye variaciones por tamaño de vehículo),ACTIVE,0
+Lavado premium mientras aparcas,lavado-premium-ramblas-parking-service,Ramblas Parking Service,Servicio,Normal (incluye variaciones por tamaño de vehículo),ACTIVE,0
+Lavado rapido mientras aparcas,lavado-rapido-ramblas-parking-service,Ramblas Parking Service,Servicio,Normal (incluye variaciones por tamaño de vehículo),ACTIVE,0
+Lavado Salon,lavado-salon-detailing-interior-la-cochera-place,La Cochera Place,Servicio,Normal (incluye variaciones por tamaño de vehículo),ACTIVE,0
+Lavado Vapor,lavado-vapor-interior-la-cochera-place,La Cochera Place,Servicio,Normal (incluye variaciones por tamaño de vehículo),ACTIVE,0
+Liquidacion SUV diesel,liquidacion-suv-diesel-sants-liquidaciones-auto,Sants Liquidaciones Auto,Servicio,,ACTIVE,0
+Liquidacion utilitario gasolina,liquidacion-utilitario-gasolina-sants-liquidaciones-auto,Sants Liquidaciones Auto,Servicio,,ACTIVE,0
+Liquidaciones automocion - Sants Liquidaciones Auto,liquidaciones-automocion-sants-liquidaciones-auto-sants-liquidaciones-auto,Sants Liquidaciones Auto,Servicio,,ACTIVE,0
+Mantenimiento preventivo esencial,mantenimiento-preventivo-montjuic-car-care,Montjuic Car Care,Servicio,,ACTIVE,0
+Mantenimiento rapido de revision basica,mantenimiento-rapido-barcelona-wash-hub,Barcelona Wash Hub,Servicio,,ACTIVE,0
+Motor a Vapor,motor-a-vapor-la-cochera-place,La Cochera Place,Servicio,,ACTIVE,0
+Oferta furgon urbano,oferta-furgon-urbano-sants-liquidaciones-auto,Sants Liquidaciones Auto,Servicio,,ACTIVE,0
+Pack de accesorios de cuidado,kit-cuidado-gracia-auto-spa,Gracia Auto Spa,Servicio,,ACTIVE,0
+Pack de accesorios de limpieza,accesorios-limpieza-gracia-auto-spa,Gracia Auto Spa,Servicio,,ACTIVE,0
+Pack de accesorios premium,pack-accesorios-besos-auto-essentials,Besos Auto Essentials,Servicio,,ACTIVE,0
+Pack herramientas mecanica ligera,pack-herramientas-mecanica-ligera-poblenou-box-rental,Poblenou Box Rental,Servicio,,ACTIVE,0
+Pack liquidacion mantenimiento inicial,pack-liquidacion-mantenimiento-inicial-eixample-ocasion-motor,Eixample Ocasion Motor,Servicio,,ACTIVE,0
+Pack revision pre-entrega,pack-revision-pre-entrega-sants-liquidaciones-auto,Sants Liquidaciones Auto,Servicio,,ACTIVE,0
+PARKING BADALONA,parking-badalona,La Cochera Place,,,ACTIVE,10
+PARKING BADALONA 2,parking-badalona-2,La Cochera Place,,,ACTIVE,10
+Parking con recepcion y servicio,parking-servicio-montjuic-car-care,Montjuic Car Care,Servicio,,ACTIVE,0
+Parking fin de semana,parking-fin-semana-ramblas-parking-service,Ramblas Parking Service,Servicio,,ACTIVE,0
+Parking seguro por dia,parking-dia-costa-garage-express,Costa Garage Express,Servicio,,ACTIVE,0
+Parking semanal en zona centro,parking-semanal-ramblas-parking-service,Ramblas Parking Service,Servicio,,ACTIVE,0
+PPF frontal de proteccion,ppf-frontal-detail-lab-bcn,Detail Lab BCN,Servicio,,ACTIVE,0
+PPF para capot y defensa,ppf-capot-sants-wrap-studio,Sants Wrap Studio,Servicio,,ACTIVE,0
+Pulido de brillo rapido,pulido-brillo-besos-auto-essentials,Besos Auto Essentials,Servicio,,ACTIVE,0
+Pulido de faros y opticas,pulido-faros-gracia-auto-spa,Gracia Auto Spa,Servicio,,ACTIVE,0
+Pulido Faros,pulido-faros-la-cochera-place,La Cochera Place,Servicio,,ACTIVE,0
+Pulido Pintura,pulido-pintura-la-cochera-place,La Cochera Place,Servicio,,ACTIVE,0
+Pulido y correccion de pintura,pulido-correccion-detail-lab-bcn,Detail Lab BCN,Servicio,Normal (incluye variaciones por tamaño de vehículo),ACTIVE,0
+Renta box premium con soporte,renta-box-premium-con-soporte-gracia-garage-tools,Gracia Garage Tools,Servicio,,ACTIVE,0
+Renta compresor y neumatica,renta-compresor-y-neumatica-gracia-garage-tools,Gracia Garage Tools,Servicio,,ACTIVE,0
+Renta de box y herramientas - Poblenou Box Rental,renta-de-box-y-herramientas-poblenou-box-rental-poblenou-box-rental,Poblenou Box Rental,Servicio,,ACTIVE,0
+Renta elevador por hora,renta-elevador-por-hora-gracia-garage-tools,Gracia Garage Tools,Servicio,,ACTIVE,0
+Renta herramientas detailing,renta-herramientas-detailing-gracia-garage-tools,Gracia Garage Tools,Servicio,,ACTIVE,0
+Renta kit diagnosis OBD,renta-kit-diagnosis-obd-gracia-garage-tools,Gracia Garage Tools,Servicio,,ACTIVE,0
+Reparacion de aranazos y roces,reparacion-aranazos-besos-auto-essentials,Besos Auto Essentials,Servicio,,ACTIVE,0
+Reparacion de chapa y pintura,chapa-pintura-montjuic-car-care,Montjuic Car Care,Servicio,,ACTIVE,0
+Reparacion de pinchazos,reparacion-pinchazos-eixample-tire-center,Eixample Tire Center,Servicio,,ACTIVE,0
+Reparacion estetica de paragolpes,reparacion-paragolpes-sants-wrap-studio,Sants Wrap Studio,Servicio,,ACTIVE,0
+Reparacion y cambio de parabrisas,parabrisas-poblenou-road-assist,Poblenou Road Assist,Servicio,,ACTIVE,0
+Retoque localizado de pintura,retoque-pintura-besos-auto-essentials,Besos Auto Essentials,Servicio,,ACTIVE,0
+Revision basica pre-itv,revision-basica-poblenou-road-assist,Poblenou Road Assist,Servicio,,ACTIVE,0
+Revision rapida con cambio de aceite,revision-aceite-eixample-tire-center,Eixample Tire Center,Servicio,,ACTIVE,0
+Revision rapida de frenos,revision-frenos-costa-garage-express,Costa Garage Express,Servicio,,ACTIVE,0
+Sedan familiar oportunidad,sedan-familiar-oportunidad-eixample-ocasion-motor,Eixample Ocasion Motor,Servicio,,ACTIVE,0
+Servicio tramitacion cambio titularidad,servicio-tramitacion-cambio-titularidad-sants-liquidaciones-auto,Sants Liquidaciones Auto,Servicio,,ACTIVE,0
+Sustitucion de luna delantera,sustitucion-luna-sants-wrap-studio,Sants Wrap Studio,Servicio,,ACTIVE,0
+SUV seminuevo certificado,suv-seminuevo-certificado-eixample-ocasion-motor,Eixample Ocasion Motor,Servicio,,ACTIVE,0
+Tintado de lunas completo,tintado-lunas-detail-lab-bcn,Detail Lab BCN,Servicio,Normal (incluye variaciones por tamaño de vehículo),ACTIVE,0
+Tintado premium de cristales,tintado-premium-sants-wrap-studio,Sants Wrap Studio,Servicio,,ACTIVE,0
+Tratamiento ceramico basico,ceramico-besos-auto-essentials,Besos Auto Essentials,Servicio,,ACTIVE,0
+Tratamiento ceramico premium,ceramico-detail-lab-bcn,Detail Lab BCN,Servicio,,ACTIVE,0
+Vehiculos usados seleccionados - Eixample Ocasion Motor,vehiculos-usados-seleccionados-eixample-ocasion-motor-eixample-ocasion-motor,Eixample Ocasion Motor,Servicio,,ACTIVE,0
+Vinilo completo para carroceria,vinilo-completo-sants-wrap-studio,Sants Wrap Studio,Servicio,,ACTIVE,0
+Wrap parcial de techo y pilares,wrap-techo-detail-lab-bcn,Detail Lab BCN,Servicio,,ACTIVE,0
+Wrap parcial para detalles exteriores,wrap-parcial-sants-wrap-studio,Sants Wrap Studio,Servicio,,ACTIVE,0

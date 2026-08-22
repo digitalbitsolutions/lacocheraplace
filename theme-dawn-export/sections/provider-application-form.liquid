@@ -193,7 +193,7 @@
       <div class="provider-application__group">
         <h3 class="provider-application__group-title">{{ 'icon-filter.svg' | inline_asset_content }} Servicios</h3>
         <div class="provider-application__choices">
-          {%- assign provider_service_categories = 'Lavado,Detailing,PPF,Wrap,Tintado,Chapa y pintura,Mecánica básica,Llantería,Parking,Venta productos,Capacitaciones,Asistencia' | split: ',' -%}
+          {%- assign provider_service_categories = 'Lavado,Detailing,PPF,Wrap,Tintado,Planchado y pintura,Mecánica básica,Llantería,Parking,Venta productos,Capacitaciones,Asistencia' | split: ',' -%}
           {%- for category in provider_service_categories -%}
             <label class="provider-application__choice" for="ProviderCategory-{{ section.id }}-{{ forloop.index }}">
               <input type="checkbox" id="ProviderCategory-{{ section.id }}-{{ forloop.index }}" name="provider_service_categories[]" value="{{ category | strip }}">

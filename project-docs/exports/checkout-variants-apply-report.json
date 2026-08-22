@@ -1,0 +1,83 @@
+{
+  "totalTargetHandles": 16,
+  "applied": [],
+  "alreadyOk": [],
+  "skippedComplex": [
+    {
+      "handle": "lavado-completo-la-cochera-place",
+      "variantCount": 3,
+      "optionNames": [
+        "Tipo de vehículo"
+      ]
+    },
+    {
+      "handle": "lavado-salon-detailing-interior-la-cochera-place",
+      "variantCount": 3,
+      "optionNames": [
+        "Tipo de vehiculo"
+      ]
+    },
+    {
+      "handle": "lavado-vapor-interior-la-cochera-place",
+      "variantCount": 3,
+      "optionNames": [
+        "Tipo de vehiculo"
+      ]
+    }
+  ],
+  "missing": [],
+  "errors": [
+    {
+      "handle": "detailing-barcelona-laundry",
+      "error": "Option does not exist"
+    },
+    {
+      "handle": "detailing-esencial-barcelona-wash-hub",
+      "error": "Option does not exist"
+    },
+    {
+      "handle": "detailing-interior-gracia-auto-spa",
+      "error": "Option does not exist"
+    },
+    {
+      "handle": "detailing",
+      "error": "Option does not exist"
+    },
+    {
+      "handle": "lavado-completo-montjuic-car-care",
+      "error": "Option does not exist"
+    },
+    {
+      "handle": "lavado-ecologico-gracia-auto-spa",
+      "error": "Option does not exist"
+    },
+    {
+      "handle": "lavado-express-barcelona-wash-hub",
+      "error": "Option does not exist"
+    },
+    {
+      "handle": "lavado-xxl",
+      "error": "Option does not exist"
+    },
+    {
+      "handle": "lavado-premium-barcelona-wash-hub",
+      "error": "Option does not exist"
+    },
+    {
+      "handle": "lavado-premium-ramblas-parking-service",
+      "error": "Option does not exist"
+    },
+    {
+      "handle": "lavado-rapido-ramblas-parking-service",
+      "error": "Option does not exist"
+    },
+    {
+      "handle": "pulido-correccion-detail-lab-bcn",
+      "error": "Option does not exist"
+    },
+    {
+      "handle": "tintado-lunas-detail-lab-bcn",
+      "error": "Option does not exist"
+    }
+  ]
+}

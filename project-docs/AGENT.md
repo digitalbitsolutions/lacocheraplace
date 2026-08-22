@@ -78,6 +78,10 @@ Actuar como arquitecto tecnico y ejecutor del theme, priorizando seguridad, reve
 - Regla operativa de catalogo QA: no deben existir productos de prueba sin `vendor` asignado; cada producto o servicio sembrado para pruebas debe quedar asociado a un proveedor concreto
 - Para cargas masivas de catalogo desde la app, `Laco Prov Admin` ya requiere permisos `read_products` y `write_products`
 - La guia operativa y el helper de aprobacion viven en `project-docs/provider-registration-workflow.md`, `scripts/provider_approval_workflow.py` y `shopify-provider-admin/`
+- Acceso operativo validado: entrar desde `https://admin.shopify.com/store/lacocheraplace/apps`, abrir `Laco Prov Admin` y usar `Abrir app`
+- Si Shopify muestra la pantalla de revision/permisos de app no publicada, pulsar `Actualizar` y continuar hasta la vista `Solicitudes de proveedores`
+- Host productivo estable de la app: `https://admin.lacocheraplace.com`
+- No volver a configurar tunnels temporales como `application_url`; el acceso operativo sigue entrando desde Shopify Admin
 
 ## Definicion de terminado por iteracion
 - El cambio compila o queda estructuralmente valido

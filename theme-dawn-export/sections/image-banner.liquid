@@ -317,8 +317,8 @@
                 <button type="button" class="home-hero-service-search__option" role="option" data-service-value="/collections/lavado" data-service-handle="lavado" data-service-label="Lavado de vehículos" aria-selected="false"><span class="home-hero-service-search__option-label">Lavado de vehículos</span><span class="home-hero-service-search__option-check" aria-hidden="true">&#10003;</span></button>
                 <button type="button" class="home-hero-service-search__option" role="option" data-service-value="/collections/detailing" data-service-handle="detailing" data-service-label="Detailing" aria-selected="false"><span class="home-hero-service-search__option-label">Detailing</span><span class="home-hero-service-search__option-check" aria-hidden="true">&#10003;</span></button>
                 <button type="button" class="home-hero-service-search__option" role="option" data-service-value="/collections/neumaticos-y-llantas" data-service-handle="neumaticos-y-llantas" data-service-label="Neumáticos y llantas" aria-selected="false"><span class="home-hero-service-search__option-label">Neumáticos y llantas</span><span class="home-hero-service-search__option-check" aria-hidden="true">&#10003;</span></button>
-                <button type="button" class="home-hero-service-search__option" role="option" data-service-value="/collections/ppf-wrap-tintado-lunas" data-service-handle="ppf-wrap-tintado-lunas" data-service-label="PPF, wrap y tintado de lunas" aria-selected="false"><span class="home-hero-service-search__option-label">PPF, wrap y tintado de lunas</span><span class="home-hero-service-search__option-check" aria-hidden="true">&#10003;</span></button>
-                <button type="button" class="home-hero-service-search__option" role="option" data-service-value="/collections/chapa-y-pintura" data-service-handle="chapa-y-pintura" data-service-label="Chapa y pintura" aria-selected="false"><span class="home-hero-service-search__option-label">Chapa y pintura</span><span class="home-hero-service-search__option-check" aria-hidden="true">&#10003;</span></button>
+                <button type="button" class="home-hero-service-search__option" role="option" data-service-value="/collections/ppf-wrap-tintado-lunas" data-service-handle="ppf-wrap-tintado-lunas" data-service-label="PPF, wrap y polarizado de lunas" aria-selected="false"><span class="home-hero-service-search__option-label">PPF, wrap y polarizado de lunas</span><span class="home-hero-service-search__option-check" aria-hidden="true">&#10003;</span></button>
+                <button type="button" class="home-hero-service-search__option" role="option" data-service-value="/collections/chapa-y-pintura" data-service-handle="chapa-y-pintura" data-service-label="Planchado y pintura" aria-selected="false"><span class="home-hero-service-search__option-label">Planchado y pintura</span><span class="home-hero-service-search__option-check" aria-hidden="true">&#10003;</span></button>
                 <button type="button" class="home-hero-service-search__option" role="option" data-service-value="/collections/mantenimiento-ligero" data-service-handle="mantenimiento-ligero" data-service-label="Mecánica básica" aria-selected="false"><span class="home-hero-service-search__option-label">Mecánica básica</span><span class="home-hero-service-search__option-check" aria-hidden="true">&#10003;</span></button>
                 <button type="button" class="home-hero-service-search__option" role="option" data-service-value="/collections/grua-y-auxlio-mecanico" data-service-handle="grua-y-auxlio-mecanico" data-service-label="Grúa y auxilio mecánico" aria-selected="false"><span class="home-hero-service-search__option-label">Grúa y auxilio mecánico</span><span class="home-hero-service-search__option-check" aria-hidden="true">&#10003;</span></button>
                 <button type="button" class="home-hero-service-search__option" role="option" data-service-value="/collections/parking" data-service-handle="parking" data-service-label="Parking" aria-selected="false"><span class="home-hero-service-search__option-label">Parking</span><span class="home-hero-service-search__option-check" aria-hidden="true">&#10003;</span></button>
@@ -685,11 +685,22 @@
 
       form.addEventListener('submit', async (event) => {
         event.preventDefault();
-        const targetUrl = valueInput.value;
-        const selectedHandle = handleInput.value;
+        let targetUrl = valueInput.value;
+        let selectedHandle = handleInput.value;
 
         if (isSubmitting) {
           return;
+        }
+
+        if ((!targetUrl || !selectedHandle) && options.length) {
+          const defaultOption =
+            options.find((item) => item.getAttribute('aria-selected') === 'true') || options[activeIndex] || options[0];
+
+          if (defaultOption) {
+            setSelection(defaultOption);
+            targetUrl = valueInput.value;
+            selectedHandle = handleInput.value;
+          }
         }
 
         if (!targetUrl || !selectedHandle) {

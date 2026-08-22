@@ -1,0 +1,25 @@
+{%- comment -%}
+  LCP Product Flow Router (scaffold)
+  Expected inputs:
+  - product
+  Outputs (future):
+  - Delegates to flow snippet by lcp.flow_type
+{%- endcomment -%}
+
+{%- assign lcp_flow_type = product.metafields.lcp.flow_type.value | default: '' | downcase | strip -%}
+{%- assign lcp_subflow_mode = product.metafields.lcp.subflow_mode.value | default: '' | downcase | strip -%}
+
+{%- case lcp_flow_type -%}
+  {%- when 'ecommerce' -%}
+    {%- render 'lcp-flow-ecommerce', product: product -%}
+  {%- when 'reserva_directa' -%}
+    {%- render 'lcp-flow-reserva-directa', product: product -%}
+  {%- when 'cotizacion' -%}
+    {%- render 'lcp-flow-cotizacion', product: product -%}
+  {%- when 'lead_generation' -%}
+    {%- render 'lcp-flow-lead-generation', product: product -%}
+  {%- when 'urgente' -%}
+    {%- render 'lcp-flow-urgente', product: product -%}
+  {%- when 'hibrido' -%}
+    {%- render 'lcp-flow-hibrido', product: product, subflow_mode: lcp_subflow_mode -%}
+{%- endcase -%}

@@ -1,0 +1,123 @@
+{
+  "pending": 13,
+  "applied": [
+    {
+      "handle": "detailing-barcelona-laundry",
+      "created": [
+        "Hatchback:100.00",
+        "Sedan:100.00",
+        "SUV:100.00",
+        "Van:100.00"
+      ]
+    },
+    {
+      "handle": "detailing-esencial-barcelona-wash-hub",
+      "created": [
+        "Hatchback:89.00",
+        "Sedan:89.00",
+        "SUV:89.00",
+        "Van:89.00"
+      ]
+    },
+    {
+      "handle": "detailing-interior-gracia-auto-spa",
+      "created": [
+        "Hatchback:119.00",
+        "Sedan:119.00",
+        "SUV:119.00",
+        "Van:119.00"
+      ]
+    },
+    {
+      "handle": "detailing",
+      "created": [
+        "Hatchback:100.00",
+        "Sedan:100.00",
+        "SUV:100.00",
+        "Van:100.00"
+      ]
+    },
+    {
+      "handle": "lavado-completo-montjuic-car-care",
+      "created": [
+        "Hatchback:35.00",
+        "Sedan:35.00",
+        "SUV:35.00",
+        "Van:35.00"
+      ]
+    },
+    {
+      "handle": "lavado-ecologico-gracia-auto-spa",
+      "created": [
+        "Hatchback:42.00",
+        "Sedan:42.00",
+        "SUV:42.00",
+        "Van:42.00"
+      ]
+    },
+    {
+      "handle": "lavado-express-barcelona-wash-hub",
+      "created": [
+        "Hatchback:29.00",
+        "Sedan:29.00",
+        "SUV:29.00",
+        "Van:29.00"
+      ]
+    },
+    {
+      "handle": "lavado-xxl",
+      "created": [
+        "Hatchback:100.00",
+        "Sedan:100.00",
+        "SUV:100.00",
+        "Van:100.00"
+      ]
+    },
+    {
+      "handle": "lavado-premium-barcelona-wash-hub",
+      "created": [
+        "Hatchback:39.00",
+        "Sedan:39.00",
+        "SUV:39.00",
+        "Van:39.00"
+      ]
+    },
+    {
+      "handle": "lavado-premium-ramblas-parking-service",
+      "created": [
+        "Hatchback:48.00",
+        "Sedan:48.00",
+        "SUV:48.00",
+        "Van:48.00"
+      ]
+    },
+    {
+      "handle": "lavado-rapido-ramblas-parking-service",
+      "created": [
+        "Hatchback:25.00",
+        "Sedan:25.00",
+        "SUV:25.00",
+        "Van:25.00"
+      ]
+    },
+    {
+      "handle": "pulido-correccion-detail-lab-bcn",
+      "created": [
+        "Hatchback:249.00",
+        "Sedan:249.00",
+        "SUV:249.00",
+        "Van:249.00"
+      ]
+    },
+    {
+      "handle": "tintado-lunas-detail-lab-bcn",
+      "created": [
+        "Hatchback:189.00",
+        "Sedan:189.00",
+        "SUV:189.00",
+        "Van:189.00"
+      ]
+    }
+  ],
+  "errors": []
+}

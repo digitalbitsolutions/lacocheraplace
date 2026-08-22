@@ -13,7 +13,14 @@ Thumbs.db
 # Local archives and temp artifacts
 *.zip
 *.log
+.tmp-*
+_home_live.html
+_vendor_live.html
+_contact_live.html
+_como_funciona_live*.html
 .tmp-shopify-cli/
+.tmp-theme-pull/
+.tmp-manual-images/
 
 # Local project workspaces and generated checks
 .live-check/
@@ -28,6 +35,8 @@ __pycache__/
 private-data/provider-approvals/*
 !private-data/provider-approvals/.gitkeep
 private-data/shopify-admin.env
+private-data/*.env
+private-data/provider-logos/
 .env.local
 
 # Dependencies

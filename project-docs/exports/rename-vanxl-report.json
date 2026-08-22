@@ -1,0 +1,82 @@
+[
+  {
+    "handle": "detailing-barcelona-laundry",
+    "status": "updated",
+    "errors": []
+  },
+  {
+    "handle": "detailing-esencial-barcelona-wash-hub",
+    "status": "updated",
+    "errors": []
+  },
+  {
+    "handle": "detailing-interior-gracia-auto-spa",
+    "status": "updated",
+    "errors": []
+  },
+  {
+    "handle": "detailing",
+    "status": "updated",
+    "errors": []
+  },
+  {
+    "handle": "lavado-completo-la-cochera-place",
+    "status": "updated",
+    "errors": []
+  },
+  {
+    "handle": "lavado-completo-montjuic-car-care",
+    "status": "updated",
+    "errors": []
+  },
+  {
+    "handle": "lavado-ecologico-gracia-auto-spa",
+    "status": "updated",
+    "errors": []
+  },
+  {
+    "handle": "lavado-express-barcelona-wash-hub",
+    "status": "updated",
+    "errors": []
+  },
+  {
+    "handle": "lavado-xxl",
+    "status": "updated",
+    "errors": []
+  },
+  {
+    "handle": "lavado-premium-barcelona-wash-hub",
+    "status": "updated",
+    "errors": []
+  },
+  {
+    "handle": "lavado-premium-ramblas-parking-service",
+    "status": "updated",
+    "errors": []
+  },
+  {
+    "handle": "lavado-rapido-ramblas-parking-service",
+    "status": "updated",
+    "errors": []
+  },
+  {
+    "handle": "lavado-salon-detailing-interior-la-cochera-place",
+    "status": "updated",
+    "errors": []
+  },
+  {
+    "handle": "lavado-vapor-interior-la-cochera-place",
+    "status": "updated",
+    "errors": []
+  },
+  {
+    "handle": "pulido-correccion-detail-lab-bcn",
+    "status": "updated",
+    "errors": []
+  },
+  {
+    "handle": "tintado-lunas-detail-lab-bcn",
+    "status": "updated",
+    "errors": []
+  }
+]

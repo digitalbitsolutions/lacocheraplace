@@ -182,7 +182,8 @@ Hasta ese momento, el trabajo principal sigue siendo local.
 - Drift local de `prisma/dev.sqlite` resuelto y migraciones aplicadas en entorno dev
 - Lote 2 completado: endpoint `POST /apps/service-precheck` + persistencia + respuesta `ok/incompatible/unverified`
 - Lote 3 en curso: metafield `service.purchase_flow` gestionado desde app y set piloto inicial preparado
-- Bloqueo actual: release de app publicada con URL temporal de tunel; pendiente mover a hosting estable con URL fija
+- Hosting estable desplegado en `https://admin.lacocheraplace.com` con Node.js 22, Passenger y MySQL
+- Release Shopify estable publicada como `laco-prov-admin-18`; pendiente validacion embebida final tras regenerar la sesion offline
 - Cambio de prioridad confirmado: Ches solicita piloto carwash con checkout para servicios de precio cerrado
 - La app/proxy no es requisito para el piloto carwash si Shopify nativo cubre catalogo, variantes y checkout
 

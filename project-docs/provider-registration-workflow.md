@@ -11,6 +11,9 @@ Implementar un alta de proveedores separada del registro de clientes, con revisi
 - El formulario puede capturar `google_place_id`, `latitude` y `longitude` cuando el usuario selecciona una sugerencia de Google Maps
 - La browser key publica para autocomplete ya no se guarda en el theme; la app proxy la entrega desde `GOOGLE_MAPS_BROWSER_API_KEY` cuando esta configurada
 - La consola del owner ya existe como custom app embebida en Shopify Admin: `Laco Prov Admin`
+- El acceso operativo validado a esa consola es: `https://admin.shopify.com/store/lacocheraplace/apps` -> `Laco Prov Admin` -> `Abrir app`
+- Si Shopify muestra la pantalla de revision/permisos de app no publicada, el owner debe pulsar `Actualizar`
+- La pantalla final esperada es la vista embebida `Solicitudes de proveedores`, no la URL publica del tunnel abierta directamente
 - La definicion objetivo del perfil esta descrita en [provider_profile_metaobject_definition.json](/d:/development/lacocheraplace.com/sample-data/provider_profile_metaobject_definition.json)
 - El helper manual de aprobacion sigue disponible en [provider_approval_workflow.py](/d:/development/lacocheraplace.com/scripts/provider_approval_workflow.py) como soporte o migracion
 
@@ -221,7 +224,7 @@ python scripts/provider_approval_workflow.py approve --input sample-data/provide
 - No se crea `provider_profile`
 
 ## Limitaciones conocidas
-- La app embebida depende de un host/tunel estable mientras no se despliegue a infraestructura fija
+- La app embebida esta alojada en `https://admin.lacocheraplace.com`; requiere que Passenger, MySQL y la sesion offline de Shopify permanezcan operativos
 - El formulario publico no crea paginas ni recursos de Shopify por si solo
 - El formulario no sube archivos binarios; en v1 recoge URLs de logo y galeria
 - El email sigue existiendo como respaldo temporal

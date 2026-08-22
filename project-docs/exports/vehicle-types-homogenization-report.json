@@ -1,0 +1,192 @@
+{
+  "scope": "checkout_type_normal_variaciones",
+  "targetCount": 16,
+  "optionName": "Tipo de veh?culo",
+  "optionValues": [
+    "Hatchback",
+    "Sed?n",
+    "Camioneta SUV",
+    "Van",
+    "Van XL"
+  ],
+  "updated": [
+    {
+      "handle": "detailing-barcelona-laundry",
+      "createdVariants": [
+        "Hatchback",
+        "Sed?n",
+        "Camioneta SUV",
+        "Van",
+        "Van XL"
+      ],
+      "basePrice": "100.00"
+    },
+    {
+      "handle": "detailing-esencial-barcelona-wash-hub",
+      "createdVariants": [
+        "Hatchback",
+        "Sed?n",
+        "Camioneta SUV",
+        "Van",
+        "Van XL"
+      ],
+      "basePrice": "89.00"
+    },
+    {
+      "handle": "detailing-interior-gracia-auto-spa",
+      "createdVariants": [
+        "Hatchback",
+        "Sed?n",
+        "Camioneta SUV",
+        "Van",
+        "Van XL"
+      ],
+      "basePrice": "119.00"
+    },
+    {
+      "handle": "detailing",
+      "createdVariants": [
+        "Hatchback",
+        "Sed?n",
+        "Camioneta SUV",
+        "Van",
+        "Van XL"
+      ],
+      "basePrice": "100.00"
+    },
+    {
+      "handle": "lavado-completo-la-cochera-place",
+      "createdVariants": [
+        "Hatchback",
+        "Sed?n",
+        "Camioneta SUV",
+        "Van",
+        "Van XL"
+      ],
+      "basePrice": "50.00"
+    },
+    {
+      "handle": "lavado-completo-montjuic-car-care",
+      "createdVariants": [
+        "Hatchback",
+        "Sed?n",
+        "Camioneta SUV",
+        "Van",
+        "Van XL"
+      ],
+      "basePrice": "35.00"
+    },
+    {
+      "handle": "lavado-ecologico-gracia-auto-spa",
+      "createdVariants": [
+        "Hatchback",
+        "Sed?n",
+        "Camioneta SUV",
+        "Van",
+        "Van XL"
+      ],
+      "basePrice": "42.00"
+    },
+    {
+      "handle": "lavado-express-barcelona-wash-hub",
+      "createdVariants": [
+        "Hatchback",
+        "Sed?n",
+        "Camioneta SUV",
+        "Van",
+        "Van XL"
+      ],
+      "basePrice": "29.00"
+    },
+    {
+      "handle": "lavado-xxl",
+      "createdVariants": [
+        "Hatchback",
+        "Sed?n",
+        "Camioneta SUV",
+        "Van",
+        "Van XL"
+      ],
+      "basePrice": "100.00"
+    },
+    {
+      "handle": "lavado-premium-barcelona-wash-hub",
+      "createdVariants": [
+        "Hatchback",
+        "Sed?n",
+        "Camioneta SUV",
+        "Van",
+        "Van XL"
+      ],
+      "basePrice": "39.00"
+    },
+    {
+      "handle": "lavado-premium-ramblas-parking-service",
+      "createdVariants": [
+        "Hatchback",
+        "Sed?n",
+        "Camioneta SUV",
+        "Van",
+        "Van XL"
+      ],
+      "basePrice": "48.00"
+    },
+    {
+      "handle": "lavado-rapido-ramblas-parking-service",
+      "createdVariants": [
+        "Hatchback",
+        "Sed?n",
+        "Camioneta SUV",
+        "Van",
+        "Van XL"
+      ],
+      "basePrice": "25.00"
+    },
+    {
+      "handle": "lavado-salon-detailing-interior-la-cochera-place",
+      "createdVariants": [
+        "Hatchback",
+        "Sed?n",
+        "Camioneta SUV",
+        "Van",
+        "Van XL"
+      ],
+      "basePrice": "0.00"
+    },
+    {
+      "handle": "lavado-vapor-interior-la-cochera-place",
+      "createdVariants": [
+        "Hatchback",
+        "Sed?n",
+        "Camioneta SUV",
+        "Van",
+        "Van XL"
+      ],
+      "basePrice": "0.00"
+    },
+    {
+      "handle": "pulido-correccion-detail-lab-bcn",
+      "createdVariants": [
+        "Hatchback",
+        "Sed?n",
+        "Camioneta SUV",
+        "Van",
+        "Van XL"
+      ],
+      "basePrice": "249.00"
+    },
+    {
+      "handle": "tintado-lunas-detail-lab-bcn",
+      "createdVariants": [
+        "Hatchback",
+        "Sed?n",
+        "Camioneta SUV",
+        "Van",
+        "Van XL"
+      ],
+      "basePrice": "189.00"
+    }
+  ],
+  "missing": [],
+  "errors": []
+}
