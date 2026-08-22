@@ -102,3 +102,6 @@ Para Peru deben revisarse, como minimo:
   - `write_locales`
 - El cambio de scopes no modifica por si mismo Markets, idiomas ni moneda.
 - Tras desplegar la configuracion, la app debe reautorizarse antes de que el token operativo incluya los permisos nuevos.
+- La credencial de automatizacion usada por `scripts/lib/shopify-auth.cjs` pertenece a `Codex store Admin v4`, no a `Laco Prov Admin`.
+- Configuracion enlazada para esa app: `shopify-provider-admin/shopify.app.codex-store-admin-v4.toml`.
+- `Laco Prov Admin` conserva los mismos scopes para poder gestionar Markets desde su sesion embebida si se incorpora esa funcion en el futuro.
