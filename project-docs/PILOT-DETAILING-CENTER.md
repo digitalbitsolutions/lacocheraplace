@@ -85,3 +85,13 @@ La grafía `Chamalleon` reproduce literalmente el catálogo entregado y debe con
 ## Rollback
 
 Si se cancela el piloto, retirar los cinco productos de `Online Store`, pasarlos a `DRAFT` o archivarlos por sus IDs y cambiar el estado del provider profile. No reutilizar los handles para otro proveedor.
+
+## Imagenes de servicio
+
+- Lote publicado en Shopify el 2026-09-01.
+- Cinco productos con seis imagenes WebP cada uno: `30` imagenes en total.
+- Resolucion normalizada: `1600 x 1600` px.
+- Fuentes utilizadas para este lote: Pexels y Pixabay.
+- Los 30 medios quedaron en estado `READY` y asociados directamente a sus productos.
+- Mapeo reproducible: `sample-data/shopify-detailing-center-image-assignments.csv`.
+- Entrada de descarga: `sample-data/product-image-pipeline-input-detailing-center.csv`.

@@ -95,9 +95,19 @@ readEnvFileIfPresent(path.join(MODULE_DIR, '.env'));
   const unsplashKey = process.env.UNSPLASH_ACCESS_KEY || '';
   const pexelsKey = process.env.PEXELS_API_KEY || '';
   const pixabayKey = process.env.PIXABAY_API_KEY || '';
+  const enabledProviders = new Set(
+    String(args.providers || 'unsplash,pexels,pixabay')
+      .split(',')
+      .map((provider) => provider.trim().toLowerCase())
+      .filter(Boolean),
+  );
 
-  if (!unsplashKey && !pexelsKey && !pixabayKey) {
-    throw new Error('No API keys found. Configure at least one provider key in env.');
+  const useUnsplash = enabledProviders.has('unsplash') && Boolean(unsplashKey);
+  const usePexels = enabledProviders.has('pexels') && Boolean(pexelsKey);
+  const usePixabay = enabledProviders.has('pixabay') && Boolean(pixabayKey);
+
+  if (!useUnsplash && !usePexels && !usePixabay) {
+    throw new Error('No enabled image provider has a configured API key.');
   }
 
   await ensureDir(LOG_ROOT);
@@ -122,13 +132,13 @@ readEnvFileIfPresent(path.join(MODULE_DIR, '.env'));
     const needed = Math.min(requested, Math.max(0, maxImagesPerRun - totalSaved));
 
     const providerResults = [];
-    if (unsplashKey) {
+    if (useUnsplash) {
       providerResults.push(...(await searchUnsplash(row.keyword, unsplashKey, needed * 3)));
     }
-    if (pexelsKey) {
+    if (usePexels) {
       providerResults.push(...(await searchPexels(row.keyword, pexelsKey, needed * 3)));
     }
-    if (pixabayKey) {
+    if (usePixabay) {
       providerResults.push(...(await searchPixabay(row.keyword, pixabayKey, needed * 3)));
     }
 
@@ -267,6 +277,7 @@ readEnvFileIfPresent(path.join(MODULE_DIR, '.env'));
     inputPath,
     maxImagesPerRun,
     filenameSuffix,
+    enabledProviders: [...enabledProviders],
     metadataPath,
     downloadLogPath,
     totalRows: rows.length,

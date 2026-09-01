@@ -70,10 +70,15 @@ Run real con CSV:
 npm run run -- --input ../../sample-data/product-image-pipeline-input.example.csv --max 40
 ```
 
+Seleccionar proveedores concretos (recomendado para excluir Unsplash mientras no se implemente su flujo de hotlink, atribucion y `download_location`):
+
+```bash
+npm run run -- --input ../../sample-data/product-image-pipeline-input.example.csv --max 40 --providers pexels,pixabay
+```
+
 ## Atajos desde `shopify-provider-admin`
 
 Se agregan scripts no disruptivos:
 
 - `npm run images:pipeline:dry-run`
 - `npm run images:pipeline`
-

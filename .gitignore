@@ -47,3 +47,4 @@ scripts/product-image-pipeline/node_modules/
 product-images/
 scripts/product-image-pipeline/logs/
 scripts/product-image-pipeline/.env
+scripts/product-image-pipeline/review*/
