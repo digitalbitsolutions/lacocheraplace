@@ -11,7 +11,7 @@ Este documento no reemplaza la documentacion historica del proyecto. Sirve como 
 - [~] P1: copy visible principal localizado; quedan datasets y contenido editorial historico de Espana.
 - [~] P2: theme y contrato piloto usan PEN; falta matriz comercial aprobada y migrar tags en Shopify mediante un lote autorizado.
 - [~] P3: nueva muestra Peru disponible; datasets Barcelona quedan marcados como legacy y no deben reimportarse.
-- [x] P4 local: formulario y backend alineados a RUC/DNI, CCI/cuenta, `pe` y validacion de placa peruana. Falta desplegar y probar contra Shopify.
+- [x] P4: formulario y backend alineados a RUC/DNI, CCI/cuenta, `pe` y validacion de placa peruana; theme y app desplegados el 2026-09-01.
 - [~] P5: taxonomia conservada para evitar roturas; quedan handles historicos espanoles en mocks.
 - [~] P6: arquitectura de flujos conservada; precheck Peru compila, pero el proveedor real de consulta de placas sigue pendiente.
 - [~] P7: PRD, tareas y modelo carwash actualizados; la auditoria del 22 de agosto se conserva como registro historico.
@@ -19,6 +19,16 @@ Este documento no reemplaza la documentacion historica del proyecto. Sirve como 
 ### Bloqueo de publicacion
 
 No publicar ni retirar `price-pending-pen` hasta recibir de Ches una matriz PEN por servicio y variante. Los valores numericos QA existentes no son precios aprobados.
+
+### Evidencia de despliegue 2026-09-01
+
+- Commit funcional: `a78e436`.
+- Theme live `Codex Preview Homepage Round 3` (`196749918545`): push incremental de `assets/provider-application-form.js`, verificado por SHA-256 remoto/local.
+- App: paquete instalado en `/home/lacocheraplace/apps/laco-provider-admin/current` con `.env` preservado.
+- Backup previo: `/home/lacocheraplace/apps/laco-provider-admin/releases/pre-a78e436-20260901.tgz`.
+- Migracion `20260901120000_localize_vehicle_country_peru` aplicada correctamente en MySQL.
+- Passenger reiniciado correctamente.
+- Smoke tests: login devuelve redireccion HTTP 302 esperada; app proxy `providers-nearby` devuelve HTTP 200; Prisma informa `Database schema is up to date`.
 
 ## Hallazgos iniciales
 

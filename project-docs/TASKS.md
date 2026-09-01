@@ -11,6 +11,7 @@
 - Modo actual: trabajo local primero, despliegue solo tras aprobacion
 - Ultimo hito confirmado: `asignacion de imagenes alojadas en Shopify Files a los 9 productos carwash existentes`
 - Iniciativa activa: `catalogo piloto carwash de Ches con checkout Shopify nativo`
+- Ultimo despliegue tecnico: `localizacion Peru de proveedores y precheck` desplegada en theme/app el `2026-09-01`; precios PEN siguen pendientes de Ches
 
 ## Plan Home final Ches (2026-06-01)
 Objetivo: implementar el diseno final del Home (excepto Hero), en secciones nativas Shopify y editables desde customizer.

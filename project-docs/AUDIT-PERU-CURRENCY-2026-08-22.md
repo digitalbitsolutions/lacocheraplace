@@ -139,4 +139,4 @@ Sin modificar Shopify ni el servidor productivo, se preparo el siguiente lote lo
 - valores `50/60/70` reclasificados como QA no aprobados, sin conversion automatica;
 - build y lint locales de la app completados correctamente.
 
-Pendiente de autorizacion/despliegue: aplicar la migracion MySQL, desplegar app/theme, migrar tags del catalogo real y validar Shopify/checkout. Sigue bloqueada la publicacion comercial hasta contar con la matriz PEN aprobada por Ches.
+Despliegue completado el 2026-09-01: theme incremental y app productiva actualizados, migracion MySQL aplicada, Passenger reiniciado y app proxy validado con HTTP 200. Sigue pendiente migrar tags del catalogo real y validar precios/checkout cuando Ches entregue la matriz PEN. La publicacion comercial permanece bloqueada hasta esa aprobacion.
