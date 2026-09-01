@@ -8,7 +8,7 @@
 - Provider profile: `gid://shopify/Metaobject/506256982353`.
 - Handle del proveedor: `detailing-center`.
 - Estado del perfil: `approved`, para que pueda participar en el directorio piloto.
-- Los cinco servicios están en `DRAFT` y no están publicados.
+- Los cinco servicios están `ACTIVE` y publicados en `Online Store` desde el 2026-09-01.
 - Flujo de los servicios: `service-flow-checkout`.
 
 ## Información pendiente del proveedor
@@ -65,15 +65,23 @@ La grafía `Chamalleon` reproduce literalmente el catálogo entregado y debe con
 - La escritura requiere `--apply`.
 - Si encuentra el provider o un handle existente, lo omite y no duplica datos.
 
-## Pendiente antes de publicar
+## Verificación de publicación
+
+- `https://www.lacocheraplace.com/products/tratamiento-ceramico-detailing-center` — HTTP 200.
+- `https://www.lacocheraplace.com/products/pulido-general-detailing-center` — HTTP 200.
+- `https://www.lacocheraplace.com/products/polarizado-detailing-center` — HTTP 200.
+- `https://www.lacocheraplace.com/products/full-body-ppf-detailing-center` — HTTP 200.
+- `https://www.lacocheraplace.com/products/ppf-proteccion-de-partes-detailing-center` — HTTP 200.
+- Publicación ejecutada con la credencial administrativa de operaciones; `Laco Prov Admin` no dispone de `write_publications`.
+
+## Pendiente para completar el piloto
 
 - Completar datos reales del proveedor.
 - Confirmar la grafía y especificaciones de la lámina Chamalleon.
 - Añadir logo e imágenes de servicio con derechos de uso confirmados.
 - Revisar descripciones, duración, alcance, impuestos y condiciones comerciales.
-- Validar las cinco fichas en preview.
-- Publicar únicamente tras aprobación explícita.
+- Revisar visualmente las cinco fichas publicadas en desktop y móvil.
 
 ## Rollback
 
-Mientras estén en draft, archivar o eliminar los cinco productos por sus IDs y cambiar el estado del provider profile si se cancela el piloto. No reutilizar los handles para otro proveedor.
+Si se cancela el piloto, retirar los cinco productos de `Online Store`, pasarlos a `DRAFT` o archivarlos por sus IDs y cambiar el estado del provider profile. No reutilizar los handles para otro proveedor.
