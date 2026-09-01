@@ -7,7 +7,7 @@
 - Asistente tecnico: `Codex`
 - Theme base de trabajo: `theme-dawn-export`
 - App admin base: `shopify-provider-admin`
-- Rama activa: `main`
+- Rama activa: `audit/peru-currency`
 - Modo actual: trabajo local primero, despliegue solo tras aprobacion
 - Ultimo hito confirmado: `asignacion de imagenes alojadas en Shopify Files a los 9 productos carwash existentes`
 - Iniciativa activa: `catalogo piloto carwash de Ches con checkout Shopify nativo`
@@ -146,7 +146,7 @@ Objetivo: mover un subconjunto de servicios al flujo de compra guiada con valida
 Nota de prioridad: este epic queda en pausa operativa para no mezclarlo con el piloto carwash de Ches. No se elimina ni se revierte; se retoma despues de validar el catalogo carwash y su checkout nativo.
 
 ### Alcance funcional confirmado
-- [x] Pais objetivo v1: `Espana`
+- [x] Pais objetivo original v1: `Espana` (epic pausado; debe revalidarse para Peru antes de retomarlo)
 - [x] Taxonomia v1: `moto`, `coche`, `SUV`, `furgon` con tallas `S/M/L`
 - [x] Precio final por variante nativa Shopify `familia + talla`
 - [x] Compatibilidad por existencia de variante; variante ausente = no compatible
@@ -220,10 +220,10 @@ Objetivo: transformar el documento `DESCRIPCION DE SERVICIOS.txt` de Ches en un 
 - [x] Plataforma de pago: checkout nativo Shopify si aplica
 - [x] Servicios con checkout: `Lavado Completo`, `Lavado Vapor`, `Lavado Salon`, `Motor a Vapor`, `Pulido Faros`
 - [x] Servicios sin checkout: `Pulido Pintura`, `Descontaminado`, `Ceramico Carpro`, `Cueros / Aros`
-- [x] Variantes visibles: `Coche`, `SUV`, `7 plazas`
+- [x] Variantes visibles: `Auto`, `Camioneta SUV`, `Camioneta 3 filas`
 - [x] Proveedor piloto: `La Cochera Place`
-- [x] Mercado objetivo de storefront: `Espana`
-- [x] Precios finales EUR: pendientes de confirmacion de Ches antes de publicar
+- [x] Mercado objetivo de storefront: `Peru`
+- [ ] Precios finales PEN: pendientes de confirmacion de Ches antes de publicar
 
 ### Lote C0: Contexto y contrato
 - [x] Leer documento de Ches completo
@@ -241,10 +241,10 @@ Objetivo: transformar el documento `DESCRIPCION DE SERVICIOS.txt` de Ches en un 
 ### Lote C2: CSV draft del catalogo Ches
 - [x] Crear CSV local en `sample-data/` con 9 servicios
 - [x] Mantener productos como `draft` hasta aprobacion
-- [x] Crear variantes `Coche`, `SUV`, `7 plazas` para servicios de precio cerrado
+- [x] Crear variantes `Auto`, `Camioneta SUV`, `Camioneta 3 filas` para servicios de precio cerrado
 - [x] Marcar servicios consultivos sin compra directa
 - [x] Aplicar tags `service-flow-checkout` o `service-flow-consultative`
-- [x] Mantener tag `price-pending-eur` hasta aprobacion de Ches
+- [x] Mantener tag `price-pending-pen` hasta aprobacion de Ches
 - [x] Criterio de salida: CSV validable e importable sin tocar produccion
 
 ### Lote C3: Ficha de servicio Shopify-native
@@ -269,16 +269,16 @@ Objetivo: transformar el documento `DESCRIPCION DE SERVICIOS.txt` de Ches en un 
 
 ### Lote C5: Validacion y aprobacion
 - [x] Importar primero en borrador o staging
-- [ ] Revisar precios EUR con Ches
+- [ ] Revisar precios PEN con Ches
 - [ ] Revisar visualmente con Meeguel
 - [ ] Publicar solo tras aprobacion explicita
 - [ ] Criterio de salida: piloto aprobado o rollback documentado
-- Bloqueo: no publicar ni retirar `price-pending-eur` hasta aprobacion explicita de precios EUR por Ches.
-- Importacion completada: 9 productos creados en Shopify como `draft`, con `published_at = null` y tag `price-pending-eur`.
+- Bloqueo Peru: no publicar comercialmente ni retirar `price-pending-pen` hasta aprobacion explicita de precios PEN por Ches.
+- Historial pre-Peru: 9 productos se crearon inicialmente como `draft`, con `published_at = null` y tag legado `price-pending-eur`.
 - Para preview real, `Lavado Completo` y `Pulido Pintura` quedaron temporalmente en estado `unlisted`; el resto del catalogo sigue en `draft`.
-- Actualizacion posterior solicitada por Meeguel: los 9 productos carwash quedaron `active` y publicados en Online Store para preview real en produccion, manteniendo `price-pending-eur` y precios `0.00` hasta aprobacion de Ches.
-- Piloto de contenido/precio real aplicado a `Lavado Completo`: descripcion corta/larga desde documento Ches, nota de tolerancia de estacionamiento y variantes EUR `Auto = 50.00`, `Camioneta SUV = 60.00`, `Camioneta 3 filas = 70.00`.
-- Ajuste UX para `Lavado Completo`: se retiro `price-pending-eur`, se agrego `service-checkout-disabled`, se desactivo gestion de inventario para evitar variantes tachadas y el theme live bloquea checkout mostrando CTA/formulario consultivo.
+- Historial pre-Peru: los 9 productos carwash quedaron `active` y publicados para preview, manteniendo entonces `price-pending-eur` y precios `0.00`. Este estado no constituye aprobacion comercial en PEN.
+- Piloto QA aplicado a `Lavado Completo`: descripcion corta/larga desde documento Ches, nota de tolerancia de estacionamiento y valores numericos heredados `Auto = 50.00`, `Camioneta SUV = 60.00`, `Camioneta 3 filas = 70.00`. No son precios PEN aprobados.
+- Historial pre-Peru: en `Lavado Completo` se retiro temporalmente el tag EUR, se agrego `service-checkout-disabled` y el theme bloqueo checkout con CTA consultivo.
 - Galeria piloto de `Lavado Completo`: 5 imagenes WebP subidas a Shopify desde `D:\development\assets\lacocheraplace\lavado-completo\toWEBP`; `img-lavado-completo (1).webp` quedo como imagen principal.
 - Decision posterior de Ches: `Lavado Completo` vuelve a checkout habilitado. Se retiro `service-checkout-disabled`, se elimino el formulario consultivo para este caso y el boton de compra nativo volvio a mostrarse.
 - Asignacion completada (2026-05-08): se vincularon imagenes alojadas en Shopify Files a los 9 productos carwash por `handle` usando `productCreateMedia`.
@@ -289,10 +289,10 @@ Objetivo: transformar el documento `DESCRIPCION DE SERVICIOS.txt` de Ches en un 
 - Normalizacion final de galeria (2026-05-08): los 9 productos carwash quedaron ajustados a `6` imagenes exactas por producto para revision visual consistente.
 
 ### Hoja de ejecucion inmediata C5 (2026-05-07)
-- [ ] Paso 1: consolidar matriz final de precios EUR por servicio/variante con validacion explicita de Ches
+- [ ] Paso 1: consolidar matriz final de precios PEN por servicio/variante con validacion explicita de Ches
 - [ ] Paso 2: revisar visualmente con Meeguel en preview activa (`196749918545`) al menos 1 servicio checkout y 1 consultivo
 - [ ] Paso 3: validar que los servicios consultivos no muestran compra directa y que checkout solo aparece donde corresponde
-- [ ] Paso 4: confirmar estado final de tags de control (`service-flow-checkout`, `service-flow-consultative`, `price-pending-eur`) por producto
+- [ ] Paso 4: confirmar estado final de tags de control (`service-flow-checkout`, `service-flow-consultative`, `price-pending-pen`) por producto
 - [ ] Paso 5: registrar decision final del lote: `aprobado para publicacion controlada` o `rollback documentado`
 - Evidencia minima a adjuntar en cierre C5: links de producto revisado + captura/nota de estado por servicio + decision firmada por Ches/Meeguel
 - Evidencia agregada (imagenes): productos verificados para revision visual:
@@ -349,7 +349,7 @@ Objetivo: transformar el documento `DESCRIPCION DE SERVICIOS.txt` de Ches en un 
 - [ ] Catalogo Ches: servicios 1-5 con variantes y checkout nativo activo
 - [ ] Catalogo Ches: servicios 6-9 sin checkout directo y con CTA/formulario consultivo
 - [ ] Catalogo Ches: vendor `La Cochera Place` visible y agrupable
-- [ ] Catalogo Ches: precios finales EUR aprobados por Ches antes de publicar
+- [ ] Catalogo Ches: precios finales PEN aprobados por Ches antes de publicar
 - [ ] Normalizacion de matriculas espanolas validas e invalidas
 - [ ] Mapeo externo -> `familia`, `talla`, dimensiones y snapshot persistido
 - [ ] Compatible: seleccion de variante correcta y compra habilitada

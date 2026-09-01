@@ -152,7 +152,9 @@ const REQUEST_FIELD_DEFINITIONS: MetaobjectFieldDefinitionInput[] = [
   { key: "longitude", name: "Longitude", type: "number_decimal" },
   { key: "account_holder", name: "Account holder", type: "single_line_text_field", required: true },
   { key: "tax_id", name: "Tax ID", type: "single_line_text_field", required: true },
-  { key: "iban", name: "IBAN", type: "single_line_text_field", required: true },
+  // Keep the legacy key for compatibility with existing metaobjects. In Peru this
+  // field stores a CCI or domestic bank account number, never an IBAN contract.
+  { key: "iban", name: "CCI or bank account", type: "single_line_text_field", required: true },
   { key: "bank_name", name: "Bank name", type: "single_line_text_field", required: true },
   { key: "bank_country", name: "Bank country", type: "single_line_text_field", required: true },
   { key: "service_categories", name: "Service categories", type: "list.single_line_text_field", required: true },
@@ -218,8 +220,8 @@ function normalizeTaxId(value: string) {
   return (value || "").replace(/\s+/g, "").toUpperCase();
 }
 
-function normalizeIban(value: string) {
-  return (value || "").replace(/\s+/g, "").toUpperCase();
+function normalizeBankAccount(value: string) {
+  return (value || "").replace(/[\s-]+/g, "").toUpperCase();
 }
 
 function isValidHttpUrl(value: string) {
@@ -231,71 +233,17 @@ function isValidHttpUrl(value: string) {
   }
 }
 
-function isValidIban(value: string) {
-  const iban = normalizeIban(value);
-  if (!/^[A-Z]{2}\d{2}[A-Z0-9]{11,30}$/.test(iban)) {
-    return false;
-  }
-
-  const rearranged = `${iban.slice(4)}${iban.slice(0, 4)}`;
-  let remainder = 0;
-
-  for (const char of rearranged) {
-    const fragment = /[A-Z]/.test(char)
-      ? String(char.charCodeAt(0) - 55)
-      : char;
-    for (const digit of fragment) {
-      remainder = (remainder * 10 + Number(digit)) % 97;
-    }
-  }
-
-  return remainder === 1;
+function isValidPeruvianBankAccount(value: string) {
+  const account = normalizeBankAccount(value);
+  // CCI has 20 digits. Domestic account formats vary by bank, so accept
+  // numeric account numbers from 8 to 20 digits without pretending to verify
+  // ownership or bank-specific check digits.
+  return /^\d{8,20}$/.test(account);
 }
 
-function isValidSpanishTaxId(value: string) {
+function isValidPeruvianTaxId(value: string) {
   const taxId = normalizeTaxId(value);
-  if (!taxId) return false;
-
-  const dniMatch = taxId.match(/^(\d{8})([A-Z])$/);
-  if (dniMatch) {
-    const letters = "TRWAGMYFPDXBNJZSQVHLCKE";
-    return letters[Number(dniMatch[1]) % 23] === dniMatch[2];
-  }
-
-  const nieMatch = taxId.match(/^([XYZ])(\d{7})([A-Z])$/);
-  if (nieMatch) {
-    const prefixMap: Record<string, string> = { X: "0", Y: "1", Z: "2" };
-    const number = `${prefixMap[nieMatch[1]]}${nieMatch[2]}`;
-    const letters = "TRWAGMYFPDXBNJZSQVHLCKE";
-    return letters[Number(number) % 23] === nieMatch[3];
-  }
-
-  const cifMatch = taxId.match(/^([ABCDEFGHJNPQRSUVW])(\d{7})([0-9A-J])$/);
-  if (!cifMatch) return false;
-
-  const letter = cifMatch[1];
-  const digits = cifMatch[2];
-  const control = cifMatch[3];
-  let sumEven = 0;
-  let sumOdd = 0;
-
-  digits.split("").forEach((digit, index) => {
-    const number = Number(digit);
-    if (index % 2 === 0) {
-      const doubled = number * 2;
-      sumOdd += Math.floor(doubled / 10) + (doubled % 10);
-    } else {
-      sumEven += number;
-    }
-  });
-
-  const total = sumEven + sumOdd;
-  const controlDigit = (10 - (total % 10)) % 10;
-  const controlLetter = "JABCDEFGHI"[controlDigit];
-
-  if ("PQRSNW".includes(letter)) return control === controlLetter;
-  if ("ABEH".includes(letter)) return control === String(controlDigit);
-  return control === String(controlDigit) || control === controlLetter;
+  return /^\d{8}$/.test(taxId) || /^\d{11}$/.test(taxId);
 }
 
 function parseListValue(value: string | null | undefined) {
@@ -539,8 +487,8 @@ export function validateProviderApplicationSubmission(
     ["provinceOrRegion", "Provincia o region"],
     ["country", "Pais"],
     ["accountHolder", "Titular de la cuenta"],
-    ["taxId", "NIF/CIF"],
-    ["iban", "IBAN"],
+    ["taxId", "RUC o DNI"],
+    ["iban", "CCI o numero de cuenta"],
     ["bankName", "Banco"],
     ["bankCountry", "Pais de la cuenta"],
     ["description", "Descripcion"],
@@ -559,13 +507,13 @@ export function validateProviderApplicationSubmission(
   }
 
   const taxId = String(payload.taxId || "").trim();
-  if (taxId && !isValidSpanishTaxId(taxId)) {
-    errors.taxId = "Introduce un NIF o CIF valido.";
+  if (taxId && !isValidPeruvianTaxId(taxId)) {
+    errors.taxId = "Introduce un RUC de 11 digitos o un DNI de 8 digitos.";
   }
 
   const iban = String(payload.iban || "").trim();
-  if (iban && !isValidIban(iban)) {
-    errors.iban = "Introduce un IBAN valido.";
+  if (iban && !isValidPeruvianBankAccount(iban)) {
+    errors.iban = "Introduce un CCI o numero de cuenta valido (8 a 20 digitos).";
   }
 
   const optionalUrls: Array<[keyof ProviderApplicationSubmission, string]> = [
@@ -743,7 +691,7 @@ export async function createProviderApplicationRequest(
     longitude: String(payload.longitude || "").trim(),
     accountHolder: payload.accountHolder.trim(),
     taxId: normalizeTaxId(payload.taxId),
-    iban: normalizeIban(payload.iban),
+    iban: normalizeBankAccount(payload.iban),
     bankName: payload.bankName.trim(),
     bankCountry: payload.bankCountry.trim(),
     serviceCategories: payload.serviceCategories,

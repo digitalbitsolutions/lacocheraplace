@@ -126,3 +126,17 @@ Para Peru deben revisarse, como minimo:
 - La credencial de automatizacion usada por `scripts/lib/shopify-auth.cjs` pertenece a `Codex store Admin v4`, no a `Laco Prov Admin`.
 - Configuracion enlazada para esa app: `shopify-provider-admin/shopify.app.codex-store-admin-v4.toml`.
 - `Laco Prov Admin` conserva los mismos scopes para poder gestionar Markets desde su sesion embebida si se incorpora esa funcion en el futuro.
+
+## Seguimiento local 2026-09-01
+
+Sin modificar Shopify ni el servidor productivo, se preparo el siguiente lote local:
+
+- defaults nuevos de vehiculo y lookup cambiados de `ES` a `PE`, preservando registros historicos;
+- validacion de placa peruana y codigo de pais `PE` en el precheck;
+- validacion backend de `RUC/DNI` y `CCI/cuenta bancaria` alineada con el formulario publico;
+- clave tecnica legacy `iban` conservada para compatibilidad con metaobjects existentes, aunque su contrato visible y validacion ya son peruanos;
+- contrato y CSV carwash migrados a `PEN` y `price-pending-pen`;
+- valores `50/60/70` reclasificados como QA no aprobados, sin conversion automatica;
+- build y lint locales de la app completados correctamente.
+
+Pendiente de autorizacion/despliegue: aplicar la migracion MySQL, desplegar app/theme, migrar tags del catalogo real y validar Shopify/checkout. Sigue bloqueada la publicacion comercial hasta contar con la matriz PEN aprobada por Ches.

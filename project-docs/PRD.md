@@ -45,7 +45,8 @@ Modelo comercial confirmado:
 - Si habra checkout nativo Shopify para servicios con precio cerrado
 - No se usaran plataformas de cobro externas para el piloto
 - Los servicios a cotizar mantienen flujo consultivo
-- Los precios finales deben estar aprobados por Ches antes de publicar
+- La moneda operativa del piloto Peru es PEN (`S/.`)
+- Los precios finales PEN deben estar aprobados por Ches antes de publicar
 
 ## Objetivo UX
 - Que la homepage explique claramente que se puede reservar o solicitar un servicio

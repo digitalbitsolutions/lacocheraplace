@@ -22,8 +22,8 @@ type GraphqlAdmin = {
   ) => Promise<Response>;
 };
 
-const PLATE_ES_REGEX = /^\d{4}[BCDFGHJKLMNPRSTVWXYZ]{3}$/;
-const DEFAULT_COUNTRY_CODE = "ES";
+const PLATE_PE_REGEX = /^(?=.*[A-Z])(?=.*\d)[A-Z0-9]{6}$/;
+const DEFAULT_COUNTRY_CODE = "PE";
 const PURCHASE_FLOW_CONSULTATIVE = "consultative";
 const PURCHASE_FLOW_PRECHECK = "vehicle_precheck_checkout";
 
@@ -151,12 +151,12 @@ export type ServicePrecheckResult =
   | PrecheckResultIncompatible
   | PrecheckResultUnverified;
 
-export function normalizeSpanishPlate(value: string) {
-  return (value || "").replace(/[\s-]+/g, "").toUpperCase();
+export function normalizePeruvianPlate(value: string) {
+  return (value || "").replace(/[^A-Z0-9]/gi, "").toUpperCase();
 }
 
-export function isValidSpanishPlate(value: string) {
-  return PLATE_ES_REGEX.test(value);
+export function isValidPeruvianPlate(value: string) {
+  return PLATE_PE_REGEX.test(value);
 }
 
 function normalizeForMatch(value: string) {
@@ -590,11 +590,11 @@ async function persistPrecheck(args: PersistArgs) {
 export function validateServicePrecheckInput(payload: Partial<PrecheckInput>) {
   const errors: Record<string, string> = {};
 
-  const plateNormalized = normalizeSpanishPlate(String(payload.plate || ""));
+  const plateNormalized = normalizePeruvianPlate(String(payload.plate || ""));
   if (!plateNormalized) {
     errors.plate = "La matricula es obligatoria.";
-  } else if (!isValidSpanishPlate(plateNormalized)) {
-    errors.plate = "La matricula no tiene un formato espanol valido (ej. 1234BCD).";
+  } else if (!isValidPeruvianPlate(plateNormalized)) {
+    errors.plate = "La placa no tiene un formato peruano valido (ej. ABC123).";
   }
 
   const hasProductRef =
@@ -667,7 +667,7 @@ export async function runServicePrecheck(
     productId: input.productId,
     productHandle: input.productHandle,
   });
-  const plateNormalized = normalizeSpanishPlate(input.plate);
+  const plateNormalized = normalizePeruvianPlate(input.plate);
   const countryCode = (input.countryCode || DEFAULT_COUNTRY_CODE).toUpperCase();
   const lookupResult = await lookupByPlate({
     plate: plateNormalized,

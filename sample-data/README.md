@@ -19,9 +19,11 @@ Este paquete deja preparado sample data para Shopify sin tocar todavia los datos
 - `shopify-demo-services-coverage-visible.csv`
   Añade servicios puntuales para asegurar que cada categoria visible tenga al menos 3 proveedores.
 - `demo-providers.json`
-  Registro auxiliar de los 10 proveedores demo con zonas, especialidades y los handles de sus 3 servicios.
+  Dataset historico Barcelona. Se conserva solo para trazabilidad y no debe reimportarse en la tienda Peru.
+- `demo-providers-peru.json`
+  Muestra segura de proveedores ficticios peruanos para desarrollo local. No representa negocios reales ni autoriza publicacion.
 - `shopify-carwash-ches-draft.csv`
-  Carga piloto carwash de Ches para `La Cochera Place` como productos Shopify en borrador. Mantiene precios `0.00` y tag `price-pending-eur` hasta aprobacion final.
+  Carga piloto carwash de Ches como productos Shopify en borrador. Mantiene precios `0.00` y tag `price-pending-pen` hasta aprobacion final de Ches.
 - `product-image-pipeline-input.example.csv`
   CSV base para el nuevo pipeline de imagenes (SKU/handle/categoria/keyword/image_count).
 - `product-image-pipeline-metadata.example.csv`
@@ -32,7 +34,8 @@ Este paquete deja preparado sample data para Shopify sin tocar todavia los datos
 - 10 proveedores demo
 - 3 servicios por proveedor
 - 30 servicios en total
-- contenido orientado a Barcelona
+- el paquete historico de 30 servicios esta orientado a Barcelona y queda clasificado como legacy
+- para trabajo nuevo de Peru usar `demo-providers-peru.json` y `shopify-carwash-ches-draft.csv`
 
 ## Extension de demo
 
@@ -51,6 +54,8 @@ Para asegurar que cada categoria del home tenga al menos 3 proveedores visibles:
 - objetivo: minimo 3 proveedores por categoria visible
 
 ## Importacion manual en Shopify
+
+Los CSV `shopify-demo-services-*` son legacy Barcelona y no deben importarse en el Market Peru. Solo pueden utilizarse como referencia historica local.
 
 1. Ve a `Productos`
 2. Pulsa `Importar`

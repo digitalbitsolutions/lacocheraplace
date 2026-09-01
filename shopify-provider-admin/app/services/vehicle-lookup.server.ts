@@ -45,7 +45,7 @@ export interface PlateLookupAdapter {
   lookupByPlate(input: LookupByPlateInput): Promise<LookupByPlateResult>;
 }
 
-const DEFAULT_COUNTRY_CODE = "ES";
+const DEFAULT_COUNTRY_CODE = "PE";
 const DEFAULT_TIMEOUT_MS = 10000;
 
 type HttpLookupResponse = {
@@ -68,7 +68,7 @@ type HttpLookupResponse = {
 };
 
 function normalizePlate(value: string) {
-  return (value || "").replace(/\s+/g, "").toUpperCase();
+  return (value || "").replace(/[^A-Z0-9]/gi, "").toUpperCase();
 }
 
 function normalizeFamily(value: unknown): VehicleFamilyKey | undefined {

@@ -30,7 +30,7 @@
   const isValidBankAccount = (value) => {
     const account = normalizeBankAccount(value);
     if (!account) return false;
-    return /^[A-Z0-9-]{8,34}$/.test(account);
+    return /^\d{8,20}$/.test(account);
   };
 
   const isValidPeruvianTaxId = (value) => {
@@ -372,7 +372,7 @@
     }
 
     if (element.name === 'provider_iban' && value && !isValidBankAccount(value)) {
-      return 'Introduce un CCI o numero de cuenta valido.';
+      return 'Introduce un CCI o numero de cuenta valido (8 a 20 digitos).';
     }
 
     if (urlFields.includes(element.name) && value && !isValidHttpUrl(value)) {

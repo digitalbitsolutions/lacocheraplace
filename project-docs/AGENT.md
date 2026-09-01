@@ -54,7 +54,7 @@ Actuar como arquitecto tecnico y ejecutor del theme, priorizando seguridad, reve
 - La distincion entre servicio comprable y consultivo se resuelve con tags importables por CSV: `service-flow-checkout` y `service-flow-consultative`
 - Variantes visibles confirmadas para servicios cerrados: `Coche`, `SUV`, `7 plazas`
 - Proveedor piloto confirmado: `La Cochera Place`
-- Los precios finales en EUR requieren aprobacion de Ches antes de publicar
+- Los precios finales en PEN requieren aprobacion de Ches antes de publicar
 - La compra guiada por matricula queda pausada mientras se cierra este piloto para no mezclar responsabilidades
 - El metafield `service.purchase_flow` queda reservado para la compra guiada por matricula, no para el piloto carwash
 

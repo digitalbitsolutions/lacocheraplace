@@ -19,7 +19,7 @@ Tags obligatorios:
 - `carwash`
 - `proveedor-la-cochera-place`
 - `ches-catalogo`
-- `price-pending-eur` mientras Ches no apruebe precio final
+- `price-pending-pen` mientras Ches no apruebe el precio final en soles
 
 Tags de flujo, mutuamente excluyentes:
 - `service-flow-checkout`: producto con checkout nativo
@@ -50,7 +50,7 @@ El metafield `service.purchase_flow` queda reservado para la compra guiada por m
 ## Variantes
 Servicios con `service-flow-checkout`:
 - `Option1 name`: `Tipo de vehiculo`
-- `Option1 value`: `Coche`, `SUV`, `7 plazas`
+- `Option1 value`: `Auto`, `Camioneta SUV`, `Camioneta 3 filas`
 
 Excepcion:
 - `Motor a Vapor` tiene precio unico. Para mantener consistencia de UX y catalogo, se crean las tres variantes con el mismo precio aprobado.
@@ -62,12 +62,12 @@ Servicios con `service-flow-consultative`:
 - `Price`: `0.00` solo como valor tecnico en draft, no publicable.
 
 ## Precios
-- No convertir precios `S/` a EUR.
-- El CSV draft puede usar `0.00` como placeholder tecnico con tag `price-pending-eur`.
-- Antes de publicar, Ches debe aprobar precios EUR y se debe retirar `price-pending-eur`.
-- Ningun producto con `price-pending-eur` puede publicarse.
-- Excepcion piloto confirmada por Meeguel/Ches: `Lavado Completo` usa importes `50.00`, `60.00` y `70.00` como precios en EUR para validar contenido real en storefront.
-- Decision mas reciente de Ches: `Lavado Completo` habilita checkout nativo con esos importes; no usa `service-checkout-disabled`.
+- La moneda contractual del piloto Peru es `PEN`; el storefront la presenta como `S/.`.
+- El CSV draft puede usar `0.00` como placeholder tecnico con tag `price-pending-pen`.
+- Antes de publicar, Ches debe aprobar los precios PEN y se debe retirar `price-pending-pen`.
+- Ningun producto con `price-pending-pen` puede publicarse.
+- Los importes `50.00`, `60.00` y `70.00` de `Lavado Completo` son datos QA heredados. No constituyen una matriz comercial PEN aprobada.
+- `Lavado Completo` mantiene el flujo de checkout nativo, pero su publicacion comercial queda bloqueada hasta aprobar el importe de cada variante.
 
 ## Colecciones y tags de categoria
 Las colecciones se resolveran por tags, siguiendo el patron actual del theme.

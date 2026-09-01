@@ -156,8 +156,8 @@ export default function ProviderApplicationDetail() {
                   title="Datos fiscales y bancarios"
                   items={[
                     ["Titular de la cuenta", application.accountHolder],
-                    ["NIF/CIF", application.taxId],
-                    ["IBAN", application.iban],
+                    ["RUC/DNI", application.taxId],
+                    ["CCI o cuenta bancaria", application.iban],
                     ["Banco", application.bankName],
                     ["Pais de la cuenta", application.bankCountry],
                   ]}

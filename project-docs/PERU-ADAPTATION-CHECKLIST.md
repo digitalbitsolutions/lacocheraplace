@@ -5,6 +5,21 @@ Adaptar el proyecto Shopify actual a la realidad comercial, operativa y UX de Pe
 
 Este documento no reemplaza la documentacion historica del proyecto. Sirve como hoja de migracion desde la base actual hacia una variante Peru.
 
+## Estado de ejecucion (2026-09-01)
+
+- [x] P0: baseline Peru aislado en `audit/peru-currency`.
+- [~] P1: copy visible principal localizado; quedan datasets y contenido editorial historico de Espana.
+- [~] P2: theme y contrato piloto usan PEN; falta matriz comercial aprobada y migrar tags en Shopify mediante un lote autorizado.
+- [~] P3: nueva muestra Peru disponible; datasets Barcelona quedan marcados como legacy y no deben reimportarse.
+- [x] P4 local: formulario y backend alineados a RUC/DNI, CCI/cuenta, `pe` y validacion de placa peruana. Falta desplegar y probar contra Shopify.
+- [~] P5: taxonomia conservada para evitar roturas; quedan handles historicos espanoles en mocks.
+- [~] P6: arquitectura de flujos conservada; precheck Peru compila, pero el proveedor real de consulta de placas sigue pendiente.
+- [~] P7: PRD, tareas y modelo carwash actualizados; la auditoria del 22 de agosto se conserva como registro historico.
+
+### Bloqueo de publicacion
+
+No publicar ni retirar `price-pending-pen` hasta recibir de Ches una matriz PEN por servicio y variante. Los valores numericos QA existentes no son precios aprobados.
+
 ## Hallazgos iniciales
 
 ### Estado actual

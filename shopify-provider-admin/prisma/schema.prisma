@@ -81,7 +81,7 @@ model Vehicle {
   customerContactId     String
   plateRaw              String
   plateNormalized       String
-  countryCode           String             @default("ES")
+  countryCode           String             @default("PE")
   vin                   String?
   make                  String?
   model                 String?
@@ -109,7 +109,7 @@ model VehicleLookupLog {
   shop            String
   plateRaw        String
   plateNormalized String
-  countryCode     String           @default("ES")
+  countryCode     String           @default("PE")
   provider        String
   requestPayload  String?
   responsePayload String?

@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Lima Auto Care Demo",
+    "zone": "Lima",
+    "specialties": ["lavado", "detailing"],
+    "email": "lima-auto-care@example.com",
+    "phone": "+51 999 000 101",
+    "is_demo": true
+  },
+  {
+    "name": "Arequipa Garage Demo",
+    "zone": "Arequipa",
+    "specialties": ["mantenimiento-ligero", "neumaticos"],
+    "email": "arequipa-garage@example.com",
+    "phone": "+51 999 000 102",
+    "is_demo": true
+  },
+  {
+    "name": "Trujillo Detail Demo",
+    "zone": "Trujillo",
+    "specialties": ["detailing", "ppf-wrap"],
+    "email": "trujillo-detail@example.com",
+    "phone": "+51 999 000 103",
+    "is_demo": true
+  }
+]
