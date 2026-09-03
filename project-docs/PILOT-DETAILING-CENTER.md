@@ -95,3 +95,14 @@ Si se cancela el piloto, retirar los cinco productos de `Online Store`, pasarlos
 - Los 30 medios quedaron en estado `READY` y asociados directamente a sus productos.
 - Mapeo reproducible: `sample-data/shopify-detailing-center-image-assignments.csv`.
 - Entrada de descarga: `sample-data/product-image-pipeline-input-detailing-center.csv`.
+
+## Inventario piloto
+
+- Inventario de prueba aplicado el 2026-09-01 y verificado de nuevo el 2026-09-03.
+- Las `13` variantes tienen `20` unidades disponibles en la ubicacion que atiende pedidos online.
+- Todos los servicios tienen seguimiento de inventario activo y politica `DENY`.
+- Las variantes estan configuradas como servicios que no requieren envio fisico.
+- Las cinco fichas y todas sus variantes devuelven `available: true` en el storefront.
+- Prueba de alta en carrito confirmada con HTTP `200`.
+- Script reproducible: `scripts/set_detailing_center_test_inventory.cjs`.
+- Permisos publicados: `read_inventory`, `write_inventory` y `read_locations`.
