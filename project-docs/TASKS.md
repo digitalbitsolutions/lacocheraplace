@@ -661,3 +661,7 @@ Evitar bloqueos por credenciales Shopify Admin API y tener recuperacion operativ
 - [ ] Validar visualmente esa ficha pública y decidir si se publica el resto del lote.
 - [ ] Sustituir las imagenes demostrativas por logos/fotos con autorizacion de uso antes de publicacion comercial.
 - [ ] Contactar antes de publicar a los tres perfiles `needs_contact`: Baterias USCAY, Comercio & Cia - Llantas y CARROCERIAS HERRERA.
+
+## Próxima sesión: descubrimiento local y fichas de proveedor
+- [ ] Incorporar buscador por ciudad y dirección con sugerencias de Google, para orientar al cliente hacia proveedores cercanos.
+- [ ] Hacer enlazable el nombre del proveedor que se muestra sobre la imagen en las fichas de producto o servicio; debe abrir la vista con todos los productos y servicios de ese proveedor.
