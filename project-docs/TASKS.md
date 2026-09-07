@@ -641,3 +641,23 @@ Evitar bloqueos por credenciales Shopify Admin API y tener recuperacion operativ
 - `Servicios de {Proveedor}` cuando la ruta es `/collections/vendors?q=...`.
 - [x] Seccion donde se renderiza el encabezado vendor:
 - `theme-dawn-export/sections/main-collection-product-grid.liquid`
+
+## Lote Chiclayo: perfiles de proveedores (2026-09-07)
+- [x] Investigar y normalizar 12 candidatos de la provincia de Chiclayo, Lambayeque.
+- [x] Cargar los 12 `provider_profile` como aprobados, sin sustituir proveedores existentes.
+- [x] Confirmar en produccion que el app proxy devuelve los 12 perfiles.
+- [ ] Recibir y validar oferta comercial, precios PEN y disponibilidad de cada proveedor antes de crear productos.
+- [x] Cargar 22 ofertas investigadas como productos `DRAFT`, con `vendor`, categoria normalizada, fuente y estado de verificacion (`2026-09-07`).
+- [x] Modelar por separado en Baterias USCAY la venta, instalacion y delivery de baterias.
+- [ ] Completar precios PEN, cobertura, duracion y condiciones comerciales; los 22 borradores no estan publicados ni son comprables.
+- [ ] Publicar solo las ofertas que el proveedor confirme expresamente.
+- [x] Asignar una imagen demostrativa de categoria a los 22 servicios de Chiclayo, reutilizando recursos ya alojados en Shopify (`2026-09-07`).
+- [x] Asignar imagen demostrativa coherente a las 12 fichas `provider_profile` desde el backend productivo (`2026-09-07`).
+- [x] Preparar y validar localmente la pantalla owner `Imágenes proveedores` para aplicar esas 12 asignaciones desde la sesion de la app (`2026-09-07`).
+- [x] Desplegar la pantalla `Imágenes proveedores` en `admin.lacocheraplace.com` y ejecutar las 12 asignaciones mediante la sesion offline de la app (`2026-09-07`).
+- [x] Publicar para revisión visual el servicio demostrativo `Equipamiento automotriz` de Ricar Multicenter; URL pública: `/products/equipamiento-automotriz-ricar-multicenter` (`2026-09-07`).
+- [x] Corregir la codificación de los textos fijos de descripción en las 22 ofertas de Chiclayo (`Fuente de verificación` y `Estado de verificación`) (`2026-09-07`).
+- [x] Configurar `Equipamiento automotriz — Ricar Multicenter` como flujo consultivo con metadatos `lcp.flow_type`, `lcp.whatsapp_phone`, `lcp.whatsapp_message` y `lcp.cta_primary_label`; la ficha muestra WhatsApp y no permite compra (`2026-09-07`).
+- [ ] Validar visualmente esa ficha pública y decidir si se publica el resto del lote.
+- [ ] Sustituir las imagenes demostrativas por logos/fotos con autorizacion de uso antes de publicacion comercial.
+- [ ] Contactar antes de publicar a los tres perfiles `needs_contact`: Baterias USCAY, Comercio & Cia - Llantas y CARROCERIAS HERRERA.

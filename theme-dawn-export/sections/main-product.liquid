@@ -242,6 +242,14 @@
   {% endif %}
   {% assign provider_vendor_query = product.vendor | url_param_escape %}
   {% assign provider_vendor_url = routes.collections_url | append: '/vendors?q=' | append: provider_vendor_query %}
+  {% assign service_whatsapp_phone = product.metafields.lcp.whatsapp_phone.value | default: '' | remove: '+' | remove: ' ' | remove: '-' | remove: '(' | remove: ')' %}
+  {% assign service_whatsapp_cta_label = product.metafields.lcp.cta_primary_label.value | default: 'Solicitar cotización por WhatsApp' %}
+  {% assign service_whatsapp_message = product.metafields.lcp.whatsapp_message.value | default: '' %}
+  {% if service_whatsapp_message == blank %}
+    {% capture service_whatsapp_message %}Hola, quiero solicitar una cotización para {{ product.title }} con {{ product.vendor }}. Mi vehículo es: [marca, modelo y año]. Necesito: [detalle del servicio o pack que buscas].{% endcapture %}
+  {% endif %}
+  {% assign service_whatsapp_message_encoded = service_whatsapp_message | strip | url_param_escape %}
+  {% assign service_whatsapp_url = 'https://wa.me/' | append: service_whatsapp_phone | append: '?text=' | append: service_whatsapp_message_encoded %}
   {% assign effective_gallery_layout = 'thumbnail_slider' %}
   {% assign effective_mobile_thumbnails = 'show' %}
   <div class="page-width">
@@ -668,7 +676,10 @@
                   <div class="service-actions" {{ block.shopify_attributes }}>
                     <p class="service-actions__note">Servicio consultivo. Contacta con el proveedor para confirmar disponibilidad, alcance y precio final.</p>
                     <div class="service-actions__links">
-                      <a class="button button--primary" href="{{ provider_vendor_url }}">Ver catálogo del proveedor</a>
+                      {%- if service_whatsapp_phone != blank -%}
+                        <a class="button button--primary" href="{{ service_whatsapp_url }}" target="_blank" rel="noopener">{{ service_whatsapp_cta_label | escape }}</a>
+                      {%- endif -%}
+                      <a class="button button--secondary" href="{{ provider_vendor_url }}">Ver catálogo del proveedor</a>
                     </div>
                   </div>
                 {%- else -%}
