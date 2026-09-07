@@ -1,0 +1,152 @@
+{
+  "generatedAt": "2026-09-03T20:08:24.213Z",
+  "apply": true,
+  "product": {
+    "id": "gid://shopify/Product/10665192980817",
+    "handle": "detailing",
+    "title": "Detailing La Cochera Place",
+    "descriptionHtml": "<p>Descripción Detailing</p>",
+    "vendor": "La Cochera Place",
+    "productType": "Detailing",
+    "status": "ACTIVE",
+    "createdAt": "2026-02-26T20:58:12Z",
+    "updatedAt": "2026-05-15T21:22:14Z",
+    "onlineStoreUrl": "https://www.lacocheraplace.com/products/detailing",
+    "tags": [],
+    "totalInventory": 0,
+    "media": {
+      "nodes": [
+        {
+          "id": "gid://shopify/MediaImage/67715271360849",
+          "mediaContentType": "IMAGE",
+          "alt": "",
+          "preview": {
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/1016/5102/2161/files/detailing.png?v=1772139596"
+            }
+          }
+        },
+        {
+          "id": "gid://shopify/MediaImage/69246895391057",
+          "mediaContentType": "IMAGE",
+          "alt": "",
+          "preview": {
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/1016/5102/2161/files/detailing-premium-01_8a92a2af-d2eb-4048-b9fe-257f8b90aed6.webp?v=1778614346"
+            }
+          }
+        },
+        {
+          "id": "gid://shopify/MediaImage/69246895423825",
+          "mediaContentType": "IMAGE",
+          "alt": "",
+          "preview": {
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/1016/5102/2161/files/detailing-premium-05_1b80ac49-143c-4c64-992a-25cdb16e34d6.webp?v=1778614347"
+            }
+          }
+        },
+        {
+          "id": "gid://shopify/MediaImage/69246895456593",
+          "mediaContentType": "IMAGE",
+          "alt": "",
+          "preview": {
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/1016/5102/2161/files/detailing-premium-03_3c08a520-13df-40e2-8d7b-02731ef40e59.webp?v=1778614347"
+            }
+          }
+        },
+        {
+          "id": "gid://shopify/MediaImage/69246895489361",
+          "mediaContentType": "IMAGE",
+          "alt": "",
+          "preview": {
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/1016/5102/2161/files/detailing-premium-04_7aca67b6-d173-486c-acf2-29dafbe904e0.webp?v=1778614346"
+            }
+          }
+        },
+        {
+          "id": "gid://shopify/MediaImage/69246895522129",
+          "mediaContentType": "IMAGE",
+          "alt": "",
+          "preview": {
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/1016/5102/2161/files/detailing-premium-02_83c319d8-47a1-46e1-81fb-d9540a7abd8a.webp?v=1778614346"
+            }
+          }
+        }
+      ]
+    },
+    "variants": {
+      "nodes": [
+        {
+          "id": "gid://shopify/ProductVariant/53788608758097",
+          "title": "Hatchback",
+          "price": "100.00",
+          "compareAtPrice": null,
+          "inventoryQuantity": 0,
+          "selectedOptions": [
+            {
+              "name": "Tipo de vehículo",
+              "value": "Hatchback"
+            }
+          ]
+        },
+        {
+          "id": "gid://shopify/ProductVariant/53788608790865",
+          "title": "Sedán",
+          "price": "100.00",
+          "compareAtPrice": null,
+          "inventoryQuantity": 0,
+          "selectedOptions": [
+            {
+              "name": "Tipo de vehículo",
+              "value": "Sedán"
+            }
+          ]
+        },
+        {
+          "id": "gid://shopify/ProductVariant/53788608823633",
+          "title": "Camioneta SUV",
+          "price": "100.00",
+          "compareAtPrice": null,
+          "inventoryQuantity": 0,
+          "selectedOptions": [
+            {
+              "name": "Tipo de vehículo",
+              "value": "Camioneta SUV"
+            }
+          ]
+        },
+        {
+          "id": "gid://shopify/ProductVariant/53788608856401",
+          "title": "Van",
+          "price": "100.00",
+          "compareAtPrice": null,
+          "inventoryQuantity": 0,
+          "selectedOptions": [
+            {
+              "name": "Tipo de vehículo",
+              "value": "Van"
+            }
+          ]
+        },
+        {
+          "id": "gid://shopify/ProductVariant/53788608889169",
+          "title": "Camioneta XL",
+          "price": "100.00",
+          "compareAtPrice": null,
+          "inventoryQuantity": 0,
+          "selectedOptions": [
+            {
+              "name": "Tipo de vehículo",
+              "value": "Camioneta XL"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "deletedProductId": "gid://shopify/Product/10665192980817"
+}

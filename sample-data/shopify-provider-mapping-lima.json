@@ -1,0 +1,21 @@
+[
+  { "source_vendor": "Barcelona Laundry", "target_vendor": "House Car Wash", "reason": "Lavado de vehículos" },
+  { "source_vendor": "Barcelona Wash Hub", "target_vendor": "Ecolim Car Wash", "reason": "Lavado y cuidado general" },
+  { "source_vendor": "Gracia Auto Spa", "target_vendor": "ROYAL CAR WASH", "reason": "Lavado, detailing y cuidado" },
+  { "source_vendor": "Detail Lab BCN", "target_vendor": "Monky Auto Detailing - SAN MIGUEL", "reason": "Detailing, cerámico y PPF" },
+  { "source_vendor": "Besos Auto Essentials", "target_vendor": "Custom Garage Car Detailing", "reason": "Detailing, pintura y accesorios de cuidado" },
+  { "source_vendor": "Montjuic Car Care", "target_vendor": "INFINITY DETAIL | Premium Garage", "reason": "Lavado, detailing y carrocería" },
+  { "source_vendor": "Sants Wrap Studio", "target_vendor": "TINTPRO Polarizado 3M en Lima", "reason": "Polarizado, láminas y wrap" },
+  { "source_vendor": "Rivas Detailing Studio", "target_vendor": "PROTECFILMS - Polarizados y Láminas de Seguridad", "reason": "PPF, polarizado y protección" },
+  { "source_vendor": "Gracia Garage Tools", "target_vendor": "Cavalie Automotriz", "reason": "Mecánica y herramientas de taller" },
+  { "source_vendor": "Costa Garage Express", "target_vendor": "AUTOMOTRIZ LIMA WORLD", "reason": "Mantenimiento, frenos y asistencia" },
+  { "source_vendor": "Eixample Ocasion Motor", "target_vendor": "GT Automotriz", "reason": "Revisión y mantenimiento de vehículos" },
+  { "source_vendor": "Eixample Tire Center", "target_vendor": "Servisa - Goodyear Lima", "reason": "Neumáticos, alineación y balanceo" },
+  { "source_vendor": "Sants Liquidaciones Auto", "target_vendor": "Ekono Llantas La Marina", "reason": "Catálogo demostrativo de automoción y mantenimiento" },
+  { "source_vendor": "Ramblas Parking Service", "target_vendor": "Battery Plaza - La Victoria", "reason": "Catálogo demostrativo de servicios y accesorios" },
+  { "source_vendor": "Poblenou Box Rental", "target_vendor": "DITESAC El Centro de las Baterías - Surquillo", "reason": "Catálogo demostrativo de herramientas y accesorios" },
+  { "source_vendor": "La Cochera Place", "target_vendor": "La Cochera Place", "reason": "Proveedor interno; conserva su catálogo" },
+  { "source_vendor": "Detailing Center", "target_vendor": "Detailing Center", "reason": "Proveedor interno; conserva su catálogo" },
+  { "source_vendor": "Poblenou Road Assist", "target_vendor": "Grúas y Servicios Express S.A.C.", "reason": "Grúa, rescate y auxilio mecánico" },
+  { "source_vendor": "Chamartin Glass & Detail", "target_vendor": "AutoGlass And Film - parabrisas - polarizados", "reason": "Parabrisas, lunas y polarizado" }
+]

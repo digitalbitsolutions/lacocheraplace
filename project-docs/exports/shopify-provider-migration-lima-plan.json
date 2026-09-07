@@ -1,0 +1,1876 @@
+{
+  "generatedAt": "2026-09-03T19:21:17.026Z",
+  "mode": "apply",
+  "shop": {
+    "name": "LACOCHERAPLACE",
+    "myshopifyDomain": "cs3msy-n8.myshopify.com"
+  },
+  "sourceDataset": "C:\\Users\\LC\\Downloads\\candidatos_proveedores_peru.json",
+  "sourceMapping": "D:\\development\\lacocheraplace.com\\sample-data\\shopify-provider-mapping-lima.json",
+  "providerMapping": [
+    {
+      "source_vendor": "Barcelona Laundry",
+      "target_vendor": "House Car Wash",
+      "reason": "Lavado de vehículos"
+    },
+    {
+      "source_vendor": "Barcelona Wash Hub",
+      "target_vendor": "Ecolim Car Wash",
+      "reason": "Lavado y cuidado general"
+    },
+    {
+      "source_vendor": "Gracia Auto Spa",
+      "target_vendor": "ROYAL CAR WASH",
+      "reason": "Lavado, detailing y cuidado"
+    },
+    {
+      "source_vendor": "Detail Lab BCN",
+      "target_vendor": "Monky Auto Detailing - SAN MIGUEL",
+      "reason": "Detailing, cerámico y PPF"
+    },
+    {
+      "source_vendor": "Besos Auto Essentials",
+      "target_vendor": "Custom Garage Car Detailing",
+      "reason": "Detailing, pintura y accesorios de cuidado"
+    },
+    {
+      "source_vendor": "Montjuic Car Care",
+      "target_vendor": "INFINITY DETAIL | Premium Garage",
+      "reason": "Lavado, detailing y carrocería"
+    },
+    {
+      "source_vendor": "Sants Wrap Studio",
+      "target_vendor": "TINTPRO Polarizado 3M en Lima",
+      "reason": "Polarizado, láminas y wrap"
+    },
+    {
+      "source_vendor": "Rivas Detailing Studio",
+      "target_vendor": "PROTECFILMS - Polarizados y Láminas de Seguridad",
+      "reason": "PPF, polarizado y protección"
+    },
+    {
+      "source_vendor": "Gracia Garage Tools",
+      "target_vendor": "Cavalie Automotriz",
+      "reason": "Mecánica y herramientas de taller"
+    },
+    {
+      "source_vendor": "Costa Garage Express",
+      "target_vendor": "AUTOMOTRIZ LIMA WORLD",
+      "reason": "Mantenimiento, frenos y asistencia"
+    },
+    {
+      "source_vendor": "Eixample Ocasion Motor",
+      "target_vendor": "GT Automotriz",
+      "reason": "Revisión y mantenimiento de vehículos"
+    },
+    {
+      "source_vendor": "Eixample Tire Center",
+      "target_vendor": "Servisa - Goodyear Lima",
+      "reason": "Neumáticos, alineación y balanceo"
+    },
+    {
+      "source_vendor": "Sants Liquidaciones Auto",
+      "target_vendor": "Ekono Llantas La Marina",
+      "reason": "Catálogo demostrativo de automoción y mantenimiento"
+    },
+    {
+      "source_vendor": "Ramblas Parking Service",
+      "target_vendor": "Battery Plaza - La Victoria",
+      "reason": "Catálogo demostrativo de servicios y accesorios"
+    },
+    {
+      "source_vendor": "Poblenou Box Rental",
+      "target_vendor": "DITESAC El Centro de las Baterías - Surquillo",
+      "reason": "Catálogo demostrativo de herramientas y accesorios"
+    },
+    {
+      "source_vendor": "La Cochera Place",
+      "target_vendor": "La Cochera Place",
+      "reason": "Proveedor interno; conserva su catálogo"
+    },
+    {
+      "source_vendor": "Detailing Center",
+      "target_vendor": "Detailing Center",
+      "reason": "Proveedor interno; conserva su catálogo"
+    },
+    {
+      "source_vendor": "Poblenou Road Assist",
+      "target_vendor": "Grúas y Servicios Express S.A.C.",
+      "reason": "Grúa, rescate y auxilio mecánico"
+    },
+    {
+      "source_vendor": "Chamartin Glass & Detail",
+      "target_vendor": "AutoGlass And Film - parabrisas - polarizados",
+      "reason": "Parabrisas, lunas y polarizado"
+    }
+  ],
+  "invariants": {
+    "productCount": 108,
+    "activeProductCount": 108,
+    "productsWithMedia": 98,
+    "productFieldsChanged": [
+      "vendor"
+    ],
+    "preservedFields": [
+      "id",
+      "handle",
+      "title",
+      "description",
+      "price",
+      "variants",
+      "status",
+      "publications",
+      "tags",
+      "media"
+    ]
+  },
+  "targetProviders": [
+    {
+      "providerName": "House Car Wash",
+      "district": "Miraflores",
+      "province": "Lima",
+      "region": "Lima",
+      "verificationStatus": "verified_strong"
+    },
+    {
+      "providerName": "Ecolim Car Wash",
+      "district": "Santiago de Surco",
+      "province": "Lima",
+      "region": "Lima",
+      "verificationStatus": "verified_basic"
+    },
+    {
+      "providerName": "ROYAL CAR WASH",
+      "district": "Surquillo",
+      "province": "Lima",
+      "region": "Lima",
+      "verificationStatus": "verified_strong"
+    },
+    {
+      "providerName": "Monky Auto Detailing - SAN MIGUEL",
+      "district": "San Miguel",
+      "province": "Lima",
+      "region": "Lima",
+      "verificationStatus": "verified_strong"
+    },
+    {
+      "providerName": "Custom Garage Car Detailing",
+      "district": "Pueblo Libre",
+      "province": "Lima",
+      "region": "Lima",
+      "verificationStatus": "verified_strong"
+    },
+    {
+      "providerName": "INFINITY DETAIL | Premium Garage",
+      "district": "Surquillo",
+      "province": "Lima",
+      "region": "Lima",
+      "verificationStatus": "needs_contact"
+    },
+    {
+      "providerName": "TINTPRO Polarizado 3M en Lima",
+      "district": "Pueblo Libre",
+      "province": "Lima",
+      "region": "Lima",
+      "verificationStatus": "verified_strong"
+    },
+    {
+      "providerName": "PROTECFILMS - Polarizados y Láminas de Seguridad",
+      "district": "La Victoria",
+      "province": "Lima",
+      "region": "Lima",
+      "verificationStatus": "verified_strong"
+    },
+    {
+      "providerName": "Cavalie Automotriz",
+      "district": "Lima",
+      "province": "Lima",
+      "region": "Lima",
+      "verificationStatus": "verified_strong"
+    },
+    {
+      "providerName": "AUTOMOTRIZ LIMA WORLD",
+      "district": "Breña",
+      "province": "Lima",
+      "region": "Lima",
+      "verificationStatus": "verified_basic"
+    },
+    {
+      "providerName": "GT Automotriz",
+      "district": "La Molina",
+      "province": "Lima",
+      "region": "Lima",
+      "verificationStatus": "verified_strong"
+    },
+    {
+      "providerName": "Servisa - Goodyear Lima",
+      "district": "La Victoria",
+      "province": "Lima",
+      "region": "Lima",
+      "verificationStatus": "verified_strong"
+    },
+    {
+      "providerName": "Ekono Llantas La Marina",
+      "district": "Pueblo Libre",
+      "province": "Lima",
+      "region": "Lima",
+      "verificationStatus": "verified_strong"
+    },
+    {
+      "providerName": "Battery Plaza - La Victoria",
+      "district": "La Victoria",
+      "province": "Lima",
+      "region": "Lima",
+      "verificationStatus": "verified_strong"
+    },
+    {
+      "providerName": "DITESAC El Centro de las Baterías - Surquillo",
+      "district": "Surquillo",
+      "province": "Lima",
+      "region": "Lima",
+      "verificationStatus": "verified_strong"
+    }
+  ],
+  "changes": [
+    {
+      "productId": "gid://shopify/Product/10720436093265",
+      "handle": "accesorios-limpieza-gracia-auto-spa",
+      "title": "Pack de accesorios de limpieza",
+      "status": "ACTIVE",
+      "hasMedia": true,
+      "sourceVendor": "Gracia Auto Spa",
+      "targetVendor": "ROYAL CAR WASH",
+      "mappingReason": "Lavado, detailing y cuidado",
+      "changed": true
+    },
+    {
+      "productId": "gid://shopify/Product/10720378552657",
+      "handle": "accesorios-ramblas-parking-service",
+      "title": "Accesorios esenciales para coche",
+      "status": "ACTIVE",
+      "hasMedia": true,
+      "sourceVendor": "Ramblas Parking Service",
+      "targetVendor": "Battery Plaza - La Victoria",
+      "mappingReason": "Catálogo demostrativo de servicios y accesorios",
+      "changed": true
+    },
+    {
+      "productId": "gid://shopify/Product/10720377536849",
+      "handle": "alineacion-balanceo-eixample-tire-center",
+      "title": "Alineacion y balanceo",
+      "status": "ACTIVE",
+      "hasMedia": true,
+      "sourceVendor": "Eixample Tire Center",
+      "targetVendor": "Servisa - Goodyear Lima",
+      "mappingReason": "Neumáticos, alineación y balanceo",
+      "changed": true
+    },
+    {
+      "productId": "gid://shopify/Product/10720445694289",
+      "handle": "alineacion-rapida-costa-garage-express",
+      "title": "Alineacion rapida y control de neumaticos",
+      "status": "ACTIVE",
+      "hasMedia": true,
+      "sourceVendor": "Costa Garage Express",
+      "targetVendor": "AUTOMOTRIZ LIMA WORLD",
+      "mappingReason": "Mantenimiento, frenos y asistencia",
+      "changed": true
+    },
+    {
+      "productId": "gid://shopify/Product/10803211010385",
+      "handle": "alquiler-box-2-horas-poblenou-box-rental",
+      "title": "Alquiler box 2 horas",
+      "status": "ACTIVE",
+      "hasMedia": true,
+      "sourceVendor": "Poblenou Box Rental",
+      "targetVendor": "DITESAC El Centro de las Baterías - Surquillo",
+      "mappingReason": "Catálogo demostrativo de herramientas y accesorios",
+      "changed": true
+    },
+    {
+      "productId": "gid://shopify/Product/10803211174225",
+      "handle": "alquiler-box-jornada-completa-poblenou-box-rental",
+      "title": "Alquiler box jornada completa",
+      "status": "ACTIVE",
+      "hasMedia": true,
+      "sourceVendor": "Poblenou Box Rental",
+      "targetVendor": "DITESAC El Centro de las Baterías - Surquillo",
+      "mappingReason": "Catálogo demostrativo de herramientas y accesorios",
+      "changed": true
+    },
+    {
+      "productId": "gid://shopify/Product/10803211108689",
+      "handle": "alquiler-box-media-jornada-poblenou-box-rental",
+      "title": "Alquiler box media jornada",
+      "status": "ACTIVE",
+      "hasMedia": true,
+      "sourceVendor": "Poblenou Box Rental",
+      "targetVendor": "DITESAC El Centro de las Baterías - Surquillo",
+      "mappingReason": "Catálogo demostrativo de herramientas y accesorios",
+      "changed": true
+    },
+    {
+      "productId": "gid://shopify/Product/10720377962833",
+      "handle": "asistencia-bateria-costa-garage-express",
+      "title": "Asistencia por bateria descargada",
+      "status": "ACTIVE",
+      "hasMedia": true,
+      "sourceVendor": "Costa Garage Express",
+      "targetVendor": "AUTOMOTRIZ LIMA WORLD",
+      "mappingReason": "Mantenimiento, frenos y asistencia",
+      "changed": true
+    },
+    {
+      "productId": "gid://shopify/Product/10803211305297",
+      "handle": "asistencia-tecnica-de-taller-poblenou-box-rental",
+      "title": "Asistencia tecnica de taller",
+      "status": "ACTIVE",
+      "hasMedia": true,
+      "sourceVendor": "Poblenou Box Rental",
+      "targetVendor": "DITESAC El Centro de las Baterías - Surquillo",
+      "mappingReason": "Catálogo demostrativo de herramientas y accesorios",
+      "changed": true
+    },
+    {
+      "productId": "gid://shopify/Product/10720377897297",
+      "handle": "cambio-aceite-costa-garage-express",
+      "title": "Cambio de aceite express",
+      "status": "ACTIVE",
+      "hasMedia": true,
+      "sourceVendor": "Costa Garage Express",
+      "targetVendor": "AUTOMOTRIZ LIMA WORLD",
+      "mappingReason": "Mantenimiento, frenos y asistencia",
+      "changed": true
+    },
+    {
+      "productId": "gid://shopify/Product/10720436552017",
+      "handle": "cambio-bateria-poblenou-road-assist",
+      "title": "Cambio de bateria a domicilio",
+      "status": "ACTIVE",
+      "hasMedia": true,
+      "sourceVendor": "Poblenou Road Assist",
+      "targetVendor": "Grúas y Servicios Express S.A.C.",
+      "mappingReason": "Grúa, rescate y auxilio mecánico",
+      "changed": true
+    },
+    {
+      "productId": "gid://shopify/Product/10720436257105",
+      "handle": "cambio-llantas-eixample-tire-center",
+      "title": "Cambio y montaje de llantas",
+      "status": "ACTIVE",
+      "hasMedia": true,
+      "sourceVendor": "Eixample Tire Center",
+      "targetVendor": "Servisa - Goodyear Lima",
+      "mappingReason": "Neumáticos, alineación y balanceo",
+      "changed": true
+    },
+    {
+      "productId": "gid://shopify/Product/10720445759825",
+      "handle": "cambio-neumatico-domicilio-poblenou-road-assist",
+      "title": "Cambio de neumatico a domicilio",
+      "status": "ACTIVE",
+      "hasMedia": true,
+      "sourceVendor": "Poblenou Road Assist",
+      "targetVendor": "Grúas y Servicios Express S.A.C.",
+      "mappingReason": "Grúa, rescate y auxilio mecánico",
+      "changed": true
+    },
+    {
+      "productId": "gid://shopify/Product/10720377438545",
+      "handle": "cambio-neumaticos-eixample-tire-center",
+      "title": "Cambio de neumaticos por eje",
+      "status": "ACTIVE",
+      "hasMedia": true,
+      "sourceVendor": "Eixample Tire Center",
+      "targetVendor": "Servisa - Goodyear Lima",
+      "mappingReason": "Neumáticos, alineación y balanceo",
+      "changed": true
+    },
+    {
+      "productId": "gid://shopify/Product/10720378618193",
+      "handle": "ceramico-besos-auto-essentials",
+      "title": "Tratamiento ceramico basico",
+      "status": "ACTIVE",
+      "hasMedia": true,
+      "sourceVendor": "Besos Auto Essentials",
+      "targetVendor": "Custom Garage Car Detailing",
+      "mappingReason": "Detailing, pintura y accesorios de cuidado",
+      "changed": true
+    },
+    {
+      "productId": "gid://shopify/Product/10772747616593",
+      "handle": "ceramico-carpro-la-cochera-place",
+      "title": "Ceramico Carpro",
+      "status": "ACTIVE",
+      "hasMedia": true,
+      "sourceVendor": "La Cochera Place",
+      "targetVendor": "La Cochera Place",
+      "mappingReason": "Proveedor interno; conserva su catálogo",
+      "changed": false
+    },
+    {
+      "productId": "gid://shopify/Product/10720435863889",
+      "handle": "ceramico-detail-lab-bcn",
+      "title": "Tratamiento ceramico premium",
+      "status": "ACTIVE",
+      "hasMedia": true,
+      "sourceVendor": "Detail Lab BCN",
+      "targetVendor": "Monky Auto Detailing - SAN MIGUEL",
+      "mappingReason": "Detailing, cerámico y PPF",
+      "changed": true
+    },
+    {
+      "productId": "gid://shopify/Product/10720377045329",
+      "handle": "chapa-pintura-montjuic-car-care",
+      "title": "Reparacion de chapa y pintura",
+      "status": "ACTIVE",
+      "hasMedia": true,
+      "sourceVendor": "Montjuic Car Care",
+      "targetVendor": "INFINITY DETAIL | Premium Garage",
+      "mappingReason": "Lavado, detailing y carrocería",
+      "changed": true
+    },
+    {
+      "productId": "gid://shopify/Product/10803210453329",
+      "handle": "compacto-urbano-revisado-eixample-ocasion-motor",
+      "title": "Compacto urbano revisado",
+      "status": "ACTIVE",
+      "hasMedia": true,
+      "sourceVendor": "Eixample Ocasion Motor",
+      "targetVendor": "GT Automotriz",
+      "mappingReason": "Revisión y mantenimiento de vehículos",
+      "changed": true
+    },
+    {
+      "productId": "gid://shopify/Product/10772747682129",
+      "handle": "cueros-aros-la-cochera-place",
+      "title": "Cueros / Aros",
+      "status": "ACTIVE",
+      "hasMedia": true,
+      "sourceVendor": "La Cochera Place",
+      "targetVendor": "La Cochera Place",
+      "mappingReason": "Proveedor interno; conserva su catálogo",
+      "changed": false
+    },
+    {
+      "productId": "gid://shopify/Product/10720435929425",
+      "handle": "desabollado-sin-pintura-montjuic-car-care",
+      "title": "Desabollado sin pintura",
+      "status": "ACTIVE",
+      "hasMedia": true,
+      "sourceVendor": "Montjuic Car Care",
+      "targetVendor": "INFINITY DETAIL | Premium Garage",
+      "mappingReason": "Lavado, detailing y carrocería",
+      "changed": true
+    },
+    {
+      "productId": "gid://shopify/Product/10772747583825",
+      "handle": "descontaminado-pintura-la-cochera-place",
+      "title": "Descontaminado",
+      "status": "ACTIVE",
+      "hasMedia": true,
+      "sourceVendor": "La Cochera Place",
+      "targetVendor": "La Cochera Place",
+      "mappingReason": "Proveedor interno; conserva su catálogo",
+      "changed": false
+    },
+    {
+      "productId": "gid://shopify/Product/10665192980817",
+      "handle": "detailing",
+      "title": "Detailing La Cochera Place",
+      "status": "ACTIVE",
+      "hasMedia": true,
+      "sourceVendor": "La Cochera Place",
+      "targetVendor": "La Cochera Place",
+      "mappingReason": "Proveedor interno; conserva su catálogo",
+      "changed": false
+    },
+    {
+      "productId": "gid://shopify/Product/10665208578385",
+      "handle": "detailing-barcelona-laundry",
+      "title": "Detailing Barcelona Laundry",
+      "status": "ACTIVE",
+      "hasMedia": true,
+      "sourceVendor": "Barcelona Laundry",
+      "targetVendor": "House Car Wash",
+      "mappingReason": "Lavado de vehículos",
+      "changed": true
+    },
+    {
+      "productId": "gid://shopify/Product/10720376586577",
+      "handle": "detailing-esencial-barcelona-wash-hub",
+      "title": "Detailing esencial con proteccion",
+      "status": "ACTIVE",
+      "hasMedia": true,
+      "sourceVendor": "Barcelona Wash Hub",
+      "targetVendor": "Ecolim Car Wash",
+      "mappingReason": "Lavado y cuidado general",
+      "changed": true
+    },
+    {
+      "productId": "gid://shopify/Product/10828224823633",
+      "handle": "detailing-interior-chamartin-glass-detail",
+      "title": "Detailing interior",
+      "status": "ACTIVE",
+      "hasMedia": false,
+      "sourceVendor": "Chamartin Glass & Detail",
+      "targetVendor": "AutoGlass And Film - parabrisas - polarizados",
+      "mappingReason": "Parabrisas, lunas y polarizado",
+      "changed": true
+    },
+    {
+      "productId": "gid://shopify/Product/10720377274705",
+      "handle": "detailing-interior-gracia-auto-spa",
+      "title": "Detailing interior premium",
+      "status": "ACTIVE",
+      "hasMedia": true,
+      "sourceVendor": "Gracia Auto Spa",
+      "targetVendor": "ROYAL CAR WASH",
+      "mappingReason": "Lavado, detailing y cuidado",
+      "changed": true
+    },
+    {
+      "productId": "gid://shopify/Product/10828224430417",
+      "handle": "detailing-premium-rivas-detailing-studio",
+      "title": "Detailing premium",
+      "status": "ACTIVE",
+      "hasMedia": false,
+      "sourceVendor": "Rivas Detailing Studio",
+      "targetVendor": "PROTECFILMS - Polarizados y Láminas de Seguridad",
+      "mappingReason": "PPF, polarizado y protección",
+      "changed": true
+    },
+    {
+      "productId": "gid://shopify/Product/10720436617553",
+      "handle": "diagnostico-rapido-poblenou-road-assist",
+      "title": "Diagnostico rapido de averia",
+      "status": "ACTIVE",
+      "hasMedia": true,
+      "sourceVendor": "Poblenou Road Assist",
+      "targetVendor": "Grúas y Servicios Express S.A.C.",
+      "mappingReason": "Grúa, rescate y auxilio mecánico",
+      "changed": true
+    },
+    {
+      "productId": "gid://shopify/Product/10803185811793",
+      "handle": "espacio-y-herramientas-por-horas-gracia-garage-tools-gracia-garage-tools",
+      "title": "Espacio y herramientas por horas - Gracia Garage Tools",
+      "status": "ACTIVE",
+      "hasMedia": true,
+      "sourceVendor": "Gracia Garage Tools",
+      "targetVendor": "Cavalie Automotriz",
+      "mappingReason": "Mecánica y herramientas de taller",
+      "changed": true
+    },
+    {
+      "productId": "gid://shopify/Product/11094897459537",
+      "handle": "full-body-ppf-detailing-center",
+      "title": "Full Body PPF",
+      "status": "ACTIVE",
+      "hasMedia": true,
+      "sourceVendor": "Detailing Center",
+      "targetVendor": "Detailing Center",
+      "mappingReason": "Proveedor interno; conserva su catálogo",
+      "changed": false
+    },
+    {
+      "productId": "gid://shopify/Product/10803210682705",
+      "handle": "garantia-extendida-ocasion-eixample-ocasion-motor",
+      "title": "Garantia extendida ocasion",
+      "status": "ACTIVE",
+      "hasMedia": true,
+      "sourceVendor": "Eixample Ocasion Motor",
+      "targetVendor": "GT Automotriz",
+      "mappingReason": "Revisión y mantenimiento de vehículos",
+      "changed": true
+    },
+    {
+      "productId": "gid://shopify/Product/10720378126673",
+      "handle": "grua-express-poblenou-road-assist",
+      "title": "Grua express 24 horas",
+      "status": "ACTIVE",
+      "hasMedia": true,
+      "sourceVendor": "Poblenou Road Assist",
+      "targetVendor": "Grúas y Servicios Express S.A.C.",
+      "mappingReason": "Grúa, rescate y auxilio mecánico",
+      "changed": true
+    },
+    {
+      "productId": "gid://shopify/Product/10720436486481",
+      "handle": "grua-nocturna-costa-garage-express",
+      "title": "Grua nocturna urgente",
+      "status": "ACTIVE",
+      "hasMedia": true,
+      "sourceVendor": "Costa Garage Express",
+      "targetVendor": "AUTOMOTRIZ LIMA WORLD",
+      "mappingReason": "Mantenimiento, frenos y asistencia",
+      "changed": true
+    },
+    {
+      "productId": "gid://shopify/Product/10720377110865",
+      "handle": "grua-urbana-montjuic-car-care",
+      "title": "Grua urbana inmediata",
+      "status": "ACTIVE",
+      "hasMedia": true,
+      "sourceVendor": "Montjuic Car Care",
+      "targetVendor": "INFINITY DETAIL | Premium Garage",
+      "mappingReason": "Lavado, detailing y carrocería",
+      "changed": true
+    },
+    {
+      "productId": "gid://shopify/Product/10720377405777",
+      "handle": "kit-cuidado-gracia-auto-spa",
+      "title": "Pack de accesorios de cuidado",
+      "status": "ACTIVE",
+      "hasMedia": true,
+      "sourceVendor": "Gracia Auto Spa",
+      "targetVendor": "ROYAL CAR WASH",
+      "mappingReason": "Lavado, detailing y cuidado",
+      "changed": true
+    },
+    {
+      "productId": "gid://shopify/Product/10772747321681",
+      "handle": "lavado-completo-la-cochera-place",
+      "title": "Lavado Completo",
+      "status": "ACTIVE",
+      "hasMedia": true,
+      "sourceVendor": "La Cochera Place",
+      "targetVendor": "La Cochera Place",
+      "mappingReason": "Proveedor interno; conserva su catálogo",
+      "changed": false
+    },
+    {
+      "productId": "gid://shopify/Product/10720376979793",
+      "handle": "lavado-completo-montjuic-car-care",
+      "title": "Lavado completo de carroceria",
+      "status": "ACTIVE",
+      "hasMedia": true,
+      "sourceVendor": "Montjuic Car Care",
+      "targetVendor": "INFINITY DETAIL | Premium Garage",
+      "mappingReason": "Lavado, detailing y carrocería",
+      "changed": true
+    },
+    {
+      "productId": "gid://shopify/Product/10720377176401",
+      "handle": "lavado-ecologico-gracia-auto-spa",
+      "title": "Lavado ecologico a mano",
+      "status": "ACTIVE",
+      "hasMedia": true,
+      "sourceVendor": "Gracia Auto Spa",
+      "targetVendor": "ROYAL CAR WASH",
+      "mappingReason": "Lavado, detailing y cuidado",
+      "changed": true
+    },
+    {
+      "productId": "gid://shopify/Product/10720435765585",
+      "handle": "lavado-express-barcelona-wash-hub",
+      "title": "Lavado express exterior",
+      "status": "ACTIVE",
+      "hasMedia": true,
+      "sourceVendor": "Barcelona Wash Hub",
+      "targetVendor": "Ecolim Car Wash",
+      "mappingReason": "Lavado y cuidado general",
+      "changed": true
+    },
+    {
+      "productId": "gid://shopify/Product/10630551830865",
+      "handle": "lavado-full",
+      "title": "Lavado Barcelona Laundry",
+      "status": "ACTIVE",
+      "hasMedia": true,
+      "sourceVendor": "Barcelona Laundry",
+      "targetVendor": "House Car Wash",
+      "mappingReason": "Lavado de vehículos",
+      "changed": true
+    },
+    {
+      "productId": "gid://shopify/Product/10720376521041",
+      "handle": "lavado-premium-barcelona-wash-hub",
+      "title": "Lavado premium interior y exterior",
+      "status": "ACTIVE",
+      "hasMedia": true,
+      "sourceVendor": "Barcelona Wash Hub",
+      "targetVendor": "Ecolim Car Wash",
+      "mappingReason": "Lavado y cuidado general",
+      "changed": true
+    },
+    {
+      "productId": "gid://shopify/Product/10720436748625",
+      "handle": "lavado-premium-ramblas-parking-service",
+      "title": "Lavado premium mientras aparcas",
+      "status": "ACTIVE",
+      "hasMedia": true,
+      "sourceVendor": "Ramblas Parking Service",
+      "targetVendor": "Battery Plaza - La Victoria",
+      "mappingReason": "Catálogo demostrativo de servicios y accesorios",
+      "changed": true
+    },
+    {
+      "productId": "gid://shopify/Product/10720378454353",
+      "handle": "lavado-rapido-ramblas-parking-service",
+      "title": "Lavado rapido mientras aparcas",
+      "status": "ACTIVE",
+      "hasMedia": true,
+      "sourceVendor": "Ramblas Parking Service",
+      "targetVendor": "Battery Plaza - La Victoria",
+      "mappingReason": "Catálogo demostrativo de servicios y accesorios",
+      "changed": true
+    },
+    {
+      "productId": "gid://shopify/Product/10772747452753",
+      "handle": "lavado-salon-detailing-interior-la-cochera-place",
+      "title": "Lavado Salon",
+      "status": "ACTIVE",
+      "hasMedia": true,
+      "sourceVendor": "La Cochera Place",
+      "targetVendor": "La Cochera Place",
+      "mappingReason": "Proveedor interno; conserva su catálogo",
+      "changed": false
+    },
+    {
+      "productId": "gid://shopify/Product/10772747419985",
+      "handle": "lavado-vapor-interior-la-cochera-place",
+      "title": "Lavado Vapor",
+      "status": "ACTIVE",
+      "hasMedia": true,
+      "sourceVendor": "La Cochera Place",
+      "targetVendor": "La Cochera Place",
+      "mappingReason": "Proveedor interno; conserva su catálogo",
+      "changed": false
+    },
+    {
+      "productId": "gid://shopify/Product/10660691149137",
+      "handle": "lavado-xxl",
+      "title": "Lavado La Cochera Place",
+      "status": "ACTIVE",
+      "hasMedia": true,
+      "sourceVendor": "La Cochera Place",
+      "targetVendor": "La Cochera Place",
+      "mappingReason": "Proveedor interno; conserva su catálogo",
+      "changed": false
+    },
+    {
+      "productId": "gid://shopify/Product/10803210781009",
+      "handle": "liquidacion-suv-diesel-sants-liquidaciones-auto",
+      "title": "Liquidacion SUV diesel",
+      "status": "ACTIVE",
+      "hasMedia": true,
+      "sourceVendor": "Sants Liquidaciones Auto",
+      "targetVendor": "Ekono Llantas La Marina",
+      "mappingReason": "Catálogo demostrativo de automoción y mantenimiento",
+      "changed": true
+    },
+    {
+      "productId": "gid://shopify/Product/10803210748241",
+      "handle": "liquidacion-utilitario-gasolina-sants-liquidaciones-auto",
+      "title": "Liquidacion utilitario gasolina",
+      "status": "ACTIVE",
+      "hasMedia": true,
+      "sourceVendor": "Sants Liquidaciones Auto",
+      "targetVendor": "Ekono Llantas La Marina",
+      "mappingReason": "Catálogo demostrativo de automoción y mantenimiento",
+      "changed": true
+    },
+    {
+      "productId": "gid://shopify/Product/10803185549649",
+      "handle": "liquidaciones-automocion-sants-liquidaciones-auto-sants-liquidaciones-auto",
+      "title": "Liquidaciones automocion - Sants Liquidaciones Auto",
+      "status": "ACTIVE",
+      "hasMedia": true,
+      "sourceVendor": "Sants Liquidaciones Auto",
+      "targetVendor": "Ekono Llantas La Marina",
+      "mappingReason": "Catálogo demostrativo de automoción y mantenimiento",
+      "changed": true
+    },
+    {
+      "productId": "gid://shopify/Product/10720435994961",
+      "handle": "mantenimiento-preventivo-montjuic-car-care",
+      "title": "Mantenimiento preventivo esencial",
+      "status": "ACTIVE",
+      "hasMedia": true,
+      "sourceVendor": "Montjuic Car Care",
+      "targetVendor": "INFINITY DETAIL | Premium Garage",
+      "mappingReason": "Lavado, detailing y carrocería",
+      "changed": true
+    },
+    {
+      "productId": "gid://shopify/Product/10720376652113",
+      "handle": "mantenimiento-rapido-barcelona-wash-hub",
+      "title": "Mantenimiento rapido de revision basica",
+      "status": "ACTIVE",
+      "hasMedia": true,
+      "sourceVendor": "Barcelona Wash Hub",
+      "targetVendor": "Ecolim Car Wash",
+      "mappingReason": "Lavado y cuidado general",
+      "changed": true
+    },
+    {
+      "productId": "gid://shopify/Product/10772747485521",
+      "handle": "motor-a-vapor-la-cochera-place",
+      "title": "Motor a Vapor",
+      "status": "ACTIVE",
+      "hasMedia": true,
+      "sourceVendor": "La Cochera Place",
+      "targetVendor": "La Cochera Place",
+      "mappingReason": "Proveedor interno; conserva su catálogo",
+      "changed": false
+    },
+    {
+      "productId": "gid://shopify/Product/10803210846545",
+      "handle": "oferta-furgon-urbano-sants-liquidaciones-auto",
+      "title": "Oferta furgon urbano",
+      "status": "ACTIVE",
+      "hasMedia": true,
+      "sourceVendor": "Sants Liquidaciones Auto",
+      "targetVendor": "Ekono Llantas La Marina",
+      "mappingReason": "Catálogo demostrativo de automoción y mantenimiento",
+      "changed": true
+    },
+    {
+      "productId": "gid://shopify/Product/10720435798353",
+      "handle": "ozono-interior-barcelona-wash-hub",
+      "title": "Desinfeccion interior con ozono",
+      "status": "ACTIVE",
+      "hasMedia": true,
+      "sourceVendor": "Barcelona Wash Hub",
+      "targetVendor": "Ecolim Car Wash",
+      "mappingReason": "Lavado y cuidado general",
+      "changed": true
+    },
+    {
+      "productId": "gid://shopify/Product/10720378782033",
+      "handle": "pack-accesorios-besos-auto-essentials",
+      "title": "Pack de accesorios premium",
+      "status": "ACTIVE",
+      "hasMedia": true,
+      "sourceVendor": "Besos Auto Essentials",
+      "targetVendor": "Custom Garage Car Detailing",
+      "mappingReason": "Detailing, pintura y accesorios de cuidado",
+      "changed": true
+    },
+    {
+      "productId": "gid://shopify/Product/10803211239761",
+      "handle": "pack-herramientas-mecanica-ligera-poblenou-box-rental",
+      "title": "Pack herramientas mecanica ligera",
+      "status": "ACTIVE",
+      "hasMedia": true,
+      "sourceVendor": "Poblenou Box Rental",
+      "targetVendor": "DITESAC El Centro de las Baterías - Surquillo",
+      "mappingReason": "Catálogo demostrativo de herramientas y accesorios",
+      "changed": true
+    },
+    {
+      "productId": "gid://shopify/Product/10803210649937",
+      "handle": "pack-liquidacion-mantenimiento-inicial-eixample-ocasion-motor",
+      "title": "Pack liquidacion mantenimiento inicial",
+      "status": "ACTIVE",
+      "hasMedia": true,
+      "sourceVendor": "Eixample Ocasion Motor",
+      "targetVendor": "GT Automotriz",
+      "mappingReason": "Revisión y mantenimiento de vehículos",
+      "changed": true
+    },
+    {
+      "productId": "gid://shopify/Product/10803210879313",
+      "handle": "pack-revision-pre-entrega-sants-liquidaciones-auto",
+      "title": "Pack revision pre-entrega",
+      "status": "ACTIVE",
+      "hasMedia": true,
+      "sourceVendor": "Sants Liquidaciones Auto",
+      "targetVendor": "Ekono Llantas La Marina",
+      "mappingReason": "Catálogo demostrativo de automoción y mantenimiento",
+      "changed": true
+    },
+    {
+      "productId": "gid://shopify/Product/10720378224977",
+      "handle": "parabrisas-poblenou-road-assist",
+      "title": "Reparacion y cambio de parabrisas",
+      "status": "ACTIVE",
+      "hasMedia": true,
+      "sourceVendor": "Poblenou Road Assist",
+      "targetVendor": "Grúas y Servicios Express S.A.C.",
+      "mappingReason": "Grúa, rescate y auxilio mecánico",
+      "changed": true
+    },
+    {
+      "productId": "gid://shopify/Product/10630472139089",
+      "handle": "parking-badalona",
+      "title": "PARKING BADALONA",
+      "status": "ACTIVE",
+      "hasMedia": true,
+      "sourceVendor": "La Cochera Place",
+      "targetVendor": "La Cochera Place",
+      "mappingReason": "Proveedor interno; conserva su catálogo",
+      "changed": false
+    },
+    {
+      "productId": "gid://shopify/Product/10630508740945",
+      "handle": "parking-badalona-2",
+      "title": "PARKING BADALONA 2",
+      "status": "ACTIVE",
+      "hasMedia": true,
+      "sourceVendor": "La Cochera Place",
+      "targetVendor": "La Cochera Place",
+      "mappingReason": "Proveedor interno; conserva su catálogo",
+      "changed": false
+    },
+    {
+      "productId": "gid://shopify/Product/10720378061137",
+      "handle": "parking-dia-costa-garage-express",
+      "title": "Parking seguro por dia",
+      "status": "ACTIVE",
+      "hasMedia": true,
+      "sourceVendor": "Costa Garage Express",
+      "targetVendor": "AUTOMOTRIZ LIMA WORLD",
+      "mappingReason": "Mantenimiento, frenos y asistencia",
+      "changed": true
+    },
+    {
+      "productId": "gid://shopify/Product/10720378388817",
+      "handle": "parking-fin-semana-ramblas-parking-service",
+      "title": "Parking fin de semana",
+      "status": "ACTIVE",
+      "hasMedia": true,
+      "sourceVendor": "Ramblas Parking Service",
+      "targetVendor": "Battery Plaza - La Victoria",
+      "mappingReason": "Catálogo demostrativo de servicios y accesorios",
+      "changed": true
+    },
+    {
+      "productId": "gid://shopify/Product/10720436715857",
+      "handle": "parking-semanal-ramblas-parking-service",
+      "title": "Parking semanal en zona centro",
+      "status": "ACTIVE",
+      "hasMedia": true,
+      "sourceVendor": "Ramblas Parking Service",
+      "targetVendor": "Battery Plaza - La Victoria",
+      "mappingReason": "Catálogo demostrativo de servicios y accesorios",
+      "changed": true
+    },
+    {
+      "productId": "gid://shopify/Product/10720445825361",
+      "handle": "parking-servicio-montjuic-car-care",
+      "title": "Parking con recepcion y servicio",
+      "status": "ACTIVE",
+      "hasMedia": true,
+      "sourceVendor": "Montjuic Car Care",
+      "targetVendor": "INFINITY DETAIL | Premium Garage",
+      "mappingReason": "Lavado, detailing y carrocería",
+      "changed": true
+    },
+    {
+      "productId": "gid://shopify/Product/11094897230161",
+      "handle": "polarizado-detailing-center",
+      "title": "Polarizado",
+      "status": "ACTIVE",
+      "hasMedia": true,
+      "sourceVendor": "Detailing Center",
+      "targetVendor": "Detailing Center",
+      "mappingReason": "Proveedor interno; conserva su catálogo",
+      "changed": false
+    },
+    {
+      "productId": "gid://shopify/Product/10720377733457",
+      "handle": "ppf-capot-sants-wrap-studio",
+      "title": "PPF para capot y defensa",
+      "status": "ACTIVE",
+      "hasMedia": true,
+      "sourceVendor": "Sants Wrap Studio",
+      "targetVendor": "TINTPRO Polarizado 3M en Lima",
+      "mappingReason": "Polarizado, láminas y wrap",
+      "changed": true
+    },
+    {
+      "productId": "gid://shopify/Product/10720376848721",
+      "handle": "ppf-frontal-detail-lab-bcn",
+      "title": "PPF frontal de proteccion",
+      "status": "ACTIVE",
+      "hasMedia": true,
+      "sourceVendor": "Detail Lab BCN",
+      "targetVendor": "Monky Auto Detailing - SAN MIGUEL",
+      "mappingReason": "Detailing, cerámico y PPF",
+      "changed": true
+    },
+    {
+      "productId": "gid://shopify/Product/10828224561489",
+      "handle": "ppf-frontal-rivas-detailing-studio",
+      "title": "PPF frontal",
+      "status": "ACTIVE",
+      "hasMedia": false,
+      "sourceVendor": "Rivas Detailing Studio",
+      "targetVendor": "PROTECFILMS - Polarizados y Láminas de Seguridad",
+      "mappingReason": "PPF, polarizado y protección",
+      "changed": true
+    },
+    {
+      "productId": "gid://shopify/Product/11094897623377",
+      "handle": "ppf-proteccion-de-partes-detailing-center",
+      "title": "PPF - Protección de partes",
+      "status": "ACTIVE",
+      "hasMedia": true,
+      "sourceVendor": "Detailing Center",
+      "targetVendor": "Detailing Center",
+      "mappingReason": "Proveedor interno; conserva su catálogo",
+      "changed": false
+    },
+    {
+      "productId": "gid://shopify/Product/10720436846929",
+      "handle": "pulido-brillo-besos-auto-essentials",
+      "title": "Pulido de brillo rapido",
+      "status": "ACTIVE",
+      "hasMedia": true,
+      "sourceVendor": "Besos Auto Essentials",
+      "targetVendor": "Custom Garage Car Detailing",
+      "mappingReason": "Detailing, pintura y accesorios de cuidado",
+      "changed": true
+    },
+    {
+      "productId": "gid://shopify/Product/10720376717649",
+      "handle": "pulido-correccion-detail-lab-bcn",
+      "title": "Pulido y correccion de pintura",
+      "status": "ACTIVE",
+      "hasMedia": true,
+      "sourceVendor": "Detail Lab BCN",
+      "targetVendor": "Monky Auto Detailing - SAN MIGUEL",
+      "mappingReason": "Detailing, cerámico y PPF",
+      "changed": true
+    },
+    {
+      "productId": "gid://shopify/Product/10828224758097",
+      "handle": "pulido-de-faros-chamartin-glass-detail",
+      "title": "Pulido de faros",
+      "status": "ACTIVE",
+      "hasMedia": false,
+      "sourceVendor": "Chamartin Glass & Detail",
+      "targetVendor": "AutoGlass And Film - parabrisas - polarizados",
+      "mappingReason": "Parabrisas, lunas y polarizado",
+      "changed": true
+    },
+    {
+      "productId": "gid://shopify/Product/10720436060497",
+      "handle": "pulido-faros-gracia-auto-spa",
+      "title": "Pulido de faros y opticas",
+      "status": "ACTIVE",
+      "hasMedia": true,
+      "sourceVendor": "Gracia Auto Spa",
+      "targetVendor": "ROYAL CAR WASH",
+      "mappingReason": "Lavado, detailing y cuidado",
+      "changed": true
+    },
+    {
+      "productId": "gid://shopify/Product/10772747518289",
+      "handle": "pulido-faros-la-cochera-place",
+      "title": "Pulido Faros",
+      "status": "ACTIVE",
+      "hasMedia": true,
+      "sourceVendor": "La Cochera Place",
+      "targetVendor": "La Cochera Place",
+      "mappingReason": "Proveedor interno; conserva su catálogo",
+      "changed": false
+    },
+    {
+      "productId": "gid://shopify/Product/11094897033553",
+      "handle": "pulido-general-detailing-center",
+      "title": "Pulido general",
+      "status": "ACTIVE",
+      "hasMedia": true,
+      "sourceVendor": "Detailing Center",
+      "targetVendor": "Detailing Center",
+      "mappingReason": "Proveedor interno; conserva su catálogo",
+      "changed": false
+    },
+    {
+      "productId": "gid://shopify/Product/10772747551057",
+      "handle": "pulido-pintura-la-cochera-place",
+      "title": "Pulido Pintura",
+      "status": "ACTIVE",
+      "hasMedia": true,
+      "sourceVendor": "La Cochera Place",
+      "targetVendor": "La Cochera Place",
+      "mappingReason": "Proveedor interno; conserva su catálogo",
+      "changed": false
+    },
+    {
+      "productId": "gid://shopify/Product/10828224463185",
+      "handle": "pulido-y-correccion-de-pintura-rivas-detailing-studio",
+      "title": "Pulido y correccion de pintura",
+      "status": "ACTIVE",
+      "hasMedia": false,
+      "sourceVendor": "Rivas Detailing Studio",
+      "targetVendor": "PROTECFILMS - Polarizados y Láminas de Seguridad",
+      "mappingReason": "PPF, polarizado y protección",
+      "changed": true
+    },
+    {
+      "productId": "gid://shopify/Product/10803211600209",
+      "handle": "renta-box-premium-con-soporte-gracia-garage-tools",
+      "title": "Renta box premium con soporte",
+      "status": "ACTIVE",
+      "hasMedia": true,
+      "sourceVendor": "Gracia Garage Tools",
+      "targetVendor": "Cavalie Automotriz",
+      "mappingReason": "Mecánica y herramientas de taller",
+      "changed": true
+    },
+    {
+      "productId": "gid://shopify/Product/10803211436369",
+      "handle": "renta-compresor-y-neumatica-gracia-garage-tools",
+      "title": "Renta compresor y neumatica",
+      "status": "ACTIVE",
+      "hasMedia": true,
+      "sourceVendor": "Gracia Garage Tools",
+      "targetVendor": "Cavalie Automotriz",
+      "mappingReason": "Mecánica y herramientas de taller",
+      "changed": true
+    },
+    {
+      "productId": "gid://shopify/Product/10803185615185",
+      "handle": "renta-de-box-y-herramientas-poblenou-box-rental-poblenou-box-rental",
+      "title": "Renta de box y herramientas - Poblenou Box Rental",
+      "status": "ACTIVE",
+      "hasMedia": true,
+      "sourceVendor": "Poblenou Box Rental",
+      "targetVendor": "DITESAC El Centro de las Baterías - Surquillo",
+      "mappingReason": "Catálogo demostrativo de herramientas y accesorios",
+      "changed": true
+    },
+    {
+      "productId": "gid://shopify/Product/10803211338065",
+      "handle": "renta-elevador-por-hora-gracia-garage-tools",
+      "title": "Renta elevador por hora",
+      "status": "ACTIVE",
+      "hasMedia": true,
+      "sourceVendor": "Gracia Garage Tools",
+      "targetVendor": "Cavalie Automotriz",
+      "mappingReason": "Mecánica y herramientas de taller",
+      "changed": true
+    },
+    {
+      "productId": "gid://shopify/Product/10803211534673",
+      "handle": "renta-herramientas-detailing-gracia-garage-tools",
+      "title": "Renta herramientas detailing",
+      "status": "ACTIVE",
+      "hasMedia": true,
+      "sourceVendor": "Gracia Garage Tools",
+      "targetVendor": "Cavalie Automotriz",
+      "mappingReason": "Mecánica y herramientas de taller",
+      "changed": true
+    },
+    {
+      "productId": "gid://shopify/Product/10803211403601",
+      "handle": "renta-kit-diagnosis-obd-gracia-garage-tools",
+      "title": "Renta kit diagnosis OBD",
+      "status": "ACTIVE",
+      "hasMedia": true,
+      "sourceVendor": "Gracia Garage Tools",
+      "targetVendor": "Cavalie Automotriz",
+      "mappingReason": "Mecánica y herramientas de taller",
+      "changed": true
+    },
+    {
+      "productId": "gid://shopify/Product/10720378716497",
+      "handle": "reparacion-aranazos-besos-auto-essentials",
+      "title": "Reparacion de aranazos y roces",
+      "status": "ACTIVE",
+      "hasMedia": true,
+      "sourceVendor": "Besos Auto Essentials",
+      "targetVendor": "Custom Garage Car Detailing",
+      "mappingReason": "Detailing, pintura y accesorios de cuidado",
+      "changed": true
+    },
+    {
+      "productId": "gid://shopify/Product/10828224627025",
+      "handle": "reparacion-de-parabrisas-chamartin-glass-detail",
+      "title": "Reparacion de parabrisas",
+      "status": "ACTIVE",
+      "hasMedia": false,
+      "sourceVendor": "Chamartin Glass & Detail",
+      "targetVendor": "AutoGlass And Film - parabrisas - polarizados",
+      "mappingReason": "Parabrisas, lunas y polarizado",
+      "changed": true
+    },
+    {
+      "productId": "gid://shopify/Product/10720445858129",
+      "handle": "reparacion-paragolpes-sants-wrap-studio",
+      "title": "Reparacion estetica de paragolpes",
+      "status": "ACTIVE",
+      "hasMedia": true,
+      "sourceVendor": "Sants Wrap Studio",
+      "targetVendor": "TINTPRO Polarizado 3M en Lima",
+      "mappingReason": "Polarizado, láminas y wrap",
+      "changed": true
+    },
+    {
+      "productId": "gid://shopify/Product/10720436158801",
+      "handle": "reparacion-pinchazos-eixample-tire-center",
+      "title": "Reparacion de pinchazos",
+      "status": "ACTIVE",
+      "hasMedia": true,
+      "sourceVendor": "Eixample Tire Center",
+      "targetVendor": "Servisa - Goodyear Lima",
+      "mappingReason": "Neumáticos, alineación y balanceo",
+      "changed": true
+    },
+    {
+      "productId": "gid://shopify/Product/10720436945233",
+      "handle": "retoque-pintura-besos-auto-essentials",
+      "title": "Retoque localizado de pintura",
+      "status": "ACTIVE",
+      "hasMedia": true,
+      "sourceVendor": "Besos Auto Essentials",
+      "targetVendor": "Custom Garage Car Detailing",
+      "mappingReason": "Detailing, pintura y accesorios de cuidado",
+      "changed": true
+    },
+    {
+      "productId": "gid://shopify/Product/10720377602385",
+      "handle": "revision-aceite-eixample-tire-center",
+      "title": "Revision rapida con cambio de aceite",
+      "status": "ACTIVE",
+      "hasMedia": true,
+      "sourceVendor": "Eixample Tire Center",
+      "targetVendor": "Servisa - Goodyear Lima",
+      "mappingReason": "Neumáticos, alineación y balanceo",
+      "changed": true
+    },
+    {
+      "productId": "gid://shopify/Product/10720378323281",
+      "handle": "revision-basica-poblenou-road-assist",
+      "title": "Revision basica pre-itv",
+      "status": "ACTIVE",
+      "hasMedia": true,
+      "sourceVendor": "Poblenou Road Assist",
+      "targetVendor": "Grúas y Servicios Express S.A.C.",
+      "mappingReason": "Grúa, rescate y auxilio mecánico",
+      "changed": true
+    },
+    {
+      "productId": "gid://shopify/Product/10720436453713",
+      "handle": "revision-frenos-costa-garage-express",
+      "title": "Revision rapida de frenos",
+      "status": "ACTIVE",
+      "hasMedia": true,
+      "sourceVendor": "Costa Garage Express",
+      "targetVendor": "AUTOMOTRIZ LIMA WORLD",
+      "mappingReason": "Mantenimiento, frenos y asistencia",
+      "changed": true
+    },
+    {
+      "productId": "gid://shopify/Product/10803210584401",
+      "handle": "sedan-familiar-oportunidad-eixample-ocasion-motor",
+      "title": "Sedan familiar oportunidad",
+      "status": "ACTIVE",
+      "hasMedia": true,
+      "sourceVendor": "Eixample Ocasion Motor",
+      "targetVendor": "GT Automotriz",
+      "mappingReason": "Revisión y mantenimiento de vehículos",
+      "changed": true
+    },
+    {
+      "productId": "gid://shopify/Product/10803210977617",
+      "handle": "servicio-tramitacion-cambio-titularidad-sants-liquidaciones-auto",
+      "title": "Servicio tramitacion cambio titularidad",
+      "status": "ACTIVE",
+      "hasMedia": true,
+      "sourceVendor": "Sants Liquidaciones Auto",
+      "targetVendor": "Ekono Llantas La Marina",
+      "mappingReason": "Catálogo demostrativo de automoción y mantenimiento",
+      "changed": true
+    },
+    {
+      "productId": "gid://shopify/Product/10828224692561",
+      "handle": "sustitucion-de-parabrisas-chamartin-glass-detail",
+      "title": "Sustitucion de parabrisas",
+      "status": "ACTIVE",
+      "hasMedia": false,
+      "sourceVendor": "Chamartin Glass & Detail",
+      "targetVendor": "AutoGlass And Film - parabrisas - polarizados",
+      "mappingReason": "Parabrisas, lunas y polarizado",
+      "changed": true
+    },
+    {
+      "productId": "gid://shopify/Product/10720436355409",
+      "handle": "sustitucion-luna-sants-wrap-studio",
+      "title": "Sustitucion de luna delantera",
+      "status": "ACTIVE",
+      "hasMedia": true,
+      "sourceVendor": "Sants Wrap Studio",
+      "targetVendor": "TINTPRO Polarizado 3M en Lima",
+      "mappingReason": "Polarizado, láminas y wrap",
+      "changed": true
+    },
+    {
+      "productId": "gid://shopify/Product/10803210551633",
+      "handle": "suv-seminuevo-certificado-eixample-ocasion-motor",
+      "title": "SUV seminuevo certificado",
+      "status": "ACTIVE",
+      "hasMedia": true,
+      "sourceVendor": "Eixample Ocasion Motor",
+      "targetVendor": "GT Automotriz",
+      "mappingReason": "Revisión y mantenimiento de vehículos",
+      "changed": true
+    },
+    {
+      "productId": "gid://shopify/Product/10828224725329",
+      "handle": "tintado-de-lunas-premium-chamartin-glass-detail",
+      "title": "Tintado de lunas premium",
+      "status": "ACTIVE",
+      "hasMedia": false,
+      "sourceVendor": "Chamartin Glass & Detail",
+      "targetVendor": "AutoGlass And Film - parabrisas - polarizados",
+      "mappingReason": "Parabrisas, lunas y polarizado",
+      "changed": true
+    },
+    {
+      "productId": "gid://shopify/Product/10828224594257",
+      "handle": "tintado-de-lunas-rivas-detailing-studio",
+      "title": "Tintado de lunas",
+      "status": "ACTIVE",
+      "hasMedia": false,
+      "sourceVendor": "Rivas Detailing Studio",
+      "targetVendor": "PROTECFILMS - Polarizados y Láminas de Seguridad",
+      "mappingReason": "PPF, polarizado y protección",
+      "changed": true
+    },
+    {
+      "productId": "gid://shopify/Product/10720376881489",
+      "handle": "tintado-lunas-detail-lab-bcn",
+      "title": "Tintado de lunas completo",
+      "status": "ACTIVE",
+      "hasMedia": true,
+      "sourceVendor": "Detail Lab BCN",
+      "targetVendor": "Monky Auto Detailing - SAN MIGUEL",
+      "mappingReason": "Detailing, cerámico y PPF",
+      "changed": true
+    },
+    {
+      "productId": "gid://shopify/Product/10720377798993",
+      "handle": "tintado-premium-sants-wrap-studio",
+      "title": "Tintado premium de cristales",
+      "status": "ACTIVE",
+      "hasMedia": true,
+      "sourceVendor": "Sants Wrap Studio",
+      "targetVendor": "TINTPRO Polarizado 3M en Lima",
+      "mappingReason": "Polarizado, láminas y wrap",
+      "changed": true
+    },
+    {
+      "productId": "gid://shopify/Product/11094896574801",
+      "handle": "tratamiento-ceramico-detailing-center",
+      "title": "Tratamiento cerámico",
+      "status": "ACTIVE",
+      "hasMedia": true,
+      "sourceVendor": "Detailing Center",
+      "targetVendor": "Detailing Center",
+      "mappingReason": "Proveedor interno; conserva su catálogo",
+      "changed": false
+    },
+    {
+      "productId": "gid://shopify/Product/10828224528721",
+      "handle": "tratamiento-ceramico-rivas-detailing-studio",
+      "title": "Tratamiento ceramico",
+      "status": "ACTIVE",
+      "hasMedia": false,
+      "sourceVendor": "Rivas Detailing Studio",
+      "targetVendor": "PROTECFILMS - Polarizados y Láminas de Seguridad",
+      "mappingReason": "PPF, polarizado y protección",
+      "changed": true
+    },
+    {
+      "productId": "gid://shopify/Product/10803185484113",
+      "handle": "vehiculos-usados-seleccionados-eixample-ocasion-motor-eixample-ocasion-motor",
+      "title": "Vehiculos usados seleccionados - Eixample Ocasion Motor",
+      "status": "ACTIVE",
+      "hasMedia": true,
+      "sourceVendor": "Eixample Ocasion Motor",
+      "targetVendor": "GT Automotriz",
+      "mappingReason": "Revisión y mantenimiento de vehículos",
+      "changed": true
+    },
+    {
+      "productId": "gid://shopify/Product/10720377635153",
+      "handle": "vinilo-completo-sants-wrap-studio",
+      "title": "Vinilo completo para carroceria",
+      "status": "ACTIVE",
+      "hasMedia": true,
+      "sourceVendor": "Sants Wrap Studio",
+      "targetVendor": "TINTPRO Polarizado 3M en Lima",
+      "mappingReason": "Polarizado, láminas y wrap",
+      "changed": true
+    },
+    {
+      "productId": "gid://shopify/Product/10720436289873",
+      "handle": "wrap-parcial-sants-wrap-studio",
+      "title": "Wrap parcial para detalles exteriores",
+      "status": "ACTIVE",
+      "hasMedia": true,
+      "sourceVendor": "Sants Wrap Studio",
+      "targetVendor": "TINTPRO Polarizado 3M en Lima",
+      "mappingReason": "Polarizado, láminas y wrap",
+      "changed": true
+    },
+    {
+      "productId": "gid://shopify/Product/10720435896657",
+      "handle": "wrap-techo-detail-lab-bcn",
+      "title": "Wrap parcial de techo y pilares",
+      "status": "ACTIVE",
+      "hasMedia": true,
+      "sourceVendor": "Detail Lab BCN",
+      "targetVendor": "Monky Auto Detailing - SAN MIGUEL",
+      "mappingReason": "Detailing, cerámico y PPF",
+      "changed": true
+    }
+  ],
+  "applied": [
+    {
+      "productId": "gid://shopify/Product/10720436093265",
+      "handle": "accesorios-limpieza-gracia-auto-spa",
+      "vendor": "ROYAL CAR WASH"
+    },
+    {
+      "productId": "gid://shopify/Product/10720378552657",
+      "handle": "accesorios-ramblas-parking-service",
+      "vendor": "Battery Plaza - La Victoria"
+    },
+    {
+      "productId": "gid://shopify/Product/10720377536849",
+      "handle": "alineacion-balanceo-eixample-tire-center",
+      "vendor": "Servisa - Goodyear Lima"
+    },
+    {
+      "productId": "gid://shopify/Product/10720445694289",
+      "handle": "alineacion-rapida-costa-garage-express",
+      "vendor": "AUTOMOTRIZ LIMA WORLD"
+    },
+    {
+      "productId": "gid://shopify/Product/10803211010385",
+      "handle": "alquiler-box-2-horas-poblenou-box-rental",
+      "vendor": "DITESAC El Centro de las Baterías - Surquillo"
+    },
+    {
+      "productId": "gid://shopify/Product/10803211174225",
+      "handle": "alquiler-box-jornada-completa-poblenou-box-rental",
+      "vendor": "DITESAC El Centro de las Baterías - Surquillo"
+    },
+    {
+      "productId": "gid://shopify/Product/10803211108689",
+      "handle": "alquiler-box-media-jornada-poblenou-box-rental",
+      "vendor": "DITESAC El Centro de las Baterías - Surquillo"
+    },
+    {
+      "productId": "gid://shopify/Product/10720377962833",
+      "handle": "asistencia-bateria-costa-garage-express",
+      "vendor": "AUTOMOTRIZ LIMA WORLD"
+    },
+    {
+      "productId": "gid://shopify/Product/10803211305297",
+      "handle": "asistencia-tecnica-de-taller-poblenou-box-rental",
+      "vendor": "DITESAC El Centro de las Baterías - Surquillo"
+    },
+    {
+      "productId": "gid://shopify/Product/10720377897297",
+      "handle": "cambio-aceite-costa-garage-express",
+      "vendor": "AUTOMOTRIZ LIMA WORLD"
+    },
+    {
+      "productId": "gid://shopify/Product/10720436552017",
+      "handle": "cambio-bateria-poblenou-road-assist",
+      "vendor": "Grúas y Servicios Express S.A.C."
+    },
+    {
+      "productId": "gid://shopify/Product/10720436257105",
+      "handle": "cambio-llantas-eixample-tire-center",
+      "vendor": "Servisa - Goodyear Lima"
+    },
+    {
+      "productId": "gid://shopify/Product/10720445759825",
+      "handle": "cambio-neumatico-domicilio-poblenou-road-assist",
+      "vendor": "Grúas y Servicios Express S.A.C."
+    },
+    {
+      "productId": "gid://shopify/Product/10720377438545",
+      "handle": "cambio-neumaticos-eixample-tire-center",
+      "vendor": "Servisa - Goodyear Lima"
+    },
+    {
+      "productId": "gid://shopify/Product/10720378618193",
+      "handle": "ceramico-besos-auto-essentials",
+      "vendor": "Custom Garage Car Detailing"
+    },
+    {
+      "productId": "gid://shopify/Product/10720435863889",
+      "handle": "ceramico-detail-lab-bcn",
+      "vendor": "Monky Auto Detailing - SAN MIGUEL"
+    },
+    {
+      "productId": "gid://shopify/Product/10720377045329",
+      "handle": "chapa-pintura-montjuic-car-care",
+      "vendor": "INFINITY DETAIL | Premium Garage"
+    },
+    {
+      "productId": "gid://shopify/Product/10803210453329",
+      "handle": "compacto-urbano-revisado-eixample-ocasion-motor",
+      "vendor": "GT Automotriz"
+    },
+    {
+      "productId": "gid://shopify/Product/10720435929425",
+      "handle": "desabollado-sin-pintura-montjuic-car-care",
+      "vendor": "INFINITY DETAIL | Premium Garage"
+    },
+    {
+      "productId": "gid://shopify/Product/10665208578385",
+      "handle": "detailing-barcelona-laundry",
+      "vendor": "House Car Wash"
+    },
+    {
+      "productId": "gid://shopify/Product/10720376586577",
+      "handle": "detailing-esencial-barcelona-wash-hub",
+      "vendor": "Ecolim Car Wash"
+    },
+    {
+      "productId": "gid://shopify/Product/10828224823633",
+      "handle": "detailing-interior-chamartin-glass-detail",
+      "vendor": "AutoGlass And Film - parabrisas - polarizados"
+    },
+    {
+      "productId": "gid://shopify/Product/10720377274705",
+      "handle": "detailing-interior-gracia-auto-spa",
+      "vendor": "ROYAL CAR WASH"
+    },
+    {
+      "productId": "gid://shopify/Product/10828224430417",
+      "handle": "detailing-premium-rivas-detailing-studio",
+      "vendor": "PROTECFILMS - Polarizados y Láminas de Seguridad"
+    },
+    {
+      "productId": "gid://shopify/Product/10720436617553",
+      "handle": "diagnostico-rapido-poblenou-road-assist",
+      "vendor": "Grúas y Servicios Express S.A.C."
+    },
+    {
+      "productId": "gid://shopify/Product/10803185811793",
+      "handle": "espacio-y-herramientas-por-horas-gracia-garage-tools-gracia-garage-tools",
+      "vendor": "Cavalie Automotriz"
+    },
+    {
+      "productId": "gid://shopify/Product/10803210682705",
+      "handle": "garantia-extendida-ocasion-eixample-ocasion-motor",
+      "vendor": "GT Automotriz"
+    },
+    {
+      "productId": "gid://shopify/Product/10720378126673",
+      "handle": "grua-express-poblenou-road-assist",
+      "vendor": "Grúas y Servicios Express S.A.C."
+    },
+    {
+      "productId": "gid://shopify/Product/10720436486481",
+      "handle": "grua-nocturna-costa-garage-express",
+      "vendor": "AUTOMOTRIZ LIMA WORLD"
+    },
+    {
+      "productId": "gid://shopify/Product/10720377110865",
+      "handle": "grua-urbana-montjuic-car-care",
+      "vendor": "INFINITY DETAIL | Premium Garage"
+    },
+    {
+      "productId": "gid://shopify/Product/10720377405777",
+      "handle": "kit-cuidado-gracia-auto-spa",
+      "vendor": "ROYAL CAR WASH"
+    },
+    {
+      "productId": "gid://shopify/Product/10720376979793",
+      "handle": "lavado-completo-montjuic-car-care",
+      "vendor": "INFINITY DETAIL | Premium Garage"
+    },
+    {
+      "productId": "gid://shopify/Product/10720377176401",
+      "handle": "lavado-ecologico-gracia-auto-spa",
+      "vendor": "ROYAL CAR WASH"
+    },
+    {
+      "productId": "gid://shopify/Product/10720435765585",
+      "handle": "lavado-express-barcelona-wash-hub",
+      "vendor": "Ecolim Car Wash"
+    },
+    {
+      "productId": "gid://shopify/Product/10630551830865",
+      "handle": "lavado-full",
+      "vendor": "House Car Wash"
+    },
+    {
+      "productId": "gid://shopify/Product/10720376521041",
+      "handle": "lavado-premium-barcelona-wash-hub",
+      "vendor": "Ecolim Car Wash"
+    },
+    {
+      "productId": "gid://shopify/Product/10720436748625",
+      "handle": "lavado-premium-ramblas-parking-service",
+      "vendor": "Battery Plaza - La Victoria"
+    },
+    {
+      "productId": "gid://shopify/Product/10720378454353",
+      "handle": "lavado-rapido-ramblas-parking-service",
+      "vendor": "Battery Plaza - La Victoria"
+    },
+    {
+      "productId": "gid://shopify/Product/10803210781009",
+      "handle": "liquidacion-suv-diesel-sants-liquidaciones-auto",
+      "vendor": "Ekono Llantas La Marina"
+    },
+    {
+      "productId": "gid://shopify/Product/10803210748241",
+      "handle": "liquidacion-utilitario-gasolina-sants-liquidaciones-auto",
+      "vendor": "Ekono Llantas La Marina"
+    },
+    {
+      "productId": "gid://shopify/Product/10803185549649",
+      "handle": "liquidaciones-automocion-sants-liquidaciones-auto-sants-liquidaciones-auto",
+      "vendor": "Ekono Llantas La Marina"
+    },
+    {
+      "productId": "gid://shopify/Product/10720435994961",
+      "handle": "mantenimiento-preventivo-montjuic-car-care",
+      "vendor": "INFINITY DETAIL | Premium Garage"
+    },
+    {
+      "productId": "gid://shopify/Product/10720376652113",
+      "handle": "mantenimiento-rapido-barcelona-wash-hub",
+      "vendor": "Ecolim Car Wash"
+    },
+    {
+      "productId": "gid://shopify/Product/10803210846545",
+      "handle": "oferta-furgon-urbano-sants-liquidaciones-auto",
+      "vendor": "Ekono Llantas La Marina"
+    },
+    {
+      "productId": "gid://shopify/Product/10720435798353",
+      "handle": "ozono-interior-barcelona-wash-hub",
+      "vendor": "Ecolim Car Wash"
+    },
+    {
+      "productId": "gid://shopify/Product/10720378782033",
+      "handle": "pack-accesorios-besos-auto-essentials",
+      "vendor": "Custom Garage Car Detailing"
+    },
+    {
+      "productId": "gid://shopify/Product/10803211239761",
+      "handle": "pack-herramientas-mecanica-ligera-poblenou-box-rental",
+      "vendor": "DITESAC El Centro de las Baterías - Surquillo"
+    },
+    {
+      "productId": "gid://shopify/Product/10803210649937",
+      "handle": "pack-liquidacion-mantenimiento-inicial-eixample-ocasion-motor",
+      "vendor": "GT Automotriz"
+    },
+    {
+      "productId": "gid://shopify/Product/10803210879313",
+      "handle": "pack-revision-pre-entrega-sants-liquidaciones-auto",
+      "vendor": "Ekono Llantas La Marina"
+    },
+    {
+      "productId": "gid://shopify/Product/10720378224977",
+      "handle": "parabrisas-poblenou-road-assist",
+      "vendor": "Grúas y Servicios Express S.A.C."
+    },
+    {
+      "productId": "gid://shopify/Product/10720378061137",
+      "handle": "parking-dia-costa-garage-express",
+      "vendor": "AUTOMOTRIZ LIMA WORLD"
+    },
+    {
+      "productId": "gid://shopify/Product/10720378388817",
+      "handle": "parking-fin-semana-ramblas-parking-service",
+      "vendor": "Battery Plaza - La Victoria"
+    },
+    {
+      "productId": "gid://shopify/Product/10720436715857",
+      "handle": "parking-semanal-ramblas-parking-service",
+      "vendor": "Battery Plaza - La Victoria"
+    },
+    {
+      "productId": "gid://shopify/Product/10720445825361",
+      "handle": "parking-servicio-montjuic-car-care",
+      "vendor": "INFINITY DETAIL | Premium Garage"
+    },
+    {
+      "productId": "gid://shopify/Product/10720377733457",
+      "handle": "ppf-capot-sants-wrap-studio",
+      "vendor": "TINTPRO Polarizado 3M en Lima"
+    },
+    {
+      "productId": "gid://shopify/Product/10720376848721",
+      "handle": "ppf-frontal-detail-lab-bcn",
+      "vendor": "Monky Auto Detailing - SAN MIGUEL"
+    },
+    {
+      "productId": "gid://shopify/Product/10828224561489",
+      "handle": "ppf-frontal-rivas-detailing-studio",
+      "vendor": "PROTECFILMS - Polarizados y Láminas de Seguridad"
+    },
+    {
+      "productId": "gid://shopify/Product/10720436846929",
+      "handle": "pulido-brillo-besos-auto-essentials",
+      "vendor": "Custom Garage Car Detailing"
+    },
+    {
+      "productId": "gid://shopify/Product/10720376717649",
+      "handle": "pulido-correccion-detail-lab-bcn",
+      "vendor": "Monky Auto Detailing - SAN MIGUEL"
+    },
+    {
+      "productId": "gid://shopify/Product/10828224758097",
+      "handle": "pulido-de-faros-chamartin-glass-detail",
+      "vendor": "AutoGlass And Film - parabrisas - polarizados"
+    },
+    {
+      "productId": "gid://shopify/Product/10720436060497",
+      "handle": "pulido-faros-gracia-auto-spa",
+      "vendor": "ROYAL CAR WASH"
+    },
+    {
+      "productId": "gid://shopify/Product/10828224463185",
+      "handle": "pulido-y-correccion-de-pintura-rivas-detailing-studio",
+      "vendor": "PROTECFILMS - Polarizados y Láminas de Seguridad"
+    },
+    {
+      "productId": "gid://shopify/Product/10803211600209",
+      "handle": "renta-box-premium-con-soporte-gracia-garage-tools",
+      "vendor": "Cavalie Automotriz"
+    },
+    {
+      "productId": "gid://shopify/Product/10803211436369",
+      "handle": "renta-compresor-y-neumatica-gracia-garage-tools",
+      "vendor": "Cavalie Automotriz"
+    },
+    {
+      "productId": "gid://shopify/Product/10803185615185",
+      "handle": "renta-de-box-y-herramientas-poblenou-box-rental-poblenou-box-rental",
+      "vendor": "DITESAC El Centro de las Baterías - Surquillo"
+    },
+    {
+      "productId": "gid://shopify/Product/10803211338065",
+      "handle": "renta-elevador-por-hora-gracia-garage-tools",
+      "vendor": "Cavalie Automotriz"
+    },
+    {
+      "productId": "gid://shopify/Product/10803211534673",
+      "handle": "renta-herramientas-detailing-gracia-garage-tools",
+      "vendor": "Cavalie Automotriz"
+    },
+    {
+      "productId": "gid://shopify/Product/10803211403601",
+      "handle": "renta-kit-diagnosis-obd-gracia-garage-tools",
+      "vendor": "Cavalie Automotriz"
+    },
+    {
+      "productId": "gid://shopify/Product/10720378716497",
+      "handle": "reparacion-aranazos-besos-auto-essentials",
+      "vendor": "Custom Garage Car Detailing"
+    },
+    {
+      "productId": "gid://shopify/Product/10828224627025",
+      "handle": "reparacion-de-parabrisas-chamartin-glass-detail",
+      "vendor": "AutoGlass And Film - parabrisas - polarizados"
+    },
+    {
+      "productId": "gid://shopify/Product/10720445858129",
+      "handle": "reparacion-paragolpes-sants-wrap-studio",
+      "vendor": "TINTPRO Polarizado 3M en Lima"
+    },
+    {
+      "productId": "gid://shopify/Product/10720436158801",
+      "handle": "reparacion-pinchazos-eixample-tire-center",
+      "vendor": "Servisa - Goodyear Lima"
+    },
+    {
+      "productId": "gid://shopify/Product/10720436945233",
+      "handle": "retoque-pintura-besos-auto-essentials",
+      "vendor": "Custom Garage Car Detailing"
+    },
+    {
+      "productId": "gid://shopify/Product/10720377602385",
+      "handle": "revision-aceite-eixample-tire-center",
+      "vendor": "Servisa - Goodyear Lima"
+    },
+    {
+      "productId": "gid://shopify/Product/10720378323281",
+      "handle": "revision-basica-poblenou-road-assist",
+      "vendor": "Grúas y Servicios Express S.A.C."
+    },
+    {
+      "productId": "gid://shopify/Product/10720436453713",
+      "handle": "revision-frenos-costa-garage-express",
+      "vendor": "AUTOMOTRIZ LIMA WORLD"
+    },
+    {
+      "productId": "gid://shopify/Product/10803210584401",
+      "handle": "sedan-familiar-oportunidad-eixample-ocasion-motor",
+      "vendor": "GT Automotriz"
+    },
+    {
+      "productId": "gid://shopify/Product/10803210977617",
+      "handle": "servicio-tramitacion-cambio-titularidad-sants-liquidaciones-auto",
+      "vendor": "Ekono Llantas La Marina"
+    },
+    {
+      "productId": "gid://shopify/Product/10828224692561",
+      "handle": "sustitucion-de-parabrisas-chamartin-glass-detail",
+      "vendor": "AutoGlass And Film - parabrisas - polarizados"
+    },
+    {
+      "productId": "gid://shopify/Product/10720436355409",
+      "handle": "sustitucion-luna-sants-wrap-studio",
+      "vendor": "TINTPRO Polarizado 3M en Lima"
+    },
+    {
+      "productId": "gid://shopify/Product/10803210551633",
+      "handle": "suv-seminuevo-certificado-eixample-ocasion-motor",
+      "vendor": "GT Automotriz"
+    },
+    {
+      "productId": "gid://shopify/Product/10828224725329",
+      "handle": "tintado-de-lunas-premium-chamartin-glass-detail",
+      "vendor": "AutoGlass And Film - parabrisas - polarizados"
+    },
+    {
+      "productId": "gid://shopify/Product/10828224594257",
+      "handle": "tintado-de-lunas-rivas-detailing-studio",
+      "vendor": "PROTECFILMS - Polarizados y Láminas de Seguridad"
+    },
+    {
+      "productId": "gid://shopify/Product/10720376881489",
+      "handle": "tintado-lunas-detail-lab-bcn",
+      "vendor": "Monky Auto Detailing - SAN MIGUEL"
+    },
+    {
+      "productId": "gid://shopify/Product/10720377798993",
+      "handle": "tintado-premium-sants-wrap-studio",
+      "vendor": "TINTPRO Polarizado 3M en Lima"
+    },
+    {
+      "productId": "gid://shopify/Product/10828224528721",
+      "handle": "tratamiento-ceramico-rivas-detailing-studio",
+      "vendor": "PROTECFILMS - Polarizados y Láminas de Seguridad"
+    },
+    {
+      "productId": "gid://shopify/Product/10803185484113",
+      "handle": "vehiculos-usados-seleccionados-eixample-ocasion-motor-eixample-ocasion-motor",
+      "vendor": "GT Automotriz"
+    },
+    {
+      "productId": "gid://shopify/Product/10720377635153",
+      "handle": "vinilo-completo-sants-wrap-studio",
+      "vendor": "TINTPRO Polarizado 3M en Lima"
+    },
+    {
+      "productId": "gid://shopify/Product/10720436289873",
+      "handle": "wrap-parcial-sants-wrap-studio",
+      "vendor": "TINTPRO Polarizado 3M en Lima"
+    },
+    {
+      "productId": "gid://shopify/Product/10720435896657",
+      "handle": "wrap-techo-detail-lab-bcn",
+      "vendor": "Monky Auto Detailing - SAN MIGUEL"
+    }
+  ]
+}

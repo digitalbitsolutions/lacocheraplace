@@ -14,10 +14,12 @@ function nowMs() {
 }
 
 function normalizeStore(store) {
-  return String(store || "")
+  const normalized = String(store || "")
     .trim()
     .replace(/^https?:\/\//, "")
     .replace(/\/+$/, "");
+  if (normalized && !normalized.includes(".")) return `${normalized}.myshopify.com`;
+  return normalized;
 }
 
 function resolveOauthShop() {

@@ -1,0 +1,2167 @@
+{
+  "generatedAt": "2026-09-03T19:56:05.162Z",
+  "apply": true,
+  "source": "servicios_carwash (1).docx",
+  "before": {
+    "shop": {
+      "name": "LACOCHERAPLACE",
+      "currencyCode": "PEN"
+    },
+    "products": {
+      "nodes": [
+        {
+          "id": "gid://shopify/Product/10772747321681",
+          "handle": "lavado-completo-la-cochera-place",
+          "title": "Lavado completo",
+          "descriptionHtml": "<p><strong>Lavado exterior, encerado, aspirado interior y limpieza de vidrios.</strong></p><p>Incluye prelavado con espuma activa, lavado manual con microfibra, limpieza de llantas y aros, enjuague a presión, secado, encerado, aspirado del habitáculo y limpieza interior y exterior de vidrios.</p><p><em>Tolerancia de estacionamiento: entre 1 y 2 horas como máximo después de la entrega del vehículo.</em></p>",
+          "vendor": "La Cochera Place",
+          "status": "ACTIVE",
+          "tags": [
+            "carwash",
+            "ches-catalogo",
+            "lavado",
+            "proveedor-la-cochera-place",
+            "service-flow-checkout",
+            "servicio"
+          ],
+          "onlineStoreUrl": "https://www.lacocheraplace.com/products/lavado-completo-la-cochera-place",
+          "media": {
+            "nodes": [
+              {
+                "id": "gid://shopify/MediaImage/68937835708753"
+              },
+              {
+                "id": "gid://shopify/MediaImage/68937835774289"
+              },
+              {
+                "id": "gid://shopify/MediaImage/68937836036433"
+              },
+              {
+                "id": "gid://shopify/MediaImage/68937837609297"
+              },
+              {
+                "id": "gid://shopify/MediaImage/68937838199121"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69165335806289"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241158959441"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241158992209"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241159024977"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241159057745"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241159090513"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241159123281"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241159156049"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241159188817"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241159221585"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241159254353"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241159287121"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241159319889"
+              }
+            ]
+          },
+          "options": [
+            {
+              "id": "gid://shopify/ProductOption/13460440318289",
+              "name": "Tipo de vehículo",
+              "optionValues": [
+                {
+                  "id": "gid://shopify/ProductOptionValue/8265304441169",
+                  "name": "Hatchback"
+                },
+                {
+                  "id": "gid://shopify/ProductOptionValue/8265304310097",
+                  "name": "Sedán"
+                },
+                {
+                  "id": "gid://shopify/ProductOptionValue/8265304342865",
+                  "name": "Camioneta SUV"
+                },
+                {
+                  "id": "gid://shopify/ProductOptionValue/8265304375633",
+                  "name": "Van"
+                },
+                {
+                  "id": "gid://shopify/ProductOptionValue/8265304408401",
+                  "name": "Camioneta XL"
+                }
+              ]
+            }
+          ],
+          "variants": {
+            "nodes": [
+              {
+                "id": "gid://shopify/ProductVariant/53788609053009",
+                "title": "Hatchback",
+                "price": "50.00",
+                "selectedOptions": [
+                  {
+                    "name": "Tipo de vehículo",
+                    "value": "Hatchback"
+                  }
+                ]
+              },
+              {
+                "id": "gid://shopify/ProductVariant/53788609085777",
+                "title": "Sedán",
+                "price": "50.00",
+                "selectedOptions": [
+                  {
+                    "name": "Tipo de vehículo",
+                    "value": "Sedán"
+                  }
+                ]
+              },
+              {
+                "id": "gid://shopify/ProductVariant/53788609118545",
+                "title": "Camioneta SUV",
+                "price": "50.00",
+                "selectedOptions": [
+                  {
+                    "name": "Tipo de vehículo",
+                    "value": "Camioneta SUV"
+                  }
+                ]
+              },
+              {
+                "id": "gid://shopify/ProductVariant/53788609151313",
+                "title": "Van",
+                "price": "50.00",
+                "selectedOptions": [
+                  {
+                    "name": "Tipo de vehículo",
+                    "value": "Van"
+                  }
+                ]
+              },
+              {
+                "id": "gid://shopify/ProductVariant/53788609184081",
+                "title": "Camioneta XL",
+                "price": "50.00",
+                "selectedOptions": [
+                  {
+                    "name": "Tipo de vehículo",
+                    "value": "Camioneta XL"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "gid://shopify/Product/10772747419985",
+          "handle": "lavado-vapor-interior-la-cochera-place",
+          "title": "Lavado Vapor",
+          "descriptionHtml": "<p>Lavado a vapor interior para vehiculos en La Cochera Place. Servicio piloto carwash pendiente de aprobacion final de precio EUR por Ches.</p>",
+          "vendor": "La Cochera Place",
+          "status": "ACTIVE",
+          "tags": [
+            "carwash",
+            "ches-catalogo",
+            "lavado",
+            "price-pending-eur",
+            "proveedor-la-cochera-place",
+            "service-flow-checkout",
+            "servicio"
+          ],
+          "onlineStoreUrl": "https://www.lacocheraplace.com/products/lavado-vapor-interior-la-cochera-place",
+          "media": {
+            "nodes": [
+              {
+                "id": "gid://shopify/MediaImage/69165252444497"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69165252477265"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69165252510033"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69165336035665"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69165336068433"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69165336396113"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241159549265"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241159582033"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241159614801"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241159647569"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241159680337"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241159713105"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241159745873"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241159778641"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241159811409"
+              }
+            ]
+          },
+          "options": [
+            {
+              "id": "gid://shopify/ProductOption/13460441104721",
+              "name": "Tipo de vehículo",
+              "optionValues": [
+                {
+                  "id": "gid://shopify/ProductOptionValue/8265309159761",
+                  "name": "Hatchback"
+                },
+                {
+                  "id": "gid://shopify/ProductOptionValue/8265309028689",
+                  "name": "Sedán"
+                },
+                {
+                  "id": "gid://shopify/ProductOptionValue/8265309061457",
+                  "name": "Camioneta SUV"
+                },
+                {
+                  "id": "gid://shopify/ProductOptionValue/8265309094225",
+                  "name": "Van"
+                },
+                {
+                  "id": "gid://shopify/ProductOptionValue/8265309126993",
+                  "name": "Camioneta XL"
+                }
+              ]
+            }
+          ],
+          "variants": {
+            "nodes": [
+              {
+                "id": "gid://shopify/ProductVariant/53788611739985",
+                "title": "Hatchback",
+                "price": "0.00",
+                "selectedOptions": [
+                  {
+                    "name": "Tipo de vehículo",
+                    "value": "Hatchback"
+                  }
+                ]
+              },
+              {
+                "id": "gid://shopify/ProductVariant/53788611772753",
+                "title": "Sedán",
+                "price": "0.00",
+                "selectedOptions": [
+                  {
+                    "name": "Tipo de vehículo",
+                    "value": "Sedán"
+                  }
+                ]
+              },
+              {
+                "id": "gid://shopify/ProductVariant/53788611805521",
+                "title": "Camioneta SUV",
+                "price": "0.00",
+                "selectedOptions": [
+                  {
+                    "name": "Tipo de vehículo",
+                    "value": "Camioneta SUV"
+                  }
+                ]
+              },
+              {
+                "id": "gid://shopify/ProductVariant/53788611838289",
+                "title": "Van",
+                "price": "0.00",
+                "selectedOptions": [
+                  {
+                    "name": "Tipo de vehículo",
+                    "value": "Van"
+                  }
+                ]
+              },
+              {
+                "id": "gid://shopify/ProductVariant/53788611871057",
+                "title": "Camioneta XL",
+                "price": "0.00",
+                "selectedOptions": [
+                  {
+                    "name": "Tipo de vehículo",
+                    "value": "Camioneta XL"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "gid://shopify/Product/10772747452753",
+          "handle": "lavado-salon-detailing-interior-la-cochera-place",
+          "title": "Lavado Salon",
+          "descriptionHtml": "<p>Lavado de salon y detailing interior para vehiculos en La Cochera Place. Servicio piloto carwash pendiente de aprobacion final de precio EUR por Ches.</p>",
+          "vendor": "La Cochera Place",
+          "status": "ACTIVE",
+          "tags": [
+            "carwash",
+            "ches-catalogo",
+            "detailing",
+            "price-pending-eur",
+            "proveedor-la-cochera-place",
+            "service-flow-checkout",
+            "servicio"
+          ],
+          "onlineStoreUrl": "https://www.lacocheraplace.com/products/lavado-salon-detailing-interior-la-cochera-place",
+          "media": {
+            "nodes": [
+              {
+                "id": "gid://shopify/MediaImage/69165252542801"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69165252575569"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69165252608337"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69165336494417"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69165336559953"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69165336625489"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241160630609"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241160663377"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241160696145"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241160728913"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241160761681"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241160794449"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241160827217"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241160859985"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241160892753"
+              }
+            ]
+          },
+          "options": [
+            {
+              "id": "gid://shopify/ProductOption/13460441071953",
+              "name": "Tipo de vehículo",
+              "optionValues": [
+                {
+                  "id": "gid://shopify/ProductOptionValue/8265308799313",
+                  "name": "Hatchback"
+                },
+                {
+                  "id": "gid://shopify/ProductOptionValue/8265308668241",
+                  "name": "Sedán"
+                },
+                {
+                  "id": "gid://shopify/ProductOptionValue/8265308701009",
+                  "name": "Camioneta SUV"
+                },
+                {
+                  "id": "gid://shopify/ProductOptionValue/8265308733777",
+                  "name": "Van"
+                },
+                {
+                  "id": "gid://shopify/ProductOptionValue/8265308766545",
+                  "name": "Camioneta XL"
+                }
+              ]
+            }
+          ],
+          "variants": {
+            "nodes": [
+              {
+                "id": "gid://shopify/ProductVariant/53788611543377",
+                "title": "Hatchback",
+                "price": "0.00",
+                "selectedOptions": [
+                  {
+                    "name": "Tipo de vehículo",
+                    "value": "Hatchback"
+                  }
+                ]
+              },
+              {
+                "id": "gid://shopify/ProductVariant/53788611576145",
+                "title": "Sedán",
+                "price": "0.00",
+                "selectedOptions": [
+                  {
+                    "name": "Tipo de vehículo",
+                    "value": "Sedán"
+                  }
+                ]
+              },
+              {
+                "id": "gid://shopify/ProductVariant/53788611608913",
+                "title": "Camioneta SUV",
+                "price": "0.00",
+                "selectedOptions": [
+                  {
+                    "name": "Tipo de vehículo",
+                    "value": "Camioneta SUV"
+                  }
+                ]
+              },
+              {
+                "id": "gid://shopify/ProductVariant/53788611641681",
+                "title": "Van",
+                "price": "0.00",
+                "selectedOptions": [
+                  {
+                    "name": "Tipo de vehículo",
+                    "value": "Van"
+                  }
+                ]
+              },
+              {
+                "id": "gid://shopify/ProductVariant/53788611674449",
+                "title": "Camioneta XL",
+                "price": "0.00",
+                "selectedOptions": [
+                  {
+                    "name": "Tipo de vehículo",
+                    "value": "Camioneta XL"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "gid://shopify/Product/10772747485521",
+          "handle": "motor-a-vapor-la-cochera-place",
+          "title": "Motor a Vapor",
+          "descriptionHtml": "<p>Limpieza de motor a vapor en La Cochera Place. Precio unico previsto; se mantienen variantes por consistencia del catalogo piloto hasta aprobacion final de precio EUR por Ches.</p>",
+          "vendor": "La Cochera Place",
+          "status": "ACTIVE",
+          "tags": [
+            "carwash",
+            "ches-catalogo",
+            "mantenimiento-ligero",
+            "price-pending-eur",
+            "proveedor-la-cochera-place",
+            "service-flow-checkout",
+            "servicio"
+          ],
+          "onlineStoreUrl": "https://www.lacocheraplace.com/products/motor-a-vapor-la-cochera-place",
+          "media": {
+            "nodes": [
+              {
+                "id": "gid://shopify/MediaImage/69165252673873"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69165252706641"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69165252739409"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69165336723793"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69165336789329"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69165337051473"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241161056593"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241161089361"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241161122129"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241161154897"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241161187665"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241161220433"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241161253201"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241161285969"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241161318737"
+              }
+            ]
+          },
+          "options": [
+            {
+              "id": "gid://shopify/ProductOption/13417272639825",
+              "name": "Tipo de vehiculo",
+              "optionValues": [
+                {
+                  "id": "gid://shopify/ProductOptionValue/8140015173969",
+                  "name": "Coche"
+                },
+                {
+                  "id": "gid://shopify/ProductOptionValue/8140015206737",
+                  "name": "SUV"
+                },
+                {
+                  "id": "gid://shopify/ProductOptionValue/8140015239505",
+                  "name": "7 plazas"
+                }
+              ]
+            }
+          ],
+          "variants": {
+            "nodes": [
+              {
+                "id": "gid://shopify/ProductVariant/53638800441681",
+                "title": "Coche",
+                "price": "0.00",
+                "selectedOptions": [
+                  {
+                    "name": "Tipo de vehiculo",
+                    "value": "Coche"
+                  }
+                ]
+              },
+              {
+                "id": "gid://shopify/ProductVariant/53638800474449",
+                "title": "SUV",
+                "price": "0.00",
+                "selectedOptions": [
+                  {
+                    "name": "Tipo de vehiculo",
+                    "value": "SUV"
+                  }
+                ]
+              },
+              {
+                "id": "gid://shopify/ProductVariant/53638800507217",
+                "title": "7 plazas",
+                "price": "0.00",
+                "selectedOptions": [
+                  {
+                    "name": "Tipo de vehiculo",
+                    "value": "7 plazas"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "gid://shopify/Product/10772747518289",
+          "handle": "pulido-faros-la-cochera-place",
+          "title": "Pulido Faros",
+          "descriptionHtml": "<p>Pulido de faros en La Cochera Place. Servicio indicado por unidad; precio final EUR pendiente de aprobacion por Ches.</p>",
+          "vendor": "La Cochera Place",
+          "status": "ACTIVE",
+          "tags": [
+            "carwash",
+            "ches-catalogo",
+            "detailing",
+            "price-pending-eur",
+            "proveedor-la-cochera-place",
+            "service-flow-checkout",
+            "servicio"
+          ],
+          "onlineStoreUrl": "https://www.lacocheraplace.com/products/pulido-faros-la-cochera-place",
+          "media": {
+            "nodes": [
+              {
+                "id": "gid://shopify/MediaImage/69165252772177"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69165252804945"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69165337149777"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69165337215313"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69165337477457"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69165337739601"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241162006865"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241162039633"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241162072401"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241162105169"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241162137937"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241162170705"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241162203473"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241162236241"
+              }
+            ]
+          },
+          "options": [
+            {
+              "id": "gid://shopify/ProductOption/13417272672593",
+              "name": "Tipo de vehiculo",
+              "optionValues": [
+                {
+                  "id": "gid://shopify/ProductOptionValue/8140015468881",
+                  "name": "Coche"
+                },
+                {
+                  "id": "gid://shopify/ProductOptionValue/8140015501649",
+                  "name": "SUV"
+                },
+                {
+                  "id": "gid://shopify/ProductOptionValue/8140015534417",
+                  "name": "7 plazas"
+                }
+              ]
+            }
+          ],
+          "variants": {
+            "nodes": [
+              {
+                "id": "gid://shopify/ProductVariant/53638800703825",
+                "title": "Coche",
+                "price": "0.00",
+                "selectedOptions": [
+                  {
+                    "name": "Tipo de vehiculo",
+                    "value": "Coche"
+                  }
+                ]
+              },
+              {
+                "id": "gid://shopify/ProductVariant/53638800736593",
+                "title": "SUV",
+                "price": "0.00",
+                "selectedOptions": [
+                  {
+                    "name": "Tipo de vehiculo",
+                    "value": "SUV"
+                  }
+                ]
+              },
+              {
+                "id": "gid://shopify/ProductVariant/53638800769361",
+                "title": "7 plazas",
+                "price": "0.00",
+                "selectedOptions": [
+                  {
+                    "name": "Tipo de vehiculo",
+                    "value": "7 plazas"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "gid://shopify/Product/10772747551057",
+          "handle": "pulido-pintura-la-cochera-place",
+          "title": "Pulido Pintura",
+          "descriptionHtml": "<p>Pulido de pintura consultivo en La Cochera Place. Requiere revision previa del estado del vehiculo antes de confirmar alcance y precio.</p>",
+          "vendor": "La Cochera Place",
+          "status": "ACTIVE",
+          "tags": [
+            "carwash",
+            "ches-catalogo",
+            "detailing",
+            "price-pending-eur",
+            "proveedor-la-cochera-place",
+            "service-flow-consultative",
+            "servicio"
+          ],
+          "onlineStoreUrl": "https://www.lacocheraplace.com/products/pulido-pintura-la-cochera-place",
+          "media": {
+            "nodes": [
+              {
+                "id": "gid://shopify/MediaImage/69165252837713"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69165252870481"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69165337870673"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69165337936209"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69165338001745"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69165338132817"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241162432849"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241162465617"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241162498385"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241162531153"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241162563921"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241162596689"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241162629457"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241162662225"
+              }
+            ]
+          },
+          "options": [
+            {
+              "id": "gid://shopify/ProductOption/13417272705361",
+              "name": "Title",
+              "optionValues": [
+                {
+                  "id": "gid://shopify/ProductOptionValue/8140015567185",
+                  "name": "Default Title"
+                }
+              ]
+            }
+          ],
+          "variants": {
+            "nodes": [
+              {
+                "id": "gid://shopify/ProductVariant/53638800802129",
+                "title": "Default Title",
+                "price": "0.00",
+                "selectedOptions": [
+                  {
+                    "name": "Title",
+                    "value": "Default Title"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "gid://shopify/Product/10772747583825",
+          "handle": "descontaminado-pintura-la-cochera-place",
+          "title": "Descontaminado",
+          "descriptionHtml": "<p>Descontaminado de pintura consultivo en La Cochera Place. Requiere revision previa para confirmar alcance y precio.</p>",
+          "vendor": "La Cochera Place",
+          "status": "ACTIVE",
+          "tags": [
+            "carwash",
+            "ches-catalogo",
+            "detailing",
+            "price-pending-eur",
+            "proveedor-la-cochera-place",
+            "service-flow-consultative",
+            "servicio"
+          ],
+          "onlineStoreUrl": "https://www.lacocheraplace.com/products/descontaminado-pintura-la-cochera-place",
+          "media": {
+            "nodes": [
+              {
+                "id": "gid://shopify/MediaImage/69165252936017"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69165338362193"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69165338460497"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69165338591569"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69165338788177"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69165338886481"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241162694993"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241162727761"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241162760529"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241162793297"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241162826065"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241162858833"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241162891601"
+              }
+            ]
+          },
+          "options": [
+            {
+              "id": "gid://shopify/ProductOption/13417272738129",
+              "name": "Title",
+              "optionValues": [
+                {
+                  "id": "gid://shopify/ProductOptionValue/8140015599953",
+                  "name": "Default Title"
+                }
+              ]
+            }
+          ],
+          "variants": {
+            "nodes": [
+              {
+                "id": "gid://shopify/ProductVariant/53638800867665",
+                "title": "Default Title",
+                "price": "0.00",
+                "selectedOptions": [
+                  {
+                    "name": "Title",
+                    "value": "Default Title"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "gid://shopify/Product/10772747616593",
+          "handle": "ceramico-carpro-la-cochera-place",
+          "title": "Ceramico Carpro",
+          "descriptionHtml": "<p>Recubrimiento ceramico Carpro consultivo en La Cochera Place. Requiere evaluacion previa, preparacion de superficie y aprobacion de precio final.</p>",
+          "vendor": "La Cochera Place",
+          "status": "ACTIVE",
+          "tags": [
+            "carwash",
+            "ches-catalogo",
+            "detailing",
+            "price-pending-eur",
+            "proveedor-la-cochera-place",
+            "service-flow-consultative",
+            "servicio"
+          ],
+          "onlineStoreUrl": "https://www.lacocheraplace.com/products/ceramico-carpro-la-cochera-place",
+          "media": {
+            "nodes": [
+              {
+                "id": "gid://shopify/MediaImage/69165253034321"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69165253067089"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69165338952017"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69165339017553"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69165339148625"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69165339246929"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241163481425"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241163514193"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241163546961"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241163579729"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241163612497"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241163645265"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241163678033"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241163710801"
+              }
+            ]
+          },
+          "options": [
+            {
+              "id": "gid://shopify/ProductOption/13417272770897",
+              "name": "Title",
+              "optionValues": [
+                {
+                  "id": "gid://shopify/ProductOptionValue/8140015632721",
+                  "name": "Default Title"
+                }
+              ]
+            }
+          ],
+          "variants": {
+            "nodes": [
+              {
+                "id": "gid://shopify/ProductVariant/53638800900433",
+                "title": "Default Title",
+                "price": "0.00",
+                "selectedOptions": [
+                  {
+                    "name": "Title",
+                    "value": "Default Title"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "gid://shopify/Product/10772747682129",
+          "handle": "cueros-aros-la-cochera-place",
+          "title": "Cueros / Aros",
+          "descriptionHtml": "<p>Servicio consultivo para cueros y aros en La Cochera Place. Requiere revision previa para definir alcance, materiales y precio.</p>",
+          "vendor": "La Cochera Place",
+          "status": "ACTIVE",
+          "tags": [
+            "carwash",
+            "ches-catalogo",
+            "detailing",
+            "price-pending-eur",
+            "proveedor-la-cochera-place",
+            "service-flow-consultative",
+            "servicio"
+          ],
+          "onlineStoreUrl": "https://www.lacocheraplace.com/products/cueros-aros-la-cochera-place",
+          "media": {
+            "nodes": [
+              {
+                "id": "gid://shopify/MediaImage/69165253132625"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69165253165393"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69165339312465"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69165339607377"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69165339705681"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69165339738449"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241163841873"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241163874641"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241163907409"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241163940177"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241163972945"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241164005713"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241164038481"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241164071249"
+              }
+            ]
+          },
+          "options": [
+            {
+              "id": "gid://shopify/ProductOption/13417272836433",
+              "name": "Title",
+              "optionValues": [
+                {
+                  "id": "gid://shopify/ProductOptionValue/8140015665489",
+                  "name": "Default Title"
+                }
+              ]
+            }
+          ],
+          "variants": {
+            "nodes": [
+              {
+                "id": "gid://shopify/ProductVariant/53638800933201",
+                "title": "Default Title",
+                "price": "0.00",
+                "selectedOptions": [
+                  {
+                    "name": "Title",
+                    "value": "Default Title"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "services": [
+    {
+      "handle": "lavado-completo-la-cochera-place",
+      "title": "Lavado completo",
+      "flow": "checkout",
+      "descriptionHtml": "<p><strong>Lavado exterior, encerado, aspirado interior y limpieza de vidrios.</strong></p><p>Incluye prelavado con espuma activa, lavado manual con microfibra, limpieza de llantas y aros, enjuague a presión, secado, encerado, aspirado del habitáculo y limpieza interior y exterior de vidrios.</p><p><em>Tolerancia de estacionamiento: entre 1 y 2 horas como máximo después de la entrega del vehículo.</em></p>",
+      "variants": [
+        [
+          "Auto",
+          "50.00"
+        ],
+        [
+          "Camioneta SUV",
+          "60.00"
+        ],
+        [
+          "Camioneta 3 filas",
+          "70.00"
+        ]
+      ]
+    },
+    {
+      "handle": "lavado-vapor-interior-la-cochera-place",
+      "title": "Lavado de vapor interior",
+      "flow": "checkout",
+      "descriptionHtml": "<p><strong>Limpieza profunda del habitáculo con vapor a alta temperatura.</strong></p><p>Incluye aspirado previo; limpieza de tablero, consola, puertas, asientos, alfombras y pisos; tratamiento de conductos del aire acondicionado y aplicación de restaurador Sonax en cueros y plásticos.</p><p>Ayuda a eliminar bacterias, hongos, ácaros y malos olores sin mojar en exceso los materiales.</p>",
+      "variants": [
+        [
+          "Auto",
+          "150.00"
+        ],
+        [
+          "Camioneta SUV",
+          "200.00"
+        ],
+        [
+          "Camioneta 3 filas",
+          "230.00"
+        ]
+      ]
+    },
+    {
+      "handle": "lavado-salon-detailing-interior-la-cochera-place",
+      "title": "Lavado de salón (detailing interior)",
+      "flow": "checkout",
+      "descriptionHtml": "<p><strong>Tratamiento integral de detailing interior.</strong></p><p>Incluye desmontaje de alfombras y tapetes, aspirado profundo, extracción con máquina de salón, limpieza del techo interior, tablero, puertas, consola y vidrios, acondicionamiento de plásticos y vinilos, tratamiento de cueros y perfumado.</p>",
+      "variants": [
+        [
+          "Auto",
+          "300.00"
+        ],
+        [
+          "Camioneta SUV",
+          "350.00"
+        ],
+        [
+          "Camioneta 3 filas",
+          "380.00"
+        ]
+      ]
+    },
+    {
+      "handle": "motor-a-vapor-la-cochera-place",
+      "title": "Limpieza de motor a vapor",
+      "flow": "checkout",
+      "descriptionHtml": "<p><strong>Desengrase y limpieza del compartimiento del motor con vapor controlado.</strong></p><p>Incluye evaluación de zonas sensibles, aplicación de desengrasante, limpieza con vapor a baja presión y secado con aire comprimido y microfibra. Evita aplicar agua a presión directamente sobre sensores, conectores y componentes eléctricos.</p>",
+      "variants": [
+        [
+          "Todos los vehículos",
+          "40.00"
+        ]
+      ]
+    },
+    {
+      "handle": "pulido-faros-la-cochera-place",
+      "title": "Pulido de faros",
+      "flow": "checkout",
+      "descriptionHtml": "<p><strong>Restauración de faros opacos, amarillentos o rayados.</strong></p><p>Incluye enmascarado, lijado progresivo, pulido con compuesto abrasivo fino y sellado con protección UV.</p><p><em>El precio indicado corresponde a una unidad de faro. Se recomienda realizar ambos faros delanteros para obtener un acabado uniforme.</em></p>",
+      "variants": [
+        [
+          "Auto (por faro)",
+          "35.00"
+        ],
+        [
+          "Camioneta (por faro)",
+          "40.00"
+        ]
+      ]
+    },
+    {
+      "handle": "pulido-pintura-la-cochera-place",
+      "title": "Pulido de pintura",
+      "flow": "consultative",
+      "descriptionHtml": "<p><strong>Corrección de pintura para reducir rayones leves, swirls, oxidación y manchas.</strong></p><p>Incluye lavado y descontaminado previo, evaluación de la pintura, pulido con compuesto de corte, refinado y protección final recomendada.</p><p><strong>Precio a consultar:</strong> depende del tamaño del vehículo, los paneles y el nivel de corrección requerido.</p>"
+    },
+    {
+      "handle": "descontaminado-pintura-la-cochera-place",
+      "title": "Descontaminado de pintura",
+      "flow": "consultative",
+      "descriptionHtml": "<p><strong>Eliminación de contaminantes adheridos que no salen con un lavado convencional.</strong></p><p>Incluye lavado previo, descontaminación férrica, remoción de brea y asfalto, tratamiento con clay bar, enjuague y secado.</p><p><strong>Precio a consultar:</strong> depende del tamaño y estado del vehículo.</p>"
+    },
+    {
+      "handle": "ceramico-carpro-la-cochera-place",
+      "title": "Recubrimiento cerámico Carpro",
+      "flow": "consultative",
+      "descriptionHtml": "<p><strong>Protección semipermanente Carpro para la pintura.</strong></p><p>Incluye preparación de superficie, limpieza con alcohol isopropílico, aplicación panel por panel, curado y acabado final. Aporta protección UV, resistencia química, efecto hidrofóbico y brillo profundo.</p><p><strong>Precio a consultar:</strong> depende del vehículo, la preparación y las capas aplicadas.</p>"
+    },
+    {
+      "handle": "cueros-aros-la-cochera-place",
+      "title": "Tratamiento de cueros y restauración de aros",
+      "flow": "consultative",
+      "descriptionHtml": "<p><strong>Trabajos profesionales para interior y aros.</strong></p><p>El tratamiento de cueros incluye limpieza profunda, hidratación y protección con restaurador Sonax. La restauración de aros con R2000 elimina polvo de frenos, oxidación superficial y manchas difíciles.</p><p><strong>Precio a consultar:</strong> depende del vehículo y del estado de las superficies.</p>"
+    }
+  ],
+  "updated": [
+    "lavado-completo-la-cochera-place",
+    "lavado-vapor-interior-la-cochera-place",
+    "lavado-salon-detailing-interior-la-cochera-place",
+    "motor-a-vapor-la-cochera-place",
+    "pulido-faros-la-cochera-place",
+    "pulido-pintura-la-cochera-place",
+    "descontaminado-pintura-la-cochera-place",
+    "ceramico-carpro-la-cochera-place",
+    "cueros-aros-la-cochera-place"
+  ],
+  "after": {
+    "shop": {
+      "name": "LACOCHERAPLACE",
+      "currencyCode": "PEN"
+    },
+    "products": {
+      "nodes": [
+        {
+          "id": "gid://shopify/Product/10772747321681",
+          "handle": "lavado-completo-la-cochera-place",
+          "title": "Lavado completo",
+          "descriptionHtml": "<p><strong>Lavado exterior, encerado, aspirado interior y limpieza de vidrios.</strong></p><p>Incluye prelavado con espuma activa, lavado manual con microfibra, limpieza de llantas y aros, enjuague a presión, secado, encerado, aspirado del habitáculo y limpieza interior y exterior de vidrios.</p><p><em>Tolerancia de estacionamiento: entre 1 y 2 horas como máximo después de la entrega del vehículo.</em></p>",
+          "vendor": "La Cochera Place",
+          "status": "ACTIVE",
+          "tags": [
+            "carwash",
+            "ches-catalogo",
+            "lavado",
+            "proveedor-la-cochera-place",
+            "service-flow-checkout",
+            "servicio"
+          ],
+          "onlineStoreUrl": "https://www.lacocheraplace.com/products/lavado-completo-la-cochera-place",
+          "media": {
+            "nodes": [
+              {
+                "id": "gid://shopify/MediaImage/68937835708753"
+              },
+              {
+                "id": "gid://shopify/MediaImage/68937835774289"
+              },
+              {
+                "id": "gid://shopify/MediaImage/68937836036433"
+              },
+              {
+                "id": "gid://shopify/MediaImage/68937837609297"
+              },
+              {
+                "id": "gid://shopify/MediaImage/68937838199121"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69165335806289"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241158959441"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241158992209"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241159024977"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241159057745"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241159090513"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241159123281"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241159156049"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241159188817"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241159221585"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241159254353"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241159287121"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241159319889"
+              }
+            ]
+          },
+          "options": [
+            {
+              "id": "gid://shopify/ProductOption/13460440318289",
+              "name": "Tipo de vehículo",
+              "optionValues": [
+                {
+                  "id": "gid://shopify/ProductOptionValue/9185162592593",
+                  "name": "Auto"
+                },
+                {
+                  "id": "gid://shopify/ProductOptionValue/9185162625361",
+                  "name": "Camioneta SUV"
+                },
+                {
+                  "id": "gid://shopify/ProductOptionValue/9185162658129",
+                  "name": "Camioneta 3 filas"
+                }
+              ]
+            }
+          ],
+          "variants": {
+            "nodes": [
+              {
+                "id": "gid://shopify/ProductVariant/53788609053009",
+                "title": "Auto",
+                "price": "50.00",
+                "selectedOptions": [
+                  {
+                    "name": "Tipo de vehículo",
+                    "value": "Auto"
+                  }
+                ]
+              },
+              {
+                "id": "gid://shopify/ProductVariant/53788609085777",
+                "title": "Camioneta SUV",
+                "price": "60.00",
+                "selectedOptions": [
+                  {
+                    "name": "Tipo de vehículo",
+                    "value": "Camioneta SUV"
+                  }
+                ]
+              },
+              {
+                "id": "gid://shopify/ProductVariant/53788609118545",
+                "title": "Camioneta 3 filas",
+                "price": "70.00",
+                "selectedOptions": [
+                  {
+                    "name": "Tipo de vehículo",
+                    "value": "Camioneta 3 filas"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "gid://shopify/Product/10772747419985",
+          "handle": "lavado-vapor-interior-la-cochera-place",
+          "title": "Lavado de vapor interior",
+          "descriptionHtml": "<p><strong>Limpieza profunda del habitáculo con vapor a alta temperatura.</strong></p><p>Incluye aspirado previo; limpieza de tablero, consola, puertas, asientos, alfombras y pisos; tratamiento de conductos del aire acondicionado y aplicación de restaurador Sonax en cueros y plásticos.</p><p>Ayuda a eliminar bacterias, hongos, ácaros y malos olores sin mojar en exceso los materiales.</p>",
+          "vendor": "La Cochera Place",
+          "status": "ACTIVE",
+          "tags": [
+            "carwash",
+            "ches-catalogo",
+            "lavado",
+            "price-pending-eur",
+            "proveedor-la-cochera-place",
+            "service-flow-checkout",
+            "servicio"
+          ],
+          "onlineStoreUrl": "https://www.lacocheraplace.com/products/lavado-vapor-interior-la-cochera-place",
+          "media": {
+            "nodes": [
+              {
+                "id": "gid://shopify/MediaImage/69165252444497"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69165252477265"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69165252510033"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69165336035665"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69165336068433"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69165336396113"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241159549265"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241159582033"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241159614801"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241159647569"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241159680337"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241159713105"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241159745873"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241159778641"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241159811409"
+              }
+            ]
+          },
+          "options": [
+            {
+              "id": "gid://shopify/ProductOption/13460441104721",
+              "name": "Tipo de vehículo",
+              "optionValues": [
+                {
+                  "id": "gid://shopify/ProductOptionValue/9185162690897",
+                  "name": "Auto"
+                },
+                {
+                  "id": "gid://shopify/ProductOptionValue/9185162723665",
+                  "name": "Camioneta SUV"
+                },
+                {
+                  "id": "gid://shopify/ProductOptionValue/9185162756433",
+                  "name": "Camioneta 3 filas"
+                }
+              ]
+            }
+          ],
+          "variants": {
+            "nodes": [
+              {
+                "id": "gid://shopify/ProductVariant/53788611739985",
+                "title": "Auto",
+                "price": "150.00",
+                "selectedOptions": [
+                  {
+                    "name": "Tipo de vehículo",
+                    "value": "Auto"
+                  }
+                ]
+              },
+              {
+                "id": "gid://shopify/ProductVariant/53788611772753",
+                "title": "Camioneta SUV",
+                "price": "200.00",
+                "selectedOptions": [
+                  {
+                    "name": "Tipo de vehículo",
+                    "value": "Camioneta SUV"
+                  }
+                ]
+              },
+              {
+                "id": "gid://shopify/ProductVariant/53788611805521",
+                "title": "Camioneta 3 filas",
+                "price": "230.00",
+                "selectedOptions": [
+                  {
+                    "name": "Tipo de vehículo",
+                    "value": "Camioneta 3 filas"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "gid://shopify/Product/10772747452753",
+          "handle": "lavado-salon-detailing-interior-la-cochera-place",
+          "title": "Lavado de salón (detailing interior)",
+          "descriptionHtml": "<p><strong>Tratamiento integral de detailing interior.</strong></p><p>Incluye desmontaje de alfombras y tapetes, aspirado profundo, extracción con máquina de salón, limpieza del techo interior, tablero, puertas, consola y vidrios, acondicionamiento de plásticos y vinilos, tratamiento de cueros y perfumado.</p>",
+          "vendor": "La Cochera Place",
+          "status": "ACTIVE",
+          "tags": [
+            "carwash",
+            "ches-catalogo",
+            "detailing",
+            "price-pending-eur",
+            "proveedor-la-cochera-place",
+            "service-flow-checkout",
+            "servicio"
+          ],
+          "onlineStoreUrl": "https://www.lacocheraplace.com/products/lavado-salon-detailing-interior-la-cochera-place",
+          "media": {
+            "nodes": [
+              {
+                "id": "gid://shopify/MediaImage/69165252542801"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69165252575569"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69165252608337"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69165336494417"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69165336559953"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69165336625489"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241160630609"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241160663377"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241160696145"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241160728913"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241160761681"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241160794449"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241160827217"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241160859985"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241160892753"
+              }
+            ]
+          },
+          "options": [
+            {
+              "id": "gid://shopify/ProductOption/13460441071953",
+              "name": "Tipo de vehículo",
+              "optionValues": [
+                {
+                  "id": "gid://shopify/ProductOptionValue/9185162985809",
+                  "name": "Auto"
+                },
+                {
+                  "id": "gid://shopify/ProductOptionValue/9185163018577",
+                  "name": "Camioneta SUV"
+                },
+                {
+                  "id": "gid://shopify/ProductOptionValue/9185163051345",
+                  "name": "Camioneta 3 filas"
+                }
+              ]
+            }
+          ],
+          "variants": {
+            "nodes": [
+              {
+                "id": "gid://shopify/ProductVariant/53788611543377",
+                "title": "Auto",
+                "price": "300.00",
+                "selectedOptions": [
+                  {
+                    "name": "Tipo de vehículo",
+                    "value": "Auto"
+                  }
+                ]
+              },
+              {
+                "id": "gid://shopify/ProductVariant/53788611576145",
+                "title": "Camioneta SUV",
+                "price": "350.00",
+                "selectedOptions": [
+                  {
+                    "name": "Tipo de vehículo",
+                    "value": "Camioneta SUV"
+                  }
+                ]
+              },
+              {
+                "id": "gid://shopify/ProductVariant/53788611608913",
+                "title": "Camioneta 3 filas",
+                "price": "380.00",
+                "selectedOptions": [
+                  {
+                    "name": "Tipo de vehículo",
+                    "value": "Camioneta 3 filas"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "gid://shopify/Product/10772747485521",
+          "handle": "motor-a-vapor-la-cochera-place",
+          "title": "Limpieza de motor a vapor",
+          "descriptionHtml": "<p><strong>Desengrase y limpieza del compartimiento del motor con vapor controlado.</strong></p><p>Incluye evaluación de zonas sensibles, aplicación de desengrasante, limpieza con vapor a baja presión y secado con aire comprimido y microfibra. Evita aplicar agua a presión directamente sobre sensores, conectores y componentes eléctricos.</p>",
+          "vendor": "La Cochera Place",
+          "status": "ACTIVE",
+          "tags": [
+            "carwash",
+            "ches-catalogo",
+            "mantenimiento-ligero",
+            "price-pending-eur",
+            "proveedor-la-cochera-place",
+            "service-flow-checkout",
+            "servicio"
+          ],
+          "onlineStoreUrl": "https://www.lacocheraplace.com/products/motor-a-vapor-la-cochera-place",
+          "media": {
+            "nodes": [
+              {
+                "id": "gid://shopify/MediaImage/69165252673873"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69165252706641"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69165252739409"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69165336723793"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69165336789329"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69165337051473"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241161056593"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241161089361"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241161122129"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241161154897"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241161187665"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241161220433"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241161253201"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241161285969"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241161318737"
+              }
+            ]
+          },
+          "options": [
+            {
+              "id": "gid://shopify/ProductOption/13417272639825",
+              "name": "Tipo de vehiculo",
+              "optionValues": [
+                {
+                  "id": "gid://shopify/ProductOptionValue/9185163247953",
+                  "name": "Todos los vehículos"
+                }
+              ]
+            }
+          ],
+          "variants": {
+            "nodes": [
+              {
+                "id": "gid://shopify/ProductVariant/53638800441681",
+                "title": "Todos los vehículos",
+                "price": "40.00",
+                "selectedOptions": [
+                  {
+                    "name": "Tipo de vehiculo",
+                    "value": "Todos los vehículos"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "gid://shopify/Product/10772747518289",
+          "handle": "pulido-faros-la-cochera-place",
+          "title": "Pulido de faros",
+          "descriptionHtml": "<p><strong>Restauración de faros opacos, amarillentos o rayados.</strong></p><p>Incluye enmascarado, lijado progresivo, pulido con compuesto abrasivo fino y sellado con protección UV.</p><p><em>El precio indicado corresponde a una unidad de faro. Se recomienda realizar ambos faros delanteros para obtener un acabado uniforme.</em></p>",
+          "vendor": "La Cochera Place",
+          "status": "ACTIVE",
+          "tags": [
+            "carwash",
+            "ches-catalogo",
+            "detailing",
+            "price-pending-eur",
+            "proveedor-la-cochera-place",
+            "service-flow-checkout",
+            "servicio"
+          ],
+          "onlineStoreUrl": "https://www.lacocheraplace.com/products/pulido-faros-la-cochera-place",
+          "media": {
+            "nodes": [
+              {
+                "id": "gid://shopify/MediaImage/69165252772177"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69165252804945"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69165337149777"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69165337215313"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69165337477457"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69165337739601"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241162006865"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241162039633"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241162072401"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241162105169"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241162137937"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241162170705"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241162203473"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241162236241"
+              }
+            ]
+          },
+          "options": [
+            {
+              "id": "gid://shopify/ProductOption/13417272672593",
+              "name": "Tipo de vehiculo",
+              "optionValues": [
+                {
+                  "id": "gid://shopify/ProductOptionValue/9185163739473",
+                  "name": "Auto (por faro)"
+                },
+                {
+                  "id": "gid://shopify/ProductOptionValue/9185163772241",
+                  "name": "Camioneta (por faro)"
+                }
+              ]
+            }
+          ],
+          "variants": {
+            "nodes": [
+              {
+                "id": "gid://shopify/ProductVariant/53638800703825",
+                "title": "Auto (por faro)",
+                "price": "35.00",
+                "selectedOptions": [
+                  {
+                    "name": "Tipo de vehiculo",
+                    "value": "Auto (por faro)"
+                  }
+                ]
+              },
+              {
+                "id": "gid://shopify/ProductVariant/53638800736593",
+                "title": "Camioneta (por faro)",
+                "price": "40.00",
+                "selectedOptions": [
+                  {
+                    "name": "Tipo de vehiculo",
+                    "value": "Camioneta (por faro)"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "gid://shopify/Product/10772747551057",
+          "handle": "pulido-pintura-la-cochera-place",
+          "title": "Pulido de pintura",
+          "descriptionHtml": "<p><strong>Corrección de pintura para reducir rayones leves, swirls, oxidación y manchas.</strong></p><p>Incluye lavado y descontaminado previo, evaluación de la pintura, pulido con compuesto de corte, refinado y protección final recomendada.</p><p><strong>Precio a consultar:</strong> depende del tamaño del vehículo, los paneles y el nivel de corrección requerido.</p>",
+          "vendor": "La Cochera Place",
+          "status": "ACTIVE",
+          "tags": [
+            "carwash",
+            "ches-catalogo",
+            "detailing",
+            "price-pending-eur",
+            "proveedor-la-cochera-place",
+            "service-flow-consultative",
+            "servicio"
+          ],
+          "onlineStoreUrl": "https://www.lacocheraplace.com/products/pulido-pintura-la-cochera-place",
+          "media": {
+            "nodes": [
+              {
+                "id": "gid://shopify/MediaImage/69165252837713"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69165252870481"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69165337870673"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69165337936209"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69165338001745"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69165338132817"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241162432849"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241162465617"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241162498385"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241162531153"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241162563921"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241162596689"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241162629457"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241162662225"
+              }
+            ]
+          },
+          "options": [
+            {
+              "id": "gid://shopify/ProductOption/13417272705361",
+              "name": "Title",
+              "optionValues": [
+                {
+                  "id": "gid://shopify/ProductOptionValue/8140015567185",
+                  "name": "Default Title"
+                }
+              ]
+            }
+          ],
+          "variants": {
+            "nodes": [
+              {
+                "id": "gid://shopify/ProductVariant/53638800802129",
+                "title": "Default Title",
+                "price": "0.00",
+                "selectedOptions": [
+                  {
+                    "name": "Title",
+                    "value": "Default Title"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "gid://shopify/Product/10772747583825",
+          "handle": "descontaminado-pintura-la-cochera-place",
+          "title": "Descontaminado de pintura",
+          "descriptionHtml": "<p><strong>Eliminación de contaminantes adheridos que no salen con un lavado convencional.</strong></p><p>Incluye lavado previo, descontaminación férrica, remoción de brea y asfalto, tratamiento con clay bar, enjuague y secado.</p><p><strong>Precio a consultar:</strong> depende del tamaño y estado del vehículo.</p>",
+          "vendor": "La Cochera Place",
+          "status": "ACTIVE",
+          "tags": [
+            "carwash",
+            "ches-catalogo",
+            "detailing",
+            "price-pending-eur",
+            "proveedor-la-cochera-place",
+            "service-flow-consultative",
+            "servicio"
+          ],
+          "onlineStoreUrl": "https://www.lacocheraplace.com/products/descontaminado-pintura-la-cochera-place",
+          "media": {
+            "nodes": [
+              {
+                "id": "gid://shopify/MediaImage/69165252936017"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69165338362193"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69165338460497"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69165338591569"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69165338788177"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69165338886481"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241162694993"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241162727761"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241162760529"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241162793297"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241162826065"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241162858833"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241162891601"
+              }
+            ]
+          },
+          "options": [
+            {
+              "id": "gid://shopify/ProductOption/13417272738129",
+              "name": "Title",
+              "optionValues": [
+                {
+                  "id": "gid://shopify/ProductOptionValue/8140015599953",
+                  "name": "Default Title"
+                }
+              ]
+            }
+          ],
+          "variants": {
+            "nodes": [
+              {
+                "id": "gid://shopify/ProductVariant/53638800867665",
+                "title": "Default Title",
+                "price": "0.00",
+                "selectedOptions": [
+                  {
+                    "name": "Title",
+                    "value": "Default Title"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "gid://shopify/Product/10772747616593",
+          "handle": "ceramico-carpro-la-cochera-place",
+          "title": "Recubrimiento cerámico Carpro",
+          "descriptionHtml": "<p><strong>Protección semipermanente Carpro para la pintura.</strong></p><p>Incluye preparación de superficie, limpieza con alcohol isopropílico, aplicación panel por panel, curado y acabado final. Aporta protección UV, resistencia química, efecto hidrofóbico y brillo profundo.</p><p><strong>Precio a consultar:</strong> depende del vehículo, la preparación y las capas aplicadas.</p>",
+          "vendor": "La Cochera Place",
+          "status": "ACTIVE",
+          "tags": [
+            "carwash",
+            "ches-catalogo",
+            "detailing",
+            "price-pending-eur",
+            "proveedor-la-cochera-place",
+            "service-flow-consultative",
+            "servicio"
+          ],
+          "onlineStoreUrl": "https://www.lacocheraplace.com/products/ceramico-carpro-la-cochera-place",
+          "media": {
+            "nodes": [
+              {
+                "id": "gid://shopify/MediaImage/69165253034321"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69165253067089"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69165338952017"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69165339017553"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69165339148625"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69165339246929"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241163481425"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241163514193"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241163546961"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241163579729"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241163612497"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241163645265"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241163678033"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241163710801"
+              }
+            ]
+          },
+          "options": [
+            {
+              "id": "gid://shopify/ProductOption/13417272770897",
+              "name": "Title",
+              "optionValues": [
+                {
+                  "id": "gid://shopify/ProductOptionValue/8140015632721",
+                  "name": "Default Title"
+                }
+              ]
+            }
+          ],
+          "variants": {
+            "nodes": [
+              {
+                "id": "gid://shopify/ProductVariant/53638800900433",
+                "title": "Default Title",
+                "price": "0.00",
+                "selectedOptions": [
+                  {
+                    "name": "Title",
+                    "value": "Default Title"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "gid://shopify/Product/10772747682129",
+          "handle": "cueros-aros-la-cochera-place",
+          "title": "Tratamiento de cueros y restauración de aros",
+          "descriptionHtml": "<p><strong>Trabajos profesionales para interior y aros.</strong></p><p>El tratamiento de cueros incluye limpieza profunda, hidratación y protección con restaurador Sonax. La restauración de aros con R2000 elimina polvo de frenos, oxidación superficial y manchas difíciles.</p><p><strong>Precio a consultar:</strong> depende del vehículo y del estado de las superficies.</p>",
+          "vendor": "La Cochera Place",
+          "status": "ACTIVE",
+          "tags": [
+            "carwash",
+            "ches-catalogo",
+            "detailing",
+            "price-pending-eur",
+            "proveedor-la-cochera-place",
+            "service-flow-consultative",
+            "servicio"
+          ],
+          "onlineStoreUrl": "https://www.lacocheraplace.com/products/cueros-aros-la-cochera-place",
+          "media": {
+            "nodes": [
+              {
+                "id": "gid://shopify/MediaImage/69165253132625"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69165253165393"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69165339312465"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69165339607377"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69165339705681"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69165339738449"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241163841873"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241163874641"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241163907409"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241163940177"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241163972945"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241164005713"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241164038481"
+              },
+              {
+                "id": "gid://shopify/MediaImage/69241164071249"
+              }
+            ]
+          },
+          "options": [
+            {
+              "id": "gid://shopify/ProductOption/13417272836433",
+              "name": "Title",
+              "optionValues": [
+                {
+                  "id": "gid://shopify/ProductOptionValue/8140015665489",
+                  "name": "Default Title"
+                }
+              ]
+            }
+          ],
+          "variants": {
+            "nodes": [
+              {
+                "id": "gid://shopify/ProductVariant/53638800933201",
+                "title": "Default Title",
+                "price": "0.00",
+                "selectedOptions": [
+                  {
+                    "name": "Title",
+                    "value": "Default Title"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

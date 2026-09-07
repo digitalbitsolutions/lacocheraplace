@@ -1,0 +1,287 @@
+{
+  "generatedAt": "2026-09-03T20:01:52.138Z",
+  "apply": true,
+  "criterion": "active, published, description completeness, media, variants, inventory, updatedAt, createdAt",
+  "keep": {
+    "id": "gid://shopify/Product/10630508740945",
+    "handle": "parking-badalona-2",
+    "title": "PARKING BADALONA 2",
+    "vendor": "La Cochera Place",
+    "status": "ACTIVE",
+    "createdAt": "2026-02-10T21:21:36Z",
+    "updatedAt": "2026-05-12T19:53:06Z",
+    "onlineStoreUrl": "https://www.lacocheraplace.com/products/parking-badalona-2",
+    "descriptionHtml": "<p>DESCRIPCIÒN PARKING BADALONA 2</p>",
+    "totalInventory": 10,
+    "tags": [],
+    "media": {
+      "nodes": [
+        {
+          "id": "gid://shopify/MediaImage/67361540473169",
+          "mediaContentType": "IMAGE",
+          "alt": "",
+          "preview": {
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/1016/5102/2161/files/Gemini_Generated_Image_wwc6vtwwc6vtwwc6.png?v=1770757400"
+            }
+          }
+        },
+        {
+          "id": "gid://shopify/MediaImage/69247337759057",
+          "mediaContentType": "IMAGE",
+          "alt": "",
+          "preview": {
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/1016/5102/2161/files/parking-badalona-2-gap120-01_392d92ca-0432-4b8d-bedf-abd6841a8d8d.webp?v=1778615585"
+            }
+          }
+        },
+        {
+          "id": "gid://shopify/MediaImage/69247337791825",
+          "mediaContentType": "IMAGE",
+          "alt": "",
+          "preview": {
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/1016/5102/2161/files/parking-badalona-2-gap120-02_7fc1c31d-c6d8-4972-8287-cb529c823cdc.webp?v=1778615585"
+            }
+          }
+        },
+        {
+          "id": "gid://shopify/MediaImage/69247337824593",
+          "mediaContentType": "IMAGE",
+          "alt": "",
+          "preview": {
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/1016/5102/2161/files/parking-badalona-2-gap120-03_27d0c9dc-e2cc-4ed9-b626-89818f70c078.webp?v=1778615585"
+            }
+          }
+        },
+        {
+          "id": "gid://shopify/MediaImage/69247337857361",
+          "mediaContentType": "IMAGE",
+          "alt": "",
+          "preview": {
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/1016/5102/2161/files/parking-badalona-2-gap120-04_eab7ccf7-f684-421a-ae55-dbbc85273d34.webp?v=1778615586"
+            }
+          }
+        },
+        {
+          "id": "gid://shopify/MediaImage/69247337890129",
+          "mediaContentType": "IMAGE",
+          "alt": "",
+          "preview": {
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/1016/5102/2161/files/parking-badalona-2-gap120-05_6eb7de64-d08d-4a59-b49d-01d4489253d6.webp?v=1778615585"
+            }
+          }
+        }
+      ]
+    },
+    "variants": {
+      "nodes": [
+        {
+          "id": "gid://shopify/ProductVariant/53020103704913",
+          "title": "Default Title",
+          "price": "4.00",
+          "inventoryQuantity": 10,
+          "selectedOptions": [
+            {
+              "name": "Title",
+              "value": "Default Title"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "remove": {
+    "id": "gid://shopify/Product/10630472139089",
+    "handle": "parking-badalona",
+    "title": "PARKING BADALONA",
+    "vendor": "La Cochera Place",
+    "status": "ACTIVE",
+    "createdAt": "2026-02-10T21:06:08Z",
+    "updatedAt": "2026-05-12T19:53:06Z",
+    "onlineStoreUrl": "https://www.lacocheraplace.com/products/parking-badalona",
+    "descriptionHtml": "<p>DESCRIPCIÒN PARKING BADALONA</p>",
+    "totalInventory": 10,
+    "tags": [],
+    "media": {
+      "nodes": [
+        {
+          "id": "gid://shopify/MediaImage/67361540473169",
+          "mediaContentType": "IMAGE",
+          "alt": "",
+          "preview": {
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/1016/5102/2161/files/Gemini_Generated_Image_wwc6vtwwc6vtwwc6.png?v=1770757400"
+            }
+          }
+        },
+        {
+          "id": "gid://shopify/MediaImage/69246894604625",
+          "mediaContentType": "IMAGE",
+          "alt": "",
+          "preview": {
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/1016/5102/2161/files/parking-benidorm-1200x731_291ae3e2-2cdf-4852-8110-c4d7c44e00ec.jpg?v=1778614345"
+            }
+          }
+        },
+        {
+          "id": "gid://shopify/MediaImage/69247337398609",
+          "mediaContentType": "IMAGE",
+          "alt": "",
+          "preview": {
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/1016/5102/2161/files/parking-badalona-gap120-01_3e3f9137-651f-412b-8532-4bf1ecba1bae.webp?v=1778615585"
+            }
+          }
+        },
+        {
+          "id": "gid://shopify/MediaImage/69247337431377",
+          "mediaContentType": "IMAGE",
+          "alt": "",
+          "preview": {
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/1016/5102/2161/files/parking-badalona-gap120-02_bc2f0963-3427-4fe5-86a7-b73257c21699.webp?v=1778615585"
+            }
+          }
+        },
+        {
+          "id": "gid://shopify/MediaImage/69247337464145",
+          "mediaContentType": "IMAGE",
+          "alt": "",
+          "preview": {
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/1016/5102/2161/files/parking-badalona-gap120-03_68de3297-e55b-433f-a824-7c9bd68d6b69.webp?v=1778615586"
+            }
+          }
+        },
+        {
+          "id": "gid://shopify/MediaImage/69247337496913",
+          "mediaContentType": "IMAGE",
+          "alt": "",
+          "preview": {
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/1016/5102/2161/files/parking-badalona-gap120-04_5b0f8c4a-c455-4424-9a27-1b263c280ba8.webp?v=1778615585"
+            }
+          }
+        }
+      ]
+    },
+    "variants": {
+      "nodes": [
+        {
+          "id": "gid://shopify/ProductVariant/53020036202833",
+          "title": "Default Title",
+          "price": "4.00",
+          "inventoryQuantity": 10,
+          "selectedOptions": [
+            {
+              "name": "Title",
+              "value": "Default Title"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "deletedProductId": "gid://shopify/Product/10630472139089",
+  "after": [
+    {
+      "id": "gid://shopify/Product/10630508740945",
+      "handle": "parking-badalona-2",
+      "title": "PARKING BADALONA 2",
+      "vendor": "La Cochera Place",
+      "status": "ACTIVE",
+      "createdAt": "2026-02-10T21:21:36Z",
+      "updatedAt": "2026-05-12T19:53:06Z",
+      "onlineStoreUrl": "https://www.lacocheraplace.com/products/parking-badalona-2",
+      "descriptionHtml": "<p>DESCRIPCIÒN PARKING BADALONA 2</p>",
+      "totalInventory": 10,
+      "tags": [],
+      "media": {
+        "nodes": [
+          {
+            "id": "gid://shopify/MediaImage/67361540473169",
+            "mediaContentType": "IMAGE",
+            "alt": "",
+            "preview": {
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1016/5102/2161/files/Gemini_Generated_Image_wwc6vtwwc6vtwwc6.png?v=1770757400"
+              }
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69247337759057",
+            "mediaContentType": "IMAGE",
+            "alt": "",
+            "preview": {
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1016/5102/2161/files/parking-badalona-2-gap120-01_392d92ca-0432-4b8d-bedf-abd6841a8d8d.webp?v=1778615585"
+              }
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69247337791825",
+            "mediaContentType": "IMAGE",
+            "alt": "",
+            "preview": {
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1016/5102/2161/files/parking-badalona-2-gap120-02_7fc1c31d-c6d8-4972-8287-cb529c823cdc.webp?v=1778615585"
+              }
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69247337824593",
+            "mediaContentType": "IMAGE",
+            "alt": "",
+            "preview": {
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1016/5102/2161/files/parking-badalona-2-gap120-03_27d0c9dc-e2cc-4ed9-b626-89818f70c078.webp?v=1778615585"
+              }
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69247337857361",
+            "mediaContentType": "IMAGE",
+            "alt": "",
+            "preview": {
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1016/5102/2161/files/parking-badalona-2-gap120-04_eab7ccf7-f684-421a-ae55-dbbc85273d34.webp?v=1778615586"
+              }
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69247337890129",
+            "mediaContentType": "IMAGE",
+            "alt": "",
+            "preview": {
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/1016/5102/2161/files/parking-badalona-2-gap120-05_6eb7de64-d08d-4a59-b49d-01d4489253d6.webp?v=1778615585"
+              }
+            }
+          }
+        ]
+      },
+      "variants": {
+        "nodes": [
+          {
+            "id": "gid://shopify/ProductVariant/53020103704913",
+            "title": "Default Title",
+            "price": "4.00",
+            "inventoryQuantity": 10,
+            "selectedOptions": [
+              {
+                "name": "Title",
+                "value": "Default Title"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}
