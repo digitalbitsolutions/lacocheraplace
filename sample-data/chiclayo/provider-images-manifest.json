@@ -1,0 +1,134 @@
+[
+  {
+    "provider_slug": "ricar-multicenter",
+    "provider_name": "Ricar Multicenter",
+    "logo_status": "official_source_review_required",
+    "official_source_url": "http://www.ricar.pe/",
+    "logo_source_url": "",
+    "gallery_status": "permission_required",
+    "gallery_source_urls": [],
+    "local_fallback": "sample-data/chiclayo/assets/provider-placeholder.svg",
+    "rights_note": "Verificar titularidad y condiciones de uso antes de descargar o publicar el logo."
+  },
+  {
+    "provider_slug": "automan-chiclayo-eirl",
+    "provider_name": "AUTOMAN CHICLAYO E.I.R.L.",
+    "logo_status": "placeholder_required",
+    "official_source_url": "",
+    "logo_source_url": "",
+    "gallery_status": "permission_required",
+    "gallery_source_urls": [],
+    "local_fallback": "sample-data/chiclayo/assets/provider-placeholder.svg",
+    "rights_note": "Usar el placeholder neutral hasta recibir un recurso autorizado del proveedor."
+  },
+  {
+    "provider_slug": "automotriz-burga",
+    "provider_name": "Automotriz Burga",
+    "logo_status": "placeholder_required",
+    "official_source_url": "",
+    "logo_source_url": "",
+    "gallery_status": "permission_required",
+    "gallery_source_urls": [],
+    "local_fallback": "sample-data/chiclayo/assets/provider-placeholder.svg",
+    "rights_note": "Usar el placeholder neutral hasta recibir un recurso autorizado del proveedor."
+  },
+  {
+    "provider_slug": "automotriz-palomino",
+    "provider_name": "Automotriz Palomino.",
+    "logo_status": "official_source_review_required",
+    "official_source_url": "https://automotrizpalomino.business.site/",
+    "logo_source_url": "",
+    "gallery_status": "permission_required",
+    "gallery_source_urls": [],
+    "local_fallback": "sample-data/chiclayo/assets/provider-placeholder.svg",
+    "rights_note": "Verificar titularidad y condiciones de uso antes de descargar o publicar el logo."
+  },
+  {
+    "provider_slug": "lubricentro-y-lavadero-oasis",
+    "provider_name": "Lubricentro Y Lavadero Oasis",
+    "logo_status": "placeholder_required",
+    "official_source_url": "",
+    "logo_source_url": "",
+    "gallery_status": "permission_required",
+    "gallery_source_urls": [],
+    "local_fallback": "sample-data/chiclayo/assets/provider-placeholder.svg",
+    "rights_note": "Usar el placeholder neutral hasta recibir un recurso autorizado del proveedor."
+  },
+  {
+    "provider_slug": "baterias-uscay",
+    "provider_name": "Baterías USCAY",
+    "logo_status": "official_source_review_required",
+    "official_source_url": "http://bateriasuscay.pe/",
+    "logo_source_url": "",
+    "gallery_status": "permission_required",
+    "gallery_source_urls": [],
+    "local_fallback": "sample-data/chiclayo/assets/provider-placeholder.svg",
+    "rights_note": "Verificar titularidad y condiciones de uso antes de descargar o publicar el logo."
+  },
+  {
+    "provider_slug": "motor-shop-fuel-injection",
+    "provider_name": "Motor Shop fuel injection",
+    "logo_status": "official_source_review_required",
+    "official_source_url": "http://www.motorshoperu.com/",
+    "logo_source_url": "",
+    "gallery_status": "permission_required",
+    "gallery_source_urls": [],
+    "local_fallback": "sample-data/chiclayo/assets/provider-placeholder.svg",
+    "rights_note": "Verificar titularidad y condiciones de uso antes de descargar o publicar el logo."
+  },
+  {
+    "provider_slug": "campos-motors",
+    "provider_name": "CAMPOS MOTORS",
+    "logo_status": "placeholder_required",
+    "official_source_url": "",
+    "logo_source_url": "",
+    "gallery_status": "permission_required",
+    "gallery_source_urls": [],
+    "local_fallback": "sample-data/chiclayo/assets/provider-placeholder.svg",
+    "rights_note": "Usar el placeholder neutral hasta recibir un recurso autorizado del proveedor."
+  },
+  {
+    "provider_slug": "taller-central-motors",
+    "provider_name": "Taller Central Motors",
+    "logo_status": "placeholder_required",
+    "official_source_url": "",
+    "logo_source_url": "",
+    "gallery_status": "permission_required",
+    "gallery_source_urls": [],
+    "local_fallback": "sample-data/chiclayo/assets/provider-placeholder.svg",
+    "rights_note": "Usar el placeholder neutral hasta recibir un recurso autorizado del proveedor."
+  },
+  {
+    "provider_slug": "comercio-cia-llantas",
+    "provider_name": "Comercio & Cía - Llantas",
+    "logo_status": "official_source_review_required",
+    "official_source_url": "http://www.comerciollantas.com.pe/",
+    "logo_source_url": "",
+    "gallery_status": "permission_required",
+    "gallery_source_urls": [],
+    "local_fallback": "sample-data/chiclayo/assets/provider-placeholder.svg",
+    "rights_note": "Verificar titularidad y condiciones de uso antes de descargar o publicar el logo."
+  },
+  {
+    "provider_slug": "carrocerias-herrera",
+    "provider_name": "CARROCERIAS HERRERA",
+    "logo_status": "placeholder_required",
+    "official_source_url": "",
+    "logo_source_url": "",
+    "gallery_status": "permission_required",
+    "gallery_source_urls": [],
+    "local_fallback": "sample-data/chiclayo/assets/provider-placeholder.svg",
+    "rights_note": "Usar el placeholder neutral hasta recibir un recurso autorizado del proveedor."
+  },
+  {
+    "provider_slug": "davalos-import-sa",
+    "provider_name": "Davalos Import SA",
+    "logo_status": "official_source_review_required",
+    "official_source_url": "http://www.grupodavalos.com/",
+    "logo_source_url": "",
+    "gallery_status": "permission_required",
+    "gallery_source_urls": [],
+    "local_fallback": "sample-data/chiclayo/assets/provider-placeholder.svg",
+    "rights_note": "Verificar titularidad y condiciones de uso antes de descargar o publicar el logo."
+  }
+]

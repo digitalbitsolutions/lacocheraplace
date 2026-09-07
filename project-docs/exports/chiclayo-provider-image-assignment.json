@@ -1,0 +1,280 @@
+{
+  "generatedAt": "2026-09-07T19:39:25.573Z",
+  "mode": "apply",
+  "requestedServices": 22,
+  "planned": [
+    {
+      "service": "equipamiento-automotriz-ricar-multicenter",
+      "provider_slug": "ricar-multicenter",
+      "source_product": "kit-cuidado-gracia-auto-spa",
+      "source_url": "https://cdn.shopify.com/s/files/1/1016/5102/2161/files/motor-a-vapor-r3-04_663487ad-fd09-4bec-a3f3-d8b2e773f8da.webp?v=1778613448"
+    },
+    {
+      "service": "estetica-automotriz-ricar-multicenter",
+      "provider_slug": "ricar-multicenter",
+      "source_product": "pulido-pintura-la-cochera-place",
+      "source_url": "https://cdn.shopify.com/s/files/1/1016/5102/2161/files/pulido-ceramico-03_0fa64018-7f5b-4381-9337-253ce06219a9.webp?v=1778271969"
+    },
+    {
+      "service": "mecanica-automotriz-automan-chiclayo-eirl",
+      "provider_slug": "automan-chiclayo-eirl",
+      "source_product": "motor-a-vapor-la-cochera-place",
+      "source_url": "https://cdn.shopify.com/s/files/1/1016/5102/2161/files/mantenimiento-basico-01_22c4cb72-d48c-4a97-9534-eff3bd0d36f4.webp?v=1778271967"
+    },
+    {
+      "service": "reparacion-automotriz-automotriz-burga",
+      "provider_slug": "automotriz-burga",
+      "source_product": "motor-a-vapor-la-cochera-place",
+      "source_url": "https://cdn.shopify.com/s/files/1/1016/5102/2161/files/mantenimiento-basico-01_22c4cb72-d48c-4a97-9534-eff3bd0d36f4.webp?v=1778271967"
+    },
+    {
+      "service": "mantenimiento-automotriz-automotriz-burga",
+      "provider_slug": "automotriz-burga",
+      "source_product": "motor-a-vapor-la-cochera-place",
+      "source_url": "https://cdn.shopify.com/s/files/1/1016/5102/2161/files/mantenimiento-basico-01_22c4cb72-d48c-4a97-9534-eff3bd0d36f4.webp?v=1778271967"
+    },
+    {
+      "service": "venta-de-repuestos-automotrices-automotriz-burga",
+      "provider_slug": "automotriz-burga",
+      "source_product": "kit-cuidado-gracia-auto-spa",
+      "source_url": "https://cdn.shopify.com/s/files/1/1016/5102/2161/files/motor-a-vapor-r3-04_663487ad-fd09-4bec-a3f3-d8b2e773f8da.webp?v=1778613448"
+    },
+    {
+      "service": "mantenimiento-y-reparacion-de-vehiculos-automotores-automotriz-palomino",
+      "provider_slug": "automotriz-palomino",
+      "source_product": "motor-a-vapor-la-cochera-place",
+      "source_url": "https://cdn.shopify.com/s/files/1/1016/5102/2161/files/mantenimiento-basico-01_22c4cb72-d48c-4a97-9534-eff3bd0d36f4.webp?v=1778271967"
+    },
+    {
+      "service": "lavado-de-coches-y-detalle-automotriz-palomino",
+      "provider_slug": "automotriz-palomino",
+      "source_product": "pulido-pintura-la-cochera-place",
+      "source_url": "https://cdn.shopify.com/s/files/1/1016/5102/2161/files/pulido-ceramico-03_0fa64018-7f5b-4381-9337-253ce06219a9.webp?v=1778271969"
+    },
+    {
+      "service": "lavado-de-motos-lubricentro-y-lavadero-oasis",
+      "provider_slug": "lubricentro-y-lavadero-oasis",
+      "source_product": "lavado-completo-la-cochera-place",
+      "source_url": "https://cdn.shopify.com/s/files/1/1016/5102/2161/files/img-lavado-completo_1.webp?v=1777490716"
+    },
+    {
+      "service": "cambio-de-aceite-lubricentro-y-lavadero-oasis",
+      "provider_slug": "lubricentro-y-lavadero-oasis",
+      "source_product": "motor-a-vapor-la-cochera-place",
+      "source_url": "https://cdn.shopify.com/s/files/1/1016/5102/2161/files/mantenimiento-basico-01_22c4cb72-d48c-4a97-9534-eff3bd0d36f4.webp?v=1778271967"
+    },
+    {
+      "service": "venta-de-repuestos-y-accesorios-para-motos-lubricentro-y-lavadero-oasis",
+      "provider_slug": "lubricentro-y-lavadero-oasis",
+      "source_product": "kit-cuidado-gracia-auto-spa",
+      "source_url": "https://cdn.shopify.com/s/files/1/1016/5102/2161/files/motor-a-vapor-r3-04_663487ad-fd09-4bec-a3f3-d8b2e773f8da.webp?v=1778613448"
+    },
+    {
+      "service": "venta-de-baterias-para-vehiculos-baterias-uscay",
+      "provider_slug": "baterias-uscay",
+      "source_product": "kit-cuidado-gracia-auto-spa",
+      "source_url": "https://cdn.shopify.com/s/files/1/1016/5102/2161/files/motor-a-vapor-r3-04_663487ad-fd09-4bec-a3f3-d8b2e773f8da.webp?v=1778613448"
+    },
+    {
+      "service": "instalacion-de-baterias-baterias-uscay",
+      "provider_slug": "baterias-uscay",
+      "source_product": "motor-a-vapor-la-cochera-place",
+      "source_url": "https://cdn.shopify.com/s/files/1/1016/5102/2161/files/mantenimiento-basico-01_22c4cb72-d48c-4a97-9534-eff3bd0d36f4.webp?v=1778271967"
+    },
+    {
+      "service": "delivery-de-baterias-baterias-uscay",
+      "provider_slug": "baterias-uscay",
+      "source_product": "kit-cuidado-gracia-auto-spa",
+      "source_url": "https://cdn.shopify.com/s/files/1/1016/5102/2161/files/motor-a-vapor-r3-04_663487ad-fd09-4bec-a3f3-d8b2e773f8da.webp?v=1778613448"
+    },
+    {
+      "service": "venta-de-repuestos-automotrices-motor-shop-fuel-injection",
+      "provider_slug": "motor-shop-fuel-injection",
+      "source_product": "kit-cuidado-gracia-auto-spa",
+      "source_url": "https://cdn.shopify.com/s/files/1/1016/5102/2161/files/motor-a-vapor-r3-04_663487ad-fd09-4bec-a3f3-d8b2e773f8da.webp?v=1778613448"
+    },
+    {
+      "service": "mecanica-automotriz-campos-motors",
+      "provider_slug": "campos-motors",
+      "source_product": "motor-a-vapor-la-cochera-place",
+      "source_url": "https://cdn.shopify.com/s/files/1/1016/5102/2161/files/mantenimiento-basico-01_22c4cb72-d48c-4a97-9534-eff3bd0d36f4.webp?v=1778271967"
+    },
+    {
+      "service": "mecanica-automotriz-taller-central-motors",
+      "provider_slug": "taller-central-motors",
+      "source_product": "motor-a-vapor-la-cochera-place",
+      "source_url": "https://cdn.shopify.com/s/files/1/1016/5102/2161/files/mantenimiento-basico-01_22c4cb72-d48c-4a97-9534-eff3bd0d36f4.webp?v=1778271967"
+    },
+    {
+      "service": "servicio-tecnico-pre-y-post-venta-de-neumaticos-comercio-cia-llantas",
+      "provider_slug": "comercio-cia-llantas",
+      "source_product": "cambio-neumaticos-eixample-tire-center",
+      "source_url": "https://cdn.shopify.com/s/files/1/1016/5102/2161/files/mantenimiento-basico-r3-02_fc347c41-45a2-44f0-9456-5ede43c7dbeb.webp?v=1778613450"
+    },
+    {
+      "service": "venta-de-neumaticos-aros-camaras-y-accesorios-comercio-cia-llantas",
+      "provider_slug": "comercio-cia-llantas",
+      "source_product": "cambio-neumaticos-eixample-tire-center",
+      "source_url": "https://cdn.shopify.com/s/files/1/1016/5102/2161/files/mantenimiento-basico-r3-02_fc347c41-45a2-44f0-9456-5ede43c7dbeb.webp?v=1778613450"
+    },
+    {
+      "service": "reparacion-de-automoviles-carrocerias-herrera",
+      "provider_slug": "carrocerias-herrera",
+      "source_product": "motor-a-vapor-la-cochera-place",
+      "source_url": "https://cdn.shopify.com/s/files/1/1016/5102/2161/files/mantenimiento-basico-01_22c4cb72-d48c-4a97-9534-eff3bd0d36f4.webp?v=1778271967"
+    },
+    {
+      "service": "venta-de-repuestos-automotrices-davalos-import-sa",
+      "provider_slug": "davalos-import-sa",
+      "source_product": "kit-cuidado-gracia-auto-spa",
+      "source_url": "https://cdn.shopify.com/s/files/1/1016/5102/2161/files/motor-a-vapor-r3-04_663487ad-fd09-4bec-a3f3-d8b2e773f8da.webp?v=1778613448"
+    },
+    {
+      "service": "delivery-de-repuestos-davalos-import-sa",
+      "provider_slug": "davalos-import-sa",
+      "source_product": "kit-cuidado-gracia-auto-spa",
+      "source_url": "https://cdn.shopify.com/s/files/1/1016/5102/2161/files/motor-a-vapor-r3-04_663487ad-fd09-4bec-a3f3-d8b2e773f8da.webp?v=1778613448"
+    }
+  ],
+  "attached": [
+    {
+      "handle": "equipamiento-automotriz-ricar-multicenter",
+      "source_product": "kit-cuidado-gracia-auto-spa"
+    },
+    {
+      "handle": "estetica-automotriz-ricar-multicenter",
+      "source_product": "pulido-pintura-la-cochera-place"
+    },
+    {
+      "handle": "mecanica-automotriz-automan-chiclayo-eirl",
+      "source_product": "motor-a-vapor-la-cochera-place"
+    },
+    {
+      "handle": "reparacion-automotriz-automotriz-burga",
+      "source_product": "motor-a-vapor-la-cochera-place"
+    },
+    {
+      "handle": "mantenimiento-automotriz-automotriz-burga",
+      "source_product": "motor-a-vapor-la-cochera-place"
+    },
+    {
+      "handle": "venta-de-repuestos-automotrices-automotriz-burga",
+      "source_product": "kit-cuidado-gracia-auto-spa"
+    },
+    {
+      "handle": "mantenimiento-y-reparacion-de-vehiculos-automotores-automotriz-palomino",
+      "source_product": "motor-a-vapor-la-cochera-place"
+    },
+    {
+      "handle": "lavado-de-coches-y-detalle-automotriz-palomino",
+      "source_product": "pulido-pintura-la-cochera-place"
+    },
+    {
+      "handle": "lavado-de-motos-lubricentro-y-lavadero-oasis",
+      "source_product": "lavado-completo-la-cochera-place"
+    },
+    {
+      "handle": "cambio-de-aceite-lubricentro-y-lavadero-oasis",
+      "source_product": "motor-a-vapor-la-cochera-place"
+    },
+    {
+      "handle": "venta-de-repuestos-y-accesorios-para-motos-lubricentro-y-lavadero-oasis",
+      "source_product": "kit-cuidado-gracia-auto-spa"
+    },
+    {
+      "handle": "venta-de-baterias-para-vehiculos-baterias-uscay",
+      "source_product": "kit-cuidado-gracia-auto-spa"
+    },
+    {
+      "handle": "instalacion-de-baterias-baterias-uscay",
+      "source_product": "motor-a-vapor-la-cochera-place"
+    },
+    {
+      "handle": "delivery-de-baterias-baterias-uscay",
+      "source_product": "kit-cuidado-gracia-auto-spa"
+    },
+    {
+      "handle": "venta-de-repuestos-automotrices-motor-shop-fuel-injection",
+      "source_product": "kit-cuidado-gracia-auto-spa"
+    },
+    {
+      "handle": "mecanica-automotriz-campos-motors",
+      "source_product": "motor-a-vapor-la-cochera-place"
+    },
+    {
+      "handle": "mecanica-automotriz-taller-central-motors",
+      "source_product": "motor-a-vapor-la-cochera-place"
+    },
+    {
+      "handle": "servicio-tecnico-pre-y-post-venta-de-neumaticos-comercio-cia-llantas",
+      "source_product": "cambio-neumaticos-eixample-tire-center"
+    },
+    {
+      "handle": "venta-de-neumaticos-aros-camaras-y-accesorios-comercio-cia-llantas",
+      "source_product": "cambio-neumaticos-eixample-tire-center"
+    },
+    {
+      "handle": "reparacion-de-automoviles-carrocerias-herrera",
+      "source_product": "motor-a-vapor-la-cochera-place"
+    },
+    {
+      "handle": "venta-de-repuestos-automotrices-davalos-import-sa",
+      "source_product": "kit-cuidado-gracia-auto-spa"
+    },
+    {
+      "handle": "delivery-de-repuestos-davalos-import-sa",
+      "source_product": "kit-cuidado-gracia-auto-spa"
+    }
+  ],
+  "profilesUpdated": [],
+  "errors": [
+    {
+      "provider_slug": "ricar-multicenter",
+      "message": "Perfil no visible para la credencial actual."
+    },
+    {
+      "provider_slug": "automan-chiclayo-eirl",
+      "message": "Perfil no visible para la credencial actual."
+    },
+    {
+      "provider_slug": "automotriz-burga",
+      "message": "Perfil no visible para la credencial actual."
+    },
+    {
+      "provider_slug": "automotriz-palomino",
+      "message": "Perfil no visible para la credencial actual."
+    },
+    {
+      "provider_slug": "lubricentro-y-lavadero-oasis",
+      "message": "Perfil no visible para la credencial actual."
+    },
+    {
+      "provider_slug": "baterias-uscay",
+      "message": "Perfil no visible para la credencial actual."
+    },
+    {
+      "provider_slug": "motor-shop-fuel-injection",
+      "message": "Perfil no visible para la credencial actual."
+    },
+    {
+      "provider_slug": "campos-motors",
+      "message": "Perfil no visible para la credencial actual."
+    },
+    {
+      "provider_slug": "taller-central-motors",
+      "message": "Perfil no visible para la credencial actual."
+    },
+    {
+      "provider_slug": "comercio-cia-llantas",
+      "message": "Perfil no visible para la credencial actual."
+    },
+    {
+      "provider_slug": "carrocerias-herrera",
+      "message": "Perfil no visible para la credencial actual."
+    },
+    {
+      "provider_slug": "davalos-import-sa",
+      "message": "Perfil no visible para la credencial actual."
+    }
+  ]
+}

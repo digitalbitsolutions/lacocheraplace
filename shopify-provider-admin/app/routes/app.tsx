@@ -34,6 +34,7 @@ export default function App() {
           Solicitudes
         </Link>
         <Link to="/app/purchase-flow">Purchase Flow</Link>
+        <Link to="/app/provider-images">Imágenes proveedores</Link>
       </NavMenu>
       <Outlet />
     </AppProvider>

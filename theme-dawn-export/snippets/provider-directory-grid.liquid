@@ -152,3 +152,67 @@
     </ul>
   </div>
 {%- endif -%}
+
+{%- if show_directory -%}
+  <section
+    class="chiclayo-provider-directory page-width"
+    data-chiclayo-provider-directory
+    data-service-handle="{{ collection.handle | escape }}"
+    hidden
+  >
+    <style>
+      .chiclayo-provider-directory { margin-top: 4rem; }
+      .chiclayo-provider-directory__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(24rem, 1fr)); gap: 1.6rem; padding: 0; list-style: none; }
+      .chiclayo-provider-card { height: 100%; padding: 2rem; border: .1rem solid rgba(var(--color-foreground), .12); border-radius: 1.2rem; background: rgb(var(--color-background)); box-shadow: 0 .6rem 1.8rem rgba(var(--color-foreground), .08); }
+      .chiclayo-provider-card__head { display: flex; align-items: center; gap: 1.2rem; }
+      .chiclayo-provider-card__placeholder { display: grid; flex: 0 0 5.6rem; width: 5.6rem; height: 5.6rem; place-items: center; border-radius: 50%; color: #fff; background: #07366b; }
+      .chiclayo-provider-card__placeholder svg { width: 3rem; height: 3rem; }
+      .chiclayo-provider-card h3 { margin: 0; font-size: 1.8rem; }
+      .chiclayo-provider-card p { margin: .8rem 0 0; }
+      .chiclayo-provider-card__location { color: rgba(var(--color-foreground), .72); font-size: 1.4rem; }
+      .chiclayo-provider-card__status { display: inline-block; margin-top: 1.2rem; padding: .4rem .9rem; border-radius: 999px; color: #704800; background: #fff0c2; font-size: 1.2rem; font-weight: 700; }
+    </style>
+    <div class="title-wrapper title-wrapper--no-top-margin">
+      <h2 class="title inline-richtext h1">Proveedores en Chiclayo</h2>
+    </div>
+    <p>Proveedores disponibles en Chiclayo, Lambayeque. Sus catálogos e imágenes se incorporarán progresivamente.</p>
+    <p data-chiclayo-provider-status>Cargando proveedores…</p>
+    <ul class="chiclayo-provider-directory__grid" data-chiclayo-provider-grid role="list"></ul>
+  </section>
+
+  <script>
+    (() => {
+      const root = document.querySelector('[data-chiclayo-provider-directory][data-service-handle="{{ collection.handle | escape }}"]');
+      if (!root || new URLSearchParams(window.location.search).get('region') !== 'chiclayo') return;
+      const grid = root.querySelector('[data-chiclayo-provider-grid]');
+      const status = root.querySelector('[data-chiclayo-provider-status]');
+      const showAllProviders = new URLSearchParams(window.location.search).get('all_providers') === '1';
+      const endpoint = showAllProviders
+        ? '/apps/provider-applications/providers-nearby'
+        : `/apps/provider-applications/providers-nearby?service_handle=${encodeURIComponent(root.dataset.serviceHandle)}`;
+      const icon = '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7Zm0 10.5A3.5 3.5 0 1 1 12 5a3.5 3.5 0 0 1 0 7.5Z"/></svg>';
+      const escapeHtml = (value) => { const node = document.createElement('span'); node.textContent = value || ''; return node.innerHTML; };
+
+      root.hidden = false;
+      fetch(endpoint, { headers: { Accept: 'application/json' } })
+        .then((response) => { if (!response.ok) throw new Error(`HTTP ${response.status}`); return response.json(); })
+        .then((payload) => {
+          const providers = (payload.providers || []).filter((provider) => /Lambayeque,\s*Perú/i.test(provider.address || ''));
+          if (!providers.length) { status.textContent = 'No hay proveedores de Chiclayo disponibles para esta categoría.'; return; }
+          grid.innerHTML = providers.map((provider) => `
+            <li>
+              <article class="chiclayo-provider-card">
+                <div class="chiclayo-provider-card__head">
+                  <span class="chiclayo-provider-card__placeholder">${icon}</span>
+                  <h3>${escapeHtml(provider.name)}</h3>
+                </div>
+                <p class="chiclayo-provider-card__location">${escapeHtml(provider.address)}</p>
+                <span class="chiclayo-provider-card__status">Catálogo próximamente</span>
+              </article>
+            </li>`).join('');
+          status.textContent = `${providers.length} proveedor${providers.length === 1 ? '' : 'es'} disponible${providers.length === 1 ? '' : 's'}`;
+        })
+        .catch(() => { status.textContent = 'No se pudo cargar el directorio de Chiclayo. Inténtalo de nuevo.'; });
+    })();
+  </script>
+{%- endif -%}

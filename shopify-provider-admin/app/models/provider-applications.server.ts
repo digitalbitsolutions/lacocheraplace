@@ -823,6 +823,46 @@ export async function listApprovedProviderProfiles(admin: GraphqlAdmin) {
     .filter((profile) => profile.status === "approved");
 }
 
+export async function updateProviderProfileLogo(
+  admin: GraphqlAdmin,
+  profileId: string,
+  logoSourceUrl: string,
+) {
+  const data = await shopifyGraphql<{
+    metaobjectUpdate: {
+      metaobject: { id: string; handle: string } | null;
+      userErrors: Array<{ message: string }>;
+    };
+  }>(
+    admin,
+    `#graphql
+      mutation UpdateProviderProfileLogo($id: ID!, $metaobject: MetaobjectUpdateInput!) {
+        metaobjectUpdate(id: $id, metaobject: $metaobject) {
+          metaobject { id handle }
+          userErrors { message }
+        }
+      }
+    `,
+    {
+      id: profileId,
+      metaobject: {
+        fields: [{ key: "logo_source_url", value: logoSourceUrl }],
+      },
+    },
+  );
+
+  assertUserErrors(
+    data.metaobjectUpdate.userErrors,
+    "No se pudo actualizar la imagen del proveedor.",
+  );
+
+  if (!data.metaobjectUpdate.metaobject) {
+    throw new Error("Shopify no devolvio el proveedor actualizado.");
+  }
+
+  return data.metaobjectUpdate.metaobject;
+}
+
 export async function getProviderApplicationRequest(
   admin: GraphqlAdmin,
   id: string,

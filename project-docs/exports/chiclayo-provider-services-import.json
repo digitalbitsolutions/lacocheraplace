@@ -1,0 +1,367 @@
+{
+  "generatedAt": "2026-09-07T19:30:12.992Z",
+  "mode": "apply",
+  "shop": {
+    "name": "LACOCHERAPLACE",
+    "myshopifyDomain": "cs3msy-n8.myshopify.com"
+  },
+  "requested": 22,
+  "planned": [
+    {
+      "provider_name": "Ricar Multicenter",
+      "provider_slug": "ricar-multicenter",
+      "service_name": "Equipamiento automotriz",
+      "normalized_category": "productos-y-accesorios-para-el-cuidado-automotriz",
+      "offer_type": "product",
+      "verification_status": "verified_strong",
+      "handle": "equipamiento-automotriz-ricar-multicenter"
+    },
+    {
+      "provider_name": "Ricar Multicenter",
+      "provider_slug": "ricar-multicenter",
+      "service_name": "Estética automotriz",
+      "normalized_category": "detailing",
+      "offer_type": "service",
+      "verification_status": "verified_basic",
+      "handle": "estetica-automotriz-ricar-multicenter"
+    },
+    {
+      "provider_name": "AUTOMAN CHICLAYO E.I.R.L.",
+      "provider_slug": "automan-chiclayo-eirl",
+      "service_name": "Mecánica automotriz",
+      "normalized_category": "mantenimiento-ligero",
+      "offer_type": "service",
+      "verification_status": "verified_strong",
+      "handle": "mecanica-automotriz-automan-chiclayo-eirl"
+    },
+    {
+      "provider_name": "Automotriz Burga",
+      "provider_slug": "automotriz-burga",
+      "service_name": "Reparación automotriz",
+      "normalized_category": "mantenimiento-ligero",
+      "offer_type": "service",
+      "verification_status": "verified_strong",
+      "handle": "reparacion-automotriz-automotriz-burga"
+    },
+    {
+      "provider_name": "Automotriz Burga",
+      "provider_slug": "automotriz-burga",
+      "service_name": "Mantenimiento automotriz",
+      "normalized_category": "mantenimiento-ligero",
+      "offer_type": "service",
+      "verification_status": "verified_basic",
+      "handle": "mantenimiento-automotriz-automotriz-burga"
+    },
+    {
+      "provider_name": "Automotriz Burga",
+      "provider_slug": "automotriz-burga",
+      "service_name": "Venta de repuestos automotrices",
+      "normalized_category": "productos-y-accesorios-para-el-cuidado-automotriz",
+      "offer_type": "product",
+      "verification_status": "verified_basic",
+      "handle": "venta-de-repuestos-automotrices-automotriz-burga"
+    },
+    {
+      "provider_name": "Automotriz Palomino.",
+      "provider_slug": "automotriz-palomino",
+      "service_name": "Mantenimiento y reparación de vehículos automotores",
+      "normalized_category": "mantenimiento-ligero",
+      "offer_type": "service",
+      "verification_status": "verified_strong",
+      "handle": "mantenimiento-y-reparacion-de-vehiculos-automotores-automotriz-palomino"
+    },
+    {
+      "provider_name": "Automotriz Palomino.",
+      "provider_slug": "automotriz-palomino",
+      "service_name": "Lavado de coches y detalle",
+      "normalized_category": "detailing",
+      "offer_type": "service",
+      "verification_status": "verified_basic",
+      "handle": "lavado-de-coches-y-detalle-automotriz-palomino"
+    },
+    {
+      "provider_name": "Lubricentro Y Lavadero Oasis",
+      "provider_slug": "lubricentro-y-lavadero-oasis",
+      "service_name": "Lavado de motos",
+      "normalized_category": "lavado",
+      "offer_type": "service",
+      "verification_status": "verified_basic",
+      "handle": "lavado-de-motos-lubricentro-y-lavadero-oasis"
+    },
+    {
+      "provider_name": "Lubricentro Y Lavadero Oasis",
+      "provider_slug": "lubricentro-y-lavadero-oasis",
+      "service_name": "Cambio de aceite",
+      "normalized_category": "mantenimiento-ligero",
+      "offer_type": "service",
+      "verification_status": "verified_basic",
+      "handle": "cambio-de-aceite-lubricentro-y-lavadero-oasis"
+    },
+    {
+      "provider_name": "Lubricentro Y Lavadero Oasis",
+      "provider_slug": "lubricentro-y-lavadero-oasis",
+      "service_name": "Venta de repuestos y accesorios para motos",
+      "normalized_category": "productos-y-accesorios-para-el-cuidado-automotriz",
+      "offer_type": "product",
+      "verification_status": "verified_strong",
+      "handle": "venta-de-repuestos-y-accesorios-para-motos-lubricentro-y-lavadero-oasis"
+    },
+    {
+      "provider_name": "Baterías USCAY",
+      "provider_slug": "baterias-uscay",
+      "service_name": "Venta de baterías para vehículos",
+      "normalized_category": "productos-y-accesorios-para-el-cuidado-automotriz",
+      "offer_type": "product",
+      "verification_status": "verified_strong",
+      "handle": "venta-de-baterias-para-vehiculos-baterias-uscay"
+    },
+    {
+      "provider_name": "Baterías USCAY",
+      "provider_slug": "baterias-uscay",
+      "service_name": "Instalación de baterías",
+      "normalized_category": "mantenimiento-ligero",
+      "offer_type": "service",
+      "verification_status": "verified_strong",
+      "handle": "instalacion-de-baterias-baterias-uscay"
+    },
+    {
+      "provider_name": "Baterías USCAY",
+      "provider_slug": "baterias-uscay",
+      "service_name": "Delivery de baterías",
+      "normalized_category": "productos-y-accesorios-para-el-cuidado-automotriz",
+      "offer_type": "service",
+      "verification_status": "verified_basic",
+      "handle": "delivery-de-baterias-baterias-uscay"
+    },
+    {
+      "provider_name": "Motor Shop fuel injection",
+      "provider_slug": "motor-shop-fuel-injection",
+      "service_name": "Venta de repuestos automotrices",
+      "normalized_category": "productos-y-accesorios-para-el-cuidado-automotriz",
+      "offer_type": "product",
+      "verification_status": "verified_strong",
+      "handle": "venta-de-repuestos-automotrices-motor-shop-fuel-injection"
+    },
+    {
+      "provider_name": "CAMPOS MOTORS",
+      "provider_slug": "campos-motors",
+      "service_name": "Mecánica automotriz",
+      "normalized_category": "mantenimiento-ligero",
+      "offer_type": "service",
+      "verification_status": "verified_strong",
+      "handle": "mecanica-automotriz-campos-motors"
+    },
+    {
+      "provider_name": "Taller Central Motors",
+      "provider_slug": "taller-central-motors",
+      "service_name": "Mecánica automotriz",
+      "normalized_category": "mantenimiento-ligero",
+      "offer_type": "service",
+      "verification_status": "verified_basic",
+      "handle": "mecanica-automotriz-taller-central-motors"
+    },
+    {
+      "provider_name": "Comercio & Cía - Llantas",
+      "provider_slug": "comercio-cia-llantas",
+      "service_name": "Servicio técnico pre y post venta de neumáticos",
+      "normalized_category": "neumaticos-y-llantas",
+      "offer_type": "service",
+      "verification_status": "verified_strong",
+      "handle": "servicio-tecnico-pre-y-post-venta-de-neumaticos-comercio-cia-llantas"
+    },
+    {
+      "provider_name": "Comercio & Cía - Llantas",
+      "provider_slug": "comercio-cia-llantas",
+      "service_name": "Venta de neumáticos, aros, cámaras y accesorios",
+      "normalized_category": "neumaticos-y-llantas",
+      "offer_type": "service",
+      "verification_status": "verified_strong",
+      "handle": "venta-de-neumaticos-aros-camaras-y-accesorios-comercio-cia-llantas"
+    },
+    {
+      "provider_name": "CARROCERIAS HERRERA",
+      "provider_slug": "carrocerias-herrera",
+      "service_name": "Reparación de automóviles",
+      "normalized_category": "mantenimiento-ligero",
+      "offer_type": "service",
+      "verification_status": "verified_strong",
+      "handle": "reparacion-de-automoviles-carrocerias-herrera"
+    },
+    {
+      "provider_name": "Davalos Import SA",
+      "provider_slug": "davalos-import-sa",
+      "service_name": "Venta de repuestos automotrices",
+      "normalized_category": "productos-y-accesorios-para-el-cuidado-automotriz",
+      "offer_type": "product",
+      "verification_status": "verified_strong",
+      "handle": "venta-de-repuestos-automotrices-davalos-import-sa"
+    },
+    {
+      "provider_name": "Davalos Import SA",
+      "provider_slug": "davalos-import-sa",
+      "service_name": "Delivery de repuestos",
+      "normalized_category": "productos-y-accesorios-para-el-cuidado-automotriz",
+      "offer_type": "product",
+      "verification_status": "verified_basic",
+      "handle": "delivery-de-repuestos-davalos-import-sa"
+    }
+  ],
+  "created": [
+    {
+      "service_key": "equipamiento-automotriz-ricar-multicenter",
+      "id": "gid://shopify/Product/11116814598481",
+      "handle": "equipamiento-automotriz-ricar-multicenter",
+      "title": "Equipamiento automotriz",
+      "status": "DRAFT"
+    },
+    {
+      "service_key": "estetica-automotriz-ricar-multicenter",
+      "id": "gid://shopify/Product/11116814664017",
+      "handle": "estetica-automotriz-ricar-multicenter",
+      "title": "Estética automotriz",
+      "status": "DRAFT"
+    },
+    {
+      "service_key": "mecanica-automotriz-automan-chiclayo-eirl",
+      "id": "gid://shopify/Product/11116814696785",
+      "handle": "mecanica-automotriz-automan-chiclayo-eirl",
+      "title": "Mecánica automotriz",
+      "status": "DRAFT"
+    },
+    {
+      "service_key": "reparacion-automotriz-automotriz-burga",
+      "id": "gid://shopify/Product/11116814762321",
+      "handle": "reparacion-automotriz-automotriz-burga",
+      "title": "Reparación automotriz",
+      "status": "DRAFT"
+    },
+    {
+      "service_key": "mantenimiento-automotriz-automotriz-burga",
+      "id": "gid://shopify/Product/11116814827857",
+      "handle": "mantenimiento-automotriz-automotriz-burga",
+      "title": "Mantenimiento automotriz",
+      "status": "DRAFT"
+    },
+    {
+      "service_key": "venta-de-repuestos-automotrices-automotriz-burga",
+      "id": "gid://shopify/Product/11116814893393",
+      "handle": "venta-de-repuestos-automotrices-automotriz-burga",
+      "title": "Venta de repuestos automotrices",
+      "status": "DRAFT"
+    },
+    {
+      "service_key": "mantenimiento-y-reparacion-de-vehiculos-automotores-automotriz-palomino",
+      "id": "gid://shopify/Product/11116814958929",
+      "handle": "mantenimiento-y-reparacion-de-vehiculos-automotores-automotriz-palomino",
+      "title": "Mantenimiento y reparación de vehículos automotores",
+      "status": "DRAFT"
+    },
+    {
+      "service_key": "lavado-de-coches-y-detalle-automotriz-palomino",
+      "id": "gid://shopify/Product/11116815024465",
+      "handle": "lavado-de-coches-y-detalle-automotriz-palomino",
+      "title": "Lavado de coches y detalle",
+      "status": "DRAFT"
+    },
+    {
+      "service_key": "lavado-de-motos-lubricentro-y-lavadero-oasis",
+      "id": "gid://shopify/Product/11116815057233",
+      "handle": "lavado-de-motos-lubricentro-y-lavadero-oasis",
+      "title": "Lavado de motos",
+      "status": "DRAFT"
+    },
+    {
+      "service_key": "cambio-de-aceite-lubricentro-y-lavadero-oasis",
+      "id": "gid://shopify/Product/11116815090001",
+      "handle": "cambio-de-aceite-lubricentro-y-lavadero-oasis",
+      "title": "Cambio de aceite",
+      "status": "DRAFT"
+    },
+    {
+      "service_key": "venta-de-repuestos-y-accesorios-para-motos-lubricentro-y-lavadero-oasis",
+      "id": "gid://shopify/Product/11116815122769",
+      "handle": "venta-de-repuestos-y-accesorios-para-motos-lubricentro-y-lavadero-oasis",
+      "title": "Venta de repuestos y accesorios para motos",
+      "status": "DRAFT"
+    },
+    {
+      "service_key": "venta-de-baterias-para-vehiculos-baterias-uscay",
+      "id": "gid://shopify/Product/11116815155537",
+      "handle": "venta-de-baterias-para-vehiculos-baterias-uscay",
+      "title": "Venta de baterías para vehículos",
+      "status": "DRAFT"
+    },
+    {
+      "service_key": "instalacion-de-baterias-baterias-uscay",
+      "id": "gid://shopify/Product/11116815188305",
+      "handle": "instalacion-de-baterias-baterias-uscay",
+      "title": "Instalación de baterías",
+      "status": "DRAFT"
+    },
+    {
+      "service_key": "delivery-de-baterias-baterias-uscay",
+      "id": "gid://shopify/Product/11116815221073",
+      "handle": "delivery-de-baterias-baterias-uscay",
+      "title": "Delivery de baterías",
+      "status": "DRAFT"
+    },
+    {
+      "service_key": "venta-de-repuestos-automotrices-motor-shop-fuel-injection",
+      "id": "gid://shopify/Product/11116815253841",
+      "handle": "venta-de-repuestos-automotrices-motor-shop-fuel-injection",
+      "title": "Venta de repuestos automotrices",
+      "status": "DRAFT"
+    },
+    {
+      "service_key": "mecanica-automotriz-campos-motors",
+      "id": "gid://shopify/Product/11116815286609",
+      "handle": "mecanica-automotriz-campos-motors",
+      "title": "Mecánica automotriz",
+      "status": "DRAFT"
+    },
+    {
+      "service_key": "mecanica-automotriz-taller-central-motors",
+      "id": "gid://shopify/Product/11116815319377",
+      "handle": "mecanica-automotriz-taller-central-motors",
+      "title": "Mecánica automotriz",
+      "status": "DRAFT"
+    },
+    {
+      "service_key": "servicio-tecnico-pre-y-post-venta-de-neumaticos-comercio-cia-llantas",
+      "id": "gid://shopify/Product/11116815384913",
+      "handle": "servicio-tecnico-pre-y-post-venta-de-neumaticos-comercio-cia-llantas",
+      "title": "Servicio técnico pre y post venta de neumáticos",
+      "status": "DRAFT"
+    },
+    {
+      "service_key": "venta-de-neumaticos-aros-camaras-y-accesorios-comercio-cia-llantas",
+      "id": "gid://shopify/Product/11116815417681",
+      "handle": "venta-de-neumaticos-aros-camaras-y-accesorios-comercio-cia-llantas",
+      "title": "Venta de neumáticos, aros, cámaras y accesorios",
+      "status": "DRAFT"
+    },
+    {
+      "service_key": "reparacion-de-automoviles-carrocerias-herrera",
+      "id": "gid://shopify/Product/11116815450449",
+      "handle": "reparacion-de-automoviles-carrocerias-herrera",
+      "title": "Reparación de automóviles",
+      "status": "DRAFT"
+    },
+    {
+      "service_key": "venta-de-repuestos-automotrices-davalos-import-sa",
+      "id": "gid://shopify/Product/11116815483217",
+      "handle": "venta-de-repuestos-automotrices-davalos-import-sa",
+      "title": "Venta de repuestos automotrices",
+      "status": "DRAFT"
+    },
+    {
+      "service_key": "delivery-de-repuestos-davalos-import-sa",
+      "id": "gid://shopify/Product/11116815515985",
+      "handle": "delivery-de-repuestos-davalos-import-sa",
+      "title": "Delivery de repuestos",
+      "status": "DRAFT"
+    }
+  ],
+  "existing": [],
+  "errors": []
+}

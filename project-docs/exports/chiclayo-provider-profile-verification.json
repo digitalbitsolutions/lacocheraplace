@@ -1,0 +1,217 @@
+{
+  "generatedAt": "2026-09-07T19:02:06.494Z",
+  "shop": {
+    "name": "LACOCHERAPLACE",
+    "myshopifyDomain": "cs3msy-n8.myshopify.com"
+  },
+  "expected": 12,
+  "liveProviderProfiles": 0,
+  "verified": 0,
+  "failed": 12,
+  "profiles": [
+    {
+      "handle": "ricar-multicenter",
+      "id": null,
+      "checks": {
+        "exists": false,
+        "approved": false,
+        "cityMatches": false,
+        "regionMatches": false,
+        "countryMatches": false,
+        "latitudeMatches": false,
+        "longitudeMatches": false,
+        "categoriesMatch": false,
+        "logoEmpty": true,
+        "galleryEmpty": true
+      },
+      "ok": false
+    },
+    {
+      "handle": "automan-chiclayo-eirl",
+      "id": null,
+      "checks": {
+        "exists": false,
+        "approved": false,
+        "cityMatches": false,
+        "regionMatches": false,
+        "countryMatches": false,
+        "latitudeMatches": false,
+        "longitudeMatches": false,
+        "categoriesMatch": false,
+        "logoEmpty": true,
+        "galleryEmpty": true
+      },
+      "ok": false
+    },
+    {
+      "handle": "automotriz-burga",
+      "id": null,
+      "checks": {
+        "exists": false,
+        "approved": false,
+        "cityMatches": false,
+        "regionMatches": false,
+        "countryMatches": false,
+        "latitudeMatches": false,
+        "longitudeMatches": false,
+        "categoriesMatch": false,
+        "logoEmpty": true,
+        "galleryEmpty": true
+      },
+      "ok": false
+    },
+    {
+      "handle": "automotriz-palomino",
+      "id": null,
+      "checks": {
+        "exists": false,
+        "approved": false,
+        "cityMatches": false,
+        "regionMatches": false,
+        "countryMatches": false,
+        "latitudeMatches": false,
+        "longitudeMatches": false,
+        "categoriesMatch": false,
+        "logoEmpty": true,
+        "galleryEmpty": true
+      },
+      "ok": false
+    },
+    {
+      "handle": "lubricentro-y-lavadero-oasis",
+      "id": null,
+      "checks": {
+        "exists": false,
+        "approved": false,
+        "cityMatches": false,
+        "regionMatches": false,
+        "countryMatches": false,
+        "latitudeMatches": false,
+        "longitudeMatches": false,
+        "categoriesMatch": false,
+        "logoEmpty": true,
+        "galleryEmpty": true
+      },
+      "ok": false
+    },
+    {
+      "handle": "baterias-uscay",
+      "id": null,
+      "checks": {
+        "exists": false,
+        "approved": false,
+        "cityMatches": false,
+        "regionMatches": false,
+        "countryMatches": false,
+        "latitudeMatches": false,
+        "longitudeMatches": false,
+        "categoriesMatch": false,
+        "logoEmpty": true,
+        "galleryEmpty": true
+      },
+      "ok": false
+    },
+    {
+      "handle": "motor-shop-fuel-injection",
+      "id": null,
+      "checks": {
+        "exists": false,
+        "approved": false,
+        "cityMatches": false,
+        "regionMatches": false,
+        "countryMatches": false,
+        "latitudeMatches": false,
+        "longitudeMatches": false,
+        "categoriesMatch": false,
+        "logoEmpty": true,
+        "galleryEmpty": true
+      },
+      "ok": false
+    },
+    {
+      "handle": "campos-motors",
+      "id": null,
+      "checks": {
+        "exists": false,
+        "approved": false,
+        "cityMatches": false,
+        "regionMatches": false,
+        "countryMatches": false,
+        "latitudeMatches": false,
+        "longitudeMatches": false,
+        "categoriesMatch": false,
+        "logoEmpty": true,
+        "galleryEmpty": true
+      },
+      "ok": false
+    },
+    {
+      "handle": "taller-central-motors",
+      "id": null,
+      "checks": {
+        "exists": false,
+        "approved": false,
+        "cityMatches": false,
+        "regionMatches": false,
+        "countryMatches": false,
+        "latitudeMatches": false,
+        "longitudeMatches": false,
+        "categoriesMatch": false,
+        "logoEmpty": true,
+        "galleryEmpty": true
+      },
+      "ok": false
+    },
+    {
+      "handle": "comercio-cia-llantas",
+      "id": null,
+      "checks": {
+        "exists": false,
+        "approved": false,
+        "cityMatches": false,
+        "regionMatches": false,
+        "countryMatches": false,
+        "latitudeMatches": false,
+        "longitudeMatches": false,
+        "categoriesMatch": false,
+        "logoEmpty": true,
+        "galleryEmpty": true
+      },
+      "ok": false
+    },
+    {
+      "handle": "carrocerias-herrera",
+      "id": null,
+      "checks": {
+        "exists": false,
+        "approved": false,
+        "cityMatches": false,
+        "regionMatches": false,
+        "countryMatches": false,
+        "latitudeMatches": false,
+        "longitudeMatches": false,
+        "categoriesMatch": false,
+        "logoEmpty": true,
+        "galleryEmpty": true
+      },
+      "ok": false
+    },
+    {
+      "handle": "davalos-import-sa",
+      "id": null,
+      "checks": {
+        "exists": false,
+        "approved": false,
+        "cityMatches": false,
+        "regionMatches": false,
+        "countryMatches": false,
+        "latitudeMatches": false,
+        "longitudeMatches": false,
+        "categoriesMatch": false,
+        "logoEmpty": true,
+        "galleryEmpty": true
+      },
+      "ok": false
+    }
+  ]
+}

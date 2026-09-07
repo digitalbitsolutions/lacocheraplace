@@ -1,0 +1,267 @@
+﻿{
+    "ok":  true,
+    "serviceHandle":  "",
+    "providers":  [
+                      {
+                          "id":  "gid://shopify/Metaobject/389174559057",
+                          "handle":  "christian-rojas-whmsww",
+                          "providerSlug":  "christian-rojas-whmsww",
+                          "name":  "Christian Rojas",
+                          "vendorName":  "Lelddk",
+                          "address":  "Calle San Bruno, Nsjjd, Salamanca, 37006, Castilla y León, España",
+                          "latitude":  40.9777963,
+                          "longitude":  -5.6715861,
+                          "serviceCategories":  [
+                                                    "ppf-wrap-tintado-lunas",
+                                                    "mantenimiento-ligero",
+                                                    "neumaticos-y-llantas"
+                                                ],
+                          "url":  "/collections/vendors?q=Lelddk"
+                      },
+                      {
+                          "id":  "gid://shopify/Metaobject/392242495825",
+                          "handle":  "hdhddj-4aypkb",
+                          "providerSlug":  "hdhddj-4aypkb",
+                          "name":  "Hdhddj",
+                          "vendorName":  "Bdbdbjeje",
+                          "address":  "Carrer Sant Bru 60, Jdjddk, Badalona, 08911, Catalunya, España",
+                          "latitude":  41.4536758,
+                          "longitude":  2.2523773,
+                          "serviceCategories":  [
+                                                    "lavado",
+                                                    "neumaticos-y-llantas",
+                                                    "parking",
+                                                    "productos-y-accesorios-para-el-cuidado-automotriz"
+                                                ],
+                          "url":  "/collections/vendors?q=Bdbdbjeje"
+                      },
+                      {
+                          "id":  "gid://shopify/Metaobject/406120202577",
+                          "handle":  "eixample-ocasion-motor",
+                          "providerSlug":  "eixample-ocasion-motor",
+                          "name":  "Eixample Ocasion Motor",
+                          "vendorName":  "Eixample Ocasion Motor",
+                          "address":  "Carrer d\u0027Arago 281, Local 2, Barcelona, 08007, Barcelona, Spain",
+                          "latitude":  41.3917,
+                          "longitude":  2.1649,
+                          "serviceCategories":  [
+                                                    "productos-usados-y-liquidaciones"
+                                                ],
+                          "url":  "/collections/vendors?q=Eixample%20Ocasion%20Motor"
+                      },
+                      {
+                          "id":  "gid://shopify/Metaobject/406120235345",
+                          "handle":  "sants-liquidaciones-auto",
+                          "providerSlug":  "sants-liquidaciones-auto",
+                          "name":  "Sants Liquidaciones Auto",
+                          "vendorName":  "Sants Liquidaciones Auto",
+                          "address":  "Carrer de Sants 102, Nave B, Barcelona, 08014, Barcelona, Spain",
+                          "latitude":  41.3759,
+                          "longitude":  2.1346,
+                          "serviceCategories":  [
+                                                    "productos-usados-y-liquidaciones"
+                                                ],
+                          "url":  "/collections/vendors?q=Sants%20Liquidaciones%20Auto"
+                      },
+                      {
+                          "id":  "gid://shopify/Metaobject/406120268113",
+                          "handle":  "poblenou-box-rental",
+                          "providerSlug":  "poblenou-box-rental",
+                          "name":  "Poblenou Box Rental",
+                          "vendorName":  "Poblenou Box Rental",
+                          "address":  "Carrer de Pere IV 98, Planta baja, Barcelona, 08005, Barcelona, Spain",
+                          "latitude":  41.4029,
+                          "longitude":  2.1958,
+                          "serviceCategories":  [
+                                                    "renta-de-espacios-y-herramientas-para-automocion"
+                                                ],
+                          "url":  "/collections/vendors?q=Poblenou%20Box%20Rental"
+                      },
+                      {
+                          "id":  "gid://shopify/Metaobject/406120300881",
+                          "handle":  "gracia-garage-tools",
+                          "providerSlug":  "gracia-garage-tools",
+                          "name":  "Gracia Garage Tools",
+                          "vendorName":  "Gracia Garage Tools",
+                          "address":  "Travessera de Gracia 210, Local 1, Barcelona, 08012, Barcelona, Spain",
+                          "latitude":  41.4035,
+                          "longitude":  2.1562,
+                          "serviceCategories":  [
+                                                    "renta-de-espacios-y-herramientas-para-automocion"
+                                                ],
+                          "url":  "/collections/vendors?q=Gracia%20Garage%20Tools"
+                      },
+                      {
+                          "id":  "gid://shopify/Metaobject/509778166097",
+                          "handle":  "ricar-multicenter",
+                          "providerSlug":  "ricar-multicenter",
+                          "name":  "Ricar Multicenter",
+                          "vendorName":  "Ricar Multicenter",
+                          "address":  "Eufemio Lora y Lora 409, Chiclayo 14009, Perú, Chiclayo, 14009, Lambayeque, Perú",
+                          "latitude":  -6.7693627,
+                          "longitude":  -79.846023,
+                          "serviceCategories":  [
+                                                    "productos-y-accesorios-para-el-cuidado-automotriz",
+                                                    "mantenimiento-ligero"
+                                                ],
+                          "url":  "/collections/vendors?q=Ricar%20Multicenter"
+                      },
+                      {
+                          "id":  "gid://shopify/Metaobject/509778198865",
+                          "handle":  "automan-chiclayo-eirl",
+                          "providerSlug":  "automan-chiclayo-eirl",
+                          "name":  "AUTOMAN CHICLAYO E.I.R.L.",
+                          "vendorName":  "AUTOMAN CHICLAYO E.I.R.L.",
+                          "address":  "Chiclayo 14012, Perú, Chiclayo, 14012, Lambayeque, Perú",
+                          "latitude":  -6.783404,
+                          "longitude":  -79.8806588,
+                          "serviceCategories":  [
+                                                    "mantenimiento-ligero"
+                                                ],
+                          "url":  "/collections/vendors?q=AUTOMAN%20CHICLAYO%20E.I.R.L."
+                      },
+                      {
+                          "id":  "gid://shopify/Metaobject/509778231633",
+                          "handle":  "automotriz-burga",
+                          "providerSlug":  "automotriz-burga",
+                          "name":  "Automotriz Burga",
+                          "vendorName":  "Automotriz Burga",
+                          "address":  "Los Nogales 150, José Leonardo Ortiz 14004, Perú, José Leonardo Ortiz, 14004, Lambayeque, Perú",
+                          "latitude":  -6.7563126,
+                          "longitude":  -79.8201029,
+                          "serviceCategories":  [
+                                                    "mantenimiento-ligero"
+                                                ],
+                          "url":  "/collections/vendors?q=Automotriz%20Burga"
+                      },
+                      {
+                          "id":  "gid://shopify/Metaobject/509778264401",
+                          "handle":  "automotriz-palomino",
+                          "providerSlug":  "automotriz-palomino",
+                          "name":  "Automotriz Palomino.",
+                          "vendorName":  "Automotriz Palomino.",
+                          "address":  "San Pedro 162, José Leonardo Ortiz, Perú, José Leonardo Ortiz, Lambayeque, Perú",
+                          "latitude":  -6.7602572,
+                          "longitude":  -79.8486578,
+                          "serviceCategories":  [
+                                                    "mantenimiento-ligero",
+                                                    "lavado"
+                                                ],
+                          "url":  "/collections/vendors?q=Automotriz%20Palomino."
+                      },
+                      {
+                          "id":  "gid://shopify/Metaobject/509778297169",
+                          "handle":  "lubricentro-y-lavadero-oasis",
+                          "providerSlug":  "lubricentro-y-lavadero-oasis",
+                          "name":  "Lubricentro Y Lavadero Oasis",
+                          "vendorName":  "Lubricentro Y Lavadero Oasis",
+                          "address":  "Imperio 1137, La Victoria 14007, Perú, La Victoria, 14007, Lambayeque, Perú",
+                          "latitude":  -6.8015835,
+                          "longitude":  -79.8432878,
+                          "serviceCategories":  [
+                                                    "lavado",
+                                                    "mantenimiento-ligero"
+                                                ],
+                          "url":  "/collections/vendors?q=Lubricentro%20Y%20Lavadero%20Oasis"
+                      },
+                      {
+                          "id":  "gid://shopify/Metaobject/509778329937",
+                          "handle":  "baterias-uscay",
+                          "providerSlug":  "baterias-uscay",
+                          "name":  "Baterías USCAY",
+                          "vendorName":  "Baterías USCAY",
+                          "address":  "Av. Nicolas De Pierola 170, Chiclayo 14001, Perú, Chiclayo, 14001, Lambayeque, Perú",
+                          "latitude":  -6.7627556,
+                          "longitude":  -79.8397931,
+                          "serviceCategories":  [
+                                                    "productos-y-accesorios-para-el-cuidado-automotriz"
+                                                ],
+                          "url":  "/collections/vendors?q=Bater%C3%ADas%20USCAY"
+                      },
+                      {
+                          "id":  "gid://shopify/Metaobject/509778362705",
+                          "handle":  "motor-shop-fuel-injection",
+                          "providerSlug":  "motor-shop-fuel-injection",
+                          "name":  "Motor Shop fuel injection",
+                          "vendorName":  "Motor Shop fuel injection",
+                          "address":  "Av. Luis Gonzáles 1620, Chiclayo 14002, Perú, Chiclayo, 14002, Lambayeque, Perú",
+                          "latitude":  -6.7630957,
+                          "longitude":  -79.8413283,
+                          "serviceCategories":  [
+                                                    "mantenimiento-ligero",
+                                                    "productos-y-accesorios-para-el-cuidado-automotriz"
+                                                ],
+                          "url":  "/collections/vendors?q=Motor%20Shop%20fuel%20injection"
+                      },
+                      {
+                          "id":  "gid://shopify/Metaobject/509778395473",
+                          "handle":  "campos-motors",
+                          "providerSlug":  "campos-motors",
+                          "name":  "CAMPOS MOTORS",
+                          "vendorName":  "CAMPOS MOTORS",
+                          "address":  "Av. Angamos 1070, Chiclayo 14001, Perú, Chiclayo, 14001, Lambayeque, Perú",
+                          "latitude":  -6.7638949,
+                          "longitude":  -79.8442705,
+                          "serviceCategories":  [
+                                                    "mantenimiento-ligero"
+                                                ],
+                          "url":  "/collections/vendors?q=CAMPOS%20MOTORS"
+                      },
+                      {
+                          "id":  "gid://shopify/Metaobject/509778428241",
+                          "handle":  "taller-central-motors",
+                          "providerSlug":  "taller-central-motors",
+                          "name":  "Taller Central Motors",
+                          "vendorName":  "Taller Central Motors",
+                          "address":  "Juan Tomis Stack 341, Chiclayo 14011, Perú, Chiclayo, 14011, Lambayeque, Perú",
+                          "latitude":  -6.7727385,
+                          "longitude":  -79.8646949,
+                          "serviceCategories":  [
+                                                    "mantenimiento-ligero"
+                                                ],
+                          "url":  "/collections/vendors?q=Taller%20Central%20Motors"
+                      },
+                      {
+                          "id":  "gid://shopify/Metaobject/509778461009",
+                          "handle":  "comercio-cia-llantas",
+                          "providerSlug":  "comercio-cia-llantas",
+                          "name":  "Comercio \u0026 Cía - Llantas",
+                          "vendorName":  "Comercio \u0026 Cía - Llantas",
+                          "address":  "Av. Augusto B. Leguía N° 1015 Urb. San Lorenzo, Chiclayo 14001, Perú, Chiclayo, 14001, Lambayeque, Perú",
+                          "latitude":  -6.7626577,
+                          "longitude":  -79.842344,
+                          "serviceCategories":  [
+                                                    "neumaticos-y-llantas"
+                                                ],
+                          "url":  "/collections/vendors?q=Comercio%20%26%20C%C3%ADa%20-%20Llantas"
+                      },
+                      {
+                          "id":  "gid://shopify/Metaobject/509778493777",
+                          "handle":  "carrocerias-herrera",
+                          "providerSlug":  "carrocerias-herrera",
+                          "name":  "CARROCERIAS HERRERA",
+                          "vendorName":  "CARROCERIAS HERRERA",
+                          "address":  "Antenor Orrego, José Leonardo Ortiz 14004, Perú, José Leonardo Ortiz, 14004, Lambayeque, Perú",
+                          "latitude":  -6.7501252,
+                          "longitude":  -79.8591843,
+                          "serviceCategories":  [
+                                                    "chapa-y-pintura"
+                                                ],
+                          "url":  "/collections/vendors?q=CARROCERIAS%20HERRERA"
+                      },
+                      {
+                          "id":  "gid://shopify/Metaobject/509778526545",
+                          "handle":  "davalos-import-sa",
+                          "providerSlug":  "davalos-import-sa",
+                          "name":  "Davalos Import SA",
+                          "vendorName":  "Davalos Import SA",
+                          "address":  "Av. Augusto B. Leguía 1118, José Leonardo Ortiz 14002, Perú, José Leonardo Ortiz, 14002, Lambayeque, Perú",
+                          "latitude":  -6.7623523,
+                          "longitude":  -79.8428496,
+                          "serviceCategories":  [
+                                                    "productos-y-accesorios-para-el-cuidado-automotriz"
+                                                ],
+                          "url":  "/collections/vendors?q=Davalos%20Import%20SA"
+                      }
+                  ]
+}

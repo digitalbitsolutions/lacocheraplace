@@ -1,0 +1,133 @@
+{
+  "generatedAt": "2026-09-04T21:20:54.121Z",
+  "mode": "dry-run",
+  "shop": {
+    "name": "LACOCHERAPLACE",
+    "myshopifyDomain": "cs3msy-n8.myshopify.com"
+  },
+  "definitionId": "gid://shopify/MetaobjectDefinition/38865109329",
+  "definitionPlanned": false,
+  "requested": 12,
+  "existingProfiles": 85,
+  "conflicts": [
+    "ricar-multicenter",
+    "automan-chiclayo-eirl",
+    "automotriz-burga",
+    "automotriz-palomino",
+    "lubricentro-y-lavadero-oasis",
+    "baterias-uscay",
+    "motor-shop-fuel-injection",
+    "campos-motors",
+    "taller-central-motors",
+    "comercio-cia-llantas",
+    "carrocerias-herrera",
+    "davalos-import-sa"
+  ],
+  "unsupportedKeys": [],
+  "missingRequired": [],
+  "schemaChanges": [],
+  "planned": [
+    {
+      "handle": "ricar-multicenter",
+      "name": "Ricar Multicenter",
+      "city": "Chiclayo",
+      "categories": [
+        "productos-y-accesorios-para-el-cuidado-automotriz",
+        "mantenimiento-ligero"
+      ]
+    },
+    {
+      "handle": "automan-chiclayo-eirl",
+      "name": "AUTOMAN CHICLAYO E.I.R.L.",
+      "city": "Chiclayo",
+      "categories": [
+        "mantenimiento-ligero"
+      ]
+    },
+    {
+      "handle": "automotriz-burga",
+      "name": "Automotriz Burga",
+      "city": "José Leonardo Ortiz",
+      "categories": [
+        "mantenimiento-ligero"
+      ]
+    },
+    {
+      "handle": "automotriz-palomino",
+      "name": "Automotriz Palomino.",
+      "city": "José Leonardo Ortiz",
+      "categories": [
+        "mantenimiento-ligero",
+        "lavado"
+      ]
+    },
+    {
+      "handle": "lubricentro-y-lavadero-oasis",
+      "name": "Lubricentro Y Lavadero Oasis",
+      "city": "La Victoria",
+      "categories": [
+        "lavado",
+        "mantenimiento-ligero"
+      ]
+    },
+    {
+      "handle": "baterias-uscay",
+      "name": "Baterías USCAY",
+      "city": "Chiclayo",
+      "categories": [
+        "productos-y-accesorios-para-el-cuidado-automotriz"
+      ]
+    },
+    {
+      "handle": "motor-shop-fuel-injection",
+      "name": "Motor Shop fuel injection",
+      "city": "Chiclayo",
+      "categories": [
+        "mantenimiento-ligero",
+        "productos-y-accesorios-para-el-cuidado-automotriz"
+      ]
+    },
+    {
+      "handle": "campos-motors",
+      "name": "CAMPOS MOTORS",
+      "city": "Chiclayo",
+      "categories": [
+        "mantenimiento-ligero"
+      ]
+    },
+    {
+      "handle": "taller-central-motors",
+      "name": "Taller Central Motors",
+      "city": "Chiclayo",
+      "categories": [
+        "mantenimiento-ligero"
+      ]
+    },
+    {
+      "handle": "comercio-cia-llantas",
+      "name": "Comercio & Cía - Llantas",
+      "city": "Chiclayo",
+      "categories": [
+        "neumaticos-y-llantas"
+      ]
+    },
+    {
+      "handle": "carrocerias-herrera",
+      "name": "CARROCERIAS HERRERA",
+      "city": "José Leonardo Ortiz",
+      "categories": [
+        "chapa-y-pintura"
+      ]
+    },
+    {
+      "handle": "davalos-import-sa",
+      "name": "Davalos Import SA",
+      "city": "José Leonardo Ortiz",
+      "categories": [
+        "productos-y-accesorios-para-el-cuidado-automotriz"
+      ]
+    }
+  ],
+  "created": [],
+  "errors": []
+}
