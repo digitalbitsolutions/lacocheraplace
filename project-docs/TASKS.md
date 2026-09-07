@@ -663,5 +663,8 @@ Evitar bloqueos por credenciales Shopify Admin API y tener recuperacion operativ
 - [ ] Contactar antes de publicar a los tres perfiles `needs_contact`: Baterias USCAY, Comercio & Cia - Llantas y CARROCERIAS HERRERA.
 
 ## Próxima sesión: descubrimiento local y fichas de proveedor
-- [ ] Incorporar buscador por ciudad y dirección con sugerencias de Google, para orientar al cliente hacia proveedores cercanos.
-- [ ] Hacer enlazable el nombre del proveedor que se muestra sobre la imagen en las fichas de producto o servicio; debe abrir la vista con todos los productos y servicios de ese proveedor.
+- [ ] Incorporar buscador por ciudad y dirección con Google Places Autocomplete, limitado inicialmente a Perú; el resultado debe orientar al cliente hacia proveedores cercanos.
+- [ ] Definir la configuración segura de la clave de Google Maps/Places y las restricciones de dominio antes de activar el buscador en producción.
+- [ ] Hacer enlazable el nombre del proveedor que se muestra sobre la imagen en las fichas de producto o servicio; debe abrir una ruta pública válida con todos sus productos y servicios.
+- [ ] Sustituir el enlace de vendor no soportado (`/collections/vendors?q=…`, que devuelve 404 en el tema actual) por la plantilla pública de catálogo de proveedor que se implemente.
+- [ ] Criterio de validación: probar búsqueda por ciudad, dirección sugerida y ficha de proveedor en escritorio y móvil.
