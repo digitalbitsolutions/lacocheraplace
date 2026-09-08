@@ -13,7 +13,9 @@ Implementación publicada el 8 de septiembre de 2026 en el tema live `1967499185
 
 La clave se obtiene del mismo endpoint que usa el registro de proveedores: `GET /apps/provider-applications/submit`, campo `config.googleMapsBrowserApiKey`, alimentado por `GOOGLE_MAPS_BROWSER_API_KEY` en la app. Opcionalmente se puede configurar `google_places_api_key` en el banner del editor del tema.
 
-Comprobación en producción del 8 de septiembre: el endpoint responde correctamente pero devuelve la clave vacía; la página de registro tampoco contiene una clave en su configuración del tema. Por SSH se comprobó que la variable no está en el `.env` de la app ni en `.laco-provider-admin/shopify.env`; tampoco se encontró una clave en las configuraciones y releases revisadas. No se modificó la configuración del host.
+Comprobación inicial en producción del 8 de septiembre: el endpoint respondía correctamente pero devolvía la clave vacía; la página de registro tampoco contenía una clave en su configuración del tema. Por SSH se comprobó que la variable no estaba en el `.env` de la app ni en `.laco-provider-admin/shopify.env`; tampoco se encontró una clave en las configuraciones y releases revisadas.
+
+Configuración completada el 8 de septiembre: `GOOGLE_MAPS_BROWSER_API_KEY` quedó configurada en el `.env` de la app y Passenger fue reiniciado. La clave de navegador tiene restricciones HTTP por `lacocheraplace.com`, `www.lacocheraplace.com` y `cs3msy-n8.myshopify.com`; las APIs autorizadas son Maps JavaScript API y Places API (New). La clave no se registra en este repositorio.
 
 Para activar las sugerencias hay que restaurar la clave de navegador, habilitar Maps JavaScript API y Places API (New), y verificar las restricciones de dominio de la tienda. Referencia: https://developers.google.com/maps/documentation/javascript/place-autocomplete-new
 
@@ -24,7 +26,7 @@ Para activar las sugerencias hay que restaurar la clave de navegador, habilitar 
 - Edge headless a 390 y 1440 px: ciudad, cero resultados, clave ausente, selección de Google simulada, invalidación al editar dirección y ubicación del dispositivo simulada; sin errores JavaScript ni desbordamiento horizontal en la prueba del componente.
 - Directorio real: cinco proveedores para mantenimiento ligero en Chiclayo con el filtro implementado.
 - Home completo en producción probado con Edge a 390 y 1440 px: búsqueda de mantenimiento ligero en Chiclayo devuelve cinco proveedores; geolocalización de prueba en Chiclayo y radio de 10 km devuelve ocho. Sin errores JavaScript ni desbordamiento horizontal. Los enlaces abren la búsqueda de productos; los proveedores sin productos publicados muestran cero resultados.
-- Pendiente: restaurar la clave y probar las sugerencias reales de Google.
+- Prueba real posterior a la configuración: al escribir una dirección, `AutocompletePlaces` respondió `200` en producción y no se registraron errores del componente Google. La corrección esencial fue habilitar y restringir **Places API (New)** (`places.googleapis.com`); el servicio legacy `places-backend.googleapis.com` no sirve para este widget.
 
 ## Publicación y recuperación
 
