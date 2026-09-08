@@ -288,6 +288,7 @@
             method="get"
             role="search"
             class="home-hero-service-search__form"
+            data-results-id="HeroLocalResults-{{ section.id }}"
             id="HeroServiceSearchForm-{{ section.id }}"
           >
             {%- capture hero_service_options_markup -%}
@@ -363,6 +364,7 @@
             <p class="home-hero-service-search__error" id="HeroServiceError-{{ section.id }}" role="alert" hidden>
               Selecciona un servicio antes de continuar.
             </p>
+            {% render 'home-location-search', section: section %}
             <div class="home-hero-service-search__distance-wrap">
               <div class="home-hero-service-search__distance-head">
                 <div class="home-hero-service-search__distance-title">
@@ -420,6 +422,8 @@
 </div>
 
 {%- if show_home_service_search -%}
+  <section id="HeroLocalResults-{{ section.id }}" class="home-local-results page-width" aria-label="Resultados de proveedores" aria-live="polite" tabindex="-1" hidden></section>
+  <script src="{{ 'home-location-search.js' | asset_url }}" defer="defer"></script>
   <script>
     (() => {
       const form = document.getElementById('HeroServiceSearchForm-{{ section.id }}');
@@ -594,18 +598,6 @@
         }
       };
 
-      const buildSearchUrl = (targetUrl, latitude, longitude) => {
-        const nextUrl = new URL(targetUrl, window.location.origin);
-        if (distanceInput && distanceInput.value) {
-          nextUrl.searchParams.set('distance_km', distanceInput.value);
-        }
-        if (latitude && longitude) {
-          nextUrl.searchParams.set('lat', latitude);
-          nextUrl.searchParams.set('lng', longitude);
-        }
-        return nextUrl.toString();
-      };
-
       const requestUserLocation = () => {
         if (userLatInput && userLngInput && userLatInput.value && userLngInput.value) {
           return Promise.resolve({
@@ -713,27 +705,12 @@
         hideGeoStatus();
 
         try {
-          const coords = await requestUserLocation();
-          const latitude = String(coords?.coords?.latitude ?? userLatInput?.value ?? '');
-          const longitude = String(coords?.coords?.longitude ?? userLngInput?.value ?? '');
-
-          if (!latitude || !longitude) {
-            showGeoStatus('Has permitido la ubicación, pero no hemos podido detectarla. Reintenta o activa la ubicación del dispositivo.', true);
-            setSubmittingState(false);
-            return;
-          }
-
-          if (userLatInput) {
-            userLatInput.value = latitude;
-          }
-          if (userLngInput) {
-            userLngInput.value = longitude;
-          }
-
-          window.location.assign(buildSearchUrl(targetUrl, latitude, longitude));
-        } catch (_error) {
+          await customElements.whenDefined('home-location-search');
+          await form.querySelector('home-location-search').search(selectedHandle, Number(distanceInput.value), requestUserLocation);
+        } catch (error) {
+          showGeoStatus(error.message || 'No se pudo completar la búsqueda. Inténtalo de nuevo.', true);
+        } finally {
           setSubmittingState(false);
-          return;
         }
       });
 
@@ -1171,6 +1148,12 @@
   },
   "settings": [
     {
+      "type": "text",
+      "id": "google_places_api_key",
+      "label": "Clave de Google Maps / Places",
+      "info": "Habilita Maps JavaScript API y Places API (New). Restringe la clave a los dominios de la tienda en Google Cloud."
+    },
+    {
       "type": "image_picker",
       "id": "image",
       "label": "t:sections.image-banner.settings.image.label"
@@ -1511,7 +1494,7 @@
           "label": "Etiqueta personalizada (opcional)"
         }
       ]
-    },
+    }
   ],
   "presets": [
     {

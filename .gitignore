@@ -48,3 +48,5 @@ product-images/
 scripts/product-image-pipeline/logs/
 scripts/product-image-pipeline/.env
 scripts/product-image-pipeline/review*/
+
+!theme-dawn-export/assets/home-location-search.js

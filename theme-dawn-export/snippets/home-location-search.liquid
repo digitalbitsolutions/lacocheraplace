@@ -1,0 +1,30 @@
+<home-location-search data-google-key="{{ section.settings.google_places_api_key | escape }}">
+  <label for="HeroLocationMode-{{ section.id }}">¿Dónde buscas?</label>
+  <select id="HeroLocationMode-{{ section.id }}" data-location-mode>
+    <option value="city">Por ciudad</option>
+    <option value="address">Cerca de una dirección</option>
+    <option value="device">Usar mi ubicación actual</option>
+  </select>
+  <div data-city-field>
+    <label for="HeroCity-{{ section.id }}">Ciudad de Perú</label>
+    <input id="HeroCity-{{ section.id }}" data-city type="text" placeholder="Ej. Chiclayo o Lima" autocomplete="address-level2">
+  </div>
+  <div data-address-field hidden>
+    <p id="HeroAddressLabel-{{ section.id }}">Dirección en Perú</p>
+    <div data-address-widget aria-labelledby="HeroAddressLabel-{{ section.id }}"></div>
+    <p data-address-status role="status"></p>
+  </div>
+  <p data-location-help>Mostraremos los proveedores de la ciudad elegida.</p>
+</home-location-search>
+<style>
+  home-location-search { display: grid; gap: .8rem; text-align: left; margin-top: 1.6rem; }
+  home-location-search [hidden] { display: none !important; }
+  home-location-search label { display: block; font-weight: 600; margin-bottom: .4rem; }
+  home-location-search input, home-location-search select { width: 100%; min-height: 4.8rem; padding: 1rem; border: 1px solid #b7c3ce; border-radius: .8rem; background: #fff; color: #172b40; font: inherit; }
+  home-location-search p { margin: .4rem 0; font-size: 1.4rem; }
+  home-location-search gmp-place-autocomplete { width: 100%; color-scheme: light; }
+  .home-local-results { padding-top: 3rem; padding-bottom: 3rem; }
+  .home-local-results ul { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 28rem), 1fr)); gap: 1.6rem; padding: 0; list-style: none; }
+  .home-local-results li { border: 1px solid #d5dee6; border-radius: 1rem; padding: 2rem; }
+  .home-local-results h3 { margin-top: 0; }
+</style>
