@@ -13,6 +13,16 @@
 
 ## Secretos
 
+## Acceso SSH verificado (2026-09-08)
+
+- Host: `srv01.digitalbitsolutions.com`, puerto `9505`, usuario `lacocheraplace`.
+- Llave privada local existente: `.live-check/codex-peru-deploy-20260901` (no versionar).
+- Archivo local de host conocido: `.tmp-known-hosts-srv01`.
+- Conexión validada con `BatchMode=yes` y `StrictHostKeyChecking=yes`.
+- El buscador del home se despliega en Shopify, no en este host. Este host sirve la app y su configuración pública.
+
+## Variables de entorno
+
 - La app carga sus variables desde `.env` dentro del app root.
 - El archivo tiene permisos `600`.
 - Las credenciales MySQL se conservan adicionalmente en

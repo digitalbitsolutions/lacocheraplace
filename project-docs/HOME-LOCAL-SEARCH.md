@@ -1,6 +1,6 @@
 # Búsqueda local en el home
 
-Implementación local del 8 de septiembre de 2026, pendiente de publicación.
+Implementación publicada el 8 de septiembre de 2026 en el tema live `196749918545` de `lacocheraplace.com`. Commit de implementación: `9a096b1`, rama `audit/peru-currency`, enviado a origin.
 
 - Ciudad: coincidencia de ciudad sin distinguir mayúsculas ni tildes, limitada a proveedores de Perú. No solicita ubicación del dispositivo.
 - Dirección: PlaceAutocompleteElement de Google, restringido a Perú. Se debe seleccionar una sugerencia antes de buscar.
@@ -13,7 +13,7 @@ Implementación local del 8 de septiembre de 2026, pendiente de publicación.
 
 La clave se obtiene del mismo endpoint que usa el registro de proveedores: `GET /apps/provider-applications/submit`, campo `config.googleMapsBrowserApiKey`, alimentado por `GOOGLE_MAPS_BROWSER_API_KEY` en la app. Opcionalmente se puede configurar `google_places_api_key` en el banner del editor del tema.
 
-Comprobación en producción del 8 de septiembre: el endpoint responde correctamente pero devuelve la clave vacía; la página de registro tampoco contiene una clave en su configuración del tema. No se encontró una clave en los archivos de entorno locales revisados. No se modificó la configuración de producción.
+Comprobación en producción del 8 de septiembre: el endpoint responde correctamente pero devuelve la clave vacía; la página de registro tampoco contiene una clave en su configuración del tema. Por SSH se comprobó que la variable no está en el `.env` de la app ni en `.laco-provider-admin/shopify.env`; tampoco se encontró una clave en las configuraciones y releases revisadas. No se modificó la configuración del host.
 
 Para activar las sugerencias hay que restaurar la clave de navegador, habilitar Maps JavaScript API y Places API (New), y verificar las restricciones de dominio de la tienda. Referencia: https://developers.google.com/maps/documentation/javascript/place-autocomplete-new
 
@@ -23,6 +23,11 @@ Para activar las sugerencias hay que restaurar la clave de navegador, habilitar 
 - Esquema JSON de la sección y sintaxis de JavaScript verificados. Se corrigió una coma final preexistente en el esquema del banner.
 - Edge headless a 390 y 1440 px: ciudad, cero resultados, clave ausente, selección de Google simulada, invalidación al editar dirección y ubicación del dispositivo simulada; sin errores JavaScript ni desbordamiento horizontal en la prueba del componente.
 - Directorio real: cinco proveedores para mantenimiento ligero en Chiclayo con el filtro implementado.
-- Pendiente: prueba con sugerencias reales de Google y revisión del home completo tras publicar los archivos del tema.
+- Home completo en producción probado con Edge a 390 y 1440 px: búsqueda de mantenimiento ligero en Chiclayo devuelve cinco proveedores; geolocalización de prueba en Chiclayo y radio de 10 km devuelve ocho. Sin errores JavaScript ni desbordamiento horizontal. Los enlaces abren la búsqueda de productos; los proveedores sin productos publicados muestran cero resultados.
+- Pendiente: restaurar la clave y probar las sugerencias reales de Google.
+
+## Publicación y recuperación
+
+Se subieron únicamente los tres archivos del tema indicados abajo mediante Shopify CLI, con `--allow-live --nodelete`. Antes se confirmó que el banner live coincidía con el commit base y se guardó copia en `.tmp-local-search/live-before/sections/image-banner.liquid`. No se desplegó la app ni se modificó la base de datos.
 
 Archivos del tema: `sections/image-banner.liquid`, `snippets/home-location-search.liquid`, `assets/home-location-search.js`.
