@@ -11,8 +11,6 @@
 - Runtime gestionado: `/home/lacocheraplace/nodevenv/apps/laco-provider-admin/current/22`
 - Release Shopify: `laco-prov-admin-18`
 
-## Secretos
-
 ## Acceso SSH verificado (2026-09-08)
 
 - Host: `srv01.digitalbitsolutions.com`, puerto `9505`, usuario `lacocheraplace`.
