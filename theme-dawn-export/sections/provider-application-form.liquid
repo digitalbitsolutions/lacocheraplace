@@ -75,10 +75,26 @@
             <input class="field__input" type="text" id="ProviderCatalogVendorName-{{ section.id }}" name="provider_catalog_vendor_name" required placeholder="Cómo aparecerá en nuestra web">
             <label class="field__label" for="ProviderCatalogVendorName-{{ section.id }}">Nombre para el catálogo <span class="provider-application__required">*</span></label>
           </div>
-          <div class="field">
-            <input class="field__input" type="text" id="ProviderOpeningHours-{{ section.id }}" name="provider_opening_hours" required placeholder="Ej. Lun-Sab: 09:00 - 18:00">
-            <label class="field__label" for="ProviderOpeningHours-{{ section.id }}">Horario de atención <span class="provider-application__required">*</span></label>
-          </div>
+          <fieldset class="provider-application__hours provider-application__grid-item-full" data-provider-opening-hours>
+            <legend class="provider-application__select-label">Horario de atención <span class="provider-application__required">*</span></legend>
+            <p class="provider-application__note">Marca los días de atención e indica la franja horaria en hora local de Perú.</p>
+            <div class="provider-application__hours-grid">
+              {%- assign weekdays = 'Lunes,Martes,Miércoles,Jueves,Viernes,Sábado,Domingo' | split: ',' -%}
+              {%- assign weekday_keys = 'monday,tuesday,wednesday,thursday,friday,saturday,sunday' | split: ',' -%}
+              {%- for day in weekdays -%}
+                <div class="provider-application__hours-row" data-opening-hours-day="{{ weekday_keys[forloop.index0] }}">
+                  <label><input type="checkbox" data-opening-hours-enabled> {{ day }}</label>
+                  <label class="visually-hidden" for="ProviderHoursOpen-{{ section.id }}-{{ weekday_keys[forloop.index0] }}">Apertura {{ day }}</label>
+                  <input type="time" id="ProviderHoursOpen-{{ section.id }}-{{ weekday_keys[forloop.index0] }}" data-opening-hours-open disabled>
+                  <span aria-hidden="true">a</span>
+                  <label class="visually-hidden" for="ProviderHoursClose-{{ section.id }}-{{ weekday_keys[forloop.index0] }}">Cierre {{ day }}</label>
+                  <input type="time" id="ProviderHoursClose-{{ section.id }}-{{ weekday_keys[forloop.index0] }}" data-opening-hours-close disabled>
+                </div>
+              {%- endfor -%}
+            </div>
+            <input type="hidden" name="provider_opening_hours" value="" data-opening-hours-json>
+            <p class="provider-application__address-status" data-opening-hours-status role="status" aria-live="polite"></p>
+          </fieldset>
           <div class="field provider-application__grid-item-full">
             <textarea rows="5" id="ProviderDescription-{{ section.id }}" class="text-area field__input" name="provider_description" required placeholder="Breve descripción técnica de tu especialidad, cobertura y trayectoria..."></textarea>
             <label class="field__label" for="ProviderDescription-{{ section.id }}">Descripción del negocio <span class="provider-application__required">*</span></label>
@@ -110,23 +126,31 @@
         <div class="provider-application__group">
           <h3 class="provider-application__group-title">{{ 'icon-map-pin.svg' | inline_asset_content }} Ubicación</h3>
           <div class="provider-application__grid provider-application__grid--two">
+            <div class="field">
+              <label class="provider-application__select-label" for="ProviderProvince-{{ section.id }}">Departamento <span class="provider-application__required">*</span></label>
+              <div class="select">
+                <select class="select__select" id="ProviderProvince-{{ section.id }}" name="provider_province_or_region" required data-provider-province="true">
+                  <option value="">Selecciona un departamento</option>
+                  <option value="Amazonas">Amazonas</option><option value="Áncash">Áncash</option><option value="Apurímac">Apurímac</option><option value="Arequipa">Arequipa</option><option value="Ayacucho">Ayacucho</option><option value="Cajamarca">Cajamarca</option><option value="Callao">Callao</option><option value="Cusco">Cusco</option><option value="Huancavelica">Huancavelica</option><option value="Huánuco">Huánuco</option><option value="Ica">Ica</option><option value="Junín">Junín</option><option value="La Libertad">La Libertad</option><option value="Lambayeque">Lambayeque</option><option value="Lima">Lima</option><option value="Loreto">Loreto</option><option value="Madre de Dios">Madre de Dios</option><option value="Moquegua">Moquegua</option><option value="Pasco">Pasco</option><option value="Piura">Piura</option><option value="Puno">Puno</option><option value="San Martín">San Martín</option><option value="Tacna">Tacna</option><option value="Tumbes">Tumbes</option><option value="Ucayali">Ucayali</option>
+                </select>
+                <span class="svg-wrapper">{{- 'icon-caret.svg' | inline_asset_content -}}</span>
+              </div>
+            </div>
+            <div class="field provider-application__city-autocomplete" data-provider-city-autocomplete>
+              <input class="field__input" type="text" id="ProviderCity-{{ section.id }}" name="provider_city" required placeholder="Selecciona primero un departamento" data-provider-city="true" autocomplete="off" disabled>
+              <label class="field__label" for="ProviderCity-{{ section.id }}">Ciudad <span class="provider-application__required">*</span></label>
+              <ul id="ProviderCitySuggestions-{{ section.id }}" class="provider-application__address-suggestions" data-provider-city-suggestions role="listbox" hidden></ul>
+              <p class="provider-application__address-status" data-provider-city-status role="status" aria-live="polite"></p>
+            </div>
             <div class="field provider-application__grid-item-full provider-application__address-autocomplete" data-provider-address-autocomplete>
-              <input class="field__input" type="text" id="ProviderAddressLine1-{{ section.id }}" name="provider_address_line_1" required placeholder="" data-provider-address-line-1="true" autocomplete="street-address">
+              <input class="field__input" type="text" id="ProviderAddressLine1-{{ section.id }}" name="provider_address_line_1" required placeholder="Selecciona primero ciudad" data-provider-address-line-1="true" autocomplete="street-address" disabled>
               <label class="field__label" for="ProviderAddressLine1-{{ section.id }}">Dirección principal <span class="provider-application__required">*</span></label>
               <ul id="ProviderAddressSuggestions-{{ section.id }}" class="provider-application__address-suggestions" data-provider-address-suggestions role="listbox" hidden></ul>
               <p class="provider-application__address-status" data-provider-address-status role="status" aria-live="polite"></p>
             </div>
             <div class="field">
-              <input class="field__input" type="text" id="ProviderCity-{{ section.id }}" name="provider_city" required placeholder="" data-provider-city="true" autocomplete="address-level2">
-              <label class="field__label" for="ProviderCity-{{ section.id }}">Ciudad <span class="provider-application__required">*</span></label>
-            </div>
-            <div class="field">
               <input class="field__input" type="text" id="ProviderPostalCode-{{ section.id }}" name="provider_postal_code" required placeholder="" data-provider-postal-code="true" autocomplete="postal-code">
               <label class="field__label" for="ProviderPostalCode-{{ section.id }}">Código postal <span class="provider-application__required">*</span></label>
-            </div>
-            <div class="field">
-              <input class="field__input" type="text" id="ProviderProvince-{{ section.id }}" name="provider_province_or_region" required placeholder="" data-provider-province="true" autocomplete="address-level1">
-              <label class="field__label" for="ProviderProvince-{{ section.id }}">Departamento / región <span class="provider-application__required">*</span></label>
             </div>
             <div class="field">
               <label class="provider-application__select-label" for="ProviderCountry-{{ section.id }}">País <span class="provider-application__required">*</span></label>

@@ -145,6 +145,11 @@
   };
 
   const getTrimmedString = (value) => (typeof value === 'string' ? value.trim() : '');
+  const normalizeLocation = (value) => String(value || '')
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .trim();
 
   const getProviderAppProxyUrl = (form) =>
     getTrimmedString(form?.dataset.providerAppProxyUrl) || defaultProviderAppProxyPath;
@@ -257,7 +262,7 @@
   };
 
   const fillAddressFieldsFromPlace = (form, place) => {
-    const components = place?.address_components || [];
+    const components = place?.addressComponents || place?.address_components || [];
     if (!components.length) return;
 
     const addressLine1Field = form.querySelector('[data-provider-address-line-1]');
@@ -269,11 +274,6 @@
     const latitudeField = form.querySelector('[name="provider_latitude"]');
     const longitudeField = form.querySelector('[name="provider_longitude"]');
 
-    const city =
-      addressComponentText(getAddressComponent(components, 'locality')) ||
-      addressComponentText(getAddressComponent(components, 'postal_town')) ||
-      addressComponentText(getAddressComponent(components, 'administrative_area_level_2')) ||
-      '';
     const postalCode = addressComponentText(getAddressComponent(components, 'postal_code'));
     const province =
       addressComponentText(getAddressComponent(components, 'administrative_area_level_1')) || '';
@@ -286,6 +286,12 @@
     if (countryCode !== 'pe') {
       throw new Error('Selecciona una dirección situada en Perú.');
     }
+    if (!provinceField?.value || normalizeLocation(province) !== normalizeLocation(provinceField.value)) {
+      throw new Error('La dirección debe pertenecer al departamento seleccionado.');
+    }
+    if (!cityField?.dataset.citySelected) {
+      throw new Error('Selecciona primero una ciudad del departamento.');
+    }
     const addressLine = buildAddressLine(
       components,
       place?.formattedAddress || place?.formatted_address || addressLine1Field?.value.trim()
@@ -294,9 +300,7 @@
     const longitude = place?.location?.lng?.() ?? place?.geometry?.location?.lng?.();
 
     setFieldValue(addressLine1Field, addressLine);
-    setFieldValue(cityField, city);
     setFieldValue(postalCodeField, postalCode);
-    setFieldValue(provinceField, province);
     setFieldValue(countryField, country);
     setFieldValue(placeIdField, place?.id || place?.place_id || '');
     setFieldValue(latitudeField, latitude != null ? String(latitude) : '');
@@ -321,11 +325,71 @@
     suggestions.hidden = true;
   };
 
+  const openingHoursDays = [
+    ['monday', 'Lun'], ['tuesday', 'Mar'], ['wednesday', 'Mié'], ['thursday', 'Jue'],
+    ['friday', 'Vie'], ['saturday', 'Sáb'], ['sunday', 'Dom'],
+  ];
+
+  const buildOpeningHours = (form) => ({
+    version: 1,
+    timezone: 'America/Lima',
+    days: Array.from(form.querySelectorAll('[data-opening-hours-day]')).map((row) => {
+      const enabled = row.querySelector('[data-opening-hours-enabled]')?.checked === true;
+      const opens = row.querySelector('[data-opening-hours-open]')?.value || '';
+      const closes = row.querySelector('[data-opening-hours-close]')?.value || '';
+      return { day: row.dataset.openingHoursDay, enabled, periods: enabled && opens && closes ? [{ opens, closes }] : [] };
+    }),
+  });
+
+  const syncOpeningHours = (form, { showError = false } = {}) => {
+    const hours = buildOpeningHours(form);
+    const invalid = hours.days.find((day) => day.enabled && (!day.periods.length || day.periods[0].opens >= day.periods[0].closes));
+    const hasOpenDay = hours.days.some((day) => day.enabled);
+    const message = !hasOpenDay
+      ? 'Selecciona al menos un día de atención.'
+      : invalid
+        ? 'Cada franja debe tener una hora de cierre posterior a la apertura.'
+        : '';
+    const input = form.querySelector('[data-opening-hours-json]');
+    const status = form.querySelector('[data-opening-hours-status]');
+    if (input) input.value = message ? '' : JSON.stringify(hours);
+    if (status) {
+      status.textContent = message || hours.days.filter((day) => day.enabled).map((day) => {
+        const label = openingHoursDays.find(([key]) => key === day.day)?.[1] || day.day;
+        return `${label} ${day.periods[0].opens}–${day.periods[0].closes}`;
+      }).join(' · ');
+      status.classList.toggle('provider-application__error', Boolean(showError && message));
+      status.classList.toggle('is-visible', Boolean(showError && message));
+    }
+    return !message;
+  };
+
+  const initOpeningHours = (form) => {
+    form.querySelectorAll('[data-opening-hours-day]').forEach((row) => {
+      const enabled = row.querySelector('[data-opening-hours-enabled]');
+      const timeInputs = Array.from(row.querySelectorAll('input[type="time"]'));
+      enabled?.addEventListener('change', () => {
+        timeInputs.forEach((input) => { input.disabled = !enabled.checked; if (!enabled.checked) input.value = ''; });
+        syncOpeningHours(form);
+        form.dispatchEvent(new Event('provider-hours-change'));
+      });
+      timeInputs.forEach((input) => input.addEventListener('change', () => {
+        syncOpeningHours(form);
+        form.dispatchEvent(new Event('provider-hours-change'));
+      }));
+    });
+    syncOpeningHours(form);
+  };
+
   const initGoogleAddressAutocomplete = async (form) => {
     const apiKey = await resolveGoogleMapsApiKey(form);
     const addressField = form.querySelector('[data-provider-address-line-1]');
     const suggestions = form.querySelector('[data-provider-address-suggestions]');
-    if (!addressField || !suggestions) return;
+    const cityField = form.querySelector('[data-provider-city]');
+    const provinceField = form.querySelector('[data-provider-province]');
+    const citySuggestions = form.querySelector('[data-provider-city-suggestions]');
+    const cityStatus = form.querySelector('[data-provider-city-status]');
+    if (!addressField || !suggestions || !cityField || !provinceField || !citySuggestions) return;
     if (!apiKey) {
       setAddressAutocompleteStatus(form, 'Las sugerencias de dirección no están disponibles en este momento.');
       return;
@@ -337,6 +401,86 @@
       let sessionToken;
       let revision = 0;
       let timer;
+      let cityRevision = 0;
+      let cityTimer;
+
+      const hideCitySuggestions = () => {
+        citySuggestions.replaceChildren();
+        citySuggestions.hidden = true;
+      };
+
+      const setCityStatus = (message) => {
+        if (cityStatus) cityStatus.textContent = message;
+      };
+
+      const resetCity = () => {
+        cityField.value = '';
+        delete cityField.dataset.citySelected;
+        cityField.disabled = !provinceField.value;
+        cityField.placeholder = provinceField.value ? 'Escribe para buscar una ciudad' : 'Selecciona primero un departamento';
+        addressField.value = '';
+        addressField.disabled = true;
+        addressField.placeholder = 'Selecciona primero ciudad';
+        clearGeocodedFields(form);
+        hideCitySuggestions();
+        hideAddressSuggestions(form);
+        setCityStatus(provinceField.value ? 'Escribe al menos dos caracteres para buscar una ciudad.' : '');
+      };
+
+      const selectCity = (city) => {
+        cityField.value = city;
+        cityField.dataset.citySelected = 'true';
+        addressField.disabled = false;
+        addressField.placeholder = 'Escribe la dirección del negocio';
+        hideCitySuggestions();
+        setCityStatus(`Ciudad seleccionada: ${city}.`);
+        addressField.focus();
+      };
+
+      const showCitySuggestions = async () => {
+        const query = cityField.value.trim();
+        const department = provinceField.value.trim();
+        const requestRevision = ++cityRevision;
+        delete cityField.dataset.citySelected;
+        addressField.disabled = true;
+        if (!department || query.length < 2) {
+          hideCitySuggestions();
+          setCityStatus(query ? 'Escribe al menos dos caracteres para buscar una ciudad.' : '');
+          return;
+        }
+        setCityStatus(`Buscando ciudades en ${department}...`);
+        try {
+          const response = await AutocompleteSuggestion.fetchAutocompleteSuggestions({
+            input: `${query}, ${department}, Perú`, includedRegionCodes: [countryBias], language: 'es', region: 'PE',
+          });
+          const candidates = await Promise.all((response.suggestions || []).map(async (item) => {
+            const prediction = item.placePrediction;
+            if (!prediction) return null;
+            const place = prediction.toPlace();
+            await place.fetchFields({ fields: ['addressComponents'] });
+            const components = place.addressComponents || [];
+            const placeDepartment = addressComponentText(getAddressComponent(components, 'administrative_area_level_1'));
+            const city = addressComponentText(getAddressComponent(components, 'locality')) || addressComponentText(getAddressComponent(components, 'administrative_area_level_2'));
+            return city && normalizeLocation(placeDepartment) === normalizeLocation(department) ? city : null;
+          }));
+          if (requestRevision !== cityRevision || query !== cityField.value.trim()) return;
+          const cities = [...new Set(candidates.filter(Boolean))].slice(0, 8);
+          citySuggestions.replaceChildren();
+          cities.forEach((city, index) => {
+            const item = document.createElement('li');
+            const button = document.createElement('button');
+            button.type = 'button'; button.role = 'option'; button.id = `${cityField.id}-option-${index}`; button.textContent = city;
+            button.addEventListener('click', () => selectCity(city));
+            item.appendChild(button); citySuggestions.appendChild(item);
+          });
+          citySuggestions.hidden = cities.length === 0;
+          setCityStatus(cities.length ? `${cities.length} ciudades en ${department}.` : `No hay ciudades coincidentes en ${department}.`);
+        } catch (error) {
+          if (requestRevision !== cityRevision) return;
+          hideCitySuggestions();
+          setCityStatus(error.message || 'No se pudieron cargar las ciudades.');
+        }
+      };
 
       const selectSuggestion = async (place) => {
         await place.fetchFields({ fields: ['addressComponents', 'formattedAddress', 'location', 'id'] });
@@ -359,7 +503,7 @@
         try {
           sessionToken ||= new AutocompleteSessionToken();
           const response = await AutocompleteSuggestion.fetchAutocompleteSuggestions({
-            input: query,
+            input: `${query}, ${cityField.value}, ${provinceField.value}, Perú`,
             includedRegionCodes: [countryBias],
             language: 'es',
             region: countryBias.toUpperCase(),
@@ -405,8 +549,17 @@
       addressField.addEventListener('focus', () => {
         if (addressField.value.trim().length >= 3) showSuggestions();
       });
+      provinceField.addEventListener('change', resetCity);
+      cityField.addEventListener('input', () => {
+        window.clearTimeout(cityTimer);
+        cityTimer = window.setTimeout(showCitySuggestions, 250);
+      });
+      cityField.addEventListener('focus', () => {
+        if (cityField.value.trim().length >= 2) showCitySuggestions();
+      });
       document.addEventListener('click', (event) => {
         if (!event.target.closest('[data-provider-address-autocomplete]')) hideAddressSuggestions(form);
+        if (!event.target.closest('[data-provider-city-autocomplete]')) hideCitySuggestions();
       });
     } catch (error) {
       console.warn('[provider-application-form] Google Maps autocomplete unavailable.', error);
@@ -453,6 +606,10 @@
 
     if (element.hasAttribute('required') && !value) {
       return 'Este campo es obligatorio.';
+    }
+
+    if (element.name === 'provider_city' && value && !element.dataset.citySelected) {
+      return 'Selecciona una ciudad de la lista.';
     }
 
     if (element.type === 'email' && value && element.validity.typeMismatch) {
@@ -555,6 +712,10 @@
 
   const validateFormState = (form, fieldsToValidate, consentCheckbox, categoryInputs, { showErrors = false } = {}) => {
     let isValid = true;
+
+    if (!syncOpeningHours(form, { showError: showErrors })) {
+      isValid = false;
+    }
 
     fieldsToValidate.forEach((field) => {
       if (!checkFieldValidity(field, { showErrors })) {
@@ -723,6 +884,11 @@
     const consentCheckbox = form.querySelector('[name="provider_consent"]');
     const categoryInputs = Array.from(form.querySelectorAll('input[name="provider_service_categories[]"]'));
 
+    form.addEventListener('provider-hours-change', () => {
+      syncHiddenFields(form);
+      validateFormState(form, fieldsToValidate, consentCheckbox, categoryInputs);
+    });
+
     fieldsToValidate.forEach((field) => {
       field.addEventListener('blur', () => validateField(field));
       field.addEventListener('input', () => {
@@ -759,6 +925,7 @@
       });
     });
 
+    initOpeningHours(form);
     initGoogleAddressAutocomplete(form);
     syncHiddenFields(form);
     validateFormState(form, fieldsToValidate, consentCheckbox, categoryInputs);

@@ -236,6 +236,50 @@
   font-size: 1.2rem;
 }
 
+.provider-application__hours {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.provider-application__hours-grid {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.provider-application__hours-row {
+  display: grid;
+  grid-template-columns: minmax(11rem, 1fr) minmax(8rem, 11rem) auto minmax(8rem, 11rem);
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.provider-application__hours-row label:first-child {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.provider-application__hours-row input[type='time'] {
+  min-height: 4rem;
+  padding: 0.6rem;
+  border: 0.1rem solid rgba(var(--color-foreground), 0.24);
+  border-radius: 0.3rem;
+  background: rgb(var(--color-background));
+  color: rgb(var(--color-foreground));
+  font: inherit;
+}
+
+@media screen and (max-width: 480px) {
+  .provider-application__hours-row {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .provider-application__hours-row label:first-child {
+    grid-column: 1 / -1;
+  }
+}
+
 .provider-application__select-label {
   display: inline-block;
   margin: 0 0 0.6rem;

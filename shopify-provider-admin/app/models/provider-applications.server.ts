@@ -525,6 +525,24 @@ export function validateProviderApplicationSubmission(
     errors.iban = "Introduce un CCI o numero de cuenta valido (8 a 20 digitos).";
   }
 
+  const openingHours = String(payload.openingHours || "").trim();
+  if (openingHours.startsWith("{")) {
+    try {
+      const schedule = JSON.parse(openingHours) as {
+        version?: number;
+        timezone?: string;
+        days?: Array<{ day?: string; enabled?: boolean; periods?: Array<{ opens?: string; closes?: string }> }>;
+      };
+      const hasInvalidPeriod = !Array.isArray(schedule.days) || schedule.version !== 1 || schedule.timezone !== "America/Lima" ||
+        schedule.days.some((day) => day.enabled && (!day.periods?.length || day.periods.some((period) => !/^\d{2}:\d{2}$/.test(period.opens || "") || !/^\d{2}:\d{2}$/.test(period.closes || "") || (period.opens || "") >= (period.closes || ""))));
+      if (hasInvalidPeriod || !schedule.days.some((day) => day.enabled)) {
+        errors.openingHours = "El horario estructurado no es valido.";
+      }
+    } catch {
+      errors.openingHours = "El horario estructurado debe ser JSON valido.";
+    }
+  }
+
   const optionalUrls: Array<[keyof ProviderApplicationSubmission, string]> = [
     ["websiteUrl", "Sitio web"],
     ["instagramUrl", "Instagram"],
