@@ -77,18 +77,36 @@
           </div>
           <fieldset class="provider-application__hours provider-application__grid-item-full" data-provider-opening-hours>
             <legend class="provider-application__select-label">Horario de atención <span class="provider-application__required">*</span></legend>
-            <p class="provider-application__note">Marca los días de atención e indica la franja horaria en hora local de Perú.</p>
+            <p class="provider-application__note">Marca los días de atención y elige un horario continuo o partido en hora local de Perú.</p>
             <div class="provider-application__hours-grid">
               {%- assign weekdays = 'Lunes,Martes,Miércoles,Jueves,Viernes,Sábado,Domingo' | split: ',' -%}
               {%- assign weekday_keys = 'monday,tuesday,wednesday,thursday,friday,saturday,sunday' | split: ',' -%}
               {%- for day in weekdays -%}
                 <div class="provider-application__hours-row" data-opening-hours-day="{{ weekday_keys[forloop.index0] }}">
                   <label><input type="checkbox" data-opening-hours-enabled> {{ day }}</label>
-                  <label class="visually-hidden" for="ProviderHoursOpen-{{ section.id }}-{{ weekday_keys[forloop.index0] }}">Apertura {{ day }}</label>
-                  <input type="time" id="ProviderHoursOpen-{{ section.id }}-{{ weekday_keys[forloop.index0] }}" data-opening-hours-open disabled>
-                  <span aria-hidden="true">a</span>
-                  <label class="visually-hidden" for="ProviderHoursClose-{{ section.id }}-{{ weekday_keys[forloop.index0] }}">Cierre {{ day }}</label>
-                  <input type="time" id="ProviderHoursClose-{{ section.id }}-{{ weekday_keys[forloop.index0] }}" data-opening-hours-close disabled>
+                  <div class="provider-application__hours-controls">
+                    <label class="provider-application__hours-mode-label" for="ProviderHoursMode-{{ section.id }}-{{ weekday_keys[forloop.index0] }}">Tipo de horario</label>
+                    <select id="ProviderHoursMode-{{ section.id }}-{{ weekday_keys[forloop.index0] }}" class="provider-application__hours-mode" data-opening-hours-mode disabled>
+                      <option value="continuous">Horario continuo</option>
+                      <option value="split">Horario partido</option>
+                    </select>
+                    <div class="provider-application__hours-period" data-opening-hours-period="1">
+                      <span class="provider-application__hours-period-label">Franja 1</span>
+                      <label class="visually-hidden" for="ProviderHoursOpen-{{ section.id }}-{{ weekday_keys[forloop.index0] }}">Apertura {{ day }}, primera franja</label>
+                      <input type="time" id="ProviderHoursOpen-{{ section.id }}-{{ weekday_keys[forloop.index0] }}" data-opening-hours-open disabled>
+                      <span aria-hidden="true">a</span>
+                      <label class="visually-hidden" for="ProviderHoursClose-{{ section.id }}-{{ weekday_keys[forloop.index0] }}">Cierre {{ day }}, primera franja</label>
+                      <input type="time" id="ProviderHoursClose-{{ section.id }}-{{ weekday_keys[forloop.index0] }}" data-opening-hours-close disabled>
+                    </div>
+                    <div class="provider-application__hours-period" data-opening-hours-period="2" hidden>
+                      <span class="provider-application__hours-period-label">Franja 2</span>
+                      <label class="visually-hidden" for="ProviderHoursOpen2-{{ section.id }}-{{ weekday_keys[forloop.index0] }}">Apertura {{ day }}, segunda franja</label>
+                      <input type="time" id="ProviderHoursOpen2-{{ section.id }}-{{ weekday_keys[forloop.index0] }}" data-opening-hours-open disabled>
+                      <span aria-hidden="true">a</span>
+                      <label class="visually-hidden" for="ProviderHoursClose2-{{ section.id }}-{{ weekday_keys[forloop.index0] }}">Cierre {{ day }}, segunda franja</label>
+                      <input type="time" id="ProviderHoursClose2-{{ section.id }}-{{ weekday_keys[forloop.index0] }}" data-opening-hours-close disabled>
+                    </div>
+                  </div>
                 </div>
               {%- endfor -%}
             </div>

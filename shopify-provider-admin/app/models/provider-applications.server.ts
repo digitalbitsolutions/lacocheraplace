@@ -534,7 +534,7 @@ export function validateProviderApplicationSubmission(
         days?: Array<{ day?: string; enabled?: boolean; periods?: Array<{ opens?: string; closes?: string }> }>;
       };
       const hasInvalidPeriod = !Array.isArray(schedule.days) || schedule.version !== 1 || schedule.timezone !== "America/Lima" ||
-        schedule.days.some((day) => day.enabled && (!day.periods?.length || day.periods.some((period) => !/^\d{2}:\d{2}$/.test(period.opens || "") || !/^\d{2}:\d{2}$/.test(period.closes || "") || (period.opens || "") >= (period.closes || ""))));
+        schedule.days.some((day) => day.enabled && (!day.periods?.length || day.periods.length > 2 || day.periods.some((period) => !/^\d{2}:\d{2}$/.test(period.opens || "") || !/^\d{2}:\d{2}$/.test(period.closes || "") || (period.opens || "") >= (period.closes || "")) || (day.periods.length === 2 && (day.periods[0].closes || "") >= (day.periods[1].opens || ""))));
       if (hasInvalidPeriod || !schedule.days.some((day) => day.enabled)) {
         errors.openingHours = "El horario estructurado no es valido.";
       }

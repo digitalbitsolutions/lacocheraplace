@@ -254,11 +254,11 @@
 
 .provider-application__hours-row {
   display: grid;
-  grid-template-columns: 15rem 10.5rem 1.5rem 10.5rem;
-  align-items: center;
+  grid-template-columns: 15rem minmax(0, 1fr);
+  align-items: start;
   justify-content: start;
   gap: 0.7rem;
-  min-height: 5.4rem;
+  padding: 1rem 0;
   border-bottom: 0.1rem solid rgba(var(--color-foreground), 0.1);
 }
 
@@ -272,7 +272,37 @@
   gap: 0.6rem;
 }
 
-.provider-application__hours-row input[type='time'] {
+.provider-application__hours-controls {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.provider-application__hours-mode-label,
+.provider-application__hours-period-label {
+  color: rgba(var(--color-foreground), 0.7);
+  font-size: 1.2rem;
+}
+
+.provider-application__hours-mode {
+  max-width: 18rem;
+  min-height: 3.8rem;
+  padding: 0.6rem;
+  border: 0.1rem solid rgba(var(--color-foreground), 0.24);
+  border-radius: 0.3rem;
+  background: rgb(var(--color-background));
+  color: rgb(var(--color-foreground));
+  font: inherit;
+}
+
+.provider-application__hours-period {
+  display: grid;
+  grid-template-columns: 6.5rem minmax(0, 1fr) 1.5rem minmax(0, 1fr);
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.provider-application__hours-row input[type='time'],
+.provider-application__hours-mode {
   width: 100%;
   min-height: 3.8rem;
   padding: 0.6rem;
@@ -283,24 +313,31 @@
   font: inherit;
 }
 
-.provider-application__hours-row input[type='time']:disabled {
+.provider-application__hours-row input[type='time']:disabled,
+.provider-application__hours-mode:disabled {
   background: rgba(var(--color-foreground), 0.04);
   color: rgba(var(--color-foreground), 0.45);
 }
 
-.provider-application__hours-row input[type='time']:focus-visible {
+.provider-application__hours-row input[type='time']:focus-visible,
+.provider-application__hours-mode:focus-visible {
   outline: 0.2rem solid rgba(var(--color-foreground), 0.26);
   outline-offset: 0.1rem;
 }
 
 @media screen and (max-width: 480px) {
   .provider-application__hours-row {
-    grid-template-columns: minmax(0, 1fr) 1.5rem minmax(0, 1fr);
+    grid-template-columns: 1fr;
     gap: 0.6rem;
   }
 
   .provider-application__hours-row label:first-child {
-    grid-column: 1 / -1;
+    grid-column: auto;
+  }
+
+  .provider-application__hours-period {
+    grid-template-columns: 5.8rem minmax(0, 1fr) 1.5rem minmax(0, 1fr);
+    gap: 0.5rem;
   }
 
   .provider-application__hours-grid {

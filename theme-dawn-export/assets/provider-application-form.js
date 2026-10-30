@@ -335,15 +335,20 @@
     timezone: 'America/Lima',
     days: Array.from(form.querySelectorAll('[data-opening-hours-day]')).map((row) => {
       const enabled = row.querySelector('[data-opening-hours-enabled]')?.checked === true;
-      const opens = row.querySelector('[data-opening-hours-open]')?.value || '';
-      const closes = row.querySelector('[data-opening-hours-close]')?.value || '';
-      return { day: row.dataset.openingHoursDay, enabled, periods: enabled && opens && closes ? [{ opens, closes }] : [] };
+      const split = row.querySelector('[data-opening-hours-mode]')?.value === 'split';
+      const periods = Array.from(row.querySelectorAll('[data-opening-hours-period]'))
+        .slice(0, split ? 2 : 1)
+        .map((period) => ({
+          opens: period.querySelector('[data-opening-hours-open]')?.value || '',
+          closes: period.querySelector('[data-opening-hours-close]')?.value || '',
+        }));
+      return { day: row.dataset.openingHoursDay, enabled, periods: enabled ? periods : [] };
     }),
   });
 
   const syncOpeningHours = (form, { showError = false } = {}) => {
     const hours = buildOpeningHours(form);
-    const invalid = hours.days.find((day) => day.enabled && (!day.periods.length || day.periods[0].opens >= day.periods[0].closes));
+    const invalid = hours.days.find((day) => day.enabled && (!day.periods.length || day.periods.some((period) => !period.opens || !period.closes || period.opens >= period.closes) || (day.periods.length === 2 && day.periods[0].closes >= day.periods[1].opens)));
     const hasOpenDay = hours.days.some((day) => day.enabled);
     const message = !hasOpenDay
       ? 'Selecciona al menos un día de atención.'
@@ -356,7 +361,7 @@
     if (status) {
       status.textContent = message || hours.days.filter((day) => day.enabled).map((day) => {
         const label = openingHoursDays.find(([key]) => key === day.day)?.[1] || day.day;
-        return `${label} ${day.periods[0].opens}–${day.periods[0].closes}`;
+        return `${label} ${day.periods.map((period) => `${period.opens}–${period.closes}`).join(' y ')}`;
       }).join(' · ');
       status.classList.toggle('provider-application__error', Boolean(showError && message));
       status.classList.toggle('is-visible', Boolean(showError && message));
@@ -367,9 +372,27 @@
   const initOpeningHours = (form) => {
     form.querySelectorAll('[data-opening-hours-day]').forEach((row) => {
       const enabled = row.querySelector('[data-opening-hours-enabled]');
+      const mode = row.querySelector('[data-opening-hours-mode]');
+      const secondPeriod = row.querySelector('[data-opening-hours-period="2"]');
       const timeInputs = Array.from(row.querySelectorAll('input[type="time"]'));
+      const syncRow = () => {
+        const isEnabled = enabled?.checked === true;
+        const isSplit = mode?.value === 'split';
+        if (mode) mode.disabled = !isEnabled;
+        if (secondPeriod) secondPeriod.hidden = !isSplit;
+        timeInputs.forEach((input) => {
+          const isSecondPeriod = input.closest('[data-opening-hours-period]')?.dataset.openingHoursPeriod === '2';
+          input.disabled = !isEnabled || (isSecondPeriod && !isSplit);
+          if (input.disabled) input.value = '';
+        });
+      };
       enabled?.addEventListener('change', () => {
-        timeInputs.forEach((input) => { input.disabled = !enabled.checked; if (!enabled.checked) input.value = ''; });
+        syncRow();
+        syncOpeningHours(form);
+        form.dispatchEvent(new Event('provider-hours-change'));
+      });
+      mode?.addEventListener('change', () => {
+        syncRow();
         syncOpeningHours(form);
         form.dispatchEvent(new Event('provider-hours-change'));
       });
@@ -377,6 +400,7 @@
         syncOpeningHours(form);
         form.dispatchEvent(new Event('provider-hours-change'));
       }));
+      syncRow();
     });
     syncOpeningHours(form);
   };
