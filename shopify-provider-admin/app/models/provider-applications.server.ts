@@ -506,6 +506,15 @@ export function validateProviderApplicationSubmission(
     errors.email = "Introduce un correo electronico valido.";
   }
 
+  const country = String(payload.country || "")
+    .trim()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase();
+  if (country && country !== "peru") {
+    errors.country = "El registro de proveedores solo admite direcciones de Peru.";
+  }
+
   const taxId = String(payload.taxId || "").trim();
   if (taxId && !isValidPeruvianTaxId(taxId)) {
     errors.taxId = "Introduce un RUC de 11 digitos o un DNI de 8 digitos.";

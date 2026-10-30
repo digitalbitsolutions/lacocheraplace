@@ -10,6 +10,7 @@ Implementar un alta de proveedores separada del registro de clientes, con revisi
 - Ademas, el formulario ya crea un registro estructurado `provider_application_request` mediante app proxy
 - El formulario puede capturar `google_place_id`, `latitude` y `longitude` cuando el usuario selecciona una sugerencia de Google Maps
 - La browser key publica para autocomplete ya no se guarda en el theme; la app proxy la entrega desde `GOOGLE_MAPS_BROWSER_API_KEY` cuando esta configurada
+- El autocompletado usa Places API (New) y solo solicita sugerencias de direcciones de Perú (`includedRegionCodes: ['pe']`, región `PE`). Antes de guardar una selección, valida que su país sea `PE`; el selector de país y la validación del app proxy también aceptan únicamente Perú. No se debe restaurar el widget clásico `google.maps.places.Autocomplete`, porque requiere la API heredada y no es compatible con la configuración actual.
 - La consola del owner ya existe como custom app embebida en Shopify Admin: `Laco Prov Admin`
 - El acceso operativo validado a esa consola es: `https://admin.shopify.com/store/lacocheraplace/apps` -> `Laco Prov Admin` -> `Abrir app`
 - Si Shopify muestra la pantalla de revision/permisos de app no publicada, el owner debe pulsar `Actualizar`
@@ -230,6 +231,7 @@ python scripts/provider_approval_workflow.py approve --input sample-data/provide
 - El email sigue existiendo como respaldo temporal
 - El storefront actual sigue resolviendo la oferta principalmente por `product.vendor`
 - La union fuerte entre catalogo y perfil enriquecido debe basarse en `provider_slug`
+- Las sugerencias requieren que la browser key tenga habilitadas Maps JavaScript API y Places API (New), y restricciones HTTP para `lacocheraplace.com`, `www.lacocheraplace.com` y el dominio `myshopify.com` de la tienda.
 
 ## Siguiente evolucion recomendada
 - Desplegar la custom app a una URL estable para eliminar dependencia de tuneles temporales

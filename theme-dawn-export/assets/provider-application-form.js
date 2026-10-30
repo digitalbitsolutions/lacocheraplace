@@ -2,7 +2,6 @@
   const defaultProviderAppProxyPath = '';
   let googleMapsScriptPromise;
   let providerPublicConfigPromise;
-  const googleMapsCallbackName = 'providerApplicationGoogleMapsLoaded';
 
   const urlFields = [
     'provider_website_url',
@@ -197,33 +196,41 @@
   };
 
   const loadGoogleMapsPlaces = (apiKey) => {
-    if (!apiKey) return Promise.resolve(null);
-    if (window.google?.maps?.places) return Promise.resolve(window.google);
+    if (!apiKey) return Promise.reject(new Error('Las sugerencias de dirección no están disponibles.'));
+    if (window.google?.maps?.importLibrary) return window.google.maps.importLibrary('places');
     if (googleMapsScriptPromise) return googleMapsScriptPromise;
 
     googleMapsScriptPromise = new Promise((resolve, reject) => {
-      window[googleMapsCallbackName] = () => {
-        if (window.google?.maps?.places) {
-          resolve(window.google);
-          return;
-        }
-
-        reject(new Error('Google Maps Places no se ha cargado correctamente.'));
-      };
-
       const script = document.createElement('script');
       const params = new URLSearchParams({
         key: apiKey,
+        loading: 'async',
         libraries: 'places',
+        v: 'weekly',
         language: document.documentElement.lang || 'es',
-        callback: googleMapsCallbackName,
+        region: 'PE',
+        callback: 'providerApplicationGoogleMapsLoaded',
       });
 
+      const timeout = window.setTimeout(
+        () => reject(new Error('Google no respondió. Inténtalo de nuevo.')),
+        15000
+      );
+      window.providerApplicationGoogleMapsLoaded = () => {
+        window.clearTimeout(timeout);
+        window.google?.maps?.importLibrary('places').then(resolve, reject);
+      };
       script.src = `https://maps.googleapis.com/maps/api/js?${params.toString()}`;
       script.async = true;
       script.defer = true;
-      script.onerror = () => reject(new Error('No se pudo cargar Google Maps.'));
+      script.onerror = () => {
+        window.clearTimeout(timeout);
+        reject(new Error('No se pudieron cargar las sugerencias de dirección.'));
+      };
       document.head.appendChild(script);
+    }).catch((error) => {
+      googleMapsScriptPromise = null;
+      throw error;
     });
 
     return googleMapsScriptPromise;
@@ -239,9 +246,12 @@
   const getAddressComponent = (components, type) =>
     components.find((component) => component.types.includes(type));
 
+  const addressComponentText = (component) =>
+    component?.longText || component?.long_name || component?.shortText || component?.short_name || '';
+
   const buildAddressLine = (components, fallbackValue) => {
-    const streetNumber = getAddressComponent(components, 'street_number')?.long_name || '';
-    const route = getAddressComponent(components, 'route')?.long_name || '';
+    const streetNumber = addressComponentText(getAddressComponent(components, 'street_number'));
+    const route = addressComponentText(getAddressComponent(components, 'route'));
     const composed = [route, streetNumber].filter(Boolean).join(' ').trim();
     return composed || fallbackValue || '';
   };
@@ -260,27 +270,35 @@
     const longitudeField = form.querySelector('[name="provider_longitude"]');
 
     const city =
-      getAddressComponent(components, 'locality')?.long_name ||
-      getAddressComponent(components, 'postal_town')?.long_name ||
-      getAddressComponent(components, 'administrative_area_level_2')?.long_name ||
+      addressComponentText(getAddressComponent(components, 'locality')) ||
+      addressComponentText(getAddressComponent(components, 'postal_town')) ||
+      addressComponentText(getAddressComponent(components, 'administrative_area_level_2')) ||
       '';
-    const postalCode = getAddressComponent(components, 'postal_code')?.long_name || '';
+    const postalCode = addressComponentText(getAddressComponent(components, 'postal_code'));
     const province =
-      getAddressComponent(components, 'administrative_area_level_1')?.long_name || '';
-    const country = getAddressComponent(components, 'country')?.long_name || '';
+      addressComponentText(getAddressComponent(components, 'administrative_area_level_1')) || '';
+    const country = addressComponentText(getAddressComponent(components, 'country'));
+    const countryCode = String(
+      getAddressComponent(components, 'country')?.shortText ||
+      getAddressComponent(components, 'country')?.short_name ||
+      ''
+    ).toLowerCase();
+    if (countryCode !== 'pe') {
+      throw new Error('Selecciona una dirección situada en Perú.');
+    }
     const addressLine = buildAddressLine(
       components,
-      place?.formatted_address || addressLine1Field?.value.trim()
+      place?.formattedAddress || place?.formatted_address || addressLine1Field?.value.trim()
     );
-    const latitude = place?.geometry?.location?.lat?.();
-    const longitude = place?.geometry?.location?.lng?.();
+    const latitude = place?.location?.lat?.() ?? place?.geometry?.location?.lat?.();
+    const longitude = place?.location?.lng?.() ?? place?.geometry?.location?.lng?.();
 
     setFieldValue(addressLine1Field, addressLine);
     setFieldValue(cityField, city);
     setFieldValue(postalCodeField, postalCode);
     setFieldValue(provinceField, province);
     setFieldValue(countryField, country);
-    setFieldValue(placeIdField, place?.place_id || '');
+    setFieldValue(placeIdField, place?.id || place?.place_id || '');
     setFieldValue(latitudeField, latitude != null ? String(latitude) : '');
     setFieldValue(longitudeField, longitude != null ? String(longitude) : '');
   };
@@ -291,34 +309,108 @@
     setFieldValue(form.querySelector('[name="provider_longitude"]'), '');
   };
 
+  const setAddressAutocompleteStatus = (form, message) => {
+    const status = form.querySelector('[data-provider-address-status]');
+    if (status) status.textContent = message;
+  };
+
+  const hideAddressSuggestions = (form) => {
+    const suggestions = form.querySelector('[data-provider-address-suggestions]');
+    if (!suggestions) return;
+    suggestions.replaceChildren();
+    suggestions.hidden = true;
+  };
+
   const initGoogleAddressAutocomplete = async (form) => {
     const apiKey = await resolveGoogleMapsApiKey(form);
-    if (!apiKey) return;
-
     const addressField = form.querySelector('[data-provider-address-line-1]');
-    if (!addressField) return;
+    const suggestions = form.querySelector('[data-provider-address-suggestions]');
+    if (!addressField || !suggestions) return;
+    if (!apiKey) {
+      setAddressAutocompleteStatus(form, 'Las sugerencias de dirección no están disponibles en este momento.');
+      return;
+    }
 
     try {
-      await loadGoogleMapsPlaces(apiKey);
+      const { AutocompleteSuggestion, AutocompleteSessionToken } = await loadGoogleMapsPlaces(apiKey);
+      const countryBias = 'pe';
+      let sessionToken;
+      let revision = 0;
+      let timer;
 
-      if (!window.google?.maps?.places) return;
-
-      const options = {
-        fields: ['address_components', 'formatted_address', 'geometry', 'place_id'],
-      };
-      const countryBias = form.dataset.googleMapsCountryBias?.trim().toLowerCase();
-      if (countryBias) {
-        options.componentRestrictions = { country: countryBias };
-      }
-
-      const autocomplete = new window.google.maps.places.Autocomplete(addressField, options);
-      addressField.addEventListener('input', () => clearGeocodedFields(form));
-      autocomplete.addListener('place_changed', () => {
-        const place = autocomplete.getPlace();
+      const selectSuggestion = async (place) => {
+        await place.fetchFields({ fields: ['addressComponents', 'formattedAddress', 'location', 'id'] });
         fillAddressFieldsFromPlace(form, place);
+        sessionToken = null;
+        hideAddressSuggestions(form);
+        setAddressAutocompleteStatus(form, 'Dirección de Perú seleccionada.');
+      };
+
+      const showSuggestions = async () => {
+        const query = addressField.value.trim();
+        const requestRevision = ++revision;
+        clearGeocodedFields(form);
+        if (query.length < 3) {
+          hideAddressSuggestions(form);
+          setAddressAutocompleteStatus(form, query ? 'Escribe al menos tres caracteres.' : '');
+          return;
+        }
+        setAddressAutocompleteStatus(form, 'Buscando direcciones en Perú...');
+        try {
+          sessionToken ||= new AutocompleteSessionToken();
+          const response = await AutocompleteSuggestion.fetchAutocompleteSuggestions({
+            input: query,
+            includedRegionCodes: [countryBias],
+            language: 'es',
+            region: countryBias.toUpperCase(),
+            sessionToken,
+          });
+          if (requestRevision !== revision || query !== addressField.value.trim()) return;
+          const predictions = (response.suggestions || [])
+            .map((item) => item.placePrediction)
+            .filter(Boolean)
+            .slice(0, 8);
+          suggestions.replaceChildren();
+          predictions.forEach((prediction, index) => {
+            const item = document.createElement('li');
+            const button = document.createElement('button');
+            button.type = 'button';
+            button.role = 'option';
+            button.id = `${addressField.id}-option-${index}`;
+            button.textContent = prediction.text?.toString() || query;
+            button.addEventListener('click', () => {
+              selectSuggestion(prediction.toPlace()).catch((error) => {
+                setAddressAutocompleteStatus(form, error.message || 'No se pudo completar la dirección.');
+              });
+            });
+            item.appendChild(button);
+            suggestions.appendChild(item);
+          });
+          suggestions.hidden = predictions.length === 0;
+          setAddressAutocompleteStatus(
+            form,
+            predictions.length ? `${predictions.length} sugerencias en Perú.` : 'No hay direcciones coincidentes en Perú.'
+          );
+        } catch (error) {
+          if (requestRevision !== revision) return;
+          hideAddressSuggestions(form);
+          setAddressAutocompleteStatus(form, error.message || 'No se pudieron cargar las sugerencias de dirección.');
+        }
+      };
+
+      addressField.addEventListener('input', () => {
+        window.clearTimeout(timer);
+        timer = window.setTimeout(showSuggestions, 250);
+      });
+      addressField.addEventListener('focus', () => {
+        if (addressField.value.trim().length >= 3) showSuggestions();
+      });
+      document.addEventListener('click', (event) => {
+        if (!event.target.closest('[data-provider-address-autocomplete]')) hideAddressSuggestions(form);
       });
     } catch (error) {
       console.warn('[provider-application-form] Google Maps autocomplete unavailable.', error);
+      setAddressAutocompleteStatus(form, 'Las sugerencias de dirección no están disponibles en este momento.');
     }
   };
 

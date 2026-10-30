@@ -192,6 +192,50 @@
   font-size: 1.2rem;
 }
 
+.provider-application__address-autocomplete {
+  position: relative;
+}
+
+.provider-application__address-suggestions {
+  position: absolute;
+  z-index: 20;
+  inset: calc(100% + 0.4rem) 0 auto;
+  max-height: 24rem;
+  margin: 0;
+  padding: 0.4rem;
+  overflow-y: auto;
+  list-style: none;
+  border: 0.1rem solid rgba(var(--color-foreground), 0.22);
+  border-radius: 0.4rem;
+  background: rgb(var(--color-background));
+  box-shadow: 0 0.8rem 2rem rgba(var(--color-foreground), 0.16);
+}
+
+.provider-application__address-suggestions button {
+  display: block;
+  width: 100%;
+  padding: 1rem;
+  border: 0;
+  border-radius: 0.3rem;
+  background: transparent;
+  color: rgb(var(--color-foreground));
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.provider-application__address-suggestions button:hover,
+.provider-application__address-suggestions button:focus-visible {
+  background: rgba(var(--color-foreground), 0.07);
+  outline: none;
+}
+
+.provider-application__address-status {
+  margin: 0.7rem 0 0;
+  color: rgba(var(--color-foreground), 0.72);
+  font-size: 1.2rem;
+}
+
 .provider-application__select-label {
   display: inline-block;
   margin: 0 0 0.6rem;

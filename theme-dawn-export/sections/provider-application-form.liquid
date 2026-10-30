@@ -110,9 +110,11 @@
         <div class="provider-application__group">
           <h3 class="provider-application__group-title">{{ 'icon-map-pin.svg' | inline_asset_content }} Ubicación</h3>
           <div class="provider-application__grid provider-application__grid--two">
-            <div class="field provider-application__grid-item-full">
+            <div class="field provider-application__grid-item-full provider-application__address-autocomplete" data-provider-address-autocomplete>
               <input class="field__input" type="text" id="ProviderAddressLine1-{{ section.id }}" name="provider_address_line_1" required placeholder="" data-provider-address-line-1="true" autocomplete="street-address">
               <label class="field__label" for="ProviderAddressLine1-{{ section.id }}">Dirección principal <span class="provider-application__required">*</span></label>
+              <ul id="ProviderAddressSuggestions-{{ section.id }}" class="provider-application__address-suggestions" data-provider-address-suggestions role="listbox" hidden></ul>
+              <p class="provider-application__address-status" data-provider-address-status role="status" aria-live="polite"></p>
             </div>
             <div class="field">
               <input class="field__input" type="text" id="ProviderCity-{{ section.id }}" name="provider_city" required placeholder="" data-provider-city="true" autocomplete="address-level2">
@@ -131,9 +133,6 @@
               <div class="select">
                 <select class="select__select" id="ProviderCountry-{{ section.id }}" name="provider_country" required data-provider-country="true">
                   <option value="Perú" selected>Perú</option>
-                  <option value="Chile">Chile</option>
-                  <option value="Colombia">Colombia</option>
-                  <option value="Mexico">Mexico</option>
                 </select>
                 <span class="svg-wrapper">{{- 'icon-caret.svg' | inline_asset_content -}}</span>
               </div>
