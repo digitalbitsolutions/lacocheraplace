@@ -1,194 +1,95 @@
 {{ 'section-contact-form.css' | asset_url | stylesheet_tag }}
 
 {%- style -%}
-  .section-{{ section.id }}-padding {
-    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
-    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
-  }
-
-  @media screen and (min-width: 750px) {
-    .section-{{ section.id }}-padding {
-      padding-top: {{ section.settings.padding_top }}px;
-      padding-bottom: {{ section.settings.padding_bottom }}px;
-    }
-  }
+  .section-{{ section.id }}-padding { padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px; padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px; }
+  @media screen and (min-width: 750px) { .section-{{ section.id }}-padding { padding-top: {{ section.settings.padding_top }}px; padding-bottom: {{ section.settings.padding_bottom }}px; } }
 {%- endstyle -%}
+
+{%- liquid
+  assign contact_form_class = 'isolate contact__form'
+  if settings.animations_reveal_on_scroll
+    assign contact_form_class = 'isolate contact__form scroll-trigger animate--slide-in'
+  endif
+-%}
 
 <div class="color-{{ section.settings.color_scheme }} gradient">
   <div class="contact page-width section-{{ section.id }}-padding">
-    <p class="contact__eyebrow">ATENCIÓN AL CLIENTE</p>
-    {%- if section.settings.heading != blank -%}
-      <h1 class="title title-wrapper--no-top-margin inline-richtext {{ section.settings.heading_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
-        {{ section.settings.heading }}
-      </h1>
-    {%- else -%}
-      <h1 class="visually-hidden">{{ 'templates.contact.form.title' | t }}</h1>
-    {%- endif -%}
-    <p class="contact__intro">
-      Nuestro equipo está listo para ayudarte con reservas, servicios automotrices y alianzas comerciales en Perú.
-    </p>
-    {%- liquid
-      assign contact_form_class = 'isolate'
-      if settings.animations_reveal_on_scroll
-        assign contact_form_class = 'isolate scroll-trigger animate--slide-in'
-      endif
-    -%}
-    <div class="contact__layout">
-      <div class="contact__form-wrap">
-        {%- form 'contact', id: 'ContactForm', class: contact_form_class -%}
-          {%- if form.posted_successfully? -%}
-            <h2 class="form-status form-status-list form__message" tabindex="-1" autofocus>
-              {{- 'icon-success.svg' | inline_asset_content -}}
-              {{ 'templates.contact.form.post_success' | t }}
-            </h2>
-          {%- elsif form.errors -%}
-            <div class="form__message">
-              <h2 class="form-status caption-large text-body" role="alert" tabindex="-1" autofocus>
-                {{- 'icon-error.svg' | inline_asset_content -}}
-                {{ 'templates.contact.form.error_heading' | t }}
-              </h2>
-            </div>
-            <ul class="form-status-list caption-large" role="list">
-              <li>
-                <a href="#ContactForm-email" class="link">
-                  {{ form.errors.translated_fields.email | capitalize }}
-                  {{ form.errors.messages.email }}
-                </a>
-              </li>
-            </ul>
-          {%- endif -%}
-          <div class="contact__fields">
-            <div class="field">
-              <input
-                class="field__input"
-                autocomplete="name"
-                type="text"
-                id="ContactForm-name"
-                name="contact[{{ 'templates.contact.form.name' | t }}]"
-                value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}"
-                placeholder="Tu nombre completo"
-              >
-              <label class="field__label" for="ContactForm-name">{{ 'templates.contact.form.name' | t }}</label>
-            </div>
-            <div class="field field--with-error">
-              <input
-                autocomplete="email"
-                type="email"
-                id="ContactForm-email"
-                class="field__input"
-                name="contact[email]"
-                spellcheck="false"
-                autocapitalize="off"
-                value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
-                aria-required="true"
-                {% if form.errors contains 'email' %}
-                  aria-invalid="true"
-                  aria-describedby="ContactForm-email-error"
-                {% endif %}
-              placeholder="Correo electrónico"
-              >
-              <label class="field__label" for="ContactForm-email">
-                {{- 'templates.contact.form.email' | t }}
-                <span aria-hidden="true">*</span></label
-              >
-              {%- if form.errors contains 'email' -%}
-                <small class="contact__field-error" id="ContactForm-email-error">
-                  <span class="visually-hidden">{{ 'accessibility.error' | t }}</span>
-                  <span class="form__message">
-                    <span class="svg-wrapper">
-                      {{- 'icon-error.svg' | inline_asset_content -}}
-                    </span>
-                    {{- form.errors.translated_fields.email | capitalize }}
-                    {{ form.errors.messages.email -}}
-                  </span>
-                </small>
+    <section class="contact__experience" style="--contact-experience-image: url('{{ 'img-bg-contacto.webp' | file_url }}');">
+      <div class="contact__experience-overlay"></div>
+      <div class="contact__experience-content">
+        <div class="contact__message">
+          <p class="contact__brand-chip">
+            <span class="contact__brand-chip-icon">
+              {%- if settings.logo != blank -%}
+                {{ settings.logo | image_url: width: 96 | image_tag: widths: '48, 72, 96', alt: shop.name, loading: 'eager' }}
+              {%- else -%}
+                {{ 'icon-shopify.svg' | inline_asset_content }}
               {%- endif -%}
+            </span>
+            La Cochera Place
+          </p>
+          <p class="contact__eyebrow">ATENCIÓN AL CLIENTE</p>
+          {%- if section.settings.heading != blank -%}
+            <h1 class="title inline-richtext {{ section.settings.heading_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">{{ section.settings.heading }}</h1>
+          {%- else -%}
+            <h1 class="visually-hidden">{{ 'templates.contact.form.title' | t }}</h1>
+          {%- endif -%}
+          <p class="contact__intro">Nuestro equipo está listo para ayudarte con reservas, servicios automotrices y alianzas comerciales en Perú.</p>
+          <ul class="contact__promises" role="list">
+            <li><span>{{ 'icon-checkmark.svg' | inline_asset_content }}</span>Reserva tu cita</li>
+            <li><span>{{ 'icon-checkmark.svg' | inline_asset_content }}</span>Consulta nuestros servicios</li>
+            <li><span>{{ 'icon-checkmark.svg' | inline_asset_content }}</span>Atención personalizada</li>
+          </ul>
+        </div>
+
+        <div class="contact__form-panel">
+          <div class="contact__form-heading">
+            <span class="contact__form-heading-icon">{{ 'icon-chat-bubble.svg' | inline_asset_content }}</span>
+            <div><h2>Contáctanos</h2><p>Completa el formulario y nos pondremos en contacto contigo muy pronto.</p></div>
+          </div>
+
+          {%- form 'contact', id: 'ContactForm', class: contact_form_class -%}
+            {%- if form.posted_successfully? -%}
+              <h3 class="form-status form-status-list form__message" tabindex="-1" autofocus>{{- 'icon-success.svg' | inline_asset_content -}}{{ 'templates.contact.form.post_success' | t }}</h3>
+            {%- elsif form.errors -%}
+              <div class="form__message"><h3 class="form-status caption-large text-body" role="alert" tabindex="-1" autofocus>{{- 'icon-error.svg' | inline_asset_content -}}{{ 'templates.contact.form.error_heading' | t }}</h3></div>
+              <ul class="form-status-list caption-large" role="list"><li><a href="#ContactForm-email" class="link">{{ form.errors.translated_fields.email | capitalize }} {{ form.errors.messages.email }}</a></li></ul>
+            {%- endif -%}
+            <div class="contact__fields">
+              <div class="field">
+                <input class="field__input" autocomplete="name" type="text" id="ContactForm-name" name="contact[{{ 'templates.contact.form.name' | t }}]" value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}" placeholder="Tu nombre completo">
+                <label class="field__label" for="ContactForm-name">{{ 'templates.contact.form.name' | t }}</label>
+              </div>
+              <div class="field field--with-error">
+                <input autocomplete="email" type="email" id="ContactForm-email" class="field__input" name="contact[email]" spellcheck="false" autocapitalize="off" value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}" aria-required="true" {% if form.errors contains 'email' %}aria-invalid="true" aria-describedby="ContactForm-email-error"{% endif %} placeholder="Correo electrónico">
+                <label class="field__label" for="ContactForm-email">{{- 'templates.contact.form.email' | t }} <span aria-hidden="true">*</span></label>
+                {%- if form.errors contains 'email' -%}<small class="contact__field-error" id="ContactForm-email-error">{{ form.errors.messages.email }}</small>{%- endif -%}
+              </div>
             </div>
+            <div class="field">
+              <input type="tel" id="ContactForm-phone" class="field__input" autocomplete="tel" name="contact[{{ 'templates.contact.form.phone' | t }}]" pattern="[0-9\-+ ]*" value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}" placeholder="+51 999 999 999">
+              <label class="field__label" for="ContactForm-phone">{{ 'templates.contact.form.phone' | t }}</label>
+            </div>
+            <div class="field">
+              <textarea rows="6" id="ContactForm-body" class="text-area field__input" name="contact[{{ 'templates.contact.form.comment' | t }}]" placeholder="¿En qué podemos ayudarte?">{{- form.body -}}</textarea>
+              <label class="form__label field__label" for="ContactForm-body">{{ 'templates.contact.form.comment' | t }}</label>
+            </div>
+            <label class="contact__privacy"><input type="checkbox" required><span>Acepto la política de privacidad y el tratamiento de mis datos.</span></label>
+            <div class="contact__button"><button type="submit" class="button">Enviar mensaje</button></div>
+          {%- endform -%}
+
+          <div class="contact__channels">
+            <a href="mailto:soporte@lacocheraplace.com"><strong>Email</strong><span>soporte@lacocheraplace.com</span></a>
+            <a href="mailto:alianzas@lacocheraplace.com"><strong>Alianzas</strong><span>alianzas@lacocheraplace.com</span></a>
           </div>
-          <div class="field">
-            <input
-              type="tel"
-              id="ContactForm-phone"
-              class="field__input"
-              autocomplete="tel"
-              name="contact[{{ 'templates.contact.form.phone' | t }}]"
-              pattern="[0-9\-+ ]*"
-              value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}"
-              placeholder="+51 999 999 999"
-            >
-            <label class="field__label" for="ContactForm-phone">{{ 'templates.contact.form.phone' | t }}</label>
-          </div>
-          <div class="field">
-            <textarea
-              rows="7"
-              id="ContactForm-body"
-              class="text-area field__input"
-              name="contact[{{ 'templates.contact.form.comment' | t }}]"
-              placeholder="¿En qué podemos ayudarte?"
-            >
-              {{- form.body -}}
-            </textarea>
-            <label class="form__label field__label" for="ContactForm-body">
-              {{- 'templates.contact.form.comment' | t -}}
-            </label>
-          </div>
-          <label class="contact__privacy">
-            <input type="checkbox" required>
-            <span>Acepto la política de privacidad y el tratamiento de mis datos.</span>
-          </label>
-          <div class="contact__button">
-            <button type="submit" class="button">
-              Enviar mensaje
-            </button>
-          </div>
-        {%- endform -%}
+        </div>
       </div>
 
-      <aside class="contact__side">
-        <article class="contact__card">
-          <h3>Email directo</h3>
-          <p>soporte@lacocheraplace.com</p>
-          <p>alianzas@lacocheraplace.com</p>
-        </article>
-        <article class="contact__card">
-          <h3>Ubicación</h3>
-          <p>Lima Metropolitana</p>
-          <p>Perú</p>
-        </article>
-      </div>
-    </div>
-
-    <section
-      class="contact__cta-hero"
-      style="--contact-cta-hero-image: url('{{ 'img-bg-contacto.webp' | file_url }}');"
-    >
-      <div class="contact__cta-overlay"></div>
-      <div class="contact__cta-content">
-        <h2>Tu empresa puede vender y captar clientes aquí</h2>
-        <p>Si ofreces servicios automotrices o vendes productos relacionados, regístrate como proveedor y haz crecer tu negocio con nuestra comunidad en Perú.</p>
-        <a class="button" href="/pages/quiero-ser-proveedor">Quiero registrarme como proveedor</a>
-      </div>
-      <div class="contact__cta-benefits">
-        <article class="contact__cta-benefit">
-          <span class="contact__cta-benefit-icon">{{ 'icon-account.svg' | inline_asset_content }}</span>
-          <h3>Más visibilidad para tu negocio</h3>
-          <p>Destaca frente a clientes que ya estan buscando servicios automotrices en tu ciudad.</p>
-        </article>
-        <article class="contact__cta-benefit">
-          <span class="contact__cta-benefit-icon">{{ 'icon-lightning-bolt.svg' | inline_asset_content }}</span>
-          <h3>Aumenta tus ventas</h3>
-          <p>Convierte visitas en reservas con una experiencia de búsqueda y compra simple.</p>
-        </article>
-        <article class="contact__cta-benefit">
-          <span class="contact__cta-benefit-icon">{{ 'icon-chat-bubble.svg' | inline_asset_content }}</span>
-          <h3>Conecta con nuevos clientes</h3>
-          <p>Amplía tu alcance y recibe oportunidades de clientes que valoran calidad.</p>
-        </article>
-        <article class="contact__cta-benefit">
-          <span class="contact__cta-benefit-icon">{{ 'icon-padlock.svg' | inline_asset_content }}</span>
-          <h3>Plataforma segura y confiable</h3>
-          <p>Gestiona solicitudes con una base tecnica escalable y de mantenimiento simple.</p>
-        </article>
+      <div class="contact__benefits" aria-label="Beneficios de La Cochera Place">
+        <article class="contact__benefit"><span>{{ 'icon-account.svg' | inline_asset_content }}</span><p><strong>Más visibilidad</strong> para tu negocio</p></article>
+        <article class="contact__benefit"><span>{{ 'icon-lightning-bolt.svg' | inline_asset_content }}</span><p><strong>Aumenta tus ventas</strong> con reservas online</p></article>
+        <article class="contact__benefit"><span>{{ 'icon-chat-bubble.svg' | inline_asset_content }}</span><p><strong>Conecta con nuevos clientes</strong> y expande tu negocio</p></article>
+        <article class="contact__benefit"><span>{{ 'icon-padlock.svg' | inline_asset_content }}</span><p><strong>Plataforma segura</strong> y confiable</p></article>
       </div>
     </section>
   </div>
@@ -199,79 +100,21 @@
   "name": "t:sections.contact-form.name",
   "tag": "section",
   "class": "section",
-  "disabled_on": {
-    "groups": ["header", "footer"]
-  },
+  "disabled_on": { "groups": ["header", "footer"] },
   "settings": [
-    {
-      "type": "inline_richtext",
-      "id": "heading",
-      "default": "t:sections.contact-form.settings.title.default",
-      "label": "t:sections.contact-form.settings.title.label"
-    },
-    {
-      "type": "select",
-      "id": "heading_size",
-      "options": [
-        {
-          "value": "h2",
-          "label": "t:sections.all.heading_size.options__1.label"
-        },
-        {
-          "value": "h1",
-          "label": "t:sections.all.heading_size.options__2.label"
-        },
-        {
-          "value": "h0",
-          "label": "t:sections.all.heading_size.options__3.label"
-        },
-        {
-          "value": "hxl",
-          "label": "t:sections.all.heading_size.options__4.label"
-        },
-        {
-          "value": "hxxl",
-          "label": "t:sections.all.heading_size.options__5.label"
-        }
-      ],
-      "default": "h1",
-      "label": "t:sections.all.heading_size.label"
-    },
-    {
-      "type": "color_scheme",
-      "id": "color_scheme",
-      "label": "t:sections.all.colors.label",
-      "default": "scheme-1"
-    },
-    {
-      "type": "header",
-      "content": "t:sections.all.padding.section_padding_heading"
-    },
-    {
-      "type": "range",
-      "id": "padding_top",
-      "min": 0,
-      "max": 100,
-      "step": 4,
-      "unit": "px",
-      "label": "t:sections.all.padding.padding_top",
-      "default": 36
-    },
-    {
-      "type": "range",
-      "id": "padding_bottom",
-      "min": 0,
-      "max": 100,
-      "step": 4,
-      "unit": "px",
-      "label": "t:sections.all.padding.padding_bottom",
-      "default": 36
-    }
+    { "type": "inline_richtext", "id": "heading", "default": "t:sections.contact-form.settings.title.default", "label": "t:sections.contact-form.settings.title.label" },
+    { "type": "select", "id": "heading_size", "options": [
+      { "value": "h2", "label": "t:sections.all.heading_size.options__1.label" },
+      { "value": "h1", "label": "t:sections.all.heading_size.options__2.label" },
+      { "value": "h0", "label": "t:sections.all.heading_size.options__3.label" },
+      { "value": "hxl", "label": "t:sections.all.heading_size.options__4.label" },
+      { "value": "hxxl", "label": "t:sections.all.heading_size.options__5.label" }
+    ], "default": "h1", "label": "t:sections.all.heading_size.label" },
+    { "type": "color_scheme", "id": "color_scheme", "label": "t:sections.all.colors.label", "default": "scheme-1" },
+    { "type": "header", "content": "t:sections.all.padding.section_padding_heading" },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "t:sections.all.padding.padding_top", "default": 36 },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "t:sections.all.padding.padding_bottom", "default": 36 }
   ],
-  "presets": [
-    {
-      "name": "t:sections.contact-form.presets.name"
-    }
-  ]
+  "presets": [{ "name": "t:sections.contact-form.presets.name" }]
 }
 {% endschema %}
