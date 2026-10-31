@@ -354,6 +354,21 @@
   line-height: 1.4;
 }
 
+.provider-application__select-field {
+  display: block;
+}
+
+.provider-application__select-field::before,
+.provider-application__select-field::after {
+  content: none;
+}
+
+.provider-application__select-field .provider-application__select-label {
+  display: block;
+  margin: 0 0 0.8rem;
+  pointer-events: auto;
+}
+
 .field.provider-application__field--invalid .field__input,
 .field.provider-application__field--invalid .text-area.field__input,
 .field.provider-application__field--invalid .select__select,

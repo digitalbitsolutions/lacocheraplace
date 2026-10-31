@@ -160,7 +160,7 @@
         <div class="provider-application__group">
           <h3 class="provider-application__group-title">{{ 'icon-map-pin.svg' | inline_asset_content }} Ubicación</h3>
           <div class="provider-application__grid provider-application__grid--two">
-            <div class="field">
+            <div class="field provider-application__select-field">
               <label class="provider-application__select-label" for="ProviderProvince-{{ section.id }}">Departamento <span class="provider-application__required">*</span></label>
               <div class="select">
                 <select class="select__select" id="ProviderProvince-{{ section.id }}" name="provider_province_or_region" required data-provider-province="true">
@@ -186,7 +186,7 @@
               <input class="field__input" type="text" id="ProviderPostalCode-{{ section.id }}" name="provider_postal_code" required placeholder="" data-provider-postal-code="true" autocomplete="postal-code">
               <label class="field__label" for="ProviderPostalCode-{{ section.id }}">Código postal <span class="provider-application__required">*</span></label>
             </div>
-            <div class="field">
+            <div class="field provider-application__select-field">
               <label class="provider-application__select-label" for="ProviderCountry-{{ section.id }}">País <span class="provider-application__required">*</span></label>
               <div class="select">
                 <select class="select__select" id="ProviderCountry-{{ section.id }}" name="provider_country" required data-provider-country="true">
@@ -214,7 +214,7 @@
             <input class="field__input" type="text" id="ProviderIban-{{ section.id }}" name="provider_iban" required placeholder="CCI o número de cuenta bancaria" autocapitalize="characters" spellcheck="false">
             <label class="field__label" for="ProviderIban-{{ section.id }}">CCI o número de cuenta <span class="provider-application__required">*</span></label>
           </div>
-          <div class="field">
+          <div class="field provider-application__select-field">
             <label class="provider-application__select-label" for="ProviderBankName-{{ section.id }}">Banco <span class="provider-application__required">*</span></label>
             <div class="select">
               <select class="select__select" id="ProviderBankName-{{ section.id }}" name="provider_bank_name" required>
@@ -229,7 +229,7 @@
               </span>
             </div>
           </div>
-          <div class="field provider-application__grid-item-full">
+          <div class="field provider-application__grid-item-full provider-application__select-field">
             <label class="provider-application__select-label" for="ProviderBankCountry-{{ section.id }}">País de la cuenta <span class="provider-application__required">*</span></label>
             <div class="select">
               <select class="select__select" id="ProviderBankCountry-{{ section.id }}" name="provider_bank_country" required>
