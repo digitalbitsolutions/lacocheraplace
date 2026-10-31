@@ -22,16 +22,32 @@
 <div class="color-{{ section.settings.color_scheme }} gradient">
   <div class="provider-application page-width section-{{ section.id }}-padding">
     {%- assign provider_form_id = 'ProviderApplicationForm-' | append: section.id -%}
-    {%- if section.settings.heading != blank -%}
-      <h2 class="title title-wrapper--no-top-margin inline-richtext {{ section.settings.heading_size }}">
-        {{ section.settings.heading }}
-      </h2>
-    {%- endif -%}
-    {%- if section.settings.intro != blank -%}
-      <div class="provider-application__intro rte">
-        {{ section.settings.intro }}
+    <header class="provider-application__hero">
+      <div class="provider-application__hero-copy">
+        <p class="provider-application__eyebrow">Red de proveedores · Perú</p>
+        <h1 class="provider-application__hero-title">
+          {{ section.settings.heading | default: 'Quiero ser proveedor' }}
+        </h1>
+        {%- if section.settings.intro != blank -%}
+          <div class="provider-application__hero-intro rte">
+            {{ section.settings.intro }}
+          </div>
+        {%- endif -%}
+        <ul class="provider-application__hero-points" role="list">
+          <li>Solicitud rápida y revisión personalizada</li>
+          <li>Más visibilidad para tu negocio</li>
+        </ul>
       </div>
-    {%- endif -%}
+      <figure class="provider-application__hero-media">
+        <img
+          src="{{ 'provider-application-hero.webp' | asset_url }}"
+          alt="Taller La Cochera Place"
+          width="1994"
+          height="789"
+          loading="eager"
+        >
+      </figure>
+    </header>
 
     {%- form
       'contact',
