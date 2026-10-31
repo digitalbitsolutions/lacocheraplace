@@ -252,6 +252,25 @@
   background: rgba(var(--color-foreground), 0.02);
 }
 
+.provider-application__hours-copy {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+  margin: 0 0 1.4rem;
+}
+
+.provider-application__hours-copy .button {
+  min-height: 3.8rem;
+  padding: 0.8rem 1.4rem;
+  font-size: 1.25rem;
+}
+
+.provider-application__hours-copy span {
+  color: rgba(var(--color-foreground), 0.68);
+  font-size: 1.2rem;
+}
+
 .provider-application__hours-row {
   display: grid;
   grid-template-columns: 15rem minmax(0, 1fr);

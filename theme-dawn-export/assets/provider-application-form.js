@@ -369,30 +369,34 @@
     return !message;
   };
 
+  const syncOpeningHoursRow = (row) => {
+    const enabled = row.querySelector('[data-opening-hours-enabled]');
+    const mode = row.querySelector('[data-opening-hours-mode]');
+    const secondPeriod = row.querySelector('[data-opening-hours-period="2"]');
+    const timeInputs = Array.from(row.querySelectorAll('input[type="time"]'));
+    const isEnabled = enabled?.checked === true;
+    const isSplit = mode?.value === 'split';
+    if (mode) mode.disabled = !isEnabled;
+    if (secondPeriod) secondPeriod.hidden = !isSplit;
+    timeInputs.forEach((input) => {
+      const isSecondPeriod = input.closest('[data-opening-hours-period]')?.dataset.openingHoursPeriod === '2';
+      input.disabled = !isEnabled || (isSecondPeriod && !isSplit);
+      if (input.disabled) input.value = '';
+    });
+  };
+
   const initOpeningHours = (form) => {
     form.querySelectorAll('[data-opening-hours-day]').forEach((row) => {
       const enabled = row.querySelector('[data-opening-hours-enabled]');
       const mode = row.querySelector('[data-opening-hours-mode]');
-      const secondPeriod = row.querySelector('[data-opening-hours-period="2"]');
       const timeInputs = Array.from(row.querySelectorAll('input[type="time"]'));
-      const syncRow = () => {
-        const isEnabled = enabled?.checked === true;
-        const isSplit = mode?.value === 'split';
-        if (mode) mode.disabled = !isEnabled;
-        if (secondPeriod) secondPeriod.hidden = !isSplit;
-        timeInputs.forEach((input) => {
-          const isSecondPeriod = input.closest('[data-opening-hours-period]')?.dataset.openingHoursPeriod === '2';
-          input.disabled = !isEnabled || (isSecondPeriod && !isSplit);
-          if (input.disabled) input.value = '';
-        });
-      };
       enabled?.addEventListener('change', () => {
-        syncRow();
+        syncOpeningHoursRow(row);
         syncOpeningHours(form);
         form.dispatchEvent(new Event('provider-hours-change'));
       });
       mode?.addEventListener('change', () => {
-        syncRow();
+        syncOpeningHoursRow(row);
         syncOpeningHours(form);
         form.dispatchEvent(new Event('provider-hours-change'));
       });
@@ -400,7 +404,37 @@
         syncOpeningHours(form);
         form.dispatchEvent(new Event('provider-hours-change'));
       }));
-      syncRow();
+      syncOpeningHoursRow(row);
+    });
+
+    form.querySelector('[data-opening-hours-copy-monday]')?.addEventListener('click', () => {
+      const rows = Array.from(form.querySelectorAll('[data-opening-hours-day]'));
+      const monday = rows[0];
+      const mondayEnabled = monday?.querySelector('[data-opening-hours-enabled]');
+      const status = form.querySelector('[data-opening-hours-status]');
+      if (!monday || !mondayEnabled?.checked) {
+        if (status) {
+          status.textContent = 'Marca y completa el horario del lunes antes de copiarlo.';
+          status.classList.add('provider-application__error', 'is-visible');
+        }
+        return;
+      }
+
+      const sourceMode = monday.querySelector('[data-opening-hours-mode]')?.value || 'continuous';
+      const sourceTimes = Array.from(monday.querySelectorAll('input[type="time"]')).map((input) => input.value);
+      rows.slice(1).forEach((row) => {
+        const enabled = row.querySelector('[data-opening-hours-enabled]');
+        const mode = row.querySelector('[data-opening-hours-mode]');
+        if (enabled) enabled.checked = true;
+        if (mode) mode.value = sourceMode;
+        Array.from(row.querySelectorAll('input[type="time"]')).forEach((input, index) => {
+          input.value = sourceTimes[index] || '';
+        });
+        syncOpeningHoursRow(row);
+      });
+
+      syncOpeningHours(form);
+      form.dispatchEvent(new Event('provider-hours-change'));
     });
     syncOpeningHours(form);
   };

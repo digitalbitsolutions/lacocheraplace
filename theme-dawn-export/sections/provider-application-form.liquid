@@ -94,6 +94,10 @@
           <fieldset class="provider-application__hours provider-application__grid-item-full" data-provider-opening-hours>
             <legend class="provider-application__select-label">Horario de atención <span class="provider-application__required">*</span></legend>
             <p class="provider-application__note">Marca los días de atención y elige un horario continuo o partido en hora local de Perú.</p>
+            <div class="provider-application__hours-copy">
+              <button type="button" class="button button--secondary" data-opening-hours-copy-monday>Copiar horario del lunes a todos los días</button>
+              <span>Después podrás editar o desmarcar cada día.</span>
+            </div>
             <div class="provider-application__hours-grid">
               {%- assign weekdays = 'Lunes,Martes,Miércoles,Jueves,Viernes,Sábado,Domingo' | split: ',' -%}
               {%- assign weekday_keys = 'monday,tuesday,wednesday,thursday,friday,saturday,sunday' | split: ',' -%}
