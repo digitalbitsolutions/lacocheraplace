@@ -640,3 +640,145 @@
     padding: 2.1rem 1.7rem;
   }
 }
+
+/* The form uses the same focused card language as the provider hero. */
+.provider-application form.isolate {
+  max-width: 108rem;
+  margin: 0 auto;
+  padding: 2.8rem;
+  border: 0.1rem solid rgba(17, 70, 173, 0.18);
+  border-radius: 1.6rem;
+  background: linear-gradient(145deg, #ffffff, #f7faff);
+  box-shadow: 0 1.8rem 4.6rem rgba(17, 57, 126, 0.09);
+  counter-reset: provider-step;
+}
+
+.provider-application form.isolate > .provider-application__note:first-of-type {
+  margin: 0 0 2.2rem;
+  padding: 1.15rem 1.4rem;
+  border-left: 0.35rem solid #0c55ed;
+  border-radius: 0 0.7rem 0.7rem 0;
+  background: rgba(12, 85, 237, 0.055);
+  color: rgba(7, 49, 130, 0.8);
+  font-size: 1.35rem;
+}
+
+.provider-application form.isolate > .provider-application__group,
+.provider-application form.isolate > .provider-application__group-columns > .provider-application__group {
+  position: relative;
+  counter-increment: provider-step;
+  border-color: rgba(12, 85, 237, 0.15);
+  background: rgba(255, 255, 255, 0.92);
+}
+
+.provider-application form.isolate .provider-application__group-title {
+  gap: 1.1rem;
+  color: #092f88;
+  line-height: 1.2;
+}
+
+.provider-application form.isolate .provider-application__group-title::before {
+  display: inline-grid;
+  width: 3.4rem;
+  height: 3.4rem;
+  flex: 0 0 auto;
+  place-items: center;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #eef5ff, #dbe9ff);
+  color: #0b55ed;
+  content: counter(provider-step);
+  font-size: 1.45rem;
+  font-weight: 700;
+}
+
+.provider-application form.isolate .provider-application__group-title svg {
+  width: 2.35rem;
+  height: 2.35rem;
+  padding: 0.35rem;
+  border-radius: 50%;
+  background: rgba(12, 85, 237, 0.08);
+}
+
+.provider-application form.isolate .field__input,
+.provider-application form.isolate .select__select,
+.provider-application form.isolate .text-area.field__input {
+  border-radius: 0.7rem;
+}
+
+.provider-application form.isolate .field::before,
+.provider-application form.isolate .field::after,
+.provider-application form.isolate .select::before,
+.provider-application form.isolate .select::after {
+  border-radius: 0.7rem;
+}
+
+.provider-application form.isolate .field:focus-within::after,
+.provider-application form.isolate .select:focus-within::after {
+  box-shadow: 0 0 0 0.2rem rgba(12, 85, 237, 0.18);
+}
+
+.provider-application form.isolate .provider-application__hours {
+  padding: 1.7rem;
+  border: 0.1rem solid rgba(12, 85, 237, 0.12);
+  border-radius: 0.9rem;
+  background: #fbfdff;
+}
+
+.provider-application form.isolate .provider-application__hours-grid {
+  width: min(100%, 61rem);
+}
+
+.provider-application form.isolate .provider-application__choice:has(input:checked) {
+  border-color: #0c55ed;
+  background: #f5f8ff;
+  box-shadow: 0 0.5rem 1.4rem rgba(12, 85, 237, 0.11);
+}
+
+.provider-application form.isolate .provider-application__actions {
+  justify-content: stretch;
+  margin-top: 2.8rem;
+}
+
+.provider-application form.isolate .provider-application__actions .button {
+  width: 100%;
+  min-height: 5.6rem;
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+.provider-application form.isolate .provider-application__actions .button::after {
+  margin-left: 1rem;
+  content: '→';
+  font-size: 2rem;
+  line-height: 0;
+}
+
+.provider-application__benefits {
+  max-width: 108rem;
+  margin: 3.2rem auto 0;
+}
+
+.provider-application__benefit {
+  padding: 1.2rem;
+}
+
+.provider-application__benefit h4 {
+  color: #0a398e;
+  font-size: 2rem;
+}
+
+@media screen and (max-width: 749px) {
+  .provider-application form.isolate {
+    padding: 1.5rem;
+    border-radius: 1.1rem;
+  }
+
+  .provider-application form.isolate .provider-application__hours {
+    padding: 1.2rem;
+  }
+
+  .provider-application form.isolate .provider-application__group-title::before {
+    width: 3rem;
+    height: 3rem;
+  }
+}
