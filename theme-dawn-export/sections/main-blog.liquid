@@ -18,9 +18,19 @@
 
 {%- paginate blog.articles by 6 -%}
   <div class="main-blog page-width section-{{ section.id }}-padding">
-    <h1 class="title--primary{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
-      {{ blog.title | escape }}
-    </h1>
+    <header
+      class="main-blog__hero{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}"
+      {% if blog.articles.first.image != blank %}
+        style="--main-blog-hero-image: url('{{ blog.articles.first.image | image_url: width: 1800 }}');"
+      {% endif %}
+    >
+      <div class="main-blog__hero-overlay"></div>
+      <div class="main-blog__hero-content">
+        <p class="main-blog__eyebrow">NOTICIAS</p>
+        <h1 class="title--primary">{{ blog.title | escape }}</h1>
+        <p>Descubre las últimas noticias, consejos y novedades del mundo automotriz.</p>
+      </div>
+    </header>
 
     <div class="main-blog__layout">
       <div class="main-blog__content">
