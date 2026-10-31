@@ -866,8 +866,8 @@
       opening_hours: form.querySelector('[name="provider_opening_hours"]')?.value.trim() || '',
       website_url: sanitizeOptionalUrl(form.querySelector('[name="provider_website_url"]')?.value),
       instagram_url: sanitizeInstagramValue(form.querySelector('[name="provider_instagram_url"]')?.value),
-      logo_source_url: sanitizeOptionalUrl(form.querySelector('[name="provider_logo_source_url"]')?.value),
-      gallery_source_urls: sanitizeGalleryUrls(form.querySelector('[name="provider_gallery_source_urls"]')?.value),
+      logo_source_url: '',
+      gallery_source_urls: '',
     };
 
     if (hiddenSlug) hiddenSlug.value = providerSlug;
@@ -883,43 +883,50 @@
     const proxyUrl = getProviderAppProxyUrl(form);
     if (!proxyUrl) return null;
 
+    const logo = form.querySelector('[data-provider-logo-file]')?.files?.[0];
+    const gallery = Array.from(form.querySelector('[data-provider-gallery-files]')?.files || []);
+    const requestBody = {
+      displayName: payload.display_name,
+      legalName: payload.legal_name,
+      catalogVendorName: payload.catalog_vendor_name,
+      contactName: payload.contact_name,
+      email: payload.email,
+      phone: payload.phone,
+      whatsapp: payload.whatsapp,
+      addressLine1: payload.address_line_1,
+      addressLine2: payload.address_line_2,
+      city: payload.city,
+      postalCode: payload.postal_code,
+      provinceOrRegion: payload.province_or_region,
+      country: payload.country,
+      googlePlaceId: payload.google_place_id,
+      latitude: payload.latitude,
+      longitude: payload.longitude,
+      accountHolder: payload.account_holder,
+      taxId: payload.tax_id,
+      iban: payload.iban,
+      bankName: payload.bank_name,
+      bankCountry: payload.bank_country,
+      serviceCategories: payload.service_categories,
+      description: payload.description,
+      openingHours: payload.opening_hours,
+      websiteUrl: payload.website_url,
+      instagramUrl: payload.instagram_url,
+      logoSourceUrl: payload.logo_source_url,
+      gallerySourceUrls: payload.gallery_source_urls,
+      consentAccepted: true,
+    };
+    const formData = new FormData();
+    formData.append('payload', JSON.stringify(requestBody));
+    if (logo) formData.append('logo', logo);
+    gallery.forEach((file) => formData.append('gallery', file));
+
     const response = await fetch(proxyUrl, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
         Accept: 'application/json',
       },
-      body: JSON.stringify({
-        displayName: payload.display_name,
-        legalName: payload.legal_name,
-        catalogVendorName: payload.catalog_vendor_name,
-        contactName: payload.contact_name,
-        email: payload.email,
-        phone: payload.phone,
-        whatsapp: payload.whatsapp,
-        addressLine1: payload.address_line_1,
-        addressLine2: payload.address_line_2,
-        city: payload.city,
-        postalCode: payload.postal_code,
-        provinceOrRegion: payload.province_or_region,
-        country: payload.country,
-        googlePlaceId: payload.google_place_id,
-        latitude: payload.latitude,
-        longitude: payload.longitude,
-        accountHolder: payload.account_holder,
-        taxId: payload.tax_id,
-        iban: payload.iban,
-        bankName: payload.bank_name,
-        bankCountry: payload.bank_country,
-        serviceCategories: payload.service_categories,
-        description: payload.description,
-        openingHours: payload.opening_hours,
-        websiteUrl: payload.website_url,
-        instagramUrl: payload.instagram_url,
-        logoSourceUrl: payload.logo_source_url,
-        gallerySourceUrls: payload.gallery_source_urls,
-        consentAccepted: true,
-      }),
+      body: formData,
     });
 
     const result = await response.json().catch(() => ({}));
@@ -936,11 +943,20 @@
   document.querySelectorAll('[data-provider-application-form]').forEach((form) => {
     const fieldsToValidate = Array.from(
       form.querySelectorAll(
-        'input[required], select[required], textarea[required], input[type="email"], input[name="provider_website_url"], input[name="provider_instagram_url"], input[name="provider_logo_source_url"], textarea[name="provider_gallery_source_urls"]'
+        'input[required], select[required], textarea[required], input[type="email"], input[name="provider_website_url"], input[name="provider_instagram_url"]'
       )
     );
     const consentCheckbox = form.querySelector('[name="provider_consent"]');
     const categoryInputs = Array.from(form.querySelectorAll('input[name="provider_service_categories[]"]'));
+    const imageInputs = Array.from(form.querySelectorAll('[data-provider-image-input]'));
+
+    imageInputs.forEach((input) => input.addEventListener('change', () => {
+      const tooMany = input.matches('[data-provider-gallery-files]') && input.files.length > 6;
+      const invalidFile = Array.from(input.files).find((file) => !['image/jpeg', 'image/png', 'image/webp'].includes(file.type) || file.size > 5 * 1024 * 1024);
+      input.setCustomValidity(tooMany ? 'Puedes adjuntar hasta 6 fotos para el book.' : invalidFile ? 'Cada imagen debe ser JPG, PNG o WebP y pesar como máximo 5 MB.' : '');
+      syncHiddenFields(form);
+      validateFormState(form, fieldsToValidate, consentCheckbox, categoryInputs);
+    }));
 
     form.addEventListener('provider-hours-change', () => {
       syncHiddenFields(form);
@@ -1035,6 +1051,7 @@
             hiddenSlug.value = result.providerSlug;
           }
 
+          imageInputs.forEach((input) => { input.value = ''; });
           syncHiddenFields(form);
           form.dataset.providerProxySubmitted = 'true';
           window.HTMLFormElement.prototype.submit.call(form);

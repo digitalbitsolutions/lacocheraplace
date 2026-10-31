@@ -493,6 +493,7 @@ export function validateProviderApplicationSubmission(
     ["bankCountry", "Pais de la cuenta"],
     ["description", "Descripcion"],
     ["openingHours", "Horarios"],
+    ["logoSourceUrl", "Logo"],
   ];
 
   requiredFields.forEach(([key, label]) => {
@@ -558,14 +559,17 @@ export function validateProviderApplicationSubmission(
 
   const galleryValue = String(payload.gallerySourceUrls || "").trim();
   if (galleryValue) {
-    const invalidLine = galleryValue
+    const galleryUrls = galleryValue
       .split("\n")
       .map((line) => line.trim())
-      .find((line) => line && !isValidHttpUrl(line));
+      .filter(Boolean);
+    const invalidLine = galleryUrls.find((line) => !isValidHttpUrl(line));
 
     if (invalidLine) {
       errors.gallerySourceUrls =
         "Cada URL de galeria debe ser valida y empezar por http:// o https://.";
+    } else if (galleryUrls.length > 6) {
+      errors.gallerySourceUrls = "El book admite hasta 6 imagenes.";
     }
   }
 

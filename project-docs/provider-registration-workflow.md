@@ -229,7 +229,7 @@ python scripts/provider_approval_workflow.py approve --input sample-data/provide
 ## Limitaciones conocidas
 - La app embebida esta alojada en `https://admin.lacocheraplace.com`; requiere que Passenger, MySQL y la sesion offline de Shopify permanezcan operativos
 - El formulario publico no crea paginas ni recursos de Shopify por si solo
-- El formulario no sube archivos binarios; en v1 recoge URLs de logo y galeria
+- El formulario adjunta un logo obligatorio y hasta seis fotos para el book. Admite JPG, PNG y WebP de hasta 5 MB por archivo; la app los guarda en Shopify Files y persiste sus URLs en la solicitud.
 - El email sigue existiendo como respaldo temporal
 - El storefront actual sigue resolviendo la oferta principalmente por `product.vendor`
 - La union fuerte entre catalogo y perfil enriquecido debe basarse en `provider_slug`

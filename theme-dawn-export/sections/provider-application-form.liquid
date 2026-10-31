@@ -277,13 +277,15 @@
             <input class="field__input" type="text" id="ProviderInstagram-{{ section.id }}" name="provider_instagram_url" placeholder="@usuario">
             <label class="field__label" for="ProviderInstagram-{{ section.id }}">Instagram</label>
           </div>
-          <div class="field provider-application__grid-item-full">
-            <input class="field__input" type="url" id="ProviderLogoSource-{{ section.id }}" name="provider_logo_source_url" required placeholder="https://storage.com/mi-logo.png">
-            <label class="field__label" for="ProviderLogoSource-{{ section.id }}">URL del logo (enlace directo) <span class="provider-application__required">*</span></label>
+          <div class="provider-application__upload-field provider-application__grid-item-full">
+            <label for="ProviderLogoFile-{{ section.id }}">Logo del negocio <span class="provider-application__required">*</span></label>
+            <input type="file" id="ProviderLogoFile-{{ section.id }}" name="provider_logo_file" accept="image/jpeg,image/png,image/webp" required data-provider-image-input data-provider-logo-file>
+            <p>Adjunta una imagen JPG, PNG o WebP de hasta 5 MB.</p>
           </div>
-          <div class="field provider-application__grid-item-full">
-            <textarea rows="4" id="ProviderGallerySource-{{ section.id }}" class="text-area field__input" name="provider_gallery_source_urls" placeholder="https://link1.jpg, https://link2.jpg..."></textarea>
-            <label class="field__label" for="ProviderGallerySource-{{ section.id }}">Galería de imágenes (URLs separadas por comas)</label>
+          <div class="provider-application__upload-field provider-application__grid-item-full">
+            <label for="ProviderGalleryFiles-{{ section.id }}">Book de imágenes</label>
+            <input type="file" id="ProviderGalleryFiles-{{ section.id }}" name="provider_gallery_files" accept="image/jpeg,image/png,image/webp" multiple data-provider-image-input data-provider-gallery-files>
+            <p>Hasta 6 fotos en formato JPG, PNG o WebP, de hasta 5 MB cada una.</p>
           </div>
         </div>
       </div>

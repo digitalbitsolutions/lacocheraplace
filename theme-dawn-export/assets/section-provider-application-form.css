@@ -388,6 +388,45 @@
   pointer-events: auto;
 }
 
+.provider-application__upload-field {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.provider-application__upload-field > label {
+  color: rgba(var(--color-foreground), 0.8);
+  font-size: 1.35rem;
+  font-weight: 600;
+}
+
+.provider-application__upload-field input[type='file'] {
+  width: 100%;
+  min-height: 4.8rem;
+  padding: 0.7rem;
+  border: 0.1rem dashed rgba(12, 85, 237, 0.42);
+  border-radius: 0.7rem;
+  background: #fbfdff;
+  color: rgba(var(--color-foreground), 0.78);
+}
+
+.provider-application__upload-field input[type='file']::file-selector-button {
+  margin-right: 1rem;
+  padding: 0.7rem 1rem;
+  border: 0;
+  border-radius: 0.4rem;
+  background: #e7f0ff;
+  color: #093f9e;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.provider-application__upload-field p {
+  margin: 0;
+  color: rgba(var(--color-foreground), 0.65);
+  font-size: 1.2rem;
+}
+
 /* City lookup feedback remains available to assistive technology without shifting the field layout. */
 .provider-application__city-autocomplete [data-provider-city-status] {
   position: absolute;
