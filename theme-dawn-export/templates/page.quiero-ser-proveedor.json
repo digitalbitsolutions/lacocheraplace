@@ -1,12 +1,5 @@
 {
   "sections": {
-    "main": {
-      "type": "main-page",
-      "settings": {
-        "padding_top": 36,
-        "padding_bottom": 0
-      }
-    },
     "provider_application_form": {
       "type": "provider-application-form",
       "settings": {
@@ -26,7 +19,6 @@
     }
   },
   "order": [
-    "main",
     "provider_application_form"
   ]
 }
