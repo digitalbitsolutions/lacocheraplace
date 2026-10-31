@@ -174,6 +174,9 @@ export default function ProviderApplicationDetail() {
                     ],
                     ["Sitio web", application.websiteUrl],
                     ["Instagram", application.instagramUrl],
+                    ["Facebook", application.facebookUrl],
+                    ["TikTok", application.tiktokUrl],
+                    ["YouTube", application.youtubeUrl],
                     ["URL del logo", application.logoSourceUrl],
                     ["Galeria", application.gallerySourceUrls],
                   ]}

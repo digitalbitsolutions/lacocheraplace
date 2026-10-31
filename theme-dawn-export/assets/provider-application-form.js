@@ -100,6 +100,9 @@
       '=== PRESENCIA DIGITAL Y ACTIVOS ===',
       `- Sitio web: ${valueOrDash(payload.website_url)}`,
       `- Instagram: ${valueOrDash(payload.instagram_url)}`,
+      `- Facebook: ${valueOrDash(payload.facebook_url)}`,
+      `- TikTok: ${valueOrDash(payload.tiktok_url)}`,
+      `- YouTube: ${valueOrDash(payload.youtube_url)}`,
       `- URL del logo: ${valueOrDash(payload.logo_source_url)}`,
       '- URLs de galeria:',
     ];
@@ -131,8 +134,35 @@
   const sanitizeInstagramValue = (value) => {
     const normalized = (value || '').trim();
     if (!normalized) return '';
-    if (normalized.startsWith('@')) return normalized;
+    if (normalized.startsWith('@')) return `https://instagram.com/${normalized.slice(1)}`;
     return isValidHttpUrl(normalized) ? normalized : '';
+  };
+
+  const initSocialLinks = (form, onChange) => {
+    form.querySelectorAll('[data-provider-social-enabled]').forEach((toggle) => {
+      const option = toggle.closest('.provider-application__social-option');
+      const fieldName = toggle.dataset.providerSocialField;
+      const input = option?.querySelector(`[name="${fieldName}"]`);
+      const inputWrapper = option?.querySelector('[data-provider-social-input]');
+      if (!input || !inputWrapper) return;
+
+      const sync = () => {
+        const enabled = toggle.checked;
+        input.disabled = !enabled;
+        input.required = enabled;
+        inputWrapper.hidden = !enabled;
+        if (!enabled) {
+          input.value = '';
+          clearFieldError(input);
+        }
+      };
+
+      sync();
+      toggle.addEventListener('change', () => {
+        sync();
+        onChange?.();
+      });
+    });
   };
 
   const sanitizeGalleryUrls = (value) => {
@@ -693,6 +723,10 @@
       }
     }
 
+    if (['provider_facebook_url', 'provider_tiktok_url', 'provider_youtube_url'].includes(element.name) && value && !isValidHttpUrl(value)) {
+      return 'Introduce una URL valida completa, por ejemplo https://...';
+    }
+
     if (element.name === 'provider_gallery_source_urls' && value) {
       const invalidLine = value
         .split(/[,\n]/)
@@ -866,6 +900,9 @@
       opening_hours: form.querySelector('[name="provider_opening_hours"]')?.value.trim() || '',
       website_url: sanitizeOptionalUrl(form.querySelector('[name="provider_website_url"]')?.value),
       instagram_url: sanitizeInstagramValue(form.querySelector('[name="provider_instagram_url"]')?.value),
+      facebook_url: sanitizeOptionalUrl(form.querySelector('[name="provider_facebook_url"]')?.value),
+      tiktok_url: sanitizeOptionalUrl(form.querySelector('[name="provider_tiktok_url"]')?.value),
+      youtube_url: sanitizeOptionalUrl(form.querySelector('[name="provider_youtube_url"]')?.value),
       logo_source_url: '',
       gallery_source_urls: '',
     };
@@ -912,6 +949,9 @@
       openingHours: payload.opening_hours,
       websiteUrl: payload.website_url,
       instagramUrl: payload.instagram_url,
+      facebookUrl: payload.facebook_url,
+      tiktokUrl: payload.tiktok_url,
+      youtubeUrl: payload.youtube_url,
       logoSourceUrl: payload.logo_source_url,
       gallerySourceUrls: payload.gallery_source_urls,
       consentAccepted: true,
@@ -943,12 +983,18 @@
   document.querySelectorAll('[data-provider-application-form]').forEach((form) => {
     const fieldsToValidate = Array.from(
       form.querySelectorAll(
-        'input[required], select[required], textarea[required], input[type="email"], input[name="provider_website_url"], input[name="provider_instagram_url"]'
+        'input[required], select[required], textarea[required], input[type="email"], input[name="provider_website_url"], input[data-provider-social-url]'
       )
     );
     const consentCheckbox = form.querySelector('[name="provider_consent"]');
     const categoryInputs = Array.from(form.querySelectorAll('input[name="provider_service_categories[]"]'));
     const imageInputs = Array.from(form.querySelectorAll('[data-provider-image-input]'));
+
+    initSocialLinks(form, () => {
+      setSubmitError(form, '');
+      syncHiddenFields(form);
+      validateFormState(form, fieldsToValidate, consentCheckbox, categoryInputs);
+    });
 
     imageInputs.forEach((input) => input.addEventListener('change', () => {
       const tooMany = input.matches('[data-provider-gallery-files]') && input.files.length > 6;

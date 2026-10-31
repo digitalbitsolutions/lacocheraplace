@@ -74,6 +74,9 @@ Campos clave:
 - `opening_hours`
 - `website_url`
 - `instagram_url`
+- `facebook_url`
+- `tiktok_url`
+- `youtube_url`
 - `logo_source_url`
 - `gallery_source_urls`
 - `decline_reason`
@@ -105,6 +108,9 @@ Campos clave:
 - `opening_hours`
 - `website_url`
 - `instagram_url`
+- `facebook_url`
+- `tiktok_url`
+- `youtube_url`
 - `logo_source_url`
 - `gallery_source_urls`
 - `provider_slug`
@@ -141,6 +147,9 @@ Campos previstos:
 - `gallery_source_urls`
 - `website_url`
 - `instagram_url`
+- `facebook_url`
+- `tiktok_url`
+- `youtube_url`
 - `status`
 - `source_submission_id`
 

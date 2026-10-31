@@ -427,6 +427,58 @@
   font-size: 1.2rem;
 }
 
+.provider-application__socials {
+  padding-top: 0.2rem;
+}
+
+.provider-application__socials-title {
+  margin: 0;
+  font-size: 1.45rem;
+  font-weight: 600;
+}
+
+.provider-application__socials-help {
+  margin: 0.35rem 0 1.2rem;
+  color: rgba(var(--color-foreground), 0.66);
+  font-size: 1.2rem;
+}
+
+.provider-application__socials-list {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.provider-application__social-option {
+  display: grid;
+  gap: 0.9rem;
+  padding: 1rem 1.2rem;
+  border: 0.1rem solid rgba(12, 85, 237, 0.18);
+  border-radius: 0.6rem;
+  background: #fbfdff;
+}
+
+.provider-application__social-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  width: fit-content;
+  color: rgba(var(--color-foreground), 0.9);
+  font-size: 1.35rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.provider-application__social-toggle input {
+  width: 1.7rem;
+  height: 1.7rem;
+  margin: 0;
+  accent-color: #0c55ed;
+}
+
+.provider-application__social-input .field__input {
+  background: rgb(var(--color-background));
+}
+
 /* City lookup feedback remains available to assistive technology without shifting the field layout. */
 .provider-application__city-autocomplete [data-provider-city-status] {
   position: absolute;
@@ -536,6 +588,10 @@
 
   .provider-application__benefits {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .provider-application__socials-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 

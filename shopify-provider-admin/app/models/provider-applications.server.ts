@@ -45,6 +45,9 @@ export interface ProviderApplicationSubmission {
   openingHours: string;
   websiteUrl: string;
   instagramUrl: string;
+  facebookUrl: string;
+  tiktokUrl: string;
+  youtubeUrl: string;
   logoSourceUrl: string;
   gallerySourceUrls: string;
   consentAccepted: boolean;
@@ -82,6 +85,9 @@ export interface ProviderApplicationRecord {
   openingHours: string;
   websiteUrl: string;
   instagramUrl: string;
+  facebookUrl: string;
+  tiktokUrl: string;
+  youtubeUrl: string;
   logoSourceUrl: string;
   gallerySourceUrls: string;
   declineReason: string;
@@ -162,6 +168,9 @@ const REQUEST_FIELD_DEFINITIONS: MetaobjectFieldDefinitionInput[] = [
   { key: "opening_hours", name: "Opening hours", type: "multi_line_text_field", required: true },
   { key: "website_url", name: "Website URL", type: "url" },
   { key: "instagram_url", name: "Instagram URL", type: "url" },
+  { key: "facebook_url", name: "Facebook URL", type: "url" },
+  { key: "tiktok_url", name: "TikTok URL", type: "url" },
+  { key: "youtube_url", name: "YouTube URL", type: "url" },
   { key: "logo_source_url", name: "Logo source URL", type: "url" },
   { key: "gallery_source_urls", name: "Gallery source URLs", type: "multi_line_text_field" },
   { key: "decline_reason", name: "Decline reason", type: "multi_line_text_field" },
@@ -197,6 +206,9 @@ const PROVIDER_PROFILE_FIELD_DEFINITIONS: MetaobjectFieldDefinitionInput[] = [
   { key: "gallery_source_urls", name: "Gallery source URLs", type: "multi_line_text_field" },
   { key: "website_url", name: "Website URL", type: "url" },
   { key: "instagram_url", name: "Instagram URL", type: "url" },
+  { key: "facebook_url", name: "Facebook URL", type: "url" },
+  { key: "tiktok_url", name: "TikTok URL", type: "url" },
+  { key: "youtube_url", name: "YouTube URL", type: "url" },
   { key: "status", name: "Status", type: "single_line_text_field", required: true },
   { key: "source_submission_id", name: "Source submission ID", type: "single_line_text_field", required: true },
 ];
@@ -337,6 +349,9 @@ function parseApplicationNode(node: MetaobjectNode): ProviderApplicationRecord {
     openingHours: fieldValue(fields, "opening_hours"),
     websiteUrl: fieldValue(fields, "website_url"),
     instagramUrl: fieldValue(fields, "instagram_url"),
+    facebookUrl: fieldValue(fields, "facebook_url"),
+    tiktokUrl: fieldValue(fields, "tiktok_url"),
+    youtubeUrl: fieldValue(fields, "youtube_url"),
     logoSourceUrl: fieldValue(fields, "logo_source_url"),
     gallerySourceUrls: fieldValue(fields, "gallery_source_urls"),
     declineReason: fieldValue(fields, "decline_reason"),
@@ -390,7 +405,7 @@ async function ensureDefinition(
 ) {
   const existingData = await shopifyGraphql<{
     metaobjectDefinitions: {
-      nodes: Array<{ id: string; type: string }>;
+      nodes: Array<{ id: string; type: string; fieldDefinitions: Array<{ key: string }> }>;
     };
   }>(
     admin,
@@ -400,6 +415,9 @@ async function ensureDefinition(
           nodes {
             id
             type
+            fieldDefinitions {
+              key
+            }
           }
         }
       }`,
@@ -408,7 +426,41 @@ async function ensureDefinition(
   const existing = existingData.metaobjectDefinitions.nodes.find(
     (definition) => definition.type === type,
   );
-  if (existing) return existing.id;
+  if (existing) {
+    const existingKeys = new Set(existing.fieldDefinitions.map((field) => field.key));
+    const missingFields = fieldDefinitions.filter((field) => !existingKeys.has(field.key));
+
+    if (missingFields.length) {
+      const updateData = await shopifyGraphql<{
+        metaobjectDefinitionUpdate: {
+          userErrors: Array<{ message: string }>;
+        };
+      }>(
+        admin,
+        `#graphql
+          mutation AddProviderMetaobjectFields($id: ID!, $definition: MetaobjectDefinitionUpdateInput!) {
+            metaobjectDefinitionUpdate(id: $id, definition: $definition) {
+              userErrors {
+                message
+              }
+            }
+          }`,
+        {
+          id: existing.id,
+          definition: {
+            fieldDefinitions: missingFields.map((field) => ({ create: field })),
+          },
+        },
+      );
+
+      assertUserErrors(
+        updateData.metaobjectDefinitionUpdate.userErrors,
+        `No se pudieron actualizar los campos de ${type}.`,
+      );
+    }
+
+    return existing.id;
+  }
 
   const createData = await shopifyGraphql<{
     metaobjectDefinitionCreate: {
@@ -547,6 +599,9 @@ export function validateProviderApplicationSubmission(
   const optionalUrls: Array<[keyof ProviderApplicationSubmission, string]> = [
     ["websiteUrl", "Sitio web"],
     ["instagramUrl", "Instagram"],
+    ["facebookUrl", "Facebook"],
+    ["tiktokUrl", "TikTok"],
+    ["youtubeUrl", "YouTube"],
     ["logoSourceUrl", "URL del logo"],
   ];
 
@@ -623,6 +678,9 @@ function mapRequestFields(payload: {
   openingHours: string;
   websiteUrl: string;
   instagramUrl: string;
+  facebookUrl: string;
+  tiktokUrl: string;
+  youtubeUrl: string;
   logoSourceUrl: string;
   gallerySourceUrls: string;
   declineReason: string;
@@ -661,6 +719,9 @@ function mapRequestFields(payload: {
     ["opening_hours", payload.openingHours],
     ["website_url", payload.websiteUrl],
     ["instagram_url", payload.instagramUrl],
+    ["facebook_url", payload.facebookUrl],
+    ["tiktok_url", payload.tiktokUrl],
+    ["youtube_url", payload.youtubeUrl],
     ["logo_source_url", payload.logoSourceUrl],
     ["gallery_source_urls", payload.gallerySourceUrls],
     ["decline_reason", payload.declineReason],
@@ -730,6 +791,9 @@ export async function createProviderApplicationRequest(
     openingHours: payload.openingHours.trim(),
     websiteUrl: payload.websiteUrl.trim(),
     instagramUrl: payload.instagramUrl.trim(),
+    facebookUrl: payload.facebookUrl.trim(),
+    tiktokUrl: payload.tiktokUrl.trim(),
+    youtubeUrl: payload.youtubeUrl.trim(),
     logoSourceUrl: payload.logoSourceUrl.trim(),
     gallerySourceUrls: payload.gallerySourceUrls.trim(),
     declineReason: "",
@@ -1025,6 +1089,9 @@ function buildApprovedProfileFields(application: ProviderApplicationRecord) {
     { key: "gallery_source_urls", value: application.gallerySourceUrls },
     { key: "website_url", value: application.websiteUrl },
     { key: "instagram_url", value: application.instagramUrl },
+    { key: "facebook_url", value: application.facebookUrl },
+    { key: "tiktok_url", value: application.tiktokUrl },
+    { key: "youtube_url", value: application.youtubeUrl },
     { key: "status", value: "approved" },
     { key: "source_submission_id", value: application.submissionId },
   ].filter((field) => field.value !== "");

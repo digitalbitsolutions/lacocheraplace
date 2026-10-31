@@ -273,9 +273,51 @@
             <input class="field__input" type="url" id="ProviderWebsite-{{ section.id }}" name="provider_website_url" placeholder="https://www.tuweb.com">
             <label class="field__label" for="ProviderWebsite-{{ section.id }}">Sitio web</label>
           </div>
-          <div class="field">
-            <input class="field__input" type="text" id="ProviderInstagram-{{ section.id }}" name="provider_instagram_url" placeholder="@usuario">
-            <label class="field__label" for="ProviderInstagram-{{ section.id }}">Instagram</label>
+          <div class="provider-application__socials provider-application__grid-item-full" data-provider-socials>
+            <p class="provider-application__socials-title">Redes sociales</p>
+            <p class="provider-application__socials-help">Marca las redes que utilizas y añade el perfil o enlace correspondiente.</p>
+            <div class="provider-application__socials-list">
+              <div class="provider-application__social-option">
+                <label class="provider-application__social-toggle" for="ProviderInstagramEnabled-{{ section.id }}">
+                  <input type="checkbox" id="ProviderInstagramEnabled-{{ section.id }}" data-provider-social-enabled data-provider-social-field="provider_instagram_url">
+                  <span>Instagram</span>
+                </label>
+                <div class="field provider-application__social-input" data-provider-social-input hidden>
+                  <input class="field__input" type="text" id="ProviderInstagram-{{ section.id }}" name="provider_instagram_url" placeholder="@usuario o https://instagram.com/..." disabled data-provider-social-url>
+                  <label class="field__label" for="ProviderInstagram-{{ section.id }}">Instagram</label>
+                </div>
+              </div>
+              <div class="provider-application__social-option">
+                <label class="provider-application__social-toggle" for="ProviderFacebookEnabled-{{ section.id }}">
+                  <input type="checkbox" id="ProviderFacebookEnabled-{{ section.id }}" data-provider-social-enabled data-provider-social-field="provider_facebook_url">
+                  <span>Facebook</span>
+                </label>
+                <div class="field provider-application__social-input" data-provider-social-input hidden>
+                  <input class="field__input" type="url" id="ProviderFacebook-{{ section.id }}" name="provider_facebook_url" placeholder="https://facebook.com/..." disabled data-provider-social-url>
+                  <label class="field__label" for="ProviderFacebook-{{ section.id }}">Facebook</label>
+                </div>
+              </div>
+              <div class="provider-application__social-option">
+                <label class="provider-application__social-toggle" for="ProviderTiktokEnabled-{{ section.id }}">
+                  <input type="checkbox" id="ProviderTiktokEnabled-{{ section.id }}" data-provider-social-enabled data-provider-social-field="provider_tiktok_url">
+                  <span>TikTok</span>
+                </label>
+                <div class="field provider-application__social-input" data-provider-social-input hidden>
+                  <input class="field__input" type="url" id="ProviderTiktok-{{ section.id }}" name="provider_tiktok_url" placeholder="https://tiktok.com/@..." disabled data-provider-social-url>
+                  <label class="field__label" for="ProviderTiktok-{{ section.id }}">TikTok</label>
+                </div>
+              </div>
+              <div class="provider-application__social-option">
+                <label class="provider-application__social-toggle" for="ProviderYoutubeEnabled-{{ section.id }}">
+                  <input type="checkbox" id="ProviderYoutubeEnabled-{{ section.id }}" data-provider-social-enabled data-provider-social-field="provider_youtube_url">
+                  <span>YouTube</span>
+                </label>
+                <div class="field provider-application__social-input" data-provider-social-input hidden>
+                  <input class="field__input" type="url" id="ProviderYoutube-{{ section.id }}" name="provider_youtube_url" placeholder="https://youtube.com/@..." disabled data-provider-social-url>
+                  <label class="field__label" for="ProviderYoutube-{{ section.id }}">YouTube</label>
+                </div>
+              </div>
+            </div>
           </div>
           <div class="provider-application__upload-field provider-application__grid-item-full">
             <label for="ProviderLogoFile-{{ section.id }}">Logo del negocio <span class="provider-application__required">*</span></label>
