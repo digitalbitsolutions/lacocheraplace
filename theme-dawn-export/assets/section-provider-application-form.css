@@ -369,6 +369,19 @@
   pointer-events: auto;
 }
 
+/* City lookup feedback remains available to assistive technology without shifting the field layout. */
+.provider-application__city-autocomplete [data-provider-city-status] {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 .field.provider-application__field--invalid .field__input,
 .field.provider-application__field--invalid .text-area.field__input,
 .field.provider-application__field--invalid .select__select,
