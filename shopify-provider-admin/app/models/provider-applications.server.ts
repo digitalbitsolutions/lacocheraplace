@@ -533,7 +533,6 @@ export function validateProviderApplicationSubmission(
     ["phone", "Telefono"],
     ["whatsapp", "WhatsApp"],
     ["addressLine1", "Direccion principal"],
-    ["addressLine2", "Informacion adicional"],
     ["city", "Ciudad"],
     ["postalCode", "Codigo postal"],
     ["provinceOrRegion", "Provincia o region"],

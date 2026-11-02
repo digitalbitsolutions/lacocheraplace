@@ -60,7 +60,7 @@ async function uploadProviderImage(
     `#graphql
       mutation CreateProviderImageFile($files: [FileCreateInput!]!) {
         fileCreate(files: $files) {
-          files { ... on MediaImage { image { url } } }
+          files { ... on MediaImage { id image { url } } }
           userErrors { message }
         }
       }
@@ -69,10 +69,25 @@ async function uploadProviderImage(
   );
   const filePayload = (await fileResponse.json()) as any;
   const fileResult = filePayload.data?.fileCreate;
-  const url = fileResult?.files?.[0]?.image?.url;
-  if (filePayload.errors?.length || fileResult?.userErrors?.length || !url) {
+  const createdImage = fileResult?.files?.[0];
+  if (filePayload.errors?.length || fileResult?.userErrors?.length || !createdImage?.id) {
     throw new Error(filePayload.errors?.[0]?.message || fileResult?.userErrors?.[0]?.message || "Shopify no devolvió la URL de la imagen.");
   }
+  let url = createdImage.image?.url;
+  for (let attempt = 0; !url && attempt < 10; attempt += 1) {
+    await new Promise((resolve) => setTimeout(resolve, 700));
+    const imageResponse = await admin.graphql(
+      `#graphql
+        query ProviderImage($id: ID!) {
+          node(id: $id) { ... on MediaImage { image { url } } }
+        }
+      `,
+      { variables: { id: createdImage.id } },
+    );
+    const imagePayload = (await imageResponse.json()) as any;
+    url = imagePayload.data?.node?.image?.url;
+  }
+  if (!url) throw new Error("Shopify no terminó de procesar la imagen. Inténtalo nuevamente.");
   return String(url);
 }
 

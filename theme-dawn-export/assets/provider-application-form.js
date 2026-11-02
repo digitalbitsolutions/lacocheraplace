@@ -688,6 +688,10 @@
       return 'Este campo es obligatorio.';
     }
 
+    if (!element.validity.valid) {
+      return element.validationMessage || 'Revisa el valor de este campo.';
+    }
+
     if (element.name === 'provider_city' && value && !element.dataset.citySelected) {
       return 'Selecciona una ciudad de la lista.';
     }
@@ -782,8 +786,12 @@
     const submitButton = form.querySelector('button[type="submit"]');
     if (!submitButton) return;
 
-    submitButton.disabled = !isValid;
-    submitButton.setAttribute('aria-disabled', String(!isValid));
+    // El botón se mantiene disponible para que al pulsarlo se muestren todos
+    // los errores pendientes, en lugar de quedar bloqueado sin explicación.
+    if (form.dataset.providerSubmitting !== 'true') {
+      submitButton.disabled = false;
+      submitButton.setAttribute('aria-disabled', 'false');
+    }
   };
 
   const setSubmitError = (form, message = '') => {
@@ -792,6 +800,54 @@
 
     error.textContent = message;
     error.classList.toggle('is-visible', Boolean(message));
+  };
+
+  const showServerValidationErrors = (form, errors = {}) => {
+    const fields = {
+      displayName: '[name="provider_display_name"]',
+      legalName: '[name="provider_legal_name"]',
+      catalogVendorName: '[name="provider_catalog_vendor_name"]',
+      contactName: '[name="contact[name]"]',
+      email: '[name="contact[email]"]',
+      phone: '[name="contact[phone]"]',
+      whatsapp: '[name="provider_whatsapp"]',
+      addressLine1: '[name="provider_address_line_1"]',
+      city: '[name="provider_city"]',
+      postalCode: '[name="provider_postal_code"]',
+      provinceOrRegion: '[name="provider_province_or_region"]',
+      country: '[name="provider_country"]',
+      accountHolder: '[name="provider_account_holder"]',
+      taxId: '[name="provider_tax_id"]',
+      iban: '[name="provider_iban"]',
+      bankName: '[name="provider_bank_name"]',
+      bankCountry: '[name="provider_bank_country"]',
+      description: '[name="provider_description"]',
+      logoSourceUrl: '[data-provider-logo-file]',
+    };
+
+    Object.entries(errors).forEach(([key, message]) => {
+      const text = String(message || 'Revisa este campo.');
+      const field = fields[key] ? form.querySelector(fields[key]) : null;
+      if (field) {
+        setFieldError(field, text);
+        return;
+      }
+      if (key === 'openingHours') {
+        const status = form.querySelector('[data-opening-hours-status]');
+        if (status) {
+          status.textContent = text;
+          status.classList.add('provider-application__error', 'is-visible');
+        }
+      }
+      if (key === 'serviceCategories') {
+        const categoryError = form.querySelector('[data-provider-category-error]');
+        if (categoryError) {
+          categoryError.textContent = text;
+          categoryError.classList.add('is-visible');
+        }
+      }
+      if (key === 'consentAccepted') validateRequiredCheckbox(form.querySelector('[name="provider_consent"]'));
+    });
   };
 
   const validateFormState = (form, fieldsToValidate, consentCheckbox, categoryInputs, { showErrors = false } = {}) => {
@@ -964,9 +1020,11 @@
     const result = await response.json().catch(() => ({}));
 
     if (!response.ok || !result?.ok) {
-      throw new Error(
+      const error = new Error(
         result?.message || 'No se pudo registrar la solicitud en Shopify Admin.'
       );
+      error.validationErrors = result?.errors && typeof result.errors === 'object' ? result.errors : {};
+      throw error;
     }
 
     return result;
@@ -1072,6 +1130,7 @@
       event.preventDefault();
       const submitButton = form.querySelector('button[type="submit"]');
       if (submitButton) {
+        form.dataset.providerSubmitting = 'true';
         submitButton.disabled = true;
         submitButton.setAttribute('aria-disabled', 'true');
       }
@@ -1095,9 +1154,13 @@
           window.HTMLFormElement.prototype.submit.call(form);
         })
         .catch((error) => {
+          delete form.dataset.providerSubmitting;
+          showServerValidationErrors(form, error?.validationErrors);
           setSubmitError(
             form,
-            error instanceof Error
+            Object.keys(error?.validationErrors || {}).length
+              ? 'Revisa los campos marcados para poder enviar la solicitud.'
+              : error instanceof Error
               ? error.message
               : 'No se pudo guardar la solicitud en la consola del Admin.'
           );
