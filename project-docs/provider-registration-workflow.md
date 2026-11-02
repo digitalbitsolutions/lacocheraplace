@@ -4,6 +4,7 @@
 Implementar un alta de proveedores separada del registro de clientes, con revision manual, geocodificacion Google y perfil enriquecido en Shopify Metaobjects.
 
 ## Estado actual
+- Estado de QA actual (2026-11-02): el alta pública está desplegada y queda pendiente de la prueba funcional de Ches. No se deben introducir nuevos cambios hasta recibir el resultado de esa prueba.
 - El formulario publico de alta vive en [provider-application-form.liquid](/d:/development/lacocheraplace.com/theme-dawn-export/sections/provider-application-form.liquid)
 - La pagina publica prevista usa [page.quiero-ser-proveedor.json](/d:/development/lacocheraplace.com/theme-dawn-export/templates/page.quiero-ser-proveedor.json)
 - La solicitud se sigue serializando en `contact[body]` con un bloque legible para email admin
@@ -11,8 +12,10 @@ Implementar un alta de proveedores separada del registro de clientes, con revisi
 - El formulario puede capturar `google_place_id`, `latitude` y `longitude` cuando el usuario selecciona una sugerencia de Google Maps
 - La browser key publica para autocomplete ya no se guarda en el theme; la app proxy la entrega desde `GOOGLE_MAPS_BROWSER_API_KEY` cuando esta configurada
 - El autocompletado usa Places API (New) y solo solicita sugerencias de direcciones de Perú (`includedRegionCodes: ['pe']`, región `PE`). Antes de guardar una selección, valida que su país sea `PE`; el selector de país y la validación del app proxy también aceptan únicamente Perú. No se debe restaurar el widget clásico `google.maps.places.Autocomplete`, porque requiere la API heredada y no es compatible con la configuración actual.
-- La ubicación se captura en este orden: departamento de Perú, ciudad perteneciente a ese departamento y dirección del negocio. Las sugerencias de ciudad y dirección proceden de Places API (New) y se validan contra el departamento elegido.
+- La ubicación se captura en este orden: departamento de Perú, ciudad perteneciente a ese departamento y dirección del negocio. La ciudad es un `select` dependiente del departamento, con el listado local de ciudades peruanas; la dirección conserva las sugerencias de Places API (New).
 - El horario se guarda en `opening_hours` como JSON versionado con zona horaria `America/Lima`, siete días y una o dos franjas `{ opens, closes }` por día habilitado. En cada día activo el proveedor elige horario continuo (una franja) u horario partido (dos franjas ordenadas y sin solaparse). Esta estructura sustituye el texto libre para las nuevas solicitudes; los registros históricos en texto se mantienen legibles.
+- El envío valida en cliente y servidor. El botón se mantiene pulsable para que el proveedor vea los errores de los campos incompletos o inválidos. Los errores estructurados devueltos por el app proxy se muestran junto al campo correspondiente.
+- WhatsApp, logo y consentimiento son obligatorios. La galería admite hasta seis imágenes. Los adjuntos se suben a Shopify Files y se persisten sus URLs en la solicitud.
 - La consola del owner ya existe como custom app embebida en Shopify Admin: `Laco Prov Admin`
 - El acceso operativo validado a esa consola es: `https://admin.shopify.com/store/lacocheraplace/apps` -> `Laco Prov Admin` -> `Abrir app`
 - Si Shopify muestra la pantalla de revision/permisos de app no publicada, el owner debe pulsar `Actualizar`
@@ -243,6 +246,7 @@ python scripts/provider_approval_workflow.py approve --input sample-data/provide
 - El storefront actual sigue resolviendo la oferta principalmente por `product.vendor`
 - La union fuerte entre catalogo y perfil enriquecido debe basarse en `provider_slug`
 - Las sugerencias requieren que la browser key tenga habilitadas Maps JavaScript API y Places API (New), y restricciones HTTP para `lacocheraplace.com`, `www.lacocheraplace.com` y el dominio `myshopify.com` de la tienda.
+- Pendiente de validar por Ches: una solicitud completa desde el storefront, incluida la carga de logo y galería. La prueba debe confirmar que la solicitud aparece en `Laco Prov Admin` como `pending`.
 
 ## Siguiente evolucion recomendada
 - Desplegar la custom app a una URL estable para eliminar dependencia de tuneles temporales
