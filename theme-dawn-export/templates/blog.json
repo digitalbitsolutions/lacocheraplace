@@ -13,20 +13,12 @@
       }
     },
     "provider_visibility_cta": {
-      "type": "image-banner",
+      "type": "blog-provider-cta-image",
       "name": "Promoción para proveedores",
       "settings": {
         "image": "shopify://shop_images/blog-provider-visibility-cta.webp",
-        "image_overlay_opacity": 0,
-        "image_height": "adapt",
-        "image_behavior": "none",
-        "desktop_content_position": "middle-center",
-        "desktop_content_alignment": "center",
-        "show_text_box": false,
-        "color_scheme": "scheme-1",
-        "stack_images_on_mobile": false,
-        "mobile_content_alignment": "center",
-        "show_text_below": false
+        "padding_top": 36,
+        "padding_bottom": 36
       }
     }
   },

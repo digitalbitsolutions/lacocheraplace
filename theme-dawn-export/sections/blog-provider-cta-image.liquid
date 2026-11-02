@@ -1,0 +1,84 @@
+{%- style -%}
+  #BlogProviderCta-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+
+  #BlogProviderCta-{{ section.id }} .blog-provider-cta__image {
+    display: block;
+    width: 100%;
+    max-width: 110rem;
+    height: auto;
+    margin: 0 auto;
+    border-radius: 1.6rem;
+    box-shadow: 0 1.2rem 3.6rem rgba(14, 48, 108, 0.1);
+  }
+
+  @media screen and (max-width: 749px) {
+    #BlogProviderCta-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top | times: 0.7 | round: 0 }}px;
+      padding-bottom: {{ section.settings.padding_bottom | times: 0.7 | round: 0 }}px;
+    }
+
+    #BlogProviderCta-{{ section.id }} .blog-provider-cta__image {
+      border-radius: 1rem;
+    }
+  }
+{%- endstyle -%}
+
+<section id="BlogProviderCta-{{ section.id }}" class="blog-provider-cta">
+  <div class="page-width">
+    {%- if section.settings.image != blank -%}
+      {{
+        section.settings.image
+        | image_url: width: 2200
+        | image_tag:
+          class: 'blog-provider-cta__image',
+          widths: '375, 550, 750, 990, 1100, 1500, 2200',
+          sizes: '(min-width: 1200px) 1100px, calc(100vw - 4rem)',
+          loading: 'lazy',
+          alt: section.settings.image.alt
+      }}
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "CTA proveedores",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Imagen"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 96,
+      "step": 4,
+      "unit": "px",
+      "label": "Espacio superior",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 96,
+      "step": 4,
+      "unit": "px",
+      "label": "Espacio inferior",
+      "default": 36
+    }
+  ],
+  "presets": [
+    {
+      "name": "CTA proveedores"
+    }
+  ]
+}
+{% endschema %}
