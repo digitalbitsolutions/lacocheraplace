@@ -12,25 +12,26 @@
         "padding_bottom": 36
       }
     },
-    "video_GnyiVG": {
-      "type": "video",
-      "name": "t:sections.video.presets.name",
+    "provider_visibility_cta": {
+      "type": "image-banner",
+      "name": "Promoción para proveedores",
       "settings": {
-        "heading": "",
-        "heading_size": "h1",
-        "enable_video_looping": false,
-        "video_url": "https://youtu.be/iAWjQDO2APg?si=m66HbH-IhEDpCDhm",
-        "cover_image": "shopify://shop_images/black-sports-car.jpg",
-        "description": "",
-        "full_width": false,
-        "color_scheme": "",
-        "padding_top": 36,
-        "padding_bottom": 36
+        "image": "shopify://shop_images/blog-provider-visibility-cta.webp",
+        "image_overlay_opacity": 0,
+        "image_height": "adapt",
+        "image_behavior": "none",
+        "desktop_content_position": "middle-center",
+        "desktop_content_alignment": "center",
+        "show_text_box": false,
+        "color_scheme": "scheme-1",
+        "stack_images_on_mobile": false,
+        "mobile_content_alignment": "center",
+        "show_text_below": false
       }
     }
   },
   "order": [
     "main",
-    "video_GnyiVG"
+    "provider_visibility_cta"
   ]
 }
