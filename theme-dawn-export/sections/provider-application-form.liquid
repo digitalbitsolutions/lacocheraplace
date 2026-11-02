@@ -1,5 +1,6 @@
 {{ 'section-contact-form.css' | asset_url | stylesheet_tag }}
 {{ 'section-provider-application-form.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'peru-department-cities.js' | asset_url }}" defer="defer"></script>
 <script src="{{ 'provider-application-form.js' | asset_url }}" defer="defer"></script>
 
 {%- assign provider_application_proxy_path = section.settings.provider_application_proxy_path | strip -%}
@@ -174,11 +175,14 @@
                 <span class="svg-wrapper">{{- 'icon-caret.svg' | inline_asset_content -}}</span>
               </div>
             </div>
-            <div class="field provider-application__city-autocomplete" data-provider-city-autocomplete>
-              <input class="field__input" type="text" id="ProviderCity-{{ section.id }}" name="provider_city" required placeholder="Selecciona primero un departamento" data-provider-city="true" autocomplete="off" disabled>
-              <label class="field__label" for="ProviderCity-{{ section.id }}">Ciudad <span class="provider-application__required">*</span></label>
-              <ul id="ProviderCitySuggestions-{{ section.id }}" class="provider-application__address-suggestions" data-provider-city-suggestions role="listbox" hidden></ul>
-              <p class="provider-application__address-status" data-provider-city-status role="status" aria-live="polite"></p>
+            <div class="field provider-application__select-field">
+              <label class="provider-application__select-label" for="ProviderCity-{{ section.id }}">Ciudad <span class="provider-application__required">*</span></label>
+              <div class="select">
+                <select class="select__select" id="ProviderCity-{{ section.id }}" name="provider_city" required data-provider-city="true" disabled>
+                  <option value="">Selecciona primero un departamento</option>
+                </select>
+                <span class="svg-wrapper">{{- 'icon-caret.svg' | inline_asset_content -}}</span>
+              </div>
             </div>
             <div class="field provider-application__grid-item-full provider-application__address-autocomplete" data-provider-address-autocomplete>
               <input class="field__input" type="text" id="ProviderAddressLine1-{{ section.id }}" name="provider_address_line_1" required placeholder="Selecciona primero ciudad" data-provider-address-line-1="true" autocomplete="street-address" disabled>

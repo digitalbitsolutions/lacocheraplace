@@ -470,14 +470,61 @@
   };
 
   const initGoogleAddressAutocomplete = async (form) => {
-    const apiKey = await resolveGoogleMapsApiKey(form);
     const addressField = form.querySelector('[data-provider-address-line-1]');
     const suggestions = form.querySelector('[data-provider-address-suggestions]');
     const cityField = form.querySelector('[data-provider-city]');
     const provinceField = form.querySelector('[data-provider-province]');
-    const citySuggestions = form.querySelector('[data-provider-city-suggestions]');
-    const cityStatus = form.querySelector('[data-provider-city-status]');
-    if (!addressField || !suggestions || !cityField || !provinceField || !citySuggestions) return;
+    if (!addressField || !suggestions || !cityField || !provinceField) return;
+
+    const syncCitySelect = () => {
+      delete cityField.dataset.citySelected;
+      const departmentKey = normalizeLocation(provinceField.value);
+      const cities = Array.isArray(window.PROVIDER_CITIES_BY_DEPARTMENT?.[departmentKey])
+        ? window.PROVIDER_CITIES_BY_DEPARTMENT[departmentKey]
+        : [];
+      cityField.replaceChildren();
+      const placeholder = document.createElement('option');
+      placeholder.value = '';
+      placeholder.textContent = provinceField.value
+        ? (cities.length ? 'Selecciona una ciudad' : 'No hay ciudades disponibles')
+        : 'Selecciona primero un departamento';
+      cityField.appendChild(placeholder);
+      cities.forEach((city) => {
+        const option = document.createElement('option');
+        option.value = city;
+        option.textContent = city;
+        cityField.appendChild(option);
+      });
+      cityField.disabled = !cities.length;
+      addressField.value = '';
+      addressField.disabled = true;
+      addressField.placeholder = 'Selecciona primero ciudad';
+      clearGeocodedFields(form);
+      hideAddressSuggestions(form);
+    };
+
+    const syncSelectedCity = () => {
+      const city = cityField.value.trim();
+      if (!city) {
+        delete cityField.dataset.citySelected;
+        addressField.value = '';
+        addressField.disabled = true;
+        addressField.placeholder = 'Selecciona primero ciudad';
+        clearGeocodedFields(form);
+        hideAddressSuggestions(form);
+        return;
+      }
+      cityField.dataset.citySelected = 'true';
+      addressField.disabled = false;
+      addressField.placeholder = 'Escribe la dirección del negocio';
+      addressField.focus();
+    };
+
+    provinceField.addEventListener('change', syncCitySelect);
+    cityField.addEventListener('change', syncSelectedCity);
+    syncCitySelect();
+
+    const apiKey = await resolveGoogleMapsApiKey(form);
     if (!apiKey) {
       setAddressAutocompleteStatus(form, 'Las sugerencias de dirección no están disponibles en este momento.');
       return;
@@ -489,30 +536,31 @@
       let sessionToken;
       let revision = 0;
       let timer;
-      let cityRevision = 0;
-      let cityTimer;
-
-      const hideCitySuggestions = () => {
-        citySuggestions.replaceChildren();
-        citySuggestions.hidden = true;
-      };
-
-      const setCityStatus = (message) => {
-        if (cityStatus) cityStatus.textContent = message;
-      };
-
       const resetCity = () => {
-        cityField.value = '';
         delete cityField.dataset.citySelected;
-        cityField.disabled = !provinceField.value;
-        cityField.placeholder = provinceField.value ? 'Escribe para buscar una ciudad' : 'Selecciona primero un departamento';
+        const departmentKey = normalizeLocation(provinceField.value);
+        const cities = Array.isArray(window.PROVIDER_CITIES_BY_DEPARTMENT?.[departmentKey])
+          ? window.PROVIDER_CITIES_BY_DEPARTMENT[departmentKey]
+          : [];
+        cityField.replaceChildren();
+        const placeholder = document.createElement('option');
+        placeholder.value = '';
+        placeholder.textContent = provinceField.value
+          ? (cities.length ? 'Selecciona una ciudad' : 'No hay ciudades disponibles')
+          : 'Selecciona primero un departamento';
+        cityField.appendChild(placeholder);
+        cities.forEach((city) => {
+          const option = document.createElement('option');
+          option.value = city;
+          option.textContent = city;
+          cityField.appendChild(option);
+        });
+        cityField.disabled = !cities.length;
         addressField.value = '';
         addressField.disabled = true;
         addressField.placeholder = 'Selecciona primero ciudad';
         clearGeocodedFields(form);
-        hideCitySuggestions();
         hideAddressSuggestions(form);
-        setCityStatus(provinceField.value ? 'Escribe al menos dos caracteres para buscar una ciudad.' : '');
       };
 
       const selectCity = (city) => {
@@ -520,54 +568,7 @@
         cityField.dataset.citySelected = 'true';
         addressField.disabled = false;
         addressField.placeholder = 'Escribe la dirección del negocio';
-        hideCitySuggestions();
-        setCityStatus(`Ciudad seleccionada: ${city}.`);
         addressField.focus();
-      };
-
-      const showCitySuggestions = async () => {
-        const query = cityField.value.trim();
-        const department = provinceField.value.trim();
-        const requestRevision = ++cityRevision;
-        delete cityField.dataset.citySelected;
-        addressField.disabled = true;
-        if (!department || query.length < 2) {
-          hideCitySuggestions();
-          setCityStatus(query ? 'Escribe al menos dos caracteres para buscar una ciudad.' : '');
-          return;
-        }
-        setCityStatus(`Buscando ciudades en ${department}...`);
-        try {
-          const response = await AutocompleteSuggestion.fetchAutocompleteSuggestions({
-            input: `${query}, ${department}, Perú`, includedRegionCodes: [countryBias], language: 'es', region: 'PE',
-          });
-          const candidates = await Promise.all((response.suggestions || []).map(async (item) => {
-            const prediction = item.placePrediction;
-            if (!prediction) return null;
-            const place = prediction.toPlace();
-            await place.fetchFields({ fields: ['addressComponents'] });
-            const components = place.addressComponents || [];
-            const placeDepartment = addressComponentText(getAddressComponent(components, 'administrative_area_level_1'));
-            const city = addressComponentText(getAddressComponent(components, 'locality')) || addressComponentText(getAddressComponent(components, 'administrative_area_level_2'));
-            return city && normalizeLocation(placeDepartment) === normalizeLocation(department) ? city : null;
-          }));
-          if (requestRevision !== cityRevision || query !== cityField.value.trim()) return;
-          const cities = [...new Set(candidates.filter(Boolean))].slice(0, 8);
-          citySuggestions.replaceChildren();
-          cities.forEach((city, index) => {
-            const item = document.createElement('li');
-            const button = document.createElement('button');
-            button.type = 'button'; button.role = 'option'; button.id = `${cityField.id}-option-${index}`; button.textContent = city;
-            button.addEventListener('click', () => selectCity(city));
-            item.appendChild(button); citySuggestions.appendChild(item);
-          });
-          citySuggestions.hidden = cities.length === 0;
-          setCityStatus(cities.length ? `${cities.length} ciudades en ${department}.` : `No hay ciudades coincidentes en ${department}.`);
-        } catch (error) {
-          if (requestRevision !== cityRevision) return;
-          hideCitySuggestions();
-          setCityStatus(error.message || 'No se pudieron cargar las ciudades.');
-        }
       };
 
       const selectSuggestion = async (place) => {
@@ -637,23 +638,9 @@
       addressField.addEventListener('focus', () => {
         if (addressField.value.trim().length >= 3) showSuggestions();
       });
-      provinceField.addEventListener('change', resetCity);
-      cityField.addEventListener('input', () => {
-        window.clearTimeout(cityTimer);
-        cityTimer = window.setTimeout(showCitySuggestions, 250);
-      });
-      cityField.addEventListener('focus', () => {
-        if (cityField.value.trim().length >= 2) showCitySuggestions();
-      });
       document.addEventListener('click', (event) => {
         if (!event.target.closest('[data-provider-address-autocomplete]')) hideAddressSuggestions(form);
-        if (!event.target.closest('[data-provider-city-autocomplete]')) hideCitySuggestions();
       });
-
-      // El departamento puede haberse elegido mientras se cargaba Places. Sin esta
-      // sincronización inicial, Ciudad quedaba deshabilitada porque no había un
-      // evento change nuevo que activase resetCity.
-      resetCity();
     } catch (error) {
       console.warn('[provider-application-form] Google Maps autocomplete unavailable.', error);
       setAddressAutocompleteStatus(form, 'Las sugerencias de dirección no están disponibles en este momento.');
