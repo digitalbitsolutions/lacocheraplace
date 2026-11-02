@@ -1,5 +1,23 @@
 {{ 'section-blog-post.css' | asset_url | stylesheet_tag }}
 
+{%- liquid
+  assign article_feature_image_url = blank
+  assign article_feature_image_alt = blank
+  if article.title == 'Detailing en Barcelona: que incluye realmente y cuando lo necesitas'
+    assign article_feature_image_url = 'https://cdn.shopify.com/s/files/1/1016/5102/2161/files/blog-detailing-services_93343bea-c4c3-41be-959c-d2f71bb56a16.webp?v=1793652224'
+    assign article_feature_image_alt = 'Detailing profesional con corrección de pintura en un taller automotriz'
+  elsif article.title == 'Lavado de coche en Barcelona: guia para elegir bien y no danar tu vehiculo'
+    assign article_feature_image_url = 'https://cdn.shopify.com/s/files/1/1016/5102/2161/files/blog-car-wash_1c6b5064-6984-4430-ae83-f6f6958e2143.webp?v=1793652225'
+    assign article_feature_image_alt = 'Lavado profesional de coche con espuma y guante de microfibra'
+  elsif article.title == 'PPF para coches en Espana: que es, cuanto cuesta y si vale la pena'
+    assign article_feature_image_url = 'https://cdn.shopify.com/s/files/1/1016/5102/2161/files/blog-ppf-protection_8df9afcf-fd3c-49e1-899d-63c0e379923b.webp?v=1793652226'
+    assign article_feature_image_alt = 'Instalación profesional de película de protección de pintura PPF'
+  elsif article.title == 'Cuanto cuesta un detailing en Barcelona en 2026'
+    assign article_feature_image_url = 'https://cdn.shopify.com/s/files/1/1016/5102/2161/files/blog-detailing-consultation_f77ddb62-7a9b-48b4-a185-3d449c11e18b.webp?v=1793652227'
+    assign article_feature_image_alt = 'Asesoría profesional para elegir un servicio de detailing automotriz'
+  endif
+-%}
+
 <article class="article-template">
   {%- for block in section.blocks -%}
     {%- case block.type -%}
@@ -8,17 +26,30 @@
           {% render block %}
         </div>
       {%- when 'featured_image' -%}
-        {%- if article.image -%}
+        {%- if article_feature_image_url != blank or article.image -%}
           <div
             class="article-template__hero-container{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}"
             {{ block.shopify_attributes }}
           >
             <div
               class="article-template__hero-{{ block.settings.image_height }} media"
-              {% if block.settings.image_height == 'adapt' and article.image %}
+              {% if block.settings.image_height == 'adapt' and article_feature_image_url != blank %}
+                style="padding-bottom: 62.5%;"
+              {% elsif block.settings.image_height == 'adapt' and article.image %}
                 style="padding-bottom: {{ 1 | divided_by: article.image.aspect_ratio | times: 100 }}%;"
               {% endif %}
             >
+              {% if article_feature_image_url != blank %}
+                <img
+                  src="{{ article_feature_image_url }}"
+                  sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 }}px, (min-width: 750px) calc(100vw - 10rem), 100vw"
+                  loading="eager"
+                  fetchpriority="high"
+                  width="1600"
+                  height="1000"
+                  alt="{{ article_feature_image_alt | escape }}"
+                >
+              {% else %}
               <img
                 srcset="
                   {% if article.image.width >= 350 %}{{ article.image | image_url: width: 350 }} 350w,{% endif %}
@@ -37,6 +68,7 @@
                 height="{{ article.image.height }}"
                 alt="{{ article.image.alt | escape }}"
               >
+              {% endif %}
             </div>
           </div>
         {%- endif -%}
