@@ -649,6 +649,11 @@
         if (!event.target.closest('[data-provider-address-autocomplete]')) hideAddressSuggestions(form);
         if (!event.target.closest('[data-provider-city-autocomplete]')) hideCitySuggestions();
       });
+
+      // El departamento puede haberse elegido mientras se cargaba Places. Sin esta
+      // sincronización inicial, Ciudad quedaba deshabilitada porque no había un
+      // evento change nuevo que activase resetCity.
+      resetCity();
     } catch (error) {
       console.warn('[provider-application-form] Google Maps autocomplete unavailable.', error);
       setAddressAutocompleteStatus(form, 'Las sugerencias de dirección no están disponibles en este momento.');
